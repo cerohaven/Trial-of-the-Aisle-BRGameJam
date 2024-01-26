@@ -6056,8 +6056,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b737d3f1d36aa40911866c3b006b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
+  inputAction:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2ffed08a-0f92-4c49-82a5-a40eabddcb2c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  interactEvent: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   moveInput: {fileID: -664632691511699130, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   dodgeInput: {fileID: 7158324541136829982, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
+  pauseInput: {fileID: -1197709640112971354, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
+  interactInput: {fileID: 7105195634226742469, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   moveSpeed: 7
   dodgeSpeed: 20
   dodgeCooldown: 2
@@ -6155,6 +6168,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7668718c-1b93-457e-af8e-91b428b8bc02
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 880e8069-4165-40d0-b0fa-cd7aea8f2fee
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce559c67-d2d5-414f-a9c8-8236c0cf9a81
+    m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

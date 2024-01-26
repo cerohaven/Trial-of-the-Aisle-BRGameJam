@@ -10,7 +10,7 @@ public class bullet : MonoBehaviour
     {
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Debug.Log("Bullet Collided");
-        Destroy(effect, 5f);
+        Destroy(effect, 1.5f);
         Destroy(gameObject);
     }
 }

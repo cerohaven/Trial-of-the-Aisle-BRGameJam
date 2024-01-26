@@ -326,8 +326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_nestedFSM":{"_value":1},"_name":"Throw
-    Pills at Player State","_position":{"x":793.0,"y":212.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"0"},{"_nestedFSM":{"_value":2},"_name":"Paracetamania
-    State","_position":{"x":445.0,"y":558.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
+    Pills at Player State","_position":{"x":742.0,"y":171.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"0"},{"_nestedFSM":{"_value":2},"_name":"Paracetamania
+    State","_position":{"x":462.0,"y":519.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
     State","_position":{"x":927.0,"y":431.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Bad
     Habit State","_position":{"x":1251.0,"y":574.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"}],"connections":[{"_condition":{"conditions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"maxPills","_targetVariableID":"1adce9d7-7e05-42f6-b12d-c727f891f76e"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Paracetamania"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"maxPills","_targetVariableID":"1adce9d7-7e05-42f6-b12d-c727f891f76e"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
@@ -341,7 +341,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 98, y: 68}
+    _translation: {x: 140, y: 32}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -34803,7 +34803,7 @@ Transform:
   m_GameObject: {fileID: 1912685118}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.11, y: -3.52, z: 0}
+  m_LocalPosition: {x: 11.84, y: 3.7, z: 0}
   m_LocalScale: {x: 6.0436707, y: 2.5994282, z: 2.5994282}
   m_ConstrainProportionsScale: 0
   m_Children:
