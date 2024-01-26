@@ -1,28 +1,54 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+
+    //Refernces 
+    [SerializeField] private SO_PauseMenuEventSender pauseEvent;
+    [SerializeField] private InputAction inputAction;
+    [SerializeField] private SO_InteractableObject interactEvent;
+
     [Header("Input System")]
     [SerializeField] InputActionReference moveInput;
     [SerializeField] InputActionReference dodgeInput;
+    [SerializeField] InputActionReference pauseInput;
+    [SerializeField] InputActionReference interactInput;
 
+    [Header("Player Variables")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float dodgeSpeed = 10f;
     [SerializeField] float dodgeCooldown = 5f; // Cooldown time for dodging
     Vector2 mousePos;
 
+    //Components
     private Rigidbody2D rb;
+    private PlayerInput playerInput;
+
     public Camera cam;
 
     private bool isDodging = false;
     private float lastDodgeTime = -5f; // Initialize to allow immediate dodge
 
+    public PlayerInput PlayerInput { get => playerInput;}
+
+    //Properties
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+
         dodgeInput.action.performed += OnDodge;
+        pauseInput.action.performed += OnPause;
+    }
+
+    private void OnPause(InputAction.CallbackContext obj)
+    {
+        pauseEvent.PauseGameEventSend();
     }
 
     private void FixedUpdate()
@@ -41,6 +67,7 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         dodgeInput.action.performed -= OnDodge;
+        pauseInput.action.performed -= OnPause;
     }
     
     private IEnumerator DodgeRoutine(Vector2 dodgeDirection)
@@ -74,5 +101,28 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(DodgeRoutine(dodgeDirection));
         Debug.Log("Dodging");
+    }
+
+
+    public void SwitchActionMap(bool _menu)
+    {
+        //a list of the action maps available
+        if (_menu)
+            PlayerInput.SwitchCurrentActionMap("UI");
+        else
+            PlayerInput.SwitchCurrentActionMap("Player");
+
+
+    }
+    public void ChangeControlScheme(PlayerInput p)
+    {
+
+        //Sends an event to all the interactable objects to update their sprite and text based on control
+        interactEvent.ChangedControlSchemeEventSend(p.currentControlScheme);
+    }
+
+    public string GetCurrentControlScheme()
+    {
+        return PlayerInput.currentControlScheme;
     }
 }
