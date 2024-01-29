@@ -18,9 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InputActionReference interactInput;
 
     [Header("Player Variables")]
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 7f;
     [SerializeField] float dodgeSpeed = 10f;
-    [SerializeField] float dodgeCooldown = 5f; // Cooldown time for dodging
+    [SerializeField] float dodgeCooldown = 2f; // Cooldown time for dodging
     Vector2 mousePos;
 
     //Components
