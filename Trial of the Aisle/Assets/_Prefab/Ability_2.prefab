@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b105b6f74205d3b4ca84fef69b3435c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   hitEffect: {fileID: 5723036506351610081, guid: c7cd17d9b202b6c49908d5e679f0e780, type: 3}
 --- !u!50 &-5514399516181132105
 Rigidbody2D:

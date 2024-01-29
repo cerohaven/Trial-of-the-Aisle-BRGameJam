@@ -15,7 +15,6 @@ namespace NodeCanvas.Tasks.Actions{
 		private GameObject pillToSpawn;
 
 		private Transform playerTransform;
-		private int pillsThrown;
 		private float pillSpeed;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
@@ -26,7 +25,7 @@ namespace NodeCanvas.Tasks.Actions{
 			painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
             energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
-			pillsThrown = agentBlackboard.GetVariableValue<int>("pillsThrown");
+			
             pillSpeed = agentBlackboard.GetVariableValue<float>("pillSpeed");
             return null;
 		}
@@ -35,8 +34,6 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-
-			agentBlackboard.SetVariableValue("pillsThrown", pillsThrown++);
 
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -55,18 +52,19 @@ namespace NodeCanvas.Tasks.Actions{
 
 			//Spawning in the pill game object
 			GameObject pill = GameObject.Instantiate(pillToSpawn);
-			pill.transform.position = agent.transform.position;
+			
 
             //Setting the trajectory of the pill game object
             
 			//Get rigidbody component and set direction and speed
-            Rigidbody2D rb = pill.GetComponent<Rigidbody2D>();
-			Vector2 dir = playerTransform.position - agent.transform.position;
-			dir.Normalize();
-
-			rb.velocity = dir * pillSpeed;
-
-
+			Vector3 dir = playerTransform.position - agent.transform.position;
+            
+            dir.Normalize();
+            pill.transform.position = agent.transform.position + (dir * 2);
+			Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
+            projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
+			projectilePill.IgnoreBossCollision(true);
+            projectilePill.IgnorePillCollision(false);
             EndAction(true);
 		}
 

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 949314766169574407}
   - component: {fileID: 4112539869830446260}
   - component: {fileID: 1818694398881729023}
-  m_Layer: 0
+  - component: {fileID: 5999450812872240823}
+  m_Layer: 10
   m_Name: Energy Pill Projectile
-  m_TagString: Untagged
+  m_TagString: Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +149,23 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &5999450812872240823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519044362492021729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd92195e88db2c44e825d78c10b6fb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  hitParticles: {fileID: 0}
+  damageDealt: 1
+  adjustHealth: {fileID: 0}
 --- !u!1 &3170973532724526280
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5880758219406689484}
   - component: {fileID: 5002720000703941772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Yellow Pill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
