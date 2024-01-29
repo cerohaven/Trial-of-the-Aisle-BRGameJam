@@ -1,6 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
 
@@ -18,8 +18,21 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
+			float randomNumber = Random.Range(0.0f, 1.0f);
+			if(randomNumber < 0.5f)
+			{
+				agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
 
-			EndAction(true);
+            }
+			else
+			{
+                agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
+            }
+
+			//Set the pills Thrown to 0
+			Debug.Log("Setting");
+			agentBlackboard.SetVariableValue("pillsThrown", 0);
+            EndAction(true);
 		}
 
 		//Called once per frame while the action is active.

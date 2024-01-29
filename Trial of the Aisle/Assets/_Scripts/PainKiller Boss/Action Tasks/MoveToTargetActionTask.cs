@@ -14,7 +14,7 @@ namespace NodeCanvas.Tasks.Actions{
 		private float _speed;
 		private Vector2 _targetPoint;
 		private Vector2 _currentPosition;
-		private Vector2 _dir;
+		private Vector3 _dir;
 
 
 
@@ -38,18 +38,19 @@ namespace NodeCanvas.Tasks.Actions{
             //Get the target waypoint
             _targetPoint = agentBlackboard.GetVariableValue<Transform>("targetWaypoint").position;
 
-			_currentPosition = agent.transform.position;
+			
 
-            _dir = _targetPoint - _currentPosition;
-			_dir.Normalize();
+           
         }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate(){
+            _currentPosition = agent.transform.position;
+            _dir = _targetPoint - _currentPosition;
+            _dir.Normalize();
 
-
-			//update their position to go to the deisred location
-			_rb.velocity = _dir * speed;
+            //update their position to go to the deisred location
+            _rb.MovePosition(agent.transform.position + _dir * speed * Time.fixedDeltaTime);
 		}
 
 		//Called when the task is disabled.
