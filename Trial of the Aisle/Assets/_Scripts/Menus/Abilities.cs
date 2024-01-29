@@ -1,36 +1,39 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
 {
-    public Shooting shootingScript; // Reference to the Shooting script
-    public Image abilityOneFillImage; // UI Image for Ability One's fill
-    public Image abilityTwoFillImage; // UI Image for Ability Two's fill
+    // Reference to the Shooting script
+    public Shooting shooting;
 
-    private float abilityOneCooldownTime; // Time when Ability One was activated
-    private float abilityTwoCooldownTime; // Time when Ability Two was activated
+    // Variables for ability cooldown UI
+    public UnityEngine.UI.Image abilityOneFill;
+    public UnityEngine.UI.Image abilityTwoFill;
 
     private void Update()
     {
-        // Update the fill amount based on the cooldown timer
-        abilityOneFillImage.fillAmount = shootingScript.canUseAbilityOne ? 1 : CalculateFill(Time.time - abilityOneCooldownTime, shootingScript.abilityOneCooldown);
-        abilityTwoFillImage.fillAmount = shootingScript.canUseAbilityTwo ? 1 : CalculateFill(Time.time - abilityTwoCooldownTime, shootingScript.abilityTwoCooldown);
+        shooting.Update(); // Call the Update method of the Shooting script
 
-        // Update the cooldown time when the ability is used
-        if (!shootingScript.canUseAbilityOne)
+        // Update the fill amount based on the cooldown
+        if (!shooting.canUseAbilityOne)
         {
-            abilityOneCooldownTime = Time.time;
+            abilityOneFill.fillAmount -= 1.0f / shooting.abilityOneCooldown * Time.deltaTime;
+            if (abilityOneFill.fillAmount <= 0)
+            {
+                shooting.canUseAbilityOne = true;
+                abilityOneFill.fillAmount = 1;
+            }
         }
-        if (!shootingScript.canUseAbilityTwo)
-        {
-            abilityTwoCooldownTime = Time.time;
-        }
-    }
 
-    private float CalculateFill(float elapsedTime, float cooldown)
-    {
-        // Calculate the fill amount based on the elapsed time and the cooldown
-        return Mathf.Clamp01(elapsedTime / cooldown);
+        if (!shooting.canUseAbilityTwo)
+        {
+            abilityTwoFill.fillAmount -= 1.0f / shooting.abilityTwoCooldown * Time.deltaTime;
+            if (abilityTwoFill.fillAmount <= 0)
+            {
+                shooting.canUseAbilityTwo = true;
+                abilityTwoFill.fillAmount = 1;
+            }
+        }
     }
 }
+
+

@@ -82,7 +82,7 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Update()
     {
         firePoint.up = transform.up;
     }

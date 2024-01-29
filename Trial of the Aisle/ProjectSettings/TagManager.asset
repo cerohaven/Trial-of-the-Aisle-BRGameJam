@@ -45,3 +45,6 @@ TagManager:
   - name: UI
     uniqueID: 2641703125
     locked: 0
+  - name: UI BG
+    uniqueID: 213249487
+    locked: 0
