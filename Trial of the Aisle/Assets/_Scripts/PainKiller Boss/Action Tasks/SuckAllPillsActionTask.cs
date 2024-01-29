@@ -8,6 +8,9 @@ namespace NodeCanvas.Tasks.Actions{
 
 	public class SuckAllPillsActionTask : ActionTask{
 
+		public float maxPillSpeed;
+		public float minPillSpeed;
+
 		private Blackboard agentBlackboard;
 		private Projectile_Pill[] pillProjectiles;
 
@@ -31,7 +34,7 @@ namespace NodeCanvas.Tasks.Actions{
                 pillProjectiles[i].IgnoreBossCollision(false);
                 Vector2 direction = agent.transform.position - pillProjectiles[i].transform.position;
                 direction.Normalize();
-                float speed = agentBlackboard.GetVariableValue<float>("pillSpeed");
+                float speed = Random.Range(minPillSpeed,maxPillSpeed);
 				
                 pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform);
 

@@ -48,13 +48,19 @@ public class Projectile_Pill : Projectile
     public void IgnoreBossCollision(bool _ignore)
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
+
+    }
+    public void IgnorePillCollision(bool _ignore)
+    {
+        Physics2D.IgnoreLayerCollision(10, 10, _ignore);
     }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         if (isThrownInWave)
         {
-            if (collision.gameObject.CompareTag("Boss"))
+            
+            if (!collision.gameObject.CompareTag("Boss") && !collision.gameObject.CompareTag("Pill"))
             {
                 Destroy(gameObject);
             }

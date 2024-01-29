@@ -30,7 +30,6 @@ namespace NodeCanvas.Tasks.Actions{
             }
 
 			//Set the pills Thrown to 0
-			Debug.Log("Setting");
 			agentBlackboard.SetVariableValue("pillsThrown", 0);
             EndAction(true);
 		}

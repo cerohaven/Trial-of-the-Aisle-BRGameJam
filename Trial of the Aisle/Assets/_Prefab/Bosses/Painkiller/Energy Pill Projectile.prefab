@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5999450812872240823}
   m_Layer: 10
   m_Name: Energy Pill Projectile
-  m_TagString: Untagged
+  m_TagString: Pill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

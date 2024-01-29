@@ -10,6 +10,11 @@ namespace NodeCanvas.Tasks.Actions{
 		//Return null if init was successfull. Return an error string otherwise
 		public float timeBetweenWaves;
         public float chanceToSpawnPainKillerPill;
+        public float pillSpeed;
+
+        public int waveAmount = 7;
+        private int currentWaveAmount = 0;
+
         private float timeElapsed;
 
         private Blackboard agentBlackboard;
@@ -17,8 +22,7 @@ namespace NodeCanvas.Tasks.Actions{
         private GameObject energyPillGO;
         private GameObject pillToSpawn;
 
-        private Transform playerTransform;
-        public float pillSpeed;
+        
         
 		private float[] angles1 = new float[8];
         private float[] angles2 = new float[8];
@@ -47,7 +51,6 @@ namespace NodeCanvas.Tasks.Actions{
 
             painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
             energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
-            playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
             pillAngles = angles1;
             return null;
 		}
@@ -59,8 +62,9 @@ namespace NodeCanvas.Tasks.Actions{
             
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            currentWaveAmount = 0;
 
-            
+
         }
 
 		//Called once per frame while the action is active.
@@ -70,8 +74,9 @@ namespace NodeCanvas.Tasks.Actions{
             if (timeElapsed > timeBetweenWaves)
 			{
 
+                currentWaveAmount++;
                 timeElapsed = 0;
-
+                Debug.Log(currentWaveAmount);
 				//Spawn Pills
                 for(int i = 0; i < 8; i++)
                 {
@@ -86,6 +91,12 @@ namespace NodeCanvas.Tasks.Actions{
                 else
                 {
                     pillAngles = angles1;
+                }
+
+
+                if (currentWaveAmount >= waveAmount)
+                {
+                    EndAction(true);
                 }
             }
 
@@ -113,19 +124,24 @@ namespace NodeCanvas.Tasks.Actions{
 
             //Spawning in the pill game object
             GameObject pill = GameObject.Instantiate(pillToSpawn);
+            Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
 
             //Setting the trajectory of the pill game object
 
             //Get rigidbody component and set direction and speed
             Vector3 dir = new Vector3(Mathf.Cos(_angle * Mathf.Deg2Rad), Mathf.Sin(_angle * Mathf.Deg2Rad));
 
-            pill.transform.position = agent.transform.position + (dir * 3);
+            //Set Position
+            pill.transform.position = agent.transform.position;
 
-            Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
+
+
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
             projectilePill.SetDrag(0);
-            projectilePill.IsThrownInWave = true;
             projectilePill.IgnoreBossCollision(true);
+            projectilePill.IgnorePillCollision(true);
+            projectilePill.IsThrownInWave = true;
+
         }
 
 		//Called when the task is disabled.

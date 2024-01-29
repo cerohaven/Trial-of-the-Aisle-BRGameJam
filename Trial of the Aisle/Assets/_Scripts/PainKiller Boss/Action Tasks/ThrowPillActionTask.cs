@@ -64,6 +64,7 @@ namespace NodeCanvas.Tasks.Actions{
 			Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
 			projectilePill.IgnoreBossCollision(true);
+            projectilePill.IgnorePillCollision(false);
             EndAction(true);
 		}
 
