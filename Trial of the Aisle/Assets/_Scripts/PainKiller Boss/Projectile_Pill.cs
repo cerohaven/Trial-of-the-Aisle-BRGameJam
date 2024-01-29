@@ -6,8 +6,9 @@ using NodeCanvas.Tasks.Actions;
 
 public class Projectile_Pill : Projectile
 {
-    [SerializeField] private Blackboard bossBlackboard;
-
+    //Components
+    private Blackboard bossBlackboard;
+    
 
     //For one of the boss' attacks that suck all the pills back up.
     private bool isBeingSuckedIn = false;
@@ -78,7 +79,11 @@ public class Projectile_Pill : Projectile
                 Destroy(gameObject);
             }
         }
-
+        
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+        }
         
     }
 

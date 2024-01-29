@@ -6,7 +6,13 @@ public class Projectile : MonoBehaviour
 {
     ///The base class for any throwable projectile, either from the boss or from the player
 
+    // -- REFERNCES -- //
+    [SerializeField] protected SO_AdjustHealth adjustHealth;
+
     // -- COMPONENTS -- //
+    [SerializeField] private GameObject hitParticles; //On collision, spawn particles
+
+    /// </summary>
     protected Rigidbody2D rb;
 
     // -- PROJECTILE VARIABLES -- //
@@ -17,7 +23,7 @@ public class Projectile : MonoBehaviour
 
     protected bool canBePickedUp;
 
-    [SerializeField] private int damageDealt;
+    [SerializeField] private ChangeHealth damageDealt;
 
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
                                      //it shouldn't have any effect if it accidentally hits the player.
@@ -26,7 +32,6 @@ public class Projectile : MonoBehaviour
 
     //Properties
     public Transform TargetThrown { get => targetThrown; set => targetThrown = value; }
-    public int DamageDealt { get => damageDealt; set => damageDealt = value; }
 
     public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _target)
     {
@@ -40,6 +45,7 @@ public class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        AudioManager.instance.Play("boss_attack");
     }
 
     //On Start, apply a velocity to the projectile in the direction and speed given.
@@ -63,6 +69,18 @@ public class Projectile : MonoBehaviour
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         //Perform OnCollision Logic
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            //send to reduce scale of boss bar
+            adjustHealth.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage);
+        }
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            adjustHealth.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
+        }
+
+        //Instantiate(hitParticles, transform.position + Vector3.right * TravelDirection * 0.2f, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

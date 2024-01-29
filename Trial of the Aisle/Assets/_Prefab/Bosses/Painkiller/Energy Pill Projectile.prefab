@@ -162,8 +162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd92195e88db2c44e825d78c10b6fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  hitParticles: {fileID: 0}
   damageDealt: 1
-  bossBlackboard: {fileID: 0}
+  adjustHealth: {fileID: 0}
 --- !u!1 &3170973532724526280
 GameObject:
   m_ObjectHideFlags: 0

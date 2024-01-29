@@ -44,7 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65405adf9ff4684c96168b18e926ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: ui_bossBarIncrease
+    clip:
+    - {fileID: 8300000, guid: 771915f1a0bd39f499fe7b5671282d5e, type: 3}
+    volume: 0.309
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ui_bossDefeated
+    clip:
+    - {fileID: 8300000, guid: d16ff9eaebf615b47ac0f44f767c3955, type: 3}
+    volume: 0.273
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   bgSounds:
   - backgroundMusic: 0
     clip: {fileID: 0}

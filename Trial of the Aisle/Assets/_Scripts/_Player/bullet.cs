@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
+    [SerializeField] private SO_AdjustHealth adjustHealth;
     public GameObject hitEffect;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -12,5 +13,10 @@ public class bullet : MonoBehaviour
         Debug.Log("Bullet Collided");
         Destroy(effect, 1.5f);
         Destroy(gameObject);
+
+        if(collision.gameObject.CompareTag("Boss"))
+        {
+            adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+        }
     }
 }
