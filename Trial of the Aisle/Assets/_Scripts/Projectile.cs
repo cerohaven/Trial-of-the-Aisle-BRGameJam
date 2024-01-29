@@ -7,13 +7,15 @@ public class Projectile : MonoBehaviour
     ///The base class for any throwable projectile, either from the boss or from the player
 
     // -- COMPONENTS -- //
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     // -- PROJECTILE VARIABLES -- //
 
     protected Vector2 travelDir;
 
     protected float travelSpeed;
+
+    protected bool canBePickedUp;
 
     [SerializeField] private int damageDealt;
 
@@ -39,10 +41,19 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     //On Start, apply a velocity to the projectile in the direction and speed given.
     protected virtual void Start()
     {
         
+    }
+
+    protected virtual void Update()
+    {
+        if(rb.velocity.magnitude < 0.1f)
+        {
+            canBePickedUp = true;
+        }
     }
     private void MoveProjectile()
     {

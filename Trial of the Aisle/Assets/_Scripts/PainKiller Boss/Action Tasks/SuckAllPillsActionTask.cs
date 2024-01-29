@@ -23,17 +23,18 @@ namespace NodeCanvas.Tasks.Actions{
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
             pillProjectiles = GameObject.FindObjectsOfType<Projectile_Pill>();
-			blackboard.SetVariableValue("groundedPills", pillProjectiles.Length);
+			blackboard.SetVariableValue("groundedPills", pillProjectiles.Length-5);
 
             for (int i = 0; i < pillProjectiles.Length; i++)
             {
 				pillProjectiles[i].IsBeingSuckedIn = true;
-
+                pillProjectiles[i].IgnoreBossCollision(false);
                 Vector2 direction = agent.transform.position - pillProjectiles[i].transform.position;
                 direction.Normalize();
                 float speed = agentBlackboard.GetVariableValue<float>("pillSpeed");
 				
                 pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform);
+
 
             }
         }

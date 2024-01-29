@@ -15,7 +15,6 @@ namespace NodeCanvas.Tasks.Actions{
 		private GameObject pillToSpawn;
 
 		private Transform playerTransform;
-		private int pillsThrown;
 		private float pillSpeed;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
@@ -62,9 +61,9 @@ namespace NodeCanvas.Tasks.Actions{
             
             dir.Normalize();
             pill.transform.position = agent.transform.position + (dir * 2);
-            pill.GetComponent<Projectile>().InitializeProjectile(dir, pillSpeed, agent.transform);
-
-
+			Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
+            projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
+			projectilePill.IgnoreBossCollision(true);
             EndAction(true);
 		}
 
