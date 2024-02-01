@@ -464,7 +464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 393.0656, y: -154.65247}
+  m_AnchoredPosition: {x: 396.10004, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456072203
@@ -612,7 +612,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -712,7 +712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 463, y: -155}
+  m_AnchoredPosition: {x: 464.10004, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592003033
@@ -7837,10 +7837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -7884,7 +7884,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 711812610}
-  - {fileID: 784145214}
   m_Father: {fileID: 2135149567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7961,9 +7960,10 @@ RectTransform:
   m_GameObject: {fileID: 711812609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5341475, y: 1.5341475, z: 1.5341475}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 784145214}
   m_Father: {fileID: 672965791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -8071,7 +8071,7 @@ Transform:
   m_GameObject: {fileID: 784145213}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.592712, y: -46.78607, z: 1.236659}
+  m_LocalPosition: {x: -506, y: 189, z: 1.236659}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8080,7 +8080,7 @@ Transform:
   - {fileID: 1121106082}
   - {fileID: 930933230}
   - {fileID: 456072202}
-  m_Father: {fileID: 672965791}
+  m_Father: {fileID: 711812610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819617162
 GameObject:
@@ -14013,7 +14013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 393.0656, y: -154.65247}
+  m_AnchoredPosition: {x: 396.10004, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1121106079
@@ -14089,7 +14089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 463, y: -155}
+  m_AnchoredPosition: {x: 464.10004, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!210 &1121106083
@@ -14157,6 +14157,7 @@ MonoBehaviour:
   dodgeSpeed: 20
   dodgeCooldown: 2
   cam: {fileID: 519420031}
+  isDodging: 0
 --- !u!114 &1302205888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41620,6 +41621,7 @@ GameObject:
   - component: {fileID: 1433081565}
   - component: {fileID: 1433081566}
   - component: {fileID: 1433081567}
+  - component: {fileID: 1433081568}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -41665,7 +41667,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1302205890}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 7
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -41697,6 +41699,21 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 2105187590}
   m_Damping: 0.3
   m_MaxWindowSize: -1
+--- !u!114 &1433081568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433081564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c363c9a4c9249448a01ca034aacaa87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1302205887}
+  ShakeIntensity: 0.5
+  shakeTime: 0.4
 --- !u!1 &1494479393
 GameObject:
   m_ObjectHideFlags: 3
@@ -41708,6 +41725,7 @@ GameObject:
   - component: {fileID: 1494479394}
   - component: {fileID: 1494479396}
   - component: {fileID: 1494479395}
+  - component: {fileID: 1494479397}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -41785,6 +41803,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1494479397
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494479393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1774438942
 GameObject:
   m_ObjectHideFlags: 0
@@ -41812,14 +41847,14 @@ RectTransform:
   m_GameObject: {fileID: 1774438942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.236659}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.425, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 784145214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 324.5, y: -154.6}
+  m_AnchoredPosition: {x: 324, y: -158.8}
   m_SizeDelta: {x: 85, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774438944

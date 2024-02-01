@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     public Camera cam;
 
-    private bool isDodging = false;
+    public bool isDodging = false;
     private float lastDodgeTime = -5f; // Initialize to allow immediate dodge
 
     public PlayerInput PlayerInput { get => playerInput;}
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         pauseEvent.PauseGameEventSend();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         Vector2 axis = moveInput.action.ReadValue<Vector2>();
         Vector2 movement = new Vector2(axis.x, axis.y) * (isDodging ? dodgeSpeed : moveSpeed);
