@@ -343,17 +343,6 @@
                 },
                 {
                     "name": "",
-                    "id": "de409e3a-9169-4716-8dbe-3d77667980b4",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "Ability 3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "630d6f4f-4adf-42aa-b868-611dc79d0b0b",
                     "path": "<Keyboard>/space",
                     "interactions": "Tap",
@@ -404,6 +393,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ad4a02f-1464-4017-9947-f2b6ed33df3c",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Ability 3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

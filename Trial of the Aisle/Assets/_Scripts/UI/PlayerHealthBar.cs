@@ -43,6 +43,11 @@ public class PlayerHealthBar : MonoBehaviour
             playerSr.color = new Color(1, 1, 1, color.a);
         }
     }
+    public void Heal(float healAmount)
+    {
+        playerHealth += healAmount;
+        playerRectTransform.sizeDelta += new Vector2(healAmount, 0);
+    }
 
     private void Invincible()
     {

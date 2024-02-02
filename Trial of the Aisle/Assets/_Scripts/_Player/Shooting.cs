@@ -7,11 +7,13 @@ using UnityEngine.InputSystem;
 public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
+    private PlayerHealthBar playerHealthBar;
 
     [Header("Ability Prefabs")]
     public GameObject bulletPrefab;
     public GameObject abilityOnePrefab;
     public GameObject abilityTwoPrefab;
+    public GameObject abilityThreePrefab; // Healing effect prefab
 
     [Header("Forces")]
     public float bulletForce = 20f;
@@ -20,15 +22,24 @@ public class Shooting : MonoBehaviour
     [SerializeField] private InputActionReference shootAction;
     [SerializeField] private InputActionReference abilityOneAction;
     [SerializeField] private InputActionReference abilityTwoAction;
+    [SerializeField] private InputActionReference abilityThreeAction; // Healing ability action
 
     public event Action OnShoot;
 
     [Header("Variables")]
-    public bool canUseAbilityOne = true; // Made public
-    public bool canUseAbilityTwo = true; // Made public
+    public bool canUseAbilityOne = true;
+    public bool canUseAbilityTwo = true;
+    public bool canUseAbilityThree = true; // Healing ability usage check
 
-    public float abilityOneCooldown = 7f; // Changed to public instance variable
-    public float abilityTwoCooldown = 10f; // Changed to public instance variable
+    public float abilityOneCooldown = 7f;
+    public float abilityTwoCooldown = 10f;
+    public float abilityThreeCooldown = 15f; // Healing ability cooldown
+    public float healingAmount = 10f;
+
+    private void start() 
+    {
+        playerHealthBar = FindObjectOfType<PlayerHealthBar>();
+    }
 
     private IEnumerator Start()
     {
@@ -36,10 +47,12 @@ public class Shooting : MonoBehaviour
         shootAction.action.Enable();
         abilityOneAction.action.Enable();
         abilityTwoAction.action.Enable();
+        abilityThreeAction.action.Enable(); // Enable healing ability action
 
         shootAction.action.performed += OnFirePerformed;
         abilityOneAction.action.performed += OnAbilityOnePerformed;
         abilityTwoAction.action.performed += OnAbilityTwoPerformed;
+        abilityThreeAction.action.performed += OnAbilityThreePerformed; // Healing ability action performed
     }
 
     private void OnDisable()
@@ -47,10 +60,12 @@ public class Shooting : MonoBehaviour
         shootAction.action.Disable();
         abilityOneAction.action.Disable();
         abilityTwoAction.action.Disable();
+        abilityThreeAction.action.Disable(); // Disable healing ability action
 
         shootAction.action.performed -= OnFirePerformed;
         abilityOneAction.action.performed -= OnAbilityOnePerformed;
         abilityTwoAction.action.performed -= OnAbilityTwoPerformed;
+        abilityThreeAction.action.performed -= OnAbilityThreePerformed; // Remove healing ability action performed
     }
 
     private void OnFirePerformed(InputAction.CallbackContext context)
@@ -82,6 +97,17 @@ public class Shooting : MonoBehaviour
         }
     }
 
+    private void OnAbilityThreePerformed(InputAction.CallbackContext context)
+    {
+        if (canUseAbilityThree && abilityThreePrefab != null)
+        {
+            Debug.Log("Healing ability activated");
+            playerHealthBar.Heal(healingAmount); 
+            canUseAbilityThree = false;
+            StartCoroutine(AbilityThreeCooldown());
+        }
+    }
+
     public void Update()
     {
         firePoint.up = transform.up;
@@ -97,6 +123,8 @@ public class Shooting : MonoBehaviour
         OnShoot?.Invoke();
     }
 
+
+
     IEnumerator AbilityOneCooldown()
     {
         yield return new WaitForSeconds(abilityOneCooldown);
@@ -108,4 +136,11 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(abilityTwoCooldown);
         canUseAbilityTwo = true;
     }
+
+    IEnumerator AbilityThreeCooldown()
+    {
+        yield return new WaitForSeconds(abilityThreeCooldown);
+        canUseAbilityThree = true;
+    }
 }
+
