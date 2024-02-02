@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
-    private PlayerHealthBar playerHealthBar;
+    public PlayerHealthBar playerHealthBar;
 
     [Header("Ability Prefabs")]
     public GameObject bulletPrefab;
@@ -96,17 +96,31 @@ public class Shooting : MonoBehaviour
             StartCoroutine(AbilityTwoCooldown());
         }
     }
-
     private void OnAbilityThreePerformed(InputAction.CallbackContext context)
     {
         if (canUseAbilityThree && abilityThreePrefab != null)
         {
             Debug.Log("Healing ability activated");
-            playerHealthBar.Heal(healingAmount); 
+
+            // Instantiate the healing effect prefab at the player's position
+            GameObject instantiatedPrefab = Instantiate(abilityThreePrefab, transform.position, Quaternion.identity);
+
+            // Play the particle system if not set to Play on Awake
+            ParticleSystem ps = instantiatedPrefab.GetComponentInChildren<ParticleSystem>();
+            if (ps != null && !ps.main.playOnAwake)
+            {
+                ps.Play();
+            }
+
+            // Heal the player
+            playerHealthBar.Heal(healingAmount);
+
+            // Set the ability to cooldown
             canUseAbilityThree = false;
             StartCoroutine(AbilityThreeCooldown());
         }
     }
+
 
     public void Update()
     {

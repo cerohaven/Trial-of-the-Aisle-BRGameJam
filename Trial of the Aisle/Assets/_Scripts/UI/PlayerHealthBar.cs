@@ -5,16 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    //Variables
     [SerializeField] private float playerHealth;
+    [SerializeField] private float maxHealth = 100f; // Assuming 100 is the max health
     [SerializeField] private float maxInvincibilityTimer;
     [SerializeField] private float invincibilityFlickerRate;
 
     private SpriteRenderer playerSr;
     private GameObject playerGameObject;
     private RectTransform playerRectTransform;
-    
-    //Variables
+
     private float currentInvincibilityTime;
     private Color color = Color.white;
 
@@ -24,18 +23,16 @@ public class PlayerHealthBar : MonoBehaviour
         playerRectTransform = GetComponent<RectTransform>();
         playerSr = playerGameObject.GetComponent<SpriteRenderer>();
 
-
         currentInvincibilityTime = maxInvincibilityTimer + 1;
-
     }
+
     void Update()
-    {   
+    {
         currentInvincibilityTime += Time.deltaTime;
         bool isInvincible = currentInvincibilityTime <= maxInvincibilityTimer;
-        
+
         if (isInvincible)
             InvokeRepeating("Invincible", 0, invincibilityFlickerRate);
-
         else
         {
             CancelInvoke();
@@ -43,10 +40,13 @@ public class PlayerHealthBar : MonoBehaviour
             playerSr.color = new Color(1, 1, 1, color.a);
         }
     }
+
     public void Heal(float healAmount)
     {
-        playerHealth += healAmount;
-        playerRectTransform.sizeDelta += new Vector2(healAmount, 0);
+        playerHealth = Mathf.Min(playerHealth + healAmount, maxHealth); // Ensure health does not exceed maxHealth
+        // Update health bar size based on new health
+        float healthPercentage = playerHealth / maxHealth;
+        playerRectTransform.sizeDelta = new Vector2(healthPercentage * 100, playerRectTransform.sizeDelta.y); // Assuming 100 units of width represents max health
     }
 
     private void Invincible()
@@ -55,7 +55,7 @@ public class PlayerHealthBar : MonoBehaviour
         color.a %= 2;
         playerSr.color = new Color(1, 1, 1, color.a);
     }
-    public void PlayerChangeHealth(float _playerChangedHealth)
+public void PlayerChangeHealth(float _playerChangedHealth)
     {
         //Check to see if healing or damage is being passed
         bool isDamage = _playerChangedHealth < 0;

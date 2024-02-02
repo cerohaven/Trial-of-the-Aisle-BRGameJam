@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10849059, g: 1, b: 0.64395344, a: 1}
+  m_Color: {r: 0.22588108, g: 0.33962262, b: 0.29402578, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -453,9 +453,9 @@ MonoBehaviour:
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[1,2,3,4,5],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":15.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"energyPill":{"_value":6,"_name":"energyPill","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"painkillerPill":{"_value":7,"_name":"painkillerPill","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":6,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"energyPill":{"_value":7,"_name":"energyPill","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"painkillerPill":{"_value":8,"_name":"painkillerPill","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"pillSpeed":{"_value":15.0,"_name":"pillSpeed","_id":"a61ce077-22da-46d3-960f-eb430154ca3c","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pillsSucked":{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
@@ -467,6 +467,7 @@ MonoBehaviour:
   - {fileID: 1001504086}
   - {fileID: 765516026}
   - {fileID: 649105234}
+  - {fileID: 1075837055}
   - {fileID: 1519044362492021729, guid: 919276a2055d15f4d87e228c368439c6, type: 3}
   - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
   _serializedVariables:
@@ -498,9 +499,11 @@ MonoBehaviour:
   - _json: '{"_value":15.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  - _json: '{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references: []
+    _references:
+    - {fileID: 0}
+    - {fileID: 1075837055}
   - _json: '{"_value":1,"_name":"energyPill","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
@@ -862,6 +865,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 829568176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &495529492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8285737914161148899, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+  m_PrefabInstance: {fileID: 1357404731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859d22887a10f3b41ab691dea8ff92aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &533120026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7656,6 +7670,7 @@ MonoBehaviour:
   shooting: {fileID: 1075837054}
   abilityOneFill: {fileID: 1913281324}
   abilityTwoFill: {fileID: 55558256}
+  abilityThreeFill: {fileID: 969579880}
 --- !u!114 &855409805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14967,6 +14982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2130552886}
+  playerHealthBar: {fileID: 495529492}
   bulletPrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
   abilityOnePrefab: {fileID: 1572699439113838549, guid: 30838229eeae2cb4aa5f7cd9b82b73f2, type: 3}
   abilityTwoPrefab: {fileID: 1572699439113838549, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
