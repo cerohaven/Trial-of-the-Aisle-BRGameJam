@@ -8,9 +8,19 @@ public class Projectile : MonoBehaviour
 
     // -- REFERNCES -- //
     [SerializeField] protected SO_AdjustHealth adjustHealth;
+    [SerializeField] private ChangeHealth damageDealt;
+    private InteractableObject_Projectile interactableProjectile;
 
     // -- COMPONENTS -- //
     [SerializeField] private GameObject hitParticles; //On collision, spawn particles
+    [Separator()]
+    [Header("Colour of Outline")]
+    [SerializeField] private SpriteRenderer outlineRenderer;
+
+    [SerializeField] private Color bossOutlineColour;
+    [SerializeField] private Color playerOutlineColour;
+    [SerializeField] private Color neutralOutlineColour;
+
 
     /// </summary>
     protected Rigidbody2D rb;
@@ -23,11 +33,10 @@ public class Projectile : MonoBehaviour
 
     protected bool canBePickedUp;
 
-    [SerializeField] private ChangeHealth damageDealt;
+    
 
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
-                                     //it shouldn't have any effect if it accidentally hits the player.
-
+                                      //it shouldn't have any effect if it accidentally hits the player.
 
 
     //Properties
@@ -36,8 +45,21 @@ public class Projectile : MonoBehaviour
     public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _target)
     {
         travelDir = _direction;
+        transform.up = travelDir;
         travelSpeed = _speed;
         targetThrown = _target;
+
+        //Set the colour of the outline
+        if(targetThrown != null)
+        {
+            if (targetThrown.transform.CompareTag("Player"))
+                outlineRenderer.color = playerOutlineColour;
+            else
+                outlineRenderer.color = bossOutlineColour;
+
+        }
+
+
         MoveProjectile();
     }
 
@@ -45,6 +67,7 @@ public class Projectile : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        interactableProjectile = GetComponent<InteractableObject_Projectile>();
         AudioManager.instance.Play("boss_attack");
     }
 
@@ -59,8 +82,25 @@ public class Projectile : MonoBehaviour
         if(rb.velocity.magnitude < 0.1f)
         {
             canBePickedUp = true;
+            targetThrown = null;
+            outlineRenderer.color = neutralOutlineColour;
+            interactableProjectile.SetInteractable(true);
+
         }
+
     }
+
+
+    //Setting the drag of the projectile so it can slow down or not slow down
+    public void EnableDrag(float minTime, float maxTime)
+    {
+        Invoke("SetDrag", Random.Range(minTime,maxTime));
+    }
+    private void SetDrag()
+    {
+         rb.drag = 2.35f;
+    }
+
     private void MoveProjectile()
     {
         rb.velocity = travelDir * travelSpeed;

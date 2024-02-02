@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Shooting : MonoBehaviour
 {
     public Transform firePoint;
-    public PlayerHealthBar playerHealthBar;
+    public SO_AdjustHealth adjustHealth;
 
     [Header("Ability Prefabs")]
     public GameObject bulletPrefab;
@@ -34,12 +34,7 @@ public class Shooting : MonoBehaviour
     public float abilityOneCooldown = 7f;
     public float abilityTwoCooldown = 10f;
     public float abilityThreeCooldown = 15f; // Healing ability cooldown
-    public float healingAmount = 10f;
-
-    private void start() 
-    {
-        playerHealthBar = FindObjectOfType<PlayerHealthBar>();
-    }
+    [SerializeField] private ChangeHealth healAmount;
 
     private IEnumerator Start()
     {
@@ -113,7 +108,7 @@ public class Shooting : MonoBehaviour
             }
 
             // Heal the player
-            playerHealthBar.Heal(healingAmount);
+            adjustHealth.ChangePlayerHealthEventSend(healAmount, HealthType.Healing);
 
             // Set the ability to cooldown
             canUseAbilityThree = false;

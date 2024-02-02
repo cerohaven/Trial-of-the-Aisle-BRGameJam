@@ -76,7 +76,7 @@ namespace NodeCanvas.Tasks.Actions{
 
                 currentWaveAmount++;
                 timeElapsed = 0;
-                Debug.Log(currentWaveAmount);
+
 				//Spawn Pills
                 for(int i = 0; i < 8; i++)
                 {
@@ -137,7 +137,6 @@ namespace NodeCanvas.Tasks.Actions{
 
 
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
-            projectilePill.SetDrag(0);
             projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnorePillCollision(true);
             projectilePill.IsThrownInWave = true;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e68a25ddacaeab949a2f90f224d11822
+guid: f838c01419ee7794783ba34c6caea915
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_0
+      name: Health_Bars_and_Menu_UI1_0
       rect:
         serializedVersion: 2
-        x: 184
-        y: 386
-        width: 960
-        height: 584
+        x: 32
+        y: 219
+        width: 800
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc4bbde2da4173344ac63a31489847ba
-      internalID: 1326861122
+      spriteID: ddfb3ac380d48ff49bb102d428edac37
+      internalID: -1898318218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_1
+      name: Health_Bars_and_Menu_UI1_1
       rect:
         serializedVersion: 2
-        x: 576
-        y: 162
-        width: 176
-        height: 176
+        x: 32
+        y: 19
+        width: 150
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,29 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edb593cea33de0c49baf6b7a90888ff7
-      internalID: -546301448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_2
-      rect:
-        serializedVersion: 2
-        x: 872
-        y: 162
-        width: 176
-        height: 176
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa15e1ebe703fb94e87c1cb9ddd5c563
-      internalID: 2136988903
+      spriteID: 0e7dfa4bcc57fff47b4ed0bf9343b897
+      internalID: -1569511882
       vertices: []
       indices: 
       edges: []
@@ -183,9 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WIP_Employee_Card_and_Abilities_0: 1326861122
-      WIP_Employee_Card_and_Abilities_1: -546301448
-      WIP_Employee_Card_and_Abilities_2: 2136988903
+      Health_Bars_and_Menu_UI1_0: -1898318218
+      Health_Bars_and_Menu_UI1_1: -1569511882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

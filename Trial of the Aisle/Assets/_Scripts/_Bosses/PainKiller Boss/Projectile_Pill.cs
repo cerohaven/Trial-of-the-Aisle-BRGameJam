@@ -8,15 +8,16 @@ public class Projectile_Pill : Projectile
 {
     //Components
     private Blackboard bossBlackboard;
-    
 
     //For one of the boss' attacks that suck all the pills back up.
     private bool isBeingSuckedIn = false;
     private bool isThrownInWave = false;
-
+    
+    //This changes the behaviour of the pill based on the boss' attacks
     public bool IsBeingSuckedIn { get => isBeingSuckedIn; set => isBeingSuckedIn = value; }
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
 
+    //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target)
     {
         base.InitializeProjectile(_dir, _speed, _target);
@@ -36,16 +37,14 @@ public class Projectile_Pill : Projectile
     {
         base.Update();
 
+        //Keep increasing velocity towards the boss
         if(isBeingSuckedIn)
         {
             base.InitializeProjectile(travelDir, travelSpeed, targetThrown);
         }
     }
 
-    public void SetDrag(float _drag)
-    {
-        rb.drag = _drag;
-    }
+    //Ignoring collisions with certain layers
     public void IgnoreBossCollision(bool _ignore)
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
@@ -80,11 +79,18 @@ public class Projectile_Pill : Projectile
             }
         }
         
+        //On Collision with the player, deal damage UNLESS it can be picked up 
         if(collision.gameObject.CompareTag("Player"))
         {
+            if (canBePickedUp && targetThrown != bossBlackboard.transform)
+                return;
+
             adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            Destroy(gameObject);
         }
+
         
+
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

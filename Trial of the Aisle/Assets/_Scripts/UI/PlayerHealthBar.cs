@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private float playerHealth;
-    [SerializeField] private float maxHealth = 100f; // Assuming 100 is the max health
     [SerializeField] private float maxInvincibilityTimer;
     [SerializeField] private float invincibilityFlickerRate;
 
@@ -16,6 +15,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     private float currentInvincibilityTime;
     private Color color = Color.white;
+    [SerializeField] private float maxHealth;
 
     private void Awake()
     {
@@ -24,6 +24,7 @@ public class PlayerHealthBar : MonoBehaviour
         playerSr = playerGameObject.GetComponent<SpriteRenderer>();
 
         currentInvincibilityTime = maxInvincibilityTimer + 1;
+        maxHealth = playerRectTransform.sizeDelta.x;
     }
 
     void Update()
@@ -41,13 +42,7 @@ public class PlayerHealthBar : MonoBehaviour
         }
     }
 
-    public void Heal(float healAmount)
-    {
-        playerHealth = Mathf.Min(playerHealth + healAmount, maxHealth); // Ensure health does not exceed maxHealth
-        // Update health bar size based on new health
-        float healthPercentage = playerHealth / maxHealth;
-        playerRectTransform.sizeDelta = new Vector2(healthPercentage * 100, playerRectTransform.sizeDelta.y); // Assuming 100 units of width represents max health
-    }
+
 
     private void Invincible()
     {
@@ -55,7 +50,7 @@ public class PlayerHealthBar : MonoBehaviour
         color.a %= 2;
         playerSr.color = new Color(1, 1, 1, color.a);
     }
-public void PlayerChangeHealth(float _playerChangedHealth)
+    public void PlayerChangeHealth(float _playerChangedHealth)
     {
         //Check to see if healing or damage is being passed
         bool isDamage = _playerChangedHealth < 0;
@@ -65,11 +60,7 @@ public void PlayerChangeHealth(float _playerChangedHealth)
             if (isInvincible)
                 return;
 
-           
-            //Reduce Health Bar
-            playerHealth += _playerChangedHealth;
-            playerRectTransform.sizeDelta += new Vector2(_playerChangedHealth, 0);
-
+            UpdateHealthBar(_playerChangedHealth);
 
             bool lostAllHealth = playerHealth <= 0;
             //if (lostAllHealth)
@@ -83,16 +74,17 @@ public void PlayerChangeHealth(float _playerChangedHealth)
         }
         else
         {
-            //Gain Health
-            playerHealth += _playerChangedHealth;
-            playerRectTransform.sizeDelta -= new Vector2(_playerChangedHealth, 0);
+            UpdateHealthBar(_playerChangedHealth);
         }
 
-        
+    }
 
+    private void UpdateHealthBar(float _health)
+    {
+        playerHealth += _health;
+        playerHealth = Mathf.Clamp(playerHealth, 0, maxHealth);
+        playerRectTransform.sizeDelta = new Vector2(playerHealth, playerRectTransform.sizeDelta.y);
         
-        
-
     }
 
 }

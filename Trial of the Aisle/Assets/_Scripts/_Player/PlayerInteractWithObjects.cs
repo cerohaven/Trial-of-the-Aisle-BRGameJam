@@ -144,6 +144,9 @@ public class PlayerInteractWithObjects : MonoBehaviour
         //Displays object interaction showing and hiding UI
         Gizmos.color = new Color(0, 0, 25, 0.1f);
         Gizmos.DrawWireSphere(transform.position, interactRadius + 0.3f);
+
+        if(!Application.isEditor)
+            Debug.DrawLine(objTransform.position, closestCollider.transform.position);
             
     }
 }

@@ -14,7 +14,8 @@ public class BossHealthBar : MonoBehaviour
     //Variables
     [SerializeField] private float blueBarIncreaseSpeed;
     private float bossBarScaleX;
-    
+    private float bossHealth;
+    private float maxHealth;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class BossHealthBar : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.Play("ui_bossBarIncrease");
+        maxHealth = bossRectTransform.sizeDelta.x;
     }
 
     private void Update()
@@ -42,33 +44,49 @@ public class BossHealthBar : MonoBehaviour
         bossRectTransform.sizeDelta = new Vector2(bossBarScaleX, bossRectTransform.sizeDelta.y);
 
         //when the boss bar loads up all the way to being full, then commence the battle and keep it's scale at max
-        if (bossRectTransform.sizeDelta.x >= 100)
+        if (bossRectTransform.sizeDelta.x >= maxHealth)
         {
             uiManager.FinishedBossIntro = true;
-
+            bossHealth = maxHealth;
+            
             AudioManager.instance.Stop("ui_bossBarIncrease");
         }
     }
 
-    public void BossDamage(float bossHealthDecrement)
+    public void BossChangeHealth(float _bossChangedHealth)
     {
-        AudioManager.instance.Play("ui_bossHurt");
+        //Check to see if healing or damage is being passed
+        bool isDamage = _bossChangedHealth < 0;
 
-        //Decrement boss health when hit. Called from the UIManager Class
-        bossRectTransform.sizeDelta += new Vector2(bossHealthDecrement, 0);
-
-        float health = bossRectTransform.sizeDelta.x;
-        bossDefeatedSender.UpdateBossHealthEventSend(health);
-
-        bool bossIsDefeated = health <= 0.25f;
-        if (bossIsDefeated)
+        if (isDamage)
         {
-            bossDefeatedSender.BossIsDefeatedSend();
+          
+            UpdateHealthBar(_bossChangedHealth);
 
-            //disables the blue boss bar
-            gameObject.SetActive(false);
-            
+            bool bossIsDefeated = bossHealth <= 0.25f;
+            if (bossIsDefeated)
+            {
+                bossDefeatedSender.BossIsDefeatedSend();
+
+                //disables the blue boss bar
+                gameObject.SetActive(false);
+
+            }
+            AudioManager.instance.Play("ui_bossHurt");
+
         }
+        else
+        {
+            UpdateHealthBar(_bossChangedHealth);
+        }
+
     }
 
+    private void UpdateHealthBar(float _health)
+    {
+        bossHealth += _health;
+        bossHealth = Mathf.Clamp(bossHealth, 0, maxHealth);
+        bossRectTransform.sizeDelta = new Vector2(bossHealth, bossRectTransform.sizeDelta.y);
+
+    }
 }

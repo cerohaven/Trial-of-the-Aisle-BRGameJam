@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "Adjust Health Event Sender", menuName = "ScriptableObjects/AdjustHealth")]
+[CreateAssetMenu(fileName = "Adjust Health Event Sender", menuName = "Scriptable Objects/AdjustHealth")]
 public class SO_AdjustHealth : ScriptableObject
 {
     /// <summary>

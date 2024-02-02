@@ -46,10 +46,11 @@ public class UIManager : MonoBehaviour
     private void AdjustBossHealth(ChangeHealth changeHealthState, HealthType healthType)
     {
         float healthAdjustment = GetHealthValue(changeHealthState, healthType);
-        bossHealthBar.BossDamage(healthAdjustment);
+        bossHealthBar.BossChangeHealth(healthAdjustment);
     }
 
 
+    //This turns the input parameters of the health into a number that is sent to the Player or Boss Health Bar
     private float GetHealthValue(ChangeHealth _changeHealthState, HealthType _healthType)
     {
         float healthToReturn = 0;

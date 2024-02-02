@@ -65,6 +65,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
 			projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnorePillCollision(false);
+            projectilePill.EnableDrag(0, 1);
             EndAction(true);
 		}
 

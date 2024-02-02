@@ -36,6 +36,8 @@ public abstract class InteractableObject : MonoBehaviour
     [Tooltip("If the player is in the target's range, should we reveal any UI or not? Even if the UI is hidden the object will still be interactable")]
     [SerializeField] protected bool isInteractPointVisible = true;
 
+    [Tooltip("If the object is interactable or not")]
+    [SerializeField] protected bool isInteractable = true;
 
 
     /// <summary>
@@ -65,7 +67,8 @@ public abstract class InteractableObject : MonoBehaviour
     private void CheckIfUTargetctive()
     {
         if (!inPlayerRange) return;
-   
+        if (!IsInteractable()) return;
+
         OnInteract();
 
     }
@@ -76,7 +79,8 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
     private void UpdateSpriteAndText(string _controlScheme)
     {
-  
+        if(interactButtonSprite == null) return;
+
         interactButtonSprite.sprite = SO_controlSchemeHUD.UpdateSpriteHUD(_controlScheme, SO_ControlSchemeHUD.SpriteType.Img_Interact);
     }
 
@@ -92,6 +96,12 @@ public abstract class InteractableObject : MonoBehaviour
         inPlayerRange = true;
         ShowUI();
 
+    }
+
+
+    public void SetInteractable(bool _interactable)
+    {
+        isInteractable = _interactable;
     }
 
     private void ShowUI()
@@ -134,5 +144,5 @@ public abstract class InteractableObject : MonoBehaviour
     protected abstract void OnInteract();
     protected abstract bool IsTargetPointVisible(); //If we want the UI to appear or not. Like animal Crossing if false, where they can still interact, but no UI
 
-
+    protected abstract bool IsInteractable(); //If true, then it's interactable, if false, then it's not
 }
