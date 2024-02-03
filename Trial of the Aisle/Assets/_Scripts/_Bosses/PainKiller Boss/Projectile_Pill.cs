@@ -35,10 +35,16 @@ public class Projectile_Pill : Projectile
     }
     protected override void Update()
     {
-        base.Update();
-
+        if (rb.velocity.magnitude < 0.2f)
+        {
+            canBePickedUp = true;
+            targetThrown = null;
+            outlineRenderer.color = neutralOutlineColour;
+            interactableProjectile.SetInteractable(true);
+            IgnorePillCollision(true, 0);
+        }
         //Keep increasing velocity towards the boss
-        if(isBeingSuckedIn)
+        if (isBeingSuckedIn)
         {
             base.InitializeProjectile(travelDir, travelSpeed, targetThrown);
         }
@@ -50,27 +56,59 @@ public class Projectile_Pill : Projectile
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
 
     }
-    public void IgnorePillCollision(bool _ignore)
+    public void IgnorePillCollision(bool _ignore, float _delay)
     {
-        Physics2D.IgnoreLayerCollision(10, 10, _ignore);
+        
+        if(_ignore)
+        {
+            Invoke("IgnorePills", _delay);
+        }
+        else
+        {
+            Invoke("DontIgnorePills", _delay);
+        }
     }
+    private void IgnorePills()
+    {
+        Physics2D.IgnoreLayerCollision(10, 10, true);
+    }
+    private void DontIgnorePills()
+    {
 
+    }
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isThrownInWave)
+        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
+        if (bossBlackboard == null) return;
+
+
+        //If a pill hits another pill, or if another projectile hits a pill
+        //If the other projectile collides with this one
+        bool collideWithProjectile;
+        if(collision.gameObject.layer == 10 || collision.gameObject.layer == 9)
         {
-            
-            if (!collision.gameObject.CompareTag("Boss") && !collision.gameObject.CompareTag("Pill"))
-            {
-                Destroy(gameObject);
-            }
+            collideWithProjectile = true;
         }
+        else
+        {
+            collideWithProjectile = false;
+        }
+
+        if ((!collision.gameObject.CompareTag("Boss") && collideWithProjectile) ||
+            //if hit wall during the wave, then destroy it
+            (collision.gameObject.CompareTag("Walls") && isThrownInWave))
+        {
+            Destroy(gameObject);
+        }
+    
+
+
+        //When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
+        //any damage and increase a pill count
         if(isBeingSuckedIn )
         {
-
             if (collision.gameObject.CompareTag("Boss"))
             {
-
                 //Increase a pill count
                 int currentPills = bossBlackboard.GetVariableValue<int>("pillsSucked");
                 currentPills++;
@@ -79,6 +117,8 @@ public class Projectile_Pill : Projectile
             }
         }
         
+
+
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if(collision.gameObject.CompareTag("Player"))
         {

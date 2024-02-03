@@ -1,3 +1,4 @@
+using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class BossHealthBar : MonoBehaviour
 {
     [Header("Scriptable Object")]
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedSender;
+    [SerializeField] private Blackboard bossBlackboard;
 
     //References
     private UIManager uiManager;
@@ -25,6 +27,7 @@ public class BossHealthBar : MonoBehaviour
 
     private void Start()
     {
+
         AudioManager.instance.Play("ui_bossBarIncrease");
         maxHealth = bossRectTransform.sizeDelta.x;
     }
@@ -50,6 +53,8 @@ public class BossHealthBar : MonoBehaviour
             bossHealth = maxHealth;
             
             AudioManager.instance.Stop("ui_bossBarIncrease");
+            bossBlackboard.SetVariableValue("bossHealth", bossHealth);
+            bossBlackboard.SetVariableValue("bossMaxHealth", maxHealth);
         }
     }
 
@@ -87,6 +92,6 @@ public class BossHealthBar : MonoBehaviour
         bossHealth += _health;
         bossHealth = Mathf.Clamp(bossHealth, 0, maxHealth);
         bossRectTransform.sizeDelta = new Vector2(bossHealth, bossRectTransform.sizeDelta.y);
-
+        bossBlackboard.SetVariableValue("bossHealth", bossHealth);
     }
 }

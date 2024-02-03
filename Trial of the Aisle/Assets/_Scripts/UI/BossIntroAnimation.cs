@@ -7,13 +7,24 @@ public class BossIntroAnimation : MonoBehaviour
 {
     [SerializeField] private float timeOnScreen;
     [SerializeField] private Animator[] HUDanimators;
+
+
+    [Header("Player and Boss References")]
+    [SerializeField] private PlayerController pc;
     [SerializeField] private Blackboard bossBlackboard;
 
     private void Start()
     {
-        Invoke("RemoveHUD", timeOnScreen);
+        Invoke("EndOfAnimation", timeOnScreen);
+        FreezePlayerMovement();
 
         BackgroundMusicSelect.Instance.PlayBGMusic();
+    }
+
+    private void EndOfAnimation()
+    {
+        RemoveHUD();
+        UnFreezePlayerMovement();
     }
 
     private void RemoveHUD()
@@ -23,6 +34,15 @@ public class BossIntroAnimation : MonoBehaviour
         {
             HUDanimators[i].SetTrigger("Reverse");
         }
+    }
 
+    private void FreezePlayerMovement()
+    {
+        pc.CanMove = false;
+    }
+
+    private void UnFreezePlayerMovement()
+    {
+        pc.CanMove = true;
     }
 }

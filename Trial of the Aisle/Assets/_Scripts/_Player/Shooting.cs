@@ -36,6 +36,14 @@ public class Shooting : MonoBehaviour
     public float abilityThreeCooldown = 15f; // Healing ability cooldown
     [SerializeField] private ChangeHealth healAmount;
 
+
+    private PlayerController pc;
+
+    private void Awake()
+    {
+        pc = GetComponent<PlayerController>();
+    }
+
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(.25f);
@@ -65,6 +73,9 @@ public class Shooting : MonoBehaviour
 
     private void OnFirePerformed(InputAction.CallbackContext context)
     {
+        if (!pc.CanMove) return;
+
+
         if (bulletPrefab != null)
         {
             Shoot(bulletPrefab);
@@ -73,6 +84,9 @@ public class Shooting : MonoBehaviour
 
     private void OnAbilityOnePerformed(InputAction.CallbackContext context)
     {
+        if (!pc.CanMove) return;
+
+
         if (canUseAbilityOne && abilityOnePrefab != null)
         {
             Debug.Log("Ability 1 activated");
@@ -84,6 +98,9 @@ public class Shooting : MonoBehaviour
 
     private void OnAbilityTwoPerformed(InputAction.CallbackContext context)
     {
+        if (!pc.CanMove) return;
+
+
         if (canUseAbilityTwo && abilityTwoPrefab != null)
         {
             Shoot(abilityTwoPrefab);
@@ -93,6 +110,9 @@ public class Shooting : MonoBehaviour
     }
     private void OnAbilityThreePerformed(InputAction.CallbackContext context)
     {
+        if (!pc.CanMove) return;
+
+
         if (canUseAbilityThree && abilityThreePrefab != null)
         {
             Debug.Log("Healing ability activated");
@@ -119,11 +139,17 @@ public class Shooting : MonoBehaviour
 
     public void Update()
     {
+        if (!pc.CanMove) return;
+
+
         firePoint.up = transform.up;
     }
 
     void Shoot(GameObject bulletType)
     {
+        if (!pc.CanMove) return;
+
+
         Debug.Log("Bullet fired");
         GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();

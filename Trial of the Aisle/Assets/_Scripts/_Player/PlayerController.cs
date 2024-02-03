@@ -32,10 +32,11 @@ public class PlayerController : MonoBehaviour
     public bool isDodging = false;
     private float lastDodgeTime = -5f; // Initialize to allow immediate dodge
 
-    public PlayerInput PlayerInput { get => playerInput;}
+    private bool canMove = true;
 
     //Properties
-
+    public PlayerInput PlayerInput { get => playerInput;}
+    public bool CanMove { get => canMove; set => canMove = value; }
 
     private void Awake()
     {
@@ -48,11 +49,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnPause(InputAction.CallbackContext obj)
     {
+        if (!canMove) return;
+
         pauseEvent.PauseGameEventSend();
     }
 
     public void FixedUpdate()
     {
+        if (!canMove) return;
+
         Vector2 axis = moveInput.action.ReadValue<Vector2>();
         Vector2 movement = new Vector2(axis.x, axis.y) * (isDodging ? dodgeSpeed : moveSpeed);
         rb.velocity = movement;
@@ -72,6 +77,7 @@ public class PlayerController : MonoBehaviour
     
     private IEnumerator DodgeRoutine(Vector2 dodgeDirection)
     {
+
         isDodging = true;
         rb.velocity = dodgeDirection;
 
@@ -82,6 +88,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnDodge(InputAction.CallbackContext context)
     {
+        if (!canMove) return;
+
+
         if (isDodging || Time.time - lastDodgeTime < dodgeCooldown) return; // Check for cooldown
 
         lastDodgeTime = Time.time; // Update last dodge time

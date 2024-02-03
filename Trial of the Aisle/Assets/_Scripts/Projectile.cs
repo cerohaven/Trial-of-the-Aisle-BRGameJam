@@ -8,18 +8,18 @@ public class Projectile : MonoBehaviour
 
     // -- REFERNCES -- //
     [SerializeField] protected SO_AdjustHealth adjustHealth;
-    [SerializeField] private ChangeHealth damageDealt;
-    private InteractableObject_Projectile interactableProjectile;
+    [SerializeField] protected ChangeHealth damageDealt;
+    protected InteractableObject_Projectile interactableProjectile;
 
     // -- COMPONENTS -- //
-    [SerializeField] private GameObject hitParticles; //On collision, spawn particles
+    [SerializeField] protected GameObject hitParticles; //On collision, spawn particles
     [Separator()]
     [Header("Colour of Outline")]
-    [SerializeField] private SpriteRenderer outlineRenderer;
+    [SerializeField] protected SpriteRenderer outlineRenderer;
 
-    [SerializeField] private Color bossOutlineColour;
-    [SerializeField] private Color playerOutlineColour;
-    [SerializeField] private Color neutralOutlineColour;
+    [SerializeField] protected Color bossOutlineColour;
+    [SerializeField] protected Color playerOutlineColour;
+    [SerializeField] protected Color neutralOutlineColour;
 
 
     /// </summary>

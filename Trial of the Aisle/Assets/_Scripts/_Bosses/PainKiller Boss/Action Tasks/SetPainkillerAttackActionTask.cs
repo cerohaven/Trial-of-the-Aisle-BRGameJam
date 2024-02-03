@@ -9,6 +9,8 @@ namespace NodeCanvas.Tasks.Actions{
 		public float chanceToGetAttack1 = 0.6f;
 
 		private Blackboard agentBlackboard;
+		private float bossHealth;
+		private float maxBossHealth;
 
 		protected override string OnInit(){
             agentBlackboard = agent.GetComponent<Blackboard>();
@@ -20,16 +22,21 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
+			bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
+            maxBossHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
 
-			int timesUsedAttack = blackboard.GetVariableValue<int>("timesUsedAttack");
+
+            int timesUsedAttack = blackboard.GetVariableValue<int>("timesUsedAttack");
 			string previousAttack = agentBlackboard.GetVariableValue<string>("randomAttack");
 
 			float randomNumber = Random.Range(0.0f, 1.0f);
 
-			//Set the new attack but make sure the attack can't happen more than twice in a row
-			if(randomNumber < chanceToGetAttack1)
+            //Set the new attack but make sure the attack can't happen more than twice in a row
+
+            // ATTACK 1 - PAARACETAMANIA //
+            if (randomNumber < chanceToGetAttack1)
 			{
-				//Attack 1 
+				//Check to see if they performed 2 paracetamanias in a row. If so, then do other attack
 				if(previousAttack == "Paracetamania")
 				{
                     timesUsedAttack++;
@@ -45,11 +52,19 @@ namespace NodeCanvas.Tasks.Actions{
                 }
 				
             }
+
+			// ATTACK 2 - BAD HABIT //
 			else
 			{
 
-                //Attack 2
-                if (previousAttack == "BadHabit")
+				//Only perform Bad Habit if the boss isn't at full health
+				if(bossHealth / maxBossHealth > 75/ maxBossHealth)
+				{
+                    agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
+                }
+
+                //Check to see if they already performed 2 bad habits in a row. If so, then do other attack
+                else if (previousAttack == "BadHabit")
                 {
                     timesUsedAttack++;
                     if (timesUsedAttack > 2)
@@ -63,6 +78,9 @@ namespace NodeCanvas.Tasks.Actions{
                     agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
                 }
             }
+
+
+
             blackboard.SetVariableValue("timesUsedAttack", timesUsedAttack);
 
             //Set the pills Thrown to 0

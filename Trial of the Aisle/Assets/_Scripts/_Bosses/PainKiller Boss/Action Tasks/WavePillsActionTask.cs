@@ -138,7 +138,7 @@ namespace NodeCanvas.Tasks.Actions{
 
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform);
             projectilePill.IgnoreBossCollision(true);
-            projectilePill.IgnorePillCollision(true);
+            projectilePill.IgnorePillCollision(true, 0);
             projectilePill.IsThrownInWave = true;
 
         }
