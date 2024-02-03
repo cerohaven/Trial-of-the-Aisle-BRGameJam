@@ -15,6 +15,7 @@ public abstract class InteractableObject : MonoBehaviour
     [SerializeField] protected SO_InteractableObject SO_interactableObject;
     [SerializeField] private SO_ControlSchemeHUD SO_controlSchemeHUD;
     protected PlayerInputHandler playerInputHandler;
+    protected GameObject interactedActor; //the object that interacted with this interact point
 
     //Variables
     [Header("Variables")]
@@ -64,12 +65,13 @@ public abstract class InteractableObject : MonoBehaviour
     {
         
     }
-    private void CheckIfUTargetctive()
+    private void CheckIfUTargetctive(GameObject _interactActor)
     {
         if (!inPlayerRange) return;
         if (!IsInteractable()) return;
 
-        OnInteract();
+        interactedActor = _interactActor;
+        OnInteract(_interactActor);
 
     }
 
@@ -107,7 +109,7 @@ public abstract class InteractableObject : MonoBehaviour
     private void ShowUI()
     {
         if (!IsTargetPointVisible()) return;
-
+        if (interactPromptPanel == null) return;
         //The UI is only shown if the child class declares the "IsTargetPointVisible" bool method true.
         interactPromptPanel.SetActive(true);
 
@@ -134,6 +136,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected void HideUI()
     {
+        if (interactPromptPanel == null) return;
         //Play Animation
         interactPromptPanel.SetActive(false);
     }
@@ -141,7 +144,7 @@ public abstract class InteractableObject : MonoBehaviour
     #endregion
 
     //abstract function so ALL scripts that inherit from InteractableObject require this function
-    protected abstract void OnInteract();
+    protected abstract void OnInteract(GameObject _interactedActor);
     protected abstract bool IsTargetPointVisible(); //If we want the UI to appear or not. Like animal Crossing if false, where they can still interact, but no UI
 
     protected abstract bool IsInteractable(); //If true, then it's interactable, if false, then it's not

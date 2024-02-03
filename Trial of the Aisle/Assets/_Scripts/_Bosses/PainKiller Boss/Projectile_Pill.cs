@@ -87,7 +87,18 @@ public class Projectile_Pill : Projectile
         bool collideWithProjectile;
         if(collision.gameObject.layer == 10 || collision.gameObject.layer == 9)
         {
-            collideWithProjectile = true;
+            //If they are currently colliding with another projectile,
+            //If this projectile is neutral, then don't destroy it
+            if(targetThrown == null)
+            {
+                collideWithProjectile = false;
+            }
+            else
+            {
+                collideWithProjectile = true;
+            }
+
+            
         }
         else
         {

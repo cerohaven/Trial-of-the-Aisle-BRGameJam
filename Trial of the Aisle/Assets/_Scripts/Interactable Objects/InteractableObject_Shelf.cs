@@ -6,7 +6,7 @@ public class InteractableObject_Shelf : InteractableObject
 {
 
 
-    protected override void OnInteract()
+    protected override void OnInteract(GameObject _interactedActor)
     {
         inPlayerRange = true;
     }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,11 @@ using UnityEngine.Events;
 public class SO_InteractableObject : ScriptableObject
 {
     [System.NonSerialized]
-    public UnityEvent clickedInteractButtonEvent = new UnityEvent();
+    public ClickedInteractionButtonEvent clickedInteractButtonEvent = new ClickedInteractionButtonEvent();
 
-    public void ClickedInteractButtonEventSend()
+    public void ClickedInteractButtonEventSend(GameObject _interactedActor)
     {
-        clickedInteractButtonEvent.Invoke();
+        clickedInteractButtonEvent.Invoke(_interactedActor);
     }
 
     //Is called from the "PlayerInputHandler.cs" class
@@ -30,6 +31,8 @@ public class SO_InteractableObject : ScriptableObject
         clickedCancelButtonEvent.Invoke();
     }
 }
+[System.Serializable]
+public class ClickedInteractionButtonEvent : UnityEvent<GameObject> { }
 
 [System.Serializable]
 public class ChangedControlSchemeEvent : UnityEvent<string> { }

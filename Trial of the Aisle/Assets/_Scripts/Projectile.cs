@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
 
     // -- COMPONENTS -- //
     [SerializeField] protected GameObject hitParticles; //On collision, spawn particles
+    private Collider2D projectileCollider;
+    
     [Separator()]
     [Header("Colour of Outline")]
     [SerializeField] protected SpriteRenderer outlineRenderer;
@@ -68,6 +70,7 @@ public class Projectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         interactableProjectile = GetComponent<InteractableObject_Projectile>();
+        projectileCollider = GetComponent<Collider2D>();
         AudioManager.instance.Play("boss_attack");
     }
 
@@ -90,6 +93,22 @@ public class Projectile : MonoBehaviour
 
     }
 
+    //called from the 'playerCarryProjectile.cs' class when the player picks up an object
+    public void ChangeOutlineToPlayer()
+    {
+        outlineRenderer.color = playerOutlineColour;
+
+        //disable collider
+        projectileCollider.enabled = false;
+    }
+
+    //called from the 'playerCarryProjectile.cs' class when the player throws an object
+    public void EnableCollider()
+    {
+        //enable collider
+        projectileCollider.enabled = true;
+    }
+
 
     //Setting the drag of the projectile so it can slow down or not slow down
     public void EnableDrag(float minTime, float maxTime)
@@ -105,6 +124,10 @@ public class Projectile : MonoBehaviour
     {
         rb.velocity = travelDir * travelSpeed;
     }
+
+
+
+
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
@@ -122,6 +145,8 @@ public class Projectile : MonoBehaviour
         //Instantiate(hitParticles, transform.position + Vector3.right * TravelDirection * 0.2f, Quaternion.identity);
         Destroy(gameObject);
     }
+
+
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {

@@ -34,7 +34,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private void Update()
     {
         if (pc.PlayerInput.actions["Interact"].WasPressedThisFrame())
-            interactableObject.ClickedInteractButtonEventSend();
+            interactableObject.ClickedInteractButtonEventSend(gameObject);
 
         InteractObjects();
     }
