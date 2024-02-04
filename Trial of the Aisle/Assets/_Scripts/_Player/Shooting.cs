@@ -3,179 +3,118 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Shooting : MonoBehaviour
 {
-    public Transform firePoint;
-    public SO_AdjustHealth adjustHealth;
-
     [Header("Ability Prefabs")]
     public GameObject bulletPrefab;
     public GameObject abilityOnePrefab;
     public GameObject abilityTwoPrefab;
-    public GameObject abilityThreePrefab; // Healing effect prefab
+    public GameObject abilityThreePrefab;
 
     [Header("Forces")]
     public float bulletForce = 20f;
 
-    [Header("Input Actions")]
-    [SerializeField] private InputActionReference shootAction;
-    [SerializeField] private InputActionReference abilityOneAction;
-    [SerializeField] private InputActionReference abilityTwoAction;
-    [SerializeField] private InputActionReference abilityThreeAction; // Healing ability action
+    public InputAction shootAction;
+    public InputAction abilityOneAction;
+    public InputAction abilityTwoAction;
+    public InputAction abilityThreeAction;
 
-    public event Action OnShoot;
+    public Transform firePoint;
+    public PlayerController playerController;
+    public SO_AdjustHealth adjustHealth;
+    [SerializeField] public ChangeHealth healAmount;
 
-    [Header("Variables")]
-    public bool canUseAbilityOne = true;
-    public bool canUseAbilityTwo = true;
-    public bool canUseAbilityThree = true; // Healing ability usage check
+    public IAbility abilityOne;
+    public IAbility abilityTwo;
+    public IAbility abilityThree;
 
-    public float abilityOneCooldown = 7f;
-    public float abilityTwoCooldown = 10f;
-    public float abilityThreeCooldown = 15f; // Healing ability cooldown
-    [SerializeField] private ChangeHealth healAmount;
+    // Define events
+    public event Action<IAbility> AbilityUsed;
+    public event Action<IAbility> AbilityCooldownCompleted;
 
-
-    private PlayerController pc;
+    private Camera mainCamera;
 
     private void Awake()
     {
-        pc = GetComponent<PlayerController>();
+        firePoint = transform.Find("Firepoint");
+        if (firePoint == null) Debug.LogError("FirePoint not found on the player");
+
+        mainCamera = Camera.main;
+        playerController = GetComponent<PlayerController>();
+        var actionAsset = playerController.playerInput.actions;
+        shootAction = actionAsset.FindAction("Fire");
+        abilityOneAction = actionAsset.FindAction("AbilityOne");
+        abilityTwoAction = actionAsset.FindAction("AbilityTwo");
+        abilityThreeAction = actionAsset.FindAction("AbilityThree");
+
+        abilityOne = new HighVelocityShot();
+        abilityTwo = new ExplosiveShot();
+        abilityThree = null;  // Starts with no third ability
     }
 
-    private IEnumerator Start()
+    private void OnEnable()
     {
-        yield return new WaitForSeconds(.25f);
-        shootAction.action.Enable();
-        abilityOneAction.action.Enable();
-        abilityTwoAction.action.Enable();
-        abilityThreeAction.action.Enable(); // Enable healing ability action
-
-        shootAction.action.performed += OnFirePerformed;
-        abilityOneAction.action.performed += OnAbilityOnePerformed;
-        abilityTwoAction.action.performed += OnAbilityTwoPerformed;
-        abilityThreeAction.action.performed += OnAbilityThreePerformed; // Healing ability action performed
+        shootAction.performed += _ => Shoot(bulletPrefab);
+        abilityOneAction.performed += _ => UseAbility(abilityOnePrefab, abilityOne);
+        abilityTwoAction.performed += _ => UseAbility(abilityTwoPrefab, abilityTwo);
+        abilityThreeAction.performed += _ => UseAbility(abilityThreePrefab, abilityThree);
     }
 
     private void OnDisable()
     {
-        shootAction.action.Disable();
-        abilityOneAction.action.Disable();
-        abilityTwoAction.action.Disable();
-        abilityThreeAction.action.Disable(); // Disable healing ability action
-
-        shootAction.action.performed -= OnFirePerformed;
-        abilityOneAction.action.performed -= OnAbilityOnePerformed;
-        abilityTwoAction.action.performed -= OnAbilityTwoPerformed;
-        abilityThreeAction.action.performed -= OnAbilityThreePerformed; // Remove healing ability action performed
-    }
-
-    private void OnFirePerformed(InputAction.CallbackContext context)
-    {
-        if (!pc.CanMove) return;
-
-
-        if (bulletPrefab != null)
-        {
-            Shoot(bulletPrefab);
-        }
-    }
-
-    private void OnAbilityOnePerformed(InputAction.CallbackContext context)
-    {
-        if (!pc.CanMove) return;
-
-
-        if (canUseAbilityOne && abilityOnePrefab != null)
-        {
-            Debug.Log("Ability 1 activated");
-            Shoot(abilityOnePrefab);
-            canUseAbilityOne = false;
-            StartCoroutine(AbilityOneCooldown());
-        }
-    }
-
-    private void OnAbilityTwoPerformed(InputAction.CallbackContext context)
-    {
-        if (!pc.CanMove) return;
-
-
-        if (canUseAbilityTwo && abilityTwoPrefab != null)
-        {
-            Shoot(abilityTwoPrefab);
-            canUseAbilityTwo = false;
-            StartCoroutine(AbilityTwoCooldown());
-        }
-    }
-    private void OnAbilityThreePerformed(InputAction.CallbackContext context)
-    {
-        if (!pc.CanMove) return;
-
-
-        if (canUseAbilityThree && abilityThreePrefab != null)
-        {
-            Debug.Log("Healing ability activated");
-
-            // Instantiate the healing effect prefab at the player's position
-            GameObject instantiatedPrefab = Instantiate(abilityThreePrefab, transform.position, Quaternion.identity);
-
-            // Play the particle system if not set to Play on Awake
-            ParticleSystem ps = instantiatedPrefab.GetComponentInChildren<ParticleSystem>();
-            if (ps != null && !ps.main.playOnAwake)
-            {
-                ps.Play();
-            }
-
-            // Heal the player
-            adjustHealth.ChangePlayerHealthEventSend(healAmount, HealthType.Healing);
-
-            // Set the ability to cooldown
-            canUseAbilityThree = false;
-            StartCoroutine(AbilityThreeCooldown());
-        }
-    }
-
-
-    public void Update()
-    {
-        if (!pc.CanMove) return;
-
-
-        firePoint.up = transform.up;
+        shootAction.performed -= _ => Shoot(bulletPrefab);
+        abilityOneAction.performed -= _ => UseAbility(abilityOnePrefab, abilityOne);
+        abilityTwoAction.performed -= _ => UseAbility(abilityTwoPrefab, abilityTwo);
+        abilityThreeAction.performed -= _ => UseAbility(abilityThreePrefab, abilityThree);
     }
 
     void Shoot(GameObject bulletType)
     {
-        if (!pc.CanMove) return;
+        if (!playerController.CanMove || bulletType == null) return;
 
-
-        Debug.Log("Bullet fired");
-        GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
+        // Instantiate the bullet at the firePoint
+        GameObject bullet = Instantiate(bulletType, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(bullet.transform.up * bulletForce, ForceMode2D.Impulse);
 
-        OnShoot?.Invoke();
+        // Calculate direction towards the mouse cursor
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+        Vector2 direction = (mouseWorldPosition - (Vector2)firePoint.position).normalized;
+
+        // Apply force in the direction of the mouse cursor
+        rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }
 
 
-
-    IEnumerator AbilityOneCooldown()
+    void UseAbility(GameObject abilityPrefab, IAbility ability)
     {
-        yield return new WaitForSeconds(abilityOneCooldown);
-        canUseAbilityOne = true;
+        Debug.Log($"Attempting to use ability: {ability?.GetType().Name}"); // Log which ability is being attempted
+
+        if (!playerController.CanMove || ability == null || !ability.CanUse)
+        {
+            Debug.Log($"Cannot use ability: {ability?.GetType().Name}");
+            return;
+        }
+
+        Debug.Log($"Activating ability: {ability.GetType().Name}"); // Confirm activation
+        ability.Activate(firePoint, abilityPrefab, bulletForce);
+        AbilityUsed?.Invoke(ability); // Notify that the ability has been used
+        StartCoroutine(AbilityCooldownRoutine(ability));
     }
 
-    IEnumerator AbilityTwoCooldown()
+
+    public void AssignAbilityThree(IAbility newAbility)
     {
-        yield return new WaitForSeconds(abilityTwoCooldown);
-        canUseAbilityTwo = true;
+        abilityThree = newAbility;
+        // Optionally, update the UI or other game elements to reflect the new ability
     }
 
-    IEnumerator AbilityThreeCooldown()
+    IEnumerator AbilityCooldownRoutine(IAbility ability)
     {
-        yield return new WaitForSeconds(abilityThreeCooldown);
-        canUseAbilityThree = true;
+        ability.CanUse = false;
+        yield return new WaitForSeconds(ability.Cooldown);
+        ability.CanUse = true;
+        AbilityCooldownCompleted?.Invoke(ability); // Invoke the AbilityCooldownCompleted event
     }
+
 }
-
