@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1133005baf47a458513280fcbc301a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1572699439113838549}
-  shotForce: 25
+  foregroundIcon: {fileID: 4022842313258763549, guid: 9d6626bf1b725a74699092b4192bc15d, type: 3}
+  backgroundIcon: {fileID: 2245694409458597448, guid: daf35a6b403c94e49af75dd78c03c5bc, type: 3}
 --- !u!1 &2211259699961417270
 GameObject:
   m_ObjectHideFlags: 0

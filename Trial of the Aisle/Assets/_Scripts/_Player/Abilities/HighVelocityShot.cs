@@ -4,6 +4,13 @@ using UnityEngine.InputSystem;
 
 public class HighVelocityShot : MonoBehaviour, IAbility
 {
+    public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
+    public float AbilityForce { get; private set; } = 10f; // Example force value
+
+    [SerializeField] private GameObject foregroundIcon;
+    [SerializeField] private GameObject backgroundIcon;
+    public GameObject ForegroundIcon => foregroundIcon;
+    public GameObject BackgroundIcon => backgroundIcon;
     public float Cooldown => 5f; // Example cooldown
     public bool CanUse { get; set; } = true;
     public string AbilityName { get; } = "High Velocity Shot";
