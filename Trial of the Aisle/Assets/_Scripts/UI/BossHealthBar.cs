@@ -13,6 +13,9 @@ public class BossHealthBar : MonoBehaviour
     [Header("Boss Hit Effect")]
     [SerializeField] private GameObject bossHitEffect;
 
+    [Header("Heal Particle Effect")]
+    [SerializeField] private GameObject healEffect;
+
     //References
     private UIManager uiManager;
     private RectTransform bossRectTransform;
@@ -127,6 +130,8 @@ public class BossHealthBar : MonoBehaviour
         else
         {
             UpdateHealthBar(_bossChangedHealth);
+            GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
+            temp.transform.localScale = Vector2.one * 3;
             AudioManager.instance.Play("heal");
         }
 

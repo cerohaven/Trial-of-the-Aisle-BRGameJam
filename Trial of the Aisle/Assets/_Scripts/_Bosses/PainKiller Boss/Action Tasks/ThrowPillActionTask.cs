@@ -127,10 +127,12 @@ namespace NodeCanvas.Tasks.Actions{
 
         private void ApplyInitializations(Projectile_Pill projectilePill, Vector3 dir, GameObject pill)
         {
-
-            pill.transform.position = agent.transform.position + (dir * 2);
+            
+            
+            pill.transform.position = agent.transform.position + (dir * 3.5f);
             projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
             projectilePill.IgnoreBossCollision(true);
+
             projectilePill.IgnoreProjectiles(true, 0);
             projectilePill.IgnoreProjectiles(false, 0.5f);
             projectilePill.EnableDrag(0, 2);

@@ -1,6 +1,6 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-
+using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
 
@@ -19,7 +19,14 @@ namespace NodeCanvas.Tasks.Actions{
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
 			adjustHealth.ChangeBossHealthEventSend(healAmount, HealthType.Healing, new UnityEngine.Vector2(0,0));
-			EndAction(true);
+            LeanTween.scale(agent.gameObject, Vector3.one * 1.1f, 0.1f).setOnComplete(Testing);
+            EndAction(true);
+		}
+		private void Testing()
+		{
+			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f);
+
+            Debug.Log("Hi");
 		}
 
 		//Called once per frame while the action is active.

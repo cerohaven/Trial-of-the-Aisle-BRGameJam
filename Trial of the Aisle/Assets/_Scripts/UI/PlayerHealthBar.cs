@@ -10,6 +10,9 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private float invincibilityFlickerRate;
     [SerializeField] private float maxHealth;
 
+    [Header("Heal Particle Effect")]
+    [SerializeField] private GameObject healEffect;
+
     private SpriteRenderer playerSr;
     private GameObject playerGameObject;
     private RectTransform playerRectTransform;
@@ -76,6 +79,7 @@ public class PlayerHealthBar : MonoBehaviour
         else
         {
             UpdateHealthBar(_playerChangedHealth);
+            Instantiate(healEffect, playerGameObject.transform.position, Quaternion.identity);
             AudioManager.instance.Play("heal");
         }
 

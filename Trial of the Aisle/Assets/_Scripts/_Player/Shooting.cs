@@ -13,7 +13,7 @@ public class Shooting : MonoBehaviour
     public AbilityManager abilityManager; // Reference to the AbilityManager
 
     [Header("Input Actions")]
-    public InputAction shootAction;
+    //public InputAction shootAction;
     private InputAction abilityOneAction;
     private InputAction abilityTwoAction;
     private InputAction abilityThreeAction;
@@ -32,7 +32,7 @@ public class Shooting : MonoBehaviour
         playerController = GetComponent<PlayerController>();
 
         var actionAsset = playerController.playerInput.actions;
-        shootAction = actionAsset.FindAction("Fire");
+        //shootAction = actionAsset.FindAction("Fire");
 
         // Get ability actions from the AbilityManager's PlayerInput component
         abilityOneAction = abilityManager.playerInput.actions["AbilityOne"];
@@ -42,7 +42,7 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        shootAction.performed += _ => Shoot(bulletPrefab);
+        //shootAction.performed += _ => Shoot(bulletPrefab);
 
         // Use AbilityManager to handle abilities
         abilityOneAction.performed += _ => UseAbility(0);
@@ -52,7 +52,7 @@ public class Shooting : MonoBehaviour
 
     private void OnDisable()
     {
-        shootAction.performed -= _ => Shoot(bulletPrefab);
+        //shootAction.performed -= _ => Shoot(bulletPrefab);
 
         // Unsubscribe from the ability actions
         abilityOneAction.performed -= _ => UseAbility(0);
