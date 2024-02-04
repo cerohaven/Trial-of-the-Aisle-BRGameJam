@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 657477940805212986}
   - component: {fileID: -5514399516181132105}
   - component: {fileID: -1636081311131241703}
+  - component: {fileID: 6800816948344241217}
   m_Layer: 9
   m_Name: Ability_1
   m_TagString: Untagged
@@ -252,6 +253,20 @@ CircleCollider2D:
   m_Offset: {x: 0.06445437, y: -0.015359169}
   serializedVersion: 2
   m_Radius: 0.4288096
+--- !u!114 &6800816948344241217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572699439113838549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5af0b64d02f444989209548facdbf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 838733015021546376}
+  shotForce: 25
 --- !u!1 &2211259699961417270
 GameObject:
   m_ObjectHideFlags: 0

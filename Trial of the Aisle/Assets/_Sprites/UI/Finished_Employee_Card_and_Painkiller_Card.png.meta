@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e68a25ddacaeab949a2f90f224d11822
+guid: fd756653864af1c4ab6e98a12bc13387
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_0
+      name: Finished_Employee_Card_and_Painkiller_Card_0
       rect:
         serializedVersion: 2
-        x: 184
-        y: 386
+        x: 32
+        y: 654
         width: 960
         height: 584
       alignment: 0
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc4bbde2da4173344ac63a31489847ba
-      internalID: 1326861122
+      spriteID: 0b8ac044513fbf64b963b854d4f4cbc8
+      internalID: -1944421569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_1
+      name: Finished_Employee_Card_and_Painkiller_Card_1
       rect:
         serializedVersion: 2
-        x: 576
-        y: 162
-        width: 176
-        height: 176
+        x: 36
+        y: 38
+        width: 960
+        height: 584
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,29 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edb593cea33de0c49baf6b7a90888ff7
-      internalID: -546301448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WIP_Employee_Card_and_Abilities_2
-      rect:
-        serializedVersion: 2
-        x: 872
-        y: 162
-        width: 176
-        height: 176
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa15e1ebe703fb94e87c1cb9ddd5c563
-      internalID: 2136988903
+      spriteID: 5ebe2d4e3e881254f97c9bae282305f4
+      internalID: 650322563
       vertices: []
       indices: 
       edges: []
@@ -183,9 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WIP_Employee_Card_and_Abilities_0: 1326861122
-      WIP_Employee_Card_and_Abilities_1: -546301448
-      WIP_Employee_Card_and_Abilities_2: 2136988903
+      Finished_Employee_Card_and_Painkiller_Card_0: -1944421569
+      Finished_Employee_Card_and_Painkiller_Card_1: 650322563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

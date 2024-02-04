@@ -30,6 +30,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
     private void Update()
     {
+
         if (pc.PlayerInput.actions["Interact"].WasPressedThisFrame())
         {
             //If the player is carrying an object and they press the 
@@ -44,8 +45,6 @@ public class PlayerInteractWithObjects : MonoBehaviour
             }
 
         }
-            
-
         InteractObjects();
     }
 

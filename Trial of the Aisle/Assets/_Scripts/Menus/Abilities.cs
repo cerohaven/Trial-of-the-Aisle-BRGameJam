@@ -1,50 +1,65 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic; // For Dictionary
 
 public class Abilities : MonoBehaviour
 {
-    // Reference to the Shooting script
-    public Shooting shooting;
+    public Shooting shooting; // Reference to the Shooting script
 
-    // Variables for ability cooldown UI
-    public UnityEngine.UI.Image abilityOneFill;
-    public UnityEngine.UI.Image abilityTwoFill;
-    public UnityEngine.UI.Image abilityThreeFill; 
+    public Image abilityOneFill;
+    public Image abilityTwoFill;
+    public Image abilityThreeFill;
+
+    private Dictionary<IAbility, float> lastAbilityUseTimes = new Dictionary<IAbility, float>();
+
+    private void Start()
+    {
+        // Initialize the dictionary with current abilities
+        lastAbilityUseTimes[shooting.abilityOne] = 0f;
+        lastAbilityUseTimes[shooting.abilityTwo] = 0f;
+        if (shooting.abilityThree != null)
+        {
+            lastAbilityUseTimes[shooting.abilityThree] = 0f;
+        }
+
+        // Subscribe to the AbilityUsed event
+        shooting.AbilityUsed += OnAbilityUsed;
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to prevent memory leaks
+        shooting.AbilityUsed -= OnAbilityUsed;
+    }
 
     private void Update()
     {
-        shooting.Update(); // Call the Update method of the Shooting script
-
-        // Update the fill amount for ability 1 based on the cooldown
-        if (!shooting.canUseAbilityOne)
+        UpdateAbilityFill(abilityOneFill, shooting.abilityOne);
+        UpdateAbilityFill(abilityTwoFill, shooting.abilityTwo);
+        if (shooting.abilityThree != null)
         {
-            abilityOneFill.fillAmount -= 1.0f / shooting.abilityOneCooldown * Time.deltaTime;
-            if (abilityOneFill.fillAmount <= 0)
-            {
-                shooting.canUseAbilityOne = true;
-                abilityOneFill.fillAmount = 1;
-            }
+            abilityThreeFill.gameObject.SetActive(true);
+            UpdateAbilityFill(abilityThreeFill, shooting.abilityThree);
         }
-
-        // Update the fill amount for ability 2 based on the cooldown
-        if (!shooting.canUseAbilityTwo)
+        else
         {
-            abilityTwoFill.fillAmount -= 1.0f / shooting.abilityTwoCooldown * Time.deltaTime;
-            if (abilityTwoFill.fillAmount <= 0)
-            {
-                shooting.canUseAbilityTwo = true;
-                abilityTwoFill.fillAmount = 1;
-            }
+            abilityThreeFill.gameObject.SetActive(false);
         }
+    }
 
-        // Update the fill amount for ability 3 based on the cooldown
-        if (!shooting.canUseAbilityThree)
-        {
-            abilityThreeFill.fillAmount -= 1.0f / shooting.abilityThreeCooldown * Time.deltaTime;
-            if (abilityThreeFill.fillAmount <= 0)
-            {
-                shooting.canUseAbilityThree = true;
-                abilityThreeFill.fillAmount = 1;
-            }
-        }
+    void OnAbilityUsed(IAbility ability)
+    {
+        // Record the time when the ability was used
+        lastAbilityUseTimes[ability] = Time.time;
+    }
+
+    void UpdateAbilityFill(Image fillImage, IAbility ability)
+    {
+        if (fillImage == null || ability == null) return;
+
+        float timeSinceUsed = Time.time - lastAbilityUseTimes[ability];
+        float cooldownProgress = Mathf.Clamp(timeSinceUsed / ability.Cooldown, 0f, 1f);
+
+        fillImage.fillAmount = ability.CanUse ? 1f : 1f - cooldownProgress;
     }
 }

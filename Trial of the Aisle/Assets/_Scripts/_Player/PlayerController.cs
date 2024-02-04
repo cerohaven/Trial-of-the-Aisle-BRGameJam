@@ -1,72 +1,125 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
-    //Refernces 
+    [Header("References")]
     [SerializeField] private SO_PauseMenuEventSender pauseEvent;
-    [SerializeField] private InputAction inputAction;
     [SerializeField] private SO_InteractableObject interactEvent;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Camera cam;
+    public PlayerInput playerInput;
 
     [Header("Input System")]
-    [SerializeField] InputActionReference moveInput;
-    [SerializeField] InputActionReference dodgeInput;
-    [SerializeField] InputActionReference pauseInput;
-    [SerializeField] InputActionReference interactInput;
+    [SerializeField] private InputActionAsset actionAsset; // Use an InputActionAsset instead of individual references
+    private InputAction moveInput;
+    private InputAction dodgeInput;
+    private InputAction pauseInput;
+    private InputAction interactInput;
 
     [Header("Player Variables")]
-    [SerializeField] float moveSpeed = 7f;
-    [SerializeField] float dodgeSpeed = 10f;
-    [SerializeField] float dodgeCooldown = 2f; // Cooldown time for dodging
-    Vector2 mousePos;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float dodgeSpeed = 10f;
+    [SerializeField] private float dodgeCooldown = 2f;
 
-    //Components
     private Rigidbody2D rb;
-    private PlayerInput playerInput;
-
-    public Camera cam;
-
+    private Vector2 lastMoveDirection = Vector2.right;
     public bool isDodging = false;
-    private float lastDodgeTime = -5f; // Initialize to allow immediate dodge
-
+    private float lastDodgeTime = -5f;
     private bool canMove = true;
 
-    //Properties
-    public PlayerInput PlayerInput { get => playerInput;}
+    //properties
+    public PlayerInput PlayerInput { get => playerInput; }
     public bool CanMove { get => canMove; set => canMove = value; }
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
-        dodgeInput.action.performed += OnDodge;
-        pauseInput.action.performed += OnPause;
+        // Initialize input actions from the asset
+        moveInput = actionAsset.FindAction("Move");
+        dodgeInput = actionAsset.FindAction("Dodge");
+        pauseInput = actionAsset.FindAction("Pause");
+        interactInput = actionAsset.FindAction("Interact");
     }
 
-    private void OnPause(InputAction.CallbackContext obj)
+    private void OnEnable()
+    {
+        moveInput.Enable();
+        dodgeInput.Enable();
+        pauseInput.Enable();
+        interactInput.Enable();
+
+        dodgeInput.performed += OnDodge;
+        pauseInput.performed += OnPause;
+    }
+
+    private void OnDisable()
+    {
+        moveInput.Disable();
+        dodgeInput.Disable();
+        pauseInput.Disable();
+        interactInput.Disable();
+
+        dodgeInput.performed -= OnDodge;
+        pauseInput.performed -= OnPause;
+    }
+
+    public void FixedUpdate()
+    {
+        if (!canMove) return;
+        Movement();
+        Animate();
+    }
+
+    public void Movement()
+    {
+        Vector2 movementInput = moveInput.ReadValue<Vector2>();
+        if (movementInput.magnitude > 0)
+        {
+            lastMoveDirection = movementInput.normalized;
+        }
+
+        Vector2 movement = movementInput * (isDodging ? dodgeSpeed : moveSpeed);
+        rb.velocity = movement;
+    }
+
+    public IEnumerator DodgeRoutine(Vector2 dodgeDirection)
+    {
+        isDodging = true;
+        rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.5f); // Dodge duration
+
+        rb.velocity = Vector2.zero; // Reset velocity after dodge
+        isDodging = false;
+    }
+
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        if (!canMove || isDodging || Time.time - lastDodgeTime < dodgeCooldown) return;
+
+        lastDodgeTime = Time.time;
+
+        StartCoroutine(DodgeRoutine(lastMoveDirection));
+    }
+
+    private void OnPause(InputAction.CallbackContext context)
     {
         if (!canMove) return;
 
         pauseEvent.PauseGameEventSend();
     }
 
-    public void FixedUpdate()
+    private void Animate()
     {
-        if (!canMove) return;
-
-        Vector2 axis = moveInput.action.ReadValue<Vector2>();
-        Vector2 movement = new Vector2(axis.x, axis.y) * (isDodging ? dodgeSpeed : moveSpeed);
-        rb.velocity = movement;
-
-        mousePos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        Vector2 movementInput = moveInput.ReadValue<Vector2>();
+        animator.SetFloat("AnimMoveX", movementInput.x);
+        animator.SetFloat("AnimMoveY", movementInput.y);
+        animator.SetFloat("AnimMoveMagnitude", movementInput.sqrMagnitude);
     }
 
     private void OnDestroy()
@@ -77,7 +130,7 @@ public class PlayerController : MonoBehaviour
     
     private IEnumerator DodgeRoutine(Vector2 dodgeDirection)
     {
-
+        
         isDodging = true;
         rb.velocity = dodgeDirection;
 
@@ -123,6 +176,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
     public void ChangeControlScheme(PlayerInput p)
     {
 
