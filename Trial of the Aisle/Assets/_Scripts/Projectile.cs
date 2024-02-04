@@ -1,6 +1,14 @@
+using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum WhoThrew
+{
+    Boss,
+    Null,
+    Player
+}
 
 public class Projectile : MonoBehaviour
 {
@@ -40,25 +48,32 @@ public class Projectile : MonoBehaviour
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
                                       //it shouldn't have any effect if it accidentally hits the player.
 
+    // BOSS VARIABLES //
+    protected Blackboard bossBlackboard;
+
+
+    protected WhoThrew whoThrew = WhoThrew.Boss;
 
     //Properties
     public Transform TargetThrown { get => targetThrown; set => targetThrown = value; }
+    public WhoThrew WhoThrew { get => whoThrew; set => whoThrew = value; }
 
-    public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _target)
+    public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _targetThrown, WhoThrew _whoThrew)
     {
         travelDir = _direction;
         transform.up = travelDir;
         travelSpeed = _speed;
-        targetThrown = _target;
+        targetThrown = _targetThrown;
+        whoThrew = _whoThrew;
 
         //Set the colour of the outline
-        if(targetThrown != null)
+        if(whoThrew == WhoThrew.Player)
         {
-            if (targetThrown.transform.CompareTag("Player"))
-                outlineRenderer.color = playerOutlineColour;
-            else
-                outlineRenderer.color = bossOutlineColour;
-
+              outlineRenderer.color = playerOutlineColour;
+        }
+        else if (whoThrew == WhoThrew.Boss)
+        {
+            outlineRenderer.color = bossOutlineColour;
         }
 
 
@@ -82,10 +97,11 @@ public class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(rb.velocity.magnitude < 0.1f)
+        if(rb.velocity.magnitude < 0.5f && whoThrew == WhoThrew.Boss)
         {
             canBePickedUp = true;
             targetThrown = null;
+            whoThrew = WhoThrew.Null; 
             outlineRenderer.color = neutralOutlineColour;
             interactableProjectile.SetInteractable(true);
 
@@ -115,6 +131,10 @@ public class Projectile : MonoBehaviour
     {
         Invoke("SetDrag", Random.Range(minTime,maxTime));
     }
+    public void RemoveDrag()
+    {
+        rb.drag = 0f;
+    }
     private void SetDrag()
     {
          rb.drag = 2.35f;
@@ -125,7 +145,35 @@ public class Projectile : MonoBehaviour
         rb.velocity = travelDir * travelSpeed;
     }
 
+    //Ignoring collision with other projectiles
+    public void IgnoreProjectiles(bool _ignore, float _delay)
+    {
 
+        if (_ignore)
+        {
+            Invoke("IgnoreProjectileLayer", _delay);
+        }
+        else
+        {
+            Invoke("DontIgnoreProjectileLayer", _delay);
+        }
+    }
+    private void IgnoreProjectileLayer()
+    {
+        Physics2D.IgnoreLayerCollision(10, 10, true);
+    }
+    private void DontIgnoreProjectileLayer()
+    {
+        Physics2D.IgnoreLayerCollision(10, 10, false);
+    }
+
+    //Ignoring collisions with certain layers
+    public void IgnoreBossCollision(bool _ignore)
+    {
+        if (bossBlackboard == null) return;
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
+
+    }
 
 
 

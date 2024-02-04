@@ -30,13 +30,15 @@ namespace NodeCanvas.Tasks.Actions{
 
             for (int i = 0; i < pillProjectiles.Length; i++)
             {
+				if (pillProjectiles[i].WhoThrew == WhoThrew.Player) continue;
+
 				pillProjectiles[i].IsBeingSuckedIn = true;
                 pillProjectiles[i].IgnoreBossCollision(false);
                 Vector2 direction = agent.transform.position - pillProjectiles[i].transform.position;
                 direction.Normalize();
                 float speed = Random.Range(minPillSpeed,maxPillSpeed);
 				
-                pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform);
+                pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform, WhoThrew.Boss);
 
 
             }

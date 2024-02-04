@@ -7,7 +7,7 @@ using NodeCanvas.Tasks.Actions;
 public class Projectile_Pill : Projectile
 {
     //Components
-    private Blackboard bossBlackboard;
+    
 
     //For one of the boss' attacks that suck all the pills back up.
     private bool isBeingSuckedIn = false;
@@ -18,11 +18,17 @@ public class Projectile_Pill : Projectile
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
 
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
-    public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target)
+    public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
     {
-        base.InitializeProjectile(_dir, _speed, _target);
-        bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
+        base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
 
+        //Set the blackboard of the boss only if the boss is the one that threw the pill, else if overwrites the 
+        //bossBlackboard variable to null which isn't what we want
+        if(_whoThrew == WhoThrew.Boss)
+        {
+            bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
+        }
+       
     }
     protected override void Awake()
     {
@@ -35,47 +41,25 @@ public class Projectile_Pill : Projectile
     }
     protected override void Update()
     {
-        if (rb.velocity.magnitude < 0.2f)
+        if (rb.velocity.magnitude < 0.5f && whoThrew == WhoThrew.Boss)
         {
             canBePickedUp = true;
             targetThrown = null;
+            whoThrew = WhoThrew.Null;
             outlineRenderer.color = neutralOutlineColour;
             interactableProjectile.SetInteractable(true);
-            IgnorePillCollision(true, 0);
+            IgnoreProjectiles(true, 0);
         }
-        //Keep increasing velocity towards the boss
-        if (isBeingSuckedIn)
+
+        //Keep increasing velocity towards the boss only if its being sucked in and
+        //the pill isn't from the player
+        if (isBeingSuckedIn && whoThrew != WhoThrew.Player)
         {
-            base.InitializeProjectile(travelDir, travelSpeed, targetThrown);
+            base.InitializeProjectile(travelDir, travelSpeed, targetThrown, WhoThrew.Boss);
         }
     }
 
-    //Ignoring collisions with certain layers
-    public void IgnoreBossCollision(bool _ignore)
-    {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
-
-    }
-    public void IgnorePillCollision(bool _ignore, float _delay)
-    {
-        
-        if(_ignore)
-        {
-            Invoke("IgnorePills", _delay);
-        }
-        else
-        {
-            Invoke("DontIgnorePills", _delay);
-        }
-    }
-    private void IgnorePills()
-    {
-        Physics2D.IgnoreLayerCollision(10, 10, true);
-    }
-    private void DontIgnorePills()
-    {
-
-    }
+   
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
@@ -112,11 +96,20 @@ public class Projectile_Pill : Projectile
             Destroy(gameObject);
         }
     
+        //If the Pill is thrown by the player, make it get destroyed by anything it touches
+        if(whoThrew == WhoThrew.Player)
+        {
 
+            if(collision.gameObject.CompareTag("Boss"))
+            {
+                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
+            }
+            Destroy(gameObject);
+        }
 
         //When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
         //any damage and increase a pill count
-        if(isBeingSuckedIn )
+        if (isBeingSuckedIn )
         {
             if (collision.gameObject.CompareTag("Boss"))
             {

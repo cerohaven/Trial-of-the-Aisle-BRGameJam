@@ -414,6 +414,7 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 0}
   isInteractPointVisible: 1
   isInteractable: 0
+  throwSpeed: 20
 --- !u!212 &2783689882693088752
 SpriteRenderer:
   m_ObjectHideFlags: 0

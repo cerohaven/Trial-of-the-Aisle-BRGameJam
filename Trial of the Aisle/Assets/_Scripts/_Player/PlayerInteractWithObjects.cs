@@ -10,6 +10,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
     //References
     [SerializeField] private SO_InteractableObject interactableObject;
+    private PlayerCarryProjectile carryProjectile;
     private PlayerController pc;
 
     //Variables
@@ -26,7 +27,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
     
     private void Awake()
     {
-
+        carryProjectile = GetComponentInChildren<PlayerCarryProjectile>();
         pc = GetComponent<PlayerController>();
         objTransform = transform;
     }
@@ -34,7 +35,20 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private void Update()
     {
         if (pc.PlayerInput.actions["Interact"].WasPressedThisFrame())
-            interactableObject.ClickedInteractButtonEventSend(gameObject);
+        {
+            //If the player is carrying an object and they press the 
+            if(carryProjectile.IsCarryingObject)
+            {
+                //Throw the object instead
+                interactableObject.LaunchProjectileButtonEventSend(gameObject);
+            }
+            else
+            {
+                interactableObject.ClickedInteractButtonEventSend(gameObject);
+            }
+
+        }
+            
 
         InteractObjects();
     }
