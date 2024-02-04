@@ -143,9 +143,10 @@ namespace NodeCanvas.Tasks.Actions{
 
 
 
-            projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
+            projectilePill.InitializeProjectile(dir, pillSpeed + (bossMaxHealth / bossHealth) /3, agent.transform, WhoThrew.Boss);
             projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnoreProjectiles(true, 0);
+            projectilePill.IgnoreProjectiles(false, 0.5f);
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity

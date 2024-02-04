@@ -14,7 +14,7 @@ public class Shooting : MonoBehaviour
     [Header("Forces")]
     public float bulletForce = 20f;
 
-    public InputAction shootAction;
+    //public InputAction shootAction;
     public InputAction abilityOneAction;
     public InputAction abilityTwoAction;
     public InputAction abilityThreeAction;
@@ -42,7 +42,7 @@ public class Shooting : MonoBehaviour
         mainCamera = Camera.main;
         playerController = GetComponent<PlayerController>();
         var actionAsset = playerController.playerInput.actions;
-        shootAction = actionAsset.FindAction("Fire");
+        //shootAction = actionAsset.FindAction("Fire");
         abilityOneAction = actionAsset.FindAction("AbilityOne");
         abilityTwoAction = actionAsset.FindAction("AbilityTwo");
         abilityThreeAction = actionAsset.FindAction("AbilityThree");
@@ -54,7 +54,7 @@ public class Shooting : MonoBehaviour
 
     private void OnEnable()
     {
-        shootAction.performed += _ => Shoot(bulletPrefab);
+        //shootAction.performed += _ => Shoot(bulletPrefab);
         abilityOneAction.performed += _ => UseAbility(abilityOnePrefab, abilityOne);
         abilityTwoAction.performed += _ => UseAbility(abilityTwoPrefab, abilityTwo);
         abilityThreeAction.performed += _ => UseAbility(abilityThreePrefab, abilityThree);
@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
 
     private void OnDisable()
     {
-        shootAction.performed -= _ => Shoot(bulletPrefab);
+        //shootAction.performed -= _ => Shoot(bulletPrefab);
         abilityOneAction.performed -= _ => UseAbility(abilityOnePrefab, abilityOne);
         abilityTwoAction.performed -= _ => UseAbility(abilityTwoPrefab, abilityTwo);
         abilityThreeAction.performed -= _ => UseAbility(abilityThreePrefab, abilityThree);

@@ -46,7 +46,7 @@ public class Projectile_Pill : Projectile
 
     protected override void Update()
     {
-        if (rb.velocity.magnitude < 0.5f && whoThrew == WhoThrew.Boss)
+        if (rb.velocity.magnitude < 1f && whoThrew == WhoThrew.Boss)
         {
             canBePickedUp = true;
             targetThrown = null;
@@ -81,6 +81,17 @@ public class Projectile_Pill : Projectile
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
         if (GameManager.gameEnded) return;
 
+        //If the Pill is thrown by the player, make it get destroyed by anything it touches
+        if (whoThrew == WhoThrew.Player)
+        {
+
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, transform.up);
+                CinemachineShake.Instance.ShakeCamera();
+            }
+            Destroy(gameObject);
+        }
 
         //If a pill hits another pill, or if another projectile hits a pill
         //If the other projectile collides with this one
@@ -97,8 +108,6 @@ public class Projectile_Pill : Projectile
             {
                 collideWithProjectile = true;
             }
-
-            
         }
         else
         {
@@ -112,18 +121,7 @@ public class Projectile_Pill : Projectile
             Destroy(gameObject);
         }
     
-        //If the Pill is thrown by the player, make it get destroyed by anything it touches
-        if(whoThrew == WhoThrew.Player)
-        {
-
-            if(collision.gameObject.CompareTag("Boss"))
-            {
-                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, transform.up);
-                CinemachineShake.Instance.ShakeCamera();
-            }
-            Destroy(gameObject);
-        }
-
+        
 
         //When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
         //any damage and increase a pill count
