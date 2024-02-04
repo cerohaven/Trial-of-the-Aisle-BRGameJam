@@ -7800,7 +7800,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1385000236}
   - {fileID: 1835973868}
   - {fileID: 443669516}
   - {fileID: 776230602}
@@ -15745,69 +15744,37 @@ MonoBehaviour:
     m_Name: Shoot
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 434e973d-d8d2-44bb-9e46-4be490bdf467
+    m_Id: 8631aa19-ddc2-4bd2-af4b-2a894d512c5e
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 8fa609c1-2598-4e62-abc2-c8b950e966de
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shoot
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   abilityOneAction:
     m_Name: Ability One
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 8bcf413e-e380-4b9d-8d81-83ade41fa8f2
+    m_Id: a8096911-1228-40ce-b0e0-f3daf6b1ed18
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 84dd8986-14a7-4b7e-9332-eb19651c0ead
-      m_Path: <Keyboard>/q
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Ability One
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   abilityTwoAction:
     m_Name: Ability Two
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 61e73744-cd5c-47d0-98e9-c6589e2a7f90
+    m_Id: 57f93632-0b77-4d5f-889c-fb78aadde433
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 34506156-4e27-4926-8832-4a27302eed87
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Ability Two
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   abilityThreeAction:
     m_Name: Ability Three
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 9833d7e0-32f9-4b6f-b977-3d703f9d14e2
+    m_Id: ba74299e-e173-4c95-9d56-4c0f5e25b305
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c69dd3d7-a603-4d12-b3e9-f45f8130331a
-      m_Path: <Keyboard>/f
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Ability Three
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   firePoint: {fileID: 2130552886}
   playerController: {fileID: 1075837056}
@@ -15844,7 +15811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
   interactEvent: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
-  animator: {fileID: 1075837063}
+  animator: {fileID: 0}
   cam: {fileID: 1798283562}
   playerInput: {fileID: 1075837057}
   actionAsset: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
@@ -16827,11 +16794,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 188492274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1385000236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-  m_PrefabInstance: {fileID: 1845013774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1420869425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45830,7 +45792,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 829568176}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46978,8 +46940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
-  bossAbilityComponents:
-  - {fileID: -4299418316046309821, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
+  bossAbilityComponents: []
   abilityManager: {fileID: 776230601}
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
@@ -47544,6 +47505,7 @@ SceneRoots:
   - {fileID: 1851884481}
   - {fileID: 747697490}
   - {fileID: 829568176}
+  - {fileID: 1845013774}
   - {fileID: 1485624978}
   - {fileID: 2006806797}
   - {fileID: 1231111791}

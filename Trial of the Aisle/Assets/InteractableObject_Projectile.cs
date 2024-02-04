@@ -29,9 +29,8 @@ public class InteractableObject_Projectile : InteractableObject
         if (playerCarry.CarryObject != gameObject) return;
 
         //Now we launch the projectile in the direction the player is facing
-        Vector2 upDir = player.transform.up;
 
-        projectile.InitializeProjectile(upDir, throwSpeed, playerCarry.transform.parent, WhoThrew.Player);
+        projectile.InitializeProjectile(transform.up, throwSpeed, playerCarry.transform.parent, WhoThrew.Player);
         projectile.EnableCollider();
         projectile.RemoveDrag();
         playerCarry.IsCarryingObject = false;

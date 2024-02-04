@@ -63,7 +63,7 @@ public class Projectile_Pill : Projectile
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        //if (bossBlackboard == null) return;
+        if (GameManager.gameEnded) return;
 
 
         //If a pill hits another pill, or if another projectile hits a pill
@@ -107,6 +107,7 @@ public class Projectile_Pill : Projectile
             }
             Destroy(gameObject);
         }
+
 
         //When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
         //any damage and increase a pill count

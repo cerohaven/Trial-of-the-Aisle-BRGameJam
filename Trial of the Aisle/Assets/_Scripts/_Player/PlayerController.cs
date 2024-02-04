@@ -122,50 +122,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("AnimMoveMagnitude", movementInput.sqrMagnitude);
     }
 
-    private void OnDestroy()
-    {
-        dodgeInput.action.performed -= OnDodge;
-        pauseInput.action.performed -= OnPause;
-    }
-    
-    private IEnumerator DodgeRoutine(Vector2 dodgeDirection)
-    {
-        
-        isDodging = true;
-        rb.velocity = dodgeDirection;
-
-        yield return new WaitForSeconds(0.5f); // Dodge duration
-
-        isDodging = false;
-    }
-
-    public void OnDodge(InputAction.CallbackContext context)
-    {
-        if (!canMove) return;
-
-
-        if (isDodging || Time.time - lastDodgeTime < dodgeCooldown) return; // Check for cooldown
-
-        lastDodgeTime = Time.time; // Update last dodge time
-
-
-        Vector2 currentVelocity = rb.velocity;
-        Vector2 dodgeDirection;
-
-        if (currentVelocity != Vector2.zero)
-        {
-            dodgeDirection = currentVelocity.normalized * dodgeSpeed;
-        }
-        else
-        {
-            dodgeDirection = new Vector2(1, 0) * dodgeSpeed;
-        }
-
-        StartCoroutine(DodgeRoutine(dodgeDirection));
-        //Debug.Log("Dodging");
-    }
-
-
     public void SwitchActionMap(bool _menu)
     {
         //a list of the action maps available
