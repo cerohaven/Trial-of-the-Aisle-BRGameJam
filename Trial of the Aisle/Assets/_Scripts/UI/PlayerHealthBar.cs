@@ -8,6 +8,7 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private float playerHealth;
     [SerializeField] private float maxInvincibilityTimer;
     [SerializeField] private float invincibilityFlickerRate;
+    [SerializeField] private float maxHealth;
 
     private SpriteRenderer playerSr;
     private GameObject playerGameObject;
@@ -15,7 +16,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     private float currentInvincibilityTime;
     private Color color = Color.white;
-    [SerializeField] private float maxHealth;
+    
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class PlayerHealthBar : MonoBehaviour
         else
         {
             UpdateHealthBar(_playerChangedHealth);
+            AudioManager.instance.Play("heal");
         }
 
     }

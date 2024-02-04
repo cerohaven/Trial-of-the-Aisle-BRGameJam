@@ -16,6 +16,8 @@ namespace NodeCanvas.Tasks.Actions{
         private int currentWaveAmount = 0;
 
         private float timeElapsed;
+        private float bossHealth;
+        private float bossMaxHealth;
 
         private Blackboard agentBlackboard;
         private GameObject painkillerPillGO;
@@ -51,6 +53,9 @@ namespace NodeCanvas.Tasks.Actions{
 
             painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
             energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
+           
+            bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
+
             pillAngles = angles1;
             return null;
 		}
@@ -59,7 +64,9 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-            
+
+            bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
+
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             currentWaveAmount = 0;
@@ -140,6 +147,15 @@ namespace NodeCanvas.Tasks.Actions{
             projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnoreProjectiles(true, 0);
             projectilePill.IsThrownInWave = true;
+
+            //Calculate turn intensity
+            if(bossHealth < 75)
+            {
+                float turnIntensity = (bossMaxHealth / bossHealth) / 2;
+
+                projectilePill.TurnIntensity = turnIntensity;
+            }
+           
 
         }
 

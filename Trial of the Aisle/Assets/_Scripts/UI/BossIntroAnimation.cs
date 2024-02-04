@@ -12,6 +12,7 @@ public class BossIntroAnimation : MonoBehaviour
     [Header("Player and Boss References")]
     [SerializeField] private PlayerController pc;
     [SerializeField] private Blackboard bossBlackboard;
+    [SerializeField] private BossHealthBar bossHealthBar;
 
     private void Start()
     {
@@ -24,16 +25,26 @@ public class BossIntroAnimation : MonoBehaviour
     private void EndOfAnimation()
     {
         RemoveHUD();
-        UnFreezePlayerMovement();
+        
     }
 
     private void RemoveHUD()
     {
-        bossBlackboard.SetVariableValue("canStartBossFight", true);
+        Invoke("StartFight", 1);
         for (int i = 0; i < HUDanimators.Length; i++)
         {
             HUDanimators[i].SetTrigger("Reverse");
         }
+    }
+
+    private void StartFight()
+    {
+        bossHealthBar.CanStartIncrease = true;
+        AudioManager.instance.Play("ui_bossBarIncrease");
+
+        bossBlackboard.SetVariableValue("canStartBossFight", true);
+        
+        UnFreezePlayerMovement();
     }
 
     private void FreezePlayerMovement()
