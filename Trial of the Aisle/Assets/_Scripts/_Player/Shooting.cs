@@ -80,7 +80,7 @@ public class Shooting : MonoBehaviour
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
         Vector2 direction = (mouseWorldPosition - (Vector2)firePoint.position).normalized;
-
+        bullet.GetComponent<Bullet>().Direction = direction;
         // Apply force in the direction of the mouse cursor
         rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
     }

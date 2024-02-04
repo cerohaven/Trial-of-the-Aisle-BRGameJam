@@ -9,6 +9,9 @@ public class BossHealthBar : MonoBehaviour
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedSender;
     [SerializeField] private Blackboard bossBlackboard;
 
+    [Header("Boss Hit Effect")]
+    [SerializeField] private GameObject bossHitEffect;
+
     //References
     private UIManager uiManager;
     private RectTransform bossRectTransform;
@@ -58,7 +61,7 @@ public class BossHealthBar : MonoBehaviour
         }
     }
 
-    public void BossChangeHealth(float _bossChangedHealth)
+    public void BossChangeHealth(float _bossChangedHealth, Vector2 _upDir)
     {
         //Check to see if healing or damage is being passed
         bool isDamage = _bossChangedHealth < 0;
@@ -79,6 +82,8 @@ public class BossHealthBar : MonoBehaviour
             }
             AudioManager.instance.Play("ui_bossHurt");
 
+            GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
+            hit.transform.up = _upDir;
         }
         else
         {

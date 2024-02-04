@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +24,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float dodgeSpeed = 10f;
     [SerializeField] private float dodgeCooldown = 2f;
+
+    [Header("Dash Animation")]
+    [SerializeField] private Transform dashTransform;
+    [SerializeField] private Animator dashAnim;
 
     private Rigidbody2D rb;
     private Vector2 lastMoveDirection = Vector2.right;
@@ -96,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = Vector2.zero; // Reset velocity after dodge
         isDodging = false;
+
     }
 
     public void OnDodge(InputAction.CallbackContext context)
@@ -105,6 +112,27 @@ public class PlayerController : MonoBehaviour
         lastDodgeTime = Time.time;
 
         StartCoroutine(DodgeRoutine(lastMoveDirection));
+        
+        //Get the player's movement direction
+        Vector2 movementDir = moveInput.ReadValue<Vector2>();
+        movementDir.Normalize();
+
+        SpriteRenderer sr = dashAnim.GetComponent<SpriteRenderer>();
+        if (movementDir.x < 0)
+        {
+            sr.flipY = true;
+        }
+        else
+        {
+            sr.flipY = false;
+        }
+
+        movementDir *= -1;
+        dashTransform.up = movementDir;
+        dashAnim.Play("Base Layer.Dash", 0, 0.25f);
+        
+
+        
     }
 
     private void OnPause(InputAction.CallbackContext context)

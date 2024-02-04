@@ -183,7 +183,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss"))
         {
             //send to reduce scale of boss bar
-            adjustHealth.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage);
+            adjustHealth.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage, transform.up);
             CinemachineShake.Instance.ShakeCamera();
         }
         if(collision.gameObject.CompareTag("Player"))
@@ -191,7 +191,7 @@ public class Projectile : MonoBehaviour
             adjustHealth.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
         }
 
-        //Instantiate(hitParticles, transform.position + Vector3.right * TravelDirection * 0.2f, Quaternion.identity);
+        Instantiate(hitParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

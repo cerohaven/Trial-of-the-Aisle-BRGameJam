@@ -18,9 +18,9 @@ public class SO_AdjustHealth : ScriptableObject
     [System.NonSerialized]
     public ChangePlayerHealth changePlayerHealthEvent = new ChangePlayerHealth();
 
-    public void ChangeBossHealthEventSend(ChangeHealth changeHealth, HealthType healthType)
+    public void ChangeBossHealthEventSend(ChangeHealth changeHealth, HealthType healthType, Vector2 projectileUpDir)
     {
-        changeBossHealthEvent.Invoke(changeHealth, healthType);
+        changeBossHealthEvent.Invoke(changeHealth, healthType, projectileUpDir);
     }
 
     public void ChangePlayerHealthEventSend(ChangeHealth changeHealth, HealthType healthType)
@@ -29,7 +29,7 @@ public class SO_AdjustHealth : ScriptableObject
     }
 }
 
-public class ChangeBossHealth : UnityEvent<ChangeHealth, HealthType> { }
+public class ChangeBossHealth : UnityEvent<ChangeHealth, HealthType, Vector2> { }
 public class ChangePlayerHealth : UnityEvent<ChangeHealth, HealthType> { }
 
 

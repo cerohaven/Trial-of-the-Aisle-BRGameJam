@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Energy Pill Projectile (Variant)
       objectReference: {fileID: 0}
+    - target: {fileID: 5112062029216856773, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d9dfde80af2f88b4c8223c3865ec3b52, type: 3}
     - target: {fileID: 6016490026426919602, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

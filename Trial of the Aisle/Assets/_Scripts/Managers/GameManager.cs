@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         //Flicker Screen
         SObossDefeat.FlickerScreenSend();
 
-        AudioManager.instance.Play("d_scream");
+        AudioManager.instance.Play("boss_scream");
 
         //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
     }

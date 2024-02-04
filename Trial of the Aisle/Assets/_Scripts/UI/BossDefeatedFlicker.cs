@@ -37,11 +37,13 @@ public class BossDefeatedFlicker : MonoBehaviour
 
     private void StartFlickers()
     {
+        
         StartCoroutine(flickerRoutine());
     }
 
     IEnumerator flickerRoutine()
     {
+
         while(amountOfFlickers <= maxFlickers)
         {
             j++;
@@ -49,6 +51,7 @@ public class BossDefeatedFlicker : MonoBehaviour
             sprite.color = color[j];
 
             amountOfFlickers++;
+            CinemachineShake.Instance.ShakeCamera(10, 1);
             yield return new WaitForSeconds(flickerTime);
         }
 

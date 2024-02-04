@@ -102,7 +102,7 @@ public class Projectile_Pill : Projectile
 
             if(collision.gameObject.CompareTag("Boss"))
             {
-                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
+                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
                 CinemachineShake.Instance.ShakeCamera();
             }
             Destroy(gameObject);
@@ -135,7 +135,7 @@ public class Projectile_Pill : Projectile
             Destroy(gameObject);
         }
 
-        
+        Instantiate(hitParticles, transform.position, Quaternion.identity);
 
     }
 

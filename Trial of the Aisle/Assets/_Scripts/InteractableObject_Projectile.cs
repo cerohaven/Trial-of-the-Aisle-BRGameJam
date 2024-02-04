@@ -39,12 +39,13 @@ public class InteractableObject_Projectile : InteractableObject
         projectile.IgnoreBossCollision(false);
         projectile.IgnoreProjectiles(false, 0);
 
+        AudioManager.instance.Play("p_throw");
+        CinemachineShake.Instance.ShakeCamera(1);
+
     }
 
     protected override void OnInteract(GameObject _interactedActor)
     {
-        
-        //Debug.Log("INTERACTED WITH");
 
         //Get the player's script on carrying an object
         playerCarry = _interactedActor.GetComponentInChildren<PlayerCarryProjectile>();
@@ -55,6 +56,8 @@ public class InteractableObject_Projectile : InteractableObject
         playerCarry.InitializeObject(gameObject);
         projectile.WhoThrew = WhoThrew.Player;
         isInteractable = false;
+
+        AudioManager.instance.Play("p_pickUp");
     }
 
     protected override bool IsInteractable() { return isInteractable; }

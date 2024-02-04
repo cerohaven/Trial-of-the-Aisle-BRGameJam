@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private SO_AdjustHealth adjustHealth;
     public GameObject hitEffect;
+    private Vector2 direction;
+
+    public Vector2 Direction { get => direction; set => direction = value; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,7 +19,8 @@ public class Bullet : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Boss"))
         {
-            adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage, direction);
+            CinemachineShake.Instance.ShakeCamera();
         }
     }
 }

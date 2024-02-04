@@ -43,10 +43,10 @@ public class UIManager : MonoBehaviour
 
         kirbyHealthBar.PlayerChangeHealth(healthAdjustment);
     }
-    private void AdjustBossHealth(ChangeHealth changeHealthState, HealthType healthType)
+    private void AdjustBossHealth(ChangeHealth changeHealthState, HealthType healthType, Vector2 projectileUpDir)
     {
         float healthAdjustment = GetHealthValue(changeHealthState, healthType);
-        bossHealthBar.BossChangeHealth(healthAdjustment);
+        bossHealthBar.BossChangeHealth(healthAdjustment, projectileUpDir);
     }
 
 

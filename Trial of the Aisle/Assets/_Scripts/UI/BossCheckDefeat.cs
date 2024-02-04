@@ -53,7 +53,7 @@ public class BossCheckDefeat : MonoBehaviour
 
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
-        CinemachineShake.Instance.ShakeCamera(10, 1.5f);
+
         Destroy(gameObject); // Destroy the boss GameObject last to ensure all cleanup is done before this
 
 
