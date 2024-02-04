@@ -65,6 +65,8 @@ public abstract class InteractableObject : MonoBehaviour
     {
         
     }
+
+
     private void CheckIfUTargetctive(GameObject _interactActor)
     {
         if (!inPlayerRange) return;
