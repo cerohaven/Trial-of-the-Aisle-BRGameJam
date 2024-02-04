@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class BasicAttack : MonoBehaviour, IAbility
 {
+    public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
+    public float AbilityForce { get; private set; } = 10f; // Example force value
+
+    [SerializeField] private GameObject foregroundIcon;
+    [SerializeField] private GameObject backgroundIcon;
+    public GameObject ForegroundIcon => foregroundIcon;
+    public GameObject BackgroundIcon => backgroundIcon;
     public float Cooldown => 1f; // Example cooldown
     public bool CanUse { get; set; } = true;
     public string AbilityName { get; } = "Basic Attack";

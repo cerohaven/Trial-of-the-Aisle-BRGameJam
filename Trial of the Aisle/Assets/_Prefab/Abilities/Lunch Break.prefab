@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 361544966663640247}
   - component: {fileID: -4299418316046309821}
   m_Layer: 0
-  m_Name: Healing Ability
+  m_Name: Lunch Break
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470d3e88d954c4d48bfeab4e766443f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6569096716732797545}
-  shotForce: 0
+  foregroundIcon: {fileID: 3267669817537687668, guid: 0d98da1a5f1160c4d8ae6108b121e2c6, type: 3}
+  backgroundIcon: {fileID: 6537608678442537476, guid: 8d83ad233d859d64cbe2ab2933b14971, type: 3}
   adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   healAmount: 1
 --- !u!1 &8184833198084458564

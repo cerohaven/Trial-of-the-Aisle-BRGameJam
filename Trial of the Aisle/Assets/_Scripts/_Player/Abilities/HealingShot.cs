@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class HealingShot : MonoBehaviour, IAbility
 {
+    public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
+    public float AbilityForce { get; private set; } = 10f; // Example force value
+    [SerializeField] private GameObject foregroundIcon;
+    [SerializeField] private GameObject backgroundIcon;
+    public GameObject ForegroundIcon => foregroundIcon;
+    public GameObject BackgroundIcon => backgroundIcon;
     public float Cooldown => 15f; // Cooldown for healing ability
     public bool CanUse { get; set; } = true;
     public string AbilityName { get; } = "Healing Shot";
 
-    [SerializeField] private SO_AdjustHealth adjustHealth; // Now serialized for Inspector
-    [SerializeField] private ChangeHealth healAmount; // Now serialized for Inspector
+    [SerializeField] private SO_AdjustHealth adjustHealth; 
+    [SerializeField] private ChangeHealth healAmount; 
 
 
     // Constructor to set dependencies
