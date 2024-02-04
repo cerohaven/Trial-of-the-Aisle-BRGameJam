@@ -13,6 +13,7 @@ public class InteractableObject_Projectile : InteractableObject
     //Variables
     [SerializeField] private float throwSpeed;
 
+    public PlayerCarryProjectile PlayerCarry { get => playerCarry; set => playerCarry = value; }
 
     protected override void Awake()
     {
@@ -44,7 +45,7 @@ public class InteractableObject_Projectile : InteractableObject
     protected override void OnInteract(GameObject _interactedActor)
     {
         
-        Debug.Log("INTERACTED WITH");
+        //Debug.Log("INTERACTED WITH");
 
         //Get the player's script on carrying an object
         playerCarry = _interactedActor.GetComponentInChildren<PlayerCarryProjectile>();

@@ -150,7 +150,7 @@ public class Shooting : MonoBehaviour
         if (!pc.CanMove) return;
 
 
-        Debug.Log("Bullet fired");
+        //Debug.Log("Bullet fired");
         GameObject bullet = Instantiate(bulletType, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(bullet.transform.up * bulletForce, ForceMode2D.Impulse);

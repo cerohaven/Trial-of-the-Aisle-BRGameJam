@@ -184,6 +184,7 @@ public class Projectile : MonoBehaviour
         {
             //send to reduce scale of boss bar
             adjustHealth.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage);
+            CinemachineShake.Instance.ShakeCamera();
         }
         if(collision.gameObject.CompareTag("Player"))
         {

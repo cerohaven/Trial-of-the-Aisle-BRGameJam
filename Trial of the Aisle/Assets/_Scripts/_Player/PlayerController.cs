@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         }
 
         StartCoroutine(DodgeRoutine(dodgeDirection));
-        Debug.Log("Dodging");
+        //Debug.Log("Dodging");
     }
 
 

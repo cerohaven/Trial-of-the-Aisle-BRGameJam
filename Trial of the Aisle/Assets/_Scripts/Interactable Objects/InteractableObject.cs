@@ -29,6 +29,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     //Properties
     public bool InPlayerRange { get => inPlayerRange; }
+    public bool IsInteractable1 { get => isInteractable;}
 
     //Variables for each Interactable Object
 
@@ -110,8 +111,10 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void ShowUI()
     {
+
         if (!IsTargetPointVisible()) return;
         if (interactPromptPanel == null) return;
+        
         //The UI is only shown if the child class declares the "IsTargetPointVisible" bool method true.
         interactPromptPanel.SetActive(true);
 

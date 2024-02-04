@@ -63,7 +63,7 @@ public class Projectile_Pill : Projectile
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (bossBlackboard == null) return;
+        //if (bossBlackboard == null) return;
 
 
         //If a pill hits another pill, or if another projectile hits a pill
@@ -103,6 +103,7 @@ public class Projectile_Pill : Projectile
             if(collision.gameObject.CompareTag("Boss"))
             {
                 adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
+                CinemachineShake.Instance.ShakeCamera();
             }
             Destroy(gameObject);
         }

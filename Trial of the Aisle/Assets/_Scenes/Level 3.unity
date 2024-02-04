@@ -196,6 +196,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1494841847}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &55558254
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +347,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 98588214}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &79966573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -417,6 +423,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 583525920}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!114 &98588214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7389,6 +7398,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 291057489}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7906,6 +7918,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 417454666}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &814102008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8209,6 +8224,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 2072828600}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &829568175
 GameObject:
   m_ObjectHideFlags: 0
@@ -15533,6 +15551,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 169428339}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1001 &960910390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15880,6 +15901,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1159051953}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &1048817570
 GameObject:
   m_ObjectHideFlags: 0
@@ -16626,6 +16650,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1846791011}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17881,6 +17908,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 161264334}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!114 &1590642701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -17965,6 +17995,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1575039889}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1001 &1619579338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18210,6 +18243,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1590642701}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &1654587765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -18299,6 +18335,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1024767418}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1001 &1742852568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45865,6 +45904,7 @@ GameObject:
   - component: {fileID: 1792044603}
   - component: {fileID: 1792044605}
   - component: {fileID: 1792044604}
+  - component: {fileID: 1792044606}
   m_Layer: 0
   m_Name: Virtual Camera (1)
   m_TagString: Untagged
@@ -45942,6 +45982,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2009682159}
+--- !u!114 &1792044606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792044602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40c133ab1c2353849af4c63012c0721e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798283557
 GameObject:
   m_ObjectHideFlags: 0
@@ -46862,6 +46914,9 @@ MonoBehaviour:
   interactButtonSprite: {fileID: 1707719184}
   isInteractPointVisible: 1
   isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
 --- !u!1 &1942011648
 GameObject:
   m_ObjectHideFlags: 0
@@ -47142,6 +47197,7 @@ GameObject:
   - component: {fileID: 2009682159}
   - component: {fileID: 2009682161}
   - component: {fileID: 2009682160}
+  - component: {fileID: 2009682162}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -47219,6 +47275,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2009682162
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009682158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1.84
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &2072828600 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
