@@ -38,27 +38,25 @@ public class AbilityManager : MonoBehaviour
     {
         if (abilityToEquipComponent is IAbility abilityToEquip && slotIndex < equippedAbilityComponents.Count && UnlockedAbilities.Contains(abilityToEquip))
         {
-            // Ensure the list can accommodate the slotIndex
-            while (equippedAbilityComponents.Count <= slotIndex)
-            {
-                equippedAbilityComponents.Add(null); // Add null placeholders if necessary
-            }
-
             equippedAbilityComponents[slotIndex] = abilityToEquipComponent;
             OnAbilitiesChanged?.Invoke(); // Notify UI to update
+            Debug.Log($"Equipped {abilityToEquip.AbilityName} at slot {slotIndex}");
+        }
+        else
+        {
+            Debug.LogError($"Failed to equip ability at slot {slotIndex}. Ability is null or slot is out of range.");
         }
     }
 
-    // Add this method to get an equipped ability by its slot index
     public IAbility GetEquippedAbility(int slotIndex)
     {
-        if (slotIndex >= 0 && slotIndex < equippedAbilityComponents.Count)
+        if (slotIndex >= 0 && slotIndex < equippedAbilityComponents.Count && equippedAbilityComponents[slotIndex] != null)
         {
             return equippedAbilityComponents[slotIndex] as IAbility;
         }
         else
         {
-            Debug.LogWarning("Attempted to access an invalid ability slot: " + slotIndex);
+            Debug.LogWarning($"Attempted to access an invalid ability slot: {slotIndex}");
             return null;
         }
     }

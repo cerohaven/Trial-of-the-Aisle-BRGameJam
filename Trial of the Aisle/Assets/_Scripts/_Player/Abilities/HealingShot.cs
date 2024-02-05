@@ -1,55 +1,52 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingShot : MonoBehaviour, IAbility
 {
-    public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
-    public float AbilityForce { get; private set; } = 10f; // Example force value
+    public float AbilityForce { get; private set; } = 10f;
+    [SerializeField] private GameObject abilityPrefab;
     [SerializeField] private GameObject foregroundIcon;
     [SerializeField] private GameObject backgroundIcon;
+    public event Action<float, float> OnCooldownChanged;
+
+    public GameObject AbilityPrefab => abilityPrefab;
     public GameObject ForegroundIcon => foregroundIcon;
     public GameObject BackgroundIcon => backgroundIcon;
-    public float Cooldown => 15f; // Cooldown for healing ability
+    public float Cooldown => 15f;
     public bool CanUse { get; set; } = true;
-    public string AbilityName { get; } = "Healing Shot";
+    public string AbilityName { get; } = "Lunch Break";
 
-    [SerializeField] private SO_AdjustHealth adjustHealth; 
-    [SerializeField] private ChangeHealth healAmount; 
-
-
-    // Constructor to set dependencies
-    public HealingShot(SO_AdjustHealth adjustHealth, ChangeHealth healAmount)
-    {
-        this.adjustHealth = adjustHealth;
-        this.healAmount = healAmount;
-    }
+    [SerializeField] private SO_AdjustHealth adjustHealth; // Reference to the SO_AdjustHealth scriptable object
+    [SerializeField] private float healAmount = 20f; // Amount to heal
 
     public void Activate(Transform firePoint, GameObject prefab, float force)
     {
-
+        StartCoroutine(CooldownRoutine());
         Debug.Log("Healing ability activated");
 
-        if (prefab != null)
+        // Ensure SO_AdjustHealth is assigned in the Inspector
+        if (adjustHealth != null)
         {
-            GameObject effect = GameObject.Instantiate(prefab, firePoint.position, Quaternion.identity);
-            ParticleSystem ps = effect.GetComponentInChildren<ParticleSystem>();
-            if (ps != null && !ps.main.playOnAwake)
-            {
-                ps.Play();
-            }
-            GameObject.Destroy(effect, 3f); // Destroy the effect after some time
+            adjustHealth.AdjustPlayerHealth(healAmount); // Directly adjust player health by the specified amount
         }
-
-        // Directly heal the player or target
-        adjustHealth.ChangePlayerHealthEventSend(healAmount, HealthType.Healing);
+        else
+        {
+            Debug.LogError("SO_AdjustHealth reference not set on HealingShot.");
+        }
     }
 
     public IEnumerator CooldownRoutine()
     {
         CanUse = false;
-        yield return new WaitForSeconds(Cooldown);
+        float cooldownTimer = Cooldown;
+        while (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+            OnCooldownChanged?.Invoke(cooldownTimer, Cooldown); // Notify about cooldown progress
+            yield return null;
+        }
         CanUse = true;
+        OnCooldownChanged?.Invoke(0, Cooldown); // Notify cooldown is complete
     }
 }
-
