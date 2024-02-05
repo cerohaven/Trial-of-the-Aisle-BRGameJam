@@ -7,15 +7,17 @@ using NodeCanvas.Tasks.Actions;
 public class Projectile_Pill : Projectile
 {
     //Components
-    
 
     //For one of the boss' attacks that suck all the pills back up.
     private bool isBeingSuckedIn = false;
     private bool isThrownInWave = false;
-    
+    private float turnIntensity = 0; //For turning during the wave attack
+
+
     //This changes the behaviour of the pill based on the boss' attacks
     public bool IsBeingSuckedIn { get => isBeingSuckedIn; set => isBeingSuckedIn = value; }
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
+    public float TurnIntensity { get => turnIntensity; set => turnIntensity = value; }
 
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
@@ -24,7 +26,7 @@ public class Projectile_Pill : Projectile
 
         //Set the blackboard of the boss only if the boss is the one that threw the pill, else if overwrites the 
         //bossBlackboard variable to null which isn't what we want
-        if(_whoThrew == WhoThrew.Boss)
+        if (_whoThrew == WhoThrew.Boss)
         {
             bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
         }
@@ -39,9 +41,12 @@ public class Projectile_Pill : Projectile
     {
         base.Start();
     }
+
+  
+
     protected override void Update()
     {
-        if (rb.velocity.magnitude < 0.5f && whoThrew == WhoThrew.Boss)
+        if (rb.velocity.magnitude < 1f && whoThrew == WhoThrew.Boss)
         {
             canBePickedUp = true;
             targetThrown = null;
@@ -51,6 +56,9 @@ public class Projectile_Pill : Projectile
             IgnoreProjectiles(true, 0);
         }
 
+        if(isThrownInWave)
+            PillInWave();
+
         //Keep increasing velocity towards the boss only if its being sucked in and
         //the pill isn't from the player
         if (isBeingSuckedIn && whoThrew != WhoThrew.Player)
@@ -59,12 +67,31 @@ public class Projectile_Pill : Projectile
         }
     }
 
-   
+    private void PillInWave()
+    {
+
+        //Rotate around the boss' position
+        rb.velocity += (Vector2)transform.right * turnIntensity * Time.deltaTime;
+        transform.up = rb.velocity;
+
+    }
+
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
         if (GameManager.gameEnded) return;
 
+        //If the Pill is thrown by the player, make it get destroyed by anything it touches
+        if (whoThrew == WhoThrew.Player)
+        {
+
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, transform.up);
+                CinemachineShake.Instance.ShakeCamera();
+            }
+            Destroy(gameObject);
+        }
 
         //If a pill hits another pill, or if another projectile hits a pill
         //If the other projectile collides with this one
@@ -81,8 +108,6 @@ public class Projectile_Pill : Projectile
             {
                 collideWithProjectile = true;
             }
-
-            
         }
         else
         {
@@ -96,18 +121,7 @@ public class Projectile_Pill : Projectile
             Destroy(gameObject);
         }
     
-        //If the Pill is thrown by the player, make it get destroyed by anything it touches
-        if(whoThrew == WhoThrew.Player)
-        {
-
-            if(collision.gameObject.CompareTag("Boss"))
-            {
-                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
-                CinemachineShake.Instance.ShakeCamera();
-            }
-            Destroy(gameObject);
-        }
-
+        
 
         //When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
         //any damage and increase a pill count
@@ -131,7 +145,7 @@ public class Projectile_Pill : Projectile
             if (canBePickedUp && targetThrown != bossBlackboard.transform)
                 return;
 
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
             Destroy(gameObject);
         }
 

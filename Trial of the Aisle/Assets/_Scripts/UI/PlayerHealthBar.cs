@@ -8,6 +8,10 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private float playerHealth;
     [SerializeField] private float maxInvincibilityTimer;
     [SerializeField] private float invincibilityFlickerRate;
+    [SerializeField] private float maxHealth;
+
+    [Header("Heal Particle Effect")]
+    [SerializeField] private GameObject healEffect;
 
     private SpriteRenderer playerSr;
     private GameObject playerGameObject;
@@ -15,7 +19,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     private float currentInvincibilityTime;
     private Color color = Color.white;
-    [SerializeField] private float maxHealth;
+    
 
     private void Awake()
     {
@@ -75,6 +79,8 @@ public class PlayerHealthBar : MonoBehaviour
         else
         {
             UpdateHealthBar(_playerChangedHealth);
+            Instantiate(healEffect, playerGameObject.transform.position, Quaternion.identity);
+            AudioManager.instance.Play("heal");
         }
 
     }

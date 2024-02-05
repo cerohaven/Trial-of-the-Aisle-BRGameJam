@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
   m_Name: Throw pills at player FSM
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.SetPainkillerAttackActionTask"}]},"_name":"Set
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"chanceToGetAttack1":0.5,"$type":"NodeCanvas.Tasks.Actions.SetPainkillerAttackActionTask"}]},"_name":"Set
     Random Attack","_position":{"x":-155.0,"y":54.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{},"$type":"NodeCanvas.Tasks.Actions.SetInt"}]},"_position":{"x":130.0,"y":149.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.CheckTargetActionTask"}]},"_name":"Set
     Target Waypoint","_position":{"x":181.0,"y":297.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"speed":12.7,"$type":"NodeCanvas.Tasks.Actions.MoveToTargetActionTask"}]},"_name":"Go
     to Waypoint","_position":{"x":532.0,"y":388.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"},{"_nestedFSM":{"_value":1},"_name":"Throw
