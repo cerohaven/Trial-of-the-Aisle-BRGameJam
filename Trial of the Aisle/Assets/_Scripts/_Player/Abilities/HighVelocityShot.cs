@@ -6,7 +6,6 @@ public class HighVelocityShot : MonoBehaviour, IAbility
 {
     public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
     public float AbilityForce { get; private set; } = 10f; // Example force value
-
     [SerializeField] private GameObject foregroundIcon;
     [SerializeField] private GameObject backgroundIcon;
     public GameObject ForegroundIcon => foregroundIcon;
