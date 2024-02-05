@@ -75,7 +75,7 @@ public class MinionThrow : MonoBehaviour
            
         }
 
-        if(collision.gameObject.CompareTag("Projectile") || collision.gameObject.CompareTag("Pill"))
+        if(collision.gameObject.CompareTag("Pill"))
         {
             
             adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, Vector2.up);
@@ -88,7 +88,7 @@ public class MinionThrow : MonoBehaviour
     private void Testing()
     {
         LeanTween.scale(boss, Vector3.one, 0.1f);
-        Destroy(gameObject);
+        if(gameObject != null) Destroy(gameObject);
     }
 
 }
