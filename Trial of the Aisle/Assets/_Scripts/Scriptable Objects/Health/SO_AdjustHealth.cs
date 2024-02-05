@@ -11,7 +11,21 @@ public class SO_AdjustHealth : ScriptableObject
     /// Other scripts call this event which sends it to the UI Manager
     /// Reduces Dependencies on other scripts
     /// </summary>
- 
+    /// 
+    [System.NonSerialized]
+    public UnityEvent<float> OnPlayerHealthChanged; // Event for player health change
+
+    private void OnEnable()
+    {
+        if (OnPlayerHealthChanged == null)
+            OnPlayerHealthChanged = new UnityEvent<float>();
+    }
+
+    public void AdjustPlayerHealth(float amount)
+    {
+        OnPlayerHealthChanged.Invoke(amount); // Invoke the event with the health adjustment amount
+    }
+
     [System.NonSerialized]
     public ChangeBossHealth changeBossHealthEvent = new ChangeBossHealth();
 

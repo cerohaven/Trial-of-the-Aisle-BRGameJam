@@ -1,55 +1,66 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealingShot : MonoBehaviour, IAbility
 {
-    public GameObject AbilityPrefab { get; private set; } // Assign in Inspector or Awake/Start
-    public float AbilityForce { get; private set; } = 10f; // Example force value
+    public float Cooldown => 5f;
+    public bool CanUse { get; set; } = true;
+    public string AbilityName { get; } = "HealingShot";
+
     [SerializeField] private GameObject foregroundIcon;
     [SerializeField] private GameObject backgroundIcon;
+
     public GameObject ForegroundIcon => foregroundIcon;
     public GameObject BackgroundIcon => backgroundIcon;
-    public float Cooldown => 15f; // Cooldown for healing ability
-    public bool CanUse { get; set; } = true;
-    public string AbilityName { get; } = "Healing Shot";
 
-    [SerializeField] private SO_AdjustHealth adjustHealth; 
-    [SerializeField] private ChangeHealth healAmount; 
+    public float AbilityForce => throw new NotImplementedException();
 
+    public event Action<float, float> OnCooldownChanged;
 
-    // Constructor to set dependencies
-    public HealingShot(SO_AdjustHealth adjustHealth, ChangeHealth healAmount)
+    // This is the generic Activate method from IAbility
+    public void Activate()
     {
-        this.adjustHealth = adjustHealth;
-        this.healAmount = healAmount;
-    }
-
-    public void Activate(Transform firePoint, GameObject prefab, float force)
-    {
-
-        Debug.Log("Healing ability activated");
-
-        if (prefab != null)
+        if (!CanUse)
         {
-            GameObject effect = GameObject.Instantiate(prefab, firePoint.position, Quaternion.identity);
-            ParticleSystem ps = effect.GetComponentInChildren<ParticleSystem>();
-            if (ps != null && !ps.main.playOnAwake)
-            {
-                ps.Play();
-            }
-            GameObject.Destroy(effect, 3f); // Destroy the effect after some time
+            Debug.Log($"{AbilityName} cannot be used due to cooldown or other conditions.");
+            return;
         }
 
-        // Directly heal the player or target
-        adjustHealth.ChangePlayerHealthEventSend(healAmount, HealthType.Healing);
+        Debug.Log($"Activating {AbilityName}");
+        StartCoroutine(CooldownRoutine());
+
+        // Direct healing logic here
+        ApplyHealing();
+    }
+
+    private void ApplyHealing()
+    {
+        // Implement your healing logic here, for example:
+        Debug.Log("Healing applied.");
+        // PlayerHealth.Instance.Heal(amount); // Example healing application
     }
 
     public IEnumerator CooldownRoutine()
     {
+        Debug.Log($"{AbilityName} cooldown started.");
         CanUse = false;
-        yield return new WaitForSeconds(Cooldown);
+        float cooldownTimer = Cooldown;
+
+        while (cooldownTimer > 0f)
+        {
+            cooldownTimer -= Time.deltaTime;
+            OnCooldownChanged?.Invoke(cooldownTimer, Cooldown);
+            yield return null;
+        }
+
         CanUse = true;
+        Debug.Log($"{AbilityName} cooldown ended.");
+        OnCooldownChanged?.Invoke(0, Cooldown);
+    }
+
+    public void Activate(Transform firePoint, float force)
+    {
+        throw new NotImplementedException();
     }
 }
-

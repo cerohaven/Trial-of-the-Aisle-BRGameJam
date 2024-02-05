@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,41 +9,41 @@ public class Shooting : MonoBehaviour
     public float bulletForce = 20f;
     public Transform firePoint;
     public PlayerController playerController;
-    public AbilityManager abilityManager; // Reference to the AbilityManager
+    public AbilityManager abilityManager; // Reference to the Ability Manager
 
     [Header("Input Actions")]
-    //public InputAction shootAction;
     private InputAction abilityOneAction;
     private InputAction abilityTwoAction;
     private InputAction abilityThreeAction;
 
-    private Camera mainCamera;
-
-    public event Action<IAbility> AbilityUsed; // You might need to adjust how this is used
-    public event Action<IAbility> AbilityCooldownCompleted; // And this as well, depending on your implementation
-
     private void Awake()
+    {
+        InitializeFirePoint();
+        InitializeInputActions();
+    }
+
+    private void InitializeFirePoint()
     {
         firePoint = transform.Find("Firepoint");
         if (firePoint == null) Debug.LogError("FirePoint not found on the player");
+    }
 
-        mainCamera = Camera.main;
-        playerController = GetComponent<PlayerController>();
-
+    private void InitializeInputActions()
+    {
         var actionAsset = playerController.playerInput.actions;
-        //shootAction = actionAsset.FindAction("Fire");
 
-        // Get ability actions from the AbilityManager's PlayerInput component
-        abilityOneAction = abilityManager.playerInput.actions["AbilityOne"];
-        abilityTwoAction = abilityManager.playerInput.actions["AbilityTwo"];
-        abilityThreeAction = abilityManager.playerInput.actions["AbilityThree"];
+        abilityOneAction = actionAsset.FindAction("AbilityOne");
+        abilityTwoAction = actionAsset.FindAction("AbilityTwo");
+        abilityThreeAction = actionAsset.FindAction("AbilityThree");
+
+        if (abilityOneAction == null || abilityTwoAction == null || abilityThreeAction == null)
+        {
+            Debug.LogError("One or more Ability Actions are not found in the Input Action Asset.");
+        }
     }
 
     private void OnEnable()
     {
-        //shootAction.performed += _ => Shoot(bulletPrefab);
-
-        // Use AbilityManager to handle abilities
         abilityOneAction.performed += _ => UseAbility(0);
         abilityTwoAction.performed += _ => UseAbility(1);
         abilityThreeAction.performed += _ => UseAbility(2);
@@ -52,38 +51,57 @@ public class Shooting : MonoBehaviour
 
     private void OnDisable()
     {
-        //shootAction.performed -= _ => Shoot(bulletPrefab);
-
-        // Unsubscribe from the ability actions
         abilityOneAction.performed -= _ => UseAbility(0);
         abilityTwoAction.performed -= _ => UseAbility(1);
         abilityThreeAction.performed -= _ => UseAbility(2);
     }
 
-    private void Shoot(GameObject bulletType)
-    {
-        if (!playerController.CanMove || bulletType == null) return;
-
-        GameObject bullet = Instantiate(bulletType, firePoint.position, Quaternion.identity);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
-        Vector2 mousePosition = Mouse.current.position.ReadValue();
-        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-        Vector2 direction = (mouseWorldPosition - (Vector2)firePoint.position).normalized;
-
-        rb.AddForce(direction * bulletForce, ForceMode2D.Impulse);
-    }
-
     private void UseAbility(int slotIndex)
     {
-        var ability = abilityManager.GetEquippedAbility(slotIndex);
-        if (ability != null && ability.CanUse)
+        IAbility ability = abilityManager.GetEquippedAbility(slotIndex);
+        GameObject prefabToUse = null;
+
+        // Ensure the AbilityPrefabManager is available
+        if (AbilityPrefabManager.Instance == null)
         {
-            ability.Activate(firePoint, ability.AbilityPrefab, bulletForce);
-            StartCoroutine(ability.CooldownRoutine());
-            AbilityUsed?.Invoke(ability); // Notify that the ability has been used
+            Debug.LogError("AbilityPrefabManager instance not found.");
+            return;
+        }
+
+        // Determine which prefab to use based on the ability
+        if (ability is HighVelocityShot)
+        {
+            prefabToUse = AbilityPrefabManager.Instance.highVelocityShotPrefab;
+        }
+        // Add else-if blocks for other abilities as needed
+
+        if (ability != null && prefabToUse != null)
+        {
+            if (ability.CanUse)
+            {
+                Debug.Log($"Activating {ability.AbilityName}");
+                ability.Activate(firePoint, ability.AbilityForce);
+                StartCoroutine(AbilityCooldown(ability)); // Start the cooldown routine through a separate method
+            }
+            else
+            {
+                Debug.Log($"Ability {ability.AbilityName} is on cooldown.");
+            }
+        }
+        else
+        {
+            Debug.Log($"Ability slot {slotIndex + 1} is empty or prefab is missing.");
         }
     }
 
-    // CooldownRoutine might be handled within each ability or the AbilityManager, depending on your design
+
+
+
+    private IEnumerator AbilityCooldown(IAbility ability)
+    {
+        ability.CanUse = false; // Set the ability's CanUse flag to false to start the cooldown
+        yield return StartCoroutine(ability.CooldownRoutine()); // Wait for the cooldown routine to complete
+        ability.CanUse = true; // Set the ability's CanUse flag back to true after the cooldown is complete
+        Debug.Log($"{ability.AbilityName} is ready to use again."); // Log when the ability is ready again
+    }
 }
