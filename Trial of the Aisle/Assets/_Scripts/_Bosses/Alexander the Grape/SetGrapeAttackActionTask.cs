@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	public class SetPainkillerttackActionTask : ActionTask{
+	public class SetGrapeAttackActionTask : ActionTask{
 
 		public float chanceToGetAttack1 = 0.6f;
 
@@ -12,7 +12,9 @@ namespace NodeCanvas.Tasks.Actions{
 		private float bossHealth;
 		private float maxBossHealth;
 
-		protected override string OnInit(){
+		private const string attack1Name = "Fruits of Fury";
+        private const string attack2Name = "Jammed";
+        protected override string OnInit(){
             agentBlackboard = agent.GetComponent<Blackboard>();
 
             return null;
@@ -37,18 +39,18 @@ namespace NodeCanvas.Tasks.Actions{
             if (randomNumber < chanceToGetAttack1)
 			{
 				//Check to see if they performed 2 paracetamanias in a row. If so, then do other attack
-				if(previousAttack == "Paracetamania")
+				if(previousAttack == attack1Name)
 				{
                     timesUsedAttack++;
 					if(timesUsedAttack > 2)
 					{
 						timesUsedAttack = 0;
-                        agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
+                        agentBlackboard.SetVariableValue("randomAttack", attack2Name);
                     }
                 }
 				else
 				{
-                    agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
+                    agentBlackboard.SetVariableValue("randomAttack", attack1Name);
                 }
 				
             }
@@ -57,25 +59,19 @@ namespace NodeCanvas.Tasks.Actions{
 			else
 			{
 
-				//Only perform Bad Habit if the boss isn't at full health
-				if(bossHealth / maxBossHealth > 75/ maxBossHealth)
-				{
-                    agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
-                }
-
                 //Check to see if they already performed 2 bad habits in a row. If so, then do other attack
-                else if (previousAttack == "BadHabit")
+                if (previousAttack == attack2Name)
                 {
                     timesUsedAttack++;
                     if (timesUsedAttack > 2)
                     {
                         timesUsedAttack = 0;
-                        agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
+                        agentBlackboard.SetVariableValue("randomAttack", attack1Name);
                     }
                 }
                 else
                 {
-                    agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
+                    agentBlackboard.SetVariableValue("randomAttack", attack2Name);
                 }
             }
 
@@ -84,7 +80,7 @@ namespace NodeCanvas.Tasks.Actions{
             blackboard.SetVariableValue("timesUsedAttack", timesUsedAttack);
 
             //Set the pills Thrown to 0
-            agentBlackboard.SetVariableValue("pillsThrown", 0);
+            agentBlackboard.SetVariableValue("objectsThrown", 0);
             EndAction(true);
 		}
 

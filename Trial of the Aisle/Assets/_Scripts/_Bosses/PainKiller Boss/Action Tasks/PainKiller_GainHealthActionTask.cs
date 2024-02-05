@@ -26,7 +26,6 @@ namespace NodeCanvas.Tasks.Actions{
 		{
 			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f);
 
-            Debug.Log("Hi");
 		}
 
 		//Called once per frame while the action is active.
