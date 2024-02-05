@@ -13,17 +13,18 @@ MonoBehaviour:
   m_Name: moonblast FSM
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"Spawn
-    Moon","_position":{"x":431.0,"y":334.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"parent":{},"clonePosition":{"_name":"targetWaypoint","_targetVariableID":"141fb989-b8c2-440e-bc84-142464ddb88e"},"cloneRotation":{},"saveCloneAs":{"_name":""},"overrideAgent":{"_type":"UnityEngine.Transform","_name":"chargeEffect","_targetVariableID":"515993ea-cb06-440e-b0a1-57c417b8a244"},"$type":"NodeCanvas.Tasks.Actions.InstantiateGameObject"}]},"_name":"Wait
-    for seconds","_position":{"x":822.0,"y":438.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"timeBetweenWaves":0.5,"chanceToSpawnPainKillerPill":0.5,"pillSpeed":6.0,"$type":"NodeCanvas.Tasks.Actions.WavePillsActionTask"}]},"_name":"Launch
-    Pills","_position":{"x":1351.0,"y":698.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"}],"connections":[{"_condition":{"minWaitTime":3.0,"maxWaitTime":3.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"chargeEffect":{"_value":1,"_name":"chargeEffect","_id":"515993ea-cb06-440e-b0a1-57c417b8a244","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    Moon","_position":{"x":511.0,"y":321.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"parent":{},"clonePosition":{"_name":"targetWaypoint","_targetVariableID":"141fb989-b8c2-440e-bc84-142464ddb88e"},"cloneRotation":{},"saveCloneAs":{"_name":""},"overrideAgent":{"_type":"UnityEngine.Transform","_name":"chargeEffect","_targetVariableID":"515993ea-cb06-440e-b0a1-57c417b8a244"},"$type":"NodeCanvas.Tasks.Actions.InstantiateGameObject"}]},"_name":"Wait
+    for seconds","_position":{"x":738.0,"y":505.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"projectilesToSpawn":45,"moonRadius":21.52,"timeBetweenWaves":0.1,"cheeseSpeed":4.88,"waveAmount":5,"centerGO":1,"$type":"NodeCanvas.Tasks.Actions.WaveCheeseActionTask"}]},"_name":"Launch
+    Pills","_position":{"x":1275.0,"y":784.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"}],"connections":[{"_condition":{"minWaitTime":3.0,"maxWaitTime":3.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"chargeEffect":{"_value":2,"_name":"chargeEffect","_id":"515993ea-cb06-440e-b0a1-57c417b8a244","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}}'
   _objectReferences:
   - {fileID: 0}
+  - {fileID: 4329201300660113927, guid: 1bd2a20abc293d84ca11e2422c7aafef, type: 3}
   - {fileID: 7129158640235773667, guid: 9394d15de59d2ac4a89bd2b57a44cf05, type: 3}
   _graphSource:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 0, y: 0}
+    _translation: {x: -208, y: -88}
     _zoomFactor: 1
   _haltSerialization: 0
