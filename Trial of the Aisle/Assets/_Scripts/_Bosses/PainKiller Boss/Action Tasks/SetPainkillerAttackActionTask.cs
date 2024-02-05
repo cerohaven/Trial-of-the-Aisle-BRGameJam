@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	public class SetPainkillerAttackActionTask : ActionTask{
+	public class SetPainkillerttackActionTask : ActionTask{
 
 		public float chanceToGetAttack1 = 0.6f;
 

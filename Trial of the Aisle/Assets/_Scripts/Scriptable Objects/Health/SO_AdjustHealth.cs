@@ -32,14 +32,24 @@ public class SO_AdjustHealth : ScriptableObject
     [System.NonSerialized]
     public ChangePlayerHealth changePlayerHealthEvent = new ChangePlayerHealth();
 
+    [System.NonSerialized]
+    public UnityEvent updateBossSpriteEventSend = new UnityEvent();
+
     public void ChangeBossHealthEventSend(ChangeHealth changeHealth, HealthType healthType, Vector2 projectileUpDir)
     {
         changeBossHealthEvent.Invoke(changeHealth, healthType, projectileUpDir);
+        updateBossSpriteEventSend.Invoke();
     }
 
     public void ChangePlayerHealthEventSend(ChangeHealth changeHealth, HealthType healthType)
     {
         changePlayerHealthEvent.Invoke(changeHealth, healthType);
+    }
+
+    
+    public void UpdateGrapeBossSpriteEventSend()
+    {
+        
     }
 }
 

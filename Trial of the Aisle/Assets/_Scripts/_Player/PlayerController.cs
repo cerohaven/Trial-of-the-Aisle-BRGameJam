@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     //properties
     public PlayerInput PlayerInput { get => playerInput; }
     public bool CanMove { get => canMove; set => canMove = value; }
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public float DodgeSpeed { get => dodgeSpeed; set => dodgeSpeed = value; }
 
     private void Awake()
     {

@@ -198,7 +198,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!224 &55558255 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3670696272680102667, guid: 2de23468b6f42244cae82709adb8fbf6, type: 3}
@@ -279,7 +282,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &73525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +467,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!114 &98588214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -722,8 +731,6 @@ Transform:
   - {fileID: 1942011649}
   - {fileID: 1361602676}
   - {fileID: 1001504086}
-  - {fileID: 765516026}
-  - {fileID: 649105234}
   m_Father: {fileID: 1485624978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &190675044 stripped
@@ -7082,7 +7089,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7164,37 +7174,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &649105233
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 649105234}
-  m_Layer: 0
-  m_Name: Waypoint (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &649105234
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649105233}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.79, y: -4.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 188492274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670497510 stripped
 GameObject:
@@ -7412,37 +7391,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70101356027a7c84587009c899b1288c, type: 3}
---- !u!1 &765516025
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 765516026}
-  m_Layer: 0
-  m_Name: Waypoint (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &765516026
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765516025}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.13, y: -4.17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 188492274}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &776230600
 GameObject:
   m_ObjectHideFlags: 0
@@ -7567,7 +7515,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &814102008
 GameObject:
   m_ObjectHideFlags: 0
@@ -7873,7 +7824,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &829568175
 GameObject:
   m_ObjectHideFlags: 0
@@ -14945,7 +14899,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1001 &960910390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15203,7 +15160,7 @@ Transform:
   m_GameObject: {fileID: 1001504085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.91, y: 0.45, z: 0}
+  m_LocalPosition: {x: 4.86, y: -0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15295,7 +15252,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &1048817570
 GameObject:
   m_ObjectHideFlags: 0
@@ -15629,7 +15589,7 @@ Transform:
   m_GameObject: {fileID: 1075837053}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0434453, y: 0.29028216, z: 0}
+  m_LocalPosition: {x: 11.01, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16078,7 +16038,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16635,7 +16598,7 @@ Transform:
   m_GameObject: {fileID: 1361602675}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.45, y: 0.62, z: 0}
+  m_LocalPosition: {x: 11.59, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17251,7 +17214,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!114 &1590642701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -17338,7 +17304,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1001 &1619579338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17586,7 +17555,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &1654587765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -17678,7 +17650,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1001 &1742852568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45263,7 +45238,7 @@ Transform:
   m_GameObject: {fileID: 1792044602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0434453, y: 0.29028216, z: -10}
+  m_LocalPosition: {x: 11.01, y: 0.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45365,7 +45340,7 @@ Transform:
   m_GameObject: {fileID: 1798283557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0434453, y: 0.29028216, z: -10}
+  m_LocalPosition: {x: 11.01, y: 0.35, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46280,7 +46255,10 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
+  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!1 &1942011648
 GameObject:
   m_ObjectHideFlags: 0
@@ -46306,7 +46284,7 @@ Transform:
   m_GameObject: {fileID: 1942011648}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.26, y: -0.51, z: 0}
+  m_LocalPosition: {x: 8.26, y: -5.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46972,26 +46950,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_name":"Throw
-    Pills at Player State","_position":{"x":873.0,"y":205.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_name":"Paracetamania
-    State","_position":{"x":615.0,"y":366.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
-    State","_position":{"x":490.0,"y":644.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Bad
-    Habit State","_position":{"x":1108.0,"y":663.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Paracetamania"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"BadHabit"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":2.0,"maxWaitTime":3.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":15,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":10,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_name":"Throw
+    Pills at Player State","_position":{"x":861.0,"y":196.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_name":"Fruits
+    of Fury State","_position":{"x":604.0,"y":365.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
+    State","_position":{"x":411.0,"y":607.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Jammed
+    State","_position":{"x":1198.0,"y":732.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Fruits
+    of Fury"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Jammed"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":2,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 11400000, guid: c78b9b2823e89fc41928d14e3118e36b, type: 2}
-  - {fileID: 11400000, guid: 3c1c39373ebf8114d9ea5b4e9400b996, type: 2}
-  - {fileID: 11400000, guid: 0ac7cfda293afe144a603083be9e8be7, type: 2}
+  - {fileID: 11400000, guid: d4d9c4629258bc54f8381c9e5fef9b97, type: 2}
+  - {fileID: 11400000, guid: 33d9e80806bba3d41880fbd31c50818e, type: 2}
+  - {fileID: 11400000, guid: f27c811ba9257f745b1035c6700f0d58, type: 2}
   _boundGraphSource:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 427, y: 274}
+    _translation: {x: 137, y: 150}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -47013,6 +46992,7 @@ GameObject:
   - component: {fileID: 3257722118906592721}
   - component: {fileID: 7073513567513950841}
   - component: {fileID: 2886160405841606760}
+  - component: {fileID: 9083388960159939504}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
   m_Layer: 0
@@ -47102,7 +47082,7 @@ Animator:
   m_GameObject: {fileID: 6448499378617286805}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60f82afd4a93cd74f8c9b0aaaefa5e77, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -47130,26 +47110,27 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"bossMaxHealth":{"_value":250.0,"_name":"bossMaxHealth","_id":"53349820-78ca-4190-a51e-29a54fe39a5a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"targetWaypoint":{"_name":"targetWaypoint","_id":"141fb989-b8c2-440e-bc84-142464ddb88e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[2,3,4,5,6],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[2,3,4],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"randomAttack":{"_name":"randomAttack","_id":"0b06f209-7424-4be9-b232-2bd8388c4653","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":10.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pillsSucked":{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pillsThrown":{"_name":"pillsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"energyPill":{"_value":7,"_name":"energyPill","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"painkillerPill":{"_value":8,"_name":"painkillerPill","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"grapeMinion":{"_value":5,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"throwProjectile":{"_value":6,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"jamProjectile":{"_value":7,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossHealthState":{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 1075837055}
   - {fileID: 1942011649}
   - {fileID: 1361602676}
   - {fileID: 1001504086}
-  - {fileID: 765516026}
-  - {fileID: 649105234}
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
-  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
+  - {fileID: 2321126302647116474, guid: 9ef770f109ccba54ea8d58d7320ebe88, type: 3}
   _serializedVariables:
   - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
@@ -47165,7 +47146,7 @@ MonoBehaviour:
   - _json: '{"_name":"targetWaypoint","_id":"141fb989-b8c2-440e-bc84-142464ddb88e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references: []
-  - _json: '{"_value":[1,2,3,4,5],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
+  - _json: '{"_value":[1,2,3],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references:
@@ -47173,8 +47154,6 @@ MonoBehaviour:
     - {fileID: 1942011649}
     - {fileID: 1361602676}
     - {fileID: 1001504086}
-    - {fileID: 765516026}
-    - {fileID: 649105234}
   - _json: '{"_name":"randomAttack","_id":"0b06f209-7424-4be9-b232-2bd8388c4653","$type":"NodeCanvas.Framework.Variable`1[[System.String,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
@@ -47187,19 +47166,27 @@ MonoBehaviour:
   - _json: '{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"pillsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+  - _json: '{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":1,"_name":"energyPill","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+  - _json: '{"_value":1,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
-  - _json: '{"_value":1,"_name":"painkillerPill","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
+  - _json: '{"_value":1,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+    - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
+  - _json: '{"_value":1,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 2321126302647116474, guid: 9ef770f109ccba54ea8d58d7320ebe88, type: 3}
+  - _json: '{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
 --- !u!1001 &8104656431527078453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47430,13 +47417,27 @@ Transform:
   m_GameObject: {fileID: 5488963747673041817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.4521127, y: 4.183826, z: 0.35743853}
+  m_LocalPosition: {x: 2.19, y: 3.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 763837313254469042}
   m_Father: {fileID: 1485624978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9083388960159939504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f068b1b8f17f91d4185e521ec2f9054e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  animator: {fileID: 6706980758945208613}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

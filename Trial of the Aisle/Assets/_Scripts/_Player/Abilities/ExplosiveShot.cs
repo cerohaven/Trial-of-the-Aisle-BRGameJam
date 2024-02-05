@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ExplosiveShot : MonoBehaviour, IAbility
 {
-    public float AbilityForce { get; private set; } = 15f; // Adjusted force value
+    public float AbilityForce { get; private set; } = 20f;
     public event Action<float, float> OnCooldownChanged;
 
     [SerializeField] private GameObject foregroundIcon;
@@ -13,7 +13,7 @@ public class ExplosiveShot : MonoBehaviour, IAbility
 
     public GameObject ForegroundIcon => foregroundIcon;
     public GameObject BackgroundIcon => backgroundIcon;
-    public float Cooldown => 2f; // Adjusted cooldown
+    public float Cooldown => 2f;
     public bool CanUse { get; set; } = true;
     public string AbilityName { get; } = "ExplosiveShot";
 
@@ -22,6 +22,7 @@ public class ExplosiveShot : MonoBehaviour, IAbility
     private void Awake()
     {
         mainCamera = Camera.main;
+
     }
 
     public void Activate(Transform firePoint, float force)
@@ -36,7 +37,7 @@ public class ExplosiveShot : MonoBehaviour, IAbility
         StartCoroutine(CooldownRoutine());
 
         // Get the prefab from the AbilityPrefabManager
-        GameObject prefab = AbilityPrefabManager.Instance.ExplosiveShotPrefab;
+        GameObject prefab = AbilityPrefabManager.Instance.explosiveShotPrefab;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mousePosition - (Vector2)firePoint.position).normalized;
 
@@ -62,7 +63,6 @@ public class ExplosiveShot : MonoBehaviour, IAbility
     public IEnumerator CooldownRoutine()
     {
         Debug.Log($"{AbilityName} cooldown started.");
-        CanUse = false;
         float cooldownTimer = Cooldown;
 
         while (cooldownTimer > 0f)
@@ -72,8 +72,9 @@ public class ExplosiveShot : MonoBehaviour, IAbility
             yield return null;
         }
 
-        CanUse = true;
+        CanUse = true; // Set CanUse to true after the cooldown is complete
         Debug.Log($"{AbilityName} cooldown ended.");
         OnCooldownChanged?.Invoke(0, Cooldown);
     }
+
 }
