@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,9 +16,10 @@ public class HighVelocityShot : MonoBehaviour, IAbility
     public GameObject BackgroundIcon => backgroundIcon;
     public float Cooldown => 2f;
     public bool CanUse { get; set; } = true;
-    public string AbilityName { get; } = "GrapesOfWrath";
+    public string AbilityName { get; } = "HighVelocityShot";
 
     private Camera mainCamera;
+    private Coroutine cooldownCoroutine; // Keep track of the cooldown coroutine
 
     private void Awake()
     {
@@ -33,31 +35,43 @@ public class HighVelocityShot : MonoBehaviour, IAbility
         }
 
         Debug.Log($"Activating {AbilityName}");
-        StartCoroutine(CooldownRoutine());
+
+        // If a cooldown is already running, stop it before starting a new one
+        if (cooldownCoroutine != null)
+        {
+            StopCoroutine(cooldownCoroutine);
+        }
+
+        cooldownCoroutine = StartCoroutine(CooldownRoutine());
 
         // Get the prefab from the AbilityPrefabManager
-        GameObject prefab = AbilityPrefabManager.Instance.highVelocityShotPrefab;
-
+        GameObject prefab = AbilityPrefabManager.Instance.explosiveShotPrefab;
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         Vector2 direction = (mousePosition - (Vector2)firePoint.position).normalized;
 
-        GameObject shot = Instantiate(prefab, firePoint.position, Quaternion.identity);
-        Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
-        Bullet bulletScript = shot.GetComponent<Bullet>();
-
-        if (bulletScript != null)
+        if (prefab != null)
         {
-            bulletScript.Direction = direction;
+            GameObject shot = Instantiate(prefab, firePoint.position, Quaternion.identity);
+            Rigidbody2D rb = shot.GetComponent<Rigidbody2D>();
+            Bullet bulletScript = shot.GetComponent<Bullet>();
+
+            if (bulletScript != null)
+            {
+                bulletScript.Direction = direction;
+            }
+
+            rb.AddForce(direction * force, ForceMode2D.Impulse);
         }
-
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
+        else
+        {
+            Debug.LogError("HighVelocity prefab is missing in AbilityPrefabManager.");
+        }
     }
-
 
     public IEnumerator CooldownRoutine()
     {
         Debug.Log($"{AbilityName} cooldown started.");
-        CanUse = false;
+        CanUse = false; // Set the ability's CanUse flag to false to start the cooldown
         float cooldownTimer = Cooldown;
 
         while (cooldownTimer > 0f)
@@ -67,8 +81,10 @@ public class HighVelocityShot : MonoBehaviour, IAbility
             yield return null;
         }
 
-        CanUse = true;
-        Debug.Log($"{AbilityName} cooldown ended.");
-        OnCooldownChanged?.Invoke(0, Cooldown);
+        CanUse = true; // Set the ability's CanUse flag back to true after the cooldown is complete
+        Debug.Log($"{AbilityName} is ready to use again."); // Log when the ability is ready again
+
+        cooldownCoroutine = null; // Reset the cooldown coroutine
     }
+
 }

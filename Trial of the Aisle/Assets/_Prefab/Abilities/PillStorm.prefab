@@ -163,7 +163,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0, g: 0.0781628, b: 0.7924528, a: 0.65882355}
+  m_Color: {r: 0.5943396, g: 0.09604152, b: 0, a: 0.65882355}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1133005baf47a458513280fcbc301a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 1572699439113838549}
   foregroundIcon: {fileID: 4022842313258763549, guid: 9d6626bf1b725a74699092b4192bc15d, type: 3}
   backgroundIcon: {fileID: 2245694409458597448, guid: daf35a6b403c94e49af75dd78c03c5bc, type: 3}
 --- !u!50 &-5514399516181132105
