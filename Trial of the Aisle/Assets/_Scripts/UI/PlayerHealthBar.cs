@@ -18,10 +18,8 @@ public class PlayerHealthBar : MonoBehaviour
     private RectTransform playerRectTransform;
 
     private float currentInvincibilityTime;
-    private float flickerTimer;
+    private Color color = Color.white;
 
-    private bool isInvincible;
-    private Color playerColor;
 
     private void Awake()
     {
@@ -31,38 +29,38 @@ public class PlayerHealthBar : MonoBehaviour
 
         currentInvincibilityTime = maxInvincibilityTimer + 1;
         maxHealth = playerRectTransform.sizeDelta.x;
-
-        isInvincible = false;
-        flickerTimer = 0f;
-        playerColor = playerSr.color;
     }
 
     void Update()
     {
         currentInvincibilityTime += Time.deltaTime;
+        bool isInvincible = currentInvincibilityTime <= maxInvincibilityTimer;
 
         if (isInvincible)
-        {
-            flickerTimer += Time.deltaTime;
-            if (flickerTimer >= invincibilityFlickerRate)
-            {
-                playerColor.a = 1f - playerColor.a; // Toggle alpha between 0 and 1
-                playerSr.color = playerColor;
-                flickerTimer = 0f;
-            }
-        }
+            InvokeRepeating("Invincible", 0, invincibilityFlickerRate);
         else
         {
-            playerColor.a = 1f; // Reset alpha to 1
-            playerSr.color = playerColor;
+            CancelInvoke();
+            color.a = 1;
+            playerSr.color = new Color(1, 1, 1, color.a);
         }
     }
 
+
+
+    private void Invincible()
+    {
+        color.a++;
+        color.a %= 2;
+        playerSr.color = new Color(1, 1, 1, color.a);
+    }
     public void PlayerChangeHealth(float _playerChangedHealth)
     {
-        // Check to see if healing or damage is being passed
-        if (_playerChangedHealth < 0)
+        //Check to see if healing or damage is being passed
+        bool isDamage = _playerChangedHealth < 0;
+        if (isDamage)
         {
+            bool isInvincible = currentInvincibilityTime <= maxInvincibilityTimer;
             if (isInvincible)
                 return;
 
@@ -70,12 +68,13 @@ public class PlayerHealthBar : MonoBehaviour
 
             bool lostAllHealth = playerHealth <= 0;
             //if (lostAllHealth)
-            //    anim.SendMessage("Outro", "LoseGameAnimation");
+            //anim.SendMessage("Outro", "LoseGameAnimation");
 
-            // Set them invincible for a certain period of time
+            //Set them invincible for a certain period of time
+
             currentInvincibilityTime = 0;
-            isInvincible = true;
             AudioManager.instance.Play("p_hurt");
+
         }
         else
         {
@@ -83,6 +82,7 @@ public class PlayerHealthBar : MonoBehaviour
             Instantiate(healEffect, playerGameObject.transform.position, Quaternion.identity);
             AudioManager.instance.Play("heal");
         }
+
     }
 
     private void UpdateHealthBar(float _health)
@@ -90,5 +90,7 @@ public class PlayerHealthBar : MonoBehaviour
         playerHealth += _health;
         playerHealth = Mathf.Clamp(playerHealth, 0, maxHealth);
         playerRectTransform.sizeDelta = new Vector2(playerHealth, playerRectTransform.sizeDelta.y);
+
     }
+
 }
