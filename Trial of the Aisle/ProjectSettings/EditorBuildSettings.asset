@@ -6,13 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Boss_Painkiller.unity
-    guid: 65885c6780e98034696761ce036c029a
+    path: Assets/_Scenes/About.unity
+    guid: 6307a9cf8e902324c91ff6fc68262bf1
+  - enabled: 1
+    path: Assets/_Scenes/Tutorial.unity
+    guid: ee3505354b7dd8542803b934f00feded
+  - enabled: 1
+    path: Assets/_Scenes/MainMenu.unity
+    guid: ac8fa9157bf2126458af3fe2bc1fc7ff
+  - enabled: 1
+    path: Assets/_Scenes/Boss_AlexanderTheGrape.unity
+    guid: 2cfecbe3e4b66e34f99ea4a9cc66a8ab
   - enabled: 1
     path: Assets/_Scenes/Boss_DairyDominator.unity
     guid: be29ea9229d1d2e4790c8bc5013b72a5
   - enabled: 1
-    path: Assets/_Scenes/Boss_AlexanderTheGrape.unity
-    guid: 2cfecbe3e4b66e34f99ea4a9cc66a8ab
+    path: Assets/_Scenes/Boss_Painkiller.unity
+    guid: 65885c6780e98034696761ce036c029a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 85b13f1ce4d39964597c640a26599505, type: 2}

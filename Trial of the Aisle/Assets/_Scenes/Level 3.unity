@@ -7427,8 +7427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equippedAbilityComponents:
-  - {fileID: -4299418316046309821, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
   - {fileID: 4583720463087705905, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
+  - {fileID: -4299418316046309821, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
   - {fileID: 6800816948344241217, guid: 30838229eeae2cb4aa5f7cd9b82b73f2, type: 3}
   unlockedAbilityComponents: []
   playerInput: {fileID: 1075837057}
@@ -7460,8 +7460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highVelocityShotPrefab: {fileID: 1572699439113838549, guid: 30838229eeae2cb4aa5f7cd9b82b73f2, type: 3}
-  ExplosiveShotPrefab: {fileID: 1572699439113838549, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
-  HealingPrefab: {fileID: 6569096716732797545, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
+  explosiveShotPrefab: {fileID: 1572699439113838549, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
+  healingPrefab: {fileID: 6569096716732797545, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
 --- !u!1 &808400797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7876,6 +7876,7 @@ Transform:
   - {fileID: 1835973868}
   - {fileID: 443669516}
   - {fileID: 776230602}
+  - {fileID: 1342007417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855409801
@@ -15847,8 +15848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049c561fd5c3c5c4f884b291fcb7ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
-  bulletForce: 20
   firePoint: {fileID: 2130552886}
   playerController: {fileID: 1075837056}
   abilityManager: {fileID: 776230601}
@@ -16612,6 +16611,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b184218583a4d24d9efdc67cff19ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1342007417 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
+  m_PrefabInstance: {fileID: 1845013774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1357404731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16831,6 +16835,14 @@ PrefabInstance:
     - target: {fileID: 8285737915349755885, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: colourFlickerAmount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285737915433621470, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891940907230323250, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -45.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45869,7 +45881,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 829568176}
     m_Modifications:
     - target: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46928,7 +46940,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.00014755128, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.35743853}
-  m_LocalScale: {x: 10.056928, y: 10.056928, z: 10.056928}
+  m_LocalScale: {x: 1.3889, y: 1.3889, z: 1.3889}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9083388960159939503}
@@ -47606,7 +47618,6 @@ SceneRoots:
   - {fileID: 1851884481}
   - {fileID: 747697490}
   - {fileID: 829568176}
-  - {fileID: 1845013774}
   - {fileID: 1485624978}
   - {fileID: 2006806797}
   - {fileID: 1231111791}
