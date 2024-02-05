@@ -20,13 +20,20 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
 			adjustHealth.ChangeBossHealthEventSend(healAmount, HealthType.Healing, new UnityEngine.Vector2(0,0));
             LeanTween.scale(agent.gameObject, Vector3.one * 1.1f, 0.1f).setOnComplete(Testing);
-            EndAction(true);
+			agent.GetComponent<SwapMaterialDemo>().Swap(1);
+            
 		}
 		private void Testing()
 		{
-			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f);
+			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f).setOnComplete(End);
+           
+        }
 
-		}
+		private void End()
+		{
+            agent.GetComponent<SwapMaterialDemo>().Swap(0);
+            EndAction(true);
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate(){

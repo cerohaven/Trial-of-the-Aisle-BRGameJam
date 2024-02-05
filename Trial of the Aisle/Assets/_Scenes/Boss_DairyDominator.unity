@@ -796,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4d81a046e96d6284ca40a1c28f6e4a2c, type: 3}
+  m_Sprite: {fileID: -1811211442, guid: fc96dfb06ad13514889adf59108ed288, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1039,7 +1039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -62}
+  m_AnchoredPosition: {x: -4, y: -62}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557897163
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GRAPE
+  m_text: DOMINATOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a767256b808fb734c9071e6992174a35, type: 2}
   m_sharedMaterial: {fileID: -8362884452117417409, guid: a767256b808fb734c9071e6992174a35, type: 2}
@@ -1071,8 +1071,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293083312
-  m_fontColor: {r: 0.6901961, g: 0.2509804, b: 0.89019614, a: 1}
+    rgba: 4280917656
+  m_fontColor: {r: 0.59607846, g: 0.61960787, b: 0.16078432, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -187.6386, w: -31.523293}
+  m_margin: {x: 0, y: 0, z: -365.53995, w: -31.523293}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -16638,7 +16638,7 @@ PrefabInstance:
     - target: {fileID: 4115019710531344324, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1816418880, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
+      objectReference: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
     - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: smallHealthAdjustment
       value: 2
@@ -16769,15 +16769,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8285737915349755872, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.28773582
       objectReference: {fileID: 0}
     - target: {fileID: 8285737915349755872, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_Color.g
-      value: 0.4764151
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8285737915349755872, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_Color.r
-      value: 0.8283612
+      value: 0.97815573
       objectReference: {fileID: 0}
     - target: {fileID: 8285737915349755874, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_SizeDelta.x
@@ -46311,7 +46311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1807, y: 51}
+  m_AnchoredPosition: {x: -1893, y: 51}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911315825
@@ -46334,9 +46334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Alexander the
-
-'
+  m_text: Dairy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a767256b808fb734c9071e6992174a35, type: 2}
   m_sharedMaterial: {fileID: -8362884452117417409, guid: a767256b808fb734c9071e6992174a35, type: 2}
@@ -46399,7 +46397,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -293.31784, w: -113.73347}
+  m_margin: {x: 0, y: 0, z: -344.29916, w: -113.73347}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -46942,7 +46940,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.00014755128, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.35743853}
-  m_LocalScale: {x: 10.056928, y: 10.056928, z: 10.056928}
+  m_LocalScale: {x: 1.18, y: 1.18, z: 1.18}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9083388960159939503}
@@ -47209,27 +47207,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_name":"Throw
-    Pills at Player State","_position":{"x":861.0,"y":196.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_name":"Fruits
-    of Fury State","_position":{"x":604.0,"y":365.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
-    State","_position":{"x":411.0,"y":607.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Jammed
-    State","_position":{"x":1198.0,"y":732.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Fruits
-    of Fury"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Jammed"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":2,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_position":{"x":609.0,"y":343.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
+    State","_position":{"x":411.0,"y":607.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_nestedFSM":{"_value":2},"_name":"Throw
+    Projectiles at Player State","_position":{"x":842.0,"y":183.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"5"},{"_nestedFSM":{"_value":3},"_position":{"x":1160.0,"y":645.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"},{"_nestedFSM":{"_value":4},"_position":{"x":811.0,"y":418.0},"$type":"NodeCanvas.StateMachines.NestedFSMState"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Feta
+    Frenzy"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"moo-nbeam"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":5,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":10,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 11400000, guid: d4d9c4629258bc54f8381c9e5fef9b97, type: 2}
-  - {fileID: 11400000, guid: 33d9e80806bba3d41880fbd31c50818e, type: 2}
-  - {fileID: 11400000, guid: f27c811ba9257f745b1035c6700f0d58, type: 2}
+  - {fileID: 11400000, guid: 2960f260ca4641348af36c629b7283de, type: 2}
+  - {fileID: 11400000, guid: 5357786fc1c9172408d36cf8c4854f9b, type: 2}
+  - {fileID: 11400000, guid: ef6e056739926ae42b68ddea43309700, type: 2}
+  - {fileID: 11400000, guid: 3c1c39373ebf8114d9ea5b4e9400b996, type: 2}
   _boundGraphSource:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 137, y: 150}
+    _translation: {x: 159, y: 194}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -47255,7 +47252,7 @@ GameObject:
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
   m_Layer: 0
-  m_Name: Alexander the Grape Boss
+  m_Name: Dairy Dominator Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47320,7 +47317,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 4d81a046e96d6284ca40a1c28f6e4a2c, type: 3}
+  m_Sprite: {fileID: -1811211442, guid: fc96dfb06ad13514889adf59108ed288, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -47341,7 +47338,7 @@ Animator:
   m_GameObject: {fileID: 6448499378617286805}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 60f82afd4a93cd74f8c9b0aaaefa5e77, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3dd4bb5dba4ab6c49a1ff35a18224948, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -47374,9 +47371,8 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"randomAttack":{"_name":"randomAttack","_id":"0b06f209-7424-4be9-b232-2bd8388c4653","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":10.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pillsSucked":{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"grapeMinion":{"_value":5,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"fetaCheese":{"_value":5,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"throwProjectile":{"_value":6,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"jamProjectile":{"_value":7,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossHealthState":{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
@@ -47387,8 +47383,8 @@ MonoBehaviour:
   - {fileID: 1942011649}
   - {fileID: 1361602676}
   - {fileID: 1001504086}
-  - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
-  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
+  - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
+  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   - {fileID: 2321126302647116474, guid: 9ef770f109ccba54ea8d58d7320ebe88, type: 3}
   _serializedVariables:
   - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
@@ -47422,22 +47418,19 @@ MonoBehaviour:
   - _json: '{"_value":10.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
   - _json: '{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":1,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+  - _json: '{"_value":1,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
+    - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
   - _json: '{"_value":1,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
+    - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   - _json: '{"_value":1,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:

@@ -8086,6 +8086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityManager: {fileID: 776230601}
+  abilityCooldownFills: []
   ability1Reference: {fileID: 1913281322}
   ability1BGReference: {fileID: 1181828997}
   ability2Reference: {fileID: 55558255}
@@ -47062,7 +47063,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.00014755128, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.35743853}
-  m_LocalScale: {x: 10.056928, y: 10.056928, z: 10.056928}
+  m_LocalScale: {x: 1.3889, y: 1.3889, z: 1.3889}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9083388960159939503}
@@ -47372,6 +47373,7 @@ GameObject:
   - component: {fileID: 2886160405841606760}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939504}
   m_Layer: 0
   m_Name: Painkiller Boss
   m_TagString: Boss
@@ -47390,6 +47392,7 @@ GameObject:
   - component: {fileID: 763837313254469042}
   - component: {fileID: 6706980758945208612}
   - component: {fileID: 6706980758945208613}
+  - component: {fileID: 6706980758945208614}
   m_Layer: 0
   m_Name: Pill Art
   m_TagString: Untagged
@@ -47470,6 +47473,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6706980758945208614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448499378617286805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666004b4d3400a94197b699e36486e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: aa31d2a014b362e4d8be24bfd27d0db6, type: 2}
+  - {fileID: 2100000, guid: d6f4652be3897624495ce3c4ecc64e27, type: 2}
 --- !u!114 &7073513567513950841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47794,6 +47812,18 @@ Transform:
   - {fileID: 763837313254469042}
   m_Father: {fileID: 1485624978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9083388960159939504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb3636bbc1d346479d26302778bfd88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

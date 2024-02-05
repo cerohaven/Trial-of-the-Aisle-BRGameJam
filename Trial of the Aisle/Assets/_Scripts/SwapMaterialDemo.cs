@@ -10,17 +10,11 @@ public class SwapMaterialDemo : MonoBehaviour
 
     void Start()
     {
-        _sM = GetComponent<SwapMaterials>();
+        _sM = GetComponentInChildren<SwapMaterials>();
     }
-    void Update()
+    public void Swap(int index)
     {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            _sM.Swap(1);
-        }
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            _sM.Swap(0);
-        }
+        _sM.Swap(index);
     }
+   
 }
