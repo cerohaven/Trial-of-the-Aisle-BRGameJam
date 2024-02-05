@@ -11,17 +11,19 @@ public class LevelLoader : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    public static int previousScene;
+    public int currentScene;
     public void SwitchScene()
     {
-        previousScene = SceneManager.GetActiveScene().buildIndex;
-        int sceneToLoad = previousScene;
-        while(sceneToLoad == previousScene)
-        {
-            sceneToLoad = Random.Range(0, 3);
-        }
+
         
-        SceneManager.LoadScene(sceneToLoad);
+        currentScene = SceneManager.GetActiveScene().buildIndex;
+    
+        SceneManager.LoadScene(currentScene + 1);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void SetTrigger()

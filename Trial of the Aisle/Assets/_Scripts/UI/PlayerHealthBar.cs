@@ -10,6 +10,8 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private float invincibilityFlickerRate;
     [SerializeField] private float maxHealth;
 
+    private LevelLoader levelLoader;
+
     [Header("Heal Particle Effect")]
     [SerializeField] private GameObject healEffect;
 
@@ -29,6 +31,8 @@ public class PlayerHealthBar : MonoBehaviour
 
         currentInvincibilityTime = maxInvincibilityTimer + 1;
         maxHealth = playerRectTransform.sizeDelta.x;
+
+        levelLoader = GameObject.FindObjectOfType<LevelLoader>();   
     }
 
     void Update()
@@ -67,8 +71,11 @@ public class PlayerHealthBar : MonoBehaviour
             UpdateHealthBar(_playerChangedHealth);
 
             bool lostAllHealth = playerHealth <= 0;
-            //if (lostAllHealth)
-            //anim.SendMessage("Outro", "LoseGameAnimation");
+            if (lostAllHealth)
+            {
+                levelLoader.MainMenu();
+            }
+            
 
             //Set them invincible for a certain period of time
 

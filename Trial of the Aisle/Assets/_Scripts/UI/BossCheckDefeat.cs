@@ -28,14 +28,6 @@ public class BossCheckDefeat : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(debugSpawnKey))
-        {
-            DestroyBoss();
-        }
-    }
-
     private void DestroyBoss()
     {
         if (abilityManager == null)

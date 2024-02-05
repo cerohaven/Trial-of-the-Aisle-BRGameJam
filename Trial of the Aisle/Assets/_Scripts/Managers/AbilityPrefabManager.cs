@@ -28,7 +28,7 @@ public class AbilityPrefabManager : MonoBehaviour
 
     private void InitializeAbilityPrefabs()
     {
-        abilityPrefabs.Add(typeof(HighVelocityShot), highVelocityShotPrefab);
+        
         abilityPrefabs.Add(typeof(ExplosiveShot), explosiveShotPrefab);
         abilityPrefabs.Add(typeof(HealingShot), healingPrefab);
 

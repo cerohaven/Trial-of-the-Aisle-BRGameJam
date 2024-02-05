@@ -9,7 +9,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         // Load the next scene in the build index
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(3);
     }
 
     // Function to be called when the "Tutorial" button is pressed

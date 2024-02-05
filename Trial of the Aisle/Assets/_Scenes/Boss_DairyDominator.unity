@@ -15410,6 +15410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84256f632d5feec4e81d8267aae0f9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScene: 0
 --- !u!95 &983104297
 Animator:
   serializedVersion: 5
@@ -16003,8 +16004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049c561fd5c3c5c4f884b291fcb7ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
-  bulletForce: 20
   firePoint: {fileID: 2130552886}
   playerController: {fileID: 1075837056}
   abilityManager: {fileID: 776230601}
