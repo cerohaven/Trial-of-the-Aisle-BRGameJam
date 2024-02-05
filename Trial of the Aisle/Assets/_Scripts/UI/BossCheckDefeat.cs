@@ -8,12 +8,15 @@ public class BossCheckDefeat : MonoBehaviour
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
     [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // Change to MonoBehaviour list
     [SerializeField] private AbilityManager abilityManager; // Reference to the AbilityManager
+    private LevelLoader levelLoader;
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
     public KeyCode debugSpawnKey = KeyCode.Space;
 
     private void Awake()
     {
+        levelLoader = GameObject.FindObjectOfType<LevelLoader>();
+
         bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
         if (abilityManager == null)
         {
@@ -54,11 +57,13 @@ public class BossCheckDefeat : MonoBehaviour
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
 
+
+        levelLoader.SetTrigger();
         Destroy(gameObject); // Destroy the boss GameObject last to ensure all cleanup is done before this
 
 
     }
-
+    
 
     private void UnlockBossAbilities()
     {

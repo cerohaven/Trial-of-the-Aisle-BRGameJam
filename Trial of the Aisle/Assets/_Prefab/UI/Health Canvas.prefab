@@ -326,6 +326,7 @@ MonoBehaviour:
   maxInvincibilityTimer: 1.5
   invincibilityFlickerRate: 0.1
   maxHealth: 100
+  healEffect: {fileID: 0}
 --- !u!114 &8285737914161148902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +764,11 @@ MonoBehaviour:
   bossDefeatedSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossBlackboard: {fileID: 0}
   bossHitEffect: {fileID: 0}
+  healEffect: {fileID: 0}
   blueBarIncreaseSpeed: 100
+  colourFlickerTime: 0
+  colourFlickerAmount: 0
+  bossSr: {fileID: 0}
 --- !u!114 &8285737915349755872
 MonoBehaviour:
   m_ObjectHideFlags: 0
