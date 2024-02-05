@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
   m_Name: Jammed FSM
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"projectileSpeedAtHealthIncrements":[15.0,15.0,15.0,15.0],"timeBetweenAttacksPerIncrement":[1.0,1.0,1.0,1.0],"$type":"NodeCanvas.Tasks.Actions.ThrowJamActionTask"}]},"_name":"Throw
+    Jam Projectile","_position":{"x":732.0,"y":422.0},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences: []
   _graphSource:
     _version: 3.25

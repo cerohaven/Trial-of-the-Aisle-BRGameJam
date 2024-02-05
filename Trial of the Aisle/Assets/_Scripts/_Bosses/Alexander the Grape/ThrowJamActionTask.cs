@@ -1,10 +1,11 @@
 using NodeCanvas.Framework;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
-namespace NodeCanvas.Tasks.Actions{
+namespace NodeCanvas.Tasks.Actions
+{
 
-	public class ThrowProjectileActionTask : ActionTask{
+    public class ThrowJamActionTask : ActionTask{
 
         public float[] projectileSpeedAtHealthIncrements = new float[4];
 
@@ -35,8 +36,8 @@ namespace NodeCanvas.Tasks.Actions{
             //Getting blackboar Variables
             agentBlackboard = agent.GetComponent<Blackboard>();
 
-            projectileToSpawn = agentBlackboard.GetVariableValue<GameObject>("throwProjectile");
-           
+            projectileToSpawn = agentBlackboard.GetVariableValue<GameObject>("jamProjectile");
+
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
             bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
 
@@ -75,8 +76,6 @@ namespace NodeCanvas.Tasks.Actions{
                 {
                     pillSpeed = projectileSpeedAtHealthIncrements[i];
 
-                    //0.7 * (100/100)
-                    //0.7 * (75/100)
                     endActionRoutine = EndActionTask(timeBetweenAttacksPerIncrement[i]);
                     StartCoroutine(endActionRoutine);
 
@@ -88,7 +87,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 
             // SPAWNING THE PILL GAME OBJECT //
-            GameObject pill = GameObject.Instantiate(projectileToSpawn);
+            GameObject jam = GameObject.Instantiate(projectileToSpawn);
 
             //Setting the trajectory of the pill game object
             //Get rigidbody component and set direction and speed
@@ -96,37 +95,40 @@ namespace NodeCanvas.Tasks.Actions{
 
             dir.Normalize();
 
-            Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
-            ApplyInitializations(projectilePill, dir, pill);
+            Projectile_Jam projectileJam = jam.GetComponent<Projectile_Jam>();
+            ApplyInitializations(projectileJam, dir, jam);
+
+            //Spawn in 3 pills at a time when the boss gets low
+            if (healthIncrement < bossHealthIncrements[3])
+            {
+                SpawnMultiplePills(dir, projectileToSpawn);
+            }
 
 
         }
 
-        private void ApplyInitializations(Projectile_Pill projectilePill, Vector3 dir, GameObject pill)
+        private void ApplyInitializations(Projectile_Jam projectileJam, Vector3 dir, GameObject jam)
         {
+            jam.transform.position = agent.transform.position + (dir * 3.5f);
+            projectileJam.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
+            projectileJam.IgnoreBossCollision(true);
 
-
-            pill.transform.position = agent.transform.position + (dir * 3.5f);
-            projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
-            projectilePill.IgnoreBossCollision(true);
-
-            projectilePill.IgnoreProjectiles(true, 0);
-            projectilePill.IgnoreProjectiles(false, 0.5f);
-            projectilePill.EnableDrag(0, 2);
+            projectileJam.IgnoreProjectiles(true, 0);
+            projectileJam.EnableDrag(0, 2);
 
         }
 
-        public void SpawnMultiplePills(Vector3 directionTravelling, GameObject pillPrefab)
+        public void SpawnMultiplePills(Vector3 directionTravelling, GameObject jamPrefab)
         {
 
             for (int i = 0; i < 2; i++)
             {
-                GameObject tempPill;
-                Projectile_Pill tempProjectile;
+                GameObject tempJam;
+                Projectile_Jam tempProjectile;
 
                 //spawn object and get rigidbody
-                tempPill = MakePillCopy(pillPrefab);
-                tempProjectile = tempPill.GetComponent<Projectile_Pill>();
+                tempJam = MakeJamCopy(jamPrefab);
+                tempProjectile = tempJam.GetComponent<Projectile_Jam>();
 
                 //If i == 0, make the split angle positive, if not, make it negative
                 SplitAngleInDegrees = i == 0 ? SplitAngleInDegrees : -SplitAngleInDegrees;
@@ -137,15 +139,15 @@ namespace NodeCanvas.Tasks.Actions{
                 newVec.Normalize();
 
                 //Add the force
-                ApplyInitializations(tempProjectile, newVec, tempPill);
+                ApplyInitializations(tempProjectile, newVec, tempJam);
 
             }
         }
 
-        private GameObject MakePillCopy(GameObject original)
+        private GameObject MakeJamCopy(GameObject original)
         {
-            Projectile_Pill newPill = GameObject.Instantiate(original).GetComponent<Projectile_Pill>();
-            return newPill.gameObject;
+            Projectile_Jam newJam = GameObject.Instantiate(original).GetComponent<Projectile_Jam>();
+            return newJam.gameObject;
         }
 
 
@@ -173,6 +175,5 @@ namespace NodeCanvas.Tasks.Actions{
 
         }
         #endregion
-
     }
 }

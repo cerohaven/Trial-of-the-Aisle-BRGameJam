@@ -77,7 +77,8 @@ public class MinionThrow : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Pill"))
         {
-            
+            Projectile proj = collision.gameObject.GetComponent<Projectile>();
+            if (proj.WhoThrew != WhoThrew.Player) return;
             adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, Vector2.up);
             CinemachineShake.Instance.ShakeCamera();
             Destroy(gameObject);
