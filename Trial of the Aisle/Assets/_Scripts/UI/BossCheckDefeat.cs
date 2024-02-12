@@ -7,7 +7,6 @@ public class BossCheckDefeat : MonoBehaviour
 {
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
     [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // Change to MonoBehaviour list
-    [SerializeField] private AbilityManager abilityManager; // Reference to the AbilityManager
     private LevelLoader levelLoader;
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
@@ -18,23 +17,10 @@ public class BossCheckDefeat : MonoBehaviour
         levelLoader = GameObject.FindObjectOfType<LevelLoader>();
 
         bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
-        if (abilityManager == null)
-        {
-            abilityManager = FindObjectOfType<AbilityManager>();
-            if (abilityManager == null)
-            {
-                Debug.LogError("AbilityManager not found in the scene.");
-            }
-        }
     }
 
     private void DestroyBoss()
     {
-        if (abilityManager == null)
-        {
-            Debug.LogError("AbilityManager reference is missing in BossCheckDefeat.");
-            return; // Abort if there's no reference to the AbilityManager
-        }
 
         try
         {
@@ -59,21 +45,7 @@ public class BossCheckDefeat : MonoBehaviour
 
     private void UnlockBossAbilities()
     {
-        if (abilityManager == null)
-        {
-            Debug.LogError("AbilityManager is null when trying to unlock boss abilities.");
-            return;
-        }
-
-        foreach (var abilityComponent in bossAbilityComponents)
-        {
-            if (abilityComponent == null)
-            {
-                Debug.LogError("One of the boss ability components is null.");
-                continue; // Skip the null component
-            }
-            abilityManager.UnlockAbility(abilityComponent);
-        }
+        //unimplemented
     }
 
     private void SpawnObjects()

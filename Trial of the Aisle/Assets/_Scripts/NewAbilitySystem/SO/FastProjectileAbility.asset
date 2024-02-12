@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
+  m_Name: FastProjectileAbility
+  m_EditorClassIdentifier: 
+  abilityName: Placeholder
+  abilityIcon: {fileID: 2030291337, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
+  cooldownTime: 3
+  projectilePrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
+  projectileSpeed: 25

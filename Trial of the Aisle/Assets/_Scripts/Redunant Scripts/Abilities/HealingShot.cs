@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealingShot : MonoBehaviour, IAbility
+public class HealingShot : MonoBehaviour
 {
     [SerializeField] private GameObject abilityPrefab;
     [SerializeField] private GameObject foregroundIcon;
