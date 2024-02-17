@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361544966663640247}
-  - component: {fileID: -4299418316046309821}
   m_Layer: 0
   m_Name: Lunch Break
   m_TagString: Untagged
@@ -33,22 +32,6 @@ Transform:
   - {fileID: 6822594992044673332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4299418316046309821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6569096716732797545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 470d3e88d954c4d48bfeab4e766443f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityPrefab: {fileID: 6569096716732797545}
-  foregroundIcon: {fileID: 3267669817537687668, guid: 0d98da1a5f1160c4d8ae6108b121e2c6, type: 3}
-  backgroundIcon: {fileID: 6537608678442537476, guid: 8d83ad233d859d64cbe2ab2933b14971, type: 3}
-  adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
 --- !u!1 &8184833198084458564
 GameObject:
   m_ObjectHideFlags: 0

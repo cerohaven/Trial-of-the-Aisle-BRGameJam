@@ -6,25 +6,36 @@ using UnityEngine;
 public class BossCheckDefeat : MonoBehaviour
 {
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
-    [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // Change to MonoBehaviour list
+    [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // List of boss ability components
+    [SerializeField] private GameObject postBattleCanvas; // Reference to the post-battle canvas
+
     private LevelLoader levelLoader;
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
     public KeyCode debugSpawnKey = KeyCode.Space;
+    public KeyCode debugDefeatBossKey = KeyCode.K; // Assign a key for debug defeat
 
     private void Awake()
     {
-        levelLoader = GameObject.FindObjectOfType<LevelLoader>();
-
+        levelLoader = FindObjectOfType<LevelLoader>();
         bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
+        postBattleCanvas.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // Check if the debug key for defeating the boss is pressed
+        if (Input.GetKeyDown(debugDefeatBossKey))
+        {
+            Debug.Log("Debug: Boss defeated");
+            DestroyBoss();
+        }
     }
 
     private void DestroyBoss()
     {
-
         try
         {
-            UnlockBossAbilities(); // Make sure this method is safely handling nulls and other potential issues
             SpawnObjects(); // Ensure this method doesn't rely on the boss GameObject after it's destroyed
         }
         catch (Exception e)
@@ -32,20 +43,21 @@ public class BossCheckDefeat : MonoBehaviour
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
 
+        ShowPostBattleUI(); // Show the post-battle UI before destroying the boss
+
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
 
-
-        levelLoader.SetTrigger();
+        //levelLoader.SetTrigger();
         Destroy(gameObject); // Destroy the boss GameObject last to ensure all cleanup is done before this
-
-
     }
-    
 
-    private void UnlockBossAbilities()
+    private void ShowPostBattleUI()
     {
-        //unimplemented
+        if (postBattleCanvas != null)
+        {
+            postBattleCanvas.SetActive(true); // Enable the PostBattleCanvas
+        }
     }
 
     private void SpawnObjects()
