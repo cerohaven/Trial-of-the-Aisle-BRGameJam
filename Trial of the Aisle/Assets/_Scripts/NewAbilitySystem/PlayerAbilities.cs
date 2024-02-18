@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 public class PlayerAbilities : MonoBehaviour
 {
     [SerializeField] private InputActionAsset inputActions; // Assigned in the Inspector
+    [SerializeField] private AbilityDatabase abilityDatabase; // Reference to the Ability Database
 
-    public Ability[] equippedAbilities = new Ability[3]; // Array of equipped abilities
+    public int[] equippedAbilityIDs = new int[3]; // Array of IDs for equipped abilities
     private float[] cooldowns; // Array of cooldowns for each ability
 
     public RectTransform[] abilitySlotsUIReference; // UI slots for ability icons
@@ -27,9 +28,9 @@ public class PlayerAbilities : MonoBehaviour
 
     void Start()
     {
-        cooldowns = new float[equippedAbilities.Length];
-        abilityIcons = new Image[equippedAbilities.Length];
-        cooldownOverlays = new Image[equippedAbilities.Length];
+        cooldowns = new float[equippedAbilityIDs.Length];
+        abilityIcons = new Image[equippedAbilityIDs.Length];
+        cooldownOverlays = new Image[equippedAbilityIDs.Length];
 
         InitializeAbilityUI();
     }
@@ -41,64 +42,91 @@ public class PlayerAbilities : MonoBehaviour
 
     private void InitializeAbilityUI()
     {
-        for (int i = 0; i < equippedAbilities.Length; i++)
+        for (int i = 0; i < equippedAbilityIDs.Length; i++)
         {
-            if (equippedAbilities[i] != null)
-            {
-                // Ensure the slot has an Image component for the ability icon
-                Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>();
-                if (iconImage == null)
-                {
-                    iconImage = abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
-                }
-                abilityIcons[i] = iconImage;
+            Ability ability = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
 
+            // Ensure the slot has an Image component for the ability icon
+            Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>();
+            if (iconImage == null)
+            {
+                iconImage = abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
+            }
+            abilityIcons[i] = iconImage;
+
+            if (ability != null)
+            {
                 // Set the ability icon sprite
-                abilityIcons[i].sprite = equippedAbilities[i].abilityIcon;
+                abilityIcons[i].sprite = ability.abilityIcon;
                 abilityIcons[i].enabled = true; // Ensure the icon is visible
 
-                // Setup or find an existing Image component for the cooldown overlay
-                Image overlayImage = abilitySlotsUIReference[i].Find("CooldownOverlay")?.GetComponent<Image>();
-                if (overlayImage == null)
-                {
-                    GameObject overlayObject = new GameObject("CooldownOverlay", typeof(Image));
-                    overlayObject.transform.SetParent(abilitySlotsUIReference[i], false);
-                    overlayImage = overlayObject.GetComponent<Image>();
-                }
+                // Setup or find an existing Image component for the cooldown overlay within this slot
+                Image overlayImage = FindOrCreateOverlayImage(abilitySlotsUIReference[i]);
 
-                // Use the same sprite for the overlay but control visibility with fillAmount
-                overlayImage.sprite = equippedAbilities[i].abilityIcon;
-                overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 1); // Set the color to grey
+                // Set up the cooldown overlay properties
+                overlayImage.sprite = ability.abilityIcon; // Use the ability icon for the overlay
+                overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 0.75f); // Semi-transparent grey
                 overlayImage.type = Image.Type.Filled;
                 overlayImage.fillMethod = Image.FillMethod.Radial360;
-                overlayImage.fillClockwise = false; // Adjust if necessary
-                overlayImage.fillOrigin = (int)Image.Origin360.Top; // Adjust if necessary
+                overlayImage.fillClockwise = false;
+                overlayImage.fillOrigin = (int)Image.Origin360.Top;
                 overlayImage.fillAmount = 0; // Start fully transparent (no cooldown)
                 cooldownOverlays[i] = overlayImage;
+            }
+            else
+            {
+                // If the ability is null, ensure the slot is disabled
+                abilityIcons[i].enabled = false;
+                if (abilitySlotsUIReference[i].Find("CooldownOverlay"))
+                {
+                    abilitySlotsUIReference[i].Find("CooldownOverlay").gameObject.SetActive(false);
+                }
             }
         }
     }
 
+    private Image FindOrCreateOverlayImage(RectTransform parentSlot)
+    {
+        Transform existingOverlay = parentSlot.Find("CooldownOverlay");
+        if (existingOverlay != null)
+        {
+            return existingOverlay.GetComponent<Image>();
+        }
+
+        GameObject overlayObject = new GameObject("CooldownOverlay", typeof(Image));
+        overlayObject.transform.SetParent(parentSlot, false);
+        RectTransform overlayRT = overlayObject.GetComponent<RectTransform>();
+        overlayRT.anchorMin = Vector2.zero;
+        overlayRT.anchorMax = Vector2.one;
+        overlayRT.sizeDelta = Vector2.zero; // Overlay covers the entire slot
+
+        return overlayObject.GetComponent<Image>();
+    }
 
 
     public void ActivateAbility(int slot)
     {
-        if (slot >= 0 && slot < equippedAbilities.Length && equippedAbilities[slot] != null && cooldowns[slot] <= 0)
+        if (slot >= 0 && slot < equippedAbilityIDs.Length)
         {
-            equippedAbilities[slot].Activate(gameObject);
-            cooldowns[slot] = equippedAbilities[slot].cooldownTime;
-            cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
+            Ability ability = abilityDatabase.GetAbilityByID(equippedAbilityIDs[slot]);
+            if (ability != null && cooldowns[slot] <= 0)
+            {
+                ability.Activate(gameObject);
+                cooldowns[slot] = ability.cooldownTime;
+                cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
+            }
         }
     }
 
     private void UpdateCooldowns()
     {
-        for (int i = 0; i < equippedAbilities.Length; i++)
+        for (int i = 0; i < equippedAbilityIDs.Length; i++)
         {
-            if (cooldowns[i] > 0)
+            Ability ability = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
+            if (ability != null && cooldowns[i] > 0)
             {
                 cooldowns[i] -= Time.deltaTime;
-                cooldownOverlays[i].fillAmount = cooldowns[i] / equippedAbilities[i].cooldownTime;
+                cooldownOverlays[i].fillAmount = cooldowns[i] / ability.cooldownTime;
             }
             else
             {
@@ -107,14 +135,23 @@ public class PlayerAbilities : MonoBehaviour
         }
     }
 
-    public void SwapAbility(int slot, Ability newAbility)
+    public void SwapAbility(int slot, int newAbilityID)
     {
-        if (slot >= 0 && slot < equippedAbilities.Length && newAbility != null)
+        if (slot >= 0 && slot < equippedAbilityIDs.Length)
         {
-            equippedAbilities[slot] = newAbility;
-            abilityIcons[slot].sprite = newAbility.abilityIcon; // Update the icon sprite
-            cooldowns[slot] = 0; // Reset the cooldown
-            cooldownOverlays[slot].fillAmount = 0; // Reset the cooldown overlay
+            equippedAbilityIDs[slot] = newAbilityID;
+
+            Ability newAbility = abilityDatabase.GetAbilityByID(newAbilityID);
+            if (newAbility != null)
+            {
+                abilityIcons[slot].sprite = newAbility.abilityIcon;
+                cooldowns[slot] = 0;
+                cooldownOverlays[slot].fillAmount = 0;
+
+                // Update the cooldown overlay sprite to the new ability's icon
+                cooldownOverlays[slot].sprite = newAbility.abilityIcon;
+            }
         }
     }
+
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390d774372d4cc744bd99223337e8af0, type: 3}
+  m_Name: '[HA] Lunch Break'
+  m_EditorClassIdentifier: 
+  abilityName: Lunch Break
+  abilityIcon: {fileID: 1101442489, guid: 306f1e0dcd7792445a0e0f224f00f452, type: 3}
+  cooldownTime: 15
+  ID: 0
+  changeHealthAmount: 2
+  adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  healingEffectPrefab: {fileID: 6569096716732797545, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}

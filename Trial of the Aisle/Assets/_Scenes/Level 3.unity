@@ -845,6 +845,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
   m_PrefabInstance: {fileID: 1094803131}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &414185845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414185846}
+  - component: {fileID: 414185847}
+  m_Layer: 0
+  m_Name: AbilityDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414185846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414185845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829568176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &414185847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414185845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a61066182ad92245b7f1f689cd34842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
 --- !u!1 &414542216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3117213403581950414, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
@@ -7741,6 +7786,7 @@ Transform:
   - {fileID: 443669516}
   - {fileID: 1342007417}
   - {fileID: 1945476408}
+  - {fileID: 414185846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855409801
@@ -15173,7 +15219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 324.7, y: -160}
+  m_AnchoredPosition: {x: 325.6, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969579880
@@ -15628,6 +15674,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostBattleCanvas Painkiller
       objectReference: {fileID: 0}
+    - target: {fileID: 108588988300756323, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -128405432, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
+    - target: {fileID: 108588988300756323, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906709306345880128, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -236900693, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
+    - target: {fileID: 6906709306345880128, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7430182710669596719, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -15729,8 +15791,8 @@ PrefabInstance:
       value: 113
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6345571237290201450, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-    - {fileID: 1623971325141472598, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+    - {fileID: 6358067893272137707, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+    - {fileID: 7111901791333043454, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -16189,9 +16251,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
-  equippedAbilities:
-  - {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
-  - {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}
+  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
+  equippedAbilityIDs: 000000000100000002000000
   abilitySlotsUIReference:
   - {fileID: 2545268619740206462}
   - {fileID: 5386798739049433889}
@@ -46604,8 +46665,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1945476408}
-  - component: {fileID: 1945476410}
   - component: {fileID: 1945476409}
+  - component: {fileID: 1945476410}
   m_Layer: 0
   m_Name: PostAbility / Boss Manager
   m_TagString: Untagged
@@ -46640,10 +46701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1258f33c50fc18a4ea93e6801827b362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAbilities:
-  - {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}
-  - {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
-  - {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
+  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
 --- !u!114 &1945476410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46653,12 +46711,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945476407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ed34e94f9d06824996d95236cb1188c, type: 3}
+  m_Script: {fileID: 11500000, guid: e6914fdc17a73a54d9d74b56c455126f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockPanel: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-  abilityOneButton: {fileID: 1057551674}
-  abilityTwoButton: {fileID: 2083633546}
+  unlockPanel: {fileID: 1057551669}
+  abilityOneImage: {fileID: 1057551671}
+  abilityTwoImage: {fileID: 2083633544}
+  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
+  playerAbilities: {fileID: 1075837064}
 --- !u!1001 &1964153858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47177,7 +47237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 462.40002, y: -160}
+  m_AnchoredPosition: {x: 463.4, y: -160}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2886160405841606760
@@ -47195,6 +47255,8 @@ MonoBehaviour:
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossAbilityComponents: []
   postBattleCanvas: {fileID: 1057551669}
+  abilitySelectionUI: {fileID: 0}
+  newAbilityIDsAfterDefeat: 
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
     spawnPosition: 0

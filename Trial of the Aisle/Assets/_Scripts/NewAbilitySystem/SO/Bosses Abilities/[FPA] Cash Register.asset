@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
+  m_Name: '[FPA] Cash Register'
+  m_EditorClassIdentifier: 
+  abilityName: 
+  abilityIcon: {fileID: 1863191801, guid: 306f1e0dcd7792445a0e0f224f00f452, type: 3}
+  cooldownTime: 7
+  ID: 0
+  projectilePrefab: {fileID: 1572699439113838549, guid: df683362c2809b64984a14ed70475394, type: 3}
+  projectileSpeed: 15

@@ -8,11 +8,12 @@ public class BossCheckDefeat : MonoBehaviour
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
     [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // List of boss ability components
     [SerializeField] private GameObject postBattleCanvas; // Reference to the post-battle canvas
+    [SerializeField] private NewAbilitySelectionUI abilitySelectionUI; // Reference to the ability selection UI
+    [SerializeField] private int[] newAbilityIDsAfterDefeat; // IDs of new abilities offered after defeat
 
     private LevelLoader levelLoader;
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
-    public KeyCode debugSpawnKey = KeyCode.Space;
     public KeyCode debugDefeatBossKey = KeyCode.K; // Assign a key for debug defeat
 
     private void Awake()
@@ -24,7 +25,6 @@ public class BossCheckDefeat : MonoBehaviour
 
     private void Update()
     {
-        // Check if the debug key for defeating the boss is pressed
         if (Input.GetKeyDown(debugDefeatBossKey))
         {
             Debug.Log("Debug: Boss defeated");
@@ -36,20 +36,19 @@ public class BossCheckDefeat : MonoBehaviour
     {
         try
         {
-            SpawnObjects(); // Ensure this method doesn't rely on the boss GameObject after it's destroyed
+            SpawnObjects();
         }
         catch (Exception e)
         {
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
 
-        ShowPostBattleUI(); // Show the post-battle UI before destroying the boss
+        ShowPostBattleUI();
+        TriggerAbilitySelection();
 
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
-
-        //levelLoader.SetTrigger();
-        Destroy(gameObject); // Destroy the boss GameObject last to ensure all cleanup is done before this
+        Destroy(gameObject);
     }
 
     private void ShowPostBattleUI()
@@ -60,26 +59,36 @@ public class BossCheckDefeat : MonoBehaviour
         }
     }
 
+    private void TriggerAbilitySelection()
+    {
+        // Ensure there are at least 2 new abilities to offer
+        if (newAbilityIDsAfterDefeat.Length >= 2)
+        {
+            abilitySelectionUI.ShowAbilities(newAbilityIDsAfterDefeat[0], newAbilityIDsAfterDefeat[1]);
+        }
+        else
+        {
+            Debug.LogWarning("Not enough new abilities specified for post-boss defeat selection.");
+        }
+    }
+
     private void SpawnObjects()
     {
-        for (int i = 0; i < objectsToSpawnIn.Length; i++)
+        foreach (var item in objectsToSpawnIn)
         {
-            Vector3 spawnLocation = GetSpawnLocation(objectsToSpawnIn[i].spawnPosition);
-            Instantiate(objectsToSpawnIn[i].gameObjectToSpawn, spawnLocation, Quaternion.identity);
+            Vector3 spawnLocation = GetSpawnLocation(item.spawnPosition);
+            Instantiate(item.gameObjectToSpawn, spawnLocation, Quaternion.identity);
         }
     }
 
     private Vector3 GetSpawnLocation(SpawnType spawnPos)
     {
-        switch (spawnPos)
+        return spawnPos switch
         {
-            case SpawnType.WORLD_SPAWN:
-                return Vector3.zero;
-            case SpawnType.BOSS_POSITION:
-                return transform.position;
-            default:
-                return Vector3.zero;
-        }
+            SpawnType.WORLD_SPAWN => Vector3.zero,
+            SpawnType.BOSS_POSITION => transform.position,
+            _ => Vector3.zero,
+        };
     }
 }
 

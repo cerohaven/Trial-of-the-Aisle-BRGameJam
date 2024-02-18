@@ -3,15 +3,13 @@ using UnityEngine;
 public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager Instance { get; private set; }
-
-    [SerializeField]
-    private Ability[] allAbilities; // Assign all possible abilities in the inspector
+    public AbilityDatabase abilityDatabase; // Assign in the Inspector
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -19,31 +17,27 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
-    // Method to get an Ability by name
-    public Ability GetAbilityByName(string abilityName)
+    public void SwapPlayerAbility(int slot, int abilityID)
     {
-        foreach (Ability ability in allAbilities)
+        // Check if the ability ID is valid by trying to get the ability from the database
+        Ability newAbility = abilityDatabase.GetAbilityByID(abilityID);
+        if (newAbility != null)
         {
-            if (ability.abilityName == abilityName)
+            // Find the PlayerAbilities component in the scene
+            PlayerAbilities playerAbilities = FindObjectOfType<PlayerAbilities>();
+            if (playerAbilities != null)
             {
-                return ability;
+                // Use the ability ID to swap abilities, instead of the Ability object
+                playerAbilities.SwapAbility(slot, abilityID);
             }
-        }
-        Debug.LogWarning("Ability not found: " + abilityName);
-        return null;
-    }
-
-    // Method to swap the player's ability with a new one
-    public void SwapPlayerAbility(int slot, Ability newAbility)
-    {
-        PlayerAbilities playerAbilities = FindObjectOfType<PlayerAbilities>(); // Find the PlayerAbilities script in the scene
-        if (playerAbilities != null)
-        {
-            playerAbilities.SwapAbility(slot, newAbility);
+            else
+            {
+                Debug.LogWarning("PlayerAbilities script not found in the scene.");
+            }
         }
         else
         {
-            Debug.LogWarning("PlayerAbilities script not found in the scene.");
+            Debug.LogWarning($"Invalid ability ID: {abilityID}. Ability not found in database.");
         }
     }
 }
