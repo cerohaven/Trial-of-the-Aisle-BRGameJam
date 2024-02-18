@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 using System.Collections;
 
 public class NewAbilitySelectionUI : MonoBehaviour
@@ -9,22 +10,20 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private AbilityDatabase abilityDatabase;
     [SerializeField] private PlayerAbilities playerAbilities;
 
-    private int selectedNewAbilityID = -1;
+    private HashSet<int> swappedAbilities = new HashSet<int>();
 
     void Start()
     {
-        unlockPanel.SetActive(false); // Ensure the panel is hidden at the start
+        unlockPanel.SetActive(false);
     }
 
     public void ShowAbilities(int abilityOneID, int abilityTwoID)
     {
-        unlockPanel.SetActive(true); // Only show the panel when this method is called
+        unlockPanel.SetActive(true);
+        swappedAbilities.Clear(); // Reset for a new session
 
         SetupAbilityImage(abilityOneImage, abilityOneID);
         SetupAbilityImage(abilityTwoImage, abilityTwoID);
-
-        AddClickListener(abilityOneImage, abilityOneID);
-        AddClickListener(abilityTwoImage, abilityTwoID);
     }
 
     private void SetupAbilityImage(Image abilityImage, int abilityID)
@@ -33,58 +32,53 @@ public class NewAbilitySelectionUI : MonoBehaviour
         if (ability != null)
         {
             abilityImage.sprite = ability.abilityIcon;
-            abilityImage.gameObject.GetComponent<Button>().interactable = true;
+            abilityImage.GetComponent<Button>().interactable = !swappedAbilities.Contains(abilityID);
+
+            Button button = abilityImage.GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => OnAbilitySelected(abilityID, abilityImage));
         }
-        else
+    }
+
+    private void OnAbilitySelected(int abilityID, Image abilityImage)
+    {
+        if (!swappedAbilities.Contains(abilityID))
         {
-            Debug.LogWarning($"Ability with ID {abilityID} not found.");
-            abilityImage.gameObject.GetComponent<Button>().interactable = false;
+            StartCoroutine(WaitForSlotSelection(abilityID, abilityImage));
         }
     }
 
-    private void AddClickListener(Image abilityImage, int abilityID)
+    private IEnumerator WaitForSlotSelection(int abilityID, Image abilityImage)
     {
-        Button button = abilityImage.GetComponent<Button>();
-        button.onClick.RemoveAllListeners(); // Remove existing listeners to avoid stacking
-        button.onClick.AddListener(() => SelectNewAbility(abilityID));
-    }
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                playerAbilities.SwapAbility(2, abilityID);
+                break;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                playerAbilities.SwapAbility(1, abilityID);
+                break;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                playerAbilities.SwapAbility(0, abilityID);
+                break;
+            }
+            yield return null;
+        }
 
-    private void SelectNewAbility(int abilityID)
-    {
-        selectedNewAbilityID = abilityID;
-        // Don't hide the panel here; wait for slot selection
+        swappedAbilities.Add(abilityID); // Mark as swapped
+        abilityImage.GetComponent<Button>().interactable = false; // Disable further swaps for this ability
     }
 
     void Update()
     {
-        CheckForAbilitySlotSelection();
-    }
-
-    private void CheckForAbilitySlotSelection()
-    {
-        if (selectedNewAbilityID != -1) // If an ability has been selected
+        if (Input.GetKeyDown(KeyCode.Space) && unlockPanel.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                playerAbilities.SwapAbility(0, selectedNewAbilityID);
-                FinishAbilitySelection();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                playerAbilities.SwapAbility(1, selectedNewAbilityID);
-                FinishAbilitySelection();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                playerAbilities.SwapAbility(2, selectedNewAbilityID);
-                FinishAbilitySelection();
-            }
+            unlockPanel.SetActive(false);
         }
-    }
-
-    private void FinishAbilitySelection()
-    {
-        selectedNewAbilityID = -1; // Reset selection
-        unlockPanel.SetActive(false); // Hide the panel after selection is complete
     }
 }
