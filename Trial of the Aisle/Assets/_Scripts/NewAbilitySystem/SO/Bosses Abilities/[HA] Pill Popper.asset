@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390d774372d4cc744bd99223337e8af0, type: 3}
   m_Name: '[HA] Pill Popper'
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: PillPopper
+  abilityDescription: TEST HEAL
   abilityIcon: {fileID: 375709886, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 13
   ID: 0

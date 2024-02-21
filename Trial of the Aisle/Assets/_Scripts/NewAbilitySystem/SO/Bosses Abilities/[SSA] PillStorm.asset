@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: '[SSA] PillStorm'
   m_EditorClassIdentifier: 
   abilityName: PillStorm
+  abilityDescription: TEST TEXT
   abilityIcon: {fileID: -1736676581, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 5
   ID: 0

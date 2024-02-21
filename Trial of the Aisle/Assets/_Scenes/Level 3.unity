@@ -890,11 +890,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
---- !u!1 &414542216 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3117213403581950414, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-  m_PrefabInstance: {fileID: 1057551665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &417454666 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -953,6 +948,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 829568176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &454150151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2208777835969676277, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+  m_PrefabInstance: {fileID: 1057551665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &490838597 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7919,6 +7919,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &865320221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3472198125153351896, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+  m_PrefabInstance: {fileID: 1057551665}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &894424110
 GameObject:
   m_ObjectHideFlags: 0
@@ -15674,20 +15679,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostBattleCanvas Painkiller
       objectReference: {fileID: 0}
+    - target: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 108588988300756323, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -128405432, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
+      objectReference: {fileID: -1736676581, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
     - target: {fileID: 108588988300756323, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472198125153351896, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6906709306345880128, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -236900693, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
+      objectReference: {fileID: 375709886, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
     - target: {fileID: 6906709306345880128, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7430182710669596719, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
@@ -15770,38 +15783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8070930003931736401, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6.009468
-      objectReference: {fileID: 0}
-    - target: {fileID: 8070930003931736401, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.5734
-      objectReference: {fileID: 0}
-    - target: {fileID: 8070930003931736401, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7867
-      objectReference: {fileID: 0}
-    - target: {fileID: 8070930003931736401, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -564
-      objectReference: {fileID: 0}
-    - target: {fileID: 8070930003931736401, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 113
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6358067893272137707, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-    - {fileID: 7111901791333043454, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3117213403581950414, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1057551674}
-    - targetCorrespondingSourceObject: {fileID: 4137525734117343080, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2083633546}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
 --- !u!224 &1057551666 stripped
 RectTransform:
@@ -15818,56 +15803,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 108588988300756323, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
   m_PrefabInstance: {fileID: 1057551665}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414542216}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1057551674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 414542216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1057551671}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1065858639
 GameObject:
   m_ObjectHideFlags: 0
@@ -46668,7 +46609,7 @@ GameObject:
   - component: {fileID: 1945476409}
   - component: {fileID: 1945476410}
   m_Layer: 0
-  m_Name: PostAbility / Boss Manager
+  m_Name: AbilityManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46717,6 +46658,8 @@ MonoBehaviour:
   unlockPanel: {fileID: 1057551669}
   abilityOneImage: {fileID: 1057551671}
   abilityTwoImage: {fileID: 2083633544}
+  abilityOneTextPanel: {fileID: 865320221}
+  abilityTwoTextPanel: {fileID: 454150151}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
   playerAbilities: {fileID: 1075837064}
 --- !u!1001 &1964153858
@@ -46991,66 +46934,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2083633542 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4137525734117343080, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
-  m_PrefabInstance: {fileID: 1057551665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2083633544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6906709306345880128, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
   m_PrefabInstance: {fileID: 1057551665}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083633542}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2083633546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2083633542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 2083633544}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2105187588
 GameObject:
   m_ObjectHideFlags: 0
@@ -47253,14 +47147,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
-  bossAbilityComponents: []
+  bossAbilityComponents:
+  - {fileID: 2645297368200040001, guid: 0d98da1a5f1160c4d8ae6108b121e2c6, type: 3}
+  - {fileID: 8136604247596423563, guid: 9d6626bf1b725a74699092b4192bc15d, type: 3}
   postBattleCanvas: {fileID: 1057551669}
-  abilitySelectionUI: {fileID: 0}
-  newAbilityIDsAfterDefeat: 
+  abilitySelectionUI: {fileID: 1945476410}
+  newAbilityIDsAfterDefeat: 0300000004000000
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
     spawnPosition: 0
-  debugSpawnKey: 9
   debugDefeatBossKey: 107
 --- !u!114 &3257722118906592721
 MonoBehaviour:

@@ -4,6 +4,10 @@ using UnityEngine;
 public abstract class Ability : ScriptableObject
 {
     public string abilityName;
+
+    [TextArea(2, 5)]
+    public string abilityDescription = "";
+
     public Sprite abilityIcon;
     public float cooldownTime;
     public int ID;
