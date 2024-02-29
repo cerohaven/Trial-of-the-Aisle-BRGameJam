@@ -9,7 +9,7 @@ public class BossCheckDefeat : MonoBehaviour
     [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // List of boss ability components
     [SerializeField] private GameObject postBattleCanvas; // Reference to the post-battle canvas
     [SerializeField] private NewAbilitySelectionUI abilitySelectionUI; // Reference to the ability selection UI
-    [SerializeField] private int[] newAbilityIDsAfterDefeat; // IDs of new abilities offered after defeat
+    [SerializeField] private Ability[] newAbilitiesAfterDefeat; // Abilities offered after defeat, updated to use Ability objects
 
     private LevelLoader levelLoader;
 
@@ -62,9 +62,9 @@ public class BossCheckDefeat : MonoBehaviour
     private void TriggerAbilitySelection()
     {
         // Ensure there are at least 2 new abilities to offer
-        if (newAbilityIDsAfterDefeat.Length >= 2)
+        if (newAbilitiesAfterDefeat.Length >= 2)
         {
-            abilitySelectionUI.ShowAbilities(newAbilityIDsAfterDefeat[0], newAbilityIDsAfterDefeat[1]);
+            abilitySelectionUI.ShowAbilities(newAbilitiesAfterDefeat[0], newAbilitiesAfterDefeat[1]);
         }
         else
         {

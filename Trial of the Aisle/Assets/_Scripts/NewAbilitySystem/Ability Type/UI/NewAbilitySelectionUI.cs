@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // For TextMeshPro elements
-using UnityEngine.EventSystems; // For event triggers
+using TMPro;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,34 +10,37 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private GameObject unlockPanel;
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
-    [SerializeField] private AbilityDatabase abilityDatabase;
     [SerializeField] private PlayerAbilities playerAbilities;
 
-    private HashSet<int> swappedAbilities = new HashSet<int>();
+    private Ability abilityOne;
+    private Ability abilityTwo;
+    private HashSet<Ability> swappedAbilities = new HashSet<Ability>();
 
     void Start()
     {
         unlockPanel.SetActive(false);
-        abilityOneTextPanel.SetActive(false); // Initially hide the text panels
+        abilityOneTextPanel.SetActive(false);
         abilityTwoTextPanel.SetActive(false);
     }
 
-    public void ShowAbilities(int abilityOneID, int abilityTwoID)
+    public void ShowAbilities(Ability abilityOne, Ability abilityTwo)
     {
+        this.abilityOne = abilityOne;
+        this.abilityTwo = abilityTwo;
+
         unlockPanel.SetActive(true);
         swappedAbilities.Clear(); // Reset for a new session
 
-        SetupAbilityUI(abilityOneImage, abilityOneID, abilityOneTextPanel);
-        SetupAbilityUI(abilityTwoImage, abilityTwoID, abilityTwoTextPanel);
+        SetupAbilityUI(abilityOneImage, abilityOne, abilityOneTextPanel);
+        SetupAbilityUI(abilityTwoImage, abilityTwo, abilityTwoTextPanel);
     }
 
-    private void SetupAbilityUI(Image abilityImage, int abilityID, GameObject textPanel)
+    private void SetupAbilityUI(Image abilityImage, Ability ability, GameObject textPanel)
     {
-        Ability ability = abilityDatabase.GetAbilityByID(abilityID);
         if (ability != null)
         {
             abilityImage.sprite = ability.abilityIcon;
-            abilityImage.GetComponent<Button>().interactable = !swappedAbilities.Contains(abilityID);
+            abilityImage.GetComponent<Button>().interactable = !swappedAbilities.Contains(ability);
             TextMeshProUGUI headerText = textPanel.transform.Find("Header").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI descriptionText = textPanel.transform.Find("Description").GetComponent<TextMeshProUGUI>();
 
@@ -50,42 +53,43 @@ public class NewAbilitySelectionUI : MonoBehaviour
 
             Button button = abilityImage.GetComponent<Button>();
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => OnAbilitySelected(abilityID));
+            button.onClick.AddListener(() => OnAbilitySelected(ability));
         }
     }
 
-    private void OnAbilitySelected(int abilityID)
+    private void OnAbilitySelected(Ability ability)
     {
-        if (!swappedAbilities.Contains(abilityID))
+        if (!swappedAbilities.Contains(ability))
         {
-            StartCoroutine(WaitForSlotSelection(abilityID));
+            StartCoroutine(WaitForSlotSelection(ability));
         }
     }
 
-    private IEnumerator WaitForSlotSelection(int abilityID)
+    private IEnumerator WaitForSlotSelection(Ability ability)
     {
         while (true)
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                playerAbilities.SwapAbility(1, abilityID);
+                PlayerAbilities.Instance.SwapAbility(0, ability);
                 break;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                playerAbilities.SwapAbility(2, abilityID);
+                PlayerAbilities.Instance.SwapAbility(1, ability);
                 break;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                playerAbilities.SwapAbility(3, abilityID);
+                PlayerAbilities.Instance.SwapAbility(2, ability);
                 break;
             }
             yield return null;
         }
 
-        swappedAbilities.Add(abilityID); // Mark as swapped
+        swappedAbilities.Add(ability); // Mark as swapped
     }
+
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
     {
