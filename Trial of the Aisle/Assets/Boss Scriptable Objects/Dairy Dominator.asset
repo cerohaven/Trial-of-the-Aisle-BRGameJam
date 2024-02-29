@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a459dc52c9cc16499dc2819369bfd0b, type: 3}
+  m_Name: Dairy Dominator
+  m_EditorClassIdentifier: 
+  b_Name: Dairy Dominator
+  b_MaxHealth: 250
+  b_BossProfilePicture: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
+  b_BossProfileTexture: {fileID: 0}
+  b_BossColourPalette:
+    serializedVersion: 2
+    rgba: 4283039737
+  b_BaseProjectileThrowSpeed: 0
+  b_BaseTimeBetweenProjectileAttacks: 0
+  b_BossThrowProjectiles:
+  - projectilePrefab: {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
+    percentChanceToUse: 0.5
+  b_BossHealthIncrements:
+  - healthPercent: 50.2
+    projectileSpeedMultiplier: 1
+    timeBetweenProjectileAttacksMultiplier: 1
+    healthIncrementEvent: {fileID: 0}
+  - healthPercent: 20.41
+    projectileSpeedMultiplier: 1
+    timeBetweenProjectileAttacksMultiplier: 1
+    healthIncrementEvent: {fileID: 0}
+  b_BossAttacks:
+  - attackName: 
+    percentChanceToUse: 0.508
+    attackCondition: {fileID: 0}
+  - attackName: 
+    percentChanceToUse: 0.532
+    attackCondition: {fileID: 0}
+  b_maxAttackRepeatTimes: 2
+  ability1: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
+  ability2: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
+  ability1Texture: {fileID: 0}
+  ability2Texture: {fileID: 0}

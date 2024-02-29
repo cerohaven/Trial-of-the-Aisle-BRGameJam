@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84256f632d5feec4e81d8267aae0f9e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScene: 0
 --- !u!1 &392830425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7706,11 +7707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddec0a2ddce516f4bac1d655b07b0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedAbilityComponents:
-  - {fileID: 657477940805212986, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
-  - {fileID: 0}
-  unlockedAbilityComponents: []
-  playerInput: {fileID: 1075837057}
 --- !u!4 &776230602
 Transform:
   m_ObjectHideFlags: 0
@@ -8222,14 +8218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd31da27a4905824e83a2cde4ac42232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityManager: {fileID: 776230601}
-  abilityCooldownFills: []
-  ability1Reference: {fileID: 1913281322}
-  ability1BGReference: {fileID: 1181828997}
-  ability2Reference: {fileID: 55558255}
-  ability2BGReference: {fileID: 533120027}
-  ability3Reference: {fileID: 969579879}
-  ability3BGReference: {fileID: 107369778}
 --- !u!114 &855409805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9168,11 +9156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049c561fd5c3c5c4f884b291fcb7ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
-  bulletForce: 20
-  firePoint: {fileID: 2130552886}
-  playerController: {fileID: 1075837056}
-  abilityManager: {fileID: 776230601}
 --- !u!4 &1075837055
 Transform:
   m_ObjectHideFlags: 0
@@ -47968,11 +47951,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossAbilityComponents: []
-  abilityManager: {fileID: 776230601}
+  postBattleCanvas: {fileID: 0}
+  abilitySelectionUI: {fileID: 0}
+  newAbilityIDsAfterDefeat: 
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: 2e35410ca5cacbf4a90c6cc29463ed79, type: 3}
     spawnPosition: 0
-  debugSpawnKey: 9
+  debugDefeatBossKey: 107
 --- !u!114 &3257722118906592721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48006,7 +47991,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 427, y: 274}
+    _translation: {x: 335, y: 346}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
