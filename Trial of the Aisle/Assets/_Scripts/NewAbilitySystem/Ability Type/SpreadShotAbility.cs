@@ -1,38 +1,29 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/Spread Shot")]
+[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/Spread Shot")] // Enables creating instances in the Unity Editor.
 public class SpreadShotAbility : Ability
 {
-    public GameObject projectilePrefab;
-    public float projectileSpeed;
-    public float spreadAngle = 15f; // The angle between each projectile
+    public GameObject projectilePrefab; // Prefab for projectiles to shoot.
+    public float projectileSpeed; // Speed of the projectiles.
+    public float spreadAngle = 15f; // Angle between each projectile.
 
-    public override void Activate(GameObject owner)
+    public override void Activate(GameObject owner) // Implements ability activation.
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = owner.transform.position.z; // Ensure the z position is the same as the owner's position
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convert mouse position to world coordinates.
+        mousePosition.z = owner.transform.position.z; // Aligns z-axis with the owner.
 
-        // Calculate the direction from the owner to the mouse position
-        Vector2 direction = (mousePosition - owner.transform.position).normalized;
+        Vector2 direction = (mousePosition - owner.transform.position).normalized; // Direction towards the mouse position.
 
-        // Instantiate the center projectile aimed at the mouse position
-        InstantiateProjectile(owner.transform.position, direction, 0);
-
-        // Instantiate the left and right projectiles with spread aimed at the mouse position
-        InstantiateProjectile(owner.transform.position, direction, -spreadAngle);
-        InstantiateProjectile(owner.transform.position, direction, spreadAngle);
+        // Instantiate projectiles with specified spread.
+        InstantiateProjectile(owner.transform.position, direction, 0); // Center projectile.
+        InstantiateProjectile(owner.transform.position, direction, -spreadAngle); // Left projectile.
+        InstantiateProjectile(owner.transform.position, direction, spreadAngle); // Right projectile.
     }
 
-    private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset)
+    private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset) // Instantiate a projectile with an angle offset.
     {
-        // Create a rotation based on the direction with an added angle offset for the spread
-        Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset);
-
-        // Instantiate the projectile
-        GameObject projectile = Instantiate(projectilePrefab, position, rotation);
-
-        // Set the projectile's velocity towards the calculated direction
-        Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-        rb.velocity = rotation * Vector2.right * projectileSpeed; // Vector2.right is used as the forward direction
+        Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset); // Calculate rotation with spread.
+        GameObject projectile = Instantiate(projectilePrefab, position, rotation); // Create the projectile.
+        projectile.GetComponent<Rigidbody2D>().velocity = rotation * Vector2.right * projectileSpeed; // Set velocity in the direction of rotation.
     }
 }
