@@ -25,19 +25,19 @@ MonoBehaviour:
   - projectilePrefab: {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
     percentChanceToUse: 0.5
   b_BossHealthIncrements:
-  - healthPercent: 50.2
-    projectileSpeedMultiplier: 1
+  - healthPercent: 59.7
+    projectileSpeedMultiplier: 0.875
     timeBetweenProjectileAttacksMultiplier: 1
     healthIncrementEvent: {fileID: 0}
-  - healthPercent: 20.41
+  - healthPercent: 27.6
     projectileSpeedMultiplier: 1
     timeBetweenProjectileAttacksMultiplier: 1
     healthIncrementEvent: {fileID: 0}
   b_BossAttacks:
-  - attackName: 
+  - attackName: 'Attack 1 '
     percentChanceToUse: 0.508
     attackCondition: {fileID: 0}
-  - attackName: 
+  - attackName: Attack 2
     percentChanceToUse: 0.532
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2

@@ -9,6 +9,7 @@ public class BossHealthBar : MonoBehaviour
     [Header("Scriptable Object")]
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedSender;
     [SerializeField] private Blackboard bossBlackboard;
+    private SO_BossProfile bossProfile;
 
     [Header("Boss Hit Effect")]
     [SerializeField] private GameObject bossHitEffect;
@@ -25,6 +26,7 @@ public class BossHealthBar : MonoBehaviour
     private float bossBarScaleX;
     private float bossHealth;
     private float maxHealth;
+    private float maxBossBarScaleX;
     private bool canStartIncrease = false;  //called from the "BossIntroAnimation.cs" script to 
                                     //start increasing the boss bar at the beginning
     //Boss Damaged Colour Change
@@ -39,13 +41,16 @@ public class BossHealthBar : MonoBehaviour
 
     private void Awake()
     {
+        bossProfile = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+
         bossRectTransform = GetComponent<RectTransform>();
         uiManager = GameObject.FindObjectOfType<UIManager>();
     }
 
     private void Start()
     {
-        maxHealth = bossRectTransform.sizeDelta.x;
+        maxBossBarScaleX = bossRectTransform.sizeDelta.x;
+        maxHealth = bossProfile.B_MaxHealth;
         bossHealth = maxHealth;
         bossBarScaleX = 0;
         bossRectTransform.sizeDelta = new Vector2(0, bossRectTransform.sizeDelta.y);
@@ -88,14 +93,14 @@ public class BossHealthBar : MonoBehaviour
         bossRectTransform.sizeDelta = new Vector2(bossBarScaleX, bossRectTransform.sizeDelta.y);
 
         //when the boss bar loads up all the way to being full, then commence the battle and keep it's scale at max
-        if (bossRectTransform.sizeDelta.x >= maxHealth)
+        if (bossRectTransform.sizeDelta.x >= maxBossBarScaleX)
         {
             uiManager.FinishedBossIntro = true;
-            bossHealth = maxHealth;
+            
             
             AudioManager.instance.Stop("ui_bossBarIncrease");
-            bossBlackboard.SetVariableValue("bossHealth", bossHealth);
-            bossBlackboard.SetVariableValue("bossMaxHealth", maxHealth);
+
+           
         }
     }
 
@@ -125,7 +130,10 @@ public class BossHealthBar : MonoBehaviour
 
             GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
             hit.transform.up = _upDir;
-            
+
+            bossBlackboard.SetVariableValue("bossPhase", SetBossPhase());
+
+
         }
         else
         {
@@ -141,7 +149,46 @@ public class BossHealthBar : MonoBehaviour
     {
         bossHealth += _health;
         bossHealth = Mathf.Clamp(bossHealth, 0, maxHealth);
-        bossRectTransform.sizeDelta = new Vector2(bossHealth, bossRectTransform.sizeDelta.y);
+        bossRectTransform.sizeDelta = new Vector2((bossHealth / maxHealth) * 100, bossRectTransform.sizeDelta.y);
+
+
         bossBlackboard.SetVariableValue("bossHealth", bossHealth);
+    }
+
+    private int SetBossPhase()
+    {
+        
+        //Get percent health from max health
+        float healthPercent = (bossHealth / maxHealth * 100);
+
+        //loop through the phases
+
+        //if lower than one, set that phase
+
+        int bossPhases = bossProfile.B_BossPhases.Length;
+        //For loop to see if it is > the current increment or not
+        for (int i = bossPhases - 1; i >= 0; i--)
+        {
+
+            //eg. if increment is 65%, then we want to check if <25, then <50, then <75, then <100
+            //Yes to <75 (i = 1), so we set the pill speed to be projectileSpeed[i]
+
+            if (healthPercent > bossProfile.B_BossPhases[i].healthPercent)
+                continue;
+           
+
+            //Play the special Health Increment event if this phase has one and it hasn't already played
+            if (bossProfile.B_BossPhases[i].phaseEvent != null)
+            {
+                if(!bossProfile.B_BossPhases[i].phaseEvent.EventPlayed)
+                    bossProfile.B_BossPhases[i].phaseEvent.OnHealthChange();
+            }
+
+            return i + 1;
+
+           
+        }
+
+        return 0;
     }
 }

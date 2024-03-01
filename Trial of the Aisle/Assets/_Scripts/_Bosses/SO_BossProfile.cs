@@ -23,15 +23,18 @@ public class SO_BossProfile : ScriptableObject
     [Separator()]
     [Title("Projectiles", TextAlignment.Center)]
 
+    [Range(0, 30)]
     [SerializeField] private float b_BaseProjectileThrowSpeed;
+
+    [Range(0, 2)]
     [SerializeField] private float b_BaseTimeBetweenProjectileAttacks;
 
     [SerializeField] private BossThrowProjectiles[] b_BossThrowProjectiles = new BossThrowProjectiles[1];
 
     [Separator()]
     [Title("Health", TextAlignment.Center)]
-
-    [SerializeField] private BossHealthIncrements[] b_BossHealthIncrements = new BossHealthIncrements[2];
+    [Tooltip("When the boss reaches this percentage of health, we can change the behaviours of attacks" )]
+    [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[2];
 
     [Separator()]
     [Title("Attacks", TextAlignment.Center)]
@@ -45,14 +48,26 @@ public class SO_BossProfile : ScriptableObject
     [SerializeField] private Texture2D ability1Texture;
     [SerializeField] private Texture2D ability2Texture;
 
-    public string m_Name { get => b_Name; set => b_Name = value; }
+    public string m_Name { get => b_Name;}
+    public float B_MaxHealth { get => b_MaxHealth; }
     public Sprite m_BossProfilePicture { get => b_BossProfilePicture;}
     public Texture2D m_BossProfileTexture { get => b_BossProfileTexture; set => b_BossProfileTexture = value; }
+
+
+    public BossAttacks[] B_BossAttacks { get => b_BossAttacks; }
+    public float B_BaseProjectileThrowSpeed { get => b_BaseProjectileThrowSpeed; }
+    public float B_BaseTimeBetweenProjectileAttacks { get => b_BaseTimeBetweenProjectileAttacks; }
+    public BossThrowProjectiles[] B_BossThrowProjectiles { get => b_BossThrowProjectiles;}
+
     public Texture2D Ability1Texture { get => ability1Texture; set => ability1Texture = value; }
     public Texture2D Ability2Texture { get => ability2Texture; set => ability2Texture = value; }
-    public Ability Ability1 { get => ability1; set => ability1 = value; }
-    public Ability Ability2 { get => ability2; set => ability2 = value; }
-    public BossHealthIncrements[] B_BossHealthIncrements { get => b_BossHealthIncrements; set => b_BossHealthIncrements = value; }
+    public Ability Ability1 { get => ability1; }
+    public Ability Ability2 { get => ability2; }
+
+    public BossHealthIncrements[] B_BossPhases { get => b_BossPhases; }
+
+    
+
 
 
     //Properties
@@ -65,17 +80,19 @@ public class BossHealthIncrements
 {
     //This class is in charge of creating an array of percentages where the boss' attacks will change
     //Eg. when the boss is down to last 25% of health, do something.
+    [HideInInspector] public string phaseName = "Phase ";
+
     [Range(0, 100)]
     public float healthPercent = 50;
 
-    [Range(0, 2)]
-    public float projectileSpeedMultiplier = 1;
+    [Range(0, 30)]
+    public float projectileSpeed = 1;
 
     [Range(0, 2)]
-    public float timeBetweenProjectileAttacksMultiplier = 1;
+    public float timeBetweenProjectileAttacks = 1;
     
     [Tooltip("When the boss reaches this threshold, we can run custom code for a unique event to possibly trigger an animation, noise, etc.")]
-    public SO_BossHealthIncrementEvent healthIncrementEvent;
+    public BossPhaseEvent phaseEvent;
 }
 
 [System.Serializable]
@@ -95,7 +112,7 @@ public class BossAttacks
     public float percentChanceToUse = 0.5f;
 
     [Tooltip("Any special condition for this attack to play. Conditions like 'the boss must be at ___ health' or 'the player used their ability ___ imes'")]
-    public SO_BossAttackCondition attackCondition;
+    public BossAttackCondition attackCondition;
 }
 #endregion
 
@@ -114,7 +131,7 @@ public class SO_BossProfileEditor : Editor
 
     private SerializedProperty b_BossThrowProjectiles;
 
-    private SerializedProperty b_BossHealthIncrements;
+    private SerializedProperty b_BossPhases;
 
     private SerializedProperty b_BossAttacks;
 
@@ -138,7 +155,7 @@ public class SO_BossProfileEditor : Editor
 
         b_BossThrowProjectiles = serializedObject.FindProperty("b_BossThrowProjectiles");
 
-        b_BossHealthIncrements = serializedObject.FindProperty("b_BossHealthIncrements");
+        b_BossPhases = serializedObject.FindProperty("b_BossPhases");
 
         b_BossAttacks = serializedObject.FindProperty("b_BossAttacks");
 
@@ -254,7 +271,7 @@ public class SO_BossProfileEditor : Editor
 
         // HEALTH INFORMATION //
         GUILayout.Space(30f);
-        EditorGUILayout.PropertyField(b_BossHealthIncrements, new GUIContent("Boss Health Increments"));
+        EditorGUILayout.PropertyField(b_BossPhases, new GUIContent("Boss Phases"));
         
         Rect healthRect = GUILayoutUtility.GetLastRect();
         EditorGUI.DrawRect(new Rect(70, healthRect.y + healthRect.height + 20, healthRect.width - 60, 30), b_BossColourPalette.colorValue);
@@ -385,27 +402,46 @@ public class SO_BossProfileEditor : Editor
 
 
 
-
+        // This is in charge of drawing the boss health increment bars based on the BossHealthIncrements array size and data
         //I have to put this code after we apply the modified properties or else we get an error since the array of the property doesn't update on time
-        for (int i = 0; i < b_BossHealthIncrements.arraySize; i++)
+        for (int i = 0; i < b_BossPhases.arraySize; i++)
         {
+            //Change the name of the phase in the inspector array
+            boss.B_BossPhases[i].phaseName = $"Phase {i + 1}";
+
 
             //Loop through each health percent and draw a rect
 
-            float f = boss.B_BossHealthIncrements[Mathf.Clamp(i, 0, b_BossHealthIncrements.arraySize - 1)].healthPercent;
+            float f = boss.B_BossPhases[i].healthPercent;
 
-            boss.B_BossHealthIncrements[i].healthPercent = Mathf.Clamp(boss.B_BossHealthIncrements[i].healthPercent, 0, 100);
+            boss.B_BossPhases[i].healthPercent = boss.B_BossPhases[i].healthPercent;
             Color c = b_BossColourPalette.colorValue;
             
+
+            Rect incrementBar = new Rect((f * widthOfHealthBar / 100) + 70, healthRect.y + healthRect.height + 10, 8, 50);
+
+
             //Drawing the Ticks for the health percentages
-            EditorGUI.DrawRect(new Rect((f * widthOfHealthBar / 100) + 70, healthRect.y + healthRect.height + 10, 8, 50), new Color(c.r - 0.3f, c.g - 0.3f, c.b - 0.3f));
+            EditorGUI.DrawRect(incrementBar, new Color(c.r - 0.3f, c.g - 0.3f, c.b - 0.3f));
 
             GUIStyle textStyle = new GUIStyle();
             textStyle.fontSize = 16;
             textStyle.normal.textColor = Color.white;
 
             //Drawing the Number text for the health percentages
-            EditorGUI.LabelField(new Rect((f * widthOfHealthBar / 100)+60, healthRect.y + healthRect.height + 62, 10, 50), $"{f.ToString("00")}%", textStyle);
+            EditorGUI.LabelField(new Rect(incrementBar.x - 10, incrementBar.y + 52, 10, 50), $"{f.ToString("00")}%", textStyle);
+
+            //Drawing the phase number above the rectangle tick
+            EditorGUI.LabelField(new Rect(incrementBar.x - 25, incrementBar.y - 15, 10, 50), $"Phase {i+1}",textStyle);
+
+
+            if (boss.B_BossPhases[i].phaseEvent != null)
+            {
+                textStyle.normal.textColor = new Color(0.2f, 0.69f, 0.92f, 1);
+
+                //Drawing the Event text for the phase
+                EditorGUI.LabelField(new Rect(incrementBar.x - 15, incrementBar.y + 66, 10, 50), "Event", textStyle);
+            }
         }
 
 

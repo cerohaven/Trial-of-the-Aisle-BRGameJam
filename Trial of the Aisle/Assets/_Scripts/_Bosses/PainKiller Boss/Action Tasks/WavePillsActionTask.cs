@@ -20,6 +20,8 @@ namespace NodeCanvas.Tasks.Actions{
         private float bossMaxHealth;
 
         private Blackboard agentBlackboard;
+        private SO_BossProfile bossProfile;
+
         private GameObject painkillerPillGO;
         private GameObject energyPillGO;
         private GameObject pillToSpawn;
@@ -53,8 +55,9 @@ namespace NodeCanvas.Tasks.Actions{
 
             painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
             energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
-           
-            bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
+
+            bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+            bossMaxHealth = bossProfile.B_MaxHealth;
 
             pillAngles = angles1;
             return null;

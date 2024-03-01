@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a459dc52c9cc16499dc2819369bfd0b, type: 3}
-  m_Name: Boss Profile
+  m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
   b_MaxHealth: 250
@@ -19,29 +19,31 @@ MonoBehaviour:
   b_BossColourPalette:
     serializedVersion: 2
     rgba: 4282857925
-  b_BaseProjectileThrowSpeed: 0
-  b_BaseTimeBetweenProjectileAttacks: 0
+  b_BaseProjectileThrowSpeed: 15
+  b_BaseTimeBetweenProjectileAttacks: 0.7
   b_BossThrowProjectiles:
   - projectilePrefab: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
-    percentChanceToUse: 0.475
+    percentChanceToUse: 0.472
   - projectilePrefab: {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
-    percentChanceToUse: 0.513
-  b_BossHealthIncrements:
-  - healthPercent: 50
-    projectileSpeedMultiplier: 1
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
-  - healthPercent: 25
-    projectileSpeedMultiplier: 1
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
+    percentChanceToUse: 0.472
+  b_BossPhases:
+  - phaseName: Phase 1
+    healthPercent: 65.2
+    projectileSpeed: 16.9
+    timeBetweenProjectileAttacks: 0.675
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 2
+    healthPercent: 20.3
+    projectileSpeed: 17.5
+    timeBetweenProjectileAttacks: 0.57
+    phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
   b_BossAttacks:
   - attackName: Paracetamania
-    percentChanceToUse: 0.47
+    percentChanceToUse: 0.659
     attackCondition: {fileID: 0}
   - attackName: Bad Habit
-    percentChanceToUse: 0.499
-    attackCondition: {fileID: 0}
+    percentChanceToUse: 0.544
+    attackCondition: {fileID: 11400000, guid: 05f9ee8793bb50d4e98e72d8d83155e2, type: 2}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}
   ability2: {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}

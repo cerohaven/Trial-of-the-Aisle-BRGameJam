@@ -8,24 +8,16 @@ namespace NodeCanvas.Tasks.Actions{
 
 	public class ThrowPillActionTask : ActionTask{
 
-		
-		public float chanceToSpawnPainKillerPill;
-
-        public float[] projectileSpeedAtHealthIncrements = new float[4];
-
-        public float[] timeBetweenAttacksPerIncrement = new float[4];
 
         private float bossMaxHealth;
-		private float bossHealth;
+
 		private Blackboard agentBlackboard;
-		private GameObject painkillerPillGO;
-		private GameObject energyPillGO;
-		private GameObject pillToSpawn;
+        private SO_BossProfile bossProfile;
+
+		private GameObject projectileToSpawn;
 
 		private Transform playerTransform;
 		private float pillSpeed;
-
-		private float[] bossHealthIncrements = new float[4];
 
 
 		private IEnumerator endActionRoutine;
@@ -40,17 +32,11 @@ namespace NodeCanvas.Tasks.Actions{
 
 			//Getting blackboar Variables
             agentBlackboard = agent.GetComponent<Blackboard>();
+            bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+            bossMaxHealth = bossProfile.B_MaxHealth;
 
-			painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
-            energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
-			bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
 
-			//Setting the health incrememnt values. At these milestones the boss' attacks change behaviour
-            bossHealthIncrements[0] = 100 / bossMaxHealth;  //100% health
-            bossHealthIncrements[1] = 75 / bossMaxHealth;   //75% health
-            bossHealthIncrements[2] = 50 / bossMaxHealth;   //50% health
-            bossHealthIncrements[3] = 25 / bossMaxHealth;	//25% health
 
 
             return null;
@@ -60,82 +46,65 @@ namespace NodeCanvas.Tasks.Actions{
 
 		//This is called once each time the task is enabled.
 		protected override void OnExecute(){
-			
-			
+
+            //Get the pill speed and time between attacks based on the current phase we're in
+            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            if (currentPhase == 0)
+            {
+                //if it's the starting phase, use the base throw speed and attack delay
+                pillSpeed = bossProfile.B_BaseProjectileThrowSpeed;
+
+                endActionRoutine = EndActionTask(bossProfile.B_BaseTimeBetweenProjectileAttacks);
+                StartCoroutine(endActionRoutine);
+            }
+            else
+            {
+                //if it's the starting phase, use the base throw speed and attack delay
+                pillSpeed = bossProfile.B_BossPhases[currentPhase - 1].projectileSpeed;
+
+                endActionRoutine = EndActionTask(bossProfile.B_BossPhases[currentPhase-1].timeBetweenProjectileAttacks);
+                StartCoroutine(endActionRoutine);
+            }
+
+
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
-			//float Random Chance. If number is >chance, then energy, else painkiller
-			float rand = Random.Range(0.00f, 1.00f);
-
-			if(rand <= chanceToSpawnPainKillerPill)
-			{
-				pillToSpawn = painkillerPillGO;
-			}
-			else
-			{
-				pillToSpawn = energyPillGO;
-			}
 
 
-            // CALCULATE SPEED OF THE PILL //
-            bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
+            // SPAWNING THE PROJECTILE GAME OBJECT //
+            projectileToSpawn = HelperFunctions.RNGProjectile(bossProfile);
+            GameObject spawnedProjectile = GameObject.Instantiate(projectileToSpawn);
 
-			float healthIncrement =  bossHealth / bossMaxHealth;
-
-			//For loop to see if it is > the current increment or not
-			for(int i = bossHealthIncrements.Length-1; i >= 0; i--)
-			{
-                //eg. if increment is 0.65, then we want to check if <25, then <50, then <75, then <100
-				//Yes to <75 (i = 1), so we set the pill speed to be projectileSpeed[i]
-                if (healthIncrement <= bossHealthIncrements[i]) 
-				{
-					pillSpeed = projectileSpeedAtHealthIncrements[i];
-
-                    //0.7 * (100/100)
-                    //0.7 * (75/100)
-                    endActionRoutine = EndActionTask(timeBetweenAttacksPerIncrement[i]);
-                    StartCoroutine(endActionRoutine);
-
-                    break;
-				}
-			}
-
-			
-
-
-            // SPAWNING THE PILL GAME OBJECT //
-            GameObject pill = GameObject.Instantiate(pillToSpawn);
-
-            //Setting the trajectory of the pill game object
+            //Setting the trajectory of the projectile game object
             //Get rigidbody component and set direction and speed
             Vector3 dir = playerTransform.position - agent.transform.position;
             
             dir.Normalize();
             
-			Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
-            ApplyInitializations(projectilePill, dir, pill);
+			Projectile projectile = spawnedProjectile.GetComponent<Projectile>();
+            ApplyInitializations(projectile, dir, spawnedProjectile);
 
-            //Spawn in 3 pills at a time when the boss gets low
-            if(healthIncrement < bossHealthIncrements[3])
+            //Final Phase
+            if(currentPhase  == bossProfile.B_BossPhases.Length)
             {
-                SpawnMultiplePills(dir, pillToSpawn);
+                SpawnMultiplePills(dir, projectileToSpawn);
             }
             
 
         }
 
-        private void ApplyInitializations(Projectile_Pill projectilePill, Vector3 dir, GameObject pill)
+        private void ApplyInitializations(Projectile projectile, Vector3 dir, GameObject spawnedProjectile)
         {
             
             
-            pill.transform.position = agent.transform.position + (dir * 3.5f);
-            projectilePill.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
-            projectilePill.IgnoreBossCollision(true);
+            spawnedProjectile.transform.position = agent.transform.position + (dir * 3.5f);
+            projectile.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
+            projectile.IgnoreBossCollision(true);
 
-            projectilePill.IgnoreProjectiles(true, 0);
-            projectilePill.IgnoreProjectiles(false, 0.5f);
-            projectilePill.EnableDrag(0, 2);
+            projectile.IgnoreProjectiles(true, 0);
+            projectile.IgnoreProjectiles(false, 0.5f);
+            projectile.EnableDrag(0, 2);
 
         }
 
@@ -144,12 +113,12 @@ namespace NodeCanvas.Tasks.Actions{
 
             for (int i = 0; i < 2; i++)
             {
-                GameObject tempPill;
-                Projectile_Pill tempProjectile;
+                GameObject tempProj;
+                Projectile tempProjectile;
 
                 //spawn object and get rigidbody
-                tempPill = MakePillCopy(pillPrefab);
-                tempProjectile = tempPill.GetComponent<Projectile_Pill>();
+                tempProj = MakePillCopy(pillPrefab);
+                tempProjectile = tempProj.GetComponent<Projectile>();
 
                 //If i == 0, make the split angle positive, if not, make it negative
                 SplitAngleInDegrees = i == 0 ? SplitAngleInDegrees : -SplitAngleInDegrees;
@@ -160,14 +129,14 @@ namespace NodeCanvas.Tasks.Actions{
                 newVec.Normalize();
 
                 //Add the force
-                ApplyInitializations(tempProjectile, newVec, tempPill);
+                ApplyInitializations(tempProjectile, newVec, tempProj);
 
             }
         }
 
         private GameObject MakePillCopy(GameObject original)
         {
-            Projectile_Pill newPill = GameObject.Instantiate(original).GetComponent<Projectile_Pill>();
+            Projectile newPill = GameObject.Instantiate(original).GetComponent<Projectile>();
             return newPill.gameObject;
         }
 
@@ -178,7 +147,7 @@ namespace NodeCanvas.Tasks.Actions{
             EndAction(true);
         }
 
-
+       
         #region Other Functions
 
         protected override void OnUpdate()

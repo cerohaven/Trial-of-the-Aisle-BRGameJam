@@ -28,17 +28,17 @@ MonoBehaviour:
   - healthPercent: 61.9
     projectileSpeedMultiplier: 1
     timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
-  - healthPercent: 46.5
+    healthIncrementEvent: {fileID: 11400000, guid: d42e9510998e757478bb7bf104916425, type: 2}
+  - healthPercent: 35
     projectileSpeedMultiplier: 1
     timeBetweenProjectileAttacksMultiplier: 1
     healthIncrementEvent: {fileID: 0}
   b_BossAttacks:
-  - attackName: 
+  - attackName: Attack 1
     percentChanceToUse: 0.671
     attackCondition: {fileID: 0}
-  - attackName: 
-    percentChanceToUse: 0.575
+  - attackName: Attack 2
+    percentChanceToUse: 0.314
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 3e345a77c65b16e49adc6f5c7c679093, type: 2}

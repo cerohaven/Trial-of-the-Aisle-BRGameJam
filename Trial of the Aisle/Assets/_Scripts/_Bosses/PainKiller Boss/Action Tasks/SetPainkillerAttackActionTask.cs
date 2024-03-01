@@ -6,15 +6,12 @@ namespace NodeCanvas.Tasks.Actions{
 
 	public class SetPainkillerttackActionTask : ActionTask{
 
-		public float chanceToGetAttack1 = 0.6f;
-
 		private Blackboard agentBlackboard;
-		private float bossHealth;
-		private float maxBossHealth;
+        private SO_BossProfile bossProfile;
 
 		protected override string OnInit(){
             agentBlackboard = agent.GetComponent<Blackboard>();
-
+            bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             return null;
 		}
 
@@ -22,85 +19,69 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-			bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
-            maxBossHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
+
+            //int timesUsedAttack = blackboard.GetVariableValue<int>("timesUsedAttack");
 
 
-            int timesUsedAttack = blackboard.GetVariableValue<int>("timesUsedAttack");
-			string previousAttack = agentBlackboard.GetVariableValue<string>("randomAttack");
+            bool choseAttack = false;
+            int randAbility = 0;
 
-			float randomNumber = Random.Range(0.0f, 1.0f);
+            while (!choseAttack)
+            {
+                //get a random ability
+                randAbility = HelperFunctions.RNGAttack(bossProfile);
 
-            //Set the new attack but make sure the attack can't happen more than twice in a row
+                bool atkCondition = false; //Checks to see if we can use the attack based on the special condition (if any)
+                //bool canUseAttackTime = false; //chcks to see if can repeat the attack again
 
-            // ATTACK 1 - PAARACETAMANIA //
-            if (randomNumber < chanceToGetAttack1)
-			{
-				//Check to see if they performed 2 paracetamanias in a row. If so, then do other attack
-				if(previousAttack == "Paracetamania")
-				{
-                    timesUsedAttack++;
-					if(timesUsedAttack > 2)
-					{
-						timesUsedAttack = 0;
-                        agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
-                    }
-                }
-				else
-				{
-                    agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
-                }
-				
-            }
 
-			// ATTACK 2 - BAD HABIT //
-			else
-			{
+                /// CHECKING TO SEE IF THE ATTACK HAS A SPECIAL CONDITION ///
 
-				//Only perform Bad Habit if the boss isn't at full health
-				if(bossHealth / maxBossHealth > 75/ maxBossHealth)
-				{
-                    agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
-                }
-
-                //Check to see if they already performed 2 bad habits in a row. If so, then do other attack
-                else if (previousAttack == "BadHabit")
+                //check to see if we can use the attack if it has a special condition
+                if (bossProfile.B_BossAttacks[randAbility].attackCondition != null)
                 {
-                    timesUsedAttack++;
-                    if (timesUsedAttack > 2)
-                    {
-                        timesUsedAttack = 0;
-                        agentBlackboard.SetVariableValue("randomAttack", "Paracetamania");
-                    }
+                    atkCondition = 
+                    bossProfile.B_BossAttacks[randAbility].attackCondition.OnCheckAttackCondition(agentBlackboard) ? 
+                    true : false;
                 }
                 else
                 {
-                    agentBlackboard.SetVariableValue("randomAttack", "BadHabit");
+                    atkCondition = true;
+                }
+
+                
+
+                //Now check to see if we can perform the attack if we didn't use it more than twice in a row
+
+                //if we're good, then set chose Attack to true and get out of while loop
+                if(atkCondition)
+                {
+                    choseAttack = true;
                 }
             }
 
+            //Set the new attack
+            agentBlackboard.SetVariableValue("randomAttack", bossProfile.B_BossAttacks[randAbility].attackName);
+           
 
+            //blackboard.SetVariableValue("timesUsedAttack", timesUsedAttack);
 
-            blackboard.SetVariableValue("timesUsedAttack", timesUsedAttack);
-
-            //Set the pills Thrown to 0
-            agentBlackboard.SetVariableValue("pillsThrown", 0);
             EndAction(true);
 		}
 
-		//Called once per frame while the action is active.
 		protected override void OnUpdate(){
 			
 		}
 
-		//Called when the task is disabled.
 		protected override void OnStop(){
 			
 		}
 
-		//Called when the task is paused.
 		protected override void OnPause(){
 			
 		}
-	}
+
+
+      
+    }
 }
