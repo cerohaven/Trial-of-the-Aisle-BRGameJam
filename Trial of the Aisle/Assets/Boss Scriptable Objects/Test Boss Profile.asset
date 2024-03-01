@@ -10,47 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a459dc52c9cc16499dc2819369bfd0b, type: 3}
-  m_Name: Dairy Dominator
+  m_Name: Test Boss Profile
   m_EditorClassIdentifier: 
-  b_Name: Dairy Dominator
+  b_Name: Green Grass
   b_MaxHealth: 250
-  b_BossProfilePicture: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
-  b_BossProfileTexture: {fileID: 0}
+  b_BossProfilePicture: {fileID: 21300000, guid: e56392a3149ea2743a57056f0a45a16e, type: 3}
+  b_BossProfileTexture: {fileID: 2800000, guid: e56392a3149ea2743a57056f0a45a16e, type: 3}
   b_BossColourPalette:
     serializedVersion: 2
-    rgba: 4283039737
+    rgba: 4281382679
   b_BossThrowProjectiles:
-  - projectilePrefab: {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
-    percentChanceToUse: 1
-  b_BaseProjectileThrowSpeed: 13.7
-  b_BaseTimeBetweenProjectileAttacks: 0.7
+  - projectilePrefab: {fileID: 0}
+    percentChanceToUse: 0.5
+  b_BaseProjectileThrowSpeed: 0
+  b_BaseTimeBetweenProjectileAttacks: 0
   b_BossPhases:
   - phaseName: Phase 1
-    healthPercent: 78.6
+    healthPercent: 50
     throwSpeed: 1
     attackDelay: 1
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
-    healthPercent: 56
-    throwSpeed: 1
-    attackDelay: 1
-    phaseEvent: {fileID: 0}
-  - phaseName: Phase 3
-    healthPercent: 37.1
-    throwSpeed: 1
-    attackDelay: 1
-    phaseEvent: {fileID: 0}
-  - phaseName: Phase 4
-    healthPercent: 16.3
+    healthPercent: 24.4
     throwSpeed: 1
     attackDelay: 1
     phaseEvent: {fileID: 0}
   b_BossAttacks:
-  - attackName: Moo-n Beam
-    percentChanceToUse: 0.812
+  - attackName: 
+    percentChanceToUse: 0.5
     attackCondition: {fileID: 0}
-  - attackName: Feta Frenzy
-    percentChanceToUse: 0.532
+  - attackName: 
+    percentChanceToUse: 0.5
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}

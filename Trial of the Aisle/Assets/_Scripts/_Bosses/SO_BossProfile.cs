@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
 /// <summary>
@@ -34,7 +35,7 @@ public class SO_BossProfile : ScriptableObject
     [SerializeField] private float b_BaseTimeBetweenProjectileAttacks;
 
     [Tooltip("When the boss reaches this percentage of health, we can change the behaviours of attacks" )]
-    [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[2];
+    [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[1];
 
     [Separator()]
     [Title("Attacks", TextAlignment.Center)]
@@ -48,12 +49,15 @@ public class SO_BossProfile : ScriptableObject
     [SerializeField] private Texture2D ability1Texture;
     [SerializeField] private Texture2D ability2Texture;
 
+    [SerializeField] private Sprite postBattleCanvasUI;
+    private Texture2D postBattleCanvasTexture;
+
     public string m_Name { get => b_Name;}
     public float B_MaxHealth { get => b_MaxHealth; }
     public Sprite m_BossProfilePicture { get => b_BossProfilePicture;}
     public Texture2D m_BossProfileTexture { get => b_BossProfileTexture; set => b_BossProfileTexture = value; }
 
-
+    public BossHealthIncrements[] B_BossPhases { get => b_BossPhases; }
     public BossAttacks[] B_BossAttacks { get => b_BossAttacks; }
     public float B_BaseProjectileThrowSpeed { get => b_BaseProjectileThrowSpeed; }
     public float B_BaseTimeBetweenProjectileAttacks { get => b_BaseTimeBetweenProjectileAttacks; }
@@ -64,9 +68,11 @@ public class SO_BossProfile : ScriptableObject
     public Ability Ability1 { get => ability1; }
     public Ability Ability2 { get => ability2; }
 
-    public BossHealthIncrements[] B_BossPhases { get => b_BossPhases; }
-
     
+    public Sprite PostBattleCanvasUI { get => postBattleCanvasUI;}
+    public Texture2D PostBattleCanvasTexture { get => postBattleCanvasTexture; set => postBattleCanvasTexture = value; }
+
+
 
 
 
@@ -129,10 +135,14 @@ public class BossAttacks
 }
 #endregion
 
+
+
+
 [CustomEditor(typeof(SO_BossProfile))]
 [CanEditMultipleObjects]
 public class SO_BossProfileEditor : Editor
 {
+    readonly float cardWidth = 350;
     //SerializedProperties
     private SerializedProperty b_Name;
     private SerializedProperty b_MaxHealth;
@@ -153,6 +163,7 @@ public class SO_BossProfileEditor : Editor
     private SerializedProperty ability1;
     private SerializedProperty ability2;
 
+    private SerializedProperty postBattleCanvasUI;
 
     private void OnEnable()
     {
@@ -175,7 +186,7 @@ public class SO_BossProfileEditor : Editor
         ability1 = serializedObject.FindProperty("ability1");
         ability2 = serializedObject.FindProperty("ability2");
 
-
+        postBattleCanvasUI = serializedObject.FindProperty("postBattleCanvasUI");
     }
 
     public override void OnInspectorGUI()
@@ -288,12 +299,12 @@ public class SO_BossProfileEditor : Editor
         EditorGUI.DrawRect(new Rect(70, healthRect.y + healthRect.height + 40, healthRect.width - 60, 30), b_BossColourPalette.colorValue);
 
         float widthOfHealthBar = healthRect.width - 60;
-        Rect healthBossPfp = new Rect(20, healthRect.y + healthRect.height + 10, 50, 50);
+        Rect healthBossPfp = new Rect(20, healthRect.y + healthRect.height + 30, 50, 50);
         GUI.DrawTexture(healthBossPfp, boss.m_BossProfileTexture);
 
 
 
-        GUILayout.Space(120f);
+        GUILayout.Space(130f);
 
 
 
@@ -304,7 +315,7 @@ public class SO_BossProfileEditor : Editor
         EditorGUILayout.PropertyField(b_maxAttackRepeatTimes, new GUIContent("Max Repeat Times"));
 
 
-        GUILayout.Space(140f);
+        GUILayout.Space(240f);
 
 
         Rect lastRect = GUILayoutUtility.GetLastRect();
@@ -313,13 +324,44 @@ public class SO_BossProfileEditor : Editor
 
         //These 2 rects determine the position of the texture2D in the inspector
         //for the second rect, I check to see the width of the inspector and set the position based on it
-        Rect textAbility1 = new Rect(75, lastRect.y + 20, 100, 100);
+        Rect textAbility1 = new Rect((Screen.width / 2) - (cardWidth / 2) + 80, lastRect.y + 140, 80, 80);
 
-        float x2 = Screen.width < 560 ? (Screen.width / 2 - 50) + 120 : 250 + 75 + 30;
+        Rect textAbility2 = new Rect((Screen.width / 2)  + 15, lastRect.y + 140, 80, 80);
 
-        Rect textAbility2 = new Rect(x2, lastRect.y + 20, 100, 100);
+        Rect bossCardRect = new Rect((Screen.width / 2) - (cardWidth / 2), lastRect.y + 20, cardWidth, cardWidth / 1.61f);
 
+        
 
+        //Need to draw the card before the abilities so it goes behind
+        if (boss.PostBattleCanvasUI != null)
+        {
+            Rect bossCardSpriteRect = boss.PostBattleCanvasUI.rect;
+
+            //Make a texture from a set pixel range in a sprite. 
+            //I need to do this since I want to get a sliced sprite from a texture2D, but you can only read the pixels
+            //if the texture2D is readable. If it is, then I can get and set the pixels
+            if (boss.PostBattleCanvasUI.texture.isReadable == false)
+            {
+                boss.PostBattleCanvasTexture = boss.PostBattleCanvasUI.texture;
+            }
+            else
+            {
+                //Now get the pixels from the texture2D where the sprite is
+                Texture2D cardTexture = boss.PostBattleCanvasUI.texture;
+                var tests = cardTexture.GetPixels((int)bossCardSpriteRect.position.x, (int)bossCardSpriteRect.position.y, (int)bossCardSpriteRect.width, (int)bossCardSpriteRect.height);
+
+                boss.PostBattleCanvasTexture = new Texture2D((int)bossCardSpriteRect.width, (int)bossCardSpriteRect.height);
+                boss.PostBattleCanvasTexture.SetPixels(tests);
+                boss.PostBattleCanvasTexture.Apply();
+
+            }
+
+            GUI.DrawTexture(bossCardRect, boss.PostBattleCanvasTexture);
+        }
+        else
+        {
+            EditorGUI.DrawRect(bossCardRect, new Color(0.1f, 0.1f, 0.1f, 1));
+        }
 
         //Create Texture
         #region Ability 1 Texture2D
@@ -404,6 +446,8 @@ public class SO_BossProfileEditor : Editor
         EditorGUILayout.PropertyField(ability2, new GUIContent(""), GUILayout.MaxWidth(250));
         EditorGUILayout.EndHorizontal();
 
+        GUILayout.Space(10f);
+        EditorGUILayout.PropertyField(postBattleCanvasUI, new GUIContent("Boss Card HUD"));
 
 
         GUILayout.Space(50f);

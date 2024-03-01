@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
-  b_MaxHealth: 250
+  b_MaxHealth: 50
   b_BossProfilePicture: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -25,7 +25,7 @@ MonoBehaviour:
   - projectilePrefab: {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
     percentChanceToUse: 0.472
   b_BaseProjectileThrowSpeed: 15.4
-  b_BaseTimeBetweenProjectileAttacks: 1.21
+  b_BaseTimeBetweenProjectileAttacks: 0.95
   b_BossPhases:
   - phaseName: Phase 1
     healthPercent: 62.1
@@ -49,3 +49,4 @@ MonoBehaviour:
   ability2: {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}
   ability1Texture: {fileID: 0}
   ability2Texture: {fileID: 0}
+  postBattleCanvasUI: {fileID: 650322563, guid: fd756653864af1c4ab6e98a12bc13387, type: 3}
