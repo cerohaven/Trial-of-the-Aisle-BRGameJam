@@ -9,21 +9,19 @@ namespace NodeCanvas.Tasks.Actions{
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		public float timeBetweenWaves;
-        public float chanceToSpawnPainKillerPill;
+
         public float pillSpeed;
 
         public int waveAmount = 7;
         private int currentWaveAmount = 0;
 
         private float timeElapsed;
-        private float bossHealth;
+        private int bossPhase;
         private float bossMaxHealth;
 
         private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
 
-        private GameObject painkillerPillGO;
-        private GameObject energyPillGO;
         private GameObject pillToSpawn;
 
         
@@ -53,9 +51,6 @@ namespace NodeCanvas.Tasks.Actions{
 
             agentBlackboard = agent.GetComponent<Blackboard>();
 
-            painkillerPillGO = agentBlackboard.GetVariableValue<GameObject>("painkillerPill");
-            energyPillGO = agentBlackboard.GetVariableValue<GameObject>("energyPill");
-
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             bossMaxHealth = bossProfile.B_MaxHealth;
 
@@ -67,8 +62,9 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-
-            bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
+            bossPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, bossPhase);
+            
 
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -119,18 +115,9 @@ namespace NodeCanvas.Tasks.Actions{
             //Make sure that these pills have no drag and continue until they hit something and then they disapear.
             //MAKE non-carryable pills Coated/outlined in a different colour than the regular pills.
 
-            
-            //float Random Chance. If number is >chance, then energy, else painkiller
-            float rand = Random.Range(0.00f, 1.00f);
 
-            if (rand <= chanceToSpawnPainKillerPill)
-            {
-                pillToSpawn = painkillerPillGO;
-            }
-            else
-            {
-                pillToSpawn = energyPillGO;
-            }
+            //float Random Chance. If number is >chance, then energy, else painkiller
+            pillToSpawn = HelperFunctions.RNGProjectile(bossProfile);
 
             //Spawning in the pill game object
             GameObject pill = GameObject.Instantiate(pillToSpawn);
@@ -146,19 +133,18 @@ namespace NodeCanvas.Tasks.Actions{
 
 
 
-            projectilePill.InitializeProjectile(dir, pillSpeed + (bossMaxHealth / bossHealth) /3, agent.transform, WhoThrew.Boss);
+            projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
             projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnoreProjectiles(true, 0);
             projectilePill.IgnoreProjectiles(false, 0.4f);
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity
-            if(bossHealth < 75)
-            {
-                float turnIntensity = (bossMaxHealth / bossHealth) / 2;
+           
+            float turnIntensity = 1.5f * bossPhase;
 
-                projectilePill.TurnIntensity = turnIntensity;
-            }
+            projectilePill.TurnIntensity = turnIntensity;
+           
            
 
         }

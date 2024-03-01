@@ -99,4 +99,36 @@ public class HelperFunctions : MonoBehaviour
 
         return bossProfile.B_BossThrowProjectiles[0].projectilePrefab;
     }
+
+
+    public static float ProjectileSpeedAtPhase(SO_BossProfile bossProfile, int bossPhase)
+    {
+        if (bossPhase == 0)
+        {
+            //if it's the starting phase, use the base throw speed and attack delay
+            return bossProfile.B_BaseProjectileThrowSpeed;
+        }
+        else
+        {
+            //if it's the starting phase, use the base throw speed and attack delay
+            return bossProfile.B_BossPhases[bossPhase - 1].projectileSpeed;
+        }
+
+    }
+
+    public static float TimeBetweenAttacksAtPhase(SO_BossProfile bossProfile, int bossPhase)
+    {
+        if (bossPhase == 0)
+        {
+            //if it's the starting phase, use the base throw speed and attack delay
+            return bossProfile.B_BaseTimeBetweenProjectileAttacks;
+            
+        }
+        else
+        {
+            //if it's the starting phase, use the base throw speed and attack delay
+            return bossProfile.B_BossPhases[bossPhase - 1].timeBetweenProjectileAttacks;
+           
+        }
+    }
 }

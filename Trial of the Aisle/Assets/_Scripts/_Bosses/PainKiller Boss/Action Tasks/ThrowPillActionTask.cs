@@ -49,22 +49,10 @@ namespace NodeCanvas.Tasks.Actions{
 
             //Get the pill speed and time between attacks based on the current phase we're in
             int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
-            if (currentPhase == 0)
-            {
-                //if it's the starting phase, use the base throw speed and attack delay
-                pillSpeed = bossProfile.B_BaseProjectileThrowSpeed;
-
-                endActionRoutine = EndActionTask(bossProfile.B_BaseTimeBetweenProjectileAttacks);
-                StartCoroutine(endActionRoutine);
-            }
-            else
-            {
-                //if it's the starting phase, use the base throw speed and attack delay
-                pillSpeed = bossProfile.B_BossPhases[currentPhase - 1].projectileSpeed;
-
-                endActionRoutine = EndActionTask(bossProfile.B_BossPhases[currentPhase-1].timeBetweenProjectileAttacks);
-                StartCoroutine(endActionRoutine);
-            }
+            
+            pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, currentPhase);
+            endActionRoutine = EndActionTask(HelperFunctions.TimeBetweenAttacksAtPhase(bossProfile, currentPhase));
+            StartCoroutine(endActionRoutine);
 
 
             //Set the boss' velocity to none so they don't continue moving
