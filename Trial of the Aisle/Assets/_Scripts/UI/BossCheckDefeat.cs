@@ -6,7 +6,6 @@ using UnityEngine;
 public class BossCheckDefeat : MonoBehaviour
 {
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
-    [SerializeField] private List<MonoBehaviour> bossAbilityComponents; // List of boss ability components
     [SerializeField] private GameObject postBattleCanvas; // Reference to the post-battle canvas
     [SerializeField] private NewAbilitySelectionUI abilitySelectionUI; // Reference to the ability selection UI
     [SerializeField] private Ability[] newAbilitiesAfterDefeat; // Abilities offered after defeat, updated to use Ability objects
