@@ -25,7 +25,6 @@ public class Projectile_Cheese : Projectile
             bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
         }
 
-        IgnoreWallLayer();
     }
     protected override void Awake()
     {
@@ -44,10 +43,6 @@ public class Projectile_Cheese : Projectile
 
     }
 
-    public void IgnoreWallLayer()
-    {
-        Physics2D.IgnoreLayerCollision(10, 7, true);
-    }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -99,6 +94,12 @@ public class Projectile_Cheese : Projectile
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        //On Collision with the player, deal damage
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

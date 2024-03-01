@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	public class SetPainkillerttackActionTask : ActionTask{
+	public class SetRandomAttackActionTask : ActionTask{
 
 		private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;

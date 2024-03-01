@@ -7678,11 +7678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddec0a2ddce516f4bac1d655b07b0433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedAbilityComponents:
-  - {fileID: 657477940805212986, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
-  - {fileID: 0}
-  unlockedAbilityComponents: []
-  playerInput: {fileID: 1075837057}
 --- !u!4 &776230602
 Transform:
   m_ObjectHideFlags: 0
@@ -8200,14 +8195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd31da27a4905824e83a2cde4ac42232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityManager: {fileID: 776230601}
-  abilityCooldownFills: []
-  ability1Reference: {fileID: 1913281322}
-  ability1BGReference: {fileID: 1181828997}
-  ability2Reference: {fileID: 55558255}
-  ability2BGReference: {fileID: 533120027}
-  ability3Reference: {fileID: 969579879}
-  ability3BGReference: {fileID: 107369778}
 --- !u!114 &855409805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15833,9 +15820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 049c561fd5c3c5c4f884b291fcb7ffc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 2130552886}
-  playerController: {fileID: 1075837056}
-  abilityManager: {fileID: 776230601}
 --- !u!4 &1075837055
 Transform:
   m_ObjectHideFlags: 0
@@ -47203,11 +47187,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossAbilityComponents: []
-  abilityManager: {fileID: 776230601}
+  postBattleCanvas: {fileID: 0}
+  abilitySelectionUI: {fileID: 0}
+  newAbilityIDsAfterDefeat: 
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 1010851069330081373, guid: 6edd8292782e4a941b49d20d979a1a20, type: 3}
     spawnPosition: 0
-  debugSpawnKey: 9
+  debugDefeatBossKey: 107
 --- !u!114 &3257722118906592721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47222,27 +47208,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_name":"Throw
-    Pills at Player State","_position":{"x":861.0,"y":196.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_name":"Fruits
-    of Fury State","_position":{"x":604.0,"y":365.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
-    State","_position":{"x":411.0,"y":607.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Jammed
-    State","_position":{"x":1198.0,"y":732.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    UI","_position":{"x":-48.0,"y":-168.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":182.0,"y":-95.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"}]},"_position":{"x":227.0,"y":138.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_position":{"x":909.0,"y":225.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_name":"Jammed
+    State","_position":{"x":1198.0,"y":732.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
+    State","_position":{"x":480.0,"y":654.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Fruits
+    of Fury State","_position":{"x":602.0,"y":445.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Jammed"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Fruits
-    of Fury"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Jammed"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":2,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    of Fury"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":6,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":3,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 11400000, guid: d4d9c4629258bc54f8381c9e5fef9b97, type: 2}
-  - {fileID: 11400000, guid: 33d9e80806bba3d41880fbd31c50818e, type: 2}
+  - {fileID: 11400000, guid: c78b9b2823e89fc41928d14e3118e36b, type: 2}
   - {fileID: 11400000, guid: f27c811ba9257f745b1035c6700f0d58, type: 2}
+  - {fileID: 11400000, guid: 33d9e80806bba3d41880fbd31c50818e, type: 2}
   _boundGraphSource:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 137, y: 150}
+    _translation: {x: 268, y: 225}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -47378,36 +47363,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"bossHealth":{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"bossMaxHealth":{"_value":250.0,"_name":"bossMaxHealth","_id":"53349820-78ca-4190-a51e-29a54fe39a5a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  _serializedBlackboard: '{"_variables":{"bossProfile":{"_value":1,"_name":"bossProfile","_id":"ed3482f6-739d-4b21-9176-05ec57ee396f","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossPhase":{"_name":"bossPhase","_id":"48007627-d582-472a-8b14-083536e7836c","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"bossHealth":{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":2,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"targetWaypoint":{"_name":"targetWaypoint","_id":"141fb989-b8c2-440e-bc84-142464ddb88e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[2,3,4],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[3,4,5],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"randomAttack":{"_name":"randomAttack","_id":"0b06f209-7424-4be9-b232-2bd8388c4653","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":10.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pillsSucked":{"_name":"pillsSucked","_id":"f858f6a1-bd77-4c01-95e5-58c0b05d811d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"grapeMinion":{"_value":5,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"throwProjectile":{"_value":6,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"grapeMinion":{"_value":6,"_name":"grapeMinion","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"jamProjectile":{"_value":7,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossHealthState":{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 06ab97d7c1648e640a8a48273a8ef8ae, type: 2}
   - {fileID: 1075837055}
   - {fileID: 1942011649}
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
-  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 2321126302647116474, guid: 9ef770f109ccba54ea8d58d7320ebe88, type: 3}
   _serializedVariables:
-  - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":1,"_name":"bossProfile","_id":"ed3482f6-739d-4b21-9176-05ec57ee396f","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 06ab97d7c1648e640a8a48273a8ef8ae, type: 2}
+  - _json: '{"_name":"bossPhase","_id":"48007627-d582-472a-8b14-083536e7836c","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":250.0,"_name":"bossMaxHealth","_id":"53349820-78ca-4190-a51e-29a54fe39a5a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -47446,11 +47436,6 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 7233144691931762214, guid: 390b4ffcf9cbb4c408aeaf7597450b45, type: 3}
-  - _json: '{"_value":1,"_name":"throwProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - _json: '{"_value":1,"_name":"jamProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:

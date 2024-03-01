@@ -46,11 +46,6 @@ public class SO_AdjustHealth : ScriptableObject
         changePlayerHealthEvent.Invoke(changeHealth, healthType);
     }
 
-    
-    public void UpdateGrapeBossSpriteEventSend()
-    {
-        
-    }
 }
 
 public class ChangeBossHealth : UnityEvent<ChangeHealth, HealthType, Vector2> { }

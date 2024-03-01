@@ -111,7 +111,7 @@ public class HelperFunctions : MonoBehaviour
         else
         {
             //if it's the starting phase, use the base throw speed and attack delay
-            return bossProfile.B_BossPhases[bossPhase - 1].projectileSpeed;
+            return bossProfile.B_BossPhases[bossPhase - 1].throwSpeed;
         }
 
     }
@@ -127,7 +127,7 @@ public class HelperFunctions : MonoBehaviour
         else
         {
             //if it's the starting phase, use the base throw speed and attack delay
-            return bossProfile.B_BossPhases[bossPhase - 1].timeBetweenProjectileAttacks;
+            return bossProfile.B_BossPhases[bossPhase - 1].attackDelay;
            
         }
     }

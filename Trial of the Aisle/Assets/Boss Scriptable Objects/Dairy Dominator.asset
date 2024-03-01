@@ -19,25 +19,37 @@ MonoBehaviour:
   b_BossColourPalette:
     serializedVersion: 2
     rgba: 4283039737
-  b_BaseProjectileThrowSpeed: 0
-  b_BaseTimeBetweenProjectileAttacks: 0
   b_BossThrowProjectiles:
   - projectilePrefab: {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
-    percentChanceToUse: 0.5
-  b_BossHealthIncrements:
-  - healthPercent: 59.7
-    projectileSpeedMultiplier: 0.875
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
-  - healthPercent: 27.6
-    projectileSpeedMultiplier: 1
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
+    percentChanceToUse: 1
+  b_BaseProjectileThrowSpeed: 13.7
+  b_BaseTimeBetweenProjectileAttacks: 0.7
+  b_BossPhases:
+  - phaseName: Phase 1
+    healthPercent: 78.6
+    projectileSpeed: 14.2
+    timeBetweenProjectileAttacks: 0.74
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 2
+    healthPercent: 56
+    projectileSpeed: 13.6
+    timeBetweenProjectileAttacks: 0.66
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 3
+    healthPercent: 37.1
+    projectileSpeed: 13.6
+    timeBetweenProjectileAttacks: 0.66
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 4
+    healthPercent: 16.3
+    projectileSpeed: 10.4
+    timeBetweenProjectileAttacks: 1.08
+    phaseEvent: {fileID: 0}
   b_BossAttacks:
-  - attackName: 'Attack 1 '
-    percentChanceToUse: 0.508
+  - attackName: Moo-n Beam
+    percentChanceToUse: 0.812
     attackCondition: {fileID: 0}
-  - attackName: Attack 2
+  - attackName: Feta Frenzy
     percentChanceToUse: 0.532
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2

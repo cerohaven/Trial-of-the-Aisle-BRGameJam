@@ -17,11 +17,10 @@ namespace NodeCanvas.Tasks.Actions{
 
         public int waveAmount = 7;
 
-        private float timeElapsed;
-        private float bossHealth;
-        private float bossMaxHealth;
+        public float turnIntensityMultiplier = 4;
 
         private Blackboard agentBlackboard;
+
         private GameObject cheeseGO;
         public GameObject centerGO;
         private GameObject center;
@@ -35,7 +34,6 @@ namespace NodeCanvas.Tasks.Actions{
 
             cheeseGO = agentBlackboard.GetVariableValue<GameObject>("waveProjectile");
 
-            bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
 
             return null;
         }
@@ -46,15 +44,15 @@ namespace NodeCanvas.Tasks.Actions{
         protected override void OnExecute()
         {
 
-            bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
+            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
 
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             center = GameObject.Instantiate(centerGO, agent.transform);
 
             //Change speed of center rotating
-            float turnIntensity = (bossMaxHealth / bossHealth) * 20;
-            center.GetComponent<RotateObject>().RotateSpeed = turnIntensity;
+         
+            center.GetComponent<RotateObject>().RotateSpeed = currentPhase * turnIntensityMultiplier;
 
 
             waveCoroutine = Wave();
@@ -74,41 +72,15 @@ namespace NodeCanvas.Tasks.Actions{
             {
                 Vector2 randomPointInCircle = (Vector2)agent.transform.position + Random.insideUnitCircle * moonRadius;
 
-                GameObject go = GameObject.Instantiate(cheeseGO, randomPointInCircle, Quaternion.identity, center.transform);
-                Projectile_Cheese cheesee = go.GetComponent<Projectile_Cheese>();
-                cheesee.IgnoreWallLayer();
+                GameObject.Instantiate(cheeseGO, randomPointInCircle, Quaternion.identity, center.transform);
+
                 yield return new WaitForSeconds(timeBetweenWaves);
             }
             
 
             EndAction(true);
         }
-        private void SpawnWave(float _angle)
-        {
-
-            //Spawning in the pill game object
-            GameObject cheese = GameObject.Instantiate(cheeseGO);
-            Projectile_Cheese projectileCheese = cheese.GetComponent<Projectile_Cheese>();
-            projectileCheese.IsThrownInWave = true;
-            //Setting the trajectory of the pill game object
-
-            //Get rigidbody component and set direction and speed
-            Vector3 dir = new Vector3(Mathf.Cos(_angle * Mathf.Deg2Rad), Mathf.Sin(_angle * Mathf.Deg2Rad));
-
-            //Set Position
-            cheese.transform.position = agent.transform.position;
-
-            projectileCheese.InitializeProjectile(dir, cheeseSpeed + (bossMaxHealth / bossHealth) / 3, agent.transform, WhoThrew.Boss);
-            projectileCheese.IgnoreBossCollision(true);
-            projectileCheese.IgnoreProjectiles(true, 0);
-
-            
-
-            //Calculate turn intensity
       
-            float turnIntensity = (bossMaxHealth / bossHealth) / 2;
-
-        }
 
         //Called when the task is disabled.
         protected override void OnStop()

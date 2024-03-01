@@ -11,9 +11,9 @@ namespace NodeCanvas.Tasks.Actions
 
         public float[] timeBetweenAttacksPerIncrement = new float[4];
 
-        private float bossMaxHealth;
         private float bossHealth;
         private Blackboard agentBlackboard;
+        private SO_BossProfile bossProfile;
         private GameObject projectileToSpawn;
 
         private Transform playerTransform;
@@ -35,18 +35,11 @@ namespace NodeCanvas.Tasks.Actions
 
             //Getting blackboar Variables
             agentBlackboard = agent.GetComponent<Blackboard>();
-
+            bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             projectileToSpawn = agentBlackboard.GetVariableValue<GameObject>("jamProjectile");
 
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
-            bossMaxHealth = agentBlackboard.GetVariableValue<float>("bossMaxHealth");
-
-            //Setting the health incrememnt values. At these milestones the boss' attacks change behaviour
-            bossHealthIncrements[0] = 100 / bossMaxHealth;  //100% health
-            bossHealthIncrements[1] = 75 / bossMaxHealth;   //75% health
-            bossHealthIncrements[2] = 50 / bossMaxHealth;   //50% health
-            bossHealthIncrements[3] = 25 / bossMaxHealth;	//25% health
-
+            
 
             return null;
         }
@@ -65,25 +58,12 @@ namespace NodeCanvas.Tasks.Actions
             // CALCULATE SPEED OF THE PILL //
             bossHealth = agentBlackboard.GetVariableValue<float>("bossHealth");
 
-            float healthIncrement = bossHealth / bossMaxHealth;
+            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, currentPhase);
 
-            //For loop to see if it is > the current increment or not
-            for (int i = bossHealthIncrements.Length - 1; i >= 0; i--)
-            {
-                //eg. if increment is 0.65, then we want to check if <25, then <50, then <75, then <100
-                //Yes to <75 (i = 1), so we set the pill speed to be projectileSpeed[i]
-                if (healthIncrement <= bossHealthIncrements[i])
-                {
-                    pillSpeed = projectileSpeedAtHealthIncrements[i];
-
-                    endActionRoutine = EndActionTask(timeBetweenAttacksPerIncrement[i]);
-                    StartCoroutine(endActionRoutine);
-
-                    break;
-                }
-            }
-
-
+            endActionRoutine = EndActionTask(HelperFunctions.TimeBetweenAttacksAtPhase(bossProfile, currentPhase));
+            StartCoroutine(endActionRoutine);
+            
 
 
             // SPAWNING THE PILL GAME OBJECT //
@@ -98,8 +78,10 @@ namespace NodeCanvas.Tasks.Actions
             Projectile_Jam projectileJam = jam.GetComponent<Projectile_Jam>();
             ApplyInitializations(projectileJam, dir, jam);
 
+
+
             //Spawn in 3 pills at a time when the boss gets low
-            if (healthIncrement < bossHealthIncrements[3])
+            if (currentPhase == bossProfile.B_BossPhases.Length)
             {
                 SpawnMultiplePills(dir, projectileToSpawn);
             }

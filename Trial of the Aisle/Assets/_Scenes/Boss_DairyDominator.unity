@@ -47452,7 +47452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossAbilityComponents: []
-  postBattleCanvas: {fileID: 0}
+  postBattleCanvas: {fileID: 855409801}
   abilitySelectionUI: {fileID: 0}
   newAbilityIDsAfterDefeat: 
   objectsToSpawnIn:
@@ -47473,25 +47473,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-96.0,"y":-117.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":110.0,"y":-72.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"}]},"_position":{"x":231.0,"y":100.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_name":"Throw
-    Projectiles at Player State","_position":{"x":833.0,"y":159.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_position":{"x":1160.0,"y":645.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
-    State","_position":{"x":411.0,"y":607.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_position":{"x":609.0,"y":343.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    UI","_position":{"x":-90.0,"y":-200.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Wait","_position":{"x":93.0,"y":-78.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"}]},"_position":{"x":219.0,"y":45.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_nestedFSM":{"_value":1},"_position":{"x":885.0,"y":176.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_nestedFSM":{"_value":2},"_position":{"x":674.0,"y":331.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[]},"_name":"Idle
+    State","_position":{"x":489.0,"y":544.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_position":{"x":1160.0,"y":645.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"6"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Moo-n
+    Beam"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Feta
-    Frenzy"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Moo-nbeam"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":5,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":10,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    Frenzy"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":0.5,"maxWaitTime":0.5,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":10,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":5,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 11400000, guid: 5357786fc1c9172408d36cf8c4854f9b, type: 2}
-  - {fileID: 11400000, guid: ef6e056739926ae42b68ddea43309700, type: 2}
+  - {fileID: 11400000, guid: c78b9b2823e89fc41928d14e3118e36b, type: 2}
   - {fileID: 11400000, guid: 2960f260ca4641348af36c629b7283de, type: 2}
+  - {fileID: 11400000, guid: ef6e056739926ae42b68ddea43309700, type: 2}
   _boundGraphSource:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 159, y: 194}
+    _translation: {x: 268, y: 220}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -47627,35 +47627,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{"bossHealth":{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"bossMaxHealth":{"_value":250.0,"_name":"bossMaxHealth","_id":"53349820-78ca-4190-a51e-29a54fe39a5a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
+  _serializedBlackboard: '{"_variables":{"bossProfile":{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
+    Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossPhase":{"_name":"bossPhase","_id":"1e226f8e-7309-4641-8756-0b344b2d5108","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"bossHealth":{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"playerTransform":{"_value":2,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"targetWaypoint":{"_name":"targetWaypoint","_id":"141fb989-b8c2-440e-bc84-142464ddb88e","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[2,3,4],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waypoints":{"_value":[3,4,5],"_name":"waypoints","_id":"dc644c80-fb1f-4c41-b098-845139780d54","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Transform,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"randomAttack":{"_name":"randomAttack","_id":"0b06f209-7424-4be9-b232-2bd8388c4653","$type":"NodeCanvas.Framework.Variable`1[[System.String,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"moveSpeed":{"_value":10.0,"_name":"moveSpeed","_id":"ab8a98a7-965e-4412-9f3a-c7981d5e2ffb","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"fetaCheese":{"_value":5,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waveProjectile":{"_value":6,"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"throwProjectile":{"_value":7,"_name":"throwProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"bossHealthState":{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"fetaCheese":{"_value":6,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waveProjectile":{"_value":7,"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
+  - {fileID: 11400000, guid: 1b41e1fd1bb8b3e4e8ea9e5f472d7579, type: 2}
   - {fileID: 1075837055}
   - {fileID: 1942011649}
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  - {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
   _serializedVariables:
-  - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 1b41e1fd1bb8b3e4e8ea9e5f472d7579, type: 2}
+  - _json: '{"_name":"bossPhase","_id":"1e226f8e-7309-4641-8756-0b344b2d5108","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_value":250.0,"_name":"bossMaxHealth","_id":"53349820-78ca-4190-a51e-29a54fe39a5a","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+  - _json: '{"_value":250.0,"_name":"bossHealth","_id":"a7c824ff-f169-4057-aa45-56013ca911a2","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
   - _json: '{"_value":1,"_name":"playerTransform","_id":"4cf89c41-f568-4e2a-84e9-e02e1e173479","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.Transform,
@@ -47696,14 +47700,6 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  - _json: '{"_value":1,"_name":"throwProjectile","_id":"a9c7c7f6-0c69-4b7b-87c2-0976d656dc7b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
-  - _json: '{"_name":"bossHealthState","_id":"2c0b2f36-eb4b-4cbf-8d6f-d9ca75d2809d","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
-    _references: []
 --- !u!1001 &8104656431527078453
 PrefabInstance:
   m_ObjectHideFlags: 0

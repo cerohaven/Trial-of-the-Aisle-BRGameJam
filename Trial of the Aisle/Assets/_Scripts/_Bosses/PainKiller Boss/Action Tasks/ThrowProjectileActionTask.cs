@@ -6,10 +6,7 @@ using UnityEngine.Rendering;
 
 namespace NodeCanvas.Tasks.Actions{
 
-	public class ThrowPillActionTask : ActionTask{
-
-
-        private float bossMaxHealth;
+	public class ThrowProjectileActionTask : ActionTask{
 
 		private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
@@ -33,8 +30,7 @@ namespace NodeCanvas.Tasks.Actions{
 			//Getting blackboar Variables
             agentBlackboard = agent.GetComponent<Blackboard>();
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
-            bossMaxHealth = bossProfile.B_MaxHealth;
-
+     
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
 
 

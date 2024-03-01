@@ -13,32 +13,39 @@ MonoBehaviour:
   m_Name: Alexander the Grape
   m_EditorClassIdentifier: 
   b_Name: Alexander the Grape
-  b_MaxHealth: 0
+  b_MaxHealth: 200
   b_BossProfilePicture: {fileID: -1816418880, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
     serializedVersion: 2
     rgba: 4294932947
-  b_BaseProjectileThrowSpeed: 0
-  b_BaseTimeBetweenProjectileAttacks: 0
   b_BossThrowProjectiles:
   - projectilePrefab: {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
     percentChanceToUse: 0.665
-  b_BossHealthIncrements:
-  - healthPercent: 61.9
-    projectileSpeedMultiplier: 1
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 11400000, guid: d42e9510998e757478bb7bf104916425, type: 2}
-  - healthPercent: 35
-    projectileSpeedMultiplier: 1
-    timeBetweenProjectileAttacksMultiplier: 1
-    healthIncrementEvent: {fileID: 0}
+  b_BaseProjectileThrowSpeed: 11.1
+  b_BaseTimeBetweenProjectileAttacks: 0.88
+  b_BossPhases:
+  - phaseName: Phase 1
+    healthPercent: 75.3
+    throwSpeed: 13.2
+    attackDelay: 0.88
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 2
+    healthPercent: 50.4
+    throwSpeed: 13.8
+    attackDelay: 0.88
+    phaseEvent: {fileID: 0}
+  - phaseName: Phase 3
+    healthPercent: 24.6
+    throwSpeed: 14.3
+    attackDelay: 0.88
+    phaseEvent: {fileID: 0}
   b_BossAttacks:
-  - attackName: Attack 1
-    percentChanceToUse: 0.671
+  - attackName: Fruits of Fury
+    percentChanceToUse: 0.61
     attackCondition: {fileID: 0}
-  - attackName: Attack 2
-    percentChanceToUse: 0.314
+  - attackName: Jammed
+    percentChanceToUse: 0.501
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 3e345a77c65b16e49adc6f5c7c679093, type: 2}

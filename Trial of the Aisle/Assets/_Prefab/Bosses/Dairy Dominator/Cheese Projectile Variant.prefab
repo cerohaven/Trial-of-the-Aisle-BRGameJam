@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cheese Projectile Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5112062029216856773, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_Sprite
       value: 

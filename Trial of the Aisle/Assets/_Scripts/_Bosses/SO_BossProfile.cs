@@ -21,18 +21,18 @@ public class SO_BossProfile : ScriptableObject
     [SerializeField] private Color32 b_BossColourPalette = new Color32(255,255,255,255);
 
     [Separator()]
-    [Title("Projectiles", TextAlignment.Center)]
+    [Title("Throw Projectiles", TextAlignment.Center)]
+    [SerializeField] private BossThrowProjectiles[] b_BossThrowProjectiles = new BossThrowProjectiles[1];
 
+    [Separator()]
+    [Title("Boss Phases", TextAlignment.Center)]
+    
     [Range(0, 30)]
     [SerializeField] private float b_BaseProjectileThrowSpeed;
 
     [Range(0, 2)]
     [SerializeField] private float b_BaseTimeBetweenProjectileAttacks;
 
-    [SerializeField] private BossThrowProjectiles[] b_BossThrowProjectiles = new BossThrowProjectiles[1];
-
-    [Separator()]
-    [Title("Health", TextAlignment.Center)]
     [Tooltip("When the boss reaches this percentage of health, we can change the behaviours of attacks" )]
     [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[2];
 
@@ -86,14 +86,27 @@ public class BossHealthIncrements
     public float healthPercent = 50;
 
     [Range(0, 30)]
-    public float projectileSpeed = 1;
+    public float throwSpeed = 1;
 
     [Range(0, 2)]
-    public float timeBetweenProjectileAttacks = 1;
-    
+    public float attackDelay = 1;
+
+    //public Vector2 minMaxProjectilesToThrow;
+
     [Tooltip("When the boss reaches this threshold, we can run custom code for a unique event to possibly trigger an animation, noise, etc.")]
     public BossPhaseEvent phaseEvent;
+
+    //[Header("Simultaneous Projectiles Thrown")]
+    //[Range(1, 3)]
+    //[Tooltip("If we want the projectiles thrown in this phase to be simultaneous, like a tri shot or split shot")]
+    //public int projectilesThrownSimultaneously = 1;
+
+    //[Range(0, 0.5f)]
+    //[Tooltip("If we want a delay between the simultaneous shots for a staggered effect, or just launch them all at the same time")]
+    //public float simultaneousDelay = 0;
+
 }
+
 
 [System.Serializable]
 public class BossThrowProjectiles
@@ -140,8 +153,6 @@ public class SO_BossProfileEditor : Editor
     private SerializedProperty ability1;
     private SerializedProperty ability2;
 
-    private SerializedProperty ability1Texture;
-    private SerializedProperty ability2Texture;
 
     private void OnEnable()
     {
@@ -164,8 +175,6 @@ public class SO_BossProfileEditor : Editor
         ability1 = serializedObject.FindProperty("ability1");
         ability2 = serializedObject.FindProperty("ability2");
 
-        ability1Texture = serializedObject.FindProperty("ability1Texture");
-        ability2Texture = serializedObject.FindProperty("ability2Texture");
 
     }
 
@@ -261,8 +270,7 @@ public class SO_BossProfileEditor : Editor
 
         // PROJECTILE INFORMATION //
         GUILayout.Space(30f);
-        EditorGUILayout.PropertyField(b_BaseProjectileThrowSpeed, new GUIContent("Base Throw Speed "));
-        EditorGUILayout.PropertyField(b_BaseTimeBetweenProjectileAttacks, new GUIContent("Base Attack Delay "));
+
         EditorGUILayout.PropertyField(b_BossThrowProjectiles, new GUIContent("Boss Throw Projectiles "));
 
 
@@ -271,10 +279,13 @@ public class SO_BossProfileEditor : Editor
 
         // HEALTH INFORMATION //
         GUILayout.Space(30f);
+        EditorGUILayout.PropertyField(b_BaseProjectileThrowSpeed, new GUIContent("Base Throw Speed "));
+        EditorGUILayout.PropertyField(b_BaseTimeBetweenProjectileAttacks, new GUIContent("Base Attack Delay "));
+        GUILayout.Space(30f);
         EditorGUILayout.PropertyField(b_BossPhases, new GUIContent("Boss Phases"));
         
         Rect healthRect = GUILayoutUtility.GetLastRect();
-        EditorGUI.DrawRect(new Rect(70, healthRect.y + healthRect.height + 20, healthRect.width - 60, 30), b_BossColourPalette.colorValue);
+        EditorGUI.DrawRect(new Rect(70, healthRect.y + healthRect.height + 40, healthRect.width - 60, 30), b_BossColourPalette.colorValue);
 
         float widthOfHealthBar = healthRect.width - 60;
         Rect healthBossPfp = new Rect(20, healthRect.y + healthRect.height + 10, 50, 50);
@@ -418,7 +429,7 @@ public class SO_BossProfileEditor : Editor
             Color c = b_BossColourPalette.colorValue;
             
 
-            Rect incrementBar = new Rect((f * widthOfHealthBar / 100) + 70, healthRect.y + healthRect.height + 10, 8, 50);
+            Rect incrementBar = new Rect((f * widthOfHealthBar / 100) + 70, healthRect.y + healthRect.height + 30, 8, 50);
 
 
             //Drawing the Ticks for the health percentages
@@ -432,7 +443,7 @@ public class SO_BossProfileEditor : Editor
             EditorGUI.LabelField(new Rect(incrementBar.x - 10, incrementBar.y + 52, 10, 50), $"{f.ToString("00")}%", textStyle);
 
             //Drawing the phase number above the rectangle tick
-            EditorGUI.LabelField(new Rect(incrementBar.x - 25, incrementBar.y - 15, 10, 50), $"Phase {i+1}",textStyle);
+            EditorGUI.LabelField(new Rect(incrementBar.x - 25, incrementBar.y - 20, 10, 50), $"Phase {i+1}",textStyle);
 
 
             if (boss.B_BossPhases[i].phaseEvent != null)

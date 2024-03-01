@@ -19,23 +19,23 @@ MonoBehaviour:
   b_BossColourPalette:
     serializedVersion: 2
     rgba: 4282857925
-  b_BaseProjectileThrowSpeed: 15
-  b_BaseTimeBetweenProjectileAttacks: 0.7
   b_BossThrowProjectiles:
   - projectilePrefab: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
     percentChanceToUse: 0.472
   - projectilePrefab: {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
     percentChanceToUse: 0.472
+  b_BaseProjectileThrowSpeed: 15.4
+  b_BaseTimeBetweenProjectileAttacks: 1.21
   b_BossPhases:
   - phaseName: Phase 1
-    healthPercent: 65.2
-    projectileSpeed: 16.9
-    timeBetweenProjectileAttacks: 0.675
+    healthPercent: 62.1
+    throwSpeed: 17.5
+    attackDelay: 0.82
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
-    healthPercent: 20.3
-    projectileSpeed: 17.5
-    timeBetweenProjectileAttacks: 0.57
+    healthPercent: 22.2
+    throwSpeed: 19.2
+    attackDelay: 0.46
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
   b_BossAttacks:
   - attackName: Paracetamania
