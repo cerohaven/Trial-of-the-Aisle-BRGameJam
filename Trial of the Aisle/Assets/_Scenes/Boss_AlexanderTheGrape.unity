@@ -922,6 +922,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302991090}
   m_CullTransparentMesh: 1
+--- !u!1 &319694382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319694383}
+  - component: {fileID: 319694384}
+  m_Layer: 0
+  m_Name: AbilityManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319694383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319694382}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829568176}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319694384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319694382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1258f33c50fc18a4ea93e6801827b362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &351687415 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7391,50 +7435,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70101356027a7c84587009c899b1288c, type: 3}
---- !u!1 &776230600
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 776230602}
-  - component: {fileID: 776230601}
-  m_Layer: 0
-  m_Name: AbilityManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &776230601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776230600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddec0a2ddce516f4bac1d655b07b0433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &776230602
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776230600}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 829568176}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808400797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7854,7 +7854,7 @@ Transform:
   m_Children:
   - {fileID: 1835973868}
   - {fileID: 443669516}
-  - {fileID: 776230602}
+  - {fileID: 319694383}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855409801
@@ -46986,10 +46986,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   postBattleCanvas: {fileID: 0}
-  abilitySelectionUI: {fileID: 0}
   newAbilitiesAfterDefeat: []
   objectsToSpawnIn:
-  - gameObjectToSpawn: {fileID: 1010851069330081373, guid: 6edd8292782e4a941b49d20d979a1a20, type: 3}
+  - gameObjectToSpawn: {fileID: 39401754359496028, guid: bc5949dd41dc9c744883512f8becb6b2, type: 3}
     spawnPosition: 0
   debugDefeatBossKey: 107
 --- !u!114 &3257722118906592721

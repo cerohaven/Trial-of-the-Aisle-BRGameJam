@@ -9,24 +9,24 @@ public class NewAbilitySelectionUI : MonoBehaviour
 {
     [SerializeField] private GameObject unlockPanel;
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
+    [SerializeField] private Image bossCardImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
-    [SerializeField] private PlayerAbilities playerAbilities;
+    
 
     private Ability abilityOne;
     private Ability abilityTwo;
     private HashSet<Ability> swappedAbilities = new HashSet<Ability>();
 
-    void Start()
+    public void ShowAbilities(Ability abilityOne, Ability abilityTwo, Sprite bossCard)
     {
-        unlockPanel.SetActive(false);
-        abilityOneTextPanel.SetActive(false);
-        abilityTwoTextPanel.SetActive(false);
-    }
-
-    public void ShowAbilities(Ability abilityOne, Ability abilityTwo)
-    {
+        if(abilityOne == null || abilityTwo == null)
+        {
+            Debug.LogWarning("Not enough new abilities specified for post-boss defeat selection.");
+            return;
+        }
         this.abilityOne = abilityOne;
         this.abilityTwo = abilityTwo;
+        bossCardImage.sprite = bossCard;
 
         unlockPanel.SetActive(true);
         swappedAbilities.Clear(); // Reset for a new session

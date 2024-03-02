@@ -1,3 +1,4 @@
+using NodeCanvas.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,10 +6,11 @@ using UnityEngine;
 
 public class BossCheckDefeat : MonoBehaviour
 {
+    private Blackboard bossBlackboard;
+    private SO_BossProfile bossProfile;
+
+
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
-    [SerializeField] private GameObject postBattleCanvas; // Reference to the post-battle canvas
-    [SerializeField] private NewAbilitySelectionUI abilitySelectionUI; // Reference to the ability selection UI
-    [SerializeField] private Ability[] newAbilitiesAfterDefeat; // Abilities offered after defeat, updated to use Ability objects
 
     private LevelLoader levelLoader;
 
@@ -17,9 +19,12 @@ public class BossCheckDefeat : MonoBehaviour
 
     private void Awake()
     {
+        bossBlackboard = GetComponent<Blackboard>();
+        bossProfile = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+
         levelLoader = FindObjectOfType<LevelLoader>();
         bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
-        postBattleCanvas.SetActive(false);
+
     }
 
     private void Update()
@@ -42,33 +47,10 @@ public class BossCheckDefeat : MonoBehaviour
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
 
-        ShowPostBattleUI();
-        TriggerAbilitySelection();
-
+  
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
         Destroy(gameObject);
-    }
-
-    private void ShowPostBattleUI()
-    {
-        if (postBattleCanvas != null)
-        {
-            postBattleCanvas.SetActive(true); // Enable the PostBattleCanvas
-        }
-    }
-
-    private void TriggerAbilitySelection()
-    {
-        // Ensure there are at least 2 new abilities to offer
-        if (newAbilitiesAfterDefeat.Length >= 2)
-        {
-            abilitySelectionUI.ShowAbilities(newAbilitiesAfterDefeat[0], newAbilitiesAfterDefeat[1]);
-        }
-        else
-        {
-            Debug.LogWarning("Not enough new abilities specified for post-boss defeat selection.");
-        }
     }
 
     private void SpawnObjects()
@@ -76,7 +58,14 @@ public class BossCheckDefeat : MonoBehaviour
         foreach (var item in objectsToSpawnIn)
         {
             Vector3 spawnLocation = GetSpawnLocation(item.spawnPosition);
-            Instantiate(item.gameObjectToSpawn, spawnLocation, Quaternion.identity);
+            GameObject spawnedObj = Instantiate(item.gameObjectToSpawn, spawnLocation, Quaternion.identity);
+
+            //This is specific to the post battle Canvas
+            NewAbilitySelectionUI newUI = spawnedObj.GetComponent < NewAbilitySelectionUI>();
+
+            if (newUI == null) continue;
+
+            newUI.ShowAbilities(bossProfile.Ability1, bossProfile.Ability2, bossProfile.PostBattleCanvasUI);
         }
     }
 

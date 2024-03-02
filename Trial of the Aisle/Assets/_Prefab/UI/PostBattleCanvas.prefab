@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 2466867264656441011}
   - component: {fileID: 327816635923265376}
   - component: {fileID: 1567374280374160887}
+  - component: {fileID: 8830848842259740671}
   m_Layer: 5
-  m_Name: PostBattleCanvas Dairy
+  m_Name: PostBattleCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7430182710669596719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -102,6 +103,24 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8830848842259740671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39401754359496028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6914fdc17a73a54d9d74b56c455126f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockPanel: {fileID: 39401754359496028}
+  abilityOneImage: {fileID: 108588988300756323}
+  abilityTwoImage: {fileID: 6906709306345880128}
+  bossCardImage: {fileID: 2420994663199609490}
+  abilityOneTextPanel: {fileID: 3472198125153351896}
+  abilityTwoTextPanel: {fileID: 2208777835969676277}
 --- !u!1 &1179357721211375289
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1167,7 @@ GameObject:
   - component: {fileID: 2849236354586746726}
   - component: {fileID: 2420994663199609490}
   m_Layer: 8
-  m_Name: The Painkiller Post Battle UI
+  m_Name: Post Battle UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1204,7 +1223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77c1530dc62c1bb42ac69310d973a792, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e81fc6138d234a4b8df91b342e31101, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
