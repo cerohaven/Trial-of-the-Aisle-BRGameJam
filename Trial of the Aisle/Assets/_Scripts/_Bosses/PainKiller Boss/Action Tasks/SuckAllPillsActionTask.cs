@@ -12,7 +12,7 @@ namespace NodeCanvas.Tasks.Actions{
 		public float minPillSpeed;
 
 		private Blackboard agentBlackboard;
-		private Projectile_Pill[] pillProjectiles;
+		private Projectile_PainKiller[] pillProjectiles;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -25,7 +25,7 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-            pillProjectiles = GameObject.FindObjectsOfType<Projectile_Pill>();
+            pillProjectiles = GameObject.FindObjectsOfType<Projectile_PainKiller>();
 			blackboard.SetVariableValue("groundedPills", pillProjectiles.Length-5);
 
             for (int i = 0; i < pillProjectiles.Length; i++)

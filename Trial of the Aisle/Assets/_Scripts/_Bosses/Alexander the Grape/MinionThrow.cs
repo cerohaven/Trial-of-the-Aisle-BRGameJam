@@ -88,8 +88,12 @@ public class MinionThrow : MonoBehaviour
 
     private void Testing()
     {
+        if (gameObject == null) return;
+        
         LeanTween.scale(boss, Vector3.one, 0.1f);
-        if(gameObject != null) Destroy(gameObject);
+        
+        Destroy(gameObject);
+       
     }
 
 }

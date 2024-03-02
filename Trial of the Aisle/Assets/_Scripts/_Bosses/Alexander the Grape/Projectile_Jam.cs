@@ -67,6 +67,11 @@ public class Projectile_Jam : Projectile
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        // HITTING A WALL //
+        if (collision.gameObject.CompareTag("Walls"))
+        {
+            BreakJam();
+
+        }
     }
 }

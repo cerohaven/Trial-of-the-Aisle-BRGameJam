@@ -198,7 +198,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &57627225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -274,7 +275,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &73525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +458,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!114 &98588214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7041,7 +7044,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7574,7 +7578,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &814102008
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,7 +7885,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &829568175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,7 +8257,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1001 &960910390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8598,7 +8605,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &1048817570
 GameObject:
   m_ObjectHideFlags: 0
@@ -9382,7 +9390,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17890,7 +17899,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!114 &1590642701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -17977,7 +17987,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1001 &1619579338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18225,7 +18236,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &1654587765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -18317,7 +18329,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1001 &1742852568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46978,7 +46991,8 @@ MonoBehaviour:
   isInteractable: 1
   amountOfItemsOnShelf: 1
   shelfItem:
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
 --- !u!1 &1942011648
 GameObject:
   m_ObjectHideFlags: 0
@@ -47452,10 +47466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
-  postBattleCanvas: {fileID: 0}
-  newAbilitiesAfterDefeat:
-  - {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}
-  - {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: bc5949dd41dc9c744883512f8becb6b2, type: 3}
     spawnPosition: 0

@@ -21,7 +21,7 @@ MonoBehaviour:
     rgba: 4294932947
   b_BossThrowProjectiles:
   - projectilePrefab: {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
-    percentChanceToUse: 0.665
+    percentChanceToUse: 1
   b_BaseProjectileThrowSpeed: 11.1
   b_BaseTimeBetweenProjectileAttacks: 0.88
   b_BossPhases:
@@ -42,10 +42,10 @@ MonoBehaviour:
     phaseEvent: {fileID: 0}
   b_BossAttacks:
   - attackName: Fruits of Fury
-    percentChanceToUse: 0.61
+    percentChanceToUse: 0
     attackCondition: {fileID: 0}
   - attackName: Jammed
-    percentChanceToUse: 0.501
+    percentChanceToUse: 1
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}

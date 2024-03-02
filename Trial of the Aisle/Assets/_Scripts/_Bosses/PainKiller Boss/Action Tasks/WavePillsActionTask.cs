@@ -121,7 +121,7 @@ namespace NodeCanvas.Tasks.Actions{
 
             //Spawning in the pill game object
             GameObject pill = GameObject.Instantiate(pillToSpawn);
-            Projectile_Pill projectilePill = pill.GetComponent<Projectile_Pill>();
+            Projectile_PainKiller projectilePill = pill.GetComponent<Projectile_PainKiller>();
 
             //Setting the trajectory of the pill game object
 
@@ -136,7 +136,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
             projectilePill.IgnoreBossCollision(true);
             projectilePill.IgnoreProjectiles(true, 0);
-            projectilePill.IgnoreProjectiles(false, 0.4f);
+            projectilePill.IgnoreProjectiles(false, 0.2f);
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity

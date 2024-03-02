@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossHealthBar : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class BossHealthBar : MonoBehaviour
     //References
     private UIManager uiManager;
     private RectTransform bossRectTransform;
+
+    private Image bossBarImg;
 
     //Variables
     [SerializeField] private float blueBarIncreaseSpeed;
@@ -42,13 +45,16 @@ public class BossHealthBar : MonoBehaviour
     private void Awake()
     {
         bossProfile = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+        bossBarImg = GetComponent<Image>();
 
         bossRectTransform = GetComponent<RectTransform>();
         uiManager = GameObject.FindObjectOfType<UIManager>();
     }
-
+ 
     private void Start()
     {
+        bossBarImg.color = bossProfile.B_BossColourPalette;
+
         maxBossBarScaleX = bossRectTransform.sizeDelta.x;
         maxHealth = bossProfile.B_MaxHealth;
         bossHealth = maxHealth;

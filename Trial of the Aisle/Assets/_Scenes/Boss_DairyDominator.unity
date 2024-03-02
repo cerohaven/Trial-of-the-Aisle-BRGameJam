@@ -47250,8 +47250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
-  postBattleCanvas: {fileID: 855409801}
-  newAbilitiesAfterDefeat: []
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: bc5949dd41dc9c744883512f8becb6b2, type: 3}
     spawnPosition: 0

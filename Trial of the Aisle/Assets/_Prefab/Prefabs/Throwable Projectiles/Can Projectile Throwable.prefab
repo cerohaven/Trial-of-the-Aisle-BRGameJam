@@ -22,7 +22,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_Name
-      value: Can Projectile Variant
+      value: Can Projectile Throwable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Size.x
+      value: 1.870506
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2724938
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.11196104
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.031277265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318973277029953638, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5112062029216856773, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_Sprite
@@ -92,8 +112,41 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1ec3c8adca208ce4fbda9e66776e32d1, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6203200740068505994, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5845652352783758571}
   m_SourcePrefab: {fileID: 100100000, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+--- !u!212 &2132691796210691112 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8155592452420953379, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  m_PrefabInstance: {fileID: 7833637458883332363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6303198654708935638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+  m_PrefabInstance: {fileID: 7833637458883332363}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5845652352783758571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6303198654708935638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e399baa2fdf10de4085afb6d7b1ecdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  damageDealt: 1
+  hitParticles: {fileID: 8786347373218214469, guid: 69bf11f3d6e1a7842ad701ecae6cc867, type: 3}
+  outlineRenderer: {fileID: 2132691796210691112}
+  bossOutlineColour: {r: 0.8196079, g: 0.21960786, b: 0.24705884, a: 1}
+  playerOutlineColour: {r: 0.043137256, g: 0.64705884, b: 0, a: 1}
+  neutralOutlineColour: {r: 1, g: 1, b: 1, a: 0}

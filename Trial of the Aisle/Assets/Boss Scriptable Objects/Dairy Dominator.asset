@@ -27,30 +27,30 @@ MonoBehaviour:
   b_BossPhases:
   - phaseName: Phase 1
     healthPercent: 78.6
-    throwSpeed: 1
-    attackDelay: 1
+    throwSpeed: 13.7
+    attackDelay: 0.7
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
     healthPercent: 56
-    throwSpeed: 1
-    attackDelay: 1
+    throwSpeed: 13.7
+    attackDelay: 0.7
     phaseEvent: {fileID: 0}
   - phaseName: Phase 3
     healthPercent: 37.1
-    throwSpeed: 1
-    attackDelay: 1
+    throwSpeed: 13.7
+    attackDelay: 0.7
     phaseEvent: {fileID: 0}
   - phaseName: Phase 4
     healthPercent: 16.3
-    throwSpeed: 1
-    attackDelay: 1
+    throwSpeed: 13.7
+    attackDelay: 0.7
     phaseEvent: {fileID: 0}
   b_BossAttacks:
   - attackName: Moo-n Beam
-    percentChanceToUse: 0.812
+    percentChanceToUse: 0.634
     attackCondition: {fileID: 0}
   - attackName: Feta Frenzy
-    percentChanceToUse: 0.532
+    percentChanceToUse: 0.729
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}

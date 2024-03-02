@@ -71,6 +71,7 @@ public class SO_BossProfile : ScriptableObject
     
     public Sprite PostBattleCanvasUI { get => postBattleCanvasUI;}
     public Texture2D PostBattleCanvasTexture { get => postBattleCanvasTexture; set => postBattleCanvasTexture = value; }
+    public Color32 B_BossColourPalette { get => b_BossColourPalette;}
 
 
 
@@ -457,6 +458,7 @@ public class SO_BossProfileEditor : Editor
 
 
 
+
         // This is in charge of drawing the boss health increment bars based on the BossHealthIncrements array size and data
         //I have to put this code after we apply the modified properties or else we get an error since the array of the property doesn't update on time
         for (int i = 0; i < b_BossPhases.arraySize; i++)
@@ -471,7 +473,7 @@ public class SO_BossProfileEditor : Editor
 
             boss.B_BossPhases[i].healthPercent = boss.B_BossPhases[i].healthPercent;
             Color c = b_BossColourPalette.colorValue;
-            
+
 
             Rect incrementBar = new Rect((f * widthOfHealthBar / 100) + 70, healthRect.y + healthRect.height + 30, 8, 50);
 
@@ -487,7 +489,7 @@ public class SO_BossProfileEditor : Editor
             EditorGUI.LabelField(new Rect(incrementBar.x - 10, incrementBar.y + 52, 10, 50), $"{f.ToString("00")}%", textStyle);
 
             //Drawing the phase number above the rectangle tick
-            EditorGUI.LabelField(new Rect(incrementBar.x - 25, incrementBar.y - 20, 10, 50), $"Phase {i+1}",textStyle);
+            EditorGUI.LabelField(new Rect(incrementBar.x - 25, incrementBar.y - 20, 10, 50), $"Phase {i + 1}", textStyle);
 
 
             if (boss.B_BossPhases[i].phaseEvent != null)
@@ -498,7 +500,6 @@ public class SO_BossProfileEditor : Editor
                 EditorGUI.LabelField(new Rect(incrementBar.x - 15, incrementBar.y + 66, 10, 50), "Event", textStyle);
             }
         }
-
 
     }
 

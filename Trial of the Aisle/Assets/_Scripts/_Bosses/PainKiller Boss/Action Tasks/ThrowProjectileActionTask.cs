@@ -87,7 +87,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectile.IgnoreBossCollision(true);
 
             projectile.IgnoreProjectiles(true, 0);
-            projectile.IgnoreProjectiles(false, 0.5f);
+            projectile.IgnoreProjectiles(false, 0.2f);
             projectile.EnableDrag(0, 2);
 
         }
