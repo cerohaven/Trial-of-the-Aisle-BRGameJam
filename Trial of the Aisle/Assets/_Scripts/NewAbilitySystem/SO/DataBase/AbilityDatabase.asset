@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 11400000, guid: 3e345a77c65b16e49adc6f5c7c679093, type: 2}
-  - {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
   - {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
+  - {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
   - {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}
   - {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}

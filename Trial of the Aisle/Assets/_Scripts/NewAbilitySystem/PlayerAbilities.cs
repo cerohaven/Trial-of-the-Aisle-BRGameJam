@@ -7,9 +7,9 @@ public class PlayerAbilities : MonoBehaviour
     public static PlayerAbilities Instance { get; private set; }
 
     [SerializeField] private InputActionAsset inputActions; // Assigned in the Inspector
-    [SerializeField] private AbilityDatabase abilityDatabase; // Reference to the Ability Database
+    [SerializeField] public AbilityDatabase abilityDatabase; // Reference to the Ability Database
 
-    [SerializeField] private int[] equippedAbilityIDs = new int[3]; // Array of IDs for equipped abilities
+    [SerializeField] public int[] equippedAbilityIDs = new int[3]; // Array of IDs for equipped abilities, can be -1 to indicate no ability equipped
     private Ability[] equippedAbilities = new Ability[3]; // Array of Ability references corresponding to the IDs
     private float[] cooldowns; // Array of cooldowns for each ability
 
@@ -29,11 +29,9 @@ public class PlayerAbilities : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Find and enable the action map
         var playerActions = inputActions.FindActionMap("Player");
         playerActions.Enable();
 
-        // Subscribe to input actions for ability activation
         playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(0);
         playerActions.FindAction("AbilityTwo").performed += _ => ActivateAbility(1);
         playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(2);
@@ -41,6 +39,19 @@ public class PlayerAbilities : MonoBehaviour
         cooldowns = new float[equippedAbilityIDs.Length];
         abilityIcons = new Image[equippedAbilityIDs.Length];
         cooldownOverlays = new Image[equippedAbilityIDs.Length];
+
+        // Explicitly initialize equippedAbilities based on equippedAbilityIDs
+        for (int i = 0; i < equippedAbilityIDs.Length; i++)
+        {
+            if (equippedAbilityIDs[i] >= 0)
+            {
+                equippedAbilities[i] = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
+            }
+            else
+            {
+                equippedAbilities[i] = null; 
+            }
+        }
     }
 
     void Start()
@@ -57,34 +68,34 @@ public class PlayerAbilities : MonoBehaviour
     {
         for (int i = 0; i < equippedAbilityIDs.Length; i++)
         {
-            equippedAbilities[i] = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
-            Ability ability = equippedAbilities[i];
-
-            if (ability != null)
+            // Handle the case where an ability slot is empty (e.g., ID is -1)
+            if (equippedAbilityIDs[i] >= 0)
             {
-                Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>() ?? abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
-                abilityIcons[i] = iconImage;
-                abilityIcons[i].sprite = ability.abilityIcon;
-                abilityIcons[i].enabled = true;
+                equippedAbilities[i] = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
+                Ability ability = equippedAbilities[i];
 
-                Image overlayImage = FindOrCreateOverlayImage(abilitySlotsUIReference[i]);
-                overlayImage.sprite = ability.abilityIcon;
-                overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 0.75f);
-                overlayImage.type = Image.Type.Filled;
-                overlayImage.fillMethod = Image.FillMethod.Radial360;
-                overlayImage.fillClockwise = false;
-                overlayImage.fillOrigin = (int)Image.Origin360.Top;
-                overlayImage.fillAmount = 0;
-                cooldownOverlays[i] = overlayImage;
+                if (ability != null)
+                {
+                    Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>() ?? abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
+                    abilityIcons[i] = iconImage;
+                    abilityIcons[i].sprite = ability.abilityIcon;
+                    abilityIcons[i].enabled = true;
+
+                    Image overlayImage = FindOrCreateOverlayImage(abilitySlotsUIReference[i]);
+                    overlayImage.sprite = ability.abilityIcon;
+                    overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 0.75f);
+                    overlayImage.type = Image.Type.Filled;
+                    overlayImage.fillMethod = Image.FillMethod.Radial360;
+                    overlayImage.fillClockwise = false;
+                    overlayImage.fillOrigin = (int)Image.Origin360.Top;
+                    overlayImage.fillAmount = 0;
+                    cooldownOverlays[i] = overlayImage;
+                }
             }
             else
             {
-                abilityIcons[i].enabled = false;
-                Transform cooldownOverlayTransform = abilitySlotsUIReference[i].Find("CooldownOverlay");
-                if (cooldownOverlayTransform != null)
-                {
-                    cooldownOverlayTransform.gameObject.SetActive(false);
-                }
+                // Ensure UI elements are disabled if no ability is equipped in this slot
+                abilitySlotsUIReference[i].gameObject.SetActive(false);
             }
         }
     }
@@ -108,6 +119,7 @@ public class PlayerAbilities : MonoBehaviour
 
     public void ActivateAbility(int slot)
     {
+        // Check for null in equippedAbilities to avoid null reference exceptions
         if (slot >= 0 && slot < equippedAbilities.Length && equippedAbilities[slot] != null && cooldowns[slot] <= 0)
         {
             equippedAbilities[slot].Activate(gameObject);
@@ -120,6 +132,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         for (int i = 0; i < equippedAbilities.Length; i++)
         {
+            // Again, check for null to avoid exceptions
             if (equippedAbilities[i] != null && cooldowns[i] > 0)
             {
                 cooldowns[i] -= Time.deltaTime;
@@ -138,7 +151,7 @@ public class PlayerAbilities : MonoBehaviour
         if (slot >= 0 && slot < equippedAbilities.Length)
         {
             equippedAbilities[slot] = newAbility;
-            equippedAbilityIDs[slot] = newAbility.ID; // Update the ID array to match the new ability
+            equippedAbilityIDs[slot] = newAbility != null ? newAbility.ID : -1; // Handle null case for newAbility
             cooldowns[slot] = 0; // Reset cooldown for swapped ability
             InitializeAbilityUI(); // Re-initialize UI to reflect the swapped abilities
         }
