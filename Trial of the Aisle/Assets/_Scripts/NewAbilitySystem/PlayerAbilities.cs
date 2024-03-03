@@ -64,41 +64,46 @@ public class PlayerAbilities : MonoBehaviour
         UpdateCooldowns();
     }
 
-    private void InitializeAbilityUI()
+    void InitializeAbilityUI()
     {
-        for (int i = 0; i < equippedAbilityIDs.Length; i++)
+        for (int i = 0; i < equippedAbilities.Length; i++)
         {
-            // Handle the case where an ability slot is empty (e.g., ID is -1)
-            if (equippedAbilityIDs[i] >= 0)
+            if (equippedAbilities[i] != null) // Ability is present
             {
-                equippedAbilities[i] = abilityDatabase.GetAbilityByID(equippedAbilityIDs[i]);
                 Ability ability = equippedAbilities[i];
 
-                if (ability != null)
-                {
-                    Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>() ?? abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
-                    abilityIcons[i] = iconImage;
-                    abilityIcons[i].sprite = ability.abilityIcon;
-                    abilityIcons[i].enabled = true;
+                // Ensure the slot UI is active
+                abilitySlotsUIReference[i].gameObject.SetActive(true);
 
-                    Image overlayImage = FindOrCreateOverlayImage(abilitySlotsUIReference[i]);
-                    overlayImage.sprite = ability.abilityIcon;
-                    overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 0.75f);
-                    overlayImage.type = Image.Type.Filled;
-                    overlayImage.fillMethod = Image.FillMethod.Radial360;
-                    overlayImage.fillClockwise = false;
-                    overlayImage.fillOrigin = (int)Image.Origin360.Top;
-                    overlayImage.fillAmount = 0;
-                    cooldownOverlays[i] = overlayImage;
+                // Set or update the ability icon
+                Image iconImage = abilitySlotsUIReference[i].GetComponent<Image>();
+                if (iconImage == null)
+                {
+                    iconImage = abilitySlotsUIReference[i].gameObject.AddComponent<Image>();
                 }
+                abilityIcons[i] = iconImage;
+                abilityIcons[i].sprite = ability.abilityIcon;
+                abilityIcons[i].enabled = true;
+
+                // Set or update the cooldown overlay
+                Image overlayImage = FindOrCreateOverlayImage(abilitySlotsUIReference[i]);
+                overlayImage.sprite = ability.abilityIcon; // Use the same icon for the overlay
+                overlayImage.color = new Color(0.5f, 0.5f, 0.5f, 0.75f); // Semi-transparent overlay
+                overlayImage.type = Image.Type.Filled;
+                overlayImage.fillMethod = Image.FillMethod.Radial360;
+                overlayImage.fillClockwise = false;
+                overlayImage.fillOrigin = (int)Image.Origin360.Top;
+                overlayImage.fillAmount = 0; // No cooldown initially
+                cooldownOverlays[i] = overlayImage;
             }
-            else
+            else // No ability is present in this slot
             {
-                // Ensure UI elements are disabled if no ability is equipped in this slot
+                // Ensure the slot UI is inactive if there's no ability
                 abilitySlotsUIReference[i].gameObject.SetActive(false);
             }
         }
     }
+
 
     private Image FindOrCreateOverlayImage(RectTransform parentSlot)
     {
@@ -150,12 +155,20 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (slot >= 0 && slot < equippedAbilities.Length)
         {
+            // Assign the new ability to the specified slot, even if the current ability is null
             equippedAbilities[slot] = newAbility;
-            equippedAbilityIDs[slot] = newAbility != null ? newAbility.ID : -1; // Handle null case for newAbility
-            cooldowns[slot] = 0; // Reset cooldown for swapped ability
-            InitializeAbilityUI(); // Re-initialize UI to reflect the swapped abilities
+
+            // Update the corresponding ability ID, handling the case where newAbility is null
+            equippedAbilityIDs[slot] = newAbility != null ? newAbility.ID : -1;
+
+            // Reset the cooldown for the newly swapped ability slot to ensure it's ready to use
+            cooldowns[slot] = 0;
+
+            // Re-initialize the UI elements to reflect the newly swapped abilities
+            InitializeAbilityUI();
         }
     }
+
 
     public float GetCooldown(int slot)
     {

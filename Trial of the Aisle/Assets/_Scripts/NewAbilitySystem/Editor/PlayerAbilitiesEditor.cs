@@ -105,4 +105,14 @@ public class PlayerAbilitiesEditor : Editor
             Debug.Log($"Assigned {selectedAbility.name} to Slot {slot} in PlayerAbilities");
         }
     }
+
+    // Populate filteredAbilities list with all abilities from the ability database on editor script enable
+    private void OnEnable()
+    {
+        PlayerAbilities playerAbilities = (PlayerAbilities)target;
+        if (playerAbilities.abilityDatabase != null)
+        {
+            filteredAbilities = new List<Ability>(playerAbilities.abilityDatabase.abilities);
+        }
+    }
 }
