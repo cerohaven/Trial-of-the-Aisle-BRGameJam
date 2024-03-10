@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
-  b_MaxHealth: 100
+  b_MaxHealth: 50
   b_BossProfilePicture: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -24,18 +24,18 @@ MonoBehaviour:
     percentChanceToUse: 0.509
   - projectilePrefab: {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
     percentChanceToUse: 0.509
-  b_BaseProjectileThrowSpeed: 9.9
-  b_BaseTimeBetweenProjectileAttacks: 2
+  b_BaseProjectileThrowSpeed: 13.2
+  b_BaseTimeBetweenProjectileAttacks: 1.058
   b_BossPhases:
   - phaseName: Phase 1
     healthPercent: 62.1
-    throwSpeed: 13.2
-    attackDelay: 2
+    throwSpeed: 15.7
+    attackDelay: 0.98
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
     healthPercent: 25.8
-    throwSpeed: 9.7
-    attackDelay: 2
+    throwSpeed: 13.9
+    attackDelay: 1.18
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
   b_BossAttacks:
   - attackName: Paracetamania
