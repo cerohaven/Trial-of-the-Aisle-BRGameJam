@@ -781,7 +781,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 829568176}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &284075331
 MonoBehaviour:
@@ -7918,8 +7918,6 @@ Transform:
   m_Children:
   - {fileID: 1835973868}
   - {fileID: 443669516}
-  - {fileID: 284075329}
-  - {fileID: 1845013775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855409801
@@ -8928,7 +8926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: ffffffffffffffffffffffff
+  equippedAbilityIDs: 040000000000000002000000
   abilitySlotsUIReference:
   - {fileID: 2545268619740206462}
   - {fileID: 5386798739049433889}
@@ -46294,7 +46292,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 829568176}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46545,11 +46543,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
---- !u!4 &1845013775 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 672016082745021282, guid: 3d9ff093ddacd9a418d4ebf8fbd38733, type: 3}
-  m_PrefabInstance: {fileID: 1845013774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1846791011 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -47928,3 +47921,5 @@ SceneRoots:
   - {fileID: 1231111791}
   - {fileID: 1639962709}
   - {fileID: 1879187514}
+  - {fileID: 1845013774}
+  - {fileID: 284075329}

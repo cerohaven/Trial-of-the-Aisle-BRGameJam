@@ -25,5 +25,8 @@ public class SpreadShotAbility : Ability
         Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset); // Calculate rotation with spread.
         GameObject projectile = Instantiate(projectilePrefab, position, rotation); // Create the projectile.
         projectile.GetComponent<Rigidbody2D>().velocity = rotation * Vector2.right * projectileSpeed; // Set velocity in the direction of rotation.
+        projectile.transform.up = rotation * Vector2.right;
+
+
     }
 }

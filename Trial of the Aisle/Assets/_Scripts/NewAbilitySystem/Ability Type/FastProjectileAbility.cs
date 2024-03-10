@@ -22,5 +22,6 @@ public class FastProjectileAbility : Ability
         // Set the projectile's velocity towards the mouse position
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.velocity = direction * projectileSpeed;
+        projectile.transform.up = direction;
     }
 }

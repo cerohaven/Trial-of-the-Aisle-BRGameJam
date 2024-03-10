@@ -47,7 +47,7 @@ public class Projectile_PainKiller : Projectile
 
         //Keep increasing velocity towards the boss only if its being sucked in and
         //the pill isn't from the player
-        if (isBeingSuckedIn && whoThrew != WhoThrew.Player)
+        if (isBeingSuckedIn && whoThrew != WhoThrew.Player && targetThrown != null)
         {
             base.InitializeProjectile(travelDir, travelSpeed, targetThrown, WhoThrew.Boss);
             interactableProjectile.SetInteractable(false);
@@ -66,7 +66,7 @@ public class Projectile_PainKiller : Projectile
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.gameEnded) return;
+        //if (GameManager.gameEnded) return;
 
         base.OnCollisionEnter2D (collision);
 
@@ -86,84 +86,7 @@ public class Projectile_PainKiller : Projectile
         }
     }
 
-    #region Prev Code
-    //    //If the Pill is thrown by the player, make it get destroyed by anything it touches
-    //        if (whoThrew == WhoThrew.Player)
-    //        {
 
-    //            if (collision.gameObject.CompareTag("Boss"))
-    //            {
-    //                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, transform.up);
-    //                CinemachineShake.Instance.ShakeCamera();
-    //            }
-    //Destroy(gameObject);
-    //        }
-
-    //        //If a pill hits another pill, or if another projectile hits a pill
-    //        //If the other projectile collides with this one
-    //        bool collideWithProjectile;
-    //if (collision.gameObject.layer == 10 || collision.gameObject.layer == 9)
-    //{
-    //    //If they are currently colliding with another projectile,
-    //    //If this projectile is neutral, then don't destroy it
-    //    if (targetThrown == null)
-    //    {
-    //        collideWithProjectile = false;
-    //    }
-    //    else
-    //    {
-    //        collideWithProjectile = true;
-    //    }
-    //}
-    //else
-    //{
-    //    collideWithProjectile = false;
-    //}
-
-    //if ((!collision.gameObject.CompareTag("Boss") && collideWithProjectile) ||
-    //    //if hit wall during the wave, then destroy it
-    //    (collision.gameObject.CompareTag("Walls") && isThrownInWave))
-    //{
-    //    Destroy(gameObject);
-    //}
-
-
-
-    ////When the boss is sucking in all the pills for the attack, when the pill touches the boss don't deal
-    ////any damage and increase a pill count
-    //if (isBeingSuckedIn)
-    //{
-    //    if (collision.gameObject.CompareTag("Boss"))
-    //    {
-    //        //Increase a pill count
-    //        int currentPills = bossBlackboard.GetVariableValue<int>("pillsSucked");
-    //        currentPills++;
-    //        bossBlackboard.SetVariableValue("pillsSucked", currentPills);
-    //        Destroy(gameObject);
-    //    }
-    //}
-
-
-
-    ////On Collision with the player, deal damage UNLESS it can be picked up 
-    //if (collision.gameObject.CompareTag("Player"))
-    //{
-    //    if (canBePickedUp && targetThrown != bossBlackboard.transform)
-    //        return;
-
-    //    adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
-    //    Destroy(gameObject);
-    //}
-
-    //Instantiate(hitParticles, transform.position, Quaternion.identity);
-
-    //if (collision.gameObject.CompareTag("Walls"))
-    //{
-    //    rb.velocity = Vector2.zero;
-    //}
-
-
-    #endregion
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
