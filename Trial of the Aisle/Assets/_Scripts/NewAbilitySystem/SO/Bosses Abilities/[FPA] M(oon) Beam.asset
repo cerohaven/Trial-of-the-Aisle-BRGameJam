@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
   m_Name: '[FPA] M(oon) Beam'
   m_EditorClassIdentifier: 
-  abilityName: Placeholder
+  abilityName: Moon Beam
+  abilityDescription: "This spray of milk does a small amount of damage, but covers
+    a wide-ranged area that's sure to hit your target. \r"
   abilityIcon: {fileID: 2030291337, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 3
+  ID: 2
   projectilePrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
   projectileSpeed: 25

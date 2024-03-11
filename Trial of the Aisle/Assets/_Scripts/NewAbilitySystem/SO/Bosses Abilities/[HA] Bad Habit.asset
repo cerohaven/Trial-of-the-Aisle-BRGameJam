@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 390d774372d4cc744bd99223337e8af0, type: 3}
-  m_Name: '[HA] Pill Popper'
+  m_Name: '[HA] Bad Habit'
   m_EditorClassIdentifier: 
-  abilityName: PillPopper
-  abilityDescription: TEST HEAL
+  abilityName: 'Bad Habit '
+  abilityDescription: "Take some meds to give yourself a hefty 20% health boost.
+    \r"
   abilityIcon: {fileID: 375709886, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 13
-  ID: 0
+  ID: 3
   changeHealthAmount: 2
   adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   healingEffectPrefab: {fileID: 6569096716732797545, guid: 9f54e6956153365418731809c32ed376, type: 3}

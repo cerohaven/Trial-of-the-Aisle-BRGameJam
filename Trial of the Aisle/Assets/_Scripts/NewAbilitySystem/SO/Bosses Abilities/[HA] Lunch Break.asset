@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: '[HA] Lunch Break'
   m_EditorClassIdentifier: 
   abilityName: Lunch Break
+  abilityDescription: 'Eat a protein bar for a quick 10% health boost.
+
+'
   abilityIcon: {fileID: 1101442489, guid: 306f1e0dcd7792445a0e0f224f00f452, type: 3}
   cooldownTime: 15
-  ID: 0
+  ID: 1
   changeHealthAmount: 2
   adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   healingEffectPrefab: {fileID: 6569096716732797545, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}

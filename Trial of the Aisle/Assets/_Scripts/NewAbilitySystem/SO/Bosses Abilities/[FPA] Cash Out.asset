@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
-  m_Name: '[FPA] Cash Register'
+  m_Name: '[FPA] Cash Out'
   m_EditorClassIdentifier: 
-  abilityName: WOWOW
-  abilityDescription: ASDASD
+  abilityName: 'Cash Out '
+  abilityDescription: "Throw your cash register at your enemies for an intense hit
+    of damage.\r"
   abilityIcon: {fileID: 1863191801, guid: 306f1e0dcd7792445a0e0f224f00f452, type: 3}
   cooldownTime: 7
   ID: 0
