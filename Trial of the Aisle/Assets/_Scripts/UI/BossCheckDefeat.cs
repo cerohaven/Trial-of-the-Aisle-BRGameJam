@@ -51,8 +51,6 @@ public class BossCheckDefeat : MonoBehaviour
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
         Destroy(gameObject);
-
-        LevelLoader.Instance.SetTrigger();
     }
 
     private void SpawnObjects()
