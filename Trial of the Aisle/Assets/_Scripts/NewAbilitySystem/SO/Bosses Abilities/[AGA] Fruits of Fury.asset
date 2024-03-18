@@ -17,5 +17,8 @@ MonoBehaviour:
   abilityIcon: {fileID: -236900693, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 15
   ID: 0
-  grapeMinionPrefab: {fileID: 0}
+  grapeMinionPrefab: {fileID: 5005698199594441834, guid: 3958826e6a3cf5640b1299f5fa3de5b1, type: 3}
   minionCount: 5
+  spawnRadius: 10
+  adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
+  minDistanceFromWalls: 1
