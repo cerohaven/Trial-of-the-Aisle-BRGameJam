@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/Spread Shot")] // Enables creating instances in the Unity Editor.
+[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/General/Spread Shot")] // Enables creating instances in the Unity Editor.
 public class SpreadShotAbility : Ability
 {
     public GameObject projectilePrefab; // Prefab for projectiles to shoot.

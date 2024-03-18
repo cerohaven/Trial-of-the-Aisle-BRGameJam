@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealingAbility", menuName = "Abilities/Healing Ability")]
+[CreateAssetMenu(fileName = "HealingAbility", menuName = "Abilities/Support/Healing Ability")]
 public class HealingAbility : Ability
 {
     public ChangeHealth changeHealthAmount; // The enum value specifying the amount of health to adjust

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/Ability")]
+[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/ParentControllers/Ability")]
 public abstract class Ability : ScriptableObject
 {
     public string abilityName;

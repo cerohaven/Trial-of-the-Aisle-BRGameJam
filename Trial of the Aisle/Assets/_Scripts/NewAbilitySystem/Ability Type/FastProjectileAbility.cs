@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FastProjectileAbility", menuName = "Abilities/Fast Projectile")]
+[CreateAssetMenu(fileName = "FastProjectileAbility", menuName = "Abilities/General/Fast Projectile")]
 public class FastProjectileAbility : Ability
 {
     public GameObject projectilePrefab;

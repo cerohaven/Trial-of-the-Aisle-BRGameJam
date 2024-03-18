@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "AbilityDatabase", menuName = "Abilities/Ability Database")]
+[CreateAssetMenu(fileName = "AbilityDatabase", menuName = "Abilities/ParentControllers/Ability Database")]
 public class AbilityDatabase : ScriptableObject
 {
     public List<Ability> abilities; // Stores all abilities in the database.
