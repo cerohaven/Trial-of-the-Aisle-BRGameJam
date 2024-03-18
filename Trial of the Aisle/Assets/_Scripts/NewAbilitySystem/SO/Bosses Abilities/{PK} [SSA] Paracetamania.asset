@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29860142c96b6e64fa938e1e47652e4e, type: 3}
-  m_Name: '[SSA] Paracetamania'
+  m_Name: '{PK} [SSA] Paracetamania'
   m_EditorClassIdentifier: 
   abilityName: 'Paracetamania '
   abilityDescription: 'Gain a pack of 5 pills to pull from and shoot rapid-fire at

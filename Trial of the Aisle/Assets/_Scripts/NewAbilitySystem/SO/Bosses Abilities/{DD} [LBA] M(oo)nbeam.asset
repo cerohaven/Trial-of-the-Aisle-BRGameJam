@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
-  m_Name: '[FPA] M(oon) Beam'
+  m_Script: {fileID: 11500000, guid: 260821fa246776e47a95dcad6b76c5e2, type: 3}
+  m_Name: '{DD} [LBA] M(oo)nbeam'
   m_EditorClassIdentifier: 
-  abilityName: Moon Beam
+  abilityName: 'M(oo)n Beam '
   abilityDescription: "This spray of milk does a small amount of damage, but covers
-    a wide-ranged area that's sure to hit your target. \r"
+    a wide-ranged area that's sure to hit your target. \r\n"
   abilityIcon: {fileID: 2030291337, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 3
-  ID: 2
-  projectilePrefab: {fileID: 1572699439113838549, guid: 5a4e6d435b6c22d4ebf8db80bfda853e, type: 3}
-  projectileSpeed: 25
+  ID: 4
+  milkSprayEffectPrefab: {fileID: 1572699439113838549, guid: 18f1ef4fd6088e2488e067f28f31a4eb, type: 3}
+  sprayDuration: 5

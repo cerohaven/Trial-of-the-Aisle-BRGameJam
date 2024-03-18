@@ -11,7 +11,7 @@ public class AbilityDatabase : ScriptableObject
         UpdateAbilityIDs();
     }
 
-    private void UpdateAbilityIDs()
+    public void UpdateAbilityIDs()
     {
         for (int i = 0; i < abilities.Count; i++)
         {

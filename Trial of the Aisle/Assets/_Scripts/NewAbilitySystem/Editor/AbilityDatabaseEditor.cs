@@ -69,6 +69,10 @@ public class AbilityDatabaseEditor : Editor
                 database.abilities.Add(ability);
             }
         }
+
+        // Explicitly call UpdateAbilityIDs to ensure IDs are updated immediately after population
+        database.UpdateAbilityIDs();
+
         EditorUtility.SetDirty(database); // Mark the database as dirty to ensure the changes are saved
     }
 }

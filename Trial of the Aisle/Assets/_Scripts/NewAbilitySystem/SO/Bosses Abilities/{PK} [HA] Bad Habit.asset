@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 390d774372d4cc744bd99223337e8af0, type: 3}
-  m_Name: '[HA] Bad Habit'
+  m_Name: '{PK} [HA] Bad Habit'
   m_EditorClassIdentifier: 
   abilityName: 'Bad Habit '
   abilityDescription: "Take some meds to give yourself a hefty 20% health boost.

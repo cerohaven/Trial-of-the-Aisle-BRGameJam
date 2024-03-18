@@ -8981,7 +8981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 040000000000000002000000
+  equippedAbilityIDs: 030000000400000001000000
   abilitySlotsUIReference:
   - {fileID: 2545268619740206462}
   - {fileID: 5386798739049433889}
@@ -47616,7 +47616,6 @@ GameObject:
   - component: {fileID: 3257722118906592721}
   - component: {fileID: 7073513567513950841}
   - component: {fileID: 2886160405841606760}
-  - component: {fileID: 9083388960159939505}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
   - component: {fileID: 9083388960159939504}
@@ -47966,19 +47965,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb3636bbc1d346479d26302778bfd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9083388960159939505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5488963747673041817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7e36b294980af649b4eb5e48a48d178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boundsCollider: {fileID: 2105187590}
 --- !u!210 &9148741302752814096
 SortingGroup:
   m_ObjectHideFlags: 0
