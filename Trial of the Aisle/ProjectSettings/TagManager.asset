@@ -16,14 +16,14 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Floor
   - Wall
   - Interactable Object
   - Player Bullets
   - Projectile
   - PlayerSummon
-  - Floor
-  - NoPost
+  - 
+  - 
   - 
   - 
   - 
