@@ -22,5 +22,10 @@ public class Bullet : MonoBehaviour
             adjustHealth.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, transform.up);
             CinemachineShake.Instance.ShakeCamera();
         }
+
+        if (collision.gameObject.CompareTag("Pill"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Boss
   - Pill
   - Feta
+  - Bullet
   layers:
   - Default
   - TransparentFX
