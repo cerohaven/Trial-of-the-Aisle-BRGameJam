@@ -19,6 +19,6 @@ MonoBehaviour:
   cooldownTime: 4
   ID: 3
   cheesePrefab: {fileID: 1572699439113838549, guid: 18f1ef4fd6088e2488e067f28f31a4eb, type: 3}
-  throwInterval: 0.35
-  numberOfCheeses: 7
-  cheeseSpeed: 15
+  throwInterval: 0.25
+  numberOfCheeses: 10
+  cheeseSpeed: 35
