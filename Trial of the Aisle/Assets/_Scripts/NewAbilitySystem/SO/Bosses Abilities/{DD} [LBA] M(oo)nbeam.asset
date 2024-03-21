@@ -18,5 +18,5 @@ MonoBehaviour:
   abilityIcon: {fileID: 2030291337, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 3
   ID: 4
-  milkSprayEffectPrefab: {fileID: 1572699439113838549, guid: 18f1ef4fd6088e2488e067f28f31a4eb, type: 3}
+  milkSprayEffectPrefab: {fileID: 1572699439113838549, guid: 0a24b7ca53f13ac48b202dc7c32f4273, type: 3}
   sprayDuration: 5
