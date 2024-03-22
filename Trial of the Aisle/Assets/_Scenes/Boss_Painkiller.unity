@@ -9779,8 +9779,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
     - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: largeHealthAdjustment
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: smallHealthAdjustment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: mediumHealthAdjustment
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: xLargeHealthAdjustment
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153992503724332696, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
+      propertyPath: xSmallHealthAdjustment
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8285737913664451332, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_AnchorMax.x

@@ -9,9 +9,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private SO_AdjustHealth adjustHealth;
 
     [Separator()]
+    [SerializeField] private float xSmallHealthAdjustment;
     [SerializeField] private float smallHealthAdjustment;
     [SerializeField] private float mediumHealthAdjustment;
     [SerializeField] private float largeHealthAdjustment;
+    [SerializeField] private float xLargeHealthAdjustment;
 
 
     private PlayerHealthBar kirbyHealthBar;
@@ -67,6 +69,9 @@ public class UIManager : MonoBehaviour
 
         switch(_changeHealthState)
         {
+            case ChangeHealth.X_Small_Health:
+                healthToReturn = xSmallHealthAdjustment * healthType;
+                break;
             case ChangeHealth.Small_Health:
                 healthToReturn = smallHealthAdjustment * healthType;
                 break;
@@ -76,7 +81,10 @@ public class UIManager : MonoBehaviour
             case ChangeHealth.Large_Health:
                 healthToReturn = largeHealthAdjustment * healthType;
                 break;
-  
+            case ChangeHealth.X_Large_Health:
+                healthToReturn = xLargeHealthAdjustment * healthType;
+                break;
+
 
 
         }

@@ -33,7 +33,7 @@ public class GrapeMinionBehavior : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Boss"))
         {
-            adjustHealthSO.ChangeBossHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage, Vector2.zero);
+            adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
             Destroy(gameObject); 
         }
     }
