@@ -8,8 +8,7 @@ public class BossCheckDefeat : MonoBehaviour
 {
     private Blackboard bossBlackboard;
     private SO_BossProfile bossProfile;
-
-
+    [SerializeField] private CameraManager cm;
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
 
     private LevelLoader levelLoader;
@@ -47,7 +46,8 @@ public class BossCheckDefeat : MonoBehaviour
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
 
-  
+        cm.SwitchState();
+
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
         Destroy(gameObject);
