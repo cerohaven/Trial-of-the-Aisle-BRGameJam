@@ -53,8 +53,8 @@ MonoBehaviour:
     percentChanceToUse: 0.729
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
-  ability1: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
-  ability2: {fileID: 11400000, guid: e252df98e13f7a84b8768b3398c2cabc, type: 2}
+  ability1: {fileID: 11400000, guid: 0e0ac6e4446e48f40ade2df1ade2961d, type: 2}
+  ability2: {fileID: 11400000, guid: 5ef0da0c7db74ea4c8876169020507d5, type: 2}
   ability1Texture: {fileID: 0}
   ability2Texture: {fileID: 0}
   postBattleCanvasUI: {fileID: 21300000, guid: 77c1530dc62c1bb42ac69310d973a792, type: 3}

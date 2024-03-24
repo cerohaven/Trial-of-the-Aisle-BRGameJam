@@ -474,9 +474,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
-  smallHealthAdjustment: 5
-  mediumHealthAdjustment: 10
-  largeHealthAdjustment: 15
+  xSmallHealthAdjustment: 0.5
+  smallHealthAdjustment: 2
+  mediumHealthAdjustment: 5
+  largeHealthAdjustment: 10
+  xLargeHealthAdjustment: 15
   bossBarVisible: 0
 --- !u!1 &8285737914383435927
 GameObject:
