@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672016082745021293}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e65405adf9ff4684c96168b18e926ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
+  sfxMixerGroup: {fileID: 4278654887805117937, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
+  musicMixerGroup: {fileID: 7846752738204503339, guid: 2c6c62f5feb37ea44b1b9cdac92f88a7, type: 2}
   sounds:
   - name: ui_bossBarIncrease
     clip:
@@ -52,11 +55,60 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: p_hurt
+    clip:
+    - {fileID: 8300000, guid: 897d95518bb388743b1c948931a7ef9f, type: 3}
+    volume: 0.309
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: boss_attack
+    clip:
+    - {fileID: 8300000, guid: 4141a0db08f472b46bf0bb48a5f111a7, type: 3}
+    volume: 0.551
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ui_bossHurt
+    clip:
+    - {fileID: 8300000, guid: 98be95657919fc14198aa9bb81eb94ab, type: 3}
+    volume: 0.323
+    pitch: 0.94
+    loop: 0
+    source: {fileID: 0}
   - name: ui_bossDefeated
     clip:
     - {fileID: 8300000, guid: d16ff9eaebf615b47ac0f44f767c3955, type: 3}
-    volume: 0.273
+    volume: 0.222
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: p_pickUp
+    clip:
+    - {fileID: 8300000, guid: 0c51d08168a505c4ba03b9bb2b39a666, type: 3}
+    volume: 0.517
+    pitch: 1.55
+    loop: 0
+    source: {fileID: 0}
+  - name: p_throw
+    clip:
+    - {fileID: 8300000, guid: 4141a0db08f472b46bf0bb48a5f111a7, type: 3}
+    volume: 0.517
+    pitch: 1.55
+    loop: 0
+    source: {fileID: 0}
+  - name: boss_scream
+    clip:
+    - {fileID: 8300000, guid: 34b2333f84eda3f4dba01ef6d2835470, type: 3}
+    volume: 0.14
+    pitch: 1.89
+    loop: 0
+    source: {fileID: 0}
+  - name: heal
+    clip:
+    - {fileID: 8300000, guid: 671048d01f00e2f48bf80a71d6fb840a, type: 3}
+    volume: 0.484
+    pitch: 1.89
     loop: 0
     source: {fileID: 0}
   bgSounds:
@@ -68,19 +120,19 @@ MonoBehaviour:
     source: {fileID: 0}
   - backgroundMusic: 1
     clip: {fileID: 8300000, guid: 32570110a553b4042873cb5358c2bf45, type: 3}
-    volume: 0.208
+    volume: 0.058
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 2
     clip: {fileID: 8300000, guid: c33172b3bb0881741a144597bca7bc96, type: 3}
-    volume: 0.242
+    volume: 0.077
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - backgroundMusic: 3
     clip: {fileID: 8300000, guid: e20f372fe9141aa4081b9131092df063, type: 3}
-    volume: 0.237
+    volume: 0.072
     pitch: 1
     loop: 1
     source: {fileID: 0}

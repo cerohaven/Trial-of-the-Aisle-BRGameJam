@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         interactableProjectile = GetComponent<InteractableObject_Projectile>();
         projectileCollider = GetComponent<Collider2D>();
-        AudioManager.instance.Play("boss_attack");
+        AudioManager.Instance.Play("boss_attack");
     }
 
     //On Start, apply a velocity to the projectile in the direction and speed given.

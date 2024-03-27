@@ -6,10 +6,9 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(TitleAttribute))]
 public class TitleDrawer : DecoratorDrawer
 {
-    //This is the class where we create the title based on the inputted values
     public override void OnGUI(Rect position)
     {
-        //get a reference to the attribute and all of their variables
+        //get a reference to the attribute
         TitleAttribute titleAttribute = attribute as TitleAttribute;
 
         //Apply Styles to the Text

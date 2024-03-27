@@ -77,6 +77,9 @@ public class PlayerInteractWithObjects : MonoBehaviour
         if (collider.Length == 0) return;
 
         InteractableObject ios = collider[0].GetComponent<InteractableObject>();
+
+        if (!ios.IsInteractable1) return;
+        
         ios.PlayerInRange();
 
 

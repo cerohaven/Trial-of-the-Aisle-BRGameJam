@@ -6,6 +6,8 @@ using UnityEngine.XR;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     [Header("References")]
     [SerializeField] private SO_PauseMenuEventSender pauseEvent;
     [SerializeField] private SO_InteractableObject interactEvent;
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

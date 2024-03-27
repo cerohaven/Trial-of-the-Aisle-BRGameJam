@@ -104,7 +104,7 @@ public class BossHealthBar : MonoBehaviour
             uiManager.FinishedBossIntro = true;
             
             
-            AudioManager.instance.Stop("ui_bossBarIncrease");
+            AudioManager.Instance.Stop("ui_bossBarIncrease");
 
            
         }
@@ -132,7 +132,7 @@ public class BossHealthBar : MonoBehaviour
                 gameObject.SetActive(false);
 
             }
-            AudioManager.instance.Play("ui_bossHurt");
+            AudioManager.Instance.Play("ui_bossHurt");
 
             GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
             hit.transform.up = _upDir;
@@ -146,7 +146,7 @@ public class BossHealthBar : MonoBehaviour
             UpdateHealthBar(_bossChangedHealth);
             GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
             temp.transform.localScale = Vector2.one * 3;
-            AudioManager.instance.Play("heal");
+            AudioManager.Instance.Play("heal");
         }
 
     }

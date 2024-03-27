@@ -39,7 +39,7 @@ public class InteractableObject_Projectile : InteractableObject
         projectile.IgnoreBossCollision(false);
         projectile.IgnoreProjectiles(false, 0);
 
-        AudioManager.instance.Play("p_throw");
+        AudioManager.Instance.Play("p_throw");
         CinemachineShake.Instance.ShakeCamera(1);
 
     }
@@ -57,7 +57,7 @@ public class InteractableObject_Projectile : InteractableObject
         projectile.WhoThrew = WhoThrew.Player;
         isInteractable = false;
 
-        AudioManager.instance.Play("p_pickUp");
+        AudioManager.Instance.Play("p_pickUp");
     }
 
     protected override bool IsInteractable() { return isInteractable; }

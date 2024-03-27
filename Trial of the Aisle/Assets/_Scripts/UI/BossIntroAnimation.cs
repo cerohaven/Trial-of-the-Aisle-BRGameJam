@@ -18,8 +18,6 @@ public class BossIntroAnimation : MonoBehaviour
     {
         Invoke("EndOfAnimation", timeOnScreen);
         FreezePlayerMovement();
-
-        BackgroundMusicSelect.Instance.PlayBGMusic();
     }
 
     private void EndOfAnimation()
@@ -40,7 +38,7 @@ public class BossIntroAnimation : MonoBehaviour
     private void StartFight()
     {
         bossHealthBar.CanStartIncrease = true;
-        AudioManager.instance.Play("ui_bossBarIncrease");
+        AudioManager.Instance.Play("ui_bossBarIncrease");
 
         bossBlackboard.SetVariableValue("canStartBossFight", true);
         

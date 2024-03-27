@@ -80,14 +80,14 @@ public class PlayerHealthBar : MonoBehaviour
             //Set them invincible for a certain period of time
 
             currentInvincibilityTime = 0;
-            AudioManager.instance.Play("p_hurt");
+            AudioManager.Instance.Play("p_hurt");
 
         }
         else
         {
             UpdateHealthBar(_playerChangedHealth);
             Instantiate(healEffect, playerGameObject.transform.position, Quaternion.identity);
-            AudioManager.instance.Play("heal");
+            AudioManager.Instance.Play("heal");
         }
 
     }

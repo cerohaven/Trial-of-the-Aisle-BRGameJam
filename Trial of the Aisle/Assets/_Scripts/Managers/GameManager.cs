@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
         pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInput);
 
         Time.timeScale = 0;
+
+        AudioManager.Instance.LerpAudioToLevel(0.3f);
     }
 
     private void ResumeTheGame()
@@ -70,21 +72,22 @@ public class GameManager : MonoBehaviour
             Destroy(pauseMenu);
 
         Time.timeScale = 1;
+
+        AudioManager.Instance.LerpAudioToPrevLevel();
     }
 
     private void IsDefeated()
     {
         //Once we defeat the boss, we will do some stuff
 
-        AudioManager.instance.Play("ui_bossDefeated");
+        AudioManager.Instance.Play("ui_bossDefeated");
 
         bossIsDefeated = true;
 
         //Flicker Screen
         SObossDefeat.FlickerScreenSend();
 
-        AudioManager.instance.Play("boss_scream");
+        AudioManager.Instance.Play("boss_scream");
 
-        //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
     }
 }

@@ -27,7 +27,7 @@ public class InteractableObject_Shelf : InteractableObject
         ioProjectile.PlayerCarry = playerCarry;
         projectile.WhoThrew = WhoThrew.Player;
 
-        AudioManager.instance.Play("p_pickUp");
+        AudioManager.Instance.Play("p_pickUp");
 
         amountOfItemsOnShelf--;
 
