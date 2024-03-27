@@ -60,7 +60,7 @@ public class PauseMenuAudioSliders : MonoBehaviour
         float masterSliderValue = PlayerPrefs.GetFloat("MasterVolume");
         float sfxSliderValue = PlayerPrefs.GetFloat("SFXVolume");
         float musicSliderValue = PlayerPrefs.GetFloat("MusicVolume");
-        Debug.Log(masterSliderValue);
+       
         
         masterVolumeSlider.value = masterSliderValue;
         sfxSlider.value = sfxSliderValue;
