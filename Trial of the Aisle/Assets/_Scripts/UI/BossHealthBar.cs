@@ -104,7 +104,7 @@ public class BossHealthBar : MonoBehaviour
             uiManager.FinishedBossIntro = true;
             
             
-            AudioManager.instance.Stop("ui_bossBarIncrease");
+            //AudioManager.instance.Stop("ui_bossBarIncrease");
 
            
         }
