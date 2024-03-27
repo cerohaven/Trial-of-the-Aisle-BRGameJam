@@ -9112,7 +9112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 080000000400000001000000
+  equippedAbilityIDs: 000000000200000007000000
   abilitySlotsUIReference:
   - {fileID: 2545268619740206462}
   - {fileID: 5386798739049433889}
