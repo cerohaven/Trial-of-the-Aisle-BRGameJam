@@ -33,6 +33,7 @@ public class SO_BossProfile : ScriptableObject
 
     [Range(0, 2)]
     [SerializeField] private float b_BaseTimeBetweenProjectileAttacks;
+    [SerializeField] private float b_BaseMoveSpeed;
 
     [Tooltip("When the boss reaches this percentage of health, we can change the behaviours of attacks" )]
     [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[1];
@@ -61,6 +62,7 @@ public class SO_BossProfile : ScriptableObject
     public BossAttacks[] B_BossAttacks { get => b_BossAttacks; }
     public float B_BaseProjectileThrowSpeed { get => b_BaseProjectileThrowSpeed; }
     public float B_BaseTimeBetweenProjectileAttacks { get => b_BaseTimeBetweenProjectileAttacks; }
+    public float B_BaseMoveSpeed { get => b_BaseMoveSpeed; set => b_BaseMoveSpeed = value; }
     public BossThrowProjectiles[] B_BossThrowProjectiles { get => b_BossThrowProjectiles;}
 
     public Texture2D Ability1Texture { get => ability1Texture; set => ability1Texture = value; }
@@ -72,6 +74,7 @@ public class SO_BossProfile : ScriptableObject
     public Sprite PostBattleCanvasUI { get => postBattleCanvasUI;}
     public Texture2D PostBattleCanvasTexture { get => postBattleCanvasTexture; set => postBattleCanvasTexture = value; }
     public Color32 B_BossColourPalette { get => b_BossColourPalette;}
+    
 
 
 
@@ -152,6 +155,7 @@ public class SO_BossProfileEditor : Editor
 
     private SerializedProperty b_BaseProjectileThrowSpeed;
     private SerializedProperty b_BaseTimeBetweenProjectileAttacks;
+    private SerializedProperty b_BaseMoveSpeed;
 
     private SerializedProperty b_BossThrowProjectiles;
 
@@ -175,6 +179,7 @@ public class SO_BossProfileEditor : Editor
 
         b_BaseProjectileThrowSpeed = serializedObject.FindProperty("b_BaseProjectileThrowSpeed");
         b_BaseTimeBetweenProjectileAttacks = serializedObject.FindProperty("b_BaseTimeBetweenProjectileAttacks");
+        b_BaseMoveSpeed = serializedObject.FindProperty("b_BaseMoveSpeed");
 
         b_BossThrowProjectiles = serializedObject.FindProperty("b_BossThrowProjectiles");
 
@@ -293,6 +298,7 @@ public class SO_BossProfileEditor : Editor
         GUILayout.Space(30f);
         EditorGUILayout.PropertyField(b_BaseProjectileThrowSpeed, new GUIContent("Base Throw Speed "));
         EditorGUILayout.PropertyField(b_BaseTimeBetweenProjectileAttacks, new GUIContent("Base Attack Delay "));
+        EditorGUILayout.PropertyField(b_BaseMoveSpeed, new GUIContent("Base Move Speed "));
         GUILayout.Space(30f);
         EditorGUILayout.PropertyField(b_BossPhases, new GUIContent("Boss Phases"));
         

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dairy Dominator
   m_EditorClassIdentifier: 
   b_Name: Dairy Dominator
-  b_MaxHealth: 250
+  b_MaxHealth: 120
   b_BossProfilePicture: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -24,6 +24,7 @@ MonoBehaviour:
     percentChanceToUse: 1
   b_BaseProjectileThrowSpeed: 13.7
   b_BaseTimeBetweenProjectileAttacks: 0.7
+  b_BaseMoveSpeed: 5
   b_BossPhases:
   - phaseName: Phase 1
     healthPercent: 78.6

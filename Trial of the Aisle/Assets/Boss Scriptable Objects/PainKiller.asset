@@ -26,6 +26,7 @@ MonoBehaviour:
     percentChanceToUse: 0.509
   b_BaseProjectileThrowSpeed: 13.2
   b_BaseTimeBetweenProjectileAttacks: 1.058
+  b_BaseMoveSpeed: 12.7
   b_BossPhases:
   - phaseName: Phase 1
     healthPercent: 62.1
