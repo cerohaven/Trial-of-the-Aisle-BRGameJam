@@ -71,10 +71,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank
   Name: Build/Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638485737789608024
+  lastModified: 638485752473126145
   FileSizes:
   - Name: Desktop
-    Value: 120032
+    Value: 128192
   Exists: 1
 --- !u!114 &-7871641887633686729
 MonoBehaviour:
@@ -866,7 +866,7 @@ MonoBehaviour:
   - {fileID: -4310082639408369190}
   StringsBanks:
   - {fileID: 7370450902103621171}
-  cacheTime: 638485737790237563
+  cacheTime: 638485752473126145
   cacheVersion: 131617
 --- !u!114 &243674259625690102
 MonoBehaviour:
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 603
 --- !u!114 &1783303845751641630
 MonoBehaviour:
   m_ObjectHideFlags: 0

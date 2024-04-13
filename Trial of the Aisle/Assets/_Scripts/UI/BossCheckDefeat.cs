@@ -1,3 +1,4 @@
+using FMODUnity;
 using NodeCanvas.Framework;
 using System;
 using System.Collections;
@@ -47,6 +48,7 @@ public class BossCheckDefeat : MonoBehaviour
         }
 
         cm.SwitchState();
+        RuntimeManager.PlayOneShot("event:/Music/BGM/PostBattle");
 
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;

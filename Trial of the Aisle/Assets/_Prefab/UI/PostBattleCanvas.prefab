@@ -942,11 +942,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1195089197
-      Data2: 1286999123
-      Data3: -208872270
-      Data4: -846092852
-    Path: event:/UI/GUI_Postboss/AbilitySwap
+      Data1: 118398456
+      Data2: 1167228139
+      Data3: -333255267
+      Data4: -1174090437
+    Path: event:/UI/GUI_Postboss/AbilitySelected
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -1214,11 +1214,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1195089197
-      Data2: 1286999123
-      Data3: -208872270
-      Data4: -846092852
-    Path: event:/UI/GUI_Postboss/AbilitySwap
+      Data1: 118398456
+      Data2: 1167228139
+      Data3: -333255267
+      Data4: -1174090437
+    Path: event:/UI/GUI_Postboss/AbilitySelected
   Event: 
   PlayEvent: 0
   StopEvent: 0
