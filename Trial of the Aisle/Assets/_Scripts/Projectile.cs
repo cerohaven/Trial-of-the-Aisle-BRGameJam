@@ -1,3 +1,4 @@
+using FMODUnity;
 using NodeCanvas.Framework;
 
 using UnityEngine;
@@ -94,7 +95,7 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         interactableProjectile = GetComponent<InteractableObject_Projectile>();
         projectileCollider = GetComponent<Collider2D>();
-        AudioManager.instance.Play("boss_attack");
+        RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");
     }
 
     //On Start, apply a velocity to the projectile in the direction and speed given.

@@ -1,3 +1,4 @@
+using FMODUnity;
 using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,6 +40,9 @@ public class BossHealthBar : MonoBehaviour
     [SerializeField] private SpriteRenderer bossSr;
     private Color color = Color.white;
     private IEnumerator colourCoroutine;
+    FMOD.Studio.EventInstance increaseHP_SFX;
+    FMOD.Studio.EventInstance ui_BossHurt;
+    FMOD.Studio.EventInstance heal_SFX;
 
     public bool CanStartIncrease { get => canStartIncrease; set => canStartIncrease = value; }
 
@@ -49,6 +53,9 @@ public class BossHealthBar : MonoBehaviour
 
         bossRectTransform = GetComponent<RectTransform>();
         uiManager = GameObject.FindObjectOfType<UIManager>();
+        increaseHP_SFX = RuntimeManager.CreateInstance("event:/UI/GUI/HealthBarRaise");
+        ui_BossHurt = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Hurt");
+        heal_SFX = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Heal");
     }
  
     private void Start()
@@ -102,9 +109,9 @@ public class BossHealthBar : MonoBehaviour
         if (bossRectTransform.sizeDelta.x >= maxBossBarScaleX)
         {
             uiManager.FinishedBossIntro = true;
-            
-            
-            AudioManager.instance.Stop("ui_bossBarIncrease");
+
+            //increaseHP_SFX.stop();
+            //AudioManager.instance.Stop("ui_bossBarIncrease");
 
            
         }
@@ -132,7 +139,8 @@ public class BossHealthBar : MonoBehaviour
                 gameObject.SetActive(false);
 
             }
-            AudioManager.instance.Play("ui_bossHurt");
+            ui_BossHurt.start();
+            //AudioManager.instance.Play("ui_bossHurt");
 
             GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
             hit.transform.up = _upDir;
@@ -146,7 +154,8 @@ public class BossHealthBar : MonoBehaviour
             UpdateHealthBar(_bossChangedHealth);
             GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
             temp.transform.localScale = Vector2.one * 3;
-            AudioManager.instance.Play("heal");
+            heal_SFX.start();
+            //AudioManager.instance.Play("heal");
         }
 
     }

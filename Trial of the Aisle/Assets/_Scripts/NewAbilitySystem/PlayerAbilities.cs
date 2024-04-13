@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -155,6 +156,8 @@ public class PlayerAbilities : MonoBehaviour
     {
         if (slot >= 0 && slot < equippedAbilities.Length)
         {
+            RuntimeManager.PlayOneShot("event:/UI/GUI_Postboss/AbilitySwap");
+
             // Assign the new ability to the specified slot, even if the current ability is null
             equippedAbilities[slot] = newAbility;
 

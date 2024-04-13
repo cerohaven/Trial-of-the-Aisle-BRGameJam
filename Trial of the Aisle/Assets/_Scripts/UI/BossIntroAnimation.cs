@@ -2,12 +2,12 @@ using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BossIntroAnimation : MonoBehaviour
 {
     [SerializeField] private float timeOnScreen;
     [SerializeField] private Animator[] HUDanimators;
-
 
     [Header("Player and Boss References")]
     [SerializeField] private PlayerController pc;
@@ -16,10 +16,9 @@ public class BossIntroAnimation : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(playsound());
         Invoke("EndOfAnimation", timeOnScreen);
         FreezePlayerMovement();
-
-        BackgroundMusicSelect.Instance.PlayBGMusic();
     }
 
     private void EndOfAnimation()
@@ -30,7 +29,7 @@ public class BossIntroAnimation : MonoBehaviour
 
     private void RemoveHUD()
     {
-        Invoke("StartFight", 1);
+        Invoke("StartFight", 1.5f);
         for (int i = 0; i < HUDanimators.Length; i++)
         {
             HUDanimators[i].SetTrigger("Reverse");
@@ -40,7 +39,7 @@ public class BossIntroAnimation : MonoBehaviour
     private void StartFight()
     {
         bossHealthBar.CanStartIncrease = true;
-        AudioManager.instance.Play("ui_bossBarIncrease");
+        RuntimeManager.PlayOneShot("event:/UI/GUI/HealthBarRaise");
 
         bossBlackboard.SetVariableValue("canStartBossFight", true);
         
@@ -55,5 +54,11 @@ public class BossIntroAnimation : MonoBehaviour
     private void UnFreezePlayerMovement()
     {
         pc.CanMove = true;
+    }
+
+    IEnumerator playsound()
+    {
+        yield return new WaitForSeconds(.7f);
+        RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/PK_Intro");
     }
 }
