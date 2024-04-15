@@ -33,9 +33,9 @@ public class PlayerAbilities : MonoBehaviour
         var playerActions = inputActions.FindActionMap("Player");
         playerActions.Enable();
 
-        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(0);
+        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(2);
         playerActions.FindAction("AbilityTwo").performed += _ => ActivateAbility(1);
-        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(2);
+        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(0);
 
         cooldowns = new float[equippedAbilityIDs.Length];
         abilityIcons = new Image[equippedAbilityIDs.Length];

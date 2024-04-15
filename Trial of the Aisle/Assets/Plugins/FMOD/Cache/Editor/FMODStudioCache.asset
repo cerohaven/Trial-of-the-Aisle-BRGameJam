@@ -71,10 +71,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank
   Name: Build/Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638485752473126145
+  lastModified: 638487889891764083
   FileSizes:
   - Name: Desktop
-    Value: 128192
+    Value: 381024
   Exists: 1
 --- !u!114 &-7871641887633686729
 MonoBehaviour:
@@ -96,13 +96,13 @@ MonoBehaviour:
     Data4: -815823656
   Banks:
   - {fileID: -7996498194388364896}
-  IsStream: 0
+  IsStream: 1
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2000
 --- !u!114 &-7834534260862555468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,10 +338,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/General_Effects.bank
   Name: Build/Desktop/General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638485681822455112
+  lastModified: 638486149524218558
   FileSizes:
   - Name: Desktop
-    Value: 100032
+    Value: 100544
   Exists: 1
 --- !u!114 &-5044641156835701851
 MonoBehaviour:
@@ -386,7 +386,7 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Master.bank
   Name: Build/Desktop/Master
   StudioPath: bank:/Master
-  lastModified: 638485737788201073
+  lastModified: 638486157030355379
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -499,6 +499,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2285741151900369253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bosses/General/BossScream
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bosses/General/BossScream
+  Guid:
+    Data1: -1376913789
+    Data2: 1320273126
+    Data3: 328176297
+    Data4: -1505689590
+  Banks:
+  - {fileID: -7996498194388364896}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 776
 --- !u!114 &-2194664540615306375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,10 +622,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Player.bank
   Name: Build/Desktop/Player
   StudioPath: bank:/Player
-  lastModified: 638485681822826971
+  lastModified: 638486149524768958
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 29952
   Exists: 1
 --- !u!114 &-1840054899499268054
 MonoBehaviour:
@@ -791,6 +818,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3441
+--- !u!114 &-202464279231409858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Ability/P_Bad_Habit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Ability/P_Bad_Habit
+  Guid:
+    Data1: 962087210
+    Data2: 1124731506
+    Data3: -731098951
+    Data4: 129808131
+  Banks:
+  - {fileID: -7996498194388364896}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 750
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,7 +900,6 @@ MonoBehaviour:
   - {fileID: -975586388314443548}
   - {fileID: -7871641887633686729}
   - {fileID: -7834534260862555468}
-  - {fileID: 4556220009742485193}
   - {fileID: -2009481145944997869}
   - {fileID: -775919629534484865}
   - {fileID: 2233919542515459255}
@@ -861,12 +914,15 @@ MonoBehaviour:
   - {fileID: 4518475147588811234}
   - {fileID: 1627758772819771635}
   - {fileID: -5737944076154410045}
+  - {fileID: 2622362582176758348}
+  - {fileID: -202464279231409858}
+  - {fileID: -2285741151900369253}
   EditorParameters: []
   MasterBanks:
   - {fileID: -4310082639408369190}
   StringsBanks:
   - {fileID: 7370450902103621171}
-  cacheTime: 638485752473126145
+  cacheTime: 638487889891764083
   cacheVersion: 131617
 --- !u!114 &243674259625690102
 MonoBehaviour:
@@ -1061,6 +1117,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2622362582176758348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/P_Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/P_Hurt
+  Guid:
+    Data1: 201492536
+    Data2: 1303355990
+    Data3: -1876132168
+    Data4: 93885863
+  Banks:
+  - {fileID: -1901630561140338952}
+  - {fileID: -7996498194388364896}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &2806847626790364973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,33 +1431,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &4556220009742485193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Player/Player_Ability/B_Bad_Habit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Player/Player_Ability/B_Bad_Habit
-  Guid:
-    Data1: 962087210
-    Data2: 1124731506
-    Data3: -731098951
-    Data4: 129808131
-  Banks:
-  - {fileID: -7996498194388364896}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &4889936289582530945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,10 +1520,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638485737788221069
+  lastModified: 638486157030365366
   FileSizes:
   - Name: Desktop
-    Value: 3354
+    Value: 3450
   Exists: 1
 --- !u!114 &8184038456916638031
 MonoBehaviour:

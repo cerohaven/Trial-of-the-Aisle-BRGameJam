@@ -1557,5 +1557,10 @@ retry:
                     break;
             }
         }
+
+        public void Play(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

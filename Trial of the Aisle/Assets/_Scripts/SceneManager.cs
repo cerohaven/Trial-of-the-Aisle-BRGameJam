@@ -34,4 +34,10 @@ public class MainMenuController : MonoBehaviour
         // Make sure the About scene is added in the build settings and its name is exactly "About"
         SceneManager.LoadScene("About");
     }
+    public void GoToExit()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+
+    }
 }

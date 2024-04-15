@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,8 @@ public class GameManager : MonoBehaviour
     public static bool isGamePaused;
 
     private PlayerInput playerInput;
-
+    FMOD.Studio.EventInstance SFX_BossDeath;
+    FMOD.Studio.EventInstance SFX_BossScream;
     private GameObject pauseMenu;
 
 
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
         playerInput = GameObject.FindObjectOfType<PlayerInput>();
+        SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
+        SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
     private void PauseTheGame()
     {
@@ -76,14 +80,17 @@ public class GameManager : MonoBehaviour
     {
         //Once we defeat the boss, we will do some stuff
 
-        AudioManager.instance.Play("ui_bossDefeated");
+
+        //AudioManager.instance.Play("ui_bossDefeated");
+        SFX_BossDeath.start();
 
         bossIsDefeated = true;
 
         //Flicker Screen
         SObossDefeat.FlickerScreenSend();
 
-        AudioManager.instance.Play("boss_scream");
+        SFX_BossScream.start();
+        //AudioManager.instance.Play("boss_scream");
 
         //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
     }

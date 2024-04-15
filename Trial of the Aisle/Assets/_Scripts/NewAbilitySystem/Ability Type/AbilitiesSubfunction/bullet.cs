@@ -10,14 +10,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-
-        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        
-        Destroy(effect, 1.5f);
-        Destroy(gameObject);
-
-        if(collision.gameObject.CompareTag("Boss"))
+        if (collision.gameObject.CompareTag("Boss"))
         {
             adjustHealth.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, transform.up);
             CinemachineShake.Instance.ShakeCamera();
@@ -27,5 +20,9 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+        Destroy(gameObject);
     }
 }
