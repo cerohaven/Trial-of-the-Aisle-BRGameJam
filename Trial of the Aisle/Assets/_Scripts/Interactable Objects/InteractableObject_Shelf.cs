@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +28,8 @@ public class InteractableObject_Shelf : InteractableObject
         ioProjectile.PlayerCarry = playerCarry;
         projectile.WhoThrew = WhoThrew.Player;
 
-        AudioManager.instance.Play("p_pickUp");
+        RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/PickUpItem");
+        //AudioManager.instance.Play("p_pickUp");
 
         amountOfItemsOnShelf--;
 
