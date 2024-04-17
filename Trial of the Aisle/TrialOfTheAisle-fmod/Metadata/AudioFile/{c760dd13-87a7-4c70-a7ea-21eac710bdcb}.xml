@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c760dd13-87a7-4c70-a7ea-21eac710bdcb}">
+		<property name="assetPath">
+			<value>GAMEVideo_Big Explosion_Rogue Waves_8-Bit Legend_13.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.3937708333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6362d98c-54f9-4fc7-b30e-83c88ce86484}</destination>
+		</relationship>
+	</object>
+</objects>

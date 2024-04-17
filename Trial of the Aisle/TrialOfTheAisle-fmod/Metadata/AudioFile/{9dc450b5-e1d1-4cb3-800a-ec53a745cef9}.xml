@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9dc450b5-e1d1-4cb3-800a-ec53a745cef9}">
+		<property name="assetPath">
+			<value>pokemon-cry-parody-46225.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.776</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6362d98c-54f9-4fc7-b30e-83c88ce86484}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c5b84daa-3a46-46a0-adbc-fb6113fd2029}">
+		<property name="assetPath">
+			<value>Jammed.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.16354166666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6362d98c-54f9-4fc7-b30e-83c88ce86484}</destination>
+		</relationship>
+	</object>
+</objects>

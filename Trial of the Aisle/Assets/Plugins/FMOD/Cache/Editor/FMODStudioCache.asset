@@ -19,8 +19,8 @@ MonoBehaviour:
     Data3: 1949474190
     Data4: -2133160930
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -47,8 +47,8 @@ MonoBehaviour:
     Data3: 726607529
     Data4: 666905327
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -56,26 +56,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-7996498194388364896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/SFX.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank
-  Name: Build/Desktop/SFX
-  StudioPath: bank:/SFX
-  lastModified: 638489563144406158
-  FileSizes:
-  - Name: Desktop
-    Value: 381248
-  Exists: 1
 --- !u!114 &-7871641887633686729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +75,7 @@ MonoBehaviour:
     Data3: 1704630932
     Data4: -815823656
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -122,7 +102,7 @@ MonoBehaviour:
     Data3: -11842413
     Data4: -1688968000
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -149,8 +129,8 @@ MonoBehaviour:
     Data3: -305236804
     Data4: 2062628075
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -177,8 +157,8 @@ MonoBehaviour:
     Data3: 1466230964
     Data4: -1027881015
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -205,7 +185,7 @@ MonoBehaviour:
     Data3: 1446042760
     Data4: 143870680
   Banks:
-  - {fileID: 2984113054293906773}
+  - {fileID: 934357449243544797}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -232,8 +212,8 @@ MonoBehaviour:
     Data3: -352608586
     Data4: -21632543
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -260,8 +240,8 @@ MonoBehaviour:
     Data3: -787386721
     Data4: 732281584
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -288,7 +268,7 @@ MonoBehaviour:
     Data3: -208872270
     Data4: -846092852
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -315,7 +295,7 @@ MonoBehaviour:
     Data3: -2007016541
     Data4: 786153041
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -323,26 +303,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-5115162780918402606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/General_Effects.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/General_Effects.bank
-  Name: Build/Desktop/General_Effects
-  StudioPath: bank:/General_Effects
-  lastModified: 638489563144044454
-  FileSizes:
-  - Name: Desktop
-    Value: 100768
-  Exists: 1
 --- !u!114 &-5044641156835701851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,8 +322,8 @@ MonoBehaviour:
     Data3: -948152150
     Data4: -43167820
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -371,26 +331,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 115
---- !u!114 &-4310082639408369190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Master.bank
-  Name: Build/Desktop/Master
-  StudioPath: bank:/Master
-  lastModified: 638486157030355379
-  FileSizes:
-  - Name: Desktop
-    Value: 1036
-  Exists: 1
 --- !u!114 &-3943026973608554060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,7 +350,7 @@ MonoBehaviour:
     Data3: 1736993411
     Data4: 1465109048
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -437,7 +377,7 @@ MonoBehaviour:
     Data3: -209317471
     Data4: 75181824
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -464,7 +404,7 @@ MonoBehaviour:
     Data3: -964935003
     Data4: 617665543
   Banks:
-  - {fileID: 2984113054293906773}
+  - {fileID: 934357449243544797}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -472,6 +412,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 241031
+--- !u!114 &-2980999039769790452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
+  Name: SFX
+  StudioPath: bank:/SFX
+  lastModified: 638489621828470614
+  FileSizes:
+  - Name: Desktop
+    Value: 381536
+  Exists: 1
 --- !u!114 &-2972869567860697581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +451,7 @@ MonoBehaviour:
     Data3: 1488351924
     Data4: -1043204481
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -499,6 +459,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2806768311403181927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Dialogue.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Dialogue.bank
+  Name: Dialogue
+  StudioPath: bank:/Dialogue
+  lastModified: 638485681822181149
+  FileSizes:
+  - Name: Desktop
+    Value: 99008
+  Exists: 1
 --- !u!114 &-2285741151900369253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +498,7 @@ MonoBehaviour:
     Data3: 328176297
     Data4: -1505689590
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -545,7 +525,7 @@ MonoBehaviour:
     Data3: 1486156989
     Data4: -956619129
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -572,7 +552,7 @@ MonoBehaviour:
     Data3: -937760363
     Data4: -1065547130
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -599,7 +579,7 @@ MonoBehaviour:
     Data3: -1101806458
     Data4: -1884887394
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -607,7 +587,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-1901630561140338952
+--- !u!114 &-1940364287691246198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -617,10 +597,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/Player.bank
+  m_Name: bank:/Player.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Player.bank
-  Name: Build/Desktop/Player
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
+  Name: Player
   StudioPath: bank:/Player
   lastModified: 638486149524768958
   FileSizes:
@@ -646,8 +626,8 @@ MonoBehaviour:
     Data3: -149706613
     Data4: -1891081973
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -674,7 +654,7 @@ MonoBehaviour:
     Data3: 1878576011
     Data4: 302159907
   Banks:
-  - {fileID: 4948245000265056383}
+  - {fileID: -2806768311403181927}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -682,6 +662,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3000
+--- !u!114 &-1294855578583974331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/UI.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/UI.bank
+  Name: UI
+  StudioPath: bank:/UI
+  lastModified: 638485737790237563
+  FileSizes:
+  - Name: Desktop
+    Value: 141856
+  Exists: 1
 --- !u!114 &-1234664132718094102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
     Data3: 480933014
     Data4: -1012994355
   Banks:
-  - {fileID: 4948245000265056383}
+  - {fileID: -2806768311403181927}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -728,7 +728,7 @@ MonoBehaviour:
     Data3: 915936934
     Data4: 635161633
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -755,7 +755,7 @@ MonoBehaviour:
     Data3: -854878066
     Data4: -1965435468
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -782,8 +782,8 @@ MonoBehaviour:
     Data3: 149091232
     Data4: 2026518469
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -810,7 +810,7 @@ MonoBehaviour:
     Data3: -576897902
     Data4: -2124204556
   Banks:
-  - {fileID: 4948245000265056383}
+  - {fileID: -2806768311403181927}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -837,7 +837,7 @@ MonoBehaviour:
     Data3: -731098951
     Data4: 129808131
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -858,15 +858,15 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 7370450902103621171}
-  - {fileID: 8184038456916638031}
-  - {fileID: 4948245000265056383}
-  - {fileID: -5115162780918402606}
-  - {fileID: -4310082639408369190}
-  - {fileID: 2984113054293906773}
-  - {fileID: -1901630561140338952}
-  - {fileID: -7996498194388364896}
-  - {fileID: 2806847626790364973}
+  - {fileID: 2631300687542664848}
+  - {fileID: 6074085027143114475}
+  - {fileID: -2806768311403181927}
+  - {fileID: 3289998536486465365}
+  - {fileID: 5302423924359892}
+  - {fileID: 934357449243544797}
+  - {fileID: -1940364287691246198}
+  - {fileID: -2980999039769790452}
+  - {fileID: -1294855578583974331}
   EditorEvents:
   - {fileID: 4245103826840171000}
   - {fileID: 2854221817675238189}
@@ -919,11 +919,31 @@ MonoBehaviour:
   - {fileID: -2285741151900369253}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -4310082639408369190}
+  - {fileID: 5302423924359892}
   StringsBanks:
-  - {fileID: 7370450902103621171}
-  cacheTime: 638489603570420769
+  - {fileID: 2631300687542664848}
+  cacheTime: 638489621828470614
   cacheVersion: 131617
+--- !u!114 &5302423924359892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638486157030355379
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
 --- !u!114 &243674259625690102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,8 +963,8 @@ MonoBehaviour:
     Data3: -2143203710
     Data4: -1197111983
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -971,8 +991,8 @@ MonoBehaviour:
     Data3: 1714192792
     Data4: -2023266597
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -999,8 +1019,8 @@ MonoBehaviour:
     Data3: -2142154837
     Data4: -890488038
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1008,6 +1028,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
+--- !u!114 &934357449243544797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638489603570420769
+  FileSizes:
+  - Name: Desktop
+    Value: 7642080
+  Exists: 1
 --- !u!114 &1212463634737760149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,8 +1067,8 @@ MonoBehaviour:
     Data3: 1982599335
     Data4: 1266780717
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1055,7 +1095,7 @@ MonoBehaviour:
     Data3: -333255267
     Data4: -1174090437
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1082,7 +1122,7 @@ MonoBehaviour:
     Data3: -1988874344
     Data4: -1196510757
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1109,7 +1149,7 @@ MonoBehaviour:
     Data3: -1505751877
     Data4: 1005843409
   Banks:
-  - {fileID: -7996498194388364896}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1136,8 +1176,8 @@ MonoBehaviour:
     Data3: -1876132168
     Data4: 93885863
   Banks:
-  - {fileID: -1901630561140338952}
-  - {fileID: -7996498194388364896}
+  - {fileID: -1940364287691246198}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1145,7 +1185,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
---- !u!114 &2806847626790364973
+--- !u!114 &2631300687542664848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1155,15 +1195,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/UI.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/UI.bank
-  Name: Build/Desktop/UI
-  StudioPath: bank:/UI
-  lastModified: 638485737790237563
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638486157030365366
   FileSizes:
   - Name: Desktop
-    Value: 141856
+    Value: 3450
   Exists: 1
 --- !u!114 &2854221817675238189
 MonoBehaviour:
@@ -1184,7 +1224,7 @@ MonoBehaviour:
     Data3: 634268597
     Data4: -1858462836
   Banks:
-  - {fileID: 8184038456916638031}
+  - {fileID: 6074085027143114475}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1211,8 +1251,8 @@ MonoBehaviour:
     Data3: 185114787
     Data4: 1487145960
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1220,26 +1260,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 143
---- !u!114 &2984113054293906773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/Music.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Music.bank
-  Name: Build/Desktop/Music
-  StudioPath: bank:/Music
-  lastModified: 638489603570420769
-  FileSizes:
-  - Name: Desktop
-    Value: 7642080
-  Exists: 1
 --- !u!114 &3169407027184323267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1259,8 +1279,8 @@ MonoBehaviour:
     Data3: 110129558
     Data4: 1399144980
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1287,7 +1307,7 @@ MonoBehaviour:
     Data3: 713548730
     Data4: 318998244
   Banks:
-  - {fileID: 4948245000265056383}
+  - {fileID: -2806768311403181927}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1295,6 +1315,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3500
+--- !u!114 &3289998536486465365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/General_Effects.bank
+  m_EditorClassIdentifier: 
+  Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
+  Name: General_Effects
+  StudioPath: bank:/General_Effects
+  lastModified: 638489563144044454
+  FileSizes:
+  - Name: Desktop
+    Value: 100768
+  Exists: 1
 --- !u!114 &3861637768359738527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,7 +1354,7 @@ MonoBehaviour:
     Data3: 558601099
     Data4: -86893951
   Banks:
-  - {fileID: 2984113054293906773}
+  - {fileID: 934357449243544797}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1341,7 +1381,7 @@ MonoBehaviour:
     Data3: -1219543675
     Data4: 1863639083
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1368,7 +1408,7 @@ MonoBehaviour:
     Data3: -796594000
     Data4: 979686879
   Banks:
-  - {fileID: 8184038456916638031}
+  - {fileID: 6074085027143114475}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1395,7 +1435,7 @@ MonoBehaviour:
     Data3: -1383395451
     Data4: 1585549663
   Banks:
-  - {fileID: 2806847626790364973}
+  - {fileID: -1294855578583974331}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1422,8 +1462,8 @@ MonoBehaviour:
     Data3: 1574026115
     Data4: 583789287
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1450,7 +1490,7 @@ MonoBehaviour:
     Data3: 1563633326
     Data4: -1291888255
   Banks:
-  - {fileID: 2984113054293906773}
+  - {fileID: 934357449243544797}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1458,26 +1498,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 101224
---- !u!114 &4948245000265056383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/Dialogue.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Dialogue.bank
-  Name: Build/Desktop/Dialogue
-  StudioPath: bank:/Dialogue
-  lastModified: 638485681822181149
-  FileSizes:
-  - Name: Desktop
-    Value: 99008
-  Exists: 1
 --- !u!114 &5012103119968739678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1517,7 @@ MonoBehaviour:
     Data3: -1762815574
     Data4: 1137002845
   Banks:
-  - {fileID: 8184038456916638031}
+  - {fileID: 6074085027143114475}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1505,7 +1525,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 40242
---- !u!114 &7370450902103621171
+--- !u!114 &6074085027143114475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1515,32 +1535,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Ambiance.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638486157030365366
-  FileSizes:
-  - Name: Desktop
-    Value: 3450
-  Exists: 1
---- !u!114 &8184038456916638031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Build/Desktop/Ambiance.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank
-  Name: Build/Desktop/Ambiance
+  Path: TrialOfTheAisle-fmod/Build/Desktop/Ambiance.bank
+  Name: Ambiance
   StudioPath: bank:/Ambiance
-  lastModified: 638489600898101168
+  lastModified: 638489620645726523
   FileSizes:
   - Name: Desktop
     Value: 1648832
@@ -1564,7 +1564,7 @@ MonoBehaviour:
     Data3: -1856768126
     Data4: -359392934
   Banks:
-  - {fileID: 2984113054293906773}
+  - {fileID: 934357449243544797}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1591,8 +1591,8 @@ MonoBehaviour:
     Data3: 1425504691
     Data4: -1605853746
   Banks:
-  - {fileID: -5115162780918402606}
-  - {fileID: -7996498194388364896}
+  - {fileID: 3289998536486465365}
+  - {fileID: -2980999039769790452}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

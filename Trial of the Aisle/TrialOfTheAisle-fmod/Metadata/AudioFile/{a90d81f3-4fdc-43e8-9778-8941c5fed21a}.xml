@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a90d81f3-4fdc-43e8-9778-8941c5fed21a}">
+		<property name="assetPath">
+			<value>the-final-boss-battle-158700.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>241.03183673469388</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6362d98c-54f9-4fc7-b30e-83c88ce86484}</destination>
+		</relationship>
+	</object>
+</objects>
