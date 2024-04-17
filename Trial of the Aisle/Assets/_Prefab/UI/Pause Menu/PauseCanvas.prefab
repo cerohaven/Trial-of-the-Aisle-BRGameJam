@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: cc7a2a935aab70e4ca78eaceeeb2d4d0, type: 3}
+      - m_Target: {fileID: 6185407957575491023}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -789,6 +789,8 @@ GameObject:
   - component: {fileID: 6185407957575491017}
   - component: {fileID: 3584795381679102427}
   - component: {fileID: 2236552090328685244}
+  - component: {fileID: 2778538144713983648}
+  - component: {fileID: 642919167161658727}
   m_Layer: 0
   m_Name: PauseCanvas
   m_TagString: Untagged
@@ -908,6 +910,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
   resumeButton: {fileID: 6185407958229354068}
+--- !u!114 &2778538144713983648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185407957575491023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebd5d92ce37662429f45b9ee416821f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &642919167161658727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185407957575491023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 501873072
+      Data2: 1152504912
+      Data3: 1736993411
+      Data4: 1465109048
+    Path: event:/UI/Buttons/Unpause
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6185407957831937994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1228,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2236552090328685244}
         m_TargetAssemblyTypeName: PauseGameMenu, Assembly-CSharp
         m_MethodName: ResumeGameButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 642919167161658727}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

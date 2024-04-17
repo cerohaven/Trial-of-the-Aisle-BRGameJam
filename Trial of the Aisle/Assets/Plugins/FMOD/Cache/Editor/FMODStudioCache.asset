@@ -71,10 +71,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank
   Name: Build/Desktop/SFX
   StudioPath: bank:/SFX
-  lastModified: 638487889891764083
+  lastModified: 638489563144406158
   FileSizes:
   - Name: Desktop
-    Value: 381024
+    Value: 381248
   Exists: 1
 --- !u!114 &-7871641887633686729
 MonoBehaviour:
@@ -338,10 +338,10 @@ MonoBehaviour:
   Path: ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/General_Effects.bank
   Name: Build/Desktop/General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638486149524218558
+  lastModified: 638489563144044454
   FileSizes:
   - Name: Desktop
-    Value: 100544
+    Value: 100768
   Exists: 1
 --- !u!114 &-5044641156835701851
 MonoBehaviour:
@@ -922,7 +922,7 @@ MonoBehaviour:
   - {fileID: -4310082639408369190}
   StringsBanks:
   - {fileID: 7370450902103621171}
-  cacheTime: 638487889891764083
+  cacheTime: 638489563144406158
   cacheVersion: 131617
 --- !u!114 &243674259625690102
 MonoBehaviour:

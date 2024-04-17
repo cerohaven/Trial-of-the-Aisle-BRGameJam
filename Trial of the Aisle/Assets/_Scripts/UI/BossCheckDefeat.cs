@@ -46,7 +46,7 @@ public class BossCheckDefeat : MonoBehaviour
         {
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
-
+ 
         cm.SwitchState();
         RuntimeManager.PlayOneShot("event:/Music/BGM/PostBattle");
 
