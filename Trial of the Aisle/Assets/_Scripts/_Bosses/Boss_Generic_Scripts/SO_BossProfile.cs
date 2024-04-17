@@ -143,7 +143,7 @@ public class BossAttacks
 
 
 
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(SO_BossProfile))]
 [CanEditMultipleObjects]
 public class SO_BossProfileEditor : Editor
@@ -527,3 +527,4 @@ public class SO_BossProfileEditor : Editor
         return tex;
     }
 }
+#endif

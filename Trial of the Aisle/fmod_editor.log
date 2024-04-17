@@ -7,13 +7,969 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001CB0D68F028 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000014C8258B748 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 134784
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7072
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014BC4553F28
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='MenuButton', format=5, channels=2, frequency=48000, lengthbytes=86048, lengthpcm=422476, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=1.000000.
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (0000014C8EB0E168)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C90729F38)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C92476738)
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (0000014C8E156F88)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C90729BF8)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014B544B8678)
+[LOG] SoundI::release                          : RollingCart_Ash (0000014C8EB0E4C8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C9072A418)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C924763D8)
+[LOG] SoundI::release                          : RollingCart_Ash (0000014C8E156DD8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C903D39F8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014B544B8B88)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014C8E1572E8)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014C9072A278)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B544B89D8)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014C8E156A78)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014C903D3ED8)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B544B8828)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014B544B8B88, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014B544B8B88
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000149283956B8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E5055D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000149283951A8, queue head = 0000014C88FFE678, queue count = 1
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395BC8, queue head = 0000014C88FFE678, queue count = 2
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928394FF8, queue head = 0000014C88FFE678, queue count = 3
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395A18, queue head = 0000014C88FFE678, queue count = 4
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='501696__tsakanemashaba__people-talking', format=5, channels=2, frequency=48000, lengthbytes=1195840, lengthpcm=6389611, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.008382.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014B544B8B88
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000149283956B8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505350
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='RollingCart_Ash', format=5, channels=2, frequency=48000, lengthbytes=89216, lengthpcm=467756, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.136928.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000149283956B8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000149283951A8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505490
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Fan_Ambiance_Ash', format=5, channels=2, frequency=48000, lengthbytes=358720, lengthpcm=1931629, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.143325.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000149283951A8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395BC8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E504F90
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='501696__tsakanemashaba__people-talking', format=5, channels=2, frequency=48000, lengthbytes=1195840, lengthpcm=6389611, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.008382.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395BC8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928394FF8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E5050D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='RollingCart_Ash', format=5, channels=2, frequency=48000, lengthbytes=89216, lengthpcm=467756, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.136928.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928394FF8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395A18
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505210
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Fan_Ambiance_Ash', format=5, channels=2, frequency=48000, lengthbytes=358720, lengthpcm=1931629, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.143325.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395A18
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (0000014928395A18)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C905FEB18)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014B55B583F8)
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (00000149283951A8)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C92476218)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014B55B58E18)
+[LOG] SoundI::release                          : RollingCart_Ash (0000014928394FF8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C92476BD8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014B55B58248)
+[LOG] SoundI::release                          : RollingCart_Ash (00000149283956B8)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C92476D78)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014B55B585A8)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014928395BC8)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014C92476898)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B55B58098)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014B544B8B88)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014921C2AC28)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B55B58758)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014B544B8678, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014B544B8678
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395D78, queue head = 0000014C88FFE678, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E5050D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395508, queue head = 0000014C88FFE678, queue count = 1
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395358, queue head = 0000014C88FFE678, queue count = 2
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395868, queue head = 0000014C88FFE678, queue count = 3
+[LOG] SystemI::createSound                     :     filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 0000014928395BC8, queue head = 0000014C88FFE678, queue count = 4
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='501696__tsakanemashaba__people-talking', format=5, channels=2, frequency=48000, lengthbytes=1195840, lengthpcm=6389611, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.008382.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014B544B8678
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395D78
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E504F90
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='RollingCart_Ash', format=5, channels=2, frequency=48000, lengthbytes=89216, lengthpcm=467756, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.136928.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395D78
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395508
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505210
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Fan_Ambiance_Ash', format=5, channels=2, frequency=48000, lengthbytes=358720, lengthpcm=1931629, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.143325.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395508
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395358
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505350
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='501696__tsakanemashaba__people-talking', format=5, channels=2, frequency=48000, lengthbytes=1195840, lengthpcm=6389611, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.008382.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395358
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395868
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E505490
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='RollingCart_Ash', format=5, channels=2, frequency=48000, lengthbytes=89216, lengthpcm=467756, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.136928.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395868
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014928395BC8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Ambiance.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1645472
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 3360
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C8E5055D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Fan_Ambiance_Ash', format=5, channels=2, frequency=48000, lengthbytes=358720, lengthpcm=1931629, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.143325.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014928395BC8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Music.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C898E4E48, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C898E4E48
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/Music.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7637056
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 4512
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86931F90
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='chiptune-grooving-142242', format=5, channels=2, frequency=48000, lengthbytes=1150464, lengthpcm=4858775, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             :     Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 88288
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 12480
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             :     exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             :     exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             :     exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             :     exinfo->fileuserdata       = 0000014920B080E8
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C898E4E48
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Heal2', format=5, channels=1, frequency=48000, lengthbytes=6400, lengthpcm=36000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999245.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 88288
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 12480
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B080E8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Boss hit', format=5, channels=2, frequency=48000, lengthbytes=17184, lengthpcm=72000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.998999.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 27712
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 2240
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B08F58
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='ough-47202', format=5, channels=2, frequency=48000, lengthbytes=10368, lengthpcm=54144, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.877502.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 134784
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 7072
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B05598
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='power up_level up-sound 2', format=5, channels=2, frequency=48000, lengthbytes=20704, lengthpcm=72000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.998999.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B07488
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='GAMEVideo_Big Explosion_Rogue Waves_8-Bit Legend_13', format=5, channels=1, frequency=48000, lengthbytes=13888, lengthpcm=66901, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.251189.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B07488
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='pokemon-cry-parody-46225', format=5, channels=2, frequency=48000, lengthbytes=23840, lengthpcm=85248, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.853271.
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (0000014928395BC8)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C905FF338)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014B55B58758)
+[LOG] SoundI::release                          : Fan_Ambiance_Ash (0000014928395508)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014C92476BD8)
+[LOG] SoundI::release                          :     Fan_Ambiance_Ash (0000014B55B58248)
+[LOG] SoundI::release                          : RollingCart_Ash (0000014928395868)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C92476558)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014B55B585A8)
+[LOG] SoundI::release                          : RollingCart_Ash (0000014928395D78)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014C92476898)
+[LOG] SoundI::release                          :     RollingCart_Ash (0000014B55B58098)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014928395358)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014C92476078)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B55B583F8)
+[LOG] SoundI::release                          : 501696__tsakanemashaba__people-talking (0000014B544B8678)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014921C2AA88)
+[LOG] SoundI::release                          :     501696__tsakanemashaba__people-talking (0000014B55B58E18)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 94304
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 4704
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B05BC8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Matt_Edits_Take_4', format=5, channels=2, frequency=48000, lengthbytes=20736, lengthpcm=144000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.296940.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 88288
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 12480
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B08718
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='ThrowProjectile', format=5, channels=1, frequency=48000, lengthbytes=1120, lengthpcm=5537, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.121552.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 88288
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 12480
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000001072FF5E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFF19063F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFF19063F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFF19064040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFF19064100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000014920B08718
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='PickUpItem', format=5, channels=1, frequency=48000, lengthbytes=1632, lengthpcm=6907, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.109406.
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7078, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7078
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7078
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7228, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7228
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA34D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7228
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7C48, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7C48
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3ED0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7C48
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014C86CA7078)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BCE8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014C0D98F178)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7DF8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7DF8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA4010
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7DF8
+[LOG] SoundI::release                          : GatlingGunLight (0000014C86CA7228)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BB48)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014C0D98E758)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7228, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7228
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA5050
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7228
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B6D8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B6D8
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014C86CA7C48)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928394FF8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014C0D98E908)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316ACB8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316ACB8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA4650
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316ACB8
+[LOG] SoundI::release                          : GatlingGunLight (0000014C86CA7DF8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395678)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014C0D98EAB8)
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B6D8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395818)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014C0D98F328)
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014C86CA7228)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395338)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014C0D98EC68)
+[LOG] SoundI::release                          : GatlingGunLight (000001492316ACB8)
+[LOG] SoundI::release                          :     GatlingGunLight (00000149283959B8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014C0D98EFC8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316ACB8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316ACB8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316ACB8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B378, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B378
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA34D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B378
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316ACB8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395CF8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BEA8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B6D8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA5050
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316BA38, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316BA38
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316BA38
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B378)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395818)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BB48)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B1C8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B1C8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA52D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B1C8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316AE68, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316AE68
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA34D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316AE68
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B6D8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395B58)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BCF8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B6D8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA5050
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B6D8
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316BA38)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928394FF8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BEA8)
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316AE68)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395678)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137C058)
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316B6D8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395818)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BCF8)
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B1C8)
+[LOG] SoundI::release                          :     GatlingGunLight (00000149283954D8)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BB48)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B888, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B888
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3750
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B888
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B528, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B528
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA34D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B528
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316BA38, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316BA38
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316BA38
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316AE68, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316AE68
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3890
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316AE68
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B888)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395818)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BB48)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7738, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7738
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3750
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7738
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B528)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395B58)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BCF8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014C86CA7DF8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014C86CA7DF8
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316BA38)
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :         exinfo->cbsize             = 224
+[LOG] SoundI::release                          :         GatlingGunHeavy (0000014928395198)
+[LOG] SystemI::createSoundInternal             :         exinfo->length             = 358656
+[LOG] SoundI::release                          :         GatlingGunHeavy (000001492137BEA8)
+[LOG] SystemI::createSoundInternal             :         exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :         exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA4650
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014C86CA7DF8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014920433E18, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014920433E18
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA5410
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014920433E18
+[LOG] SoundI::release                          : GatlingGunLight (000001492316AE68)
+[LOG] SoundI::release                          :     GatlingGunLight (00000149283954D8)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137C058)
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014C86CA7738)
+[LOG] SoundI::release                          :     GatlingGunHeavy (00000149283959B8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BB48)
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014C86CA7DF8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395198)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BCF8)
+[LOG] SoundI::release                          : GatlingGunLight (0000014920433E18)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395B58)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BEA8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B6D8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B6D8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B1C8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B1C8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3ED0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunLight', format=5, channels=2, frequency=48000, lengthbytes=64768, lengthpcm=720000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991216.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B1C8
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 000001492316B378, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001492316B378
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA34D0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001492316B378
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000149204333F8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000149204333F8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA3750
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000149204333F8
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B6D8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928394FF8)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BEA8)
+[LOG] SoundI::release                          : GatlingGunHeavy (000001492316B378)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395678)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BB48)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014920433908, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014920433908
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA4010
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014920433908
+[LOG] SoundI::release                          : GatlingGunHeavy (00000149204333F8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395818)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137C058)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000014920433C68, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000014920433C68
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA6450
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000014920433C68
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014920433908)
+[LOG] SoundI::release                          :     GatlingGunHeavy (00000149283959B8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BEA8)
+[LOG] SystemI::createSound                     : filename = ../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000149204333F8, queue head = 0000014C88FFE678, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000149204333F8
+[LOG] SystemI::createSoundInternal             :     Create name='../../../../FMOD Studio/TrialOfTheAisle/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 358656
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 22592
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000014C86BA4010
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='GatlingGunHeavy', format=5, channels=2, frequency=48000, lengthbytes=149024, lengthpcm=1104000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.991544.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000149204333F8
+[LOG] SoundI::release                          : GatlingGunHeavy (0000014920433C68)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395198)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137C058)
+[LOG] SoundI::release                          : GatlingGunHeavy (00000149204333F8)
+[LOG] SoundI::release                          :     GatlingGunHeavy (0000014928395338)
+[LOG] SoundI::release                          :     GatlingGunHeavy (000001492137BEA8)
+[LOG] SoundI::release                          : GatlingGunLight (000001492316B1C8)
+[LOG] SoundI::release                          :     GatlingGunLight (0000014928395B58)
+[LOG] SoundI::release                          :     GatlingGunLight (000001492137BCF8)
+[LOG] SoundI::release                          : chiptune-grooving-142242 (0000014C898E4E48)
+[LOG] SoundI::release                          :     chiptune-grooving-142242 (0000014C2F6F4048)
+[LOG] SoundI::release                          :     chiptune-grooving-142242 (0000014BC3F92238)
+[LOG] SoundI::release                          :  (0000014C8628A578)
+[LOG] SoundI::release                          :     Matt_Edits_Take_4 (0000014B546DDC98)
+[LOG] SoundI::release                          :  (0000014C8628AF88)
+[LOG] SoundI::release                          :     PickUpItem (0000014B546DE998)
+[LOG] SoundI::release                          :  (0000014C8628A858)
+[LOG] SoundI::release                          :     ThrowProjectile (0000014B546DFEB8)
+[LOG] SoundI::release                          :  (0000014C8628B3D8)
+[LOG] SoundI::release                          :     Heal2 (0000014B546DE318)
+[LOG] SoundI::release                          :  (0000014C8628CAD8)
+[LOG] SoundI::release                          :     Boss hit (0000014B546DEB38)
+[LOG] SoundI::release                          :  (0000014C86289E48)
+[LOG] SoundI::release                          :     ough-47202 (0000014B546E0EF8)
+[LOG] SoundI::release                          :  (0000014C8628C0C8)
+[LOG] SoundI::release                          :     GAMEVideo_Big Explosion_Rogue Waves_8-Bit Legend_13 (0000014B546DD618)
+[LOG] SoundI::release                          :  (0000014C8628CDB8)
+[LOG] SoundI::release                          :     pokemon-cry-parody-46225 (0000014B546DDAF8)
+[LOG] SoundI::release                          :  (0000014C8628B828)
+[LOG] SoundI::release                          :     power up_level up-sound 2 (0000014B546DD7B8)
+[LOG] SoundI::release                          :  (0000014C8E4C2D18)
+[LOG] SoundI::release                          :     MenuButton (0000014921C2A748)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -21,3 +977,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
