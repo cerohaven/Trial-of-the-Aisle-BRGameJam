@@ -7,8 +7,6 @@ namespace NodeCanvas.Tasks.Actions{
 
 	public class MoveToTargetActionTask : ActionTask{
 
-		public float speed;
-
 		private Blackboard agentBlackboard;
 		private Rigidbody2D _rb;
 		private float _speed;
@@ -23,7 +21,7 @@ namespace NodeCanvas.Tasks.Actions{
 			agentBlackboard = agent.GetComponent<Blackboard>();
 
 			_rb = agent.GetComponent<Rigidbody2D>();
-			_speed = agentBlackboard.GetVariableValue<float>("moveSpeed");
+			_speed = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile").B_BaseMoveSpeed;
             
 			
 
@@ -50,7 +48,7 @@ namespace NodeCanvas.Tasks.Actions{
             _dir.Normalize();
 
             //update their position to go to the deisred location
-            _rb.MovePosition(agent.transform.position + _dir * speed * Time.fixedDeltaTime);
+            _rb.MovePosition(agent.transform.position + _dir * _speed * Time.fixedDeltaTime);
 		}
 
 		//Called when the task is disabled.

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private InputAction moveInput;
     private InputAction dodgeInput;
     private InputAction pauseInput;
+    private InputAction unPauseInput;
     private InputAction interactInput;
 
     [Header("Player Variables")]
@@ -35,6 +36,10 @@ public class PlayerController : MonoBehaviour
     private float lastDodgeTime = -5f;
     private bool canMove = true;
 
+    //For some reason, when the player presses ESC to pause it also unpauses for the first time only, so this int will make sure to only
+    //unpause when we have at least pasued once.
+    private int pauseCount = 0;
+
     //properties
     public PlayerInput PlayerInput { get => playerInput; }
     public bool CanMove { get => canMove; set => canMove = value; }
@@ -46,11 +51,13 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
+        
         // Initialize input actions from the asset
         moveInput = actionAsset.FindAction("Move");
         dodgeInput = actionAsset.FindAction("Dodge");
+        unPauseInput = actionAsset.FindAction("UnPause");
         pauseInput = actionAsset.FindAction("Pause");
+        
         interactInput = actionAsset.FindAction("Interact");
     }
 
@@ -59,10 +66,12 @@ public class PlayerController : MonoBehaviour
         moveInput.Enable();
         dodgeInput.Enable();
         pauseInput.Enable();
+        unPauseInput.Enable();
         interactInput.Enable();
 
         dodgeInput.performed += OnDodge;
         pauseInput.performed += OnPause;
+        unPauseInput.performed += OnUnPause;
     }
 
     private void OnDisable()
@@ -70,10 +79,12 @@ public class PlayerController : MonoBehaviour
         moveInput.Disable();
         dodgeInput.Disable();
         pauseInput.Disable();
+        unPauseInput.Disable();
         interactInput.Disable();
 
         dodgeInput.performed -= OnDodge;
         pauseInput.performed -= OnPause;
+        unPauseInput.performed -= OnUnPause;
     }
 
     public void FixedUpdate()
@@ -139,9 +150,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnPause(InputAction.CallbackContext context)
     {
+
         if (!canMove) return;
 
         pauseEvent.PauseGameEventSend();
+
+        pauseCount++;
+    }
+
+    private void OnUnPause(InputAction.CallbackContext context)
+    {
+        pauseCount++;
+        if (pauseCount < 3) return;
+
+        if (playerInput.currentActionMap.name != "UI") return;
+
+        pauseEvent.ResumeGameEventSend();
     }
 
     private void Animate()

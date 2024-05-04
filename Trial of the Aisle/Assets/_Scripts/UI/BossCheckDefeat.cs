@@ -1,3 +1,4 @@
+using FMODUnity;
 using NodeCanvas.Framework;
 using System;
 using System.Collections;
@@ -8,8 +9,7 @@ public class BossCheckDefeat : MonoBehaviour
 {
     private Blackboard bossBlackboard;
     private SO_BossProfile bossProfile;
-
-
+    [SerializeField] private CameraManager cm;
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
 
     private LevelLoader levelLoader;
@@ -46,13 +46,13 @@ public class BossCheckDefeat : MonoBehaviour
         {
             Debug.LogError($"Error while executing DestroyBoss: {e.Message}");
         }
+ 
+        cm.SwitchState();
+        RuntimeManager.PlayOneShot("event:/Music/BGM/PostBattle");
 
-  
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
-        Destroy(gameObject);
-
-        LevelLoader.Instance.SetTrigger();
+        gameObject.SetActive(false);
     }
 
     private void SpawnObjects()

@@ -228,15 +228,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423f51c65a512444c8db51ae8a1c5f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cm: {fileID: 0}
   bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
-  bossAbilityComponents:
-  - {fileID: -4299418316046309821, guid: b6568a1974dd15f4f99a86e8cd321cf6, type: 3}
-  - {fileID: 0}
-  abilityManager: {fileID: 0}
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 404483435044925577, guid: 9341dd1c06471834a85d3fcd8989bf8c, type: 3}
     spawnPosition: 0
-  debugSpawnKey: 9
+  debugDefeatBossKey: 107
 --- !u!1 &1935932387270382399
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/Ability")]
+[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/ParentControllers/Ability")]
 public abstract class Ability : ScriptableObject
 {
     public string abilityName;
@@ -17,6 +17,5 @@ public abstract class Ability : ScriptableObject
     public void UpdateID(int newID)
     {
         ID = newID;
-        // Note: SetDirty is used in the editor script to ensure changes are saved.
     }
 }

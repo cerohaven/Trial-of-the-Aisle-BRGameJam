@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alexander the Grape
   m_EditorClassIdentifier: 
   b_Name: Alexander the Grape
-  b_MaxHealth: 200
+  b_MaxHealth: 80
   b_BossProfilePicture: {fileID: -1816418880, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -24,9 +24,10 @@ MonoBehaviour:
     percentChanceToUse: 1
   b_BaseProjectileThrowSpeed: 11.1
   b_BaseTimeBetweenProjectileAttacks: 0.88
+  b_BaseMoveSpeed: 10.08
   b_BossPhases:
   - phaseName: Phase 1
-    healthPercent: 75.3
+    healthPercent: 74.5
     throwSpeed: 13.2
     attackDelay: 0.88
     phaseEvent: {fileID: 0}
@@ -48,8 +49,8 @@ MonoBehaviour:
     percentChanceToUse: 1
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
-  ability1: {fileID: 11400000, guid: e8b5fd2714636ac4989fc20ac9a6f6c1, type: 2}
-  ability2: {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}
+  ability1: {fileID: 11400000, guid: 41850a9738d2748489b2b395c644537c, type: 2}
+  ability2: {fileID: 11400000, guid: 4571fb4efb8e6d64685f54936923f70d, type: 2}
   ability1Texture: {fileID: 0}
   ability2Texture: {fileID: 0}
   postBattleCanvasUI: {fileID: 21300000, guid: 8e81fc6138d234a4b8df91b342e31101, type: 3}

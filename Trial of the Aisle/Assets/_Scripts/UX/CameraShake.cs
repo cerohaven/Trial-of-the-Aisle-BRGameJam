@@ -54,6 +54,7 @@ public class CameraShake : MonoBehaviour
             }
         
         }
+
     }
 
 }

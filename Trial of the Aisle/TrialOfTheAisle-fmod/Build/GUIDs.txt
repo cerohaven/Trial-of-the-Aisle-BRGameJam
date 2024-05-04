@@ -1,0 +1,60 @@
+{d2a2d5ce-1854-4c9d-8da7-904197485181} bank:/Ambiance
+{55105341-e2a8-4fc4-9faa-87f751b8f08f} bank:/Dialogue
+{378e7e4b-9f1b-4b22-957c-82b3626cab52} bank:/General_Effects
+{50239965-17c4-45b5-9a50-59a046e50831} bank:/Master
+{c83eb9b1-66bf-09f7-1c19-d35eb7160ea9} bank:/Master.strings
+{455c6761-dcd8-4525-9ec8-ec224b7f34ac} bank:/Music
+{77fbeb0e-65fd-4900-b11d-32fb9e72dca3} bank:/Player
+{367e389a-6409-4778-a814-91b940caec3c} bank:/SFX
+{b9960c76-0117-41bd-8445-16faecec79ec} bank:/UI
+{a231397a-29e4-4933-b4e4-f84d49c5d5da} bus:/
+{8ea3f284-d2ff-4639-9dd1-9500f82e4e49} bus:/Reverb
+{64b465b2-67eb-4141-aa91-ed965d49c543} event:/Ambiance/Fan Noise
+{a969fd12-5035-4775-b0f0-84d0dfd5643a} event:/Ambiance/Rolling Carts
+{87276e53-4f95-4111-b52b-ce258c1b3a91} event:/Ambiance/Shopping Noise
+{0818a91c-4e87-4c34-bae3-872ae4860313} event:/Dialogue/Introductions/AtG_Intro
+{dfd93346-ccb6-4e4d-923c-9dddf4356381} event:/Dialogue/Introductions/DD_Intro
+{962eae08-9733-4846-9674-aa1ccdee9ec3} event:/Dialogue/Introductions/PK_Intro
+{4afee823-45a3-4cbd-8bcb-f86f23980212} event:/Dialogue/Introductions/QPU_Intro
+{30989f8a-aa84-4777-82f7-53915a1994ea} event:/Music/BGM/AtG_Arena
+{d4eb5708-d0c7-4a33-a542-7cc607d4d024} event:/Music/BGM/DD_Arena
+{f1028bf6-aaae-4742-ae26-335d8159ffb2} event:/Music/BGM/PK_Arena
+{2ec3774a-614b-47b1-88dc-3056d84a9308} event:/Music/BGM/PostBattle
+{7a1cc204-ab8c-4634-8b93-4b21811ad2fa} event:/Music/BGM/QPU_Arena
+{98abc315-af24-4591-a926-4f2bef2ac027} event:/SFX/Bosses/Boss_AtG/B_Fruits_Of_Fury
+{726f04cd-c1bd-4176-a0f3-e208c537ca78} event:/SFX/Bosses/Boss_AtG/B_Jammed
+{091b0632-83b0-49fc-8e9d-32741e8cda80} event:/SFX/Bosses/Boss_AtG/Grape Minion
+{81ad568f-212c-4050-83bb-d15de7eacb22} event:/SFX/Bosses/Boss_AtG/Grape_Hit
+{602577c0-14e5-4173-a710-2c762d8a814b} event:/SFX/Bosses/Boss_DD/B_DD_Shot
+{b6eb2f6c-98fa-405f-bc74-ceedeb34f17a} event:/SFX/Bosses/Boss_DD/B_DD_Walk
+{8cba0a99-544b-4452-9671-900614426553} event:/SFX/Bosses/Boss_DD/B_Feta_Frenzy
+{383aa03f-8aae-4e3f-8ba8-13f70b61488f} event:/SFX/Bosses/Boss_DD/B_MoonBeam
+{5b1c3aca-76ad-4ba3-9f6e-11d1f0baa52b} event:/SFX/Bosses/Boss_PK/B_Bad_Habit
+{b40cb8dd-8809-461d-824e-41805185a5b8} event:/SFX/Bosses/Boss_PK/B_PK_Shot
+{b9f49327-90f3-46b8-b379-f754ce9d48a0} event:/SFX/Bosses/Boss_PK/B_PK_Walk
+{bd8fdf44-0d1e-4fba-9881-2c66db666787} event:/SFX/Bosses/Boss_PK/B_Parasitomania
+{adedf683-c4e6-4eb1-a992-8f130a0041a6} event:/SFX/Bosses/General/BossScream
+{6a32c91e-f388-4417-934c-4bffc064549b} event:/SFX/Bosses/General/Boss_Death
+{e9c203e2-9742-48ac-b4e8-6457c9c7bbc2} event:/SFX/Bosses/General/Charge Noise
+{036c86ac-7761-44fd-b69e-fbeae1e9b5fe} event:/SFX/Bosses/General/Heal
+{f45d9279-5c65-4071-ab4f-51801a3becca} event:/SFX/Bosses/General/Hurt
+{f4d0337f-3c48-47cf-a3a0-080be80ba458} event:/SFX/Bosses/General/PickUpItem
+{0d66919b-f48f-4af1-aa58-7cc7b44f6dfd} event:/SFX/Bosses/General/ThrowProjectile
+{0c028838-a256-4daf-b87e-2c90a7959805} event:/SFX/Player/P_Hurt
+{8ddf501b-c766-4837-949a-9a65d8845fcf} event:/SFX/Player/Player_Ability/B_Feta_Frenzy
+{c7f7a68b-eae0-4f9f-b472-b6587ff6d1c1} event:/SFX/Player/Player_Ability/B_Fruits_Of_Fury
+{8387b914-d5e4-4cd7-a616-983621ccdb25} event:/SFX/Player/Player_Ability/B_Jammed
+{cb5da88a-7cf5-42ea-bb0c-40a6d1f3f33b} event:/SFX/Player/Player_Ability/B_MoonBeam
+{3958492a-0a72-430a-b950-6cd403b7bc07} event:/SFX/Player/Player_Ability/P_Bad_Habit
+{bd5dadf3-b060-448d-a35b-5f8851bedb2e} event:/SFX/Player/Player_Ability/P_Cash Out
+{2b665fad-3e2a-4b1b-bdf4-94588726fbc6} event:/SFX/Player/Player_Ability/P_Retail Warrior
+{31473936-f6d4-4558-86c4-53be9ee6a68f} event:/SFX/Player/Shoot
+{90253448-6d87-460c-8e98-0bcdb4d5d98a} event:/SFX/Player/Walk
+{a0e4bcc5-212b-41ea-a111-86f3002f7b04} event:/UI/Buttons/ButtonPress
+{68bdb74e-c75e-48a1-853d-4fb72be0146f} event:/UI/Buttons/Pause
+{1de9f9b0-d450-44b1-836a-886738ca5357} event:/UI/Buttons/Unpause
+{8853c184-99d4-4b5a-850f-8bad5f91815e} event:/UI/GUI/HealthBarRaise
+{94fd3046-62de-4dcc-95e9-1ac8860a7dc0} event:/UI/GUI_Postboss/AbilitySelectClose
+{070e9df8-7ceb-4592-9ded-22ec3bcd04ba} event:/UI/GUI_Postboss/AbilitySelected
+{473b9d2d-0c53-4cb6-b2dc-8cf3cca591cd} event:/UI/GUI_Postboss/AbilitySwap
+{d0db0faa-1fc8-4ced-982f-7489dbb1aeb8} event:/UI/GUI_Postboss/Lanyard

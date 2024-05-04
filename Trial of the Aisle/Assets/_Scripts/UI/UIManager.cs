@@ -9,12 +9,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private SO_AdjustHealth adjustHealth;
 
     [Separator()]
+    [SerializeField] private float xSmallHealthAdjustment;
     [SerializeField] private float smallHealthAdjustment;
     [SerializeField] private float mediumHealthAdjustment;
     [SerializeField] private float largeHealthAdjustment;
+    [SerializeField] private float xLargeHealthAdjustment;
 
 
-    private PlayerHealthBar kirbyHealthBar;
+    private PlayerHealthBar playerHealthBar;
     private BossHealthBar bossHealthBar;
 
     //Variables
@@ -29,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        kirbyHealthBar = GameObject.FindObjectOfType<PlayerHealthBar>();
+        playerHealthBar = GameObject.FindObjectOfType<PlayerHealthBar>();
         bossHealthBar = GameObject.FindObjectOfType<BossHealthBar>();
 
         //Once event is called, run these methods
@@ -41,7 +43,7 @@ public class UIManager : MonoBehaviour
     {
         float healthAdjustment = GetHealthValue(changeHealthState, healthType);
 
-        kirbyHealthBar.PlayerChangeHealth(healthAdjustment);
+        playerHealthBar.PlayerChangeHealth(healthAdjustment);
     }
     private void AdjustBossHealth(ChangeHealth changeHealthState, HealthType healthType, Vector2 projectileUpDir)
     {
@@ -67,6 +69,9 @@ public class UIManager : MonoBehaviour
 
         switch(_changeHealthState)
         {
+            case ChangeHealth.X_Small_Health:
+                healthToReturn = xSmallHealthAdjustment * healthType;
+                break;
             case ChangeHealth.Small_Health:
                 healthToReturn = smallHealthAdjustment * healthType;
                 break;
@@ -76,7 +81,10 @@ public class UIManager : MonoBehaviour
             case ChangeHealth.Large_Health:
                 healthToReturn = largeHealthAdjustment * healthType;
                 break;
-  
+            case ChangeHealth.X_Large_Health:
+                healthToReturn = xLargeHealthAdjustment * healthType;
+                break;
+
 
 
         }

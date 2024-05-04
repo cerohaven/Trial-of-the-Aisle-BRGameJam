@@ -52,17 +52,18 @@ public class PauseGameMenu : MonoBehaviour
 
     }
 
+    
+
     public void PauseMenu_TitleScreen()
     {
-        //AudioManager.instance.Play("ClickButton");
-
-        //Send event to the game manager to resume the game
-        pauseMenuEvent.ResumeGameEventSend();
-
-        //Load Scene
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("MainMenu");
 
 
+    }
+
+    public void PauseMenu_QuitGame()
+    {
+        Application.Quit();
     }
 
 }

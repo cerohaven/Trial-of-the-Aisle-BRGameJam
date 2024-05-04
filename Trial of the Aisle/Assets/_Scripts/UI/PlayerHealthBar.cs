@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,9 +23,15 @@ public class PlayerHealthBar : MonoBehaviour
     private float currentInvincibilityTime;
     private Color color = Color.white;
 
+    FMOD.Studio.EventInstance SFX_PlayerHurt;
+    FMOD.Studio.EventInstance SFX_PlayerHeal;
 
     private void Awake()
     {
+
+        SFX_PlayerHeal = RuntimeManager.CreateInstance("event:/SFX/Player/Player_Ability/P_Bad_Habit");
+        SFX_PlayerHurt = RuntimeManager.CreateInstance("event:/SFX/Player/P_Hurt");
+
         playerGameObject = GameObject.FindObjectOfType<PlayerInput>().gameObject;
         playerRectTransform = GetComponent<RectTransform>();
         playerSr = playerGameObject.GetComponent<SpriteRenderer>();
@@ -80,14 +87,14 @@ public class PlayerHealthBar : MonoBehaviour
             //Set them invincible for a certain period of time
 
             currentInvincibilityTime = 0;
-            AudioManager.instance.Play("p_hurt");
+            SFX_PlayerHurt.start();
 
         }
         else
         {
             UpdateHealthBar(_playerChangedHealth);
             Instantiate(healEffect, playerGameObject.transform.position, Quaternion.identity);
-            AudioManager.instance.Play("heal");
+            SFX_PlayerHeal.start();
         }
 
     }

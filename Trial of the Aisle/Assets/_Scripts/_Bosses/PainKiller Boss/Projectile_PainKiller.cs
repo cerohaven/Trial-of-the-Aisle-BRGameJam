@@ -77,9 +77,8 @@ public class Projectile_PainKiller : Projectile
                 //if the pills are being sucked in and they collide with the boss, destroy them
                 Destroy(gameObject);
             }
-            
 
-            if(collision.gameObject.CompareTag("Walls") && (isThrownInWave || isBeingSuckedIn))
+            if (collision.gameObject.CompareTag("Walls") && (isThrownInWave || isBeingSuckedIn))
             {
                 Destroy(gameObject);
             }
@@ -95,6 +94,11 @@ public class Projectile_PainKiller : Projectile
         {
             adjustHealth.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }
