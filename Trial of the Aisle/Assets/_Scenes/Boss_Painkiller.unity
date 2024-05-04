@@ -46397,7 +46397,7 @@ Transform:
   m_GameObject: {fileID: 1792044602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.88648224, y: 7.93734, z: -12.3303795}
+  m_LocalPosition: {x: 0.88648224, y: 7.93734, z: -12.330381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46499,7 +46499,7 @@ Transform:
   m_GameObject: {fileID: 1798283557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2043335, y: 3.7370539, z: -15.642561}
+  m_LocalPosition: {x: -2.2043335, y: 3.7370539, z: -15.642563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46969,6 +46969,10 @@ PrefabInstance:
     - target: {fileID: 7875765881395617450, guid: 1bdfd761b93ad3d4e89aa6f06ed34449, type: 3}
       propertyPath: m_Name
       value: Level Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7875765881395617450, guid: 1bdfd761b93ad3d4e89aa6f06ed34449, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

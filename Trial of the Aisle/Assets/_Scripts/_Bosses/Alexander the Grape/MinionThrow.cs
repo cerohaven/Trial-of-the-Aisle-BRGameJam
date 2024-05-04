@@ -91,9 +91,15 @@ public class MinionThrow : MonoBehaviour
         if (gameObject == null) return;
         
         LeanTween.scale(boss, Vector3.one, 0.1f);
-        
-        Destroy(gameObject);
+
+        gameObject.SetActive(false);
+        Invoke(nameof(DestroyMinion), 1);
        
+    }
+
+    private void DestroyMinion()
+    {
+        Destroy(gameObject);
     }
 
 }
