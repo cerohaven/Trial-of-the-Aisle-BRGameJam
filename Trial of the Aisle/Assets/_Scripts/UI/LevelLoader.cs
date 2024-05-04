@@ -25,6 +25,7 @@ public class LevelLoader : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     
+    //Called from the Animation's Last Frame Event. Do not use this with other scripts. Use the LoadNextScene instead.
     public void SwitchScene()
     {
 
@@ -39,7 +40,7 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    public void SetTrigger()
+    public void LoadNextScene()
     {
         animator.SetTrigger("Start");
     }

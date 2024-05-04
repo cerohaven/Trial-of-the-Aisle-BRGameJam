@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCarryProjectile : MonoBehaviour
 {
+    [SerializeField] private PlayerAimArrow paa;
 
     private bool isCarryingObject = false;
     private GameObject carryObject;
@@ -25,7 +26,15 @@ public class PlayerCarryProjectile : MonoBehaviour
 
     void Update()
     {
-        if (isCarryingObject == false) return;
+        if (isCarryingObject == false)
+        {
+            paa.gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            paa.gameObject.SetActive(true);
+        }
 
 
         // Calculate direction towards the mouse cursor

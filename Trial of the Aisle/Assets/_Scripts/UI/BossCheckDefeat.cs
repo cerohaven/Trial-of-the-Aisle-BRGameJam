@@ -52,7 +52,7 @@ public class BossCheckDefeat : MonoBehaviour
 
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void SpawnObjects()

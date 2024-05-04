@@ -7,6 +7,8 @@ using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     [SerializeField] private GameObject pauseMenuPrefab;
 
@@ -22,12 +24,34 @@ public class GameManager : MonoBehaviour
     public static bool gameEnded = false;
     public static bool bossIsDefeated = false;
 
+    //Keeps a list of all the active UI on screen, so if we click ESC it gets rid of the most recent UI
+    //If the List is >0, then simply close the UI and remove it from the List
+    //If the List is 0, then Pause
+    //If we're paused and we click again, unpause
+    private List<GameObject> uiInstances = new List<GameObject>();
+
 
     //Scriptable Objects
     [SerializeField] private SO_BossDefeatedEventSender SObossDefeat;
 
+    //Properties
+
+    public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
+
+   
+
+
+
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         //Calls when a player presses the pause button
         pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
@@ -50,8 +74,35 @@ public class GameManager : MonoBehaviour
     }
     private void PauseTheGame()
     {
+        //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
+        if(uiInstances.Count >0)
+        {
+            DestroyUIElement();
+        }
+        else
+        {
+            Pause();
+        }
+
+
+    }
+
+    private void DestroyUIElement()
+    {
+        if(gameEnded)
+        {
+            //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
+            LevelLoader.Instance.LoadNextScene();
+        }
+
+        Destroy(uiInstances[uiInstances.Count-1]);
+        uiInstances.RemoveAt(uiInstances.Count - 1);
+    }
+    private void Pause()
+    {
+
         playerInput.SwitchCurrentActionMap("UI");
-   
+
         //Spawn in the pause menu ONLY IF IT'S THE FIRST TIME
         if (!isGamePaused)
             pauseMenu = Instantiate(pauseMenuPrefab);
@@ -62,13 +113,17 @@ public class GameManager : MonoBehaviour
         pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInput);
 
         Time.timeScale = 0;
-    }
 
+        uiInstances.Add(pauseMenu);
+    }
     private void ResumeTheGame()
     {
         playerInput.SwitchCurrentActionMap("Player");
 
         isGamePaused = false;
+
+        uiInstances.Remove(pauseMenu);
+
 
         if(pauseMenu != null)
             Destroy(pauseMenu);

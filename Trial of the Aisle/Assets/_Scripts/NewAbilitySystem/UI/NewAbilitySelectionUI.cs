@@ -17,6 +17,10 @@ public class NewAbilitySelectionUI : MonoBehaviour
     private Ability abilityTwo;
     private HashSet<Ability> swappedAbilities = new HashSet<Ability>();
 
+    private void Awake()
+    {
+        GameManager.Instance.UiInstances.Add(gameObject);
+    }
     public void ShowAbilities(Ability abilityOne, Ability abilityTwo, Sprite bossCard)
     {
         if(abilityOne == null || abilityTwo == null)

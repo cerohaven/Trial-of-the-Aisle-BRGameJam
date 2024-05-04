@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float xLargeHealthAdjustment;
 
 
-    private PlayerHealthBar kirbyHealthBar;
+    private PlayerHealthBar playerHealthBar;
     private BossHealthBar bossHealthBar;
 
     //Variables
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        kirbyHealthBar = GameObject.FindObjectOfType<PlayerHealthBar>();
+        playerHealthBar = GameObject.FindObjectOfType<PlayerHealthBar>();
         bossHealthBar = GameObject.FindObjectOfType<BossHealthBar>();
 
         //Once event is called, run these methods
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     {
         float healthAdjustment = GetHealthValue(changeHealthState, healthType);
 
-        kirbyHealthBar.PlayerChangeHealth(healthAdjustment);
+        playerHealthBar.PlayerChangeHealth(healthAdjustment);
     }
     private void AdjustBossHealth(ChangeHealth changeHealthState, HealthType healthType, Vector2 projectileUpDir)
     {

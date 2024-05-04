@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
-  b_MaxHealth: 100
+  b_MaxHealth: 10
   b_BossProfilePicture: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
