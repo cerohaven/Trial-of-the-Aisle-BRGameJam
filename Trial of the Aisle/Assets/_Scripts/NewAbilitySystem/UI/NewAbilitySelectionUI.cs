@@ -21,15 +21,21 @@ public class NewAbilitySelectionUI : MonoBehaviour
     {
         GameManager.Instance.UiInstances.Add(gameObject);
     }
-    public void ShowAbilities(Ability abilityOne, Ability abilityTwo, Sprite bossCard)
+
+
+    public void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
     {
-        if(abilityOne == null || abilityTwo == null)
+        abilityOne = _abilityOne;
+        abilityTwo = _abilityTwo;
+
+        Debug.Log(abilityOne, abilityTwo);
+
+        if (abilityOne == null || abilityTwo == null)
         {
             Debug.LogWarning("Not enough new abilities specified for post-boss defeat selection.");
             return;
         }
-        this.abilityOne = abilityOne;
-        this.abilityTwo = abilityTwo;
+
         bossCardImage.sprite = bossCard;
 
         unlockPanel.SetActive(true);
@@ -38,6 +44,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         SetupAbilityUI(abilityOneImage, abilityOne, abilityOneTextPanel);
         SetupAbilityUI(abilityTwoImage, abilityTwo, abilityTwoTextPanel);
     }
+
 
     private void SetupAbilityUI(Image abilityImage, Ability ability, GameObject textPanel)
     {
@@ -61,19 +68,19 @@ public class NewAbilitySelectionUI : MonoBehaviour
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
-        Button button = abilityImage.GetComponent<Button>();
+        /*Button button = abilityImage.GetComponent<Button>();
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => OnAbilitySelected(ability));
+        button.onClick.AddListener(() => OnAbilitySelected(ability));*/
     }
 
 
-    private void OnAbilitySelected(Ability ability)
+    /*private void OnAbilitySelected(Ability ability)
     {
         if (!swappedAbilities.Contains(ability))
         {
             StartCoroutine(WaitForSlotSelection(ability));
         }
-    }
+    }*/
 
     private IEnumerator WaitForSlotSelection(Ability ability)
     {
@@ -100,6 +107,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         }
 
         swappedAbilities.Add(ability); // Mark as swapped after successfully selecting a slot
+        Debug.Log("Swapped to " + ability.abilityName);
     }
 
 
