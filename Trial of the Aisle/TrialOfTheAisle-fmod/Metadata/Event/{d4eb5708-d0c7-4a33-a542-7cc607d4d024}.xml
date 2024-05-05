@@ -107,10 +107,23 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{e32e4c48-d9e4-4db8-8ca9-be1f81d38f5a}">
 		<relationship name="effects">
+			<destination>{4dab7157-d9da-4274-b55a-b8f76f00ee17}</destination>
+			<destination>{12422eed-1262-4251-85aa-4a3c37429d87}</destination>
+			<destination>{2dc90e6d-e80f-4f61-9103-f8fc6730b8e8}</destination>
 			<destination>{9a2458a6-5677-461b-bf50-a06a3a5c6447}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{20c2ef6c-8cc7-4090-8ca8-44cd55015eec}" />
 	<object class="MixerBusFader" id="{73125143-0521-447c-9ab5-277ab8f04d8d}" />
+	<object class="LimiterEffect" id="{4dab7157-d9da-4274-b55a-b8f76f00ee17}" />
+	<object class="Sidechain" id="{12422eed-1262-4251-85aa-4a3c37429d87}" />
+	<object class="CompressorEffect" id="{2dc90e6d-e80f-4f61-9103-f8fc6730b8e8}">
+		<property name="releaseTime">
+			<value>300</value>
+		</property>
+		<relationship name="sidechains">
+			<destination>{12422eed-1262-4251-85aa-4a3c37429d87}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{9a2458a6-5677-461b-bf50-a06a3a5c6447}" />
 </objects>

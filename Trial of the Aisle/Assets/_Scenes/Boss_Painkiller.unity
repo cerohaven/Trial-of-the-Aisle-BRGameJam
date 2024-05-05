@@ -9367,6 +9367,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ce559c67-d2d5-414f-a9c8-8236c0cf9a81
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 43c6e253-13aa-4d0d-a549-68e8359c5fa3
+    m_ActionName: UI/UnPause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -19046,6 +19050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd731965e9fb6241a1d3cbefa1deb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SO_BP: {fileID: 11400000, guid: 256589a29e931bb48939c0b7fa5029a9, type: 2}
   timeOnScreen: 1.57
   HUDanimators:
   - {fileID: 1745141415}
@@ -48275,7 +48280,7 @@ MonoBehaviour:
     Path: event:/Music/BGM/PK_Arena
   Event: 
   PlayEvent: 1
-  StopEvent: 2
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0

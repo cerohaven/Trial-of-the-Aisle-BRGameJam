@@ -18801,6 +18801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd731965e9fb6241a1d3cbefa1deb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SO_BP: {fileID: 11400000, guid: 1b41e1fd1bb8b3e4e8ea9e5f472d7579, type: 2}
   timeOnScreen: 1.57
   HUDanimators:
   - {fileID: 1745141415}
@@ -48028,6 +48029,7 @@ GameObject:
   - component: {fileID: 9083388960159939504}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939505}
   m_Layer: 0
   m_Name: Dairy Dominator Boss
   m_TagString: Boss
@@ -48459,6 +48461,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   animator: {fileID: 6706980758945208613}
+--- !u!114 &9083388960159939505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -722774264
+      Data2: 1244909767
+      Data3: -964935003
+      Data4: 617665543
+    Path: event:/Music/BGM/DD_Arena
+  Event: 
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
