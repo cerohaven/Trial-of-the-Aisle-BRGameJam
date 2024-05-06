@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
 
-   
+    public bool dragging;
 
 
 

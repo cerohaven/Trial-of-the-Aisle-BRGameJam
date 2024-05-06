@@ -13,15 +13,15 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
     
 
-    private Ability abilityOne;
-    private Ability abilityTwo;
-    private HashSet<Ability> swappedAbilities = new HashSet<Ability>();
+    public Ability abilityOne;
+    public Ability abilityTwo;
+    public HashSet<Ability> swappedAbilities = new HashSet<Ability>();
+ 
 
     private void Awake()
     {
         GameManager.Instance.UiInstances.Add(gameObject);
     }
-
 
     public void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
     {
@@ -68,19 +68,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
-        /*Button button = abilityImage.GetComponent<Button>();
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => OnAbilitySelected(ability));*/
-    }
-
-
-    /*private void OnAbilitySelected(Ability ability)
-    {
-        if (!swappedAbilities.Contains(ability))
-        {
-            StartCoroutine(WaitForSlotSelection(ability));
-        }
-    }*/
+    }   
 
     private IEnumerator WaitForSlotSelection(Ability ability)
     {
@@ -106,8 +94,8 @@ public class NewAbilitySelectionUI : MonoBehaviour
             yield return null;
         }
 
+        //important
         swappedAbilities.Add(ability); // Mark as swapped after successfully selecting a slot
-        Debug.Log("Swapped to " + ability.abilityName);
     }
 
 
