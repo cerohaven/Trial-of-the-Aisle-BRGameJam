@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler
 {
     [SerializeField]
     private Canvas canvas;
@@ -34,6 +34,14 @@ public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                 break;
         }
         filled = false;
+    }
+
+    public void OnPointerDown(PointerEventData data)
+    {
+        if (!filled)
+        {
+            LeanTween.scale(this.gameObject, transform.localScale * 0.8f, 0.5f).setEasePunch();
+        }
     }
 
     public void OnBeginDrag(PointerEventData data) 

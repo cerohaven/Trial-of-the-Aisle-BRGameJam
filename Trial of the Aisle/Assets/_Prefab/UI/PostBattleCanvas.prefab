@@ -217,7 +217,7 @@ MonoBehaviour:
   newAbilitySelectionUI: {fileID: 0}
   ability: {fileID: 0}
   storedAbility: {fileID: 0}
-  slotIndex: 2
+  slotIndex: 0
 --- !u!1 &1796482786670252119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1074,7 @@ MonoBehaviour:
   newAbilitySelectionUI: {fileID: 0}
   ability: {fileID: 0}
   storedAbility: {fileID: 0}
-  slotIndex: 0
+  slotIndex: 2
 --- !u!1 &4782283251337493463
 GameObject:
   m_ObjectHideFlags: 0

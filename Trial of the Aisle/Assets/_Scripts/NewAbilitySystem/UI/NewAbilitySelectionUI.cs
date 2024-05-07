@@ -68,37 +68,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
-    }   
-
-    private IEnumerator WaitForSlotSelection(Ability ability)
-    {
-        bool abilitySelected = false;
-
-        while (!abilitySelected)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                PlayerAbilities.Instance.SwapAbility(0, ability);
-                abilitySelected = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                PlayerAbilities.Instance.SwapAbility(1, ability);
-                abilitySelected = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                PlayerAbilities.Instance.SwapAbility(2, ability);
-                abilitySelected = true;
-            }
-            yield return null;
-        }
-
-        //important
-        swappedAbilities.Add(ability); // Mark as swapped after successfully selecting a slot
     }
-
-
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
     {
