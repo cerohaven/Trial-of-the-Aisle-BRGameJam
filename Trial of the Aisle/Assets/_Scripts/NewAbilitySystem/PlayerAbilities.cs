@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using UnityEngine.SceneManagement;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -63,6 +64,35 @@ public class PlayerAbilities : MonoBehaviour
     void Update()
     {
         UpdateCooldowns();
+    }
+
+    //persist abilities between scenes
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Clear existing references to avoid accessing destroyed objects
+        for (int i = 0; i < abilityIcons.Length; i++)
+        {
+            abilityIcons[i] = null;
+            if (cooldownOverlays[i] != null)
+            {
+                Destroy(cooldownOverlays[i].gameObject);  // Destroy the overlay objects to avoid duplicates
+            }
+            cooldownOverlays[i] = null;
+        }
+
+        // Reinitialize UI
+        InitializeAbilityUI();
     }
 
     void InitializeAbilityUI()
