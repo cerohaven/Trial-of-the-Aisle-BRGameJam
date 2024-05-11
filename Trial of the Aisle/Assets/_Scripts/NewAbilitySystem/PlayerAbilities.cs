@@ -51,7 +51,7 @@ public class PlayerAbilities : MonoBehaviour
             }
             else
             {
-                equippedAbilities[i] = null; 
+                equippedAbilities[i] = null;
             }
         }
     }
@@ -65,8 +65,6 @@ public class PlayerAbilities : MonoBehaviour
     {
         UpdateCooldowns();
     }
-
-    //persist abilities between scenes
 
     private void OnEnable()
     {
@@ -83,12 +81,16 @@ public class PlayerAbilities : MonoBehaviour
         // Clear existing references to avoid accessing destroyed objects
         for (int i = 0; i < abilityIcons.Length; i++)
         {
-            abilityIcons[i] = null;
+            if (abilityIcons[i] != null)
+            {
+                Destroy(abilityIcons[i].gameObject);
+                abilityIcons[i] = null;
+            }
             if (cooldownOverlays[i] != null)
             {
-                Destroy(cooldownOverlays[i].gameObject);  // Destroy the overlay objects to avoid duplicates
+                Destroy(cooldownOverlays[i].gameObject);
+                cooldownOverlays[i] = null;
             }
-            cooldownOverlays[i] = null;
         }
 
         // Reinitialize UI
@@ -99,7 +101,7 @@ public class PlayerAbilities : MonoBehaviour
     {
         for (int i = 0; i < equippedAbilities.Length; i++)
         {
-            if (equippedAbilities[i] != null) // Ability is present
+            if (equippedAbilities[i] != null && abilitySlotsUIReference[i] != null) // Added null check for UI reference
             {
                 Ability ability = equippedAbilities[i];
 
@@ -127,14 +129,13 @@ public class PlayerAbilities : MonoBehaviour
                 overlayImage.fillAmount = 0; // No cooldown initially
                 cooldownOverlays[i] = overlayImage;
             }
-            else // No ability is present in this slot
+            else // Ensure the slot UI is inactive if there's no ability or reference is null
             {
-                // Ensure the slot UI is inactive if there's no ability
-                abilitySlotsUIReference[i].gameObject.SetActive(false);
+                if (abilitySlotsUIReference[i] != null)
+                    abilitySlotsUIReference[i].gameObject.SetActive(false);
             }
         }
     }
-
 
     private Image FindOrCreateOverlayImage(RectTransform parentSlot)
     {
@@ -155,12 +156,12 @@ public class PlayerAbilities : MonoBehaviour
 
     public void ActivateAbility(int slot)
     {
-        // Check for null in equippedAbilities to avoid null reference exceptions
         if (slot >= 0 && slot < equippedAbilities.Length && equippedAbilities[slot] != null && cooldowns[slot] <= 0)
         {
             equippedAbilities[slot].Activate(gameObject);
             cooldowns[slot] = equippedAbilities[slot].cooldownTime;
-            cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
+            if (cooldownOverlays[slot] != null)
+                cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
         }
     }
 
@@ -168,13 +169,13 @@ public class PlayerAbilities : MonoBehaviour
     {
         for (int i = 0; i < equippedAbilities.Length; i++)
         {
-            // Again, check for null to avoid exceptions
             if (equippedAbilities[i] != null && cooldowns[i] > 0)
             {
                 cooldowns[i] -= Time.deltaTime;
-                cooldownOverlays[i].fillAmount = cooldowns[i] / equippedAbilities[i].cooldownTime;
+                if (cooldownOverlays[i] != null)
+                    cooldownOverlays[i].fillAmount = cooldowns[i] / equippedAbilities[i].cooldownTime;
 
-                if (cooldowns[i] <= 0)
+                if (cooldowns[i] <= 0 && cooldownOverlays[i] != null)
                 {
                     cooldownOverlays[i].fillAmount = 0; // Reset the cooldown overlay
                 }
@@ -201,7 +202,6 @@ public class PlayerAbilities : MonoBehaviour
             InitializeAbilityUI();
         }
     }
-
 
     public float GetCooldown(int slot)
     {
