@@ -16,8 +16,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName="Boss Profile", menuName = "Boss Scriptable Objects/Boss Profile")]
 public class SO_BossProfile : ScriptableObject
 {
-
-    [SerializeField] private string b_Name = "Boss Name";
+    [SerializeField] public string b_Name = "Boss Name";
     [SerializeField] private float b_MaxHealth = 250;
     [SerializeField] private Sprite b_BossProfilePicture;
     [SerializeField] private Texture2D b_BossProfileTexture;
@@ -150,7 +149,7 @@ public class SO_BossProfileEditor : Editor
 {
     readonly float cardWidth = 350;
     //SerializedProperties
-    private SerializedProperty b_Name;
+    public SerializedProperty b_Name;
     private SerializedProperty b_MaxHealth;
     private SerializedProperty b_BossProfilePicture;
     private SerializedProperty b_BossColourPalette;

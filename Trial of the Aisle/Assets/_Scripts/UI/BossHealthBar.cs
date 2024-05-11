@@ -119,6 +119,7 @@ public class BossHealthBar : MonoBehaviour
 
     public void BossChangeHealth(float _bossChangedHealth, Vector2 _upDir)
     {
+        if (!gameObject.activeSelf) return;
         //Check to see if healing or damage is being passed
         bool isDamage = _bossChangedHealth < 0;
 

@@ -19054,6 +19054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd731965e9fb6241a1d3cbefa1deb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SO_BP: {fileID: 11400000, guid: 06ab97d7c1648e640a8a48273a8ef8ae, type: 2}
   timeOnScreen: 1.57
   HUDanimators:
   - {fileID: 1745141415}
@@ -47854,6 +47855,7 @@ GameObject:
   - component: {fileID: 9083388960159939504}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939505}
   m_Layer: 0
   m_Name: Alexander the Grape Boss
   m_TagString: Boss
@@ -48293,6 +48295,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   animator: {fileID: 6706980758945208613}
+--- !u!114 &9083388960159939505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 815308682
+      Data2: 1199024772
+      Data3: -1856768126
+      Data4: -359392934
+    Path: event:/Music/BGM/AtG_Arena
+  Event: 
+  PlayEvent: 1
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
