@@ -1239,7 +1239,7 @@ Transform:
   m_GameObject: {fileID: 517746820}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.83037, y: 6.450515, z: 3.312181}
+  m_LocalPosition: {x: 11.828867, y: 5.369424, z: 3.312181}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1261,12 +1261,12 @@ MonoBehaviour:
   m_RotationMode: 0
   m_UpdateMethod: 1
   m_Targets:
-  - target: {fileID: 9083388960159939503}
-    weight: 1
-    radius: 3
   - target: {fileID: 1075837055}
     weight: 1
     radius: 6
+  - target: {fileID: 9083388960159939503}
+    weight: 1
+    radius: 3
 --- !u!1 &557897161
 GameObject:
   m_ObjectHideFlags: 0
