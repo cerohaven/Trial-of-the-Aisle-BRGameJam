@@ -899,10 +899,11 @@ GameObject:
   m_Component:
   - component: {fileID: 284075329}
   - component: {fileID: 284075331}
+  - component: {fileID: 284075332}
   m_Layer: 0
   m_Name: AbilityManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -933,6 +934,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1258f33c50fc18a4ea93e6801827b362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &284075332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284075328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2bbeaf7e370654a9fcc307a54f228e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
+  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
+  equippedAbilityIDs: 000000000100000004000000
+  abilitySlotsUIReference:
+  - {fileID: 2545268619740206462}
+  - {fileID: 5386798739049433889}
+  - {fileID: 969579879}
 --- !u!114 &291057489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7431,11 +7451,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
   m_PrefabInstance: {fileID: 1828783442}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &672899046 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8285737914361015950, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
-  m_PrefabInstance: {fileID: 1357404731}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &731238299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8111,7 +8126,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 302991091}
-  m_Father: {fileID: 2006806797}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9230,7 +9245,6 @@ GameObject:
   - component: {fileID: 1075837061}
   - component: {fileID: 1075837062}
   - component: {fileID: 1075837063}
-  - component: {fileID: 1075837064}
   m_Layer: 3
   m_Name: 'Player '
   m_TagString: Player
@@ -9555,25 +9569,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1075837064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075837053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2bbeaf7e370654a9fcc307a54f228e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
-  abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 000000000100000004000000
-  abilitySlotsUIReference:
-  - {fileID: 2545268619740206462}
-  - {fileID: 5386798739049433889}
-  - {fileID: 969579879}
 --- !u!1001 &1094803131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10076,7 +10071,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2006806797}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4048441312140854428, guid: 94af5244b9675dc4a9b08fb2bfd20c49, type: 3}
       propertyPath: m_SizeDelta.x
@@ -46977,7 +46972,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1745141412}
-  m_Father: {fileID: 2006806797}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -47460,10 +47455,7 @@ Transform:
   m_LocalPosition: {x: -3.576731, y: 4.6266236, z: 5.8366303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 855409802}
-  - {fileID: 1865026373}
-  - {fileID: 672899046}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009682158
@@ -48156,7 +48148,7 @@ GameObject:
   - component: {fileID: 5823499309050196034}
   - component: {fileID: 9148741302752814096}
   m_Layer: 5
-  m_Name: 'Ability 1 '
+  m_Name: Ability 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48378,6 +48370,9 @@ SceneRoots:
   - {fileID: 9083388960159939503}
   - {fileID: 188492274}
   - {fileID: 2006806797}
+  - {fileID: 1357404731}
+  - {fileID: 1865026373}
+  - {fileID: 855409802}
   - {fileID: 1639962709}
   - {fileID: 501050405}
   - {fileID: 284075329}
