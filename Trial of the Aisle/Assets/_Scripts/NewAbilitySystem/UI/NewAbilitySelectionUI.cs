@@ -20,8 +20,9 @@ public class NewAbilitySelectionUI : MonoBehaviour
     public Ability abilityOne;
     public Ability abilityTwo;
     public HashSet<Ability> swappedAbilities = new HashSet<Ability>();
- 
 
+    private readonly float blackBorderWidth = 100;
+    private GameObject textPanelGO;
     private void Awake()
     {
         GameManager.Instance.UiInstances.Add(gameObject);
@@ -74,10 +75,21 @@ public class NewAbilitySelectionUI : MonoBehaviour
         descriptionText.text = ability.abilityDescription;
 
         // Add mouse hover listeners
-        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
+        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => MouseHoverOverAbility(textPanel));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
         
+    }
+    private void MouseHoverOverAbility(GameObject textPanel)
+    {
+        textPanel.SetActive(true);
+        textPanelGO = textPanel;
+        LeanTween.rotateZ(textPanel, 2f, 0.2f).setEaseOutBack().setOnComplete(OnHoverComplete);
+    }
+
+    private void OnHoverComplete()
+    {
+        LeanTween.rotateZ(textPanelGO, 0f, 0.1f).setEaseOutBack();
     }
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
@@ -94,14 +106,14 @@ public class NewAbilitySelectionUI : MonoBehaviour
         if (abilityOneTextPanel != null)
         {
             abilityTextPanelRects[0].anchoredPosition = Vector2.zero;
-            //abilityTextPanelRects[0].anchoredPosition -= KeepFullyOnScreen(abilityTextPanelRects[0], abilityOneTextPanel.transform.position);
-            KeepFullyOnScreenFlip(abilityTextPanelRects[0], abilityOneTextPanel.transform.position);
+            abilityTextPanelRects[0].anchoredPosition -= KeepFullyOnScreen(abilityTextPanelRects[0], abilityOneTextPanel.transform.position);
+            //KeepFullyOnScreenFlip(abilityTextPanelRects[0], abilityOneTextPanel.transform.position);
         }
         if(abilityTwoTextPanel != null)
         {
             abilityTextPanelRects[1].anchoredPosition = Vector2.zero;
-            //abilityTextPanelRects[1].anchoredPosition -= KeepFullyOnScreen(abilityTextPanelRects[1], abilityTwoTextPanel.transform.position);
-            KeepFullyOnScreenFlip(abilityTextPanelRects[1], abilityTwoTextPanel.transform.position);
+            abilityTextPanelRects[1].anchoredPosition -= KeepFullyOnScreen(abilityTextPanelRects[1], abilityTwoTextPanel.transform.position);
+            //KeepFullyOnScreenFlip(abilityTextPanelRects[1], abilityTwoTextPanel.transform.position);
         }
         
 
@@ -117,8 +129,8 @@ public class NewAbilitySelectionUI : MonoBehaviour
     {
         offset = Vector2.zero;
 
-        float maxX = (CanvasRect.sizeDelta.x - panel.sizeDelta.x) * 0.5f;
-        float maxY = (CanvasRect.sizeDelta.y - panel.sizeDelta.y) * 0.5f;
+        float maxX = (CanvasRect.sizeDelta.x - panel.sizeDelta.x - blackBorderWidth * 2) * 0.5f;
+        float maxY = (CanvasRect.sizeDelta.y - panel.sizeDelta.y - blackBorderWidth) * 0.5f;
 
         //offset the current local position based on how much we're off screen
         //If we don't add this code, the text box's position will stay in the corrected spot forever
