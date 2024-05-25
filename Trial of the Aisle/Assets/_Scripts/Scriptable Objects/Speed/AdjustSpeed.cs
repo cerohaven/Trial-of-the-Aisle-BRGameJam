@@ -1,8 +1,9 @@
+using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedAdjust : MonoBehaviour
+public class AdjustSpeed : MonoBehaviour
 {
     [SerializeField] private SO_AdjustSpeed adjustSpeed;
 
@@ -13,16 +14,28 @@ public class SpeedAdjust : MonoBehaviour
     [SerializeField] private float largeSpeedAdjustment;
     [SerializeField] private float xLargeSpeedAdjustment;
 
+    private PlayerController playerController;
+    private SO_BossProfile bossProfile;
+
+    private void Awake()
+    {
+        playerController = GameObject.FindObjectOfType<PlayerController>();
+        bossProfile = GetComponent<SO_BossProfile>();
+
+        //Once event is called, run these methods
+        adjustSpeed.changePlayerSpeedEvent.AddListener(AdjustPlayerSpeed);
+        adjustSpeed.changeBossSpeedEvent.AddListener(AdjustBossSpeed);
+    }
+
     private void AdjustPlayerSpeed(ChangeSpeed changeSpeedState, SpeedType speedType)
     {
-        float healthAdjustment = GetSpeedValue(changeSpeedState, speedType);
-
-        //playerHealthBar.PlayerChangeHealth(healthAdjustment);
+        float speedAdjustment = GetSpeedValue(changeSpeedState, speedType);
+        playerController.MoveSpeed += speedAdjustment;
     }
     private void AdjustBossSpeed(ChangeSpeed changeSpeedState, SpeedType speedType, Vector2 projectileUpDir)
     {
-        float healthAdjustment = GetSpeedValue(changeSpeedState, speedType);
-        //bossHealthBar.BossChangeHealth(healthAdjustment, projectileUpDir);
+        float speedAdjustment = GetSpeedValue(changeSpeedState, speedType);
+        bossProfile.B_BaseMoveSpeed += speedAdjustment;
     }
 
     private float GetSpeedValue(ChangeSpeed _changeSpeedState, SpeedType _speedType)

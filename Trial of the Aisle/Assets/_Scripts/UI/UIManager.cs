@@ -89,45 +89,5 @@ public class UIManager : MonoBehaviour
 
         }
         return healthToReturn;
-
-    }
-
-    private float GetSpeedValue(ChangeSpeed _changeSpeedState, SpeedType _speedType)
-    {
-        float speedToReturn = 0;
-        int speedType = 1;
-
-        if (_speedType == SpeedType.Debuff)
-        {
-            speedType = -1;
-        }
-        else
-        {
-            speedType = 1;
-        }
-
-        switch (_changeSpeedState)
-        {
-            case ChangeSpeed.X_Small_Speed:
-                speedToReturn = xSmallHealthAdjustment * speedType;
-                break;
-            case ChangeSpeed.Small_Speed:
-                speedToReturn = smallHealthAdjustment * speedType;
-                break;
-            case ChangeSpeed.Medium_Speed:
-                speedToReturn = mediumHealthAdjustment * speedType;
-                break;
-            case ChangeSpeed.Large_Speed:
-                speedToReturn = largeHealthAdjustment * speedType;
-                break;
-            case ChangeSpeed.X_Large_Speed:
-                speedToReturn = xLargeHealthAdjustment * speedType;
-                break;
-
-
-
-        }
-        return speedToReturn;
-
     }
 }
