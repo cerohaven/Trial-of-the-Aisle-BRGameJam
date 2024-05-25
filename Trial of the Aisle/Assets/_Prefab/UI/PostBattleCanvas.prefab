@@ -310,7 +310,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.7
+  m_fontSize: 31.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 3300483770465504729}
   - component: {fileID: 926271136362340978}
   m_Layer: 5
-  m_Name: ToolTipBox
+  m_Name: ToolTipBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.85
+  m_fontSize: 41.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1635,7 +1635,7 @@ GameObject:
   - component: {fileID: 1768857689611342530}
   - component: {fileID: 664184234642594866}
   m_Layer: 5
-  m_Name: 'ToolTipBox '
+  m_Name: ToolTipBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

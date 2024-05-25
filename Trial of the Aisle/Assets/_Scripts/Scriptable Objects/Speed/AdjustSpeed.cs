@@ -20,7 +20,7 @@ public class AdjustSpeed : MonoBehaviour
     private void Awake()
     {
         playerController = GameObject.FindObjectOfType<PlayerController>();
-        bossProfile = GetComponent<SO_BossProfile>();
+        //bossProfile = GetComponent<SO_BossProfile>();
 
         //Once event is called, run these methods
         adjustSpeed.changePlayerSpeedEvent.AddListener(AdjustPlayerSpeed);
@@ -35,7 +35,7 @@ public class AdjustSpeed : MonoBehaviour
     private void AdjustBossSpeed(ChangeSpeed changeSpeedState, SpeedType speedType, Vector2 projectileUpDir)
     {
         float speedAdjustment = GetSpeedValue(changeSpeedState, speedType);
-        bossProfile.B_BaseMoveSpeed += speedAdjustment;
+        //bossProfile.B_BaseMoveSpeed += speedAdjustment;
     }
 
     private float GetSpeedValue(ChangeSpeed _changeSpeedState, SpeedType _speedType)
