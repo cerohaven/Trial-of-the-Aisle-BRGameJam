@@ -1,12 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private Animator anim;
-    private bool BBCam = true; //boss battle cam
+    [SerializeField]private Animator anim; // Reference to the Animator on the separate "StateDrivenCamera" object
+    [SerializeField]private bool BBCam = true; // Boss battle camera
 
+    private void Awake()
+    {
+        // Initialize the Animator component from the "StateDrivenCamera"
+        InitializeAnimator();
+    }
+
+    private void InitializeAnimator()
+    {
+        // Find the "State-Driven Camera" object in the scene
+        GameObject stateDrivenCamera = GameObject.Find("State-Driven Camera");
+
+        if (stateDrivenCamera != null)
+        {
+            anim = stateDrivenCamera.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError("State-Driven Camera not found in the scene.");
+        }
+    }
 
     public void SwitchState()
     {
@@ -14,11 +33,10 @@ public class CameraManager : MonoBehaviour
         {
             anim.Play("PBCam");
         }
-        else {
-            {
-                anim.Play("BossBattleCam");
-            }
+        else
+        {
+            anim.Play("BossBattleCam");
         }
-        BBCam =!BBCam;
+        BBCam = !BBCam;
     }
 }

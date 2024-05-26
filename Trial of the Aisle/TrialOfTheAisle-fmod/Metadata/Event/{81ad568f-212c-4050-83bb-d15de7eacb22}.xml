@@ -39,6 +39,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{48661812-5836-4584-9510-118e57041212}">
+		<relationship name="modules">
+			<destination>{249e0d39-3f03-4541-b6c9-08b6fcbe1d11}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2d92dd47-ec07-4089-a916-9c595055de1f}</destination>
 		</relationship>
@@ -57,9 +60,9 @@
 	<object class="EventAutomatableProperties" id="{efdbe61e-1121-4dfd-bd81-4e051f3640cd}" />
 	<object class="MarkerTrack" id="{6cd0f623-21fb-44b2-a3a9-f0d3f1c2f6ad}" />
 	<object class="Timeline" id="{089a0129-92dc-4003-b1e2-757ba32d3589}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
+		<relationship name="modules">
+			<destination>{249e0d39-3f03-4541-b6c9-08b6fcbe1d11}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{2d92dd47-ec07-4089-a916-9c595055de1f}">
 		<relationship name="effectChain">
@@ -70,6 +73,17 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{5e919a3e-6769-413b-a633-28311b11884c}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{249e0d39-3f03-4541-b6c9-08b6fcbe1d11}">
+		<property name="length">
+			<value>0.66000000000000003</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{a96bb50c-29ec-422d-867f-bb5ba8da06ee}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{49d7bdfe-93e7-49bf-92db-86919cef480b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{15e63655-5d36-4b93-9cda-7fd08998eec3}">
@@ -84,6 +98,41 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{3a8b55c2-67f4-46be-a50f-1c02fb52af2c}" />
+	<object class="ADSRModulator" id="{a96bb50c-29ec-422d-867f-bb5ba8da06ee}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="peakValue">
+			<value>1.33333206</value>
+		</property>
+		<property name="holdTime">
+			<value>0</value>
+		</property>
+		<property name="decayTime">
+			<value>435.897522</value>
+		</property>
+		<property name="decayShape">
+			<value>0.598298788</value>
+		</property>
+		<property name="sustainValue">
+			<value>-80</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
+		</property>
+		<property name="releaseShape">
+			<value>1</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{bcb54f53-d7ac-4626-aa2e-a61a4a7f9382}" />
 	<object class="MixerBusFader" id="{68175a72-e1cd-45a0-809c-573f2a4e7b52}" />
 </objects>

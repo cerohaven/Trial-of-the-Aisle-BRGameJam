@@ -5,7 +5,7 @@
 			<value>Grape Minion</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{2dd5722e-ee9e-40b9-b5d7-af2db55aa27c}</destination>
@@ -39,6 +39,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{0ae56f06-505f-441b-b298-098b4bfc9949}">
+		<relationship name="modules">
+			<destination>{05173bab-c4d7-46a4-8d86-d5b7f5b48adb}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b9ac8067-880c-47ec-9724-a33842413051}</destination>
 		</relationship>
@@ -57,9 +60,9 @@
 	<object class="EventAutomatableProperties" id="{2eba35a2-b40b-42ae-a68b-fdbd480427bc}" />
 	<object class="MarkerTrack" id="{2935a614-68cd-4826-bae7-c5f327cc4110}" />
 	<object class="Timeline" id="{0969984c-2cd0-4d4e-b6da-88f6d9a00dac}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
+		<relationship name="modules">
+			<destination>{05173bab-c4d7-46a4-8d86-d5b7f5b48adb}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b9ac8067-880c-47ec-9724-a33842413051}">
 		<relationship name="effectChain">
@@ -72,6 +75,21 @@
 			<destination>{13dc6bd1-c8ae-4529-8273-591f28ce80d8}</destination>
 		</relationship>
 	</object>
+	<object class="MultiSound" id="{05173bab-c4d7-46a4-8d86-d5b7f5b48adb}">
+		<property name="length">
+			<value>1.0599999999999998</value>
+		</property>
+		<property name="pitch">
+			<value>2</value>
+		</property>
+		<relationship name="sounds">
+			<destination>{6bd6937d-9e51-4004-801c-c18864c808ed}</destination>
+			<destination>{c7af0cc4-b6af-4031-aa6b-60d2c202b3b7}</destination>
+			<destination>{58d99c68-3aaf-4190-8cd2-3c2a4b9bc080}</destination>
+			<destination>{0a3b0b1e-99a6-4b53-88fe-c95108b74a91}</destination>
+			<destination>{7af092ee-414d-4279-8a84-0331eee32714}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{3108c013-5ef6-4456-870b-8bb229b5c328}">
 		<relationship name="effects">
 			<destination>{c8a90de7-ea74-47a7-a2b3-72276a57861d}</destination>
@@ -81,9 +99,55 @@
 	<object class="MixerBusEffectChain" id="{1c139817-7ca1-4658-8d54-716d78a8849d}">
 		<relationship name="effects">
 			<destination>{14e4f66e-4baf-4e0e-a593-728549d6597c}</destination>
+			<destination>{6717e734-d5cf-4f84-8fe3-8879b6a33d8f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{98808ea4-d0c6-44fc-9f0f-6021e220062d}" />
+	<object class="SingleSound" id="{6bd6937d-9e51-4004-801c-c18864c808ed}">
+		<property name="startOffset">
+			<value>6.5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{b6bc1a22-a747-403c-90a0-c3d943953d49}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{c7af0cc4-b6af-4031-aa6b-60d2c202b3b7}">
+		<property name="startOffset">
+			<value>2.5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{9da9c931-a79a-482c-8b99-b5a2fdc9a25c}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{58d99c68-3aaf-4190-8cd2-3c2a4b9bc080}">
+		<property name="startOffset">
+			<value>8</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{68135e0d-e314-46ac-bbba-a48d41b4a63c}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{0a3b0b1e-99a6-4b53-88fe-c95108b74a91}">
+		<property name="startOffset">
+			<value>5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{cb1bfe7d-e6ce-4176-8b98-6686ef1ecb73}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{7af092ee-414d-4279-8a84-0331eee32714}">
+		<property name="startOffset">
+			<value>5</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{4e7950b7-98ff-4c60-90a8-f42975611a7e}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{c8a90de7-ea74-47a7-a2b3-72276a57861d}" />
 	<object class="MixerBusFader" id="{14e4f66e-4baf-4e0e-a593-728549d6597c}" />
+	<object class="ThreeEQEffect" id="{6717e734-d5cf-4f84-8fe3-8879b6a33d8f}">
+		<property name="lowGain">
+			<value>-80</value>
+		</property>
+	</object>
 </objects>

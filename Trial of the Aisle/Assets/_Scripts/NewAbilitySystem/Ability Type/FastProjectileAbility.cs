@@ -10,6 +10,7 @@ public class FastProjectileAbility : Ability
     {
         // Convert mouse position to world position
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         // Ensure the z position is the same as the owner's position to avoid any unwanted 3D effects
         mouseWorldPosition.z = owner.transform.position.z;
 

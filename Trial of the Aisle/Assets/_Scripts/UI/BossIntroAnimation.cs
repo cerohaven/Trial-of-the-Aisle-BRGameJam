@@ -6,6 +6,7 @@ using FMODUnity;
 
 public class BossIntroAnimation : MonoBehaviour
 {
+    public SO_BossProfile SO_BP;
     [SerializeField] private float timeOnScreen;
     [SerializeField] private Animator[] HUDanimators;
 
@@ -59,6 +60,31 @@ public class BossIntroAnimation : MonoBehaviour
     IEnumerator playsound()
     {
         yield return new WaitForSeconds(.7f);
-        RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/PK_Intro");
+
+        if (SO_BP != null)
+        {
+            switch (SO_BP.b_Name)
+            {
+                case "The Pain Killer":
+                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/PK_Intro");
+                    break;
+                case "Alexander the Grape":
+                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/AtG_Intro");
+                    break;
+                case "Dairy Dominator":
+                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/DD_Intro");
+                    break;
+                case "Quickus Pickus Upis":
+                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/QPU_Intro");
+                    break;
+                default:
+                    Debug.LogWarning("Default case reached with boss name: " + SO_BP.b_Name);
+                    break;
+            }
+        }
+        else
+        {
+            Debug.LogError("SO_BP is null.");
+        }
     }
 }

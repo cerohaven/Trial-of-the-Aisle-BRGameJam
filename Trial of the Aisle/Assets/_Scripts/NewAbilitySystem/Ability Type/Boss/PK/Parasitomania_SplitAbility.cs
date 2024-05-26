@@ -9,6 +9,7 @@ public class SpreadShotAbility : Ability
 
     public override void Activate(GameObject owner) // Implements ability activation.
     {
+        Debug.Log(owner);
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convert mouse position to world coordinates.
         mousePosition.z = owner.transform.position.z; // Aligns z-axis with the owner.
 

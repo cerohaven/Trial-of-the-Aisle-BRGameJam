@@ -8,6 +8,7 @@ using UnityEngine.Windows;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private BossCheckDefeat bossCheckDefeat;
 
     [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     [SerializeField] private GameObject pauseMenuPrefab;
@@ -15,9 +16,11 @@ public class GameManager : MonoBehaviour
     public static bool isGamePaused;
 
     private PlayerInput playerInput;
-    FMOD.Studio.EventInstance SFX_BossDeath;
-    FMOD.Studio.EventInstance SFX_BossScream;
     private GameObject pauseMenu;
+
+    FMOD.Studio.EventInstance SFX_BossDeath;
+    FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
+    FMOD.Studio.EventInstance SFX_BossScream;
 
 
     //Boss Defeated Variables
@@ -53,6 +56,8 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        bossCheckDefeat = GetComponent<BossCheckDefeat>();
+
         //Calls when a player presses the pause button
         pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
 
@@ -69,6 +74,8 @@ public class GameManager : MonoBehaviour
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
         playerInput = GameObject.FindObjectOfType<PlayerInput>();
+
+        Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
         SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
         SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
@@ -89,8 +96,9 @@ public class GameManager : MonoBehaviour
 
     private void DestroyUIElement()
     {
-        if(gameEnded)
+        if (gameEnded)
         {
+            Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
             LevelLoader.Instance.LoadNextScene();
         }
@@ -145,6 +153,7 @@ public class GameManager : MonoBehaviour
         SObossDefeat.FlickerScreenSend();
 
         SFX_BossScream.start();
+        Boss_BGM_Postbattle.start();
         //AudioManager.instance.Play("boss_scream");
 
         //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
