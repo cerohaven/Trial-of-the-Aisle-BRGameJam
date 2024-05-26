@@ -20,6 +20,7 @@ public class Tooltip : MonoBehaviour
         // Adjust the position by the offset
         position += offset;
 
+<<<<<<< HEAD
         // Calculate the pivot adjustments
         float pivotX = Mathf.Clamp01(position.x / Screen.width);
         float pivotY = Mathf.Clamp01(position.y / Screen.height);
@@ -29,6 +30,11 @@ public class Tooltip : MonoBehaviour
         // Clamp the position to make sure the tooltip stays within screen bounds
         float clampedX = Mathf.Clamp(position.x, rectTransform.rect.width * pivotX, Screen.width - rectTransform.rect.width * (1 - pivotX));
         float clampedY = Mathf.Clamp(position.y, rectTransform.rect.height * pivotY, Screen.height - rectTransform.rect.height * (1 - pivotY));
+=======
+        // Clamp the position to make sure the tooltip stays within screen bounds
+        float clampedX = Mathf.Clamp(position.x, 0, Screen.width - rectTransform.rect.width);
+        float clampedY = Mathf.Clamp(position.y, rectTransform.rect.height, Screen.height);
+>>>>>>> AbilityUpdate
 
         rectTransform.position = new Vector2(clampedX, clampedY);
     }

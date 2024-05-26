@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
 public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerDownHandler
 {
     [SerializeField]
@@ -13,6 +12,7 @@ public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     private NewAbilitySelectionUI abilitySelectionUI;
 
     public bool filled;
+    private bool isScaling;
 
     private void Awake()
     {
@@ -34,18 +34,23 @@ public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                 break;
         }
         filled = false;
+        isScaling = false;
     }
 
     public void OnPointerDown(PointerEventData data)
     {
-        if (!filled)
+        if (!filled && !isScaling)
         {
-            LeanTween.scale(this.gameObject, transform.localScale * 0.8f, 0.5f).setEasePunch();
+            isScaling = true;
+            LeanTween.scale(this.gameObject, transform.localScale * 0.8f, 0.5f).setEasePunch().setOnComplete(() =>
+            {
+                isScaling = false;
+            });
         }
     }
 
-    public void OnBeginDrag(PointerEventData data) 
-    { 
+    public void OnBeginDrag(PointerEventData data)
+    {
         if (!filled)
         {
             canvasGroup.blocksRaycasts = false;
@@ -60,10 +65,10 @@ public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
             float padding = transform.GetComponent<RectTransform>().rect.width / 2;
 
             Vector2 position;
-            //converts Mouse Screen Position to Local Rect Position to make it fit in the canvas. 
+            // Converts Mouse Screen Position to Local Rect Position to make it fit in the canvas. 
             RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, data.position, canvas.worldCamera, out position);
 
-            //constrain the icon within the border of the screen
+            // Constrain the icon within the border of the screen
             if (Input.mousePosition.x < 15)
             {
                 position.x = -canvas.GetComponent<RectTransform>().rect.width / 2 + padding;
@@ -81,16 +86,13 @@ public class DragDrop : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
                 position.y = canvas.GetComponent<RectTransform>().rect.height / 2 - padding;
             }
 
-
             transform.position = canvas.transform.TransformPoint(position);
         }
     }
 
-    public void OnEndDrag(PointerEventData data) 
+    public void OnEndDrag(PointerEventData data)
     {
         canvasGroup.blocksRaycasts = true;
         GameManager.Instance.dragging = false;
     }
-
-
 }

@@ -1,3 +1,5 @@
+using NodeCanvas.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SlowAbility", menuName = "Abilities/Alexander/Jammed Ability")]
@@ -6,8 +8,10 @@ public class JammedAbility : Ability
     public GameObject jamPrefab;
     public float jamThrowForce;
 
+
     public override void Activate(GameObject owner)
     {
+
         // Instantiate the jam at the owner's position
         GameObject jam = Instantiate(jamPrefab, owner.transform.position, Quaternion.identity);
 
