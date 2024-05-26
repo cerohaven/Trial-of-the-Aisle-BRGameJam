@@ -247,8 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5172c61e99d79488541b4ddf40a3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeSpeedAmount: 4
-  adjustSpeed: {fileID: 11400000, guid: 3a1e7b7072f03eb4aa313e926b486e06, type: 2}
+  bossSpeedJammed: 2
   hitEffect: {fileID: 7592180743780908918, guid: b860d8be329510c46a28e79595e0d4d9, type: 3}
 --- !u!1 &8778166730526047760
 GameObject:

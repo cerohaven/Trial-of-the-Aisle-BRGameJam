@@ -1,18 +1,26 @@
+using NodeCanvas.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JammedDebuff : MonoBehaviour
 {
-    public ChangeSpeed changeSpeedAmount; // The enum value specifying the amount of health to adjust
-    [SerializeField] private SO_AdjustSpeed adjustSpeed;
+    [SerializeField] private float bossSpeedJammed = 2.0f;
     public GameObject hitEffect;
+    Blackboard bossBlackboard;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
-            adjustSpeed.ChangeBossSpeedEventSend(changeSpeedAmount, SpeedType.Debuff, transform.up);
+            Debug.Log("Adjusting 1");
+            bossBlackboard = collision.gameObject.GetComponent<Blackboard>();
+            if (bossBlackboard != null)
+            {
+                bossBlackboard.SetVariableValue("bossSpeed", bossSpeedJammed);
+                Invoke("ResetBossSpeed", 2.5f);
+            }
+            //adjustSpeed.ChangeBossSpeedEventSend(changeSpeedAmount, SpeedType.Debuff, transform.up);
             CinemachineShake.Instance.ShakeCamera();
         }
 
@@ -23,6 +31,15 @@ public class JammedDebuff : MonoBehaviour
 
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2.5f);
+        gameObject.SetActive(false);
+        
+    }
+    
+    void ResetBossSpeed()
+    {
+        //Reset the boss' speed variable
+        SO_BossProfile bp = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+        bossBlackboard.SetVariableValue("bossSpeed", bp.B_BaseMoveSpeed);
         Destroy(gameObject);
     }
 }

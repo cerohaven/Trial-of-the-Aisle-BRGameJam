@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Tooltip : MonoBehaviour
 {
+    [SerializeField] private RectTransform abilityRectTransform;
     public RectTransform rectTransform;
     public Vector2 offset = new Vector2(10f, -10f); // Adjust the offset to be top-right
+
+    private readonly float blackBarWidth = 150;
 
     private void Awake()
     {
@@ -15,15 +18,24 @@ public class Tooltip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 position = Input.mousePosition;
+        rectTransform.localPosition = KeepFullyOnScreen(rectTransform.gameObject, rectTransform.localPosition);
 
-        // Adjust the position by the offset
-        position += offset;
+    }
 
-        // Clamp the position to make sure the tooltip stays within screen bounds
-        float clampedX = Mathf.Clamp(position.x, 0, Screen.width - rectTransform.rect.width);
-        float clampedY = Mathf.Clamp(position.y, rectTransform.rect.height, Screen.height);
+    Vector3 KeepFullyOnScreen(GameObject panel, Vector3 newPos)
+    {
+        //as we get closer to the end of the screen, push back the rect transform more 
 
-        rectTransform.position = new Vector2(clampedX, clampedY);
+        if (abilityRectTransform.position.x > Screen.width - rectTransform.rect.width/2)
+        {
+            newPos.x = Screen.width - abilityRectTransform.position.x * 2;
+        }
+
+        //if (abilityRectTransform.position.x > Screen.height - 15)
+        //{
+        //    newPos.y = -rectTransform.rect.height;
+        //}
+
+        return newPos;
     }
 }
