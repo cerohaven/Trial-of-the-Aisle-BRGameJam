@@ -10,7 +10,6 @@ public class InteractableObject_Shelf : InteractableObject
 
     [SerializeField] private GameObject[] shelfItem = new GameObject[1];
 
-    [SerializeField] private GameObject pickUpEffectPrefab;
     protected override void OnInteract(GameObject _interactedActor)
     {
         GameObject shelfProjectile = Instantiate(shelfItem[Random.Range(0, shelfItem.Length)]);
@@ -42,7 +41,7 @@ public class InteractableObject_Shelf : InteractableObject
             isInteractPointVisible = false;
             
         }
-        Instantiate(pickUpEffectPrefab, transform.position, Quaternion.identity);
+        
     }
 
 

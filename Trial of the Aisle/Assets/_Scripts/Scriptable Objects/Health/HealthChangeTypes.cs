@@ -1,4 +1,4 @@
-//The//These health adjustments will apply to both healing and damage
+//These health adjustments will apply to both healing and damage
 public enum ChangeHealth: byte
 {
     X_Small_Health,

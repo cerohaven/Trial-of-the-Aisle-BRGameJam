@@ -16,6 +16,6 @@ MonoBehaviour:
   abilityDescription: 
   abilityIcon: {fileID: -128405432, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 4
-  ID: 3
-  jamPrefab: {fileID: 2321126302647116474, guid: 3d3faac4581592e44b00d7292512f09c, type: 3}
-  jamThrowForce: 15
+  ID: 0
+  jamPrefab: {fileID: 0}
+  jamThrowForce: 10
