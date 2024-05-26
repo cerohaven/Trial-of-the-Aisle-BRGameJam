@@ -427,7 +427,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
+<<<<<<< Updated upstream
   lastModified: 638504155563822684
+=======
+  lastModified: 638489621828470614
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 381536
@@ -474,7 +478,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Dialogue.bank
   Name: Dialogue
   StudioPath: bank:/Dialogue
+<<<<<<< Updated upstream
   lastModified: 638504155563631373
+=======
+  lastModified: 638485681822181149
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 99008
@@ -602,7 +610,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
+<<<<<<< Updated upstream
   lastModified: 638504155563812688
+=======
+  lastModified: 638486149524768958
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 29952
@@ -677,7 +689,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
+<<<<<<< Updated upstream
   lastModified: 638504155563832719
+=======
+  lastModified: 638485737790237563
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 141856
@@ -922,7 +938,11 @@ MonoBehaviour:
   - {fileID: 5302423924359892}
   StringsBanks:
   - {fileID: 2631300687542664848}
+<<<<<<< Updated upstream
   cacheTime: 638515737773228198
+=======
+  cacheTime: 638505175888313570
+>>>>>>> Stashed changes
   cacheVersion: 131617
 --- !u!114 &5302423924359892
 MonoBehaviour:
@@ -939,7 +959,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
+<<<<<<< Updated upstream
   lastModified: 638504155563631373
+=======
+  lastModified: 638486157030355379
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -1043,7 +1067,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
+<<<<<<< Updated upstream
   lastModified: 638515737773228198
+=======
+  lastModified: 638505175888313570
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 7643104
@@ -1200,7 +1228,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
+<<<<<<< Updated upstream
   lastModified: 638504155563641407
+=======
+  lastModified: 638486157030365366
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 3450
@@ -1330,7 +1362,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
+<<<<<<< Updated upstream
   lastModified: 638504155563631373
+=======
+  lastModified: 638489563144044454
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 100768
@@ -1540,7 +1576,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Ambiance.bank
   Name: Ambiance
   StudioPath: bank:/Ambiance
+<<<<<<< Updated upstream
   lastModified: 638504155563631373
+=======
+  lastModified: 638489620645726523
+>>>>>>> Stashed changes
   FileSizes:
   - Name: Desktop
     Value: 1648832
