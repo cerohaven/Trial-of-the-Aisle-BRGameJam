@@ -34,7 +34,7 @@ public class SO_BossProfile : ScriptableObject
 
     [Range(0, 2)]
     [SerializeField] private float b_BaseTimeBetweenProjectileAttacks;
-    [SerializeField] private float b_BaseMoveSpeed;
+    [SerializeField] public float b_BaseMoveSpeed;
 
     [Tooltip("When the boss reaches this percentage of health, we can change the behaviours of attacks" )]
     [SerializeField] private BossHealthIncrements[] b_BossPhases = new BossHealthIncrements[1];
