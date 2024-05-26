@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+
+   
     // Function to be called when the "Start" button is pressed
     public void StartGame()
     {
@@ -34,6 +38,8 @@ public class MainMenuController : MonoBehaviour
         // Make sure the About scene is added in the build settings and its name is exactly "About"
         SceneManager.LoadScene("About");
     }
+
+
     public void GoToExit()
     {
         Application.Quit();
@@ -41,4 +47,5 @@ public class MainMenuController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
 }
