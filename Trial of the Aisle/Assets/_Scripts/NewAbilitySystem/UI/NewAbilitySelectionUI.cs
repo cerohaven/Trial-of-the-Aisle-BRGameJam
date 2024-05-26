@@ -11,12 +11,13 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
     [SerializeField] private Image bossCardImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
-    
+
+    private LTDescr delayOne;
+    private LTDescr delayTwo;
 
     public Ability abilityOne;
     public Ability abilityTwo;
     public HashSet<Ability> swappedAbilities = new HashSet<Ability>();
- 
 
     private void Awake()
     {
@@ -45,7 +46,6 @@ public class NewAbilitySelectionUI : MonoBehaviour
         SetupAbilityUI(abilityTwoImage, abilityTwo, abilityTwoTextPanel);
     }
 
-
     private void SetupAbilityUI(Image abilityImage, Ability ability, GameObject textPanel)
     {
         // Check if the ability is null and handle accordingly
@@ -64,10 +64,40 @@ public class NewAbilitySelectionUI : MonoBehaviour
         headerText.text = ability.abilityName;
         descriptionText.text = ability.abilityDescription;
 
-        // Add mouse hover listeners
-        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
-        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
+        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => OnAbilityPointerEnter((PointerEventData)data, textPanel));
+        AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => OnAbilityPointerExit((PointerEventData)data, textPanel));
+    }
 
+    private void OnAbilityPointerEnter(PointerEventData eventData, GameObject textPanel)
+    {
+        // Cancel any ongoing delay to prevent overlapping tooltips
+        if (delayOne != null) LeanTween.cancel(delayOne.uniqueId);
+        if (delayTwo != null) LeanTween.cancel(delayTwo.uniqueId);
+
+        // Set delay based on which text panel is being hovered over
+        if (textPanel == abilityOneTextPanel)
+        {
+            delayOne = LeanTween.delayedCall(0.1f, () => abilityOneTextPanel.SetActive(true));
+        }
+        else if (textPanel == abilityTwoTextPanel)
+        {
+            delayTwo = LeanTween.delayedCall(0.1f, () => abilityTwoTextPanel.SetActive(true));
+        }
+    }
+
+    private void OnAbilityPointerExit(PointerEventData eventData, GameObject textPanel)
+    {
+        // Cancel the appropriate delay and hide the text panel
+        if (textPanel == abilityOneTextPanel)
+        {
+            if (delayOne != null) LeanTween.cancel(delayOne.uniqueId);
+            abilityOneTextPanel.SetActive(false);
+        }
+        else if (textPanel == abilityTwoTextPanel)
+        {
+            if (delayTwo != null) LeanTween.cancel(delayTwo.uniqueId);
+            abilityTwoTextPanel.SetActive(false);
+        }
     }
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
@@ -78,7 +108,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         trigger.triggers.Add(entry);
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && unlockPanel.activeSelf)
         {
