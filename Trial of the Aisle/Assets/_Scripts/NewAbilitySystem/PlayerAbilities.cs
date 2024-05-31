@@ -84,9 +84,9 @@ public class PlayerAbilities : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
 
-        abilitySlotsUIReference[2] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 1").GetComponent<RectTransform>();
+        abilitySlotsUIReference[0] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 1").GetComponent<RectTransform>();
         abilitySlotsUIReference[1] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 2").GetComponent<RectTransform>();
-        abilitySlotsUIReference[0] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 3").GetComponent<RectTransform>();
+        abilitySlotsUIReference[2] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 3").GetComponent<RectTransform>();
 
         // Reinitialize UI
         InitializeAbilityUI();
