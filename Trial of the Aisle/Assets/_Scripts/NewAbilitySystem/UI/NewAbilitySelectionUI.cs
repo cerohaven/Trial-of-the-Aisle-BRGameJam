@@ -120,6 +120,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && unlockPanel.activeSelf)
         {
             unlockPanel.SetActive(false);
+            SceneTransitionController.Instance.LoadNextScene();
         }
     }
 

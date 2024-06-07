@@ -18835,7 +18835,7 @@ MonoBehaviour:
   - {fileID: 1911315827}
   pc: {fileID: 1075837065}
   bossBlackboard: {fileID: 7073513567513950841}
-  bossHealthBar: {fileID: 0}
+  bossHealthBar: {fileID: 8797752181211645716}
 --- !u!1001 &1774059660
 PrefabInstance:
   m_ObjectHideFlags: 0

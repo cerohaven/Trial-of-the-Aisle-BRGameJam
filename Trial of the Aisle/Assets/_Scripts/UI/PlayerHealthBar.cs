@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthBar : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class PlayerHealthBar : MonoBehaviour
     [SerializeField] private float invincibilityFlickerRate;
     [SerializeField] private float maxHealth;
 
-    private LevelLoader levelLoader;
 
     [Header("Heal Particle Effect")]
     [SerializeField] private GameObject healEffect;
@@ -39,7 +39,6 @@ public class PlayerHealthBar : MonoBehaviour
         currentInvincibilityTime = maxInvincibilityTimer + 1;
         maxHealth = playerRectTransform.sizeDelta.x;
 
-        levelLoader = GameObject.FindObjectOfType<LevelLoader>();   
     }
 
     void Update()
@@ -80,7 +79,7 @@ public class PlayerHealthBar : MonoBehaviour
             bool lostAllHealth = playerHealth <= 0;
             if (lostAllHealth)
             {
-                levelLoader.MainMenu();
+                SceneTransitionController.Instance.LoadSpecificSceneString("MainMenu");
             }
             
 
