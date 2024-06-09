@@ -38,9 +38,9 @@ public class PlayerAbilities : MonoBehaviour
         var playerActions = inputActions.FindActionMap("Player");
         playerActions.Enable();
 
-        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(2);
+        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(0);
         playerActions.FindAction("AbilityTwo").performed += _ => ActivateAbility(1);
-        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(0);
+        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(2);
 
         cooldowns = new float[equippedAbilityIDs.Length];
         abilityIcons = new Image[equippedAbilityIDs.Length];
@@ -82,11 +82,13 @@ public class PlayerAbilities : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+        playerTransform = player;
 
-        abilitySlotsUIReference[0] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 1").GetComponent<RectTransform>();
+        abilitySlotsUIReference[2] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 1").GetComponent<RectTransform>();
         abilitySlotsUIReference[1] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 2").GetComponent<RectTransform>();
-        abilitySlotsUIReference[2] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 3").GetComponent<RectTransform>();
+        abilitySlotsUIReference[0] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 3").GetComponent<RectTransform>();
 
         // Reinitialize UI
         InitializeAbilityUI();

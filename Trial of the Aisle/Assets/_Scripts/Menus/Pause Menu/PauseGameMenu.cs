@@ -56,8 +56,8 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        SceneManager.LoadScene("MainMenu");
-
+        SceneTransitionController.Instance.TransitionType = TransitionType.MainMenu;
+        SceneTransitionController.Instance.LoadSpecificSceneStringPaused("MainMenu");
 
     }
 

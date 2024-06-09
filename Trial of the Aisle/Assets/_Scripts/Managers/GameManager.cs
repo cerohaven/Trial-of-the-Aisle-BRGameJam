@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         {
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
-            LevelLoader.Instance.LoadNextScene();
+            SceneTransitionController.Instance.LoadNextScene();
         }
 
         Destroy(uiInstances[uiInstances.Count-1]);
