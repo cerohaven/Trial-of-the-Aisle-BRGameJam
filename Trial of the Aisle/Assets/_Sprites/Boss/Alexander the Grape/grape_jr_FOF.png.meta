@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2f8c46f4c8a36b43b20c79cb99b298c
-      internalID: 958033694
+      spriteID: b9eae5259e3e85d4b8cdcd5f06bd8bdf
+      internalID: -1547777839
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b96bdc75166842b418e12121ca7f9aac
-      internalID: 236287831
+      spriteID: 4c3d87fec63d6d643a64b6c31bce62c4
+      internalID: -847718546
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99330b3e24bf5ac459cd41ce187f31e1
-      internalID: -1941843337
+      spriteID: a0bdd6b93ba63ba4ba2c8206fadc5049
+      internalID: -322825231
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      grape_jr_FOF_0: 958033694
-      grape_jr_FOF_1: 236287831
-      grape_jr_FOF_2: -1941843337
+      grape_jr_FOF_0: -1547777839
+      grape_jr_FOF_1: -847718546
+      grape_jr_FOF_2: -322825231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
