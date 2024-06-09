@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 329c83ca1e2d95848b3af70d741bd721
+guid: 3edb9c8fd44845a44a729e0f9730944e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grape_boss_2_0
+      name: grape_jr_ATTK_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
+        width: 48
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 089281de76d5a854f86eb167571865b7
-      internalID: -1336557487
+      spriteID: 5c76df824b286834b936a969b1d2ba8f
+      internalID: -1793541191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_2_1
+      name: grape_jr_ATTK_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 48
         y: 0
-        width: 80
+        width: 48
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,19 +145,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3df171a8e4baf264c9dee14333a6fb53
-      internalID: -2027879594
+      spriteID: 4acaeb57642d2fd4fb4e49cd23cb3372
+      internalID: -368155933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_2_2
+      name: grape_jr_ATTK_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 96
         y: 0
-        width: 80
+        width: 48
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -166,19 +166,61 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b344fdad41760ae46adac75f459b09a8
-      internalID: 1795115105
+      spriteID: 7ff816e1bcbd40643b21ae35d55b203c
+      internalID: 772688650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_2_3
+      name: grape_jr_ATTK_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99dd9133bfb707e47a20635170269bda
+      internalID: 969857162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grape_jr_ATTK_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb646b1a88a186640b4bc80e9f83828d
+      internalID: -405066618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grape_jr_ATTK_5
       rect:
         serializedVersion: 2
         x: 240
         y: 0
-        width: 80
+        width: 48
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,19 +229,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bbf89da5b598ba4a8016533e9f56ab4
-      internalID: -1739851975
+      spriteID: 50fbd0b347abcbd44a75248680408c8f
+      internalID: 1860380569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_2_4
+      name: grape_jr_ATTK_6
       rect:
         serializedVersion: 2
-        x: 320
+        x: 288
         y: 0
-        width: 80
+        width: 48
         height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,71 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8302de6a3f0519142a0d2f65107840ac
-      internalID: -1041599704
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grape_boss_2_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da75001a26f3aaa4cb404851a74dfdc6
-      internalID: 800483085
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grape_boss_2_6
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5499aebb3e4b8db488058d1572754bea
-      internalID: -1675360659
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grape_boss_2_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a221c7fd8cd7cda498e7d811dcceb7db
-      internalID: 1542328098
+      spriteID: e72bf6dea417af748ad01650cfba08b7
+      internalID: 887108984
       vertices: []
       indices: 
       edges: []
@@ -288,14 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      grape_boss_2_0: -1336557487
-      grape_boss_2_1: -2027879594
-      grape_boss_2_2: 1795115105
-      grape_boss_2_3: -1739851975
-      grape_boss_2_4: -1041599704
-      grape_boss_2_5: 800483085
-      grape_boss_2_6: -1675360659
-      grape_boss_2_7: 1542328098
+      grape_jr_ATTK_0: -1793541191
+      grape_jr_ATTK_1: -368155933
+      grape_jr_ATTK_2: 772688650
+      grape_jr_ATTK_3: 969857162
+      grape_jr_ATTK_4: -405066618
+      grape_jr_ATTK_5: 1860380569
+      grape_jr_ATTK_6: 887108984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

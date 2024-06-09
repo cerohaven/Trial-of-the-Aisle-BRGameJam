@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 908f97bca69d88f4e943560693039610
+guid: 49092e5a80d44e8488b7358aa41fe1a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grape_boss_1_0
+      name: grape_IDLE_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6b8d91ca7a65ac4f9c34cba1f927fb0
-      internalID: -1565390582
+      spriteID: 64c824131aa3e7c4dad89cd912419956
+      internalID: 1961320407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_1
+      name: grape_IDLE_1
       rect:
         serializedVersion: 2
         x: 80
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4037c100e3181334a87c73ae406d59a8
-      internalID: -111407508
+      spriteID: 0b9fab6e3e157ee41bfd2d00a5a81c6f
+      internalID: -342047916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_2
+      name: grape_IDLE_2
       rect:
         serializedVersion: 2
         x: 160
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad94977097277b3439050220a10af4c1
-      internalID: 1274048086
+      spriteID: 3fc0719f4bfe7554590ac3b126576680
+      internalID: 747718280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_3
+      name: grape_IDLE_3
       rect:
         serializedVersion: 2
         x: 240
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6214f63e78258524eb6d778a274e65b3
-      internalID: 433152669
+      spriteID: 944b34e00a56ab34781b0668972b72f7
+      internalID: 1230038247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_4
+      name: grape_IDLE_4
       rect:
         serializedVersion: 2
         x: 320
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a400cd1679870b47b468d98a6865540
-      internalID: 1546491715
+      spriteID: 1b7a65560970fba498087bcfdbdc9c63
+      internalID: -1109593923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_5
+      name: grape_IDLE_5
       rect:
         serializedVersion: 2
         x: 400
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edeb99841a0e42645b13359b46eb7c1c
-      internalID: -1647563950
+      spriteID: fce050775e6d264499d33648e0175dae
+      internalID: 1879859269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: grape_boss_1_6
+      name: grape_IDLE_6
       rect:
         serializedVersion: 2
         x: 480
@@ -250,29 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 252eedf7c706c9d41b220567d8a7eb1c
-      internalID: -1815855058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: grape_boss_1_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82ae645b1e8aea54fbe72a0874ea6a7d
-      internalID: -857349211
+      spriteID: 3ca08edc2426ea14982769011edc7975
+      internalID: 1537509673
       vertices: []
       indices: 
       edges: []
@@ -288,14 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      grape_boss_1_0: -1565390582
-      grape_boss_1_1: -111407508
-      grape_boss_1_2: 1274048086
-      grape_boss_1_3: 433152669
-      grape_boss_1_4: 1546491715
-      grape_boss_1_5: -1647563950
-      grape_boss_1_6: -1815855058
-      grape_boss_1_7: -857349211
+      grape_IDLE_0: 1961320407
+      grape_IDLE_1: -342047916
+      grape_IDLE_2: 747718280
+      grape_IDLE_3: 1230038247
+      grape_IDLE_4: -1109593923
+      grape_IDLE_5: 1879859269
+      grape_IDLE_6: 1537509673
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
