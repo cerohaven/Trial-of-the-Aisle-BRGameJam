@@ -12,9 +12,11 @@ namespace NodeCanvas.Tasks.Actions{
 		private Vector3 bossPos;
 		private GameObject grapeMinion;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
+        private FMOD.Studio.EventInstance GrapeMinionInstance;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit(){
 			agentBlackboard = agent.GetComponent<Blackboard>();
 			grapeMinion = agentBlackboard.GetVariableValue<GameObject>("grapeMinion");
 
@@ -26,7 +28,10 @@ namespace NodeCanvas.Tasks.Actions{
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
 
-			playerPos = agentBlackboard.GetVariableValue<Transform>("playerTransform").position;
+            GrapeMinionInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/Grape Minion");
+            GrapeMinionInstance.start();
+
+            playerPos = agentBlackboard.GetVariableValue<Transform>("playerTransform").position;
             bossPos = agent.transform.position;
 
 			//Spawn the grape Game Object there

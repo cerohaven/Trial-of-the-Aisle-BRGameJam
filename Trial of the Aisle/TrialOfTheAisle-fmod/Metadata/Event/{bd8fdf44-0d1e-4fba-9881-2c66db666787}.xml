@@ -56,11 +56,7 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{8ec06118-affe-4dce-b251-ba85dce9ef21}" />
 	<object class="MarkerTrack" id="{6b19d809-af7a-4e0b-a798-4d766d5eb7d6}" />
-	<object class="Timeline" id="{189f971b-ec27-488b-bec2-df87e5fee05b}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
-	</object>
+	<object class="Timeline" id="{189f971b-ec27-488b-bec2-df87e5fee05b}" />
 	<object class="EventMixerMaster" id="{6eca86ea-4c37-499e-9ed4-fac4543a7f1b}">
 		<relationship name="effectChain">
 			<destination>{ccc98ab1-b7f9-49c4-a277-42c5a1fdc365}</destination>

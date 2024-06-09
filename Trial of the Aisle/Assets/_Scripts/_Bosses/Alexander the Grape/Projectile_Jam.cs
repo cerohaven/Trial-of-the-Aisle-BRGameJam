@@ -5,6 +5,8 @@ using NodeCanvas.Framework;
 public class Projectile_Jam : Projectile
 {
 
+    private FMOD.Studio.EventInstance JammedInstance;
+
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
     {
@@ -14,6 +16,9 @@ public class Projectile_Jam : Projectile
         //bossBlackboard variable to null which isn't what we want
         if (_whoThrew == WhoThrew.Boss)
         {
+            JammedInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/B_Jammed");
+            JammedInstance.start();
+
             bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
         }
 

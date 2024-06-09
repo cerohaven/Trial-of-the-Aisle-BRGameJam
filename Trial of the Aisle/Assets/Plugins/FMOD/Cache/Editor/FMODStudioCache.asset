@@ -27,7 +27,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1060
 --- !u!114 &-8305528747580381925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1060
 --- !u!114 &-7871641887633686729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 3761
 --- !u!114 &-5737944076154410045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +330,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 115
+  Length: 626
 --- !u!114 &-3943026973608554060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,10 +427,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638503783818960695
+  lastModified: 638535390196616939
   FileSizes:
   - Name: Desktop
-    Value: 381536
+    Value: 555200
   Exists: 1
 --- !u!114 &-2972869567860697581
 MonoBehaviour:
@@ -474,7 +474,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Dialogue.bank
   Name: Dialogue
   StudioPath: bank:/Dialogue
-  lastModified: 638503783818632801
+  lastModified: 638530373275145277
   FileSizes:
   - Name: Desktop
     Value: 99008
@@ -602,10 +602,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638503783818960695
+  lastModified: 638530373319864827
   FileSizes:
   - Name: Desktop
-    Value: 29952
+    Value: 35168
   Exists: 1
 --- !u!114 &-1840054899499268054
 MonoBehaviour:
@@ -634,7 +634,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 5832
 --- !u!114 &-1653775106698446628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638503783818960695
+  lastModified: 638530373355387951
   FileSizes:
   - Name: Desktop
     Value: 141856
@@ -790,7 +790,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2995
+  Length: 2320
 --- !u!114 &-301360170296725646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,12 +917,13 @@ MonoBehaviour:
   - {fileID: 2622362582176758348}
   - {fileID: -202464279231409858}
   - {fileID: -2285741151900369253}
+  - {fileID: 2823744186244345826}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5302423924359892}
   StringsBanks:
   - {fileID: 2631300687542664848}
-  cacheTime: 638503783818960695
+  cacheTime: 638535390196616939
   cacheVersion: 131617
 --- !u!114 &5302423924359892
 MonoBehaviour:
@@ -939,7 +940,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638503783818632801
+  lastModified: 638530373276823528
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -1043,7 +1044,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638503783818960695
+  lastModified: 638535390195888200
   FileSizes:
   - Name: Desktop
     Value: 7642080
@@ -1075,7 +1076,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 660
 --- !u!114 &1627758772819771635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,11 +1201,38 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638503783818632801
+  lastModified: 638530373276838584
   FileSizes:
   - Name: Desktop
-    Value: 3450
+    Value: 3492
   Exists: 1
+--- !u!114 &2823744186244345826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Player/Player_Ability/P_Jammed Walk
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Player/Player_Ability/P_Jammed Walk
+  Guid:
+    Data1: 1911632578
+    Data2: 1088868704
+    Data3: -489107781
+    Data4: 15429262
+  Banks:
+  - {fileID: -1940364287691246198}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 130
 --- !u!114 &2854221817675238189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1330,10 +1358,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638503783818632801
+  lastModified: 638535390195186177
   FileSizes:
   - Name: Desktop
-    Value: 100768
+    Value: 274464
   Exists: 1
 --- !u!114 &3861637768359738527
 MonoBehaviour:
@@ -1470,7 +1498,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 660
 --- !u!114 &4889936289582530945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1497,7 +1525,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 101224
+  Length: 96050
 --- !u!114 &5012103119968739678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,7 +1568,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Ambiance.bank
   Name: Ambiance
   StudioPath: bank:/Ambiance
-  lastModified: 638503783818632801
+  lastModified: 638530373274096991
   FileSizes:
   - Name: Desktop
     Value: 1648832
@@ -1571,7 +1599,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 81240
+  Length: 80000
 --- !u!114 &8861073323886352977
 MonoBehaviour:
   m_ObjectHideFlags: 0

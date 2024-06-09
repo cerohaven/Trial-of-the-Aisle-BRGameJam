@@ -28,6 +28,8 @@ public class MinionThrow : MonoBehaviour
     public Vector2 PlayerPos { get => playerPos; set => playerPos = value; }
     public GameObject Boss { get => boss; set => boss = value; }
 
+    private FMOD.Studio.EventInstance GrapeHitInstance;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();   
@@ -70,7 +72,8 @@ public class MinionThrow : MonoBehaviour
             if(angle > startAngle + 1)
             {
                 LeanTween.scale(boss, Vector3.one * 1.1f, 0.1f).setEaseInOutQuad().setOnComplete(Testing);
-               
+                GrapeHitInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/Grape_Hit");
+                GrapeHitInstance.start();
             }
            
         }

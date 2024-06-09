@@ -5,7 +5,7 @@
 			<value>B_Bad_Habit</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{79e868aa-0262-43dd-9baf-74ca9d71a645}</destination>
@@ -39,6 +39,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{105cfc46-1add-4210-acda-7b5fab7cd88c}">
+		<relationship name="modules">
+			<destination>{98c5079d-92a2-4a87-9e30-64f3ae049727}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{4b429705-8362-480f-a9fa-2051f8a39f64}</destination>
 		</relationship>
@@ -56,8 +59,15 @@
 	</object>
 	<object class="EventAutomatableProperties" id="{f0066bab-fbe9-4645-a374-429c6518539c}" />
 	<object class="MarkerTrack" id="{668b4329-9909-4aca-ab74-1ad14c77a6b7}" />
-	<object class="Timeline" id="{25cd406f-6528-4011-a75d-c4dab5cb7ddb}" />
+	<object class="Timeline" id="{25cd406f-6528-4011-a75d-c4dab5cb7ddb}">
+		<relationship name="modules">
+			<destination>{98c5079d-92a2-4a87-9e30-64f3ae049727}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{4b429705-8362-480f-a9fa-2051f8a39f64}">
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c1d71f65-a08c-4b4a-8ed9-0d99a453c532}</destination>
 		</relationship>
@@ -66,6 +76,14 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{608e08c6-88f0-4995-8ae0-f388347b8878}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{98c5079d-92a2-4a87-9e30-64f3ae049727}">
+		<property name="length">
+			<value>3.7616326530612243</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{3b620ea5-5791-4a46-955c-1ee46c048e66}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{39bfb9e5-43a7-4b35-a976-efdeb5c4631d}">
