@@ -12,7 +12,6 @@ public class BossCheckDefeat : MonoBehaviour
     [SerializeField] private CameraManager cm;
     [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
 
-    private LevelLoader levelLoader;
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
     public KeyCode debugDefeatBossKey = KeyCode.K; // Assign a key for debug defeat
@@ -22,7 +21,6 @@ public class BossCheckDefeat : MonoBehaviour
         bossBlackboard = GetComponent<Blackboard>();
         bossProfile = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
 
-        levelLoader = FindObjectOfType<LevelLoader>();
         bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
 
     }
@@ -48,11 +46,10 @@ public class BossCheckDefeat : MonoBehaviour
         }
  
         cm.SwitchState();
-        RuntimeManager.PlayOneShot("event:/Music/BGM/PostBattle");
 
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void SpawnObjects()

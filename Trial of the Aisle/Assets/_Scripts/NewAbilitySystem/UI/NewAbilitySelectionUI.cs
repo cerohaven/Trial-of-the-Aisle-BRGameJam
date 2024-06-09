@@ -13,19 +13,29 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
     
 
-    private Ability abilityOne;
-    private Ability abilityTwo;
-    private HashSet<Ability> swappedAbilities = new HashSet<Ability>();
+    public Ability abilityOne;
+    public Ability abilityTwo;
+    public HashSet<Ability> swappedAbilities = new HashSet<Ability>();
+ 
 
-    public void ShowAbilities(Ability abilityOne, Ability abilityTwo, Sprite bossCard)
+    private void Awake()
     {
-        if(abilityOne == null || abilityTwo == null)
+        GameManager.Instance.UiInstances.Add(gameObject);
+    }
+
+    public void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
+    {
+        abilityOne = _abilityOne;
+        abilityTwo = _abilityTwo;
+
+        Debug.Log(abilityOne, abilityTwo);
+
+        if (abilityOne == null || abilityTwo == null)
         {
             Debug.LogWarning("Not enough new abilities specified for post-boss defeat selection.");
             return;
         }
-        this.abilityOne = abilityOne;
-        this.abilityTwo = abilityTwo;
+
         bossCardImage.sprite = bossCard;
 
         unlockPanel.SetActive(true);
@@ -34,6 +44,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         SetupAbilityUI(abilityOneImage, abilityOne, abilityOneTextPanel);
         SetupAbilityUI(abilityTwoImage, abilityTwo, abilityTwoTextPanel);
     }
+
 
     private void SetupAbilityUI(Image abilityImage, Ability ability, GameObject textPanel)
     {
@@ -57,48 +68,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
-        Button button = abilityImage.GetComponent<Button>();
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => OnAbilitySelected(ability));
     }
-
-
-    private void OnAbilitySelected(Ability ability)
-    {
-        if (!swappedAbilities.Contains(ability))
-        {
-            StartCoroutine(WaitForSlotSelection(ability));
-        }
-    }
-
-    private IEnumerator WaitForSlotSelection(Ability ability)
-    {
-        bool abilitySelected = false;
-
-        while (!abilitySelected)
-        {
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                PlayerAbilities.Instance.SwapAbility(0, ability);
-                abilitySelected = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                PlayerAbilities.Instance.SwapAbility(1, ability);
-                abilitySelected = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                PlayerAbilities.Instance.SwapAbility(2, ability);
-                abilitySelected = true;
-            }
-            yield return null;
-        }
-
-        swappedAbilities.Add(ability); // Mark as swapped after successfully selecting a slot
-    }
-
-
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
     {
@@ -113,6 +83,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && unlockPanel.activeSelf)
         {
             unlockPanel.SetActive(false);
+            SceneTransitionController.Instance.LoadNextScene();
         }
     }
 }

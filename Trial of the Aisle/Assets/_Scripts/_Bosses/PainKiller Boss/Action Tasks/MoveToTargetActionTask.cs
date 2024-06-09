@@ -21,9 +21,6 @@ namespace NodeCanvas.Tasks.Actions{
 			agentBlackboard = agent.GetComponent<Blackboard>();
 
 			_rb = agent.GetComponent<Rigidbody2D>();
-			_speed = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile").B_BaseMoveSpeed;
-            
-			
 
 			return null;
 		}
@@ -31,18 +28,14 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override void OnExecute(){
 
-
-
             //Get the target waypoint
             _targetPoint = agentBlackboard.GetVariableValue<Transform>("targetWaypoint").position;
-
-			
-
            
         }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate(){
+            _speed = agentBlackboard.GetVariableValue<float>("bossSpeed");
             _currentPosition = agent.transform.position;
             _dir = _targetPoint - _currentPosition;
             _dir.Normalize();

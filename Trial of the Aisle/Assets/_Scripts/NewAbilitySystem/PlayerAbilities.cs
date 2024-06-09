@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -9,12 +11,13 @@ public class PlayerAbilities : MonoBehaviour
 
     [SerializeField] private InputActionAsset inputActions; // Assigned in the Inspector
     [SerializeField] public AbilityDatabase abilityDatabase; // Reference to the Ability Database
+    private GameObject playerTransform;
 
     [SerializeField] public int[] equippedAbilityIDs = new int[3]; // Array of IDs for equipped abilities, can be -1 to indicate no ability equipped
     private Ability[] equippedAbilities = new Ability[3]; // Array of Ability references corresponding to the IDs
     private float[] cooldowns; // Array of cooldowns for each ability
 
-    [SerializeField] private RectTransform[] abilitySlotsUIReference; // UI slots for ability icons
+    [SerializeField] private RectTransform[] abilitySlotsUIReference = new RectTransform[3]; // UI slots for ability icons
     private Image[] abilityIcons; // Dynamically created ability icon instances
     private Image[] cooldownOverlays; // Dynamically created cooldown overlay instances
 
@@ -30,12 +33,14 @@ public class PlayerAbilities : MonoBehaviour
             Destroy(gameObject);
         }
 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
+
         var playerActions = inputActions.FindActionMap("Player");
         playerActions.Enable();
 
-        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(2);
+        playerActions.FindAction("AbilityOne").performed += _ => ActivateAbility(0);
         playerActions.FindAction("AbilityTwo").performed += _ => ActivateAbility(1);
-        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(0);
+        playerActions.FindAction("AbilityThree").performed += _ => ActivateAbility(2);
 
         cooldowns = new float[equippedAbilityIDs.Length];
         abilityIcons = new Image[equippedAbilityIDs.Length];
@@ -50,7 +55,7 @@ public class PlayerAbilities : MonoBehaviour
             }
             else
             {
-                equippedAbilities[i] = null; 
+                equippedAbilities[i] = null;
             }
         }
     }
@@ -65,11 +70,35 @@ public class PlayerAbilities : MonoBehaviour
         UpdateCooldowns();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+        playerTransform = player;
+
+        abilitySlotsUIReference[2] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 1").GetComponent<RectTransform>();
+        abilitySlotsUIReference[1] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 2").GetComponent<RectTransform>();
+        abilitySlotsUIReference[0] = GameObject.Find("Employee Canvas").transform.Find("Employee Card/Abilities/Ability 3").GetComponent<RectTransform>();
+
+        // Reinitialize UI
+        InitializeAbilityUI();
+    }
+
     void InitializeAbilityUI()
     {
         for (int i = 0; i < equippedAbilities.Length; i++)
         {
-            if (equippedAbilities[i] != null) // Ability is present
+            if (equippedAbilities[i] != null && abilitySlotsUIReference[i] != null) // Added null check for UI reference
             {
                 Ability ability = equippedAbilities[i];
 
@@ -97,14 +126,13 @@ public class PlayerAbilities : MonoBehaviour
                 overlayImage.fillAmount = 0; // No cooldown initially
                 cooldownOverlays[i] = overlayImage;
             }
-            else // No ability is present in this slot
+            else // Ensure the slot UI is inactive if there's no ability or reference is null
             {
-                // Ensure the slot UI is inactive if there's no ability
-                abilitySlotsUIReference[i].gameObject.SetActive(false);
+                if (abilitySlotsUIReference[i] != null)
+                    abilitySlotsUIReference[i].gameObject.SetActive(false);
             }
         }
     }
-
 
     private Image FindOrCreateOverlayImage(RectTransform parentSlot)
     {
@@ -125,12 +153,13 @@ public class PlayerAbilities : MonoBehaviour
 
     public void ActivateAbility(int slot)
     {
-        // Check for null in equippedAbilities to avoid null reference exceptions
+        
         if (slot >= 0 && slot < equippedAbilities.Length && equippedAbilities[slot] != null && cooldowns[slot] <= 0)
         {
-            equippedAbilities[slot].Activate(gameObject);
+            equippedAbilities[slot].Activate(playerTransform);
             cooldowns[slot] = equippedAbilities[slot].cooldownTime;
-            cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
+            if (cooldownOverlays[slot] != null)
+                cooldownOverlays[slot].fillAmount = 1; // Indicate cooldown start
         }
     }
 
@@ -138,13 +167,13 @@ public class PlayerAbilities : MonoBehaviour
     {
         for (int i = 0; i < equippedAbilities.Length; i++)
         {
-            // Again, check for null to avoid exceptions
             if (equippedAbilities[i] != null && cooldowns[i] > 0)
             {
                 cooldowns[i] -= Time.deltaTime;
-                cooldownOverlays[i].fillAmount = cooldowns[i] / equippedAbilities[i].cooldownTime;
+                if (cooldownOverlays[i] != null)
+                    cooldownOverlays[i].fillAmount = cooldowns[i] / equippedAbilities[i].cooldownTime;
 
-                if (cooldowns[i] <= 0)
+                if (cooldowns[i] <= 0 && cooldownOverlays[i] != null)
                 {
                     cooldownOverlays[i].fillAmount = 0; // Reset the cooldown overlay
                 }
@@ -171,7 +200,6 @@ public class PlayerAbilities : MonoBehaviour
             InitializeAbilityUI();
         }
     }
-
 
     public float GetCooldown(int slot)
     {
