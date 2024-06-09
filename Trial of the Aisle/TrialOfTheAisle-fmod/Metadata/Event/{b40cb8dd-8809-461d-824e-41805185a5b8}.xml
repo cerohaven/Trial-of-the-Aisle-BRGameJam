@@ -5,7 +5,7 @@
 			<value>B_PK_Shot</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{79e868aa-0262-43dd-9baf-74ca9d71a645}</destination>
@@ -39,6 +39,11 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{6e21e403-3b1b-473c-9fe6-07c420ff4d41}">
+		<relationship name="modules">
+			<destination>{8be3787f-6f84-4689-b185-8dad871b9486}</destination>
+			<destination>{b6b5c006-011f-48bc-8bbf-149186d59145}</destination>
+			<destination>{4327fc1c-8dbf-4f99-8f92-d5e38eedab16}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{a0106f63-d748-4770-ac15-5254cb714c64}</destination>
 		</relationship>
@@ -57,9 +62,11 @@
 	<object class="EventAutomatableProperties" id="{45d4fb9b-3671-4dc8-8895-59bb69cfec34}" />
 	<object class="MarkerTrack" id="{c8ef5469-25e2-4f8b-883c-f66b6e136353}" />
 	<object class="Timeline" id="{13b17635-5660-4eac-bbc4-39e2ad6cd5e6}">
-		<property name="isProxyEnabled">
-			<value>false</value>
-		</property>
+		<relationship name="modules">
+			<destination>{8be3787f-6f84-4689-b185-8dad871b9486}</destination>
+			<destination>{b6b5c006-011f-48bc-8bbf-149186d59145}</destination>
+			<destination>{4327fc1c-8dbf-4f99-8f92-d5e38eedab16}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{a0106f63-d748-4770-ac15-5254cb714c64}">
 		<relationship name="effectChain">
@@ -70,6 +77,33 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{47e9284a-43a2-4670-a38c-e986b463614d}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{8be3787f-6f84-4689-b185-8dad871b9486}">
+		<property name="start">
+			<value>1.5297651643990928</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{5194152d-ec6a-4044-ad30-e3013358192b}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{b6b5c006-011f-48bc-8bbf-149186d59145}">
+		<property name="start">
+			<value>0.31249433106575963</value>
+		</property>
+		<property name="length">
+			<value>1.2172708333333333</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{b214e430-b42c-424c-8e48-2afe8117d10f}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{4327fc1c-8dbf-4f99-8f92-d5e38eedab16}">
+		<property name="length">
+			<value>0.31249433106575963</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{bf9eb37d-3f18-48bf-811f-ce04ce5cf05f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{8a20ebc9-685b-4b8b-a2e9-63adbb2fd875}">
