@@ -40,7 +40,11 @@
 	</object>
 	<object class="MasterTrack" id="{105cfc46-1add-4210-acda-7b5fab7cd88c}">
 		<relationship name="modules">
+<<<<<<< Updated upstream
 			<destination>{98c5079d-92a2-4a87-9e30-64f3ae049727}</destination>
+=======
+			<destination>{fe44d9b5-f682-42fe-837e-18b7226ca1b4}</destination>
+>>>>>>> Stashed changes
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{4b429705-8362-480f-a9fa-2051f8a39f64}</destination>
@@ -61,7 +65,11 @@
 	<object class="MarkerTrack" id="{668b4329-9909-4aca-ab74-1ad14c77a6b7}" />
 	<object class="Timeline" id="{25cd406f-6528-4011-a75d-c4dab5cb7ddb}">
 		<relationship name="modules">
+<<<<<<< Updated upstream
 			<destination>{98c5079d-92a2-4a87-9e30-64f3ae049727}</destination>
+=======
+			<destination>{fe44d9b5-f682-42fe-837e-18b7226ca1b4}</destination>
+>>>>>>> Stashed changes
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{4b429705-8362-480f-a9fa-2051f8a39f64}">
@@ -78,12 +86,20 @@
 			<destination>{608e08c6-88f0-4995-8ae0-f388347b8878}</destination>
 		</relationship>
 	</object>
+<<<<<<< Updated upstream
 	<object class="SingleSound" id="{98c5079d-92a2-4a87-9e30-64f3ae049727}">
+=======
+	<object class="SingleSound" id="{fe44d9b5-f682-42fe-837e-18b7226ca1b4}">
+>>>>>>> Stashed changes
 		<property name="length">
 			<value>3.7616326530612243</value>
 		</property>
 		<relationship name="audioFile">
+<<<<<<< Updated upstream
 			<destination>{3b620ea5-5791-4a46-955c-1ee46c048e66}</destination>
+=======
+			<destination>{221987c8-6202-4329-a834-b0c1d56184e2}</destination>
+>>>>>>> Stashed changes
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{39bfb9e5-43a7-4b35-a976-efdeb5c4631d}">
@@ -95,9 +111,24 @@
 	<object class="MixerBusEffectChain" id="{c1d71f65-a08c-4b4a-8ed9-0d99a453c532}">
 		<relationship name="effects">
 			<destination>{968ce588-b99b-4f3b-93a7-299776165716}</destination>
+			<destination>{b909bc5b-caf6-44ac-a3d5-851325c230ed}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{041850ec-346a-464d-bbd4-f41534627438}" />
 	<object class="MixerBusFader" id="{5a792bb3-c2af-44fb-afd3-f568b84f943d}" />
 	<object class="MixerBusFader" id="{968ce588-b99b-4f3b-93a7-299776165716}" />
+	<object class="ThreeEQEffect" id="{b909bc5b-caf6-44ac-a3d5-851325c230ed}">
+		<property name="midGain">
+			<value>-10</value>
+		</property>
+		<property name="highGain">
+			<value>-4.5</value>
+		</property>
+		<property name="lowCrossover">
+			<value>10</value>
+		</property>
+		<property name="highCrossover">
+			<value>22000</value>
+		</property>
+	</object>
 </objects>
