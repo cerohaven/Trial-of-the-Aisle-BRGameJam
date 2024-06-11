@@ -200,7 +200,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &57627225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -278,7 +277,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &73525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +460,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!114 &98588214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -951,7 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 0000000001000000ffffffff
+  equippedAbilityIDs: 000000000100000005000000
   abilitySlotsUIReference:
   - {fileID: 0}
   - {fileID: 0}
@@ -7277,7 +7274,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7916,7 +7912,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &814102008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8224,7 +8219,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &896709247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -8481,7 +8475,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &943495550
 GameObject:
   m_ObjectHideFlags: 0
@@ -8943,7 +8936,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1048817570
 GameObject:
   m_ObjectHideFlags: 0
@@ -9882,7 +9874,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10542,7 +10533,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1361602675
@@ -18616,7 +18607,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1001 &1586185126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18762,7 +18752,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1001 &1619579338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19012,7 +19001,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1654587765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -19261,7 +19249,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1740222811
 GameObject:
   m_ObjectHideFlags: 0
@@ -47803,7 +47790,6 @@ MonoBehaviour:
   shelfItem:
   - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
   - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1942011648
 GameObject:
   m_ObjectHideFlags: 0
