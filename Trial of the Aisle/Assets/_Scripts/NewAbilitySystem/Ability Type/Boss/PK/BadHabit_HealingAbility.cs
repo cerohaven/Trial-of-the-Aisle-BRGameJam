@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [CreateAssetMenu(fileName = "HealingAbility", menuName = "Abilities/Support/Healing Ability")]
 public class HealingAbility : Ability
@@ -19,9 +20,34 @@ public class HealingAbility : Ability
             // Optionally, make the effect a child of the owner to keep the scene hierarchy organized
             effectInstance.transform.SetParent(owner.transform);
 
-            // Destroy the effect after its duration
-            // Assuming the particle system auto-destroys or you know the duration
-            Destroy(effectInstance, 3f); // Adjust the time according to the effect's duration
+            // Get references to the particle systems
+            ParticleSystem[] particleSystems = effectInstance.GetComponentsInChildren<ParticleSystem>();
+            ParticleSystem suckingEffect = particleSystems[0];
+            ParticleSystem burstEffect = particleSystems[1];
+
+            // Start the sucking effect
+            suckingEffect.Play();
+
+            // Start a coroutine to trigger the burst effect after the sucking effect duration
+            MonoBehaviour coroutineRunner = owner.GetComponent<MonoBehaviour>();
+            if (coroutineRunner == null)
+            {
+                coroutineRunner = owner.AddComponent<CoroutineRunner>();
+            }
+            coroutineRunner.StartCoroutine(TriggerBurst(suckingEffect, burstEffect, suckingEffect.main.duration));
+
+            // Destroy the effect after its duration (assuming burst duration is 3 seconds)
+            Destroy(effectInstance, suckingEffect.main.duration + 2f);
         }
     }
+
+    private IEnumerator TriggerBurst(ParticleSystem suckingEffect, ParticleSystem burstEffect, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        suckingEffect.Stop();
+        burstEffect.Play();
+    }
+
+    // Helper MonoBehaviour class to run coroutines
+    private class CoroutineRunner : MonoBehaviour { }
 }

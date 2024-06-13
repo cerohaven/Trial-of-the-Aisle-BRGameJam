@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform dashTransform;
     [SerializeField] private Animator dashAnim;
 
+    [Header("Ghost Trail")]
+    [SerializeField] private PlayerGhostTrail ghostTrail;
+
     private Rigidbody2D rb;
     private Vector2 lastMoveDirection = Vector2.right;
     public bool isDodging = false;
@@ -51,14 +54,16 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+
         // Initialize input actions from the asset
         moveInput = actionAsset.FindAction("Move");
         dodgeInput = actionAsset.FindAction("Dodge");
         unPauseInput = actionAsset.FindAction("UnPause");
         pauseInput = actionAsset.FindAction("Pause");
-        
+
         interactInput = actionAsset.FindAction("Interact");
+
+        ghostTrail = GetComponent<PlayerGhostTrail>();
     }
 
     private void OnEnable()
@@ -111,11 +116,19 @@ public class PlayerController : MonoBehaviour
         isDodging = true;
         rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode2D.Impulse);
 
+        if (ghostTrail != null)
+        {
+            for (int i = 0; i < 5; i++) // Create 5 ghosts
+            {
+                ghostTrail.CreateGhost();
+                yield return new WaitForSeconds(0.1f); // Space out the creation of each ghost
+            }
+        }
+
         yield return new WaitForSeconds(0.5f); // Dodge duration
 
         rb.velocity = Vector2.zero; // Reset velocity after dodge
         isDodging = false;
-
     }
 
     public void OnDodge(InputAction.CallbackContext context)
@@ -125,7 +138,7 @@ public class PlayerController : MonoBehaviour
         lastDodgeTime = Time.time;
 
         StartCoroutine(DodgeRoutine(lastMoveDirection));
-        
+
         //Get the player's movement direction
         Vector2 movementDir = moveInput.ReadValue<Vector2>();
         movementDir.Normalize();
@@ -143,14 +156,10 @@ public class PlayerController : MonoBehaviour
         movementDir *= -1;
         dashTransform.up = movementDir;
         dashAnim.Play("Base Layer.Dash", 0, 0.25f);
-        
-
-        
     }
 
     private void OnPause(InputAction.CallbackContext context)
     {
-
         if (!canMove) return;
 
         pauseEvent.PauseGameEventSend();
@@ -183,13 +192,10 @@ public class PlayerController : MonoBehaviour
             PlayerInput.SwitchCurrentActionMap("UI");
         else
             PlayerInput.SwitchCurrentActionMap("Player");
-
-
     }
 
     public void ChangeControlScheme(PlayerInput p)
     {
-
         //Sends an event to all the interactable objects to update their sprite and text based on control
         interactEvent.ChangedControlSchemeEventSend(p.currentControlScheme);
     }

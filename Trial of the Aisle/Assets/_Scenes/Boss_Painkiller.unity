@@ -948,7 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 000000000100000005000000
+  equippedAbilityIDs: 000000000600000005000000
   abilitySlotsUIReference:
   - {fileID: 0}
   - {fileID: 0}
@@ -9235,6 +9235,7 @@ GameObject:
   - component: {fileID: 1075837061}
   - component: {fileID: 1075837062}
   - component: {fileID: 1075837063}
+  - component: {fileID: 1075837064}
   m_Layer: 3
   m_Name: 'Player '
   m_TagString: Player
@@ -9283,6 +9284,7 @@ MonoBehaviour:
   dodgeCooldown: 0.36
   dashTransform: {fileID: 1065858640}
   dashAnim: {fileID: 73525506}
+  ghostTrail: {fileID: 1075837064}
   isDodging: 0
 --- !u!114 &1075837057
 MonoBehaviour:
@@ -9559,6 +9561,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1075837064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075837053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1e6fb2fe497544491959b0559221ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostColor: {r: 1, g: 0, b: 0, a: 0.5}
+  useSingleColor: 1
+  ghostAlpha: 2.64
+  updatesPerSecond: 4
+  ghostNumber: 3
+  ghostShader: {fileID: 4800000, guid: e5cf858daa693594e99d037d5c3afdc1, type: 3}
+  maxDistance: 10
 --- !u!1001 &1094803131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11601,7 +11622,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -19841,7 +19862,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
