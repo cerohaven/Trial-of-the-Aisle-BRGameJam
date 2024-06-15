@@ -13,6 +13,27 @@ public class HealingAbility : Ability
         // Use the AdjustHealth SO to invoke the health adjustment event
         adjustHealthSO.ChangePlayerHealthEventSend(changeHealthAmount, HealthType.Healing);
 
+        // Find the player object by tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        // Apply the heal effect shader to the player
+        if (player != null)
+        {
+            PlayerHealEffect healEffect = player.GetComponent<PlayerHealEffect>();
+            if (healEffect != null)
+            {
+                healEffect.ApplyHealEffect();
+            }
+            else
+            {
+                Debug.LogWarning("PlayerHealEffect component not found on " + player.name);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player object not found. Ensure the player has the 'Player' tag.");
+        }
+
         // Instantiate the healing effect prefab at the owner's position
         if (healingEffectPrefab != null)
         {
