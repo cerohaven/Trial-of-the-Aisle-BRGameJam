@@ -126,6 +126,15 @@ public class PlayerController : MonoBehaviour
         // Trigger camera shake
         cameraShake.Shake(shakeDuration, shakeStrength);
 
+        if (ghostTrail != null)
+        {
+            for (int i = 0; i < ghostTrail.GhostNumber; i++) // Create ghosts based off ghost trail number
+            {
+                ghostTrail.CreateGhost();
+                yield return new WaitForSeconds(0.1f); // Space out the creation of each ghost
+            }
+        }
+
         rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode2D.Impulse);
         yield return new WaitForSeconds(dodgeTime); // Dodge duration
 

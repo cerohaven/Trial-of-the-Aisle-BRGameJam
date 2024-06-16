@@ -317,7 +317,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73525503}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -351,7 +351,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1826556687, guid: bbdbe721eed8bec4d83cbe917d41825a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -359,7 +359,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &73525506
@@ -14177,7 +14177,7 @@ MonoBehaviour:
   ghostTrail: {fileID: 1075837064}
   cameraShake: {fileID: 2041455422}
   shakeDuration: 0.3
-  shakeStrength: 0.7
+  shakeStrength: 1.5
   isDodging: 0
 --- !u!114 &1075837057
 MonoBehaviour:
@@ -14466,13 +14466,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d1e6fb2fe497544491959b0559221ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostColor: {r: 1, g: 0, b: 0, a: 0.5}
+  ghostColor: {r: 0.7254902, g: 0.0627451, b: 0.0627451, a: 0.5}
   useSingleColor: 1
   ghostAlpha: 1
-  updatesPerSecond: 4
-  ghostNumber: 3
+  updatesPerSecond: 3
+  ghostNumber: 4
   ghostShader: {fileID: 4800000, guid: e5cf858daa693594e99d037d5c3afdc1, type: 3}
-  maxDistance: 2
+  maxDistance: 3
 --- !u!1001 &1094803131
 PrefabInstance:
   m_ObjectHideFlags: 0
