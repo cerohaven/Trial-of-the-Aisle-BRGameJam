@@ -295,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCursor: {fileID: 2800000, guid: 79356ec129b885f499b143bb9f298d53, type: 3}
   reticleCursor: {fileID: 2800000, guid: 484a27daea83a854481a67a4db64295c, type: 3}
+  WaitTime: 1.53
 --- !u!4 &210193364
 Transform:
   m_ObjectHideFlags: 0

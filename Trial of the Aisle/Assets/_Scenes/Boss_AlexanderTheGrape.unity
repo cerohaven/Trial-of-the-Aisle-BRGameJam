@@ -1143,6 +1143,7 @@ MonoBehaviour:
   pauseMenuEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
   pauseMenuPrefab: {fileID: 6185407957575491023, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
   SObossDefeat: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
+  dragging: 0
 --- !u!4 &443669516
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,6 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 28123160}
+  BBCam: 1
 --- !u!4 &554831815
 Transform:
   m_ObjectHideFlags: 0
@@ -7807,7 +7809,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2105187589}
   - {fileID: 1141521589}
   - {fileID: 808400798}
   - {fileID: 1593613469}
@@ -7822,6 +7823,7 @@ Transform:
   - {fileID: 1931295954}
   - {fileID: 57627226}
   - {fileID: 1736452099}
+  - {fileID: 1639962709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &759144033
@@ -16195,7 +16197,7 @@ Transform:
   m_Children:
   - {fileID: 1325090066}
   - {fileID: 1065858640}
-  m_Father: {fileID: 1851884481}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1075837056
 MonoBehaviour:
@@ -16218,8 +16220,14 @@ MonoBehaviour:
   moveSpeed: 7
   dodgeSpeed: 20
   dodgeCooldown: 0.36
+  dodgeTime: 0
   dashTransform: {fileID: 1065858640}
   dashAnim: {fileID: 73525506}
+  dustParticles: {fileID: 0}
+  ghostTrail: {fileID: 0}
+  cameraShake: {fileID: 0}
+  shakeDuration: 0.3
+  shakeStrength: 0.2
   isDodging: 0
 --- !u!114 &1075837057
 MonoBehaviour:
@@ -16322,6 +16330,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ce559c67-d2d5-414f-a9c8-8236c0cf9a81
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 43c6e253-13aa-4d0d-a549-68e8359c5fa3
+    m_ActionName: UI/UnPause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -17000,6 +17012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b184218583a4d24d9efdc67cff19ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paa: {fileID: 0}
 --- !u!1 &1346148783
 GameObject:
   m_ObjectHideFlags: 0
@@ -18593,7 +18606,7 @@ Transform:
   - {fileID: 1791286232}
   - {fileID: 568427874}
   - {fileID: 894424111}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 747697490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647644154 stripped
 GameObject:
@@ -19044,6 +19057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd731965e9fb6241a1d3cbefa1deb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SO_BP: {fileID: 0}
   timeOnScreen: 1.57
   HUDanimators:
   - {fileID: 1745141415}
@@ -46582,8 +46596,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1075837055}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856897999 stripped
@@ -47337,12 +47350,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105187588}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 747697490}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2105187590
 PolygonCollider2D:
@@ -48219,20 +48232,21 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1851884481}
+  - {fileID: 1075837055}
+  - {fileID: 747697490}
+  - {fileID: 2105187589}
+  - {fileID: 829568176}
   - {fileID: 619394802}
   - {fileID: 759144033}
   - {fileID: 443669516}
   - {fileID: 319694383}
-  - {fileID: 1851884481}
-  - {fileID: 747697490}
-  - {fileID: 829568176}
-  - {fileID: 1485624978}
-  - {fileID: 2006806797}
-  - {fileID: 1231111791}
-  - {fileID: 1639962709}
   - {fileID: 1841029571}
   - {fileID: 554831815}
   - {fileID: 1258888247}
   - {fileID: 1502061644}
   - {fileID: 1734175514}
   - {fileID: 460102133}
+  - {fileID: 1485624978}
+  - {fileID: 2006806797}
+  - {fileID: 1231111791}
