@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 260821fa246776e47a95dcad6b76c5e2, type: 3}
-  m_Name: '{DD} [LBA] M(oo)nbeam'
+  m_Name: '{DD} [LBA] Moonbeam'
   m_EditorClassIdentifier: 
   abilityName: 'M(oo)n Beam '
   abilityDescription: "This spray of milk does a small amount of damage, but covers
@@ -21,6 +21,6 @@ MonoBehaviour:
   moonbeamPrefab: {fileID: 1572699439113838549, guid: 0a24b7ca53f13ac48b202dc7c32f4273, type: 3}
   abilityDuration: 10
   damageInterval: 0.5
-  effectRange: 5
+  effectRange: 1.5
   adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   changeHealthAmount: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4742004745383510494}
   - component: {fileID: 8064009916444104076}
   m_Layer: 5
-  m_Name: M(oo)n Beam
+  m_Name: Moon Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
