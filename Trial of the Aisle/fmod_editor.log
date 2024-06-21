@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000249C736BB78 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000024680A9BD28 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -25,6 +25,31 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] SoundI::release                          : cruising-down-8bit-lane-159615 (00000249A07C1BE8)
+[LOG] SoundI::release                          :     cruising-down-8bit-lane-159615 (00000249FBE8A828)
+[LOG] SoundI::release                          :     cruising-down-8bit-lane-159615 (0000024A02DAC818)
+[LOG] SoundI::release                          :  (0000024A027D02E8)
+[LOG] SoundI::release                          :     Heal2 (00000249A12581F8)
+[LOG] SoundI::release                          :  (0000024A027D0008)
+[LOG] SoundI::release                          :     Boss hit (00000249A12579D8)
+[LOG] SoundI::release                          :  (0000024A027CFBB8)
+[LOG] SoundI::release                          :     ough-47202 (00000249A12218F8)
+[LOG] SoundI::release                          :  (0000024A027D0178)
+[LOG] SoundI::release                          :     GAMEVideo_Big Explosion_Rogue Waves_8-Bit Legend_13 (00000249A1221DD8)
+[LOG] SoundI::release                          :  (0000024A027D0738)
+[LOG] SoundI::release                          :     pokemon-cry-parody-46225 (00000249A12222B8)
+[LOG] SoundI::release                          :  (0000024A027D0458)
+[LOG] SoundI::release                          :     power up_level up-sound 2 (00000249A1221C38)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -32,3 +57,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.

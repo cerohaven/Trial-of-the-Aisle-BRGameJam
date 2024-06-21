@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5a4821d2813415940abc82f3f001aa97
+guid: b2ad9c194aa57fd40b31f68a88b61a12
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_0
+      name: projectiles_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
-        width: 512
-        height: 512
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1295691d70d5b14f8a318e420b8c5b3
-      internalID: 1847040947
+      spriteID: d21b6e1e20fea92428e42344e584c1f2
+      internalID: 1358604343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_1
+      name: projectiles_1
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1536
-        width: 512
-        height: 512
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a19b3b2100bb2304ca22d5738ea96fd7
-      internalID: -1424426970
+      spriteID: 80035c203ba4dd749b8347ee00f70ee6
+      internalID: 1979363566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_2
+      name: projectiles_2
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1536
-        width: 512
-        height: 512
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,41 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f77dc1cff47944bbdac37f935c3bc0
-      internalID: 526336977
+      spriteID: ea56828e914e7d34d962c0dc5a35bc8e
+      internalID: -1475410525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1536
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d207c9b457521ea40970813ab2481e43
-      internalID: 153078599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_4
+      name: projectiles_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 1024
-        width: 512
-        height: 512
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b7d69b4bea796549b3398fd0942aea1
-      internalID: 441525986
+      spriteID: 79b2510a24df4754bbebfc7010d5542d
+      internalID: -1951117417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_5
+      name: projectiles_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07730db2cfe99b64a915a06eb0f9b461
-      internalID: -419681915
+      spriteID: 64ce804f79ad05346b085a620f1005c1
+      internalID: -1485003865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_6
+      name: projectiles_5
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 512
-        height: 512
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,125 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9660f9cdaecffd7458ce629691d7cb3b
-      internalID: 1968295335
+      spriteID: 341448b8662b4734088c9b00cc5d39e5
+      internalID: 2145482085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c99a6c5be44f3924f842db5de5706737
-      internalID: 966820591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b19da836ce871c43a0deca291fd3cb7
-      internalID: -352965640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6656c4b3e0aad14f8d65ee4d18dab19
-      internalID: 614123796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_10
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ad6678394a06cf47abe73e7c0260e39
-      internalID: 2137100782
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_11
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c8cffed86ffc2847853cb2056854e25
-      internalID: -1677592208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_12
+      name: projectiles_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de7b7f3c10fa27348851858ee3ff9b57
-      internalID: -384635426
+      spriteID: ca27b44177ac3184b9ee0178f8dae18a
+      internalID: 1000043979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_13
+      name: projectiles_7
       rect:
         serializedVersion: 2
-        x: 512
+        x: 32
         y: 0
-        width: 512
-        height: 512
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca8f3831a5683144eb30231ea46e11d4
-      internalID: 919368090
+      spriteID: 0e56428606dc6eb4e9c59ce807d10c2d
+      internalID: -1494368394
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Impact_Shine_V2_spritesheet_14
+      name: projectiles_8
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 64
         y: 0
-        width: 512
-        height: 512
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeee95d0e97493743a3edef3f5585814
-      internalID: -1951838212
+      spriteID: 202321d01d77fdb4ca46e2327fa95751
+      internalID: -1313334416
       vertices: []
       indices: 
       edges: []
@@ -435,21 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Impact_Shine_V2_spritesheet_0: 1847040947
-      Impact_Shine_V2_spritesheet_1: -1424426970
-      Impact_Shine_V2_spritesheet_10: 2137100782
-      Impact_Shine_V2_spritesheet_11: -1677592208
-      Impact_Shine_V2_spritesheet_12: -384635426
-      Impact_Shine_V2_spritesheet_13: 919368090
-      Impact_Shine_V2_spritesheet_14: -1951838212
-      Impact_Shine_V2_spritesheet_2: 526336977
-      Impact_Shine_V2_spritesheet_3: 153078599
-      Impact_Shine_V2_spritesheet_4: 441525986
-      Impact_Shine_V2_spritesheet_5: -419681915
-      Impact_Shine_V2_spritesheet_6: 1968295335
-      Impact_Shine_V2_spritesheet_7: 966820591
-      Impact_Shine_V2_spritesheet_8: -352965640
-      Impact_Shine_V2_spritesheet_9: 614123796
+      projectiles_0: 1358604343
+      projectiles_1: 1979363566
+      projectiles_2: -1475410525
+      projectiles_3: -1951117417
+      projectiles_4: -1485003865
+      projectiles_5: 2145482085
+      projectiles_6: 1000043979
+      projectiles_7: -1494368394
+      projectiles_8: -1313334416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
