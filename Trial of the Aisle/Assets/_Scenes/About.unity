@@ -16968,6 +16968,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939091589}
   m_CullTransparentMesh: 1
+--- !u!1001 &950076524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4018658027119224406, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4554467002596745244, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
+      propertyPath: m_Name
+      value: Scene Transition Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64c5d98fc6ab9b44aa6898369f441a4b, type: 3}
 --- !u!1 &953811180
 GameObject:
   m_ObjectHideFlags: 0
@@ -17462,7 +17519,7 @@ GameObject:
   - component: {fileID: 1159707420}
   - component: {fileID: 1159707419}
   m_Layer: 5
-  m_Name: Boss Profile Pic - Dairy Dominator
+  m_Name: Ashton Profile Pic - Employee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17507,7 +17564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb4102f72f9379d498f8b42258e19d16, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17541,7 +17598,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 8.011512, y: 109.55633}
-  m_ConnectedAnchor: {x: 451.72775, y: 446.8911}
+  m_ConnectedAnchor: {x: 436.51944, y: 431.74875}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -17591,7 +17648,7 @@ GameObject:
   - component: {fileID: 1276177200}
   - component: {fileID: 1276177199}
   m_Layer: 5
-  m_Name: Boss Profile Pic - Painkiller
+  m_Name: Kean Profile Pic - Employee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17636,7 +17693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96a07bebaec3ff944b7d37d7aa01f149, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17670,7 +17727,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.619954, y: 94.9489}
-  m_ConnectedAnchor: {x: 906.37537, y: 448.13226}
+  m_ConnectedAnchor: {x: 875.8604, y: 432.94812}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -17981,7 +18038,7 @@ GameObject:
   - component: {fileID: 1401117065}
   - component: {fileID: 1401117064}
   m_Layer: 5
-  m_Name: Boss Profile Pic - Quickus Pickus Uppus
+  m_Name: Lucas Profile Pic - Employee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18026,7 +18083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0154840a8fe8c345b68c897ea945760, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e62fd3c4081d944bb25f9ee72a11f74, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18060,7 +18117,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -4.9402876, y: 107.89344}
-  m_ConnectedAnchor: {x: 907.2171, y: 198.52034}
+  m_ConnectedAnchor: {x: 876.6738, y: 191.73985}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -18185,7 +18242,7 @@ GameObject:
   - component: {fileID: 1469106575}
   - component: {fileID: 1469106574}
   m_Layer: 5
-  m_Name: Boss Profile Pic - Alexander the Grape
+  m_Name: Sarah Profile Pic - Employee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18230,7 +18287,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1816418880, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fce0c5ae9318ae14280d2d17c454ce0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18264,7 +18321,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -9.444665, y: 93.84289}
-  m_ConnectedAnchor: {x: 464.1577, y: 190.00316}
+  m_ConnectedAnchor: {x: 448.5309, y: 183.50943}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -19884,3 +19941,4 @@ SceneRoots:
   - {fileID: 503210090}
   - {fileID: 786183869}
   - {fileID: 2062876859}
+  - {fileID: 950076524}
