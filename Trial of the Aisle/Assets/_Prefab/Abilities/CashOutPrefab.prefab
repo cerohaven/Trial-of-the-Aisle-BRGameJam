@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4169644524605823498}
   - component: {fileID: 6425926405782769346}
   - component: {fileID: 8912936376966550382}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4905,7 +4905,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 0.7075472, g: 0.1370126, b: 0.030037368, a: 0.65882355}
   m_FlipX: 0
@@ -5180,7 +5180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8825752082788351652}
   - component: {fileID: 7746524495715705510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5312,7 +5312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8565551927714192988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PS Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
