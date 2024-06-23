@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
-  b_MaxHealth: 75
+  b_MaxHealth: 20
   b_BossProfilePicture: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -34,7 +34,7 @@ MonoBehaviour:
     attackDelay: 0.98
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
-    healthPercent: 26
+    healthPercent: 25.8
     throwSpeed: 13.9
     attackDelay: 1.18
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}

@@ -43,7 +43,7 @@ MonoBehaviour:
     phaseEvent: {fileID: 0}
   b_BossAttacks:
   - attackName: Fruits of Fury
-    percentChanceToUse: 0.504
+    percentChanceToUse: 0
     attackCondition: {fileID: 0}
   - attackName: Jammed
     percentChanceToUse: 1
