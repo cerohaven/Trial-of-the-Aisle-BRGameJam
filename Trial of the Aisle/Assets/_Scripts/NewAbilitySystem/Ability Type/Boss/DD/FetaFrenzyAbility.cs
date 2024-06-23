@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "GattlingGunAbility", menuName = "Abilities/DD/Feta Frenzy")]
 public class FetaFrenzy : Ability
 {
@@ -27,8 +26,12 @@ public class FetaFrenzy : Ability
             // Calculate the direction from the owner to the mouse position
             Vector3 throwDirection = (mouseWorldPosition - owner.transform.position).normalized;
 
-            // Instantiate the cheese prefab and get its Rigidbody2D component
-            GameObject cheese = Instantiate(cheesePrefab, owner.transform.position, Quaternion.identity);
+            // Calculate the rotation based on the throw direction, adding 180 degrees to correct orientation
+            float angle = Mathf.Atan2(throwDirection.y, throwDirection.x) * Mathf.Rad2Deg + 180f;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+            // Instantiate the cheese prefab with the calculated rotation
+            GameObject cheese = Instantiate(cheesePrefab, owner.transform.position, rotation);
             Rigidbody2D rb = cheese.GetComponent<Rigidbody2D>();
 
             // Set the cheese's velocity to make it move in the calculated direction

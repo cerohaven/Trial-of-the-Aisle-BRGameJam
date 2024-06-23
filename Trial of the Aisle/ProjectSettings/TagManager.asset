@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4190355567
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -51,4 +54,7 @@ TagManager:
     locked: 0
   - name: UI BG
     uniqueID: 213249487
+    locked: 0
+  - name: Top
+    uniqueID: 995959831
     locked: 0

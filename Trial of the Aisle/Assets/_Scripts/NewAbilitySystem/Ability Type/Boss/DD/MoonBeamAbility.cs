@@ -7,7 +7,7 @@ public class RaycastAbility : Ability
     public GameObject moonbeamPrefab; // Reference to the Moonbeam prefab with a LineRenderer
     public float abilityDuration = 2f; // Duration of the ability's effect
     public float damageInterval = 0.5f; // Time between each damage tick
-    public float effectRange = 5f; // Radius of the CircleCollider2D's effective area
+    public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
     public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
     public ChangeHealth changeHealthAmount; // Amount of damage to apply
 
@@ -26,7 +26,7 @@ public class RaycastAbility : Ability
         CircleCollider2D circleCollider = impactColliderInstance.GetComponent<CircleCollider2D>();
         if (circleCollider != null)
         {
-            circleCollider.radius = effectRange;
+            circleCollider.radius = effectRange; // Set the collision radius here
         }
         else
         {
@@ -77,6 +77,11 @@ public class RaycastAbility : Ability
             {
                 // Apply damage to each 'Boss' object found within the range
                 adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
+            }
+            else if (hitCollider.CompareTag("Pill"))
+            {
+                // Destroy the pill object
+                Destroy(hitCollider.gameObject);
             }
         }
     }

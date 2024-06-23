@@ -25,10 +25,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float dodgeSpeed = 10f;
     [SerializeField] private float dodgeCooldown = 2f;
+    [SerializeField] private float dodgeTime;
 
     [Header("Dash Animation")]
     [SerializeField] private Transform dashTransform;
     [SerializeField] private Animator dashAnim;
+    [SerializeField] private ParticleSystem dustParticles;
+
+    [Header("Ghost Trail")]
+    [SerializeField] private PlayerGhostTrail ghostTrail;
+
+    [Header("Camera Shake")]
+    [SerializeField] private ScreenShake cameraShake;
+    [SerializeField] private float shakeDuration = 0.3f;
+    [SerializeField] private float shakeStrength = 0.2f;
 
     private Rigidbody2D rb;
     private Vector2 lastMoveDirection = Vector2.right;
@@ -51,14 +61,17 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        
+        cameraShake = FindObjectOfType<ScreenShake>();
+
         // Initialize input actions from the asset
         moveInput = actionAsset.FindAction("Move");
         dodgeInput = actionAsset.FindAction("Dodge");
         unPauseInput = actionAsset.FindAction("UnPause");
         pauseInput = actionAsset.FindAction("Pause");
-        
+
         interactInput = actionAsset.FindAction("Interact");
+
+        ghostTrail = GetComponent<PlayerGhostTrail>();
     }
 
     private void OnEnable()
@@ -109,14 +122,26 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DodgeRoutine(Vector2 dodgeDirection)
     {
         isDodging = true;
-        rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.5f); // Dodge duration
+        // Trigger camera shake
+        cameraShake.Shake(shakeDuration, shakeStrength);
+
+        if (ghostTrail != null)
+        {
+            for (int i = 0; i < ghostTrail.GhostNumber; i++) // Create ghosts based off ghost trail number
+            {
+                ghostTrail.CreateGhost();
+                yield return new WaitForSeconds(0.1f); // Space out the creation of each ghost
+            }
+        }
+
+        rb.AddForce(dodgeDirection * dodgeSpeed, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(dodgeTime); // Dodge duration
 
         rb.velocity = Vector2.zero; // Reset velocity after dodge
         isDodging = false;
-
     }
+
 
     public void OnDodge(InputAction.CallbackContext context)
     {
@@ -125,32 +150,31 @@ public class PlayerController : MonoBehaviour
         lastDodgeTime = Time.time;
 
         StartCoroutine(DodgeRoutine(lastMoveDirection));
-        
+
         //Get the player's movement direction
         Vector2 movementDir = moveInput.ReadValue<Vector2>();
         movementDir.Normalize();
 
         SpriteRenderer sr = dashAnim.GetComponent<SpriteRenderer>();
+        ParticleSystem pr = dustParticles.GetComponent<ParticleSystem>();
         if (movementDir.x < 0)
         {
+            dustParticles.Play();
             sr.flipY = true;
         }
         else
         {
+            dustParticles.Stop();
             sr.flipY = false;
         }
 
         movementDir *= -1;
         dashTransform.up = movementDir;
         dashAnim.Play("Base Layer.Dash", 0, 0.25f);
-        
-
-        
     }
 
     private void OnPause(InputAction.CallbackContext context)
     {
-
         if (!canMove) return;
 
         pauseEvent.PauseGameEventSend();
@@ -183,13 +207,10 @@ public class PlayerController : MonoBehaviour
             PlayerInput.SwitchCurrentActionMap("UI");
         else
             PlayerInput.SwitchCurrentActionMap("Player");
-
-
     }
 
     public void ChangeControlScheme(PlayerInput p)
     {
-
         //Sends an event to all the interactable objects to update their sprite and text based on control
         interactEvent.ChangedControlSchemeEventSend(p.currentControlScheme);
     }

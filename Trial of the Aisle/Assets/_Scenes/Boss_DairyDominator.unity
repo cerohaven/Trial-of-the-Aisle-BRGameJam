@@ -202,7 +202,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &57627225 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -282,7 +281,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &73525503
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +466,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!114 &98588214 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -7808,7 +7805,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &614276197
 GameObject:
   m_ObjectHideFlags: 0
@@ -8415,7 +8411,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &819184942
 GameObject:
   m_ObjectHideFlags: 0
@@ -8625,7 +8620,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &829568175
 GameObject:
   m_ObjectHideFlags: 0
@@ -15806,7 +15800,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1001 &960910390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16048,7 +16041,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1032273460
 GameObject:
   m_ObjectHideFlags: 0
@@ -16744,8 +16736,14 @@ MonoBehaviour:
   moveSpeed: 7
   dodgeSpeed: 20
   dodgeCooldown: 0.36
+  dodgeTime: 0
   dashTransform: {fileID: 1065858640}
   dashAnim: {fileID: 73525506}
+  dustParticles: {fileID: 0}
+  ghostTrail: {fileID: 0}
+  cameraShake: {fileID: 0}
+  shakeDuration: 0.3
+  shakeStrength: 0.2
   isDodging: 0
 --- !u!1001 &1094803131
 PrefabInstance:
@@ -16896,7 +16894,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18045,7 +18042,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!114 &1590642701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -18136,7 +18132,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1001 &1619579338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18388,7 +18383,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1654587765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -18590,7 +18584,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1001 &1742852568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47282,7 +47275,6 @@ MonoBehaviour:
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
   - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
-  pickUpEffectPrefab: {fileID: 0}
 --- !u!1 &1942011648
 GameObject:
   m_ObjectHideFlags: 0
@@ -47907,7 +47899,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2141655394

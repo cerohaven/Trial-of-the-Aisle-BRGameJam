@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2321126302647116474
@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 8010513933539290518}
   - component: {fileID: 7640145551835873807}
   - component: {fileID: 7277585090656312356}
-  - component: {fileID: 6160806259148836510}
   m_Layer: 12
   m_Name: Jammed
   m_TagString: Untagged
@@ -162,15 +161,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 1000008176, guid: e387537f69580824bbb2eba35cb4e199, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.48}
+  m_Size: {x: 4, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7640145551835873807
@@ -235,20 +234,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.31999996
---- !u!114 &6160806259148836510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2321126302647116474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5172c61e99d79488541b4ddf40a3ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossSpeedJammed: 2
-  hitEffect: {fileID: 7592180743780908918, guid: b860d8be329510c46a28e79595e0d4d9, type: 3}
 --- !u!1 &8778166730526047760
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +309,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.47
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

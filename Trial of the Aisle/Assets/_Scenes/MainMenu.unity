@@ -264,6 +264,53 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &210193362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210193364}
+  - component: {fileID: 210193363}
+  m_Layer: 0
+  m_Name: Cursor_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &210193363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210193362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07bffb03ee7d42e4c847a5afc9bcdf38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: 79356ec129b885f499b143bb9f298d53, type: 3}
+  reticleCursor: {fileID: 2800000, guid: 484a27daea83a854481a67a4db64295c, type: 3}
+  WaitTime: 1.53
+--- !u!4 &210193364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210193362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.368059, y: 3.3651628, z: 3.9149232}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &271240106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15534,11 +15581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac0f57e83052a342aeea2371ea6914b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeForSpawn: 1.5
-  objectsToSpawn:
-  - {fileID: 5168655109913123210, guid: 9ffb3c4f77a7d164f88aa7af45d6969f, type: 3}
-  - {fileID: 1911804651579714944, guid: 6c19abcc2237681419d7ac0236dd08f3, type: 3}
-  - {fileID: 4264877250795093865, guid: 6673de5f6f34c954cac8c3ee1b31d4f1, type: 3}
 --- !u!1 &580276540
 GameObject:
   m_ObjectHideFlags: 0
@@ -17692,6 +17734,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 210193363}
+        m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+        m_MethodName: SetReticleCursor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1867166987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19730,3 +19784,4 @@ SceneRoots:
   - {fileID: 563552729}
   - {fileID: 271240106}
   - {fileID: 1790430279}
+  - {fileID: 210193364}
