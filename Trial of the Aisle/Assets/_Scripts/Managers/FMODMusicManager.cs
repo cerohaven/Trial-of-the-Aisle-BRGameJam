@@ -7,6 +7,7 @@ public class FMODMusicManager : MonoBehaviour
 {
     private FMOD.Studio.EventInstance ATGMusicInstance;
     private FMOD.Studio.EventInstance PKMusicInstance;
+    private FMOD.Studio.EventInstance DDMusicInstance;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,12 @@ public class FMODMusicManager : MonoBehaviour
         {
             PKMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/PK_Arena");
             PKMusicInstance.start();
+        }
+
+        else if (sceneName == "Boss_DairyDominator")
+        {
+            DDMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/DD_Arena");
+            DDMusicInstance.start();
         }
     }
 

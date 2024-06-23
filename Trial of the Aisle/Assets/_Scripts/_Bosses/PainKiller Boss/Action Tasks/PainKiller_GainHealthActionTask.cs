@@ -8,9 +8,11 @@ namespace NodeCanvas.Tasks.Actions{
 		public SO_AdjustHealth adjustHealth;
 		public ChangeHealth healAmount;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
+        private FMOD.Studio.EventInstance BadHabitInstance;
+
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit(){
 			return null;
 		}
 
@@ -21,8 +23,10 @@ namespace NodeCanvas.Tasks.Actions{
 			adjustHealth.ChangeBossHealthEventSend(healAmount, HealthType.Healing, new UnityEngine.Vector2(0,0));
             LeanTween.scale(agent.gameObject, Vector3.one * 1.1f, 0.1f).setOnComplete(Testing);
 			agent.GetComponent<SwapMaterialDemo>().Swap(1);
-            
-		}
+
+            BadHabitInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Bad Habit");
+            BadHabitInstance.start();
+        }
 		private void Testing()
 		{
 			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f).setOnComplete(End);

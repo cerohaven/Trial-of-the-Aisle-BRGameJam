@@ -26,7 +26,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 241031
+  Length: 128150
 --- !u!114 &-8915495116632414726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +54,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 626
+--- !u!114 &-8415987877505471991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bosses/Boss_PK/B_Bad Habit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bosses/Boss_PK/B_Bad Habit
+  Guid:
+    Data1: 1254905348
+    Data2: 1187765344
+    Data3: 1017557152
+    Data4: 664096534
+  Banks:
+  - {fileID: -3315037404573798026}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3761
 --- !u!114 &-8103912426414326615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +191,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3441
+--- !u!114 &-7400550732878297100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale
+  Guid:
+    Data1: -1114644668
+    Data2: 1337593118
+    Data3: 1714192792
+    Data4: -2023266597
+  Banks:
+  - {fileID: -4841040725882859670}
+  - {fileID: -3315037404573798026}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3521
 --- !u!114 &-7354219600539708030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +234,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638530373319864827
+  lastModified: 638541621187423098
   FileSizes:
   - Name: Desktop
     Value: 35168
@@ -258,34 +313,6 @@ MonoBehaviour:
     Data3: 1486156989
     Data4: -956619129
   Banks:
-  - {fileID: -3315037404573798026}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &-5790441465047675072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Bosses/Boss_PK/B_Parasitomania
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Bosses/Boss_PK/B_Parasitomania
-  Guid:
-    Data1: -1114644668
-    Data2: 1337593118
-    Data3: 1714192792
-    Data4: -2023266597
-  Banks:
-  - {fileID: -4841040725882859670}
   - {fileID: -3315037404573798026}
   IsStream: 0
   Is3D: 0
@@ -392,10 +419,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638535390195186177
+  lastModified: 638546971065697733
   FileSizes:
   - Name: Desktop
-    Value: 274464
+    Value: 325280
   Exists: 1
 --- !u!114 &-3607544183538653962
 MonoBehaviour:
@@ -440,10 +467,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638535390196616939
+  lastModified: 638546971066085613
   FileSizes:
   - Name: Desktop
-    Value: 555200
+    Value: 641856
   Exists: 1
 --- !u!114 &-2979498146698318491
 MonoBehaviour:
@@ -460,10 +487,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638535449357668498
+  lastModified: 638546974575437269
   FileSizes:
   - Name: Desktop
-    Value: 7642080
+    Value: 7643104
   Exists: 1
 --- !u!114 &-1609005876352701731
 MonoBehaviour:
@@ -635,7 +662,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638530373276823528
+  lastModified: 638541659394909960
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -667,7 +694,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 2529
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +729,6 @@ MonoBehaviour:
   - {fileID: 7018091501025142986}
   - {fileID: -3607544183538653962}
   - {fileID: 5392762661236225264}
-  - {fileID: -5790441465047675072}
   - {fileID: -6027175025885169074}
   - {fileID: -7819327534192798900}
   - {fileID: 8922869399082905484}
@@ -711,7 +737,6 @@ MonoBehaviour:
   - {fileID: -5358891269533300787}
   - {fileID: 7521649822039514915}
   - {fileID: 1826547079407420311}
-  - {fileID: 539512468564361093}
   - {fileID: 6690208030021394087}
   - {fileID: -15984912769041972}
   - {fileID: 7899176741917753445}
@@ -741,41 +766,16 @@ MonoBehaviour:
   - {fileID: 4946239651492386356}
   - {fileID: 9031081436279023602}
   - {fileID: -1008750837031681610}
+  - {fileID: -7400550732878297100}
+  - {fileID: -8415987877505471991}
+  - {fileID: 8513571606542552852}
   EditorParameters: []
   MasterBanks:
   - {fileID: -271029783631720041}
   StringsBanks:
   - {fileID: 6961738373130466378}
-  cacheTime: 638535449357668498
+  cacheTime: 638546974575437269
   cacheVersion: 131617
---- !u!114 &539512468564361093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Bosses/Boss_PK/B_Bad_Habit
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Bosses/Boss_PK/B_Bad_Habit
-  Guid:
-    Data1: 1528576714
-    Data2: 1269003949
-    Data3: -787386721
-    Data4: 732281584
-  Banks:
-  - {fileID: -4841040725882859670}
-  - {fileID: -3315037404573798026}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3761
 --- !u!114 &1277437520083324812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,10 +1430,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638530373276838584
+  lastModified: 638541659394920107
   FileSizes:
   - Name: Desktop
-    Value: 3492
+    Value: 3548
   Exists: 1
 --- !u!114 &7018091501025142986
 MonoBehaviour:
@@ -1546,6 +1546,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 80000
+--- !u!114 &8513571606542552852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bosses/Boss_PK/B_Parasitomania_Exhale
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bosses/Boss_PK/B_Parasitomania_Exhale
+  Guid:
+    Data1: 1678028304
+    Data2: 1297962254
+    Data3: -725024615
+    Data4: 1347803821
+  Banks:
+  - {fileID: -3315037404573798026}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8922869399082905484
 MonoBehaviour:
   m_ObjectHideFlags: 0

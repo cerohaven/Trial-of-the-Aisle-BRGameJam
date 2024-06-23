@@ -34,6 +34,7 @@ public class Projectile_PainKiller : Projectile
     protected override void Start()
     {
         base.Start();
+
     }
 
   
@@ -49,6 +50,7 @@ public class Projectile_PainKiller : Projectile
         //the pill isn't from the player
         if (isBeingSuckedIn && whoThrew != WhoThrew.Player && targetThrown != null)
         {
+
             base.InitializeProjectile(travelDir, travelSpeed, targetThrown, WhoThrew.Boss);
             interactableProjectile.SetInteractable(false);
         }
@@ -60,6 +62,7 @@ public class Projectile_PainKiller : Projectile
         //Rotate around the boss' position
         rb.velocity += (Vector2)transform.right * turnIntensity * Time.deltaTime;
         transform.up = rb.velocity;
+
 
     }
 
