@@ -388,7 +388,7 @@ Transform:
   m_GameObject: {fileID: 241706550}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.263323, y: 2.142958, z: 3.5491893}
+  m_LocalPosition: {x: 4.2618537, y: 2.0246303, z: 3.546906}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -415,7 +415,7 @@ MonoBehaviour:
     radius: 8
   - target: {fileID: 1075837055}
     weight: 1
-    radius: 6
+    radius: 7
 --- !u!1 &243126166
 GameObject:
   m_ObjectHideFlags: 0
@@ -16814,7 +16814,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 910564745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f5394e61b465545a56c1ca188030a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e39acd98c8dfaf48912413fe27f979e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1697740979}
@@ -100686,7 +100686,7 @@ Transform:
   m_GameObject: {fileID: 1792044602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3408155, y: 0.12219906, z: -14.3303795}
+  m_LocalPosition: {x: 4.3408155, y: -0.3778019, z: -14.3303795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100788,7 +100788,7 @@ Transform:
   m_GameObject: {fileID: 1798283557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3408155, y: 0.12219906, z: -14.3303795}
+  m_LocalPosition: {x: 4.3408155, y: -0.3778019, z: -14.3303795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100909,7 +100909,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.32739
+  orthographic size: 20.95239
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -101896,7 +101896,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 224.01337, y: 75.02136}
+    _translation: {x: 340, y: 229}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0

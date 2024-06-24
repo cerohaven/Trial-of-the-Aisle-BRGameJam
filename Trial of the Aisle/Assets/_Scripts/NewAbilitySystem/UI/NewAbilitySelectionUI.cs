@@ -11,7 +11,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
     [SerializeField] private Image bossCardImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
-    
+    private GameObject textPanelGO;
 
     public Ability abilityOne;
     public Ability abilityTwo;
