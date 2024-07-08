@@ -5652,9 +5652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7f58b226610ce4ba904649152b6af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
   pauseMenuPrefab: {fileID: 6185407957575491023, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
-  SObossDefeat: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   dragging: 0
 --- !u!4 &443669516
 Transform:
@@ -16733,7 +16731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebe61e8bc1077245810fb279c8e5ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   flickerTime: 0.09
   maxFlickers: 9
 --- !u!212 &814102011
@@ -17179,8 +17176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b737d3f1d36aa40911866c3b006b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
-  interactEvent: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   animator: {fileID: 1075837063}
   cam: {fileID: 1798283562}
   playerInput: {fileID: 1075837057}
@@ -17433,7 +17428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e2b6e6f3f049d428a50d687d46b093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   interactRadius: 1.74
   interactableMask:
     serializedVersion: 2
@@ -17450,7 +17444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2604f1d9ebe419c459d12dbc82345b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
 --- !u!95 &1075837063
 Animator:
   serializedVersion: 5
@@ -101856,7 +101849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cm: {fileID: 910564746}
-  bossDefeatedEventSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   objectsToSpawnIn:
   - gameObjectToSpawn: {fileID: 39401754359496028, guid: bc5949dd41dc9c744883512f8becb6b2, type: 3}
     spawnPosition: 0
@@ -101993,7 +101985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d5d6f980e39dd543be05d8a3efbc075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   xSmallHealthAdjustment: 0.5
   smallHealthAdjustment: 2
   mediumHealthAdjustment: 5
@@ -102375,7 +102366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bd097357ad4674da299f4bcb8f2225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossDefeatedSender: {fileID: 11400000, guid: 71ce922d79caa904599e649d3baa76e7, type: 2}
   bossBlackboard: {fileID: 7073513567513950841}
   bossHitEffect: {fileID: 1615069853370902859, guid: 012eaa353cdc8e7489dfc5aeb47485c1, type: 3}
   healEffect: {fileID: 258111787011150191, guid: e43574ed83347a5409adaeaabe6ab966, type: 3}

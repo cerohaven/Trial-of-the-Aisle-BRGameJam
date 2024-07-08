@@ -6,8 +6,6 @@ public class PlayerInputHandler : MonoBehaviour
     public static PlayerInputHandler Instance;
 
     //References
-    //[SerializeField] private SO_InteractableObject SO_interactableObjetSender;
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     private PlayerInput playerInput;
 
     //Variables
@@ -110,13 +108,13 @@ public class PlayerInputHandler : MonoBehaviour
         //Send event to pause the game and switch input action maps 
         //NEW ONE
         if (context.performed)
-            pauseMenuEvent.PauseGameEventSend();
+            GameManager.Instance.EventSender.PauseGameEventSend();
     }
 
     public void OnResumeGame(InputAction.CallbackContext context)
     {
         if (context.performed)
-            pauseMenuEvent.ResumeGameEventSend();
+            GameManager.Instance.EventSender.ResumeGameEventSend();
 
     }
 }

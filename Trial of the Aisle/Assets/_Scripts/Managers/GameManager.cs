@@ -1,16 +1,17 @@
 using FMODUnity;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
-public class GameManager : MonoBehaviour
+
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance;
+    //Scriptable Objects
+    private SO_EventSender _eventSender;
+
     private BossCheckDefeat bossCheckDefeat;
 
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
     [SerializeField] private GameObject pauseMenuPrefab;
 
     public static bool isGamePaused;
@@ -34,12 +35,10 @@ public class GameManager : MonoBehaviour
     private List<GameObject> uiInstances = new List<GameObject>();
 
 
-    //Scriptable Objects
-    [SerializeField] private SO_BossDefeatedEventSender SObossDefeat;
-
     //Properties
 
     public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
+    public SO_EventSender EventSender { get => _eventSender;}
 
     public bool dragging;
 
@@ -47,25 +46,21 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(this);
 
         bossCheckDefeat = GetComponent<BossCheckDefeat>();
 
+
+        _eventSender = Resources.Load<SO_EventSender>("Event Sender");
+
         //Calls when a player presses the pause button
-        pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
+        _eventSender.pauseGameEvent.AddListener(PauseTheGame);
 
         //Calls whenever a player presses the resume button
-        pauseMenuEvent.resumeGameEvent.AddListener(ResumeTheGame);
+        _eventSender.resumeGameEvent.AddListener(ResumeTheGame);
 
         //When the boss is defeated
-        SObossDefeat.bossIsDefeatedEvent.AddListener(IsDefeated);
+        _eventSender.bossIsDefeatedEvent.AddListener(IsDefeated);
     }
 
     private void Start()
@@ -150,7 +145,7 @@ public class GameManager : MonoBehaviour
         bossIsDefeated = true;
 
         //Flicker Screen
-        SObossDefeat.FlickerScreenSend();
+        _eventSender.FlickerScreenSend();
 
         SFX_BossScream.start();
         Boss_BGM_Postbattle.start();

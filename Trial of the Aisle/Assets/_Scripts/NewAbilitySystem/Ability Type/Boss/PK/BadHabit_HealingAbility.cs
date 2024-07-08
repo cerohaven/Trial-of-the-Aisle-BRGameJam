@@ -5,13 +5,12 @@ using System.Collections;
 public class HealingAbility : Ability
 {
     public ChangeHealth changeHealthAmount; // The enum value specifying the amount of health to adjust
-    public SO_AdjustHealth adjustHealthSO; // Reference to the Adjust Health Scriptable Object
     public GameObject healingEffectPrefab; // The prefab containing the healing particle effect
 
     public override void Activate(GameObject owner)
     {
         // Use the AdjustHealth SO to invoke the health adjustment event
-        adjustHealthSO.ChangePlayerHealthEventSend(changeHealthAmount, HealthType.Healing);
+        GameManager.Instance.EventSender.ChangePlayerHealthEventSend(changeHealthAmount, HealthType.Healing);
 
         // Find the player object by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");

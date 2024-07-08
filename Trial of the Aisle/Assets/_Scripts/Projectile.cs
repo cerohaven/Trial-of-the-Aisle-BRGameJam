@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
     ///The base class for any throwable projectile, either from the boss or from the player
 
     // -- REFERNCES -- //
-    [SerializeField] protected SO_AdjustHealth adjustHealth;
     [SerializeField] protected ChangeHealth damageDealt;
     protected InteractableObject_Projectile interactableProjectile;
 
@@ -203,7 +202,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss") && whoThrew == WhoThrew.Player)
         {
             //send to reduce scale of boss bar
-            adjustHealth.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage, transform.up);
+            GameManager.Instance.EventSender.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage, transform.up);
             CinemachineShake.Instance.ShakeCamera();
             Destroy(gameObject);
         }
@@ -211,7 +210,7 @@ public class Projectile : MonoBehaviour
         // HITTING THE PLAYER //
         if(collision.gameObject.CompareTag("Player") && whoThrew == WhoThrew.Boss)
         {
-            adjustHealth.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
+            GameManager.Instance.EventSender.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
             Destroy(gameObject);
         }
 

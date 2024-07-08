@@ -7,8 +7,6 @@ using UnityEngine.XR;
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SO_PauseMenuEventSender pauseEvent;
-    [SerializeField] private SO_InteractableObject interactEvent;
     [SerializeField] private Animator animator;
     [SerializeField] private Camera cam;
     public PlayerInput playerInput;
@@ -177,7 +175,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) return;
 
-        pauseEvent.PauseGameEventSend();
+        GameManager.Instance.EventSender.PauseGameEventSend();
 
         pauseCount++;
     }
@@ -189,7 +187,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerInput.currentActionMap.name != "UI") return;
 
-        pauseEvent.ResumeGameEventSend();
+        GameManager.Instance.EventSender.ResumeGameEventSend();
     }
 
     private void Animate()
@@ -212,7 +210,7 @@ public class PlayerController : MonoBehaviour
     public void ChangeControlScheme(PlayerInput p)
     {
         //Sends an event to all the interactable objects to update their sprite and text based on control
-        interactEvent.ChangedControlSchemeEventSend(p.currentControlScheme);
+        GameManager.Instance.EventSender.ChangedControlSchemeEventSend(p.currentControlScheme);
     }
 
     public string GetCurrentControlScheme()

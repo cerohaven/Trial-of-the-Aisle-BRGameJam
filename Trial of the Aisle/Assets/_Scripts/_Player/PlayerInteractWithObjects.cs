@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 
 public class PlayerInteractWithObjects : MonoBehaviour
@@ -9,9 +8,8 @@ public class PlayerInteractWithObjects : MonoBehaviour
 
 
     //References
-    [SerializeField] private SO_InteractableObject interactableObject;
     private PlayerCarryProjectile carryProjectile;
-    private PlayerController pc;
+    private PlayerController playerController;
 
     //Variables
     [Header("Interaction Variables")]
@@ -24,24 +22,24 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private void Awake()
     {
         carryProjectile = GetComponentInChildren<PlayerCarryProjectile>();
-        pc = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController>();
         objTransform = transform;
     }
 
     private void Update()
     {
 
-        if (pc.PlayerInput.actions["Interact"].WasPressedThisFrame())
+        if (playerController.PlayerInput.actions["Interact"].WasPressedThisFrame())
         {
             //If the player is carrying an object and they press the 
             if(carryProjectile.IsCarryingObject)
             {
                 //Throw the object instead
-                interactableObject.LaunchProjectileButtonEventSend(gameObject);
+                GameManager.Instance.EventSender.LaunchProjectileButtonEventSend(gameObject);
             }
             else
             {
-                interactableObject.ClickedInteractButtonEventSend(gameObject);
+                GameManager.Instance.EventSender.ClickedInteractButtonEventSend(gameObject);
             }
 
         }

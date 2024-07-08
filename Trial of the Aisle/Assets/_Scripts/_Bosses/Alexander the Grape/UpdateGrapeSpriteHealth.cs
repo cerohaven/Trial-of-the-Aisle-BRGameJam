@@ -5,10 +5,6 @@ using UnityEngine;
 public class UpdateGrapeSpriteHealth : MonoBehaviour
 {
 
-
-    //References
-    [SerializeField] SO_AdjustHealth adjustHealth;
-
     //Components
     [SerializeField] private Animator animator;
     private Blackboard agentBlackboard;
@@ -17,7 +13,7 @@ public class UpdateGrapeSpriteHealth : MonoBehaviour
     {
         agentBlackboard = GetComponent<Blackboard>();
 
-        adjustHealth.updateBossSpriteEventSend.AddListener(UpdateSprite);
+        GameManager.Instance.EventSender.updateBossSpriteEventSend.AddListener(UpdateSprite);
     }
 
 

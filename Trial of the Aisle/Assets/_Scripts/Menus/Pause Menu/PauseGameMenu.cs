@@ -19,7 +19,6 @@ public class PauseGameMenu : MonoBehaviour
     private PlayerController pc;
 
     //components
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
 
     [SerializeField] private Button resumeButton;
 
@@ -45,7 +44,7 @@ public class PauseGameMenu : MonoBehaviour
         //AudioManager.instance.Play("ClickButton");
 
         //Send event to the game manager to resume the game
-        pauseMenuEvent.ResumeGameEventSend();
+        GameManager.Instance.EventSender.ResumeGameEventSend();
 
         //remove this pause menu
         Destroy(transform.root.gameObject);

@@ -12,7 +12,6 @@ public abstract class InteractableObject : MonoBehaviour
     /// </summary>
 
     //References
-    [SerializeField] protected SO_InteractableObject SO_interactableObject;
     [SerializeField] private SO_ControlSchemeHUD SO_controlSchemeHUD;
     protected PlayerInputHandler playerInputHandler;
     protected GameObject interactedActor; //the object that interacted with this interact point
@@ -51,8 +50,8 @@ public abstract class InteractableObject : MonoBehaviour
 
     virtual protected void Awake()
     {
-        SO_interactableObject.clickedInteractButtonEvent.AddListener(CheckIfUTargetctive);
-        SO_interactableObject.changedControlSchemeEvent.AddListener(UpdateSpriteAndText);
+        GameManager.Instance.EventSender.clickedInteractButtonEvent.AddListener(CheckIfUTargetctive);
+        GameManager.Instance.EventSender.changedControlSchemeEvent.AddListener(UpdateSpriteAndText);
         playerInputHandler = FindObjectOfType<PlayerInputHandler>();
 
     }

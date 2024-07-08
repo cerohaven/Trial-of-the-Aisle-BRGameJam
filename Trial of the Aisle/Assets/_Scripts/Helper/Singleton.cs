@@ -11,6 +11,7 @@ public class Singleton <T> : MonoBehaviour where T: MonoBehaviour
     {
         get
         {
+           
             if(_instance == null)
             {
                 _instance = (T)FindObjectOfType(typeof(T));
@@ -20,6 +21,7 @@ public class Singleton <T> : MonoBehaviour where T: MonoBehaviour
                 GameObject go = new GameObject();
                 _instance = go.AddComponent<T>();
             }
+
 
             return _instance;
         }

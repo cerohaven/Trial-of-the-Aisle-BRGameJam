@@ -20,7 +20,7 @@ public class InteractableObject_Projectile : InteractableObject
     {
         base.Awake();
         projectile = GetComponent<Projectile>();
-        SO_interactableObject.launchProjectileButtonEvent.AddListener(LaunchProjectile);
+        GameManager.Instance.EventSender.launchProjectileButtonEvent.AddListener(LaunchProjectile);
     }
 
     private void LaunchProjectile(GameObject player)

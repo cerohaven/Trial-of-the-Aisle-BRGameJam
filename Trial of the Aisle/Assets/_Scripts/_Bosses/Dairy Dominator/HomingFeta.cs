@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HomingFeta : MonoBehaviour
 {
-    [SerializeField] private SO_AdjustHealth adjustHealth;
 
     [SerializeField] private GameObject hitParticles; //On collision, spawn particles
 
@@ -60,7 +59,7 @@ public class HomingFeta : MonoBehaviour
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if (collision.gameObject.CompareTag("Player"))
         {
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
 
             DestroyObj(collision);
         }

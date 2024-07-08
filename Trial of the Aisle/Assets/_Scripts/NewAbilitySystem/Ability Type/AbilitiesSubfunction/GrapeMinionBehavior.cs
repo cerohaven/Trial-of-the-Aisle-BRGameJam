@@ -5,7 +5,6 @@ public class GrapeMinionBehavior : MonoBehaviour
     [SerializeField]
     public float speed = 5f;
     public ChangeHealth changeHealthAmount; // The enum representing the amount of health change
-    public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
 
 
     private GameObject target;
@@ -33,7 +32,7 @@ public class GrapeMinionBehavior : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Boss"))
         {
-            adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
+            GameManager.Instance.EventSender.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
             Destroy(gameObject); 
         }
     }
