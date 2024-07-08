@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Events;
+
 using UnityEngine.InputSystem.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
 
 public class PauseGameMenu : MonoBehaviour
@@ -27,6 +26,8 @@ public class PauseGameMenu : MonoBehaviour
     private void Awake()
     {
         pc = GameObject.FindObjectOfType<PlayerController>();
+
+        if (pc == null) return;
         //hover over the 'resume button' on startup
         if (pc.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
@@ -55,8 +56,8 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        SceneTransitionController.Instance.TransitionType = TransitionType.MainMenu;
-        SceneTransitionController.Instance.LoadSpecificSceneStringPaused("MainMenu");
+        GameManager.Instance.TransitionType = TransitionType.MainMenu;
+        GameManager.Instance.LoadSpecificSceneStringPaused("MainMenu");
 
     }
 

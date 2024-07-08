@@ -9,13 +9,19 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: ac8fa9157bf2126458af3fe2bc1fc7ff
   - enabled: 1
-    path: Assets/_Scenes/About.unity
-    guid: 6307a9cf8e902324c91ff6fc68262bf1
+    path: Assets/_Scenes/Credits.unity
+    guid: d31a5d5ec1c1834418d802a0349d0985
   - enabled: 1
     path: Assets/_Scenes/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
-  - enabled: 1
-    path: Assets/_Scenes/Boss_Painkiller_LD_Redesign.unity
+  - enabled: 0
+    path: Assets/_Scenes/Async_Scenes/Load_PauseMenu.unity
+    guid: 41a88246d9e5a784d881641275c19f80
+  - enabled: 0
+    path: Assets/_Scenes/Async_Scenes/Load_SceneTransitionController.unity
+    guid: 0eeed21f4d0982c42a2bda7a6aaf5bad
+  - enabled: 0
+    path: Assets/_Scenes/Obsolete/Boss_Painkiller_LD_Redesign.unity
     guid: e529bee9173ecac488fbfede0d3b8e99
   - enabled: 1
     path: Assets/_Scenes/Boss_AlexanderTheGrape.unity

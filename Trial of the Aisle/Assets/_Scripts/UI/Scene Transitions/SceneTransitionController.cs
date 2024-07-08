@@ -24,13 +24,12 @@ public class TransitionTypesData
 
 public class SceneTransitionController : MonoBehaviour
 {
-    public static SceneTransitionController Instance;
 
     //Components
     private Animation animationComp;
 
     //Variables
-    [SerializeField] private TransitionType transitionType;
+
     [SerializeField] private List<TransitionTypesData> arrTransitionTypes; // Array to store Animation Game Objects
     [SerializeField] private AnimationClip animationClipToPlay;
 
@@ -40,23 +39,12 @@ public class SceneTransitionController : MonoBehaviour
 
     //Properties
 
-    public TransitionType TransitionType { get => transitionType; set => transitionType = value; }
+    public AnimationClip AnimationClipToPlay { get => animationClipToPlay; set => animationClipToPlay = value; }
+    public Animation AnimationComp { get => animationComp; set => animationComp = value; }
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
-
         animationComp = GetComponent<Animation>();
-
     }
 
 
@@ -75,7 +63,7 @@ public class SceneTransitionController : MonoBehaviour
     {
         if(scene.name.Equals("MainMenu"))
         {
-            transitionType = TransitionType.MainMenu;
+            GameManager.Instance.TransitionType = TransitionType.MainMenu;
         }
         //Lerp Colours
         PlayEnterSceneAnimation();
@@ -127,31 +115,23 @@ public class SceneTransitionController : MonoBehaviour
     }
     #endregion
 
-    #region IEnumerator for Exit Scene Transition
-    public void LoadNextScene()
-    {
-        StartCoroutine(WaitForAnimationAndLoadNextScene());
-    }
-    private IEnumerator WaitForAnimationAndLoadNextScene()
+    #region Transition Animation
+    public IEnumerator WaitForAnimationAndLoadNextScene()
     {
 
         PlayExitSceneAnimation();
 
         yield return new WaitForSeconds(animationClipToPlay.averageDuration);
-       
+
         Scene currentScene = SceneManager.GetActiveScene();
         int nextScene = currentScene.buildIndex + 1;
         SceneManager.LoadScene(nextScene);
 
     }
 
-    public void LoadSpecificSceneString(string sceneName)
+    public IEnumerator WaitForAnimationAndLoadSpecificScene(string sceneName)
     {
-        StartCoroutine(WaitForAnimationAndLoadSpecificScene(sceneName));
-    }
-    private IEnumerator WaitForAnimationAndLoadSpecificScene(string sceneName)
-    {
-        
+
         PlayExitSceneAnimation();
 
 
@@ -161,20 +141,14 @@ public class SceneTransitionController : MonoBehaviour
 
     }
 
-
-    //Used for when the TimeScale is 0 so we have to manually play the animations since they won't play
-    public void LoadSpecificSceneStringPaused(string sceneName)
-    {
-        StartCoroutine(WaitForAnimationAndLoadSpecificScenePaused(sceneName));
-    }
-    private IEnumerator WaitForAnimationAndLoadSpecificScenePaused(string sceneName)
+    public IEnumerator WaitForAnimationAndLoadSpecificScenePaused(string sceneName)
     {
 
         PlayExitSceneAnimation();
 
         AnimationState currentState = animationComp[animationComp.clip.name];
 
-        while(currentState.time < animationClipToPlay.averageDuration)
+        while (currentState.time < animationClipToPlay.averageDuration)
         {
             currentState.time += Time.unscaledDeltaTime;
             animationComp.Sample();
@@ -184,19 +158,16 @@ public class SceneTransitionController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
         yield return null;
-        
+
     }
-    public void LoadSpecificSceneBuildIndex(int buildIndex)
+
+    public IEnumerator WaitForAnimationAndLoadSpecificSceneBuildIndex(int buildIndex)
     {
-        StartCoroutine(WaitForAnimationAndLoadSpecificSceneBuildIndex(buildIndex));
-    }
-    private IEnumerator WaitForAnimationAndLoadSpecificSceneBuildIndex(int buildIndex)
-    {
-        
+
         PlayExitSceneAnimation();
 
         yield return new WaitForSeconds(animationClipToPlay.averageDuration);
-      
+
         SceneManager.LoadScene(buildIndex);
 
     }
@@ -261,7 +232,7 @@ public class SceneTransitionController : MonoBehaviour
     // Method to get the transition we're going to play
     public TransitionType GetTransition()
     {
-        return transitionType;
+        return GameManager.Instance.TransitionType;
     }
 
   

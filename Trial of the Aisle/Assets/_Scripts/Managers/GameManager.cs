@@ -1,23 +1,28 @@
 using FMODUnity;
-
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     //Scriptable Objects
     private SO_EventSender _eventSender;
 
-    private BossCheckDefeat bossCheckDefeat;
+    //Async Loaded objects
+    private PauseGameMenu pauseMenu;
+    private GameObject pauseMenuPrefab;
+    private SceneTransitionController sceneTransitionController;
+    [SerializeField] private TransitionType transitionType;
 
-    [SerializeField] private GameObject pauseMenuPrefab;
 
+    //Game State
+    private bool canPause = false;
     public static bool isGamePaused;
 
     private PlayerInput playerInput;
-    private GameObject pauseMenu;
+    
 
     FMOD.Studio.EventInstance SFX_BossDeath;
     FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
@@ -35,20 +40,39 @@ public class GameManager : Singleton<GameManager>
     private List<GameObject> uiInstances = new List<GameObject>();
 
 
+    public bool dragging;
+
     //Properties
 
     public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
     public SO_EventSender EventSender { get => _eventSender;}
-
-    public bool dragging;
-
-
+    public TransitionType TransitionType { get => transitionType; set => transitionType = value; }
+    public SceneTransitionController SceneTransitionController { get => sceneTransitionController;}
+    public GameObject PauseMenuPrefab { get => pauseMenuPrefab;}
+    public bool CanPause { get => canPause; set => canPause = value; }
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
 
-        bossCheckDefeat = GetComponent<BossCheckDefeat>();
+
+        AsyncOperation sceneTransitAsync = SceneManager.LoadSceneAsync("Load_SceneTransitionController", LoadSceneMode.Additive);
+        AsyncOperation pauseMenuAsync = SceneManager.LoadSceneAsync("Load_PauseMenu", LoadSceneMode.Additive);
+
+        sceneTransitAsync.completed += (AsyncOperation a) =>
+        {
+            sceneTransitionController = FindObjectOfType<SceneTransitionController>();
+            DontDestroyOnLoad(sceneTransitionController);
+        };
+
+        pauseMenuAsync.completed += (AsyncOperation a) =>
+        {
+            pauseMenu = FindObjectOfType<PauseGameMenu>();
+            pauseMenuPrefab = pauseMenu.gameObject;
+            pauseMenuPrefab.SetActive(false);
+            DontDestroyOnLoad(pauseMenuPrefab);
+        };
+
 
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");
@@ -63,6 +87,8 @@ public class GameManager : Singleton<GameManager>
         _eventSender.bossIsDefeatedEvent.AddListener(IsDefeated);
     }
 
+
+
     private void Start()
     {
         gameEnded = false;
@@ -74,6 +100,34 @@ public class GameManager : Singleton<GameManager>
         SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
         SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
+
+    //Scene Transitions
+    #region IEnumerator for Exit Scene Transition
+    public void LoadNextScene()
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadNextScene());
+    }
+
+    public void LoadSpecificSceneString(string sceneName)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificScene(sceneName));
+    }
+   
+
+    //Used for when the TimeScale is 0 so we have to manually play the animations since they won't play
+    public void LoadSpecificSceneStringPaused(string sceneName)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificScenePaused(sceneName));
+    }
+
+    public void LoadSpecificSceneBuildIndex(int buildIndex)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificSceneBuildIndex(buildIndex));
+    }
+   
+    #endregion
+
+
     private void PauseTheGame()
     {
         //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
@@ -95,10 +149,10 @@ public class GameManager : Singleton<GameManager>
         {
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
-            SceneTransitionController.Instance.LoadNextScene();
+            LoadNextScene();
         }
 
-        Destroy(uiInstances[uiInstances.Count-1]);
+        uiInstances[uiInstances.Count - 1].SetActive(false);
         uiInstances.RemoveAt(uiInstances.Count - 1);
     }
     private void Pause()
@@ -106,9 +160,12 @@ public class GameManager : Singleton<GameManager>
 
         playerInput.SwitchCurrentActionMap("UI");
 
-        //Spawn in the pause menu ONLY IF IT'S THE FIRST TIME
+        //Reveal the Pause Menu
         if (!isGamePaused)
-            pauseMenu = Instantiate(pauseMenuPrefab);
+        {
+            pauseMenuPrefab.SetActive(true);
+        }
+            
 
         isGamePaused = true;
 
@@ -117,7 +174,7 @@ public class GameManager : Singleton<GameManager>
 
         Time.timeScale = 0;
 
-        uiInstances.Add(pauseMenu);
+        uiInstances.Add(pauseMenuPrefab);
     }
     private void ResumeTheGame()
     {
@@ -125,7 +182,7 @@ public class GameManager : Singleton<GameManager>
 
         isGamePaused = false;
 
-        uiInstances.Remove(pauseMenu);
+        uiInstances.Remove(pauseMenuPrefab);
 
 
         if(pauseMenu != null)

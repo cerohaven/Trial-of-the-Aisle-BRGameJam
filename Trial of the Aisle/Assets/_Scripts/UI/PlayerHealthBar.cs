@@ -79,7 +79,7 @@ public class PlayerHealthBar : MonoBehaviour
             bool lostAllHealth = playerHealth <= 0;
             if (lostAllHealth)
             {
-                SceneTransitionController.Instance.LoadSpecificSceneString("MainMenu");
+                GameManager.Instance.LoadSpecificSceneString("MainMenu");
             }
             
 
