@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     {
         // Load the next scene in the build index
         GameManager.Instance.TransitionType = TransitionType.BossBattle;
-        GameManager.Instance.LoadSpecificSceneBuildIndex(3);
+        GameManager.Instance.LoadSpecificSceneString("Boss_Painkiller_LD_Redesign");
 
     }
 
