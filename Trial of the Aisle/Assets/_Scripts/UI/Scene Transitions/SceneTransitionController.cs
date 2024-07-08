@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static System.TimeZoneInfo;
 
 public enum TransitionType
 {
@@ -36,6 +37,8 @@ public class SceneTransitionController : MonoBehaviour
     private GameObject prevGO; // the previous game Object animation
     private int transitionTypeEnumLength = 0;
 
+
+    [SerializeField] private TransitionType transitionType;
 
     //Properties
 
@@ -76,6 +79,7 @@ public class SceneTransitionController : MonoBehaviour
     //Function to play the scene loaded animation
     public void PlayEnterSceneAnimation()
     {
+        transitionType = GameManager.Instance.TransitionType;
         animationComp.Stop();
 
         GameObject go = GetSceneTransitionGameObject();
@@ -99,6 +103,7 @@ public class SceneTransitionController : MonoBehaviour
     //Function to play the scene loading animation
     public void PlayExitSceneAnimation()
     {
+        transitionType = GameManager.Instance.TransitionType;
         GameObject go = GetSceneTransitionGameObject();
 
         if (go == null) return;

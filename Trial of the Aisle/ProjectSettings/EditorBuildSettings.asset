@@ -14,14 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
-  - enabled: 0
+  - enabled: 1
     path: Assets/_Scenes/Async_Scenes/Load_PauseMenu.unity
-    guid: 41a88246d9e5a784d881641275c19f80
-  - enabled: 0
+    guid: 52066300bd7cb6d449d62b359fe14ea5
+  - enabled: 1
     path: Assets/_Scenes/Async_Scenes/Load_SceneTransitionController.unity
-    guid: 0eeed21f4d0982c42a2bda7a6aaf5bad
-  - enabled: 0
-    path: Assets/_Scenes/Obsolete/Boss_Painkiller_LD_Redesign.unity
+    guid: 63fa0a996632f0b49b3828d15d3243ef
+  - enabled: 1
+    path: Assets/_Scenes/Boss_Painkiller_LD_Redesign.unity
     guid: e529bee9173ecac488fbfede0d3b8e99
   - enabled: 1
     path: Assets/_Scenes/Boss_AlexanderTheGrape.unity
