@@ -1,6 +1,7 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,13 +17,12 @@ public class GameManager : Singleton<GameManager>
     private SceneTransitionController sceneTransitionController;
     [SerializeField] private TransitionType transitionType;
 
+    private PlayerInputHandler playerInputHandler;
 
     //Game State
     private bool canPause = false;
+    private bool canMove = true;
     public static bool isGamePaused;
-
-    private PlayerInput playerInput;
-    
 
     FMOD.Studio.EventInstance SFX_BossDeath;
     FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
@@ -43,13 +43,14 @@ public class GameManager : Singleton<GameManager>
     public bool dragging;
 
     //Properties
-
     public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
     public SO_EventSender EventSender { get => _eventSender;}
     public TransitionType TransitionType { get => transitionType; set => transitionType = value; }
     public SceneTransitionController SceneTransitionController { get => sceneTransitionController;}
     public GameObject PauseMenuPrefab { get => pauseMenuPrefab;}
     public bool CanPause { get => canPause; set => canPause = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
+    public PlayerInputHandler PlayerInputHandler { get => playerInputHandler;}
 
     private void Awake()
     {
@@ -58,6 +59,7 @@ public class GameManager : Singleton<GameManager>
 
         AsyncOperation sceneTransitAsync = SceneManager.LoadSceneAsync("Load_SceneTransitionController", LoadSceneMode.Additive);
         AsyncOperation pauseMenuAsync = SceneManager.LoadSceneAsync("Load_PauseMenu", LoadSceneMode.Additive);
+        AsyncOperation playerInputAsync = SceneManager.LoadSceneAsync("Load_PlayerInput", LoadSceneMode.Additive);
 
         sceneTransitAsync.completed += (AsyncOperation a) =>
         {
@@ -72,11 +74,13 @@ public class GameManager : Singleton<GameManager>
             pauseMenuPrefab.SetActive(false);
             DontDestroyOnLoad(pauseMenuPrefab);
         };
-
-
+        playerInputAsync.completed += (AsyncOperation a) =>
+        {
+            playerInputHandler = FindObjectOfType<PlayerInputHandler>();
+            DontDestroyOnLoad(playerInputHandler.gameObject);
+        };
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");
-
         //Calls when a player presses the pause button
         _eventSender.pauseGameEvent.AddListener(PauseTheGame);
 
@@ -94,7 +98,6 @@ public class GameManager : Singleton<GameManager>
         gameEnded = false;
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
-        playerInput = GameObject.FindObjectOfType<PlayerInput>();
 
         Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
         SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
@@ -124,8 +127,16 @@ public class GameManager : Singleton<GameManager>
     {
         StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificSceneBuildIndex(buildIndex));
     }
-   
+
     #endregion
+
+    #region Player Input Controls
+
+
+
+
+    #endregion
+
 
 
     private void PauseTheGame()
@@ -158,7 +169,7 @@ public class GameManager : Singleton<GameManager>
     private void Pause()
     {
 
-        playerInput.SwitchCurrentActionMap("UI");
+        playerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
 
         //Reveal the Pause Menu
         if (!isGamePaused)
@@ -170,7 +181,7 @@ public class GameManager : Singleton<GameManager>
         isGamePaused = true;
 
         //connect all the player's inputs to that pause menu's input module
-        pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInput);
+        pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInputHandler.PlayerInput);
 
         Time.timeScale = 0;
 
@@ -178,7 +189,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void ResumeTheGame()
     {
-        playerInput.SwitchCurrentActionMap("Player");
+        playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
         isGamePaused = false;
 

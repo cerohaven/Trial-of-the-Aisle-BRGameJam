@@ -1,120 +1,112 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public static PlayerInputHandler Instance;
 
-    //References
-    private PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
 
-    //Variables
-    private Vector2 moveInput;
-    private bool interactPressed;
-    private bool breakGrassPressed;
-    private bool freezePlayerMovement;
 
-    //Properties
-    public Vector2 m_MoveInput { get => moveInput;  }
-    public bool m_InteractPressed { get => interactPressed; }
-    public PlayerInput m_PlayerInput { get => playerInput; }
-    public bool m_BreakGrassPressed { get => breakGrassPressed; }
-    public bool m_FreezePlayerMovement { get => freezePlayerMovement; set => freezePlayerMovement = value; }
+    [Header("Input System")]
+    [SerializeField] private InputActionAsset actionAsset; // Use an InputActionAsset instead of individual references
+    private InputAction moveInput;
+    private InputAction dodgeInput;
+    private InputAction pauseInput;
+    private InputAction unPauseInput;
+    private InputAction interactInput;
+
+
+    private bool dodgePressed = false;
+
+    //properties
+    public PlayerInput PlayerInput { get => playerInput; }
+
 
     private void Awake()
     {
-        //Make this a singleton
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(Instance);
-
         playerInput = GetComponent<PlayerInput>();
 
+        // Initialize input actions from the asset
+        moveInput = actionAsset.FindAction("Move");
+        dodgeInput = actionAsset.FindAction("Dodge");
+        unPauseInput = actionAsset.FindAction("UnPause");
+        pauseInput = actionAsset.FindAction("Pause");
 
+        interactInput = actionAsset.FindAction("Interact");
     }
 
-    //-------------------
-    // In-Game Action Map
-    //-------------------
-    public void OnMove(InputAction.CallbackContext context)
+    private void OnEnable()
     {
-        //This might disrupt controlers and their OnMove for the UI though
-        if (freezePlayerMovement)
-            return;
+        moveInput.Enable();
+        dodgeInput.Enable();
+        pauseInput.Enable();
+        unPauseInput.Enable();
+        interactInput.Enable();
 
-        moveInput = context.ReadValue<Vector2>();
-        
+        dodgeInput.performed += OnDodge;
+        pauseInput.performed += OnPause;
+        unPauseInput.performed += OnUnPause;
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    private void OnDisable()
     {
-        if (!context.started)
-        {
-            interactPressed = context.action.triggered;
-        }
+        moveInput.Disable();
+        dodgeInput.Disable();
+        pauseInput.Disable();
+        unPauseInput.Disable();
+        interactInput.Disable();
+
+        dodgeInput.performed -= OnDodge;
+        pauseInput.performed -= OnPause;
+        unPauseInput.performed -= OnUnPause;
     }
 
-    public void OnBreakGrass(InputAction.CallbackContext context)
+    public Vector2 ReadMovementValue()
     {
-     
-         breakGrassPressed = context.action.WasPressedThisFrame();
-   
+        return moveInput.ReadValue<Vector2>();
     }
 
-    //---------------------------------------
-    // Opened UI Action Map (for Controllers)
-    //---------------------------------------
+    public void OnDodge(InputAction.CallbackContext context)
+    {
+        //Send an event where we 
+        GameManager.Instance.EventSender.DodgeEventSender();
+    }
 
-    public void OnUIMove(InputAction.CallbackContext context)
+    private void OnPause(InputAction.CallbackContext context)
     {
-       
-    }
-    public void OnUIConfirm(InputAction.CallbackContext context)
-    {
+        if (!GameManager.Instance.CanMove) return;
+
+        GameManager.Instance.EventSender.PauseGameEventSend();
 
     }
-    public void OnUICancel(InputAction.CallbackContext context)
+
+    private void OnUnPause(InputAction.CallbackContext context)
     {
-        //Send an event to any currently active UI
-        //if (context.started)
-            //SO_interactableObjetSender.ClickedCancelButtonEventSend();
+
+        if (playerInput.currentActionMap.name != "UI") return;
+
+        GameManager.Instance.EventSender.ResumeGameEventSend();
     }
+
 
     public void SwitchActionMap(bool _menu)
     {
         //a list of the action maps available
         if (_menu)
-            playerInput.SwitchCurrentActionMap("Menu");
+            PlayerInput.SwitchCurrentActionMap("UI");
         else
-            playerInput.SwitchCurrentActionMap("In-Game");
-
-
+            PlayerInput.SwitchCurrentActionMap("Player");
     }
+
     public void ChangeControlScheme(PlayerInput p)
     {
         //Sends an event to all the interactable objects to update their sprite and text based on control
-        //SO_interactableObjetSender.ChangedControlSchemeEventSend(p.currentControlScheme);
+        GameManager.Instance.EventSender.ChangedControlSchemeEventSend(p.currentControlScheme);
     }
 
     public string GetCurrentControlScheme()
     {
-        return playerInput.currentControlScheme;
-    }
-
-
-    public void OnPaused(InputAction.CallbackContext context)
-    {
-        //Send event to pause the game and switch input action maps 
-        //NEW ONE
-        if (context.performed)
-            GameManager.Instance.EventSender.PauseGameEventSend();
-    }
-
-    public void OnResumeGame(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-            GameManager.Instance.EventSender.ResumeGameEventSend();
-
+        return PlayerInput.currentControlScheme;
     }
 }

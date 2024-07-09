@@ -42,17 +42,4 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
         }
     }
 
-    public void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            //ability = EventSystem.current.gameObject.GetComponent<StandaloneInputModuleCustom>().GetLastPointerEventDataPublic(-1).pointerDrag;
-        }
-
-        if (GameManager.Instance.dragging && storedAbility == ability)
-        {
-            //storedAbility = null;
-        }
-
-    }
 }

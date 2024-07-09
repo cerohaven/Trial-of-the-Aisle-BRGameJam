@@ -29,7 +29,7 @@ public class PlayerInteractWithObjects : MonoBehaviour
     private void Update()
     {
 
-        if (playerController.PlayerInput.actions["Interact"].WasPressedThisFrame())
+        if (GameManager.Instance.PlayerInputHandler.PlayerInput.actions["Interact"].WasPressedThisFrame())
         {
             //If the player is carrying an object and they press the 
             if(carryProjectile.IsCarryingObject)

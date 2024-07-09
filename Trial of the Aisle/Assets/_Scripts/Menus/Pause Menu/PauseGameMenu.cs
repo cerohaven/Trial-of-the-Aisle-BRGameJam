@@ -14,22 +14,15 @@ public class PauseGameMenu : MonoBehaviour
     /// The 'GameManager' is in charge of checking to see if the game is paused or not.
     /// </summary>
 
-    //References
-    private PlayerController pc;
 
     //components
-
     [SerializeField] private Button resumeButton;
 
-   
 
-    private void Awake()
+    private void Start()
     {
-        pc = GameObject.FindObjectOfType<PlayerController>();
-
-        if (pc == null) return;
-        //hover over the 'resume button' on startup
-        if (pc.GetCurrentControlScheme() == "Controller")
+        Debug.Log(GameManager.Instance.PlayerInputHandler);
+        if (GameManager.Instance.PlayerInputHandler.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
     }
 

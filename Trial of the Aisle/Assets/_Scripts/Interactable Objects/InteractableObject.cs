@@ -13,7 +13,6 @@ public abstract class InteractableObject : MonoBehaviour
 
     //References
     [SerializeField] private SO_ControlSchemeHUD SO_controlSchemeHUD;
-    protected PlayerInputHandler playerInputHandler;
     protected GameObject interactedActor; //the object that interacted with this interact point
 
     //Variables
@@ -52,7 +51,6 @@ public abstract class InteractableObject : MonoBehaviour
     {
         GameManager.Instance.EventSender.clickedInteractButtonEvent.AddListener(CheckIfUTargetctive);
         GameManager.Instance.EventSender.changedControlSchemeEvent.AddListener(UpdateSpriteAndText);
-        playerInputHandler = FindObjectOfType<PlayerInputHandler>();
 
     }
     private void OnDrawGizmos()

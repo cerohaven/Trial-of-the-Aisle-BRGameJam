@@ -156,6 +156,14 @@ public class SO_EventSender : ScriptableObject
     #endregion
 
 
+    //Dodge
+    [System.NonSerialized]
+    public UnityEvent dodgeEvent = new UnityEvent();
+    public void DodgeEventSender()
+    {
+        dodgeEvent.Invoke();
+    }
+    
 }
 
 
