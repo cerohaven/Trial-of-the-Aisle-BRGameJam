@@ -6,9 +6,6 @@ using UnityEngine;
 public class MinionThrow : MonoBehaviour
 {
 
-    //References
-    [SerializeField] private SO_AdjustHealth adjustHealth;
-
     //Components
     private Rigidbody2D rb;
 
@@ -63,7 +60,7 @@ public class MinionThrow : MonoBehaviour
         //Collide with player
         if(collision.gameObject.CompareTag("Player"))
         {
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
             CinemachineShake.Instance.ShakeCamera();
         }
 
@@ -82,7 +79,7 @@ public class MinionThrow : MonoBehaviour
         {
             Projectile proj = collision.gameObject.GetComponent<Projectile>();
             if (proj.WhoThrew != WhoThrew.Player) return;
-            adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, Vector2.up);
+            GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, Vector2.up);
             CinemachineShake.Instance.ShakeCamera();
             Destroy(gameObject);
 

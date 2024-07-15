@@ -1,7 +1,6 @@
 using FMODUnity;
 using NodeCanvas.Framework;
 using System.Collections;
-using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,6 @@ using UnityEngine.UI;
 public class BossHealthBar : MonoBehaviour
 {
     [Header("Scriptable Object")]
-    [SerializeField] private SO_BossDefeatedEventSender bossDefeatedSender;
     [SerializeField] private Blackboard bossBlackboard;
     private SO_BossProfile bossProfile;
 
@@ -134,7 +132,7 @@ public class BossHealthBar : MonoBehaviour
             bool bossIsDefeated = bossHealth <= 0.25f;
             if (bossIsDefeated)
             {
-                bossDefeatedSender.BossIsDefeatedSend();
+                GameManager.Instance.EventSender.BossIsDefeatedSend();
 
                 //disables the blue boss bar
                 gameObject.SetActive(false);

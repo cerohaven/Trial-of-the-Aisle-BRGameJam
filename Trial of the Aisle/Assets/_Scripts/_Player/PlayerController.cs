@@ -7,19 +7,10 @@ using UnityEngine.XR;
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SO_PauseMenuEventSender pauseEvent;
-    [SerializeField] private SO_InteractableObject interactEvent;
     [SerializeField] private Animator animator;
     [SerializeField] private Camera cam;
-    public PlayerInput playerInput;
-
-    [Header("Input System")]
-    [SerializeField] private InputActionAsset actionAsset; // Use an InputActionAsset instead of individual references
-    private InputAction moveInput;
-    private InputAction dodgeInput;
-    private InputAction pauseInput;
-    private InputAction unPauseInput;
-    private InputAction interactInput;
+    private GameManager gameManager;
+    private PlayerInputHandler playerInputHandler;
 
     [Header("Player Variables")]
     [SerializeField] private float moveSpeed = 7f;
@@ -42,74 +33,42 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 lastMoveDirection = Vector2.right;
-    public bool isDodging = false;
+    private bool isDodging = false;
     private float lastDodgeTime = -5f;
-    private bool canMove = true;
+    
 
     //For some reason, when the player presses ESC to pause it also unpauses for the first time only, so this int will make sure to only
     //unpause when we have at least pasued once.
     private int pauseCount = 0;
 
     //properties
-    public PlayerInput PlayerInput { get => playerInput; }
-    public bool CanMove { get => canMove; set => canMove = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float DodgeSpeed { get => dodgeSpeed; set => dodgeSpeed = value; }
 
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         cameraShake = FindObjectOfType<ScreenShake>();
 
-        // Initialize input actions from the asset
-        moveInput = actionAsset.FindAction("Move");
-        dodgeInput = actionAsset.FindAction("Dodge");
-        unPauseInput = actionAsset.FindAction("UnPause");
-        pauseInput = actionAsset.FindAction("Pause");
-
-        interactInput = actionAsset.FindAction("Interact");
-
         ghostTrail = GetComponent<PlayerGhostTrail>();
+
+        gameManager = GameManager.Instance;
+
+        gameManager.EventSender.dodgeEvent.AddListener(OnDodge);
     }
 
-    private void OnEnable()
+
+    private void FixedUpdate()
     {
-        moveInput.Enable();
-        dodgeInput.Enable();
-        pauseInput.Enable();
-        unPauseInput.Enable();
-        interactInput.Enable();
-
-        dodgeInput.performed += OnDodge;
-        pauseInput.performed += OnPause;
-        unPauseInput.performed += OnUnPause;
-    }
-
-    private void OnDisable()
-    {
-        moveInput.Disable();
-        dodgeInput.Disable();
-        pauseInput.Disable();
-        unPauseInput.Disable();
-        interactInput.Disable();
-
-        dodgeInput.performed -= OnDodge;
-        pauseInput.performed -= OnPause;
-        unPauseInput.performed -= OnUnPause;
-    }
-
-    public void FixedUpdate()
-    {
-        if (!canMove) return;
+        if (!gameManager.CanMove) return;
         Movement();
         Animate();
     }
 
-    public void Movement()
+    private void Movement()
     {
-        Vector2 movementInput = moveInput.ReadValue<Vector2>();
+        Vector2 movementInput = GameManager.Instance.PlayerInputHandler.ReadMovementValue();
         if (movementInput.magnitude > 0)
         {
             lastMoveDirection = movementInput.normalized;
@@ -119,7 +78,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement;
     }
 
-    public IEnumerator DodgeRoutine(Vector2 dodgeDirection)
+    private IEnumerator DodgeRoutine(Vector2 dodgeDirection)
     {
         isDodging = true;
 
@@ -143,16 +102,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void OnDodge(InputAction.CallbackContext context)
+    private void OnDodge()
     {
-        if (!canMove || isDodging || Time.time - lastDodgeTime < dodgeCooldown) return;
+        if (!gameManager.CanMove || isDodging || Time.time - lastDodgeTime < dodgeCooldown) return;
 
         lastDodgeTime = Time.time;
 
         StartCoroutine(DodgeRoutine(lastMoveDirection));
 
         //Get the player's movement direction
-        Vector2 movementDir = moveInput.ReadValue<Vector2>();
+        Vector2 movementDir = GameManager.Instance.PlayerInputHandler.ReadMovementValue();
         movementDir.Normalize();
 
         SpriteRenderer sr = dashAnim.GetComponent<SpriteRenderer>();
@@ -173,50 +132,13 @@ public class PlayerController : MonoBehaviour
         dashAnim.Play("Base Layer.Dash", 0, 0.25f);
     }
 
-    private void OnPause(InputAction.CallbackContext context)
-    {
-        if (!canMove) return;
-
-        pauseEvent.PauseGameEventSend();
-
-        pauseCount++;
-    }
-
-    private void OnUnPause(InputAction.CallbackContext context)
-    {
-        pauseCount++;
-        if (pauseCount < 3) return;
-
-        if (playerInput.currentActionMap.name != "UI") return;
-
-        pauseEvent.ResumeGameEventSend();
-    }
 
     private void Animate()
     {
-        Vector2 movementInput = moveInput.ReadValue<Vector2>();
+        Vector2 movementInput = GameManager.Instance.PlayerInputHandler.ReadMovementValue();
         animator.SetFloat("AnimMoveX", movementInput.x);
         animator.SetFloat("AnimMoveY", movementInput.y);
         animator.SetFloat("AnimMoveMagnitude", movementInput.sqrMagnitude);
     }
 
-    public void SwitchActionMap(bool _menu)
-    {
-        //a list of the action maps available
-        if (_menu)
-            PlayerInput.SwitchCurrentActionMap("UI");
-        else
-            PlayerInput.SwitchCurrentActionMap("Player");
-    }
-
-    public void ChangeControlScheme(PlayerInput p)
-    {
-        //Sends an event to all the interactable objects to update their sprite and text based on control
-        interactEvent.ChangedControlSchemeEventSend(p.currentControlScheme);
-    }
-
-    public string GetCurrentControlScheme()
-    {
-        return PlayerInput.currentControlScheme;
-    }
 }

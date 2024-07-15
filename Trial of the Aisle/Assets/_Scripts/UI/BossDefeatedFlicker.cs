@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BossDefeatedFlicker : MonoBehaviour
 {
-    [Header("Scriptable Object")]
-    [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
-
     //Components
     private SpriteRenderer sprite;
     
@@ -32,7 +29,7 @@ public class BossDefeatedFlicker : MonoBehaviour
             color[i].a = 0.30f;
         }
 
-        bossDefeatedEventSender.flickerScreenEvent.AddListener(StartFlickers);
+        GameManager.Instance.EventSender.flickerScreenEvent.AddListener(StartFlickers);
     }
 
     private void StartFlickers()

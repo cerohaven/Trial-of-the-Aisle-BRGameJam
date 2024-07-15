@@ -10,7 +10,6 @@ public class BossCheckDefeat : MonoBehaviour
     private Blackboard bossBlackboard;
     private SO_BossProfile bossProfile;
     [SerializeField] private CameraManager cm;
-    [SerializeField] private SO_BossDefeatedEventSender bossDefeatedEventSender;
 
 
     public ObjectsToSpawnIn[] objectsToSpawnIn;
@@ -21,7 +20,7 @@ public class BossCheckDefeat : MonoBehaviour
         bossBlackboard = GetComponent<Blackboard>();
         bossProfile = bossBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
 
-        bossDefeatedEventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
+        GameManager.Instance.EventSender.bossIsDefeatedEvent.AddListener(DestroyBoss);
 
     }
 

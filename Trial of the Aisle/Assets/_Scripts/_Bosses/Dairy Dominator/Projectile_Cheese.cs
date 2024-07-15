@@ -53,7 +53,7 @@ public class Projectile_Cheese : Projectile
         {
             if (collision.gameObject.CompareTag("Boss"))
             {
-                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
+                GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
@@ -73,7 +73,7 @@ public class Projectile_Cheese : Projectile
             if (collision.gameObject.CompareTag("Player"))
             {
 
-                adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
+                GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
@@ -97,7 +97,7 @@ public class Projectile_Cheese : Projectile
         //On Collision with the player, deal damage
         if (collision.gameObject.CompareTag("Player"))
         {
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

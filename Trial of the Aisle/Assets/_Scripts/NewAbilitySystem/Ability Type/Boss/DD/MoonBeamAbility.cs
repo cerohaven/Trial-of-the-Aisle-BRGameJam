@@ -8,7 +8,6 @@ public class RaycastAbility : Ability
     public float abilityDuration = 2f; // Duration of the ability's effect
     public float damageInterval = 0.5f; // Time between each damage tick
     public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
-    public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
     public ChangeHealth changeHealthAmount; // Amount of damage to apply
 
     public override void Activate(GameObject owner)
@@ -76,7 +75,7 @@ public class RaycastAbility : Ability
             if (hitCollider.CompareTag("Boss"))
             {
                 // Apply damage to each 'Boss' object found within the range
-                adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
+                GameManager.Instance.EventSender.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
             }
             else if (hitCollider.CompareTag("Pill"))
             {
