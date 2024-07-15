@@ -8,7 +8,6 @@ public class FruitsOfFuryAbility : Ability
     public GameObject grapeMinionPrefab;
     public int minionCount = 5;
     public float spawnRadius = 3f;
-    public SO_AdjustHealth adjustHealthSO; // Reference to the SO_AdjustHealth ScriptableObject
     public float minDistanceFromWalls = 1f; // Minimum distance from walls
 
     public override void Activate(GameObject owner)

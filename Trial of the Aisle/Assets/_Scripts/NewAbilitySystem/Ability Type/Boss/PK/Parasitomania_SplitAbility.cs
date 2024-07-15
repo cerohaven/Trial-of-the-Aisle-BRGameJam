@@ -23,11 +23,20 @@ public class SpreadShotAbility : Ability
 
     private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset) // Instantiate a projectile with an angle offset.
     {
-        Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset); // Calculate rotation with spread.
-        GameObject projectile = Instantiate(projectilePrefab, position, rotation); // Create the projectile.
-        projectile.GetComponent<Rigidbody2D>().velocity = rotation * Vector2.right * projectileSpeed; // Set velocity in the direction of rotation.
-        projectile.transform.up = rotation * Vector2.right;
+        // Calculate the rotation with the angle offset
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
+        Quaternion rotation = Quaternion.Euler(0, 0, angle);
 
+        // Instantiate the projectile
+        GameObject projectile = Instantiate(projectilePrefab, position, rotation);
 
+        // Calculate the new direction with the angle offset
+        Vector2 newDirection = Quaternion.Euler(0, 0, angleOffset) * direction;
+
+        // Set the projectile's velocity
+        projectile.GetComponent<Rigidbody2D>().velocity = newDirection * projectileSpeed;
+
+        // Ensure the projectile is oriented correctly
+        projectile.transform.up = newDirection;
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions{
 
 	public class PainKiller_GainHealthActionTask : ActionTask{
-		public SO_AdjustHealth adjustHealth;
 		public ChangeHealth healAmount;
 
         private FMOD.Studio.EventInstance BadHabitInstance;
@@ -20,7 +19,7 @@ namespace NodeCanvas.Tasks.Actions{
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-			adjustHealth.ChangeBossHealthEventSend(healAmount, HealthType.Healing, new UnityEngine.Vector2(0,0));
+            GameManager.Instance.EventSender.ChangeBossHealthEventSend(healAmount, HealthType.Healing, new UnityEngine.Vector2(0,0));
             LeanTween.scale(agent.gameObject, Vector3.one * 1.1f, 0.1f).setOnComplete(Testing);
 			agent.GetComponent<SwapMaterialDemo>().Swap(1);
 

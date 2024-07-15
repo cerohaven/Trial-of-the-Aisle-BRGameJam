@@ -32,7 +32,7 @@ public class PlayerHealthBar : MonoBehaviour
         SFX_PlayerHeal = RuntimeManager.CreateInstance("event:/SFX/Player/Player_Ability/P_Bad_Habit");
         SFX_PlayerHurt = RuntimeManager.CreateInstance("event:/SFX/Player/P_Hurt");
 
-        playerGameObject = GameObject.FindObjectOfType<PlayerInput>().gameObject;
+        playerGameObject = GameObject.FindObjectOfType<PlayerController>().gameObject;
         playerRectTransform = GetComponent<RectTransform>();
         playerSr = playerGameObject.GetComponent<SpriteRenderer>();
 
@@ -79,7 +79,7 @@ public class PlayerHealthBar : MonoBehaviour
             bool lostAllHealth = playerHealth <= 0;
             if (lostAllHealth)
             {
-                SceneTransitionController.Instance.LoadSpecificSceneString("MainMenu");
+                GameManager.Instance.LoadSpecificSceneString("MainMenu");
             }
             
 

@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
-    //References
-    [SerializeField] private SO_AdjustHealth adjustHealth;
 
     [Separator()]
     [SerializeField] private float xSmallHealthAdjustment;
@@ -35,8 +33,8 @@ public class UIManager : MonoBehaviour
         bossHealthBar = GameObject.FindObjectOfType<BossHealthBar>();
 
         //Once event is called, run these methods
-        adjustHealth.changePlayerHealthEvent.AddListener(AdjustPlayerHealth);
-        adjustHealth.changeBossHealthEvent.AddListener(AdjustBossHealth);
+        GameManager.Instance.EventSender.changePlayerHealthEvent.AddListener(AdjustPlayerHealth);
+        GameManager.Instance.EventSender.changeBossHealthEvent.AddListener(AdjustBossHealth);
     }
 
     private void AdjustPlayerHealth(ChangeHealth changeHealthState, HealthType healthType)

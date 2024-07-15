@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 0.67
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
@@ -121,8 +121,8 @@ MonoBehaviour:
   bossCardImage: {fileID: 2420994663199609490}
   abilityOneTextPanel: {fileID: 3472198125153351896}
   abilityTwoTextPanel: {fileID: 9091370661372683675}
-  abilityOne: {fileID: 0}
-  abilityTwo: {fileID: 0}
+  abilityOne: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
+  abilityTwo: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
 --- !u!1 &670139629596734718
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2863320492856235456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ab265cc9d0e2d4d91193f8b40291ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8502f9aac233ffc4aaa1bcf54a1cca57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newAbilitySelectionUI: {fileID: 0}
@@ -470,7 +470,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2870372183674134687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ab265cc9d0e2d4d91193f8b40291ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8502f9aac233ffc4aaa1bcf54a1cca57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newAbilitySelectionUI: {fileID: 0}
@@ -488,8 +488,8 @@ GameObject:
   - component: {fileID: 3388985027569703334}
   - component: {fileID: 8258778259409935445}
   - component: {fileID: 108588988300756323}
+  - component: {fileID: 7078477123674084148}
   - component: {fileID: 561706723412362155}
-  - component: {fileID: 1458586585041493369}
   - component: {fileID: 8984107643677477012}
   m_Layer: 5
   m_Name: AbilityOne
@@ -557,6 +557,22 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7078477123674084148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117213403581950414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809b55d9f410636418306c11e8d0e4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 2466867264656441011}
+  abilityIndex: 1
+  ability: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
+  filled: 0
 --- !u!114 &561706723412362155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,22 +629,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1458586585041493369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3117213403581950414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb849c4fbb21af341959fbbf0210fff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 2466867264656441011}
-  abilityIndex: 1
-  ability: {fileID: 0}
-  filled: 0
 --- !u!225 &8984107643677477012
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -786,14 +786,14 @@ GameObject:
   - component: {fileID: 1519839243774564489}
   - component: {fileID: 3300483770465504729}
   - component: {fileID: 926271136362340978}
-  - component: {fileID: 4086130752555733819}
+  - component: {fileID: 1904371128054531516}
   m_Layer: 5
   m_Name: ToolTipBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1519839243774564489
 RectTransform:
   m_ObjectHideFlags: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4086130752555733819
+--- !u!114 &1904371128054531516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -862,12 +862,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3472198125153351896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4e8c3ebcb98284d9316709a15167e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f3df632e956714f9a1edf9033fb42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityRectTransform: {fileID: 3388985027569703334}
   rectTransform: {fileID: 1519839243774564489}
-  offset: {x: 10, y: 10}
+  offset: {x: 10, y: -10}
 --- !u!1 &4137525734117343080
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,8 +879,8 @@ GameObject:
   - component: {fileID: 6876144909001239220}
   - component: {fileID: 7432457823197799473}
   - component: {fileID: 6906709306345880128}
+  - component: {fileID: 4350275513542747915}
   - component: {fileID: 7246206834884094764}
-  - component: {fileID: 6379848455439209091}
   - component: {fileID: 6349895734792378262}
   m_Layer: 5
   m_Name: AbilityTwo
@@ -948,6 +948,22 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4350275513542747915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137525734117343080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809b55d9f410636418306c11e8d0e4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 2466867264656441011}
+  abilityIndex: 2
+  ability: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
+  filled: 0
 --- !u!114 &7246206834884094764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,22 +1020,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6379848455439209091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4137525734117343080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb849c4fbb21af341959fbbf0210fff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 2466867264656441011}
-  abilityIndex: 2
-  ability: {fileID: 0}
-  filled: 0
 --- !u!225 &6349895734792378262
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6054855287323082414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ab265cc9d0e2d4d91193f8b40291ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8502f9aac233ffc4aaa1bcf54a1cca57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newAbilitySelectionUI: {fileID: 0}
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 8533476290217538007}
   - component: {fileID: 7486249255006444370}
   - component: {fileID: 664184234642594866}
-  - component: {fileID: 1082692242936780855}
+  - component: {fileID: 1453143386737222570}
   m_Layer: 5
   m_Name: 'ToolTipBox '
   m_TagString: Untagged
@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1082692242936780855
+--- !u!114 &1453143386737222570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1797,9 +1797,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9091370661372683675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4e8c3ebcb98284d9316709a15167e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f3df632e956714f9a1edf9033fb42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   abilityRectTransform: {fileID: 6876144909001239220}
   rectTransform: {fileID: 8533476290217538007}
-  offset: {x: 75, y: 100}
+  offset: {x: 10, y: -10}

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Events;
+
 using UnityEngine.InputSystem.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
+
 using UnityEngine.UI;
 
 public class PauseGameMenu : MonoBehaviour
@@ -15,21 +14,15 @@ public class PauseGameMenu : MonoBehaviour
     /// The 'GameManager' is in charge of checking to see if the game is paused or not.
     /// </summary>
 
-    //References
-    private PlayerController pc;
 
     //components
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
-
     [SerializeField] private Button resumeButton;
 
-   
 
-    private void Awake()
+    private void Start()
     {
-        pc = GameObject.FindObjectOfType<PlayerController>();
-        //hover over the 'resume button' on startup
-        if (pc.GetCurrentControlScheme() == "Controller")
+        Debug.Log(GameManager.Instance.PlayerInputHandler);
+        if (GameManager.Instance.PlayerInputHandler.GetCurrentControlScheme() == "Controller")
             resumeButton.Select();
     }
 
@@ -45,7 +38,7 @@ public class PauseGameMenu : MonoBehaviour
         //AudioManager.instance.Play("ClickButton");
 
         //Send event to the game manager to resume the game
-        pauseMenuEvent.ResumeGameEventSend();
+        GameManager.Instance.EventSender.ResumeGameEventSend();
 
         //remove this pause menu
         Destroy(transform.root.gameObject);
@@ -56,8 +49,8 @@ public class PauseGameMenu : MonoBehaviour
 
     public void PauseMenu_TitleScreen()
     {
-        SceneTransitionController.Instance.TransitionType = TransitionType.MainMenu;
-        SceneTransitionController.Instance.LoadSpecificSceneStringPaused("MainMenu");
+        GameManager.Instance.TransitionType = TransitionType.MainMenu;
+        GameManager.Instance.LoadSpecificSceneStringPaused("MainMenu");
 
     }
 

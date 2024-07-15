@@ -49,12 +49,12 @@ public class BossIntroAnimation : MonoBehaviour
 
     private void FreezePlayerMovement()
     {
-        pc.CanMove = false;
+        GameManager.Instance.CanMove = false;
     }
 
     private void UnFreezePlayerMovement()
     {
-        pc.CanMove = true;
+        GameManager.Instance.CanMove = true;
     }
 
     IEnumerator playsound()
