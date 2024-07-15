@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/_Scenes/Tutorial.unity
     guid: ee3505354b7dd8542803b934f00feded
   - enabled: 1
-    path: Assets/_Scenes/Boss_Painkiller.unity
-    guid: 65885c6780e98034696761ce036c029a
+    path: Assets/_Scenes/Boss_Painkiller_LD_Redesign.unity
+    guid: e529bee9173ecac488fbfede0d3b8e99
   - enabled: 1
     path: Assets/_Scenes/Boss_AlexanderTheGrape.unity
     guid: 2cfecbe3e4b66e34f99ea4a9cc66a8ab
