@@ -47,7 +47,7 @@ public class Projectile_Cheese : Projectile
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.gameEnded) return;
+        if (GameManager.Instance.GameEnded) return;
 
         if (whoThrew == WhoThrew.Player)
         {

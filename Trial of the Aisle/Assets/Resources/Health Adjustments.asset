@@ -9,6 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582ac07f1147c354e87419a391268669, type: 3}
-  m_Name: Painkiller Final Phase Event
+  m_Script: {fileID: 11500000, guid: 1d5d6f980e39dd543be05d8a3efbc075, type: 3}
+  m_Name: Health Adjustments
   m_EditorClassIdentifier: 
+  xSmallHealthAdjustment: 1
+  smallHealthAdjustment: 2
+  mediumHealthAdjustment: 5
+  largeHealthAdjustment: 10
+  xLargeHealthAdjustment: 15

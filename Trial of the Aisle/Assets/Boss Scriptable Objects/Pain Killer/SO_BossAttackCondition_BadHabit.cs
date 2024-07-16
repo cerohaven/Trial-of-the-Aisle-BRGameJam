@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Bad Habit Condition", menuName = "Boss Scriptable Objects/Boss Attack Condition/PainKiller/Bad Habit Condition")]
-public class SO_BossAttackCondition_BadHabit : BossAttackCondition
+public class SO_BossAttackCondition_BadHabit : SO_BossAttackConditionBase
 {
     [Range(0,100)]
     public float minimumHealthPercentToUseAttack = 70f;

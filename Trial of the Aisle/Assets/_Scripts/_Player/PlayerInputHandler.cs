@@ -44,7 +44,7 @@ public class PlayerInputHandler : MonoBehaviour
         unPauseInput.Enable();
         interactInput.Enable();
 
-        dodgeInput.performed += OnDodge;
+        dodgeInput.started += OnDodge;
         pauseInput.performed += OnPause;
         unPauseInput.performed += OnUnPause;
     }
@@ -57,7 +57,7 @@ public class PlayerInputHandler : MonoBehaviour
         unPauseInput.Disable();
         interactInput.Disable();
 
-        dodgeInput.performed -= OnDodge;
+        dodgeInput.started -= OnDodge;
         pauseInput.performed -= OnPause;
         unPauseInput.performed -= OnUnPause;
     }

@@ -10,7 +10,7 @@ using UnityEngine.Events;
 /// </summary>
 /// 
 
-[CreateAssetMenu(fileName = "Event Sender", menuName = "Event Sender")]
+[CreateAssetMenu(fileName = "Event Sender", menuName = "Scriptable Objects/Event Sender")]
 public class SO_EventSender : ScriptableObject
 {
     #region Boss Defeated Events
@@ -35,13 +35,13 @@ public class SO_EventSender : ScriptableObject
     }
 
 
-    //Goes to the boss in this level (Whichever will recieve the event in this scene)
+    //Goes to the Camera to switch to post battle cam
     [System.NonSerialized]
-    public UnityEvent bossDefeatAnimationEvent = new UnityEvent();
+    public UnityEvent switchCameraStateEvent = new UnityEvent();
 
-    public void BossDefeatedAnimationSend()
+    public void SwitchCameraStateEventSend()
     {
-        bossDefeatAnimationEvent.Invoke();
+        switchCameraStateEvent.Invoke();
     }
 
     #endregion

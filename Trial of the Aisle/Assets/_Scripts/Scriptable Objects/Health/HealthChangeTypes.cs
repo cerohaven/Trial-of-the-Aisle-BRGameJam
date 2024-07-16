@@ -5,7 +5,7 @@ public enum ChangeHealth: byte
     Small_Health,
     Medium_Health,
     Large_Health,
-    X_Large_Health,
+    X_Large_Health
 }
 
 public enum HealthType: byte

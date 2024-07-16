@@ -7,7 +7,7 @@ using UnityEngine;
 /// To make a new condition, create a new Scriptable Object script and inherit from this script
 /// </summary>
 
-public abstract class BossAttackCondition : ScriptableObject
+public abstract class SO_BossAttackConditionBase : ScriptableObject
 {
 
 

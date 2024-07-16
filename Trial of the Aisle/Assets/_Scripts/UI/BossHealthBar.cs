@@ -18,7 +18,7 @@ public class BossHealthBar : MonoBehaviour
     [SerializeField] private GameObject healEffect;
 
     //References
-    private UIManager uiManager;
+    private SO_HealthAdjustments uiManager;
     private RectTransform bossRectTransform;
 
     private Image bossBarImg;
@@ -50,7 +50,7 @@ public class BossHealthBar : MonoBehaviour
         bossBarImg = GetComponent<Image>();
 
         bossRectTransform = GetComponent<RectTransform>();
-        uiManager = GameObject.FindObjectOfType<UIManager>();
+        uiManager = GameObject.FindObjectOfType<SO_HealthAdjustments>();
         Boss_SFX_increaseHP = RuntimeManager.CreateInstance("event:/UI/GUI/HealthBarRaise");
         UI_BossHurt = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Hurt");
         SFX_heal = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Heal");
@@ -69,8 +69,8 @@ public class BossHealthBar : MonoBehaviour
 
     private void Update()
     {
-        if (!uiManager.FinishedBossIntro && canStartIncrease)
-            IncreaseBossBar();
+        //if (!uiManager.FinishedBossIntro && canStartIncrease)
+            //IncreaseBossBar();
 
     }
 
@@ -106,7 +106,7 @@ public class BossHealthBar : MonoBehaviour
         //when the boss bar loads up all the way to being full, then commence the battle and keep it's scale at max
         if (bossRectTransform.sizeDelta.x >= maxBossBarScaleX)
         {
-            uiManager.FinishedBossIntro = true;
+            //uiManager.FinishedBossIntro = true;
 
             //increaseHP_SFX.stop();
             //AudioManager.instance.Stop("ui_bossBarIncrease");
@@ -127,7 +127,6 @@ public class BossHealthBar : MonoBehaviour
             StopCoroutine(colourCoroutine);
             StartCoroutine(colourCoroutine);
 
-            UpdateHealthBar(_bossChangedHealth);
 
             bool bossIsDefeated = bossHealth <= 0.25f;
             if (bossIsDefeated)
@@ -144,13 +143,11 @@ public class BossHealthBar : MonoBehaviour
             GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
             hit.transform.up = _upDir;
 
-            bossBlackboard.SetVariableValue("bossPhase", SetBossPhase());
-
 
         }
         else
         {
-            UpdateHealthBar(_bossChangedHealth);
+
             GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
             temp.transform.localScale = Vector2.one * 3;
             SFX_heal.start();
@@ -159,50 +156,4 @@ public class BossHealthBar : MonoBehaviour
 
     }
 
-    private void UpdateHealthBar(float _health)
-    {
-        bossHealth += _health;
-        bossHealth = Mathf.Clamp(bossHealth, 0, maxHealth);
-        bossRectTransform.sizeDelta = new Vector2((bossHealth / maxHealth) * 100, bossRectTransform.sizeDelta.y);
-
-
-        bossBlackboard.SetVariableValue("bossHealth", bossHealth);
-    }
-
-    private int SetBossPhase()
-    {
-        
-        //Get percent health from max health
-        float healthPercent = (bossHealth / maxHealth * 100);
-
-        //loop through the phases
-
-        //if lower than one, set that phase
-
-        int bossPhases = bossProfile.B_BossPhases.Length;
-        //For loop to see if it is > the current increment or not
-        for (int i = bossPhases - 1; i >= 0; i--)
-        {
-
-            //eg. if increment is 65%, then we want to check if <25, then <50, then <75, then <100
-            //Yes to <75 (i = 1), so we set the pill speed to be projectileSpeed[i]
-
-            if (healthPercent > bossProfile.B_BossPhases[i].healthPercent)
-                continue;
-           
-
-            //Play the special Health Increment event if this phase has one and it hasn't already played
-            if (bossProfile.B_BossPhases[i].phaseEvent != null)
-            {
-                if(!bossProfile.B_BossPhases[i].phaseEvent.EventPlayed)
-                    bossProfile.B_BossPhases[i].phaseEvent.OnHealthChange();
-            }
-
-            return i + 1;
-
-           
-        }
-
-        return 0;
-    }
 }

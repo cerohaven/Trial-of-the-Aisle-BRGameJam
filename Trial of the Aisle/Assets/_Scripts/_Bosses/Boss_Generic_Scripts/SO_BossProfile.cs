@@ -17,7 +17,7 @@ using UnityEngine.UI;
 public class SO_BossProfile : ScriptableObject
 {
     [SerializeField] public string b_Name = "Boss Name";
-    [SerializeField] private float b_MaxHealth = 250;
+    [SerializeField] private int b_MaxHealth = 250;
     [SerializeField] private Sprite b_BossProfilePicture;
     [SerializeField] private Texture2D b_BossProfileTexture;
     [SerializeField] private Color32 b_BossColourPalette = new Color32(255,255,255,255);
@@ -55,7 +55,7 @@ public class SO_BossProfile : ScriptableObject
     private Texture2D postBattleCanvasTexture;
 
     public string m_Name { get => b_Name;}
-    public float B_MaxHealth { get => b_MaxHealth; }
+    public int B_MaxHealth { get => b_MaxHealth; }
     public Sprite m_BossProfilePicture { get => b_BossProfilePicture;}
     public Texture2D m_BossProfileTexture { get => b_BossProfileTexture; set => b_BossProfileTexture = value; }
 
@@ -105,7 +105,7 @@ public class BossHealthIncrements
     //public Vector2 minMaxProjectilesToThrow;
 
     [Tooltip("When the boss reaches this threshold, we can run custom code for a unique event to possibly trigger an animation, noise, etc.")]
-    public BossPhaseEvent phaseEvent;
+    public SO_EntityHealthEventBase phaseEvent;
 
     //[Header("Simultaneous Projectiles Thrown")]
     //[Range(1, 3)]
@@ -136,7 +136,7 @@ public class BossAttacks
     public float percentChanceToUse = 0.5f;
 
     [Tooltip("Any special condition for this attack to play. Conditions like 'the boss must be at ___ health' or 'the player used their ability ___ imes'")]
-    public BossAttackCondition attackCondition;
+    public SO_BossAttackConditionBase attackCondition;
 }
 #endregion
 
