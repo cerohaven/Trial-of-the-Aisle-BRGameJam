@@ -15,9 +15,24 @@ public class EntityHealthEditor : Editor
     SerializedProperty _deathEvent;
     SerializedProperty _showHealthGraphic;
     SerializedProperty _sampleFromBoss;
+    SerializedProperty _hurtSFXEventName;
+    SerializedProperty _healSFXEventName;
+    SerializedProperty _hurtEffectPrefab;
+    SerializedProperty _healEffectPrefab;
+    SerializedProperty _invincibleAfterDamage;
+    SerializedProperty _amountOfInvincibilityFlickers;
+    SerializedProperty _invincibilityDelayBetweenFlickers;
+    SerializedProperty _hurtFlickerAfterDamage;
+    SerializedProperty _amountOfHurtFlickers;
+    SerializedProperty _hurtDelayBetweenFlickers;
+
+    private bool _hurtFoldout;
+    private bool _healFoldout;
 
     readonly Color c = Color.green;
     private float noPhaseGap = 0; //gap between the "Unit Health Bar" title and the actual health bar should be lower if no phases and more if phases
+
+
     private void OnEnable()
     {
         _maxHealth = serializedObject.FindProperty("_maxHealth");
@@ -28,6 +43,16 @@ public class EntityHealthEditor : Editor
         _deathEvent = serializedObject.FindProperty("_deathEvent");
         _showHealthGraphic = serializedObject.FindProperty("_showHealthGraphic");
         _sampleFromBoss = serializedObject.FindProperty("_sampleFromBoss");
+        _hurtSFXEventName = serializedObject.FindProperty("_hurtSFXEventName");
+        _healSFXEventName = serializedObject.FindProperty("_healSFXEventName");
+        _hurtEffectPrefab = serializedObject.FindProperty("_hurtEffectPrefab");
+        _healEffectPrefab = serializedObject.FindProperty("_healEffectPrefab");
+        _invincibleAfterDamage = serializedObject.FindProperty("_invincibleAfterDamage");
+        _amountOfInvincibilityFlickers = serializedObject.FindProperty("_amountOfInvincibilityFlickers");
+        _invincibilityDelayBetweenFlickers = serializedObject.FindProperty("_invincibilityDelayBetweenFlickers");
+        _hurtFlickerAfterDamage = serializedObject.FindProperty("_hurtFlickerAfterDamage");
+        _amountOfHurtFlickers = serializedObject.FindProperty("_amountOfHurtFlickers");
+        _hurtDelayBetweenFlickers = serializedObject.FindProperty("_hurtDelayBetweenFlickers");
     }
 
     public override void OnInspectorGUI()
@@ -56,12 +81,81 @@ public class EntityHealthEditor : Editor
         if(!isSamplingFromBoss)
             EditorGUILayout.PropertyField(_maxHealth);
 
+
         EditorGUILayout.PropertyField(_healthBar);
+       
+
+
+        
+        #region On Hit and On Heal Parameters
+
+        GUILayout.Space(10);
+    
+        _hurtFoldout = EditorGUILayout.Foldout(_hurtFoldout, new GUIContent("On Hit Parameters"));
+        if(_hurtFoldout)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(_hurtSFXEventName);
+            EditorGUILayout.PropertyField(_hurtEffectPrefab);
+
+            if (_hurtFlickerAfterDamage.boolValue == false) //can only choose one or the other: invincibility Flicker or Hurt Flicker
+            {
+                EditorGUILayout.PropertyField(_invincibleAfterDamage);
+            }
+
+            if (_invincibleAfterDamage.boolValue == true)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(_amountOfInvincibilityFlickers);
+                EditorGUILayout.PropertyField(_invincibilityDelayBetweenFlickers);
+                EditorGUI.indentLevel--;
+            }
+
+            if (_invincibleAfterDamage.boolValue == false)  //can only choose one or the other: invincibility Flicker or Hurt Flicker
+            {
+                EditorGUILayout.PropertyField(_hurtFlickerAfterDamage);
+            }
+
+            if (_hurtFlickerAfterDamage.boolValue == true)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(_amountOfHurtFlickers);
+                EditorGUILayout.PropertyField(_hurtDelayBetweenFlickers);
+                EditorGUI.indentLevel--;
+            }
+            EditorGUI.indentLevel--;
+            GUILayout.Space(10);
+        }
+
+
+        _healFoldout = EditorGUILayout.Foldout(_healFoldout, new GUIContent("On Heal Parameters"));
+        if(_healFoldout)
+        {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(_healSFXEventName);
+            EditorGUILayout.PropertyField(_healEffectPrefab);
+            EditorGUI.indentLevel--;
+        }
+
+        GUILayout.Space(10);
+        #endregion
+
+
+
+
+
+
+
+
         if (!isSamplingFromBoss)
             EditorGUILayout.PropertyField(_deathEvent);
 
         if (!isSamplingFromBoss)
+        {
+            GUILayout.Space(10);
             EditorGUILayout.PropertyField(_unitHealthPhases);
+        }
+            
 
         GUILayout.Space(10);
 

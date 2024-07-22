@@ -1,16 +1,19 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Boss Death Event", menuName = "Boss Scriptable Objects/Events/Boss Death Event Default")]
-public class SO_BossDeathEventBase : SO_EntityHealthEventBase
+public class SO_EntityDeathEvent_Boss : SO_EntityHealthEventBase
 {
     [SerializeField] private ObjectsToSpawnIn[] spawnOnDefeat;
 
-    private GameObject attachedGameObject;
+    private GameObject _attachedGameObject;
+
 
     public override void Initialize(GameObject gameObject)
     {
-        attachedGameObject = gameObject;
+        _attachedGameObject = gameObject;
         SpawnObjects();
         DestroyBoss();
     }
@@ -30,7 +33,7 @@ public class SO_BossDeathEventBase : SO_EntityHealthEventBase
         return spawnPos switch
         {
             SpawnType.WORLD_SPAWN => Vector3.zero,
-            SpawnType.BOSS_POSITION => attachedGameObject.transform.position,
+            SpawnType.BOSS_POSITION => _attachedGameObject.transform.position,
             _ => Vector3.zero,
         };
     }
@@ -42,7 +45,7 @@ public class SO_BossDeathEventBase : SO_EntityHealthEventBase
         GameManager.Instance.GameEnded = true;
         GameManager.Instance.BossIsDefeated = true;
 
-        attachedGameObject.SetActive(false);
+        _attachedGameObject.SetActive(false);
     }
 
     public override void StartEventMethod()
@@ -53,6 +56,7 @@ public class SO_BossDeathEventBase : SO_EntityHealthEventBase
 
 
 }
+
 
 
 [System.Serializable]

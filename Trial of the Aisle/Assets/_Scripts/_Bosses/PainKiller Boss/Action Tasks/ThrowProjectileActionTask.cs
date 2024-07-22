@@ -15,6 +15,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		private Transform playerTransform;
 		private float pillSpeed;
+        private EntityHealth _entityHealth;
 
 
 		private IEnumerator endActionRoutine;
@@ -32,7 +33,7 @@ namespace NodeCanvas.Tasks.Actions{
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
      
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
-
+            _entityHealth = agent.GetComponent<EntityHealth>();
 
 
             return null;
@@ -44,7 +45,7 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
 
             //Get the pill speed and time between attacks based on the current phase we're in
-            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            int currentPhase = _entityHealth.CurrentPhase;
             
             pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, currentPhase);
             endActionRoutine = EndActionTask(HelperFunctions.TimeBetweenAttacksAtPhase(bossProfile, currentPhase));

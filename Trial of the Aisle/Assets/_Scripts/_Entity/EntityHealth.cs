@@ -1,6 +1,8 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 using UnityEngine.UI;
+using FMODUnity;
+using System.Collections;
 
 public enum SAMPLEFROMBOSSTYPE
 {
@@ -19,7 +21,7 @@ public class EntityHealth : MonoBehaviour
     [SerializeField] private int _currentHealth;
     [SerializeField] private int _currentPhase = 0;
 
-    [SerializeField] private UnitHealthPhases[] _unitHealthPhases = new UnitHealthPhases[0];
+    [SerializeField] private List<UnitHealthPhases> _unitHealthPhases = new List<UnitHealthPhases>();
 
     [SerializeField] private Image _healthBar;
 
@@ -27,30 +29,63 @@ public class EntityHealth : MonoBehaviour
 
     [SerializeField] private bool _showHealthGraphic;
 
+    [SerializeField] private string _hurtSFXEventName;
+    [SerializeField] private GameObject _hurtEffectPrefab;
+
+    [SerializeField] private string _healSFXEventName;
+    [SerializeField] private GameObject _healEffectPrefab;
+
+    //Invincibility Stuff
+    [SerializeField] private bool _invincibleAfterDamage;
+    [SerializeField] [Range(1,10)] private int _amountOfInvincibilityFlickers;
+    [SerializeField][Range(0,1)] private float _invincibilityDelayBetweenFlickers = 0.1f;
+
+
+    //Hurt Colour Stuff
+    [SerializeField] private bool _hurtFlickerAfterDamage;
+    [SerializeField][Range(1, 10)] private int _amountOfHurtFlickers;
+    [SerializeField][Range(0, 1)] private float _hurtDelayBetweenFlickers = 0.1f;
+
+    private bool _isInvincible = false; // determines if the entity should take damage or not
+
     private SO_HealthAdjustments healthAdjustments;
+    private SpriteRenderer _spriteRenderer; //For changing the sprite's colours when we're invincible or get hit
+    private Color colour = Color.white;
+
+    FMOD.Studio.EventInstance UI_EntityHurt;
+    FMOD.Studio.EventInstance UI_EntityHeal;
 
     //Properties
     public int CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
     public int MaxHealth { get => _maxHealth; }
-    public UnitHealthPhases[] UnitHealthPhases { get => _unitHealthPhases; set => _unitHealthPhases = value; }
+    public List<UnitHealthPhases> UnitHealthPhases { get => _unitHealthPhases; set => _unitHealthPhases = value; }
     public int CurrentPhase { get => _currentPhase; }
     public Image HealthBar { get => _healthBar; }
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        if(_spriteRenderer == null)
+        {
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
         healthAdjustments = GameManager.Instance.HealthAdjustments;
+        UI_EntityHurt = RuntimeManager.CreateInstance(_hurtSFXEventName);
+        UI_EntityHeal = RuntimeManager.CreateInstance(_healSFXEventName);
     }
 
     private void Start()
     {
+        SampleValuesFromBoss();
+
         //Initialize Events for the boss phases
-        for (int i = 0; i < _unitHealthPhases.Length; i++)
+        for (int i = 0; i < _unitHealthPhases.Count; i++)
         {
+            if (_unitHealthPhases[i].unitPhaseEvent == null) continue;
+
             _unitHealthPhases[i].unitPhaseEvent.Initialize(gameObject);
         }
-
-        SampleValuesFromBoss();
-        
     }
 
     /// <summary>
@@ -62,16 +97,31 @@ public class EntityHealth : MonoBehaviour
 
         SO_BossProfile bossProfile = GetComponent<InitializeBoss>().ThisBossProfile;
 
-        if (bossProfile == null) return;
+        if (bossProfile == null) { Debug.LogError($"No Boss Profile Attached to this {gameObject.name} Game Object"); return; }
 
         _maxHealth = bossProfile.B_MaxHealth;
-        _unitHealthPhases = new UnitHealthPhases[bossProfile.B_BossPhases.Length];
+        _currentHealth = _maxHealth;
+        _deathEvent = bossProfile.B_BossDeathEvent;
 
-        for (int i = 0; i < _unitHealthPhases.Length; i++)
+        //Now Add to the List of Health Phases
+        _unitHealthPhases.Clear();
+
+        for(int i = 0; i < bossProfile.B_BossPhases.Length; i++)
         {
+            _unitHealthPhases.Add(new UnitHealthPhases());
+        }
+        
+
+        for (int i = 0; i < _unitHealthPhases.Count; i++)
+        {
+
             _unitHealthPhases[i].phaseHealthPercent = bossProfile.B_BossPhases[i].healthPercent;
             _unitHealthPhases[i].unitPhaseEvent = bossProfile.B_BossPhases[i].phaseEvent;
         }
+
+        //Set the fill bar to 0 to prepare for the intro animation
+        _healthBar.fillAmount = 0;
+
     }
 
     /// <summary>
@@ -84,42 +134,73 @@ public class EntityHealth : MonoBehaviour
         int healAmount = GetHealthValue(_changeHealth, HealthType.Healing);
 
         //heal the unit and make sure their health can't go over their maxHealth
-        _currentHealth = Mathf.Clamp(_currentHealth + healAmount, 0, _maxHealth);
+        _currentHealth += healAmount;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _maxHealth);
+
         Debug.Log($"{gameObject.name} healed {healAmount} HP");
 
         UpdateHealthBar();
 
+        UI_EntityHeal.start();
+
+
+        if (_healEffectPrefab)
+        {
+            Instantiate(_healEffectPrefab, transform.position, Quaternion.identity);
+        }
+
+
+
         //Now update the current unit's phase based on the new health
-        if (_unitHealthPhases.Length != 0) _currentPhase = SetCurrentHealthPhase();
+        if (_unitHealthPhases.Count != 0) _currentPhase = SetCurrentHealthPhase();
     }
 
 
     /// <summary>
     /// Deal Damage to the unit this script is attached to
     /// </summary>
-
     public void DamageEntity(ChangeHealth _changeHealth)
     {
         if (_currentHealth <= 0) return;
+        if (_isInvincible) return;
 
         int damageAmount = GetHealthValue(_changeHealth, HealthType.Damage);
 
         //reduce health and make sure we can't go into the negatives
-        _currentHealth = Mathf.Clamp(_currentHealth - damageAmount, 0, _maxHealth);
+        _currentHealth += damageAmount;
+        Mathf.Clamp(_currentHealth, 0, _maxHealth);
+
         Debug.Log($"{gameObject.name} took {damageAmount} damage");
+
+        UpdateHealthBar();
+
+        UI_EntityHurt.start();
 
 
         if (_currentHealth <= 0)
         {
             PerformDeathLogic();
-
         }
 
-        UpdateHealthBar();
+        if(_invincibleAfterDamage)
+        {
+            StartCoroutine(InvincibleCoroutine());
+        }
 
+        if(_hurtFlickerAfterDamage)
+        {
+            StartCoroutine(BossColourFlicker());
+        }
+
+        if(_hurtEffectPrefab)
+        {
+            Instantiate(_hurtEffectPrefab, transform.position, Quaternion.identity);
+        }
         
+        
+
         //Now update the current unit's phase based on the new health
-        if (_unitHealthPhases.Length != 0) _currentPhase = SetCurrentHealthPhase();
+        if (_unitHealthPhases.Count != 0) _currentPhase = SetCurrentHealthPhase();
     }
 
 
@@ -177,7 +258,7 @@ public class EntityHealth : MonoBehaviour
         float healthPercent = ((float)_currentHealth / (float)_maxHealth * 100.00f);
 
         //For loop to see if it is > the current increment or not
-        for (int i = _unitHealthPhases.Length - 1; i >= 0; i--)
+        for (int i = _unitHealthPhases.Count - 1; i >= 0; i--)
         {
 
             //eg. if the current health is 65%, then we want to check if <25, then <50, then <75, then <100
@@ -224,15 +305,97 @@ public class EntityHealth : MonoBehaviour
     }
 
 
+    #region Invincibility Frames 
+
+    private void Invincible()
+    {
+        colour.a++;
+        colour.a %= 2;
+        _spriteRenderer.color = new Color(1, 1, 1, colour.a);
+    }
+
+    private IEnumerator InvincibleCoroutine()
+    {
+        _isInvincible = true;
+
+        for(int i = 0; i < _amountOfInvincibilityFlickers; i++)
+        {
+            Invincible();
+            yield return new WaitForSeconds(_invincibilityDelayBetweenFlickers);
+        }
+
+        colour.a = 1;
+        _spriteRenderer.color = new Color(1, 1, 1, colour.a);
+        _isInvincible = false;
+    }
+
+    #endregion
+
+    #region Hurt Change Colour Frames 
+
+    IEnumerator BossColourFlicker()
+    {
+        for (int i = 0; i < _amountOfHurtFlickers; i++)
+        {
+            colour.r = 1;
+            colour.g = 0;
+            colour.b = 0;
+            _spriteRenderer.color = new Color(colour.r, colour.g, colour.b, 1);
+
+            yield return new WaitForSeconds(_hurtDelayBetweenFlickers * 0.5f);
+
+            colour.r = 1;
+            colour.g = 1;
+            colour.b = 1;
+            _spriteRenderer.color = new Color(colour.r, colour.g, colour.b, 1);
+            yield return new WaitForSeconds(_hurtDelayBetweenFlickers * 0.5f);
+        }
+
+        _spriteRenderer.color = Color.white;
+        yield return null;
+    }
+
+    #endregion
+
+
+    #region Updating Health Bar UI Fill
     private void UpdateHealthBar()
     {
+        
         if (_healthBar != null)
         {
             _healthBar.fillAmount = 1.00f / ((float)_maxHealth / (float)_currentHealth);
         }
     }
 
+    /// <summary>
+    /// Plays when we first load into the boss scene. The UI health bar increases from 0-1.
+    /// </summary>
+    public void IncreaseHealthBar(float goalFillValue, float fillDuration)
+    {
+        
+        StartCoroutine(FillHealthBarToValue(goalFillValue, fillDuration));
+    }
 
+    private IEnumerator FillHealthBarToValue(float goalFillValue, float fillDuration)
+    {
+        //how much we want to increment to go to value in certain amount of time.
+        //I need To get the length, and then do length / seconds?
+        float increment = (goalFillValue - _healthBar.fillAmount) / fillDuration;
+
+        while(_healthBar.fillAmount < goalFillValue)
+        {
+            _healthBar.fillAmount += increment * Time.deltaTime;
+
+            //We want to go to the goal fill value, but if the boss takes damage we don't want to go past that.
+            _healthBar.fillAmount = Mathf.Clamp(_healthBar.fillAmount, 0, 1.00f / ((float)_maxHealth / (float)_currentHealth));
+            yield return null;
+        }
+
+        yield return null;
+    }
+
+    #endregion
 
 
     #region Extra Functions

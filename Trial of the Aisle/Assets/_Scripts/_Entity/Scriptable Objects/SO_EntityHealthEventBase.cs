@@ -6,4 +6,6 @@ public abstract class SO_EntityHealthEventBase : ScriptableObject
     public bool AlreadyPerformedFunction { get => alreadyPerformedFunction; }
     public abstract void Initialize(GameObject gameObject);
     public abstract void StartEventMethod();
+
+
 }

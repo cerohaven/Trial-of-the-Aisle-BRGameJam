@@ -12,8 +12,7 @@ public class BossIntroAnimation : MonoBehaviour
 
     [Header("Player and Boss References")]
     [SerializeField] private PlayerController pc;
-    [SerializeField] private Blackboard bossBlackboard;
-    [SerializeField] private BossHealthBar bossHealthBar;
+    [SerializeField] private InitializeBoss initializeBoss;
 
     private void Start()
     {
@@ -39,10 +38,14 @@ public class BossIntroAnimation : MonoBehaviour
 
     private void StartFight()
     {
-        bossHealthBar.CanStartIncrease = true;
         RuntimeManager.PlayOneShot("event:/UI/GUI/HealthBarRaise");
 
-        bossBlackboard.SetVariableValue("canStartBossFight", true);
+        if (initializeBoss == null)
+        {
+            initializeBoss = GameObject.FindObjectOfType<InitializeBoss>();
+        }
+
+        initializeBoss.StartBossBattle();
         
         UnFreezePlayerMovement();
     }

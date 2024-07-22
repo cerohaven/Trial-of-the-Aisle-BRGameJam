@@ -58,13 +58,13 @@ public class BossHealthBar : MonoBehaviour
  
     private void Start()
     {
-        bossBarImg.color = bossProfile.B_BossColourPalette;
+        //bossBarImg.color = bossProfile.B_BossColourPalette;
 
-        maxBossBarScaleX = bossRectTransform.sizeDelta.x;
-        maxHealth = bossProfile.B_MaxHealth;
-        bossHealth = maxHealth;
-        bossBarScaleX = 0;
-        bossRectTransform.sizeDelta = new Vector2(0, bossRectTransform.sizeDelta.y);
+        //maxBossBarScaleX = bossRectTransform.sizeDelta.x;
+        //maxHealth = bossProfile.B_MaxHealth;
+        //bossHealth = maxHealth;
+        //bossBarScaleX = 0;
+        //bossRectTransform.sizeDelta = new Vector2(0, bossRectTransform.sizeDelta.y);
     }
 
     private void Update()
@@ -75,85 +75,68 @@ public class BossHealthBar : MonoBehaviour
     }
 
 
-    IEnumerator BossColourFlicker()
-    {
-        for(int i = 0; i < colourFlickerAmount; i++)
-        {
-            color.r = 1;
-            color.g = 0;
-            color.b = 0;
-            bossSr.color = new Color(color.r, color.g, color.b, 1);
+    //IEnumerator BossColourFlicker()
+    //{
+    //    for(int i = 0; i < colourFlickerAmount; i++)
+    //    {
+    //        color.r = 1;
+    //        color.g = 0;
+    //        color.b = 0;
+    //        bossSr.color = new Color(color.r, color.g, color.b, 1);
 
-            yield return new WaitForSeconds(colourFlickerTime/2);
-            color.r = 1;
-            color.g = 1;
-            color.b = 1;
-            bossSr.color = new Color(color.r, color.g, color.b, 1);
+    //        yield return new WaitForSeconds(colourFlickerTime/2);
+    //        color.r = 1;
+    //        color.g = 1;
+    //        color.b = 1;
+    //        bossSr.color = new Color(color.r, color.g, color.b, 1);
 
-            yield return new WaitForSeconds(colourFlickerTime / 2);
-        }
+    //        yield return new WaitForSeconds(colourFlickerTime / 2);
+    //    }
 
-        bossSr.color = Color.white;
-        yield return null;
-    }
-    private void IncreaseBossBar()
-    {
-        //Increase the blue boss bar until full. (Mini animation that plays at beginning)
-        bossBarScaleX += blueBarIncreaseSpeed * Time.deltaTime;
+    //    bossSr.color = Color.white;
+    //    yield return null;
+    //}
+ 
 
-        bossRectTransform.sizeDelta = new Vector2(bossBarScaleX, bossRectTransform.sizeDelta.y);
+    //public void BossChangeHealth(float _bossChangedHealth, Vector2 _upDir)
+    //{
+    //    if (!gameObject.activeSelf) return;
+    //    //Check to see if healing or damage is being passed
+    //    bool isDamage = _bossChangedHealth < 0;
 
-        //when the boss bar loads up all the way to being full, then commence the battle and keep it's scale at max
-        if (bossRectTransform.sizeDelta.x >= maxBossBarScaleX)
-        {
-            //uiManager.FinishedBossIntro = true;
-
-            //increaseHP_SFX.stop();
-            //AudioManager.instance.Stop("ui_bossBarIncrease");
-
-           
-        }
-    }
-
-    public void BossChangeHealth(float _bossChangedHealth, Vector2 _upDir)
-    {
-        if (!gameObject.activeSelf) return;
-        //Check to see if healing or damage is being passed
-        bool isDamage = _bossChangedHealth < 0;
-
-        if (isDamage)
-        {
-            colourCoroutine = BossColourFlicker();
-            StopCoroutine(colourCoroutine);
-            StartCoroutine(colourCoroutine);
+    //    if (isDamage)
+    //    {
+    //        colourCoroutine = BossColourFlicker();
+    //        StopCoroutine(colourCoroutine);
+    //        StartCoroutine(colourCoroutine);
 
 
-            bool bossIsDefeated = bossHealth <= 0.25f;
-            if (bossIsDefeated)
-            {
-                GameManager.Instance.EventSender.BossIsDefeatedSend();
+    //        bool bossIsDefeated = bossHealth <= 0.25f;
+    //        if (bossIsDefeated)
+    //        {
+    //            GameManager.Instance.EventSender.BossIsDefeatedSend();
 
-                //disables the blue boss bar
-                gameObject.SetActive(false);
+    //            //disables the blue boss bar
+    //            gameObject.SetActive(false);
 
-            }
-            UI_BossHurt.start();
-            //AudioManager.instance.Play("ui_bossHurt");
+    //        }
+    //        UI_BossHurt.start();
+    //        //AudioManager.instance.Play("ui_bossHurt");
 
-            GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
-            hit.transform.up = _upDir;
+    //        GameObject hit = Instantiate(bossHitEffect, bossBlackboard.transform);
+    //        hit.transform.up = _upDir;
 
 
-        }
-        else
-        {
+    //    }
+    //    else
+    //    {
 
-            GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
-            temp.transform.localScale = Vector2.one * 3;
-            SFX_heal.start();
-            //AudioManager.instance.Play("heal");
-        }
+    //        GameObject temp = Instantiate(healEffect, bossBlackboard.gameObject.transform.position, Quaternion.identity);
+    //        temp.transform.localScale = Vector2.one * 3;
+    //        SFX_heal.start();
+    //        //AudioManager.instance.Play("heal");
+    //    }
 
-    }
+    //}
 
 }

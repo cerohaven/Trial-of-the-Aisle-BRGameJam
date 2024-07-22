@@ -10,7 +10,6 @@ using UnityEngine;
 public abstract class SO_BossAttackConditionBase : ScriptableObject
 {
 
-
     public abstract bool OnCheckAttackCondition(Blackboard bossBlackboard);     /// <summary>
                                                                                 /// if we return true, then the attack can successfully be used.
                                                                                 /// if we return false, then we can't use the attack

@@ -41,6 +41,7 @@ MonoBehaviour:
     throwSpeed: 14.3
     attackDelay: 0.88
     phaseEvent: {fileID: 0}
+  b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:
   - attackName: Fruits of Fury
     percentChanceToUse: 0.61

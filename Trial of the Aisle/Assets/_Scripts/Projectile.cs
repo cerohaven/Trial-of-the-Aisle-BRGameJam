@@ -202,7 +202,7 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Boss") && whoThrew == WhoThrew.Player)
         {
             //send to reduce scale of boss bar
-            GameManager.Instance.EventSender.changeBossHealthEvent.Invoke(damageDealt, HealthType.Damage, transform.up);
+            collision.gameObject.GetComponent<EntityHealth>().DamageEntity(damageDealt);
             CinemachineShake.Instance.ShakeCamera();
             Destroy(gameObject);
         }
@@ -210,7 +210,7 @@ public class Projectile : MonoBehaviour
         // HITTING THE PLAYER //
         if(collision.gameObject.CompareTag("Player") && whoThrew == WhoThrew.Boss)
         {
-            GameManager.Instance.EventSender.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
+            collision.gameObject.GetComponent<EntityHealth>().DamageEntity(damageDealt);
             Destroy(gameObject);
         }
 

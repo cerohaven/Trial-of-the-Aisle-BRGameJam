@@ -16919,7 +16919,7 @@ GameObject:
   - component: {fileID: 970637492}
   - component: {fileID: 970637491}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Black Bars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17452,9 +17452,19 @@ MonoBehaviour:
   _currentHealth: 20
   _currentPhase: 0
   _unitHealthPhases: []
-  _healthBar: {fileID: 0}
-  _deathEvent: {fileID: 0}
+  _healthBar: {fileID: 1095431429}
+  _deathEvent: {fileID: 11400000, guid: 147904f6e447a9d47a202e6d1cee585d, type: 2}
   _showHealthGraphic: 0
+  _hurtSFXEventName: event:/SFX/Player/P_Hurt
+  _hurtEffectPrefab: {fileID: 0}
+  _healSFXEventName: event:/SFX/Player/Player_Ability/P_Bad_Habit
+  _healEffectPrefab: {fileID: 258111787011150191, guid: e43574ed83347a5409adaeaabe6ab966, type: 3}
+  _invincibleAfterDamage: 1
+  _amountOfInvincibilityFlickers: 8
+  _invincibilityDelayBetweenFlickers: 0.146
+  _hurtFlickerAfterDamage: 0
+  _amountOfHurtFlickers: 0
+  _hurtDelayBetweenFlickers: 0.1
 --- !u!1 &1095431427
 GameObject:
   m_ObjectHideFlags: 0
@@ -17468,7 +17478,7 @@ GameObject:
   - component: {fileID: 1095431430}
   - component: {fileID: 1095431429}
   m_Layer: 5
-  m_Name: RedBar
+  m_Name: Health Bar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17514,10 +17524,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 1575075489, guid: 78c1b357d448d794baeb25cec37c3580, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -17530,7 +17540,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095431427}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 859d22887a10f3b41ab691dea8ff92aa, type: 3}
   m_Name: 
@@ -62506,8 +62516,7 @@ MonoBehaviour:
   - {fileID: 1911315827}
   - {fileID: 646850554}
   pc: {fileID: 1075837056}
-  bossBlackboard: {fileID: 7073513567513950841}
-  bossHealthBar: {fileID: 8285737914009140694}
+  initializeBoss: {fileID: 0}
 --- !u!1 &1791286231
 GameObject:
   m_ObjectHideFlags: 0
@@ -102245,7 +102254,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8285737914009140698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63bd097357ad4674da299f4bcb8f2225, type: 3}
   m_Name: 
@@ -102545,7 +102554,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423f51c65a512444c8db51ae8a1c5f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossProfile: {fileID: 11400000, guid: 256589a29e931bb48939c0b7fa5029a9, type: 2}
+  _bossProfile: {fileID: 11400000, guid: 256589a29e931bb48939c0b7fa5029a9, type: 2}
+  _bossBarIncreaseDuration: 1
 --- !u!114 &9083388960159939507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102559,13 +102569,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sampleFromBoss: 1
-  _maxHealth: 34
-  _currentHealth: 34
+  _maxHealth: 20
+  _currentHealth: 20
   _currentPhase: 0
   _unitHealthPhases: []
-  _healthBar: {fileID: 0}
+  _healthBar: {fileID: 8285737914009140699}
   _deathEvent: {fileID: 0}
-  _showHealthGraphic: 1
+  _showHealthGraphic: 0
+  _hurtSFXEventName: event:/SFX/Bosses/General/Hurt
+  _hurtEffectPrefab: {fileID: 1615069853370902859, guid: 012eaa353cdc8e7489dfc5aeb47485c1, type: 3}
+  _healSFXEventName: event:/SFX/Bosses/General/Heal
+  _healEffectPrefab: {fileID: 258111787011150191, guid: e43574ed83347a5409adaeaabe6ab966, type: 3}
+  _invincibleAfterDamage: 0
+  _amountOfInvincibilityFlickers: 0
+  _invincibilityDelayBetweenFlickers: 0
+  _hurtFlickerAfterDamage: 1
+  _amountOfHurtFlickers: 8
+  _hurtDelayBetweenFlickers: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ MonoBehaviour:
     throwSpeed: 13.9
     attackDelay: 1.18
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
+  b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:
   - attackName: Paracetamania
     percentChanceToUse: 0.659

@@ -11,7 +11,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override string OnInit(){
             agentBlackboard = agent.GetComponent<Blackboard>();
-            bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
+            bossProfile = agent.GetComponent<InitializeBoss>().ThisBossProfile;
             return null;
 		}
 
@@ -40,9 +40,9 @@ namespace NodeCanvas.Tasks.Actions{
                 //check to see if we can use the attack if it has a special condition
                 if (bossProfile.B_BossAttacks[randAbility].attackCondition != null)
                 {
-                    atkCondition = 
-                    bossProfile.B_BossAttacks[randAbility].attackCondition.OnCheckAttackCondition(agentBlackboard) ? 
-                    true : false;
+                    Debug.Log(bossProfile.B_BossAttacks[randAbility].attackCondition);
+
+                    atkCondition = bossProfile.B_BossAttacks[randAbility].attackCondition.OnCheckAttackCondition(agentBlackboard) ? true : false;
                 }
                 else
                 {
