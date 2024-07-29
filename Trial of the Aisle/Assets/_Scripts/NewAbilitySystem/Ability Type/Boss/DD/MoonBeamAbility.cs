@@ -6,8 +6,10 @@ public class RaycastAbility : Ability
 {
     public GameObject moonbeamPrefab; // Reference to the Moonbeam prefab with a LineRenderer
     public float abilityDuration = 2f; // Duration of the ability's effect
+    public float splashDuration = 1f; // Duration of the splash effect
     public float damageInterval = 0.5f; // Time between each damage tick
     public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
+
     public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
     public ChangeHealth changeHealthAmount; // Amount of damage to apply
 
@@ -56,7 +58,7 @@ public class RaycastAbility : Ability
 
             if (Time.time >= nextDamageTime)
             {
-                ApplyDamage(mousePosition);
+                ApplyDamage(owner, mousePosition);
                 nextDamageTime += damageInterval; // Schedule the next damage application
             }
 
@@ -67,7 +69,7 @@ public class RaycastAbility : Ability
         Destroy(impactColliderInstance); // Clean up the impact collider instance when done
     }
 
-    private void ApplyDamage(Vector3 position)
+    private void ApplyDamage(GameObject owner, Vector3 position)
     {
         // Find all colliders within the effect range at the mouse position
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, effectRange);
@@ -77,6 +79,9 @@ public class RaycastAbility : Ability
             {
                 // Apply damage to each 'Boss' object found within the range
                 adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
+
+                // Play the splash effect at the position
+                PlaySplashEffectAtPosition(position, owner);
             }
             else if (hitCollider.CompareTag("Pill"))
             {
@@ -84,5 +89,30 @@ public class RaycastAbility : Ability
                 Destroy(hitCollider.gameObject);
             }
         }
+    }
+
+    private void PlaySplashEffectAtPosition(Vector3 position, GameObject owner)
+    {
+        // Instantiate the moonbeam prefab to access the splash effect
+        GameObject moonbeamInstance = Instantiate(moonbeamPrefab, position, Quaternion.identity);
+        ParticleSystem splashEffect = moonbeamInstance.GetComponentInChildren<ParticleSystem>();
+
+        if (splashEffect != null)
+        {
+            splashEffect.transform.position = position;
+            splashEffect.Play();
+            owner.GetComponent<MonoBehaviour>().StartCoroutine(DestroySplashEffectAfterDuration(moonbeamInstance, splashDuration));
+        }
+        else
+        {
+            Debug.LogError("No ParticleSystem found in moonbeamPrefab.");
+            Destroy(moonbeamInstance);
+        }
+    }
+
+    private IEnumerator DestroySplashEffectAfterDuration(GameObject splashInstance, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Destroy(splashInstance);
     }
 }

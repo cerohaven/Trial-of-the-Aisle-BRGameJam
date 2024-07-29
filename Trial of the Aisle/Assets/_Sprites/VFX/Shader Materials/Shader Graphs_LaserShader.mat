@@ -51,11 +51,16 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RippleSpeed: 1
+    - _RippleThickness: 2
+    - _Scale: 10
     - _TimeScale: 1
     m_Colors:
-    - _Color: {r: 0.98104644, g: 1, b: 0.7122642, a: 1}
+    - _BaseColor: {r: 0.8980392, g: 0.7176471, b: 0.45098037, a: 0}
+    - _Color: {r: 0.9622642, g: 0.9246814, b: 0.64907444, a: 1}
     - _MainSpeed: {r: -0.5, g: 1.81, b: 0, a: 0}
-    - _SpeedDirection: {r: -1, g: 0, b: 0, a: 0}
+    - _RippleColor: {r: 0.8980392, g: 0.7176471, b: 0.45098037, a: 0}
+    - _SpeedDirection: {r: -1.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5226302368968590377
 MonoBehaviour:
