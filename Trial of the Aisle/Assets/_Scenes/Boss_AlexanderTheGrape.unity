@@ -1672,7 +1672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90f5394e61b465545a56c1ca188030a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 28123160}
   BBCam: 1
 --- !u!4 &554831815
 Transform:
