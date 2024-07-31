@@ -99,7 +99,13 @@ public class RaycastAbility : Ability
 
         if (splashEffect != null)
         {
-            splashEffect.transform.position = position;
+            // Calculate direction towards the player
+            Vector3 directionToPlayer = (owner.transform.position - position).normalized;
+
+            // Calculate the angle to rotate the splash effect to face the player
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+            splashEffect.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
             splashEffect.Play();
             owner.GetComponent<MonoBehaviour>().StartCoroutine(DestroySplashEffectAfterDuration(moonbeamInstance, splashDuration));
         }
