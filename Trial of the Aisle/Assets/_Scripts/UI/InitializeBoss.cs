@@ -47,5 +47,14 @@ public class InitializeBoss : MonoBehaviour
 
         _entityHealth.IncreaseHealthBar(1, _bossBarIncreaseDuration);
     }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GetComponent<EntityHealth>().DestroyEntity();
+        }
+    }
 }
 

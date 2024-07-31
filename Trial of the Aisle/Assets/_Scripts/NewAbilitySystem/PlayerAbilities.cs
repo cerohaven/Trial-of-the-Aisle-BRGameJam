@@ -21,6 +21,16 @@ public class PlayerAbilities : MonoBehaviour
 
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
 

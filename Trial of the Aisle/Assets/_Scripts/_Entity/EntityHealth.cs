@@ -71,8 +71,16 @@ public class EntityHealth : MonoBehaviour
         }
 
         healthAdjustments = GameManager.Instance.HealthAdjustments;
-        UI_EntityHurt = RuntimeManager.CreateInstance(_hurtSFXEventName);
-        UI_EntityHeal = RuntimeManager.CreateInstance(_healSFXEventName);
+
+        if (!_hurtSFXEventName.Equals(""))
+        {
+            UI_EntityHurt = RuntimeManager.CreateInstance(_hurtSFXEventName);
+        }
+        if (!_healSFXEventName.Equals(""))
+        {
+            UI_EntityHeal = RuntimeManager.CreateInstance(_healSFXEventName);
+        }
+        
     }
 
     private void Start()
@@ -141,7 +149,11 @@ public class EntityHealth : MonoBehaviour
 
         UpdateHealthBar();
 
-        UI_EntityHeal.start();
+        if(!UI_EntityHurt.Equals(null))
+        {
+            UI_EntityHeal.start();
+        }
+        
 
 
         if (_healEffectPrefab)
@@ -187,7 +199,7 @@ public class EntityHealth : MonoBehaviour
             StartCoroutine(InvincibleCoroutine());
         }
 
-        if(_hurtFlickerAfterDamage)
+        if(_hurtFlickerAfterDamage && gameObject.activeSelf == true)
         {
             StartCoroutine(BossColourFlicker());
         }
@@ -407,6 +419,15 @@ public class EntityHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Reduce the entity's health to 0
+    /// </summary>
+    public void DestroyEntity()
+    {
+        _currentHealth = 0;
+        UpdateHealthBar();
+        PerformDeathLogic();
+    }
     
     #endregion
 

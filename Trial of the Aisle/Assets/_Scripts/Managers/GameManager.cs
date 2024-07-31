@@ -27,9 +27,7 @@ public class GameManager : Singleton<GameManager>
     private bool gameEnded = false;
     private bool bossIsDefeated = false;
 
-    FMOD.Studio.EventInstance SFX_BossDeath;
-    FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
-    FMOD.Studio.EventInstance SFX_BossScream;
+    public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
 
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
@@ -103,12 +101,9 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         gameEnded = false;
-        //find the playerInputHandler in the game.
-        //May need to move inside function if errors when someone unpluggs controller
 
         Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
-        SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
-        SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
+
     }
 
     //Scene Transitions
@@ -137,13 +132,6 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-    #region Player Input Controls
-
-
-
-
-    #endregion
-
 
 
     private void PauseTheGame()
@@ -163,10 +151,13 @@ public class GameManager : Singleton<GameManager>
 
     private void DestroyUIElement()
     {
+        //if the game is ended and they destroy a UI element, that means it is the Post Battle Canvas UI and we can load the next level
         if (gameEnded)
         {
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
+
+            transitionType = TransitionType.BossBattle;
+            
             LoadNextScene();
         }
 
@@ -209,23 +200,12 @@ public class GameManager : Singleton<GameManager>
         Time.timeScale = 1;
     }
 
+    /// <summary>
+    /// Called From the SO_EntityDeathEvent_Boss script. This is called when the boss' health reaches 0 and the PerformDeathLogic() function
+    /// initiates.
+    /// </summary>
     private void IsDefeated()
     {
-        //Once we defeat the boss, we will do some stuff
 
-
-        //AudioManager.instance.Play("ui_bossDefeated");
-        SFX_BossDeath.start();
-
-        bossIsDefeated = true;
-
-        //Flicker Screen
-        _eventSender.FlickerScreenSend();
-
-        SFX_BossScream.start();
-        Boss_BGM_Postbattle.start();
-        //AudioManager.instance.Play("boss_scream");
-
-        //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
     }
 }

@@ -1,5 +1,4 @@
-using Unity.VisualScripting;
-using UnityEditor;
+using FMODUnity;
 using UnityEngine;
 
 
@@ -10,9 +9,16 @@ public class SO_EntityDeathEvent_Boss : SO_EntityHealthEventBase
 
     private GameObject _attachedGameObject;
 
+    FMOD.Studio.EventInstance SFX_BossDeath;
+    
+    FMOD.Studio.EventInstance SFX_BossScream;
 
     public override void Initialize(GameObject gameObject)
     {
+        
+        SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
+        SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
+
         _attachedGameObject = gameObject;
         SpawnObjects();
         DestroyBoss();
@@ -41,11 +47,21 @@ public class SO_EntityDeathEvent_Boss : SO_EntityHealthEventBase
     {
         GameManager.Instance.EventSender.SwitchCameraStateEventSend();
         GameManager.Instance.EventSender.BossIsDefeatedSend();
+        GameManager.Instance.EventSender.FlickerScreenSend();
 
         GameManager.Instance.GameEnded = true;
         GameManager.Instance.BossIsDefeated = true;
 
+        // Play Sound Effects 
+        SFX_BossDeath.start();
+
+        SFX_BossScream.start();
+
+        GameManager.Instance.Boss_BGM_Postbattle.start();
+
+
         _attachedGameObject.SetActive(false);
+
     }
 
     public override void StartEventMethod()
