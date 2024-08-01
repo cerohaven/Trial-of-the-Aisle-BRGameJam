@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alexander the Grape
   m_EditorClassIdentifier: 
   b_Name: Alexander the Grape
-  b_MaxHealth: 80
+  b_MaxHealth: 20
   b_BossProfilePicture: {fileID: -1816418880, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -43,10 +43,10 @@ MonoBehaviour:
     phaseEvent: {fileID: 0}
   b_BossAttacks:
   - attackName: Fruits of Fury
-    percentChanceToUse: 1
+    percentChanceToUse: 0.622
     attackCondition: {fileID: 0}
   - attackName: Jammed
-    percentChanceToUse: 0
+    percentChanceToUse: 0.539
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 41850a9738d2748489b2b395c644537c, type: 2}

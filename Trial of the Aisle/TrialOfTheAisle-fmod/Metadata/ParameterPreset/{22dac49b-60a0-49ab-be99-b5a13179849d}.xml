@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{22dac49b-60a0-49ab-be99-b5a13179849d}">
+		<property name="name">
+			<value>SceneTransition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{003032fb-04ac-4335-a217-796cd2bd6191}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{85d2b9f6-c971-4ab9-b072-bb006ebae020}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{85d2b9f6-c971-4ab9-b072-bb006ebae020}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>PKArenaEntered</value>
+			<value>ATGArenaEntered</value>
+			<value>DDArenaEntered</value>
+			<value>PostBattleEntered</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

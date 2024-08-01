@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
 
         s.source.Stop();
     }
-    public void BgPlay(BackgroundMusicSelector backgroundMusic)
+   /* public void BgPlay(BackgroundMusicSelector backgroundMusic)
     {
 
         //find a sound in the sounds array where sound.name == name the name inputted
@@ -118,7 +118,7 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
         }
         
-    }
+    }*/
 
 }
 
@@ -143,7 +143,7 @@ public class Sounds
 [System.Serializable]
 public class BgSounds
 {
-    public BackgroundMusicSelector backgroundMusic;
+   // public BackgroundMusicSelector backgroundMusic;
     public AudioClip clip;
 
     [Range(0f, 1f)]

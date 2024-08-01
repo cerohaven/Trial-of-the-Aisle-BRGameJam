@@ -92,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
+    private FMOD.Studio.EventInstance AdaptiveMusicInstance;
 
     private void Start()
     {
@@ -99,7 +100,9 @@ public class GameManager : Singleton<GameManager>
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
 
-        Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
+        //   Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
+        AdaptiveMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/Adaptive_Music");
+
         SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
         SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
@@ -216,7 +219,10 @@ public class GameManager : Singleton<GameManager>
         _eventSender.FlickerScreenSend();
 
         SFX_BossScream.start();
-        Boss_BGM_Postbattle.start();
+        //Boss_BGM_Postbattle.start();
+
+        AdaptiveMusicInstance.start();
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "PostBattleEntered");
         //AudioManager.instance.Play("boss_scream");
 
         //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'

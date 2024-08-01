@@ -49,6 +49,8 @@ public class BossCheckDefeat : MonoBehaviour
         Debug.Log("Destroying boss GameObject.");
         GameManager.gameEnded = true;
         gameObject.SetActive(false);
+
+
     }
 
     private void SpawnObjects()

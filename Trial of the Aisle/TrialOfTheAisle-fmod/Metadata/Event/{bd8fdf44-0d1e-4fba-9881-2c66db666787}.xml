@@ -115,6 +115,7 @@
 		<relationship name="effects">
 			<destination>{33e29fec-d1e1-4475-92ca-55bca502bf3a}</destination>
 			<destination>{ade612a8-ec34-496e-b402-8a9d98544279}</destination>
+			<destination>{f90fecd5-d095-47e0-b58f-5a2fa427cb46}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{2cb3798e-63c0-4a56-8d69-4df1525086b6}" />
@@ -129,6 +130,14 @@
 		</property>
 		<property name="highCrossover">
 			<value>4400</value>
+		</property>
+	</object>
+	<object class="CompressorEffect" id="{f90fecd5-d095-47e0-b58f-5a2fa427cb46}">
+		<property name="threshold">
+			<value>-31</value>
+		</property>
+		<property name="gain">
+			<value>-8</value>
 		</property>
 	</object>
 </objects>
