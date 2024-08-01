@@ -1,9 +1,6 @@
 using FMODUnity;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -86,25 +83,36 @@ public class GameManager : Singleton<GameManager>
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");
         _healthAdjustments = Resources.Load<SO_HealthAdjustments>("Health Adjustments");
+
+
         //Calls when a player presses the pause button
         _eventSender.pauseGameEvent.AddListener(PauseTheGame);
 
         //Calls whenever a player presses the resume button
         _eventSender.resumeGameEvent.AddListener(ResumeTheGame);
 
-        //When the boss is defeated
-        _eventSender.bossIsDefeatedEvent.AddListener(IsDefeated);
     }
-
-
 
     private void Start()
     {
         gameEnded = false;
 
         Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
-
     }
+
+    #region Public Methods
+    public void FreezePlayerMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnFreezePlayerMovement()
+    {
+        canMove = true;
+    }
+
+    #endregion
+
 
     //Scene Transitions
     #region IEnumerator for Exit Scene Transition
@@ -133,7 +141,7 @@ public class GameManager : Singleton<GameManager>
     #endregion
 
 
-
+    #region Pause Game Methods
     private void PauseTheGame()
     {
         //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
@@ -145,8 +153,6 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-
-
     }
 
     private void DestroyUIElement()
@@ -199,13 +205,5 @@ public class GameManager : Singleton<GameManager>
 
         Time.timeScale = 1;
     }
-
-    /// <summary>
-    /// Called From the SO_EntityDeathEvent_Boss script. This is called when the boss' health reaches 0 and the PerformDeathLogic() function
-    /// initiates.
-    /// </summary>
-    private void IsDefeated()
-    {
-
-    }
+    #endregion
 }
