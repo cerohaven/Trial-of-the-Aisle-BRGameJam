@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerAimArrow : MonoBehaviour
 {
-    [SerializeField] private PlayerCarryProjectile pcp;
-    private Transform playerTransform;
-    private Transform thisTransform;
-    private bool isActive;
+
+    private Transform _playerTransform;
+    private Transform _thisTransform;
+
 
     private void Awake()
     {
-        thisTransform = transform;
-        playerTransform = transform.parent;
+        _thisTransform = transform;
+        _playerTransform = transform.parent;
         gameObject.SetActive(false);
     }
     void Update()
@@ -25,12 +25,12 @@ public class PlayerAimArrow : MonoBehaviour
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         //Move this gameObject around the player
-        Vector2 dir = mouseWorldPosition - playerTransform.position;
+        Vector2 dir = mouseWorldPosition - _playerTransform.position;
 
         dir.Normalize();
-        thisTransform.position = (Vector2)playerTransform.position + dir * 3;
+        _thisTransform.position = (Vector2)_playerTransform.position + dir * 3;
 
         //Update the GameObject's position to this position if the player is carrying the object
-        thisTransform.up = dir;
+        _thisTransform.up = dir;
     }
 }

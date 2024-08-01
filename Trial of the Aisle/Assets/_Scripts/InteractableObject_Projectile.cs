@@ -35,7 +35,7 @@ public class InteractableObject_Projectile : InteractableObject
         projectile.EnableCollider(true);
         projectile.RemoveDrag();
         playerCarry.IsCarryingObject = false;
-
+        playerCarry.SetActiveAimArrows(false);
         //Now I need to re-enable collision with the boss layer
         projectile.IgnoreBossCollision(false);
         projectile.IgnoreProjectiles(false, 0);

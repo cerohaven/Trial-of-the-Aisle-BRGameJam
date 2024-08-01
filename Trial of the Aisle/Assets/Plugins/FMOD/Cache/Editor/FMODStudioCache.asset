@@ -179,7 +179,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638572056261602788
+  lastModified: 638580735545275251
   FileSizes:
   - Name: Desktop
     Value: 35168
@@ -392,7 +392,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638572056261382601
+  lastModified: 638580735545065068
   FileSizes:
   - Name: Desktop
     Value: 274464
@@ -440,7 +440,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638572056261627808
+  lastModified: 638580735545298160
   FileSizes:
   - Name: Desktop
     Value: 555200
@@ -460,7 +460,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638572056261592779
+  lastModified: 638580735545270252
   FileSizes:
   - Name: Desktop
     Value: 7642080
@@ -746,7 +746,7 @@ MonoBehaviour:
   - {fileID: -271029783631720041}
   StringsBanks:
   - {fileID: 6961738373130466378}
-  cacheTime: 638572056261627808
+  cacheTime: 638580735545298160
   cacheVersion: 131617
 --- !u!114 &539512468564361093
 MonoBehaviour:
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638572056261387954
+  lastModified: 638580735545070075
   FileSizes:
   - Name: Desktop
     Value: 3492
