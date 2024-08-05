@@ -21,6 +21,7 @@ namespace NodeCanvas.Tasks.Actions{
 
         private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
+        private Collider2D bossCollider;
 
         private GameObject pillToSpawn;
         private EntityHealth _entityHealth;
@@ -53,7 +54,7 @@ namespace NodeCanvas.Tasks.Actions{
             _entityHealth = agent.GetComponent<EntityHealth>();
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             bossMaxHealth = bossProfile.B_MaxHealth;
-
+            bossCollider = agent.GetComponent<Collider2D>();
             pillAngles = angles1;
 
 
@@ -136,9 +137,9 @@ namespace NodeCanvas.Tasks.Actions{
 
 
             projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
-            projectilePill.IgnoreBossCollision(true);
-            projectilePill.IgnoreProjectiles(true, 0);
-            projectilePill.IgnoreProjectiles(false, 0.2f);
+            projectilePill.IgnoreBossCollision(true, bossCollider);
+            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(true, 0));
+            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(false, 0.2f));
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity

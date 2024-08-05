@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
+    [SerializeField] private Transform _bossTransform;
     
     //Keeps a list of all the active UI on screen, so if we click ESC it gets rid of the most recent UI
     //If the List is >0, then simply close the UI and remove it from the List
@@ -52,6 +53,7 @@ public class GameManager : Singleton<GameManager>
     public bool IsGamePaused { get => isGamePaused; set => isGamePaused = value; }
     public SO_BossProfile BossProfile { get => bossProfile; set => bossProfile = value; }
     public SO_HealthAdjustments HealthAdjustments { get => _healthAdjustments;}
+    public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
 
     private void Awake()
     {

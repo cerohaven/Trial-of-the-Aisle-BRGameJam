@@ -13,12 +13,14 @@ namespace NodeCanvas.Tasks.Actions{
 
 		private Blackboard agentBlackboard;
 		private Projectile_PainKiller[] pillProjectiles;
+		private Collider2D bossCollider;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit(){
 			agentBlackboard = agent.GetComponent<Blackboard>();
-			return null;
+			bossCollider = agent.GetComponent<Collider2D>();
+            return null;
 		}
 
 		//This is called once each time the task is enabled.
@@ -33,7 +35,7 @@ namespace NodeCanvas.Tasks.Actions{
 				if (pillProjectiles[i].WhoThrew == WhoThrew.Player) continue;
 
 				pillProjectiles[i].IsBeingSuckedIn = true;
-                pillProjectiles[i].IgnoreBossCollision(false);
+                pillProjectiles[i].IgnoreBossCollision(false, bossCollider);
                 Vector2 direction = agent.transform.position - pillProjectiles[i].transform.position;
                 direction.Normalize();
                 float speed = Random.Range(minPillSpeed,maxPillSpeed);

@@ -1,6 +1,6 @@
 using FMODUnity;
 using NodeCanvas.Framework;
-
+using System.Collections;
 using UnityEngine;
 
 public enum WhoThrew
@@ -47,10 +47,6 @@ public class Projectile : MonoBehaviour
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
                                       //it shouldn't have any effect if it accidentally hits the player.
 
-    // BOSS VARIABLES //
-    protected Blackboard bossBlackboard;
-
-
     protected WhoThrew whoThrew = WhoThrew.Boss;
 
     //Properties
@@ -76,14 +72,6 @@ public class Projectile : MonoBehaviour
         }
        
         MoveProjectile();
-
-        //Set the blackboard of the boss only if the boss is the one that threw the pill, else if overwrites the 
-        //bossBlackboard variable to null which isn't what we want
-        if (whoThrew == WhoThrew.Boss && targetThrown.CompareTag("Boss"))
-        {
-            bossBlackboard = targetThrown.gameObject.GetComponent<Blackboard>();
-        }
-
 
 
     }
@@ -137,7 +125,7 @@ public class Projectile : MonoBehaviour
     //Setting the drag of the projectile so it can slow down or not slow down
     public void EnableDrag(float minTime, float maxTime)
     {
-        Invoke("SetDrag", Random.Range(minTime,maxTime));
+        Invoke(nameof(SetDrag), Random.Range(minTime,maxTime));
     }
     public void RemoveDrag()
     {
@@ -148,41 +136,34 @@ public class Projectile : MonoBehaviour
          rb.drag = 2.35f;
     }
 
+
     private void MoveProjectile()
     {
         rb.velocity = travelDir * travelSpeed;
     }
 
-    //Ignoring collision with other projectiles
-    public void IgnoreProjectiles(bool _ignore, float _delay)
-    {
 
-        if (_ignore)
-        {
-            Invoke("IgnoreProjectileLayer", _delay);
-        }
-        else
-        {
-            Invoke("DontIgnoreProjectileLayer", _delay);
-        }
+
+    //Called From other scripts to not collide with other projectiles
+    public IEnumerator IgnoreProjectilesCoroutine(bool _ignore, float _delay)
+    {
+        yield return new WaitForSeconds(_delay);
+
+        IgnoreProjectileLayer(_ignore);
     }
-    private void IgnoreProjectileLayer()
+    
+    private void IgnoreProjectileLayer(bool ignoreCollision)
     {
         //Just set the collider to trigger
-        projectileCollider.isTrigger = true;
-
+        projectileCollider.isTrigger = ignoreCollision;
 
     }
-    private void DontIgnoreProjectileLayer()
-    {
-        projectileCollider.isTrigger = false;
-    }
+  
 
-    //Ignoring collisions with certain layers
-    public void IgnoreBossCollision(bool _ignore)
+    //Ignoring collisions with certain layers. Called From the boss' scripts when instantiating a projectile
+    public void IgnoreBossCollision(bool _ignore, Collider2D collider)
     {
-        if (bossBlackboard == null) return;
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bossBlackboard.gameObject.GetComponent<Collider2D>(), _ignore);
+        Physics2D.IgnoreCollision(projectileCollider, collider, _ignore);
 
     }
 
@@ -190,61 +171,87 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        //Play the Particle effect for hitting something if it's not
+        //We don't want projectiles on the ground to spawn hit particles if the player or boss bumps into them
         if(whoThrew != WhoThrew.Null)
         {
-            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            InstantiateHitParticles();
         }
         
 
+        EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
 
-        // HITTING THE BOSS //
-        if (collision.gameObject.CompareTag("Boss") && whoThrew == WhoThrew.Player)
+                //If we hit an entity with Health
+        if (entityHealth != null)
         {
-            //send to reduce scale of boss bar
-            collision.gameObject.GetComponent<EntityHealth>().DamageEntity(damageDealt);
-            CinemachineShake.Instance.ShakeCamera();
-            Destroy(gameObject);
-        }
+            bool hitBoss = collision.gameObject.CompareTag("Boss") && whoThrew == WhoThrew.Player;
+            bool hitPlayer = collision.gameObject.CompareTag("Player") && whoThrew == WhoThrew.Boss;
+            bool hitRandomEntity = whoThrew != WhoThrew.Null && ! !hitBoss && !hitPlayer;
 
-        // HITTING THE PLAYER //
-        if(collision.gameObject.CompareTag("Player") && whoThrew == WhoThrew.Boss)
-        {
-            collision.gameObject.GetComponent<EntityHealth>().DamageEntity(damageDealt);
-            Destroy(gameObject);
-        }
-
-        // HITTING A WALL //
-        if(collision.gameObject.CompareTag("Walls"))
-        {
-            rb.velocity = Vector2.zero;
-
-            if(whoThrew == WhoThrew.Player)
+            if (hitBoss)
             {
+                //send to reduce scale of boss bar
+                entityHealth.DamageEntity(damageDealt);
+                CinemachineShake.Instance.ShakeCamera();
+                Destroy(gameObject);
+            }
+            else if(hitPlayer)
+            {
+                entityHealth.DamageEntity(damageDealt);
+                Destroy(gameObject);
+            }
+            else if(hitRandomEntity)
+            {
+                entityHealth.DamageEntity(damageDealt);
                 Destroy(gameObject);
             }
         }
-
-        // HITTING ANOTHER PROJECTILE //
-        if(collision.gameObject.CompareTag("Pill") || collision.gameObject.CompareTag("Feta"))
+        else
         {
-            Destroy(gameObject);
-        }
+            bool hitWall = collision.gameObject.CompareTag("Walls");
+            bool hitOtherProjectile = collision.gameObject.CompareTag("Pill") && collision.gameObject.GetComponent<Projectile>().whoThrew != whoThrew;
+            bool hitFeta = collision.gameObject.CompareTag("Feta");
 
+            if (hitWall)
+            {
+                rb.velocity = Vector2.zero;
+
+                if (whoThrew == WhoThrew.Player)
+                {
+                    Destroy(gameObject);
+
+                }
+
+            }
+            else if ( hitOtherProjectile || hitFeta)
+            {
+                Destroy(gameObject);
+
+            }
+
+        }
+        
 
     }
 
-
+    protected void InstantiateHitParticles()
+    {
+        Instantiate(hitParticles, transform.position, Quaternion.identity);
+    }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-
-        // HITTING A WALL //
-        if (collision.gameObject.CompareTag("Walls"))
+        bool hitWall = collision.gameObject.CompareTag("Walls");
+        if (hitWall)
         {
+            rb.velocity = Vector2.zero;
 
-            Destroy(gameObject);
+            if (whoThrew == WhoThrew.Player)
+            {
+                Destroy(gameObject);
+
+            }
 
         }
     }
+
 }

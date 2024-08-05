@@ -18,12 +18,6 @@ public class Projectile_Cheese : Projectile
     {
         base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
 
-        //Set the blackboard of the boss only if the boss is the one that threw the pill, else if overwrites the 
-        //bossBlackboard variable to null which isn't what we want
-        if (_whoThrew == WhoThrew.Boss)
-        {
-            bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
-        }
 
     }
     protected override void Awake()

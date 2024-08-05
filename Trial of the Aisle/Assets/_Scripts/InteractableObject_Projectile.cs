@@ -13,12 +13,15 @@ public class InteractableObject_Projectile : InteractableObject
 
     //Variables
     [SerializeField] private float throwSpeed;
+    private Collider2D bossCollider;
 
     public PlayerCarryProjectile PlayerCarry { get => playerCarry; set => playerCarry = value; }
 
     protected override void Awake()
     {
         base.Awake();
+        bossCollider = GameManager.Instance.BossTransform.GetComponent<Collider2D>();
+
         projectile = GetComponent<Projectile>();
         GameManager.Instance.EventSender.launchProjectileButtonEvent.AddListener(LaunchProjectile);
     }
@@ -36,9 +39,10 @@ public class InteractableObject_Projectile : InteractableObject
         projectile.RemoveDrag();
         playerCarry.IsCarryingObject = false;
         playerCarry.SetActiveAimArrows(false);
+
         //Now I need to re-enable collision with the boss layer
-        projectile.IgnoreBossCollision(false);
-        projectile.IgnoreProjectiles(false, 0);
+        projectile.IgnoreBossCollision(false, bossCollider);
+        StartCoroutine(projectile.IgnoreProjectilesCoroutine(false, 0));
 
 
         RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");

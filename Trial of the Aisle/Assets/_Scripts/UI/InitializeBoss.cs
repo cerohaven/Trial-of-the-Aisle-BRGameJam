@@ -28,6 +28,7 @@ public class InitializeBoss : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.BossProfile = _bossProfile;
+        GameManager.Instance.BossTransform = transform;
 
         _entityHealth = GetComponent<EntityHealth>();
 

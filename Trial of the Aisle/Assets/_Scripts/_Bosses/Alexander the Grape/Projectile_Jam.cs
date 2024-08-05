@@ -19,7 +19,6 @@ public class Projectile_Jam : Projectile
             JammedInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/B_Jammed");
             JammedInstance.start();
 
-            bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
         }
 
     }
