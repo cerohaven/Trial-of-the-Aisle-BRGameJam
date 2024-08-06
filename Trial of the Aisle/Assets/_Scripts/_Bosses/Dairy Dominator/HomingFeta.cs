@@ -10,6 +10,7 @@ public class HomingFeta : MonoBehaviour
     [SerializeField] private float ForwardSpeed = 1;
     [SerializeField] float RotateSpeedInDeg = 45;
 
+    private EntityHealth entityHealth;
     private Transform playerTransform;
 
 
@@ -59,8 +60,9 @@ public class HomingFeta : MonoBehaviour
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
-
+            if (entityHealth == null) 
+            entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+            entityHealth.DamageEntity(ChangeHealth.Small_Health); //THIS IS A HARDCODED VALUE TEE HEE
             DestroyObj(collision);
         }
 

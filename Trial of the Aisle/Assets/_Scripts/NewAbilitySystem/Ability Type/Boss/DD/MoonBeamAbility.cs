@@ -21,6 +21,8 @@ public class RaycastAbility : Ability
         // Instantiate the moonbeam prefab
         GameObject moonbeamInstance = Instantiate(moonbeamPrefab, owner.transform.position, Quaternion.identity);
 
+        entityHealth = GameManager.Instance.BossTransform.GetComponent<EntityHealth>();
+
         // Play the shoot effect and make it follow the player
         PlayShootEffect(owner, moonbeamInstance);
 
@@ -95,8 +97,6 @@ public class RaycastAbility : Ability
         {
             if (hitCollider.CompareTag("Boss"))
             {
-                if(entityHealth == null) entityHealth = hitCollider.GetComponent<EntityHealth>();
-
                 // Apply damage to each 'Boss' object found within the range
                 entityHealth.DamageEntity(changeHealthAmount);
 

@@ -92,7 +92,8 @@ public class Projectile_PainKiller : Projectile
 
         if(collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
+
+            //GameManager.Instance.EventSender.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
             Destroy(gameObject);
         }
 

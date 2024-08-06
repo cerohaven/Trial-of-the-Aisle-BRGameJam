@@ -6,12 +6,18 @@ public class Bullet : MonoBehaviour
 {
     public ChangeHealth changeHealthAmount; // The enum value specifying the amount of health to adjust
     public GameObject hitEffect;
+    public EntityHealth entityHealth;
+
+    private void Awake()
+    {
+        entityHealth = GameManager.Instance.BossTransform.GetComponent<EntityHealth>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
-            GameManager.Instance.EventSender.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, transform.up);
+            entityHealth.DamageEntity(changeHealthAmount);
             CinemachineShake.Instance.ShakeCamera();
         }
 

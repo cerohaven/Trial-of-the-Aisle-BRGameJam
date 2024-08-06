@@ -4,16 +4,20 @@ using System.Collections;
 [CreateAssetMenu(fileName = "HealingAbility", menuName = "Abilities/Support/Healing Ability")]
 public class HealingAbility : Ability
 {
-    public ChangeHealth changeHealthAmount; // The enum value specifying the amount of health to adjust
     public GameObject healingEffectPrefab; // The prefab containing the healing particle effect
+    private EntityHealth entityHealth;
 
     public override void Activate(GameObject owner)
     {
-        // Use the AdjustHealth SO to invoke the health adjustment event
-        GameManager.Instance.EventSender.ChangePlayerHealthEventSend(changeHealthAmount, HealthType.Healing);
 
         // Find the player object by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        //Get Player health
+        entityHealth = player.GetComponent<EntityHealth>();
+
+        //Heal the player
+        entityHealth.HealUnit(ChangeHealth.Medium_Health);
 
         // Apply the heal effect shader to the player
         if (player != null)
