@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{221987c8-6202-4329-a834-b0c1d56184e2}">
+	<object class="AudioFile" id="{5d558c2a-1e7d-494d-9057-b9de424f5861}">
 		<property name="assetPath">
-			<value>edited glugs.mp3</value>
+			<value>246439-thick_ice_hits_impacts_hollow_01.wav</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>96</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>3.7616326530612243</value>
+			<value>9.0188124999999992</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{6362d98c-54f9-4fc7-b30e-83c88ce86484}</destination>

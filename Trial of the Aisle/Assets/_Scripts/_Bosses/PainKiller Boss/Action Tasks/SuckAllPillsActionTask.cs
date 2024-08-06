@@ -4,24 +4,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace NodeCanvas.Tasks.Actions{
 
-	public class SuckAllPillsActionTask : ActionTask{
+    public class SuckAllPillsActionTask : ActionTask{
 
-		public float maxPillSpeed;
+        public float maxPillSpeed;
 		public float minPillSpeed;
 
 		private Blackboard agentBlackboard;
 		private Projectile_PainKiller[] pillProjectiles;
 		private Collider2D bossCollider;
+        
+		
+		private FMOD.Studio.EventInstance ParacetamaniaInhaleInstance;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit(){
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit(){
 			agentBlackboard = agent.GetComponent<Blackboard>();
 			bossCollider = agent.GetComponent<Collider2D>();
             return null;
-		}
+		
+        }
 
 		//This is called once each time the task is enabled.
 		//Call EndAction() to mark the action as finished, either in success or failure.
@@ -29,8 +34,8 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
             pillProjectiles = GameObject.FindObjectsOfType<Projectile_PainKiller>();
 			blackboard.SetVariableValue("groundedPills", pillProjectiles.Length-5);
-
-            for (int i = 0; i < pillProjectiles.Length; i++)
+           
+			for (int i = 0; i < pillProjectiles.Length; i++)
             {
 				if (pillProjectiles[i].WhoThrew == WhoThrew.Player) continue;
 
@@ -42,7 +47,8 @@ namespace NodeCanvas.Tasks.Actions{
 				
                 pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform, WhoThrew.Boss);
 
-
+                ParacetamaniaInhaleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale");
+                ParacetamaniaInhaleInstance.start();
             }
         }
 

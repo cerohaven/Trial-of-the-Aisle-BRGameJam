@@ -7,13 +7,16 @@ namespace NodeCanvas.Tasks.Actions{
 	public class PainKiller_GainHealthActionTask : ActionTask{
 		public ChangeHealth healAmount;
 		private EntityHealth _entityHealth;
-
+		private FMOD.Studio.EventInstance BadHabitInstance;
+		
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit(){
             _entityHealth = agent.GetComponent<EntityHealth>();
-
+			
             return null;
+        	
+
 		}
 
 		//This is called once each time the task is enabled.
@@ -23,8 +26,10 @@ namespace NodeCanvas.Tasks.Actions{
 			_entityHealth.HealUnit(healAmount);
             LeanTween.scale(agent.gameObject, Vector3.one * 1.1f, 0.1f).setOnComplete(Testing);
 			agent.GetComponent<SwapMaterialDemo>().Swap(1);
-            
-		}
+
+            BadHabitInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Bad Habit");
+            BadHabitInstance.start();
+        }
 		private void Testing()
 		{
 			LeanTween.scale(agent.gameObject, Vector3.one, 0.1f).setOnComplete(End);

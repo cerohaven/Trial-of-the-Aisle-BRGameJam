@@ -65,6 +65,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{50af491d-21a1-45a9-9182-b2dd68ad9fb4}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{27886b1c-cefe-44fe-9aba-093e5146e807}</destination>
 		</relationship>
@@ -81,6 +84,9 @@
 		</property>
 		<property name="timelockedOffset">
 			<value>0.19999999999999979</value>
+		</property>
+		<property name="volume">
+			<value>8</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{75d468dc-55bc-46ee-913f-ffa077f238b4}</destination>
@@ -109,10 +115,10 @@
 	<object class="MixerBusFader" id="{3cd5f8d8-720d-412e-a203-10c90a8f72ed}" />
 	<object class="ThreeEQEffect" id="{95e23f4b-de53-44dc-81b1-d94b4fe61df9}">
 		<property name="lowGain">
-			<value>-80</value>
+			<value>-15.5</value>
 		</property>
 		<property name="midGain">
-			<value>-22.5</value>
+			<value>-17</value>
 		</property>
 		<property name="highGain">
 			<value>7</value>
