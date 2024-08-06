@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerCollisionsManager : MonoBehaviour
 {
+    private EntityHealth entityHealth;
 
+    private void Awake()
+    {
+        entityHealth = GetComponent<EntityHealth>();    
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
             //hurt the player if they collide with the boss
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            entityHealth.DamageEntity(ChangeHealth.Small_Health);
 
         }
     }
