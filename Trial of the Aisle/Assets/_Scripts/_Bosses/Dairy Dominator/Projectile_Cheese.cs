@@ -40,58 +40,18 @@ public class Projectile_Cheese : Projectile
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.Instance.GameEnded) return;
-
-        if (whoThrew == WhoThrew.Player)
-        {
-            if (collision.gameObject.CompareTag("Boss"))
-            {
-                GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-            //On Collision with the player, deal damage
-            if (!collision.gameObject.CompareTag("Player"))
-            {
-
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-        }
-        else if (whoThrew == WhoThrew.Boss)
-        {
-            //On Collision with the player, deal damage
-            if (collision.gameObject.CompareTag("Player"))
-            {
-
-                GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-            if (!collision.gameObject.CompareTag("Boss"))
-            {
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-        }
-
-
-
-
-
+        base.OnCollisionEnter2D(collision);
+       
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+
         //On Collision with the player, deal damage
-        if (collision.gameObject.CompareTag("Player"))
+        if (entityHealth != null && collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            entityHealth.DamageEntity(damageDealt);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

@@ -97,7 +97,7 @@ namespace NodeCanvas.Tasks.Actions
             projectileJam.IgnoreBossCollision(true, bossCollider);
 
             StartCoroutine(projectileJam.IgnoreProjectilesCoroutine(true, 0));
-            projectileJam.EnableDrag(0, 2);
+            StartCoroutine(projectileJam.EnableDragCoroutine(0, 2));
 
         }
 

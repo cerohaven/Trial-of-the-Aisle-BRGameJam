@@ -107,13 +107,13 @@ public class Transit_BossZoom : MonoBehaviour, ISceneTransition
 
         switch (sceneName)
         {
-            case "Boss_PainKiller":
+            case "Boss_Painkiller_LD_Redesign":
                 return painKillerTransitionProperties;
 
-            case "Boss_AlexanderTheGrape":
+            case "Boss_AlexanderTheGrape 1":
                 return alexanderTransitionProperties;
 
-            case "Boss_DairyDominator":
+            case "Boss_DairyDominator 1":
                 return dairyTransitionProperties;
 
             default:

@@ -1,6 +1,7 @@
 using FMODUnity;
 using NodeCanvas.Framework;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum WhoThrew
@@ -28,8 +29,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] protected Color bossOutlineColour;
     [SerializeField] protected Color playerOutlineColour;
-    [SerializeField] protected Color neutralOutlineColour;
-
+    [SerializeField] protected Color nullOutlineColour;
+   
 
     /// </summary>
     protected Rigidbody2D rb;
@@ -42,7 +43,7 @@ public class Projectile : MonoBehaviour
 
     protected bool canBePickedUp;
 
-    
+    private bool shouldReturn;
 
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
                                       //it shouldn't have any effect if it accidentally hits the player.
@@ -52,7 +53,7 @@ public class Projectile : MonoBehaviour
     //Properties
     public Transform TargetThrown { get => targetThrown; set => targetThrown = value; }
     public WhoThrew WhoThrew { get => whoThrew; set => whoThrew = value; }
-
+  
     public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _targetThrown, WhoThrew _whoThrew)
     {
         travelDir = _direction;
@@ -61,16 +62,8 @@ public class Projectile : MonoBehaviour
         targetThrown = _targetThrown;
         whoThrew = _whoThrew;
 
-        //Set the colour of the outline
-        if(whoThrew == WhoThrew.Player)
-        {
-              outlineRenderer.color = playerOutlineColour;
-        }
-        else if (whoThrew == WhoThrew.Boss)
-        {
-            outlineRenderer.color = bossOutlineColour;
-        }
-       
+        ChangeProjectileOutline();
+
         MoveProjectile();
 
 
@@ -83,6 +76,7 @@ public class Projectile : MonoBehaviour
         interactableProjectile = GetComponent<InteractableObject_Projectile>();
         projectileCollider = GetComponent<Collider2D>();
         RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");
+
     }
 
     //On Start, apply a velocity to the projectile in the direction and speed given.
@@ -95,26 +89,43 @@ public class Projectile : MonoBehaviour
     {
         if(rb.velocity.magnitude < 1.5f && whoThrew == WhoThrew.Boss)
         {
-            canBePickedUp = true;
-            targetThrown = null;
-            whoThrew = WhoThrew.Null; 
-            outlineRenderer.color = neutralOutlineColour;
-            interactableProjectile.SetInteractable(true);
+            SetProjectileNull();
 
         }
 
     }
 
-    //called from the 'playerCarryProjectile.cs' class when the player picks up an object
-    public void ChangeOutlineToPlayer()
+    /// <summary>
+    /// Removes the who threw and neutralizes the projectile so it can be picked up.
+    /// </summary>
+    public void SetProjectileNull()
     {
-        outlineRenderer.color = playerOutlineColour;
+        canBePickedUp = true;
+        targetThrown = null;
+        whoThrew = WhoThrew.Null;
+        ChangeProjectileOutline();
+        interactableProjectile.SetInteractable(true);
+        
+    }
+    public void ChangeProjectileOutline()
+    {
+        switch(whoThrew)
+        {
+            case WhoThrew.Player:
+                outlineRenderer.color = playerOutlineColour;
+                break;
 
-        //disable collider
-        projectileCollider.enabled = false;
+            case WhoThrew.Boss:
+                outlineRenderer.color = bossOutlineColour;
+                break;
+
+            case WhoThrew.Null:
+                outlineRenderer.color = nullOutlineColour;
+                break;
+        }
     }
 
-    //called from the 'playerCarryProjectile.cs' class when the player throws an object
+
     public void EnableCollider(bool enable)
     {
         //enable collider
@@ -123,17 +134,23 @@ public class Projectile : MonoBehaviour
 
 
     //Setting the drag of the projectile so it can slow down or not slow down
-    public void EnableDrag(float minTime, float maxTime)
+    public IEnumerator EnableDragCoroutine(float minTime, float maxTime, float dragAmount = 2.35f)
     {
-        Invoke(nameof(SetDrag), Random.Range(minTime,maxTime));
+        float time = Random.Range(minTime, maxTime);
+
+        yield return new WaitForSeconds(time);
+
+        if (shouldReturn) yield break;
+       
+        SetDrag(dragAmount);
     }
     public void RemoveDrag()
     {
         rb.drag = 0f;
     }
-    private void SetDrag()
+    private void SetDrag(float dragAmount)
     {
-         rb.drag = 2.35f;
+        rb.drag = dragAmount;
     }
 
 
@@ -149,12 +166,14 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(_delay);
 
+        if (shouldReturn) yield break;
+
         IgnoreProjectileLayer(_ignore);
     }
     
     private void IgnoreProjectileLayer(bool ignoreCollision)
     {
-        //Just set the collider to trigger
+        
         projectileCollider.isTrigger = ignoreCollision;
 
     }
@@ -192,17 +211,20 @@ public class Projectile : MonoBehaviour
                 //send to reduce scale of boss bar
                 entityHealth.DamageEntity(damageDealt);
                 CinemachineShake.Instance.ShakeCamera();
-                Destroy(gameObject);
+                DestroyGameObject();
+                return;
             }
             else if(hitPlayer)
             {
                 entityHealth.DamageEntity(damageDealt);
-                Destroy(gameObject);
+                DestroyGameObject();
+                return;
             }
             else if(hitRandomEntity)
             {
                 entityHealth.DamageEntity(damageDealt);
-                Destroy(gameObject);
+                DestroyGameObject();
+                return;
             }
         }
         else
@@ -217,15 +239,19 @@ public class Projectile : MonoBehaviour
 
                 if (whoThrew == WhoThrew.Player)
                 {
-                    Destroy(gameObject);
-
+                    DestroyGameObject();
+                    return;
                 }
 
             }
             else if ( hitOtherProjectile || hitFeta)
             {
-                Destroy(gameObject);
-
+                DestroyGameObject();
+                return;
+            }
+            else
+            {
+                Debug.Log(collision.gameObject.name);
             }
 
         }
@@ -236,6 +262,13 @@ public class Projectile : MonoBehaviour
     protected void InstantiateHitParticles()
     {
         Instantiate(hitParticles, transform.position, Quaternion.identity);
+    }
+    protected void DestroyGameObject()
+    {
+        shouldReturn = true;
+        StopCoroutine(nameof(EnableDragCoroutine));
+        StopCoroutine(nameof(IgnoreProjectilesCoroutine));
+        Destroy(gameObject);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

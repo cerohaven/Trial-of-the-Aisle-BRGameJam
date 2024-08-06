@@ -40,7 +40,8 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         //Set the target to the player
         _objProjectile.TargetThrown = _thisTransform.parent;
-        _objProjectile.ChangeOutlineToPlayer();
+        _objProjectile.ChangeProjectileOutline();
+        _objProjectile.EnableCollider(false);
 
         SetActiveAimArrows(true);
 

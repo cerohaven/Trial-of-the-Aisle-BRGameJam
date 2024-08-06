@@ -42,6 +42,7 @@ public class InteractableObject_Projectile : InteractableObject
 
         //Now I need to re-enable collision with the boss layer
         projectile.IgnoreBossCollision(false, bossCollider);
+
         StartCoroutine(projectile.IgnoreProjectilesCoroutine(false, 0));
 
 

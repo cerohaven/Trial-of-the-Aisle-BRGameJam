@@ -89,7 +89,7 @@ namespace NodeCanvas.Tasks.Actions{
 
             StartCoroutine(projectile.IgnoreProjectilesCoroutine(true, 0));
             StartCoroutine(projectile.IgnoreProjectilesCoroutine(false, 0.2f));
-            projectile.EnableDrag(0, 2);
+            StartCoroutine(projectile.EnableDragCoroutine(0, 2));
 
         }
 

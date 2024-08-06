@@ -56,10 +56,27 @@ namespace NodeCanvas.Tasks.Actions{
             bossMaxHealth = bossProfile.B_MaxHealth;
             bossCollider = agent.GetComponent<Collider2D>();
             pillAngles = angles1;
-
+            StopSuckingPills();
 
             return null;
 		}
+
+        private void StopSuckingPills()
+        {
+            Projectile_PainKiller[] pillProjectiles = GameObject.FindObjectsOfType<Projectile_PainKiller>();
+           
+            for (int i = 0; i < pillProjectiles.Length; i++)
+            {
+                if (pillProjectiles[i].WhoThrew != WhoThrew.Boss) continue;
+                if (pillProjectiles[i].IsBeingSuckedIn == false) continue;
+
+                pillProjectiles[i].IsBeingSuckedIn = false;
+
+                StartCoroutine(pillProjectiles[i].EnableDragCoroutine(0, 0, 5));
+
+
+            }
+        }
 
 		//This is called once each time the task is enabled.
 		//Call EndAction() to mark the action as finished, either in success or failure.
@@ -135,9 +152,9 @@ namespace NodeCanvas.Tasks.Actions{
             pill.transform.position = agent.transform.position;
 
 
-
-            projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
             projectilePill.IgnoreBossCollision(true, bossCollider);
+            projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
+            
             StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(true, 0));
             StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(false, 0.2f));
             projectilePill.IsThrownInWave = true;
