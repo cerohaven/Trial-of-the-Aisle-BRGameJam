@@ -70,7 +70,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{6ee2bf77-6d5c-4ec0-a842-8f270b598c49}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{9ac53a13-8ae4-46ea-89ae-d6d3deaff2af}</destination>
@@ -143,7 +143,7 @@
 	<object class="MixerBusFader" id="{8c117c26-b315-4be6-865b-9212353c0b62}" />
 	<object class="PitchShifterEffect" id="{ae81dba5-ff9f-42a7-b31a-940d418d8844}">
 		<property name="pitch">
-			<value>1.41999996</value>
+			<value>1.09000003</value>
 		</property>
 		<property name="fftSize">
 			<value>740</value>

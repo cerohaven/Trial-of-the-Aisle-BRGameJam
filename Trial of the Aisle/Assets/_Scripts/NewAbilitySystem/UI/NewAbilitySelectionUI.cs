@@ -11,7 +11,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
     [SerializeField] private Image bossCardImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
-    
+    private GameObject textPanelGO;
 
     public Ability abilityOne;
     public Ability abilityTwo;
@@ -68,6 +68,20 @@ public class NewAbilitySelectionUI : MonoBehaviour
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerEnter, (data) => textPanel.SetActive(true));
         AddEventTriggerListener(abilityImage.gameObject, EventTriggerType.PointerExit, (data) => textPanel.SetActive(false));
 
+        
+    }
+
+    private void MouseHoverOverAbility(GameObject textPanel)
+    {
+        textPanel.SetActive(true);
+        textPanelGO = textPanel;
+        LeanTween.rotateZ(textPanel, 2f, 0.2f).setEaseOutBack().setOnComplete(OnHoverComplete);
+    }
+
+    private void OnHoverComplete()
+    {
+        LeanTween.rotateZ(textPanelGO, 0f, 0.1f).setEaseOutBack();
+
     }
 
     private void AddEventTriggerListener(GameObject target, EventTriggerType eventType, UnityEngine.Events.UnityAction<BaseEventData> callback)
@@ -80,10 +94,14 @@ public class NewAbilitySelectionUI : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawLine(new Vector3(Screen.width / 2.5f, 0, 0), new Vector3(Screen.width / 2.5f, 1280, 0));
+        Debug.DrawLine(new Vector3(0, Screen.height / 1.3f, 0), new Vector3(1920, Screen.height / 1.3f, 0));
         if (Input.GetKeyDown(KeyCode.Escape) && unlockPanel.activeSelf)
         {
             unlockPanel.SetActive(false);
-            SceneTransitionController.Instance.LoadNextScene();
+            GameManager.Instance.TransitionType = TransitionType.BossBattle;
+            GameManager.Instance.LoadNextScene();
         }
     }
+
 }

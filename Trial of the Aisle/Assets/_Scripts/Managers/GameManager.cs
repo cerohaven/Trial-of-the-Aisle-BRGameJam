@@ -1,22 +1,28 @@
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager Instance;
-    private BossCheckDefeat bossCheckDefeat;
+    //Scriptable Objects
+    private SO_EventSender _eventSender;
 
-    [SerializeField] private SO_PauseMenuEventSender pauseMenuEvent;
-    [SerializeField] private GameObject pauseMenuPrefab;
+    //Async Loaded objects
+    private PauseGameMenu pauseMenu;
+    private GameObject pauseMenuPrefab;
+    private SceneTransitionController sceneTransitionController;
+    [SerializeField] private TransitionType transitionType;
 
+    private PlayerInputHandler playerInputHandler;
+
+    //Game State
+    private bool canPause = false;
+    private bool canMove = true;
     public static bool isGamePaused;
-
-    private PlayerInput playerInput;
-    private GameObject pauseMenu;
 
     FMOD.Studio.EventInstance SFX_BossDeath;
     FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
@@ -34,51 +40,108 @@ public class GameManager : MonoBehaviour
     private List<GameObject> uiInstances = new List<GameObject>();
 
 
-    //Scriptable Objects
-    [SerializeField] private SO_BossDefeatedEventSender SObossDefeat;
-
-    //Properties
-
-    public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
-
     public bool dragging;
 
-
+    //Properties
+    public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
+    public SO_EventSender EventSender { get => _eventSender;}
+    public TransitionType TransitionType { get => transitionType; set => transitionType = value; }
+    public SceneTransitionController SceneTransitionController { get => sceneTransitionController;}
+    public GameObject PauseMenuPrefab { get => pauseMenuPrefab;}
+    public bool CanPause { get => canPause; set => canPause = value; }
+    public bool CanMove { get => canMove; set => canMove = value; }
+    public PlayerInputHandler PlayerInputHandler { get => playerInputHandler;}
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(this);
 
-        bossCheckDefeat = GetComponent<BossCheckDefeat>();
 
+        AsyncOperation sceneTransitAsync = SceneManager.LoadSceneAsync("Load_SceneTransitionController", LoadSceneMode.Additive);
+        AsyncOperation pauseMenuAsync = SceneManager.LoadSceneAsync("Load_PauseMenu", LoadSceneMode.Additive);
+        AsyncOperation playerInputAsync = SceneManager.LoadSceneAsync("Load_PlayerInput", LoadSceneMode.Additive);
+
+        sceneTransitAsync.completed += (AsyncOperation a) =>
+        {
+            sceneTransitionController = FindObjectOfType<SceneTransitionController>();
+            DontDestroyOnLoad(sceneTransitionController);
+        };
+
+        pauseMenuAsync.completed += (AsyncOperation a) =>
+        {
+            pauseMenu = FindObjectOfType<PauseGameMenu>();
+            pauseMenuPrefab = pauseMenu.gameObject;
+            pauseMenuPrefab.SetActive(false);
+            DontDestroyOnLoad(pauseMenuPrefab);
+        };
+        playerInputAsync.completed += (AsyncOperation a) =>
+        {
+            playerInputHandler = FindObjectOfType<PlayerInputHandler>();
+            DontDestroyOnLoad(playerInputHandler.gameObject);
+        };
+
+        _eventSender = Resources.Load<SO_EventSender>("Event Sender");
         //Calls when a player presses the pause button
-        pauseMenuEvent.pauseGameEvent.AddListener(PauseTheGame);
+        _eventSender.pauseGameEvent.AddListener(PauseTheGame);
 
         //Calls whenever a player presses the resume button
-        pauseMenuEvent.resumeGameEvent.AddListener(ResumeTheGame);
+        _eventSender.resumeGameEvent.AddListener(ResumeTheGame);
 
         //When the boss is defeated
-        SObossDefeat.bossIsDefeatedEvent.AddListener(IsDefeated);
+        _eventSender.bossIsDefeatedEvent.AddListener(IsDefeated);
     }
+
+
+    private FMOD.Studio.EventInstance AdaptiveMusicInstance;
 
     private void Start()
     {
         gameEnded = false;
         //find the playerInputHandler in the game.
         //May need to move inside function if errors when someone unpluggs controller
-        playerInput = GameObject.FindObjectOfType<PlayerInput>();
 
-        Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
+        //   Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
+        AdaptiveMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/Adaptive_Music");
+
         SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
         SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
+
+    //Scene Transitions
+    #region IEnumerator for Exit Scene Transition
+    public void LoadNextScene()
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadNextScene());
+    }
+
+    public void LoadSpecificSceneString(string sceneName)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificScene(sceneName));
+    }
+   
+
+    //Used for when the TimeScale is 0 so we have to manually play the animations since they won't play
+    public void LoadSpecificSceneStringPaused(string sceneName)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificScenePaused(sceneName));
+    }
+
+    public void LoadSpecificSceneBuildIndex(int buildIndex)
+    {
+        StartCoroutine(sceneTransitionController.WaitForAnimationAndLoadSpecificSceneBuildIndex(buildIndex));
+    }
+
+    #endregion
+
+    #region Player Input Controls
+
+
+
+
+    #endregion
+
+
+
     private void PauseTheGame()
     {
         //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
@@ -100,37 +163,40 @@ public class GameManager : MonoBehaviour
         {
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
-            SceneTransitionController.Instance.LoadNextScene();
+            LoadNextScene();
         }
 
-        Destroy(uiInstances[uiInstances.Count-1]);
+        uiInstances[uiInstances.Count - 1].SetActive(false);
         uiInstances.RemoveAt(uiInstances.Count - 1);
     }
     private void Pause()
     {
 
-        playerInput.SwitchCurrentActionMap("UI");
+        playerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
 
-        //Spawn in the pause menu ONLY IF IT'S THE FIRST TIME
+        //Reveal the Pause Menu
         if (!isGamePaused)
-            pauseMenu = Instantiate(pauseMenuPrefab);
+        {
+            pauseMenuPrefab.SetActive(true);
+        }
+            
 
         isGamePaused = true;
 
         //connect all the player's inputs to that pause menu's input module
-        pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInput);
+        pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInputHandler.PlayerInput);
 
         Time.timeScale = 0;
 
-        uiInstances.Add(pauseMenu);
+        uiInstances.Add(pauseMenuPrefab);
     }
     private void ResumeTheGame()
     {
-        playerInput.SwitchCurrentActionMap("Player");
+        playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
         isGamePaused = false;
 
-        uiInstances.Remove(pauseMenu);
+        uiInstances.Remove(pauseMenuPrefab);
 
 
         if(pauseMenu != null)
@@ -150,10 +216,13 @@ public class GameManager : MonoBehaviour
         bossIsDefeated = true;
 
         //Flicker Screen
-        SObossDefeat.FlickerScreenSend();
+        _eventSender.FlickerScreenSend();
 
         SFX_BossScream.start();
-        Boss_BGM_Postbattle.start();
+        //Boss_BGM_Postbattle.start();
+
+        AdaptiveMusicInstance.start();
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "PostBattleEntered");
         //AudioManager.instance.Play("boss_scream");
 
         //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'

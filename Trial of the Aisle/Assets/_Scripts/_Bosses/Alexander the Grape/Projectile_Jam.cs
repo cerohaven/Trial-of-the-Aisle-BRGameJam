@@ -55,7 +55,7 @@ public class Projectile_Jam : Projectile
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if (collision.gameObject.CompareTag("Player"))
         {
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
 
         }
 

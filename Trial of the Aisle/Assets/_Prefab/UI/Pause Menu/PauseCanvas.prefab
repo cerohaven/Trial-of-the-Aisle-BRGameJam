@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 6185407957575491017}
   - component: {fileID: 3584795381679102427}
   - component: {fileID: 2236552090328685244}
-  - component: {fileID: 2778538144713983648}
+  - component: {fileID: 6750918918862129234}
   - component: {fileID: 642919167161658727}
   m_Layer: 0
   m_Name: PauseCanvas
@@ -895,7 +895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ac5825c3ec21540b389e9863615b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
 --- !u!114 &2236552090328685244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,9 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7a2a935aab70e4ca78eaceeeb2d4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuEvent: {fileID: 11400000, guid: e099ecc88c8d0fb4580421db9cd0ea6e, type: 2}
   resumeButton: {fileID: 6185407958229354068}
---- !u!114 &2778538144713983648
+--- !u!114 &6750918918862129234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -919,7 +917,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6185407957575491023}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ebd5d92ce37662429f45b9ee416821f, type: 3}
+  m_Script: {fileID: 11500000, guid: 12c1dd2d7e1488b4f805e195d7643c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &642919167161658727

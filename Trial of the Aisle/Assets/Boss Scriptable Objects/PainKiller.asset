@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PainKiller
   m_EditorClassIdentifier: 
   b_Name: The Pain Killer
-  b_MaxHealth: 10
+  b_MaxHealth: 20
   b_BossProfilePicture: {fileID: -1555630685, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -40,10 +40,10 @@ MonoBehaviour:
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
   b_BossAttacks:
   - attackName: Paracetamania
-    percentChanceToUse: 0.659
+    percentChanceToUse: 0
     attackCondition: {fileID: 0}
   - attackName: Bad Habit
-    percentChanceToUse: 0.544
+    percentChanceToUse: 1
     attackCondition: {fileID: 11400000, guid: 05f9ee8793bb50d4e98e72d8d83155e2, type: 2}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 05616e0a2198f2b4da82216375c70a6c, type: 2}

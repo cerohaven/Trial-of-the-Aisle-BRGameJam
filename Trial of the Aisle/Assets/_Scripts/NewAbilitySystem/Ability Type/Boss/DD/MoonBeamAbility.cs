@@ -9,9 +9,12 @@ public class RaycastAbility : Ability
     public float splashDuration = 1f; // Duration of the splash effect
     public float damageInterval = 0.5f; // Time between each damage tick
     public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
+<<<<<<< HEAD
     public float beamOffset = 0.5f; // Offset to shorten the beam tip
 
     public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
+=======
+>>>>>>> Feature-Test
     public ChangeHealth changeHealthAmount; // Amount of damage to apply
 
     private GameObject shootEffectInstance; // Store a reference to the shoot effect instance
@@ -96,10 +99,14 @@ public class RaycastAbility : Ability
             if (hitCollider.CompareTag("Boss"))
             {
                 // Apply damage to each 'Boss' object found within the range
+<<<<<<< HEAD
                 adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
 
                 // Play the splash effect
                 PlaySplashEffectAtPosition(position);
+=======
+                GameManager.Instance.EventSender.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
+>>>>>>> Feature-Test
             }
             else if (hitCollider.CompareTag("Pill"))
             {

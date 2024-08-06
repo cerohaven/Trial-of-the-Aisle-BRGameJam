@@ -49,18 +49,19 @@ public class BossIntroAnimation : MonoBehaviour
 
     private void FreezePlayerMovement()
     {
-        pc.CanMove = false;
+        GameManager.Instance.CanMove = false;
     }
 
     private void UnFreezePlayerMovement()
     {
-        pc.CanMove = true;
+        GameManager.Instance.CanMove = true;
     }
 
+    
     IEnumerator playsound()
     {
         yield return new WaitForSeconds(.7f);
-
+        /*
         if (SO_BP != null)
         {
             switch (SO_BP.b_Name)
@@ -85,6 +86,7 @@ public class BossIntroAnimation : MonoBehaviour
         else
         {
             Debug.LogError("SO_BP is null.");
-        }
+        } */
     }
+    
 }

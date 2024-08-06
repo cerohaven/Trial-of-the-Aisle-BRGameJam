@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using FMODUnity;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-
 public class PlayerAbilities : MonoBehaviour
 {
     public static PlayerAbilities Instance { get; private set; }
@@ -23,15 +21,6 @@ public class PlayerAbilities : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != this)
-        {
-            Destroy(gameObject);
-        }
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform.gameObject;
 

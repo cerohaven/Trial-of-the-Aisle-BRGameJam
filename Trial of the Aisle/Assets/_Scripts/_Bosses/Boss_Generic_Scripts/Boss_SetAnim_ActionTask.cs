@@ -7,7 +7,6 @@ namespace NodeCanvas.Tasks.Actions{
 
 		public int animState;
 		private Animator animator;
-		public bool triggerAttack;
 
 		protected override string OnInit(){
 			animator = agent.GetComponentInChildren<Animator>();
@@ -17,7 +16,7 @@ namespace NodeCanvas.Tasks.Actions{
 
 		protected override void OnExecute(){
 			animator.SetInteger("animState", animState);
-			animator.SetBool("triggerAttack", triggerAttack);
+
 
             EndAction(true);
 		}

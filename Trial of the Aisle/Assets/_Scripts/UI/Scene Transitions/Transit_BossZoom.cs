@@ -55,7 +55,7 @@ public class Transit_BossZoom : MonoBehaviour, ISceneTransition
 
     private void OnEnable()
     {
-        controller = SceneTransitionController.Instance;
+        controller = GameManager.Instance.SceneTransitionController;
     }
     private void Update()
     {

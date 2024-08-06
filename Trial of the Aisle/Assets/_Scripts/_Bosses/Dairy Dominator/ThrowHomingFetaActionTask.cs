@@ -11,6 +11,8 @@ namespace NodeCanvas.Tasks.Actions{
         private Vector3 bossPos;
         private GameObject fetaCheestGO;
 
+        private FMOD.Studio.EventInstance FetaFrenzyThrowInstance;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit()
@@ -38,7 +40,11 @@ namespace NodeCanvas.Tasks.Actions{
             homingFeta.PlayerTransform = playerTransform;
             homingFeta.transform.up = Random.insideUnitCircle;
             LeanTween.scale(agent.gameObject, Vector3.one * 0.9f, 0.1f).setEaseInOutQuad().setOnComplete(Testing);
-           
+
+
+            FetaFrenzyThrowInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_DD/B_Feta_Frenzy");
+            FetaFrenzyThrowInstance.start();
+
             EndAction(true);
         }
         private void Testing()

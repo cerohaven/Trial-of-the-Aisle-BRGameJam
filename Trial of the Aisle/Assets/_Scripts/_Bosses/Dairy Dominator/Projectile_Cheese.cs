@@ -13,6 +13,7 @@ public class Projectile_Cheese : Projectile
     //This changes the behaviour of the pill based on the boss' attacks
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
 
+
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
     {
@@ -23,6 +24,7 @@ public class Projectile_Cheese : Projectile
         if (_whoThrew == WhoThrew.Boss)
         {
             bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
+
         }
 
     }
@@ -53,7 +55,7 @@ public class Projectile_Cheese : Projectile
         {
             if (collision.gameObject.CompareTag("Boss"))
             {
-                adjustHealth.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
+                GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
@@ -73,7 +75,7 @@ public class Projectile_Cheese : Projectile
             if (collision.gameObject.CompareTag("Player"))
             {
 
-                adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
+                GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
                 Instantiate(hitParticles, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
@@ -97,7 +99,7 @@ public class Projectile_Cheese : Projectile
         //On Collision with the player, deal damage
         if (collision.gameObject.CompareTag("Player"))
         {
-            adjustHealth.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

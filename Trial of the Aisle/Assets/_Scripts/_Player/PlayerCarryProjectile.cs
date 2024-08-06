@@ -26,6 +26,8 @@ public class PlayerCarryProjectile : MonoBehaviour
 
     void Update()
     {
+        if (carryObject == null || paa == null) return;
+
         if (isCarryingObject == false)
         {
             paa.gameObject.SetActive(false);
