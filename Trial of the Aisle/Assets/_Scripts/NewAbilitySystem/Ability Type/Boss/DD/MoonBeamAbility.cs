@@ -4,20 +4,27 @@ using System.Collections;
 [CreateAssetMenu(fileName = "RaycastAbility", menuName = "Abilities/General/Raycast Ability")]
 public class RaycastAbility : Ability
 {
-    public GameObject moonbeamPrefab; // Reference to the Moonbeam prefab with a LineRenderer
+    public GameObject moonbeamPrefab; // Reference to the Moonbeam prefab with LineRenderer and particle effects
     public float abilityDuration = 2f; // Duration of the ability's effect
     public float splashDuration = 1f; // Duration of the splash effect
     public float damageInterval = 0.5f; // Time between each damage tick
     public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
+    public float beamOffset = 0.5f; // Offset to shorten the beam tip
 
     public SO_AdjustHealth adjustHealthSO; // The SO responsible for changing health
     public ChangeHealth changeHealthAmount; // Amount of damage to apply
 
+    private GameObject shootEffectInstance; // Store a reference to the shoot effect instance
+
     public override void Activate(GameObject owner)
     {
+        // Instantiate the moonbeam prefab
         GameObject moonbeamInstance = Instantiate(moonbeamPrefab, owner.transform.position, Quaternion.identity);
-        LineRenderer lineRenderer = moonbeamInstance.GetComponent<LineRenderer>();
 
+        // Play the shoot effect and make it follow the player
+        PlayShootEffect(owner, moonbeamInstance);
+
+        LineRenderer lineRenderer = moonbeamInstance.GetComponent<LineRenderer>();
         if (lineRenderer == null)
         {
             Debug.LogError("Moonbeam prefab does not have a LineRenderer component.");
@@ -49,12 +56,21 @@ public class RaycastAbility : Ability
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0; // Ensure it's in the 2D plane
 
-            // Update LineRenderer positions
-            lineRenderer.SetPosition(0, owner.transform.position);
-            lineRenderer.SetPosition(1, mousePosition);
+            // Calculate the direction from the owner to the mouse position
+            Vector3 direction = (mousePosition - owner.transform.position).normalized;
+
+            // Shorten the beam tip by the specified offset
+            Vector3 shortenedEndPosition = owner.transform.position + direction * beamOffset;
+
+            // Update LineRenderer positions to swap start and end points
+            lineRenderer.SetPosition(0, mousePosition); // Start at the mouse position
+            lineRenderer.SetPosition(1, shortenedEndPosition); // End at the shortened position
 
             // Move the impact collider to follow the mouse position
             impactColliderInstance.transform.position = mousePosition;
+
+            // Update the shoot effect's position and rotation
+            UpdateShootEffectPositionAndRotation(owner, mousePosition);
 
             if (Time.time >= nextDamageTime)
             {
@@ -65,8 +81,10 @@ public class RaycastAbility : Ability
             yield return null; // Wait until the next frame
         }
 
-        Destroy(moonbeamInstance); // Clean up the Moonbeam instance when done
-        Destroy(impactColliderInstance); // Clean up the impact collider instance when done
+        // Clean up instances when done
+        Destroy(moonbeamInstance);
+        Destroy(impactColliderInstance);
+        Destroy(shootEffectInstance); // Destroy the shoot effect instance
     }
 
     private void ApplyDamage(GameObject owner, Vector3 position)
@@ -80,8 +98,8 @@ public class RaycastAbility : Ability
                 // Apply damage to each 'Boss' object found within the range
                 adjustHealthSO.ChangeBossHealthEventSend(changeHealthAmount, HealthType.Damage, Vector2.zero);
 
-                // Play the splash effect at the position
-                PlaySplashEffectAtPosition(position, owner);
+                // Play the splash effect
+                PlaySplashEffectAtPosition(position);
             }
             else if (hitCollider.CompareTag("Pill"))
             {
@@ -91,34 +109,70 @@ public class RaycastAbility : Ability
         }
     }
 
-    private void PlaySplashEffectAtPosition(Vector3 position, GameObject owner)
+    private void PlayShootEffect(GameObject owner, GameObject moonbeamInstance)
     {
-        // Instantiate the moonbeam prefab to access the splash effect
-        GameObject moonbeamInstance = Instantiate(moonbeamPrefab, position, Quaternion.identity);
-        ParticleSystem splashEffect = moonbeamInstance.GetComponentInChildren<ParticleSystem>();
+        // Find the shoot effect ParticleSystem in the moonbeam instance
+        ParticleSystem shootEffect = moonbeamInstance.transform.Find("shootEffect").GetComponent<ParticleSystem>();
 
-        if (splashEffect != null)
+        if (shootEffect != null)
         {
-            // Calculate direction towards the player
-            Vector3 directionToPlayer = (owner.transform.position - position).normalized;
+            // Set the shoot effect's position to the player's position
+            shootEffect.transform.position = owner.transform.position;
 
-            // Calculate the angle to rotate the splash effect to face the player
-            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
-            splashEffect.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            // Make the shoot effect a child of the player to follow them
+            shootEffect.transform.SetParent(owner.transform);
 
-            splashEffect.Play();
-            owner.GetComponent<MonoBehaviour>().StartCoroutine(DestroySplashEffectAfterDuration(moonbeamInstance, splashDuration));
+            // Store the shoot effect instance
+            shootEffectInstance = shootEffect.gameObject;
+
+            // Ensure the shoot effect is pointing towards the mouse direction
+            UpdateShootEffectPositionAndRotation(owner, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            // Play the shoot effect
+            shootEffect.Play();
         }
         else
         {
-            Debug.LogError("No ParticleSystem found in moonbeamPrefab.");
-            Destroy(moonbeamInstance);
+            Debug.LogError("ShootEffect ParticleSystem not found in moonbeamPrefab.");
         }
     }
 
-    private IEnumerator DestroySplashEffectAfterDuration(GameObject splashInstance, float duration)
+    private void UpdateShootEffectPositionAndRotation(GameObject owner, Vector3 targetPosition)
     {
-        yield return new WaitForSeconds(duration);
-        Destroy(splashInstance);
+        if (shootEffectInstance != null)
+        {
+            // Calculate the direction from the shoot effect to the target position
+            Vector3 directionToTarget = (targetPosition - owner.transform.position).normalized;
+
+            // Calculate the angle to rotate the shoot effect to face the target
+            float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+            // Apply the rotation to the shoot effect
+            shootEffectInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjusted angle to correct for left curving
+
+            // Update the shoot effect's position to the player's position
+            shootEffectInstance.transform.position = owner.transform.position;
+        }
+    }
+
+    private void PlaySplashEffectAtPosition(Vector3 position)
+    {
+        // Instantiate the moonbeam prefab to access the splash effect
+        GameObject moonbeamInstance = Instantiate(moonbeamPrefab, position, Quaternion.identity);
+        ParticleSystem splashEffect = moonbeamInstance.transform.Find("splashEffect").GetComponent<ParticleSystem>();
+
+        if (splashEffect != null)
+        {
+            // Play the splash effect
+            splashEffect.Play();
+
+            // Destroy the splash effect instance after duration
+            Destroy(moonbeamInstance, splashDuration);
+        }
+        else
+        {
+            Debug.LogError("SplashEffect ParticleSystem not found in moonbeamPrefab.");
+            Destroy(moonbeamInstance);
+        }
     }
 }
