@@ -11,10 +11,11 @@ public class RaycastAbility : Ability
     public float effectRange = 2f; // Radius of the CircleCollider2D's effective area
     public float beamOffset = 0.5f; // Offset to shorten the beam tip
 
-    public EntityHealth entityHealth; // The SO responsible for changing health
-    public ChangeHealth changeHealthAmount; // Amount of damage to apply
+    private EntityHealth entityHealth; // The SO responsible for changing health
+    private ChangeHealth changeHealthAmount; // Amount of damage to apply
 
     private GameObject shootEffectInstance; // Store a reference to the shoot effect instance
+    private ParticleSystem splashEffectInstance; // Store a reference to the splash effect instance
 
     public override void Activate(GameObject owner)
     {
@@ -45,6 +46,9 @@ public class RaycastAbility : Ability
             return;
         }
 
+        // Find and store the splash effect instance
+        splashEffectInstance = moonbeamInstance.transform.Find("splashEffect").GetComponent<ParticleSystem>();
+
         owner.GetComponent<MonoBehaviour>().StartCoroutine(ActivateRaycastAbility(owner, lineRenderer, moonbeamInstance, impactColliderInstance));
     }
 
@@ -52,6 +56,9 @@ public class RaycastAbility : Ability
     {
         float endTime = Time.time + abilityDuration;
         float nextDamageTime = Time.time;
+
+        // Set the LayerMask to detect only walls
+        int wallLayerMask = LayerMask.GetMask("Wall");
 
         while (Time.time < endTime)
         {
@@ -61,22 +68,40 @@ public class RaycastAbility : Ability
             // Calculate the direction from the owner to the mouse position
             Vector3 direction = (mousePosition - owner.transform.position).normalized;
 
-            // Shorten the beam tip by the specified offset
-            Vector3 shortenedEndPosition = owner.transform.position + direction * beamOffset;
+            // Perform a raycast to detect walls
+            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, direction, Vector3.Distance(owner.transform.position, mousePosition), wallLayerMask);
+            Vector3 endPosition = mousePosition;
 
-            // Update LineRenderer positions to swap start and end points
-            lineRenderer.SetPosition(0, mousePosition); // Start at the mouse position
-            lineRenderer.SetPosition(1, shortenedEndPosition); // End at the shortened position
+            // Debug the raycast direction
+            Debug.DrawRay(owner.transform.position, direction * Vector3.Distance(owner.transform.position, mousePosition), Color.red);
 
-            // Move the impact collider to follow the mouse position
-            impactColliderInstance.transform.position = mousePosition;
+            if (hit.collider != null)
+            {
+                // If the raycast hits a wall, set the end position to the hit point
+                endPosition = hit.point;
+                Debug.Log("Raycast hit: " + hit.collider.name);
+
+                // Play splash effect at the hit point
+                PlaySplashEffectAtPosition(hit.point);
+            }
+            else
+            {
+                Debug.Log("Raycast did not hit any walls.");
+            }
+
+            // Update LineRenderer positions to start at the owner's position and end at the hit point or mouse position
+            lineRenderer.SetPosition(0, owner.transform.position); // Start at the player's position
+            lineRenderer.SetPosition(1, endPosition); // End at the hit point or mouse position
+
+            // Move the impact collider to follow the end position
+            impactColliderInstance.transform.position = endPosition;
 
             // Update the shoot effect's position and rotation
-            UpdateShootEffectPositionAndRotation(owner, mousePosition);
+            UpdateShootEffectPositionAndRotation(owner, endPosition);
 
             if (Time.time >= nextDamageTime)
             {
-                ApplyDamage(owner, mousePosition);
+                ApplyDamage(owner, endPosition);
                 nextDamageTime += damageInterval; // Schedule the next damage application
             }
 
@@ -91,7 +116,7 @@ public class RaycastAbility : Ability
 
     private void ApplyDamage(GameObject owner, Vector3 position)
     {
-        // Find all colliders within the effect range at the mouse position
+        // Find all colliders within the effect range at the position
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, effectRange);
         foreach (var hitCollider in hitColliders)
         {
@@ -127,7 +152,7 @@ public class RaycastAbility : Ability
             // Store the shoot effect instance
             shootEffectInstance = shootEffect.gameObject;
 
-            // Ensure the shoot effect is pointing towards the mouse direction
+            // Ensure the shoot effect is pointing towards the target position
             UpdateShootEffectPositionAndRotation(owner, Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
             // Play the shoot effect
@@ -159,22 +184,13 @@ public class RaycastAbility : Ability
 
     private void PlaySplashEffectAtPosition(Vector3 position)
     {
-        // Instantiate the moonbeam prefab to access the splash effect
-        GameObject moonbeamInstance = Instantiate(moonbeamPrefab, position, Quaternion.identity);
-        ParticleSystem splashEffect = moonbeamInstance.transform.Find("splashEffect").GetComponent<ParticleSystem>();
-
-        if (splashEffect != null)
+        if (splashEffectInstance != null)
         {
+            // Set the splash effect's position to the specified position
+            splashEffectInstance.transform.position = position;
+
             // Play the splash effect
-            splashEffect.Play();
-
-            // Destroy the splash effect instance after duration
-            Destroy(moonbeamInstance, splashDuration);
-        }
-        else
-        {
-            Debug.LogError("SplashEffect ParticleSystem not found in moonbeamPrefab.");
-            Destroy(moonbeamInstance);
+            splashEffectInstance.Play();
         }
     }
 }
