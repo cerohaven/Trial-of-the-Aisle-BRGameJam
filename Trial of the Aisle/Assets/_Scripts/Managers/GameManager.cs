@@ -25,7 +25,7 @@ public class GameManager : Singleton<GameManager>
     private bool bossIsDefeated = false;
 
     public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
-    private FMOD.Studio.EventInstance AdaptiveMusicInstance;
+    public FMOD.Studio.EventInstance AdaptiveMusicInstance;
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
     [SerializeField] private Transform _bossTransform;
@@ -106,8 +106,6 @@ public class GameManager : Singleton<GameManager>
         //   Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
         AdaptiveMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/Adaptive_Music");
 
-        SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
-        SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
     }
 
     #region Public Methods
@@ -217,26 +215,4 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion
 
-    private void IsDefeated()
-    {
-        //Once we defeat the boss, we will do some stuff
-
-
-        //AudioManager.instance.Play("ui_bossDefeated");
-        SFX_BossDeath.start();
-
-        bossIsDefeated = true;
-
-        //Flicker Screen
-        _eventSender.FlickerScreenSend();
-
-        SFX_BossScream.start();
-        //Boss_BGM_Postbattle.start();
-
-        AdaptiveMusicInstance.start();
-        FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "PostBattleEntered");
-        //AudioManager.instance.Play("boss_scream");
-
-        //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
-    }
 }

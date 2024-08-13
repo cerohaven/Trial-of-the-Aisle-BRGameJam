@@ -58,7 +58,8 @@ public class SO_EntityDeathEvent_Boss : SO_EntityHealthEventBase
         SFX_BossScream.start();
 
         GameManager.Instance.Boss_BGM_Postbattle.start();
-
+        GameManager.Instance.AdaptiveMusicInstance.start();
+        FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "PostBattleEntered");
 
         _attachedGameObject.SetActive(false);
 

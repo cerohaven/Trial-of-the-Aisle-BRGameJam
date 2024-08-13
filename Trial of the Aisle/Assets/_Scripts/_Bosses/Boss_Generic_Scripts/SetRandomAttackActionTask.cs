@@ -10,6 +10,7 @@ namespace NodeCanvas.Tasks.Actions{
         private SO_BossProfile bossProfile;
 
 		protected override string OnInit(){
+            Debug.Log("AAAAAAAA");
             agentBlackboard = agent.GetComponent<Blackboard>();
             bossProfile = agent.GetComponent<InitializeBoss>().ThisBossProfile;
             return null;

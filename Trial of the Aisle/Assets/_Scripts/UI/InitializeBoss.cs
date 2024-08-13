@@ -33,6 +33,7 @@ public class InitializeBoss : MonoBehaviour
         _entityHealth = GetComponent<EntityHealth>();
 
         _agentBlackboard = GetComponent<Blackboard>();
+        Debug.Log(_agentBlackboard);
     }
 
     private void Start()
