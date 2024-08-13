@@ -7185,7 +7185,7 @@ Transform:
   m_GameObject: {fileID: 816308862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7319,7 +7319,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.54375
+  orthographic size: 20.543749
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -14842,6 +14842,51 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1651546494}
   m_SourcePrefab: {fileID: 100100000, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
+--- !u!1 &982197925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 982197927}
+  - component: {fileID: 982197926}
+  m_Layer: 0
+  m_Name: FMOD Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &982197926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982197925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9244cf8f254ee894998b4569c694027d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicManager: {fileID: 982197925}
+--- !u!4 &982197927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982197925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06506762, y: 5.592535, z: -2.8853498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1001504085
 GameObject:
   m_ObjectHideFlags: 0
@@ -45483,7 +45528,7 @@ Transform:
   m_GameObject: {fileID: 2061118893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45787,7 +45832,6 @@ GameObject:
   - component: {fileID: 7073513567513950841}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
-  - component: {fileID: 9083388960159939505}
   m_Layer: 0
   m_Name: Dairy Dominator Boss
   m_TagString: Boss
@@ -46007,37 +46051,6 @@ Transform:
   - {fileID: 763837313254469042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9083388960159939505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5488963747673041817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -722774264
-      Data2: 1244909767
-      Data3: -964935003
-      Data4: 617665543
-    Path: event:/Music/BGM/DD_Arena
-  Event: 
-  PlayEvent: 1
-  StopEvent: 12
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!114 &9083388960159939506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46084,6 +46097,7 @@ SceneRoots:
   - {fileID: 1621543905}
   - {fileID: 705960724}
   - {fileID: 829568176}
+  - {fileID: 982197927}
   - {fileID: 1290215940}
   - {fileID: 1231111791}
   - {fileID: 1713613707}

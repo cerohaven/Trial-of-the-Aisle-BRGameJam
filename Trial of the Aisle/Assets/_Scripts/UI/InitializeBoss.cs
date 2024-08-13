@@ -74,7 +74,6 @@ public class InitializeBoss : MonoBehaviour
             return; 
         }
 
-        StartCoroutine(PlaySound());
         Invoke(nameof(EndOfAnimation), _introTimeOnScreen);
         GameManager.Instance.FreezePlayerMovement();
     }
@@ -90,38 +89,6 @@ public class InitializeBoss : MonoBehaviour
         for (int i = 0; i < _HUDanimators.Length; i++)
         {
             _HUDanimators[i].SetTrigger("Reverse");
-        }
-    }
-
-
-    IEnumerator PlaySound()
-    {
-        yield return new WaitForSeconds(.7f);
-
-        if (_bossProfile != null)
-        {
-            switch (_bossProfile.b_Name)
-            {
-                case "The Pain Killer":
-                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/PK_Intro");
-                    break;
-                case "Alexander the Grape":
-                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/AtG_Intro");
-                    break;
-                case "Dairy Dominator":
-                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/DD_Intro");
-                    break;
-                case "Quickus Pickus Upis":
-                    RuntimeManager.PlayOneShot("event:/Dialogue/Introductions/QPU_Intro");
-                    break;
-                default:
-                    Debug.LogWarning("Default case reached with boss name: " + _bossProfile.b_Name);
-                    break;
-            }
-        }
-        else
-        {
-            Debug.LogError("SO_BP is null.");
         }
     }
 

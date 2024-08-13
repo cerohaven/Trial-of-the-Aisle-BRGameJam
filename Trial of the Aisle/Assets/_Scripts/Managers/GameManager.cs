@@ -25,7 +25,6 @@ public class GameManager : Singleton<GameManager>
     private bool bossIsDefeated = false;
 
     public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
-    public FMOD.Studio.EventInstance AdaptiveMusicInstance;
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
     [SerializeField] private Transform _bossTransform;
@@ -103,8 +102,7 @@ public class GameManager : Singleton<GameManager>
         gameEnded = false;
 
         Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
-        //   Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
-        AdaptiveMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/Adaptive_Music");
+
 
     }
 

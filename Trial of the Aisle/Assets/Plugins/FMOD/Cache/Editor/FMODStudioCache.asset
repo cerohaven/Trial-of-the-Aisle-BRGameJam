@@ -447,7 +447,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638585874750740547
+  lastModified: 638590926501087938
   FileSizes:
   - Name: Desktop
     Value: 325408
@@ -495,7 +495,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638585874751347959
+  lastModified: 638590926501625183
   FileSizes:
   - Name: Desktop
     Value: 713344
@@ -515,7 +515,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638585874751267880
+  lastModified: 638590926501545118
   FileSizes:
   - Name: Desktop
     Value: 7645600
@@ -562,7 +562,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638585874751357959
+  lastModified: 638590926501635193
   FileSizes:
   - Name: Desktop
     Value: 141856
@@ -717,7 +717,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638585874750750556
+  lastModified: 638590926501097949
   FileSizes:
   - Name: Desktop
     Value: 1304
@@ -859,7 +859,7 @@ MonoBehaviour:
   - {fileID: -271029783631720041}
   StringsBanks:
   - {fileID: 6961738373130466378}
-  cacheTime: 638585874751357959
+  cacheTime: 638590926501635193
   cacheVersion: 131617
 --- !u!114 &1277437520083324812
 MonoBehaviour:
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Dialogue.bank
   Name: Dialogue
   StudioPath: bank:/Dialogue
-  lastModified: 638585874750710586
+  lastModified: 638590926501047904
   FileSizes:
   - Name: Desktop
     Value: 99008
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638585874750750556
+  lastModified: 638590926501097949
   FileSizes:
   - Name: Desktop
     Value: 3688

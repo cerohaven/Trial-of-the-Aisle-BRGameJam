@@ -31,7 +31,7 @@ public class FMODMusicManager : MonoBehaviour
         AdaptiveMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/Adaptive_Music");
         AdaptiveMusicInstance.start();
 
-        if (sceneName == "Boss_AlexanderTheGrape")
+        if (sceneName == "Boss_AlexanderTheGrape 1")
         {
             // ATGMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/AtG_Arena");
             ATGIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/AtG_Intro");
@@ -45,6 +45,7 @@ public class FMODMusicManager : MonoBehaviour
 
         if (sceneName == "Boss_Painkiller_LD_Redesign")
         {
+            Debug.Log("aaaa");
             //  PKMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/PK_Arena");
             PKIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/PK_Intro");
 
@@ -57,7 +58,7 @@ public class FMODMusicManager : MonoBehaviour
 
         }
 
-        if(sceneName == "Boss_DairyDominator")
+        if(sceneName == "Boss_DairyDominator 1")
         {
             //  DDMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/DD_Arena");
             DDIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/DD_Intro");
