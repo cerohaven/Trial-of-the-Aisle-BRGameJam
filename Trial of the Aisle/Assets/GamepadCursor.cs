@@ -40,11 +40,27 @@ public class VirtualMouseUserInput : MonoBehaviour
 
         if (virtualMouse == null)
             virtualMouse = (Mouse)InputSystem.AddDevice("VirtualMouse");
-        else if (virtualMouse.added)
+        else if (!virtualMouse.added)
             InputSystem.AddDevice(virtualMouse);
 
-        // Pair the device to the user to use the playerinput component with the event system and the virtual mouse
+        // Unpair any existing devices to avoid creating additional users
+        playerInput.user.UnpairDevices();
+
+        // Pair the virtual mouse with the current user
         InputUser.PerformPairingWithDevice(virtualMouse, playerInput.user);
+
+        // Check if a gamepad is connected and pair it with the current user
+        if (Gamepad.current != null)
+        {
+            InputUser.PerformPairingWithDevice(Gamepad.current, playerInput.user);
+        }
+
+        // Ensure that the keyboard and mouse are not paired to multiple users
+        if (Keyboard.current != null && Mouse.current != null)
+        {
+            InputUser.PerformPairingWithDevice(Keyboard.current, playerInput.user);
+            InputUser.PerformPairingWithDevice(Mouse.current, playerInput.user);
+        }
 
         if (cursorTransform != null)
         {
@@ -53,8 +69,13 @@ public class VirtualMouseUserInput : MonoBehaviour
         }
 
         InputSystem.onAfterUpdate += UpdateMotion;
+
         playerInput.onControlsChanged += OnControlsChanged;
+        Debug.Log("ControlsChanged event attached.");
     }
+
+
+
 
     private void OnDisable()
     {
@@ -120,5 +141,13 @@ public class VirtualMouseUserInput : MonoBehaviour
             AnchorCursor(CurrentMouse.position.ReadValue());
             previousControlScheme = gamepadScheme;
         }
+    }
+
+    //potential solution to on controls changed not being called
+    private void Update() {
+        if (previousControlScheme != playerInput.currentControlScheme) {
+            OnControlsChanged(playerInput);
+        }
+        previousControlScheme = playerInput.currentControlScheme;
     }
 }
