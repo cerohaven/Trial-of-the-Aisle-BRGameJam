@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
+  m_Name: Projectile Pattern
+  m_EditorClassIdentifier: 
+  _patternNumberToUse: 3
+  _projectilePatterns:
+  - thisPatternType: 0
+    thisPatternTypeModifiers:
+    - modName: Source
+      modValue: 5
+    - modName: Percent Chance
+      modValue: 2
+  - thisPatternType: 2
+    thisPatternTypeModifiers:
+    - modName: Source
+      modValue: 5
+    - modName: Number of Projectiles
+      modValue: 3
+    - modName: delay
+      modValue: 2
+  - thisPatternType: 1
+    thisPatternTypeModifiers:
+    - modName: Source
+      modValue: 0
+    - modName: Number of Projectiles
+      modValue: 1
+    - modName: Spread Angle
+      modValue: 1
+  _foldouts: 010101
+  _baseFoldout: 1
+  basePAT:
+  - modName: Angle
+    modValue: 0
+  - modName: Speed
+    modValue: 1
+  somePAT:
+  - modName: Source
+    modValue: 0
+  - modName: Percent Chance
+    modValue: 1
+  spreadPAT:
+  - modName: Source
+    modValue: 0
+  - modName: Number of Projectiles
+    modValue: 1
+  - modName: Spread Angle
+    modValue: 1
+  repeatPAT:
+  - modName: Source
+    modValue: 0
+  - modName: Number of Projectiles
+    modValue: 1
+  - modName: delay
+    modValue: 1
