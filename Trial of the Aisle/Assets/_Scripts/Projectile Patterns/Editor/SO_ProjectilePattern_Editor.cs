@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-
+using System;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -9,13 +7,38 @@ using UnityEngine;
 [CustomEditor(typeof(SO_ProjectilePattern))]
 public class SO_ProjectilePattern_Editor : Editor
 {
+    private readonly int sizeOfField = 20;
+
     SerializedProperty _projectilePatterns;
     SerializedProperty _patternNumberToUse;
     SerializedProperty _patternType;
     SerializedProperty _patternModStruct;
     SerializedProperty _foldouts;
     SerializedProperty _baseFoldout;
+    SerializedProperty _removeSpecificPattern;
+
+    SO_ProjectilePattern projectilePatternWAH;
+
+
+
+    //Pattern Modifers
     SerializedProperty basePAT;
+    SerializedProperty somePAT;
+    SerializedProperty spreadPAT;
+    SerializedProperty randomizeAnglePAT;
+    SerializedProperty rapidPAT;
+    SerializedProperty burstPAT;
+    //SerializedProperty rapidPAT;
+    //SerializedProperty rapidPAT;
+
+    bool addNewArray;
+    bool removeArray;
+    bool clearArray;
+
+    float maxLabelWidth = 150;
+    float defaultWidth;
+    readonly Color selectedPatternColour = new Color(0.1f, 0.45f, 0.45f);
+    readonly Color regularPatternColour = new Color(0.19f, 0.19f, 0.19f);
 
     private void OnEnable()
     {
@@ -23,14 +46,43 @@ public class SO_ProjectilePattern_Editor : Editor
         _patternNumberToUse = serializedObject.FindProperty("_patternNumberToUse");
         _foldouts = serializedObject.FindProperty("_foldouts");
         _baseFoldout = serializedObject.FindProperty("_baseFoldout");
+        _removeSpecificPattern = serializedObject.FindProperty("_removeSpecificPattern");
+
         basePAT = serializedObject.FindProperty("basePAT");
+        somePAT = serializedObject.FindProperty("somePAT");
+        spreadPAT = serializedObject.FindProperty("spreadPAT");
+        randomizeAnglePAT = serializedObject.FindProperty("randomizeAnglePAT");
+        rapidPAT = serializedObject.FindProperty("rapidPAT");
+        burstPAT = serializedObject.FindProperty("burstPAT");
+        //rapidPAT = serializedObject.FindProperty("rapidPAT");
+        //randomizeAnglePAT = serializedObject.FindProperty("randomizeAnglePAT");
+        
+
+        projectilePatternWAH = (SO_ProjectilePattern)target;
     }
 
     public override void OnInspectorGUI()
     {
+
+
         serializedObject.Update();
 
-        SO_ProjectilePattern projectilePattern = (SO_ProjectilePattern)target;  
+        if (addNewArray)
+        {
+            AddToList();
+        }
+        else if (removeArray)
+        {
+            RemoveFromList();
+        }
+        else if (clearArray)
+        {
+            ClearAll();
+        }
+        addNewArray = false;
+        removeArray = false;
+        clearArray = false;
+
 
         #region GUI Styles
         GUIStyle titleStyle = new GUIStyle();
@@ -48,6 +100,9 @@ public class SO_ProjectilePattern_Editor : Editor
 
         EditorGUILayout.PropertyField(_patternNumberToUse);
 
+
+
+
         #region Projectile Pattern Modifiers Title and Line
         GUILayout.Space(10);
         GUILayout.Label("Projectile Pattern Modifiers", titleStyle);
@@ -62,7 +117,6 @@ public class SO_ProjectilePattern_Editor : Editor
 
 
 
-
         #region Base Pattern Struct
         bool baseVal = _baseFoldout.boolValue;
         
@@ -71,23 +125,29 @@ public class SO_ProjectilePattern_Editor : Editor
         Rect lastRect = new Rect();
         lastRect = GUILayoutUtility.GetLastRect();
 
+        Color bgColourToUse = _patternNumberToUse.intValue == 0 ? selectedPatternColour : regularPatternColour;
+
         if (baseVal)
         {
             GUILayout.Space(5);
-            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 50), new Color(0.19f, 0.19f, 0.19f));
+            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + (basePAT.arraySize * sizeOfField) + 10), bgColourToUse);
 
             for (int j = 0; j < basePAT.arraySize; j++)
             {
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(20);
-                GUILayout.Label(basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue, GUILayout.Width(150));
-                EditorGUILayout.PropertyField(basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue"), GUIContent.none, GUILayout.Width(100));
+                basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue =
+                       EditorGUILayout.FloatField(basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
+                                                   basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue,
+                                                   GUILayout.MaxWidth(250));
                 EditorGUILayout.EndHorizontal();
             }
         }
         
         EditorGUILayout.EndFoldoutHeaderGroup();
         #endregion
+
+
 
         GUILayout.Space(10);
         for (int i = 0; i < _projectilePatterns.arraySize; i++)
@@ -108,34 +168,48 @@ public class SO_ProjectilePattern_Editor : Editor
             if (val)
             {
                 GUILayout.Space(10);
+
+                bgColourToUse = _patternNumberToUse.intValue == i+1 ? selectedPatternColour : regularPatternColour;
+
                 //Draw the background based on how many elements we have in the list
-                EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 20 + (_patternModStruct.arraySize * 28) ), new Color(0.19f, 0.19f, 0.19f));
+                EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + ( _patternModStruct.arraySize * sizeOfField) + sizeOfField + 10), bgColourToUse);
 
                 #region Pattern Type Field
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.Space(20);
                 GUILayout.Label("Pattern Type", GUILayout.Width(150));
-                ProjectilePatterns myEnum = (ProjectilePatterns)EditorGUILayout.EnumPopup(projectilePattern.ProjectilePatternList[i].thisPatternType,  GUILayout.Width(100));
+                ProjectilePatterns myEnum = (ProjectilePatterns)EditorGUILayout.EnumPopup(projectilePatternWAH.ProjectilePatternList[i].thisPatternType,  GUILayout.Width(100));
                 EditorGUILayout.EndHorizontal();
                 #endregion
 
-                if (projectilePattern.ProjectilePatternList[i].thisPatternType != myEnum )
+                #region Changing Struct Info When Enum Changes
+                if (projectilePatternWAH.ProjectilePatternList[i].thisPatternType != myEnum) 
                 {
-                    projectilePattern.ProjectilePatternList[i].thisPatternType = myEnum;
-                    projectilePattern.SetPatternInfo(i);
-                    EditorUtility.SetDirty(projectilePattern);
-                }
+                    _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType").enumValueIndex = (int)myEnum;
+   
+                    UpdateModifierInfo(myEnum, _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers"));
 
+                }
+                #endregion
 
                 #region Pattern Struct
                 for (int j = 0; j < _patternModStruct.arraySize; j++)
                 {
                     EditorGUILayout.BeginHorizontal();
                     GUILayout.Space(20);
-                    GUILayout.Label(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue, GUILayout.Width(150));
-                    EditorGUILayout.PropertyField(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue"), GUIContent.none, GUILayout.Width(100));
+                    //GUILayout.Label(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue, GUILayout.Width(150));
+                    //EditorGUILayout.PropertyField(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue"), GUIContent.none, GUILayout.Width(100));
+
+                    defaultWidth = EditorGUIUtility.labelWidth;
+                    EditorGUIUtility.labelWidth = maxLabelWidth;
+
+                    _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = 
+                        EditorGUILayout.FloatField( _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
+                                                    _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue,
+                                                    GUILayout.MaxWidth(250));
                     EditorGUILayout.EndHorizontal();
-                    serializedObject.ApplyModifiedProperties();
+
+                    EditorGUIUtility.labelWidth = defaultWidth;
                 }
                 #endregion
             }
@@ -148,63 +222,125 @@ public class SO_ProjectilePattern_Editor : Editor
         GUILayout.Space(20);
 
 
+        _patternNumberToUse.intValue = Mathf.Clamp(_patternNumberToUse.intValue, 0, _projectilePatterns.arraySize);
+
+        if(_projectilePatterns.arraySize != 0) _removeSpecificPattern.intValue = Mathf.Clamp(_removeSpecificPattern.intValue, 1, _projectilePatterns.arraySize);
+
+
         #region Buttons
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("Add new Modifier"))
+        EditorGUILayout.PropertyField(_removeSpecificPattern);
+        if (GUILayout.Button($"Remove Modifier {_removeSpecificPattern.intValue}"))
         {
-            AddToList(projectilePattern);
-        }
-        if (GUILayout.Button("Remove Last Modifier"))
-        {
-            RemoveFromList(projectilePattern);
+            removeArray = true;
         }
         EditorGUILayout.EndHorizontal();
+
+        if (GUILayout.Button("Add new Modifier"))
+        {
+            addNewArray = true;
+        }
         if (GUILayout.Button("Clear All"))
         {
-            ClearAll(projectilePattern);
+            clearArray = true;
+            
         }
         #endregion
 
-
-        _patternNumberToUse.intValue = Mathf.Clamp(_patternNumberToUse.intValue, 0, _projectilePatterns.arraySize);
-
-
-
+        EditorUtility.SetDirty(projectilePatternWAH);
         serializedObject.ApplyModifiedProperties();
 
 
 
+
     }
 
-
-
-    private void AddToList(SO_ProjectilePattern projectilePattern)
+    private void UpdateModifierInfo(ProjectilePatterns pat,  SerializedProperty property)
     {
 
-        projectilePattern.Foldouts.Add(false);
-        projectilePattern.ProjectilePatternList.Add(new ProjectilePattern());
+        property.ClearArray();
 
-        projectilePattern.SetPatternInfo(projectilePattern.ProjectilePatternList.Count-1);
+        switch (pat)
+        {
+            case ProjectilePatterns.Some:
+                property.arraySize = somePAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = somePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = somePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
 
+            case ProjectilePatterns.Spread:
+                property.arraySize = spreadPAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = spreadPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = spreadPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
+
+            case ProjectilePatterns.Randomize_Angle:
+                property.arraySize = randomizeAnglePAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = randomizeAnglePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = randomizeAnglePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
+            case ProjectilePatterns.Rapid:
+                property.arraySize = rapidPAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = rapidPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = rapidPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
+            case ProjectilePatterns.Burst:
+                property.arraySize = burstPAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
+        }
+
+        
     }
 
-    private void RemoveFromList(SO_ProjectilePattern projectilePattern)
+
+
+    private void AddToList()
+    {
+        _projectilePatterns.arraySize++;
+        _foldouts.arraySize++;
+        _foldouts.GetArrayElementAtIndex(_foldouts.arraySize-1).boolValue = true;
+        serializedObject.ApplyModifiedProperties();
+
+        //Get the current information for the modifer we're using (SOME)
+        _projectilePatterns.GetArrayElementAtIndex(_projectilePatterns.arraySize - 1).FindPropertyRelative("thisPatternType").enumValueIndex = 0;
+        UpdateModifierInfo(ProjectilePatterns.Some, _projectilePatterns.GetArrayElementAtIndex(_projectilePatterns.arraySize-1).FindPropertyRelative("thisPatternTypeModifiers"));
+       
+    }
+
+    private void RemoveFromList()
     {
         
-        if (projectilePattern.ProjectilePatternList.Count<= 0) return;
+        if (_projectilePatterns.arraySize <= 0) return;
 
-        projectilePattern.Foldouts.RemoveAt(projectilePattern.Foldouts.Count - 1);
-        projectilePattern.ProjectilePatternList.RemoveAt(projectilePattern.ProjectilePatternList.Count - 1);
 
-        //Debug.Log(_projectilePatterns.arraySize);
-        //Debug.Log(_foldouts.arraySize);
+        _projectilePatterns.DeleteArrayElementAtIndex(_removeSpecificPattern.intValue-1);
+        _foldouts.DeleteArrayElementAtIndex(_removeSpecificPattern.intValue-1);
+
 
     }
 
-    private void ClearAll(SO_ProjectilePattern projectilePattern)
+    private void ClearAll()
     {
-        projectilePattern.Foldouts.Clear();
-        projectilePattern.ProjectilePatternList.Clear();
+        _projectilePatterns.ClearArray();
+        _foldouts.ClearArray();
+
 
     }
 }

@@ -26,38 +26,65 @@ public class SO_ProjectilePattern : ScriptableObject
 
     [SerializeField] private List<bool> _foldouts = new List<bool>();
     [SerializeField] private bool _baseFoldout;
-
+    [SerializeField] private int _removeSpecificPattern;
     //These Structs contain all the logic we need to store for each parameter/modifier in each pattern type.
+
+    /// <summary>
+    /// IF YOU WANT TO CREATE A NEW PROJECTILE MODIFIER:
+    /// 1. Update the enum in the "ProjectilePatternEnum" for the name of the modifier
+    /// 2. Add a new Struct below on the data values that this modifier needs.
+    /// 3. In the Editor script in the "UpdateModifierInfo",  add a new case for the new modifer
+    /// 4. In the "GetProjectilePatterns" method apply the actual logic for what the modifer does to the previous bullets.
+    /// </summary>
+
 
     [SerializeField]
     public PatternTypeMod[] basePAT =
     {
         new PatternTypeMod("Angle", 0),                     //0
         new PatternTypeMod("Speed", 1),                     //1
-
+        new PatternTypeMod("Extra Angle", 0),               //2
+        new PatternTypeMod("Delay", 0)                      //3
     };
 
     [SerializeField]
     public PatternTypeMod[] somePAT = 
     { 
-        new PatternTypeMod("Source", 0),                    //0
-        new PatternTypeMod("Percent Chance", 1)             //1
+        new PatternTypeMod("Percent Chance", 1)             //0
     };
 
     [SerializeField]
     public PatternTypeMod[] spreadPAT =
     {
-        new PatternTypeMod("Source", 0),                    //0
-        new PatternTypeMod("Number of Projectiles", 1),     //1
-        new PatternTypeMod("Spread Angle", 1)               //2
+        new PatternTypeMod("Number of Projectiles", 1),     //0
+        new PatternTypeMod("Spread Angle", 1),              //1
+        new PatternTypeMod("Delay Between Projectiles", 0)  //2
     };
+
     [SerializeField]
-    public PatternTypeMod[] repeatPAT =
-   {
-        new PatternTypeMod("Source", 0),                    //0
-        new PatternTypeMod("Number of Projectiles", 1),     //1
-        new PatternTypeMod("delay", 1)                      //2
+    public PatternTypeMod[] randomizeAnglePAT =
+    {
+        new PatternTypeMod("Angle Randomize Range", 1),     //0
     };
+
+    [SerializeField]
+    public PatternTypeMod[] rapidPAT =
+    {
+        new PatternTypeMod("Number of Projectiles", 1),     //0
+        new PatternTypeMod("Fire Delay", 0.2f),             //1
+    };
+
+    [SerializeField]
+    public PatternTypeMod[] burstPAT =
+    {
+        new PatternTypeMod("Number of Projectiles", 1),     //0
+        new PatternTypeMod("Angle Range", 20f),             //1
+        new PatternTypeMod("Speed Range", 0.5f),            //2
+        new PatternTypeMod("Fire Delay Range", 0.5f),       //3
+    };
+
+
+    //Properties
     public List<ProjectilePattern> ProjectilePatternList { get => _projectilePatterns; set => _projectilePatterns = value; }
     public List<bool> Foldouts { get => _foldouts; set => _foldouts = value; }
 
@@ -68,40 +95,113 @@ public class SO_ProjectilePattern : ScriptableObject
         //Create a temporary list of Base Pattern structs and add a baseProjectile Already
         List<PatternTypeMod[]> tempProjectileList = new List<PatternTypeMod[]>
         {
-            CreateNewProjectile(basePAT[0].modValue,basePAT[1].modValue)
+            CreateNewProjectile(basePAT[0].modValue, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue)
         };
 
-        for (int i = 0; i < _projectilePatterns.Count; i++)
+        List<PatternTypeMod[]> temptempProjectileList = new List<PatternTypeMod[]>();
+
+        for (int i = 0; i < _patternNumberToUse; i++)
         {
+            temptempProjectileList.Clear();
+
             ProjectilePatterns currentPattern = _projectilePatterns[i].thisPatternType;
 
             switch (currentPattern)
             {
                 case ProjectilePatterns.Some:
-                    //We want to get the tempProjectileList, loop through it, and if random number fails, remove it from the list
-                    //How do we get the struct? We need to make a new struct in the inspector. NO WAIT, what if we have a base class and
-                    //
-                    for (int j = tempProjectileList.Count - 1; j >= 0; j++)
+                    
+                    for (int j = tempProjectileList.Count - 1; j >= 0; j--)
                     {
-                        //if (!RandomValue(mod.percentChance)) tempProjectileList.RemoveAt(j);
+                        if (!RandomValueSuccess(_projectilePatterns[i].thisPatternTypeModifiers[0].modValue))
+                        {
+                            tempProjectileList.RemoveAt(j);
+                        }
                     }
 
                     break;
 
                 case ProjectilePatterns.Spread:
 
+                    for (int j = 0; j < tempProjectileList.Count; j++)
+                    {
+                        for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
+                        {
+                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue, //Angle
+                                                                           tempProjectileList[j][1].modValue, //Speed
+                                                                           tempProjectileList[j][2].modValue +
+                                                                           _projectilePatterns[i].thisPatternTypeModifiers[1].modValue * k, //Extra Angle
+                                                                           tempProjectileList[j][3].modValue +
+                                                                           _projectilePatterns[i].thisPatternTypeModifiers[2].modValue * k)); //Delay
+                        }
+                    }
                     break;
 
-                case ProjectilePatterns.Repeat:
+                case ProjectilePatterns.Randomize_Angle:
+
+                    //Loop through all the projectiles before it and get their angle and add/remove a range
+                    for (int j = 0; j < tempProjectileList.Count; j++)
+                    {
+                        //Get Random Range
+                        float range = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue;
+                        float randomAngle = Random.Range(-range, range);
+
+                        tempProjectileList[j][2].modValue = randomAngle;
+
+                    }
+
                     break;
 
+                case ProjectilePatterns.Rapid:
+                    
+                    for (int j = 0; j < tempProjectileList.Count; j++)
+                    {
+                        for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
+                        {
+                            Debug.Log(k);
+                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue,
+                                                                           basePAT[1].modValue,
+                                                                           tempProjectileList[j][2].modValue,
+                                                                           tempProjectileList[j][3].modValue +
+                                                                           _projectilePatterns[i].thisPatternTypeModifiers[1].modValue * k));
+                           
+                        }
+                    }
+                    break;
 
+                case ProjectilePatterns.Burst:
+
+                    //Loop through all the projectiles before it and get their angle and add/remove a range
+                    for (int j = 0; j < tempProjectileList.Count; j++)
+                    {
+                        for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
+                        {
+                            //Get Random Range
+                            float angleRange = _projectilePatterns[i].thisPatternTypeModifiers[1].modValue;
+                            float delayRange = _projectilePatterns[i].thisPatternTypeModifiers[3].modValue;
+                            float speedRange = _projectilePatterns[i].thisPatternTypeModifiers[2].modValue;
+
+                            float randomAngleRange = Random.Range(-angleRange, angleRange);
+                            float randomDelayRange = Random.Range(0, delayRange);
+                            float randomSpeedRange = Random.Range(0, speedRange);
+
+                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue,
+                                                                           tempProjectileList[j][1].modValue + randomSpeedRange, //speed
+                                                                           tempProjectileList[j][2].modValue + randomAngleRange, //extra angle
+                                                                           tempProjectileList[j][3].modValue + randomDelayRange)); //delay
+                        }
+                    }
+
+                    break;
                 default:
+                    Debug.LogWarning("MODIFER NOT IMPLEMENTED");
                     break;
             }
 
+            for(int j = 0; j < temptempProjectileList.Count; j++)
+            {
+                tempProjectileList.Add(temptempProjectileList[j]);
+            }
 
-            return tempProjectileList;
         }
 
         return tempProjectileList;
@@ -109,31 +209,14 @@ public class SO_ProjectilePattern : ScriptableObject
     }
 
 
-    public void SetPatternInfo(int arrayIndex)
-    {
-        //Debug.Log(arrayIndex);
-        //Debug.Log(_projectilePatterns.Count);
-        ProjectilePatterns pats = _projectilePatterns[arrayIndex].thisPatternType;
-        switch (pats)
-        {
-            case ProjectilePatterns.Some:
-                _projectilePatterns[arrayIndex].thisPatternTypeModifiers = somePAT;
-                break;
-            case ProjectilePatterns.Spread:
-                _projectilePatterns[arrayIndex].thisPatternTypeModifiers = spreadPAT;
-                break;
-            case ProjectilePatterns.Repeat:
-                _projectilePatterns[arrayIndex].thisPatternTypeModifiers = repeatPAT;
-                break;
 
-        }
-    }
-
-    private PatternTypeMod[] CreateNewProjectile(float angle, float speed)
+    private PatternTypeMod[] CreateNewProjectile(float angle, float speed, float extraAngle, float shootDelay)
     {
-        PatternTypeMod[] bp = basePAT;
-        bp[1].modValue = angle;
-        bp[2].modValue = speed;
+        PatternTypeMod[] bp = new PatternTypeMod[basePAT.Length];
+        bp[0].modValue = angle;
+        bp[1].modValue = speed;
+        bp[2].modValue = extraAngle;
+        bp[3].modValue = shootDelay;
         return bp;
     }
 
@@ -142,7 +225,7 @@ public class SO_ProjectilePattern : ScriptableObject
     /// </summary>
     /// <param name="percentChance"> Value From 0-1 </param>
     /// <returns></returns>
-    private bool RandomValue(float percentChance)
+    private bool RandomValueSuccess(float percentChance)
     {
         float rand = Random.Range(0.0f, 1.0f);
 

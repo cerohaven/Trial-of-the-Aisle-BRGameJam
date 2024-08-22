@@ -12,53 +12,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Projectile Pattern
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 3
+  _patternNumberToUse: 2
   _projectilePatterns:
-  - thisPatternType: 0
-    thisPatternTypeModifiers:
-    - modName: Source
-      modValue: 5
-    - modName: Percent Chance
-      modValue: 2
-  - thisPatternType: 2
-    thisPatternTypeModifiers:
-    - modName: Source
-      modValue: 5
-    - modName: Number of Projectiles
-      modValue: 3
-    - modName: delay
-      modValue: 2
   - thisPatternType: 1
     thisPatternTypeModifiers:
-    - modName: Source
-      modValue: 0
     - modName: Number of Projectiles
-      modValue: 1
+      modValue: 4
     - modName: Spread Angle
-      modValue: 1
-  _foldouts: 010101
+      modValue: 50
+    - modName: Delay Between Projectiles
+      modValue: 0.1
+  - thisPatternType: 1
+    thisPatternTypeModifiers:
+    - modName: Number of Projectiles
+      modValue: 3
+    - modName: Spread Angle
+      modValue: 5
+    - modName: Delay Between Projectiles
+      modValue: 0.1
+  _foldouts: 0101
   _baseFoldout: 1
+  _removeSpecificPattern: 2
   basePAT:
   - modName: Angle
     modValue: 0
   - modName: Speed
-    modValue: 1
-  somePAT:
-  - modName: Source
+    modValue: 6
+  - modName: Extra Angle
     modValue: 0
+  - modName: Delay
+    modValue: 0
+  somePAT:
   - modName: Percent Chance
     modValue: 1
   spreadPAT:
-  - modName: Source
-    modValue: 0
   - modName: Number of Projectiles
     modValue: 1
   - modName: Spread Angle
     modValue: 1
-  repeatPAT:
-  - modName: Source
+  - modName: Delay Between Projectiles
     modValue: 0
+  randomizeAnglePAT:
+  - modName: Angle Randomize Range
+    modValue: 1
+  rapidPAT:
   - modName: Number of Projectiles
     modValue: 1
-  - modName: delay
+  - modName: Fire Delay
+    modValue: 0.2
+  burstPAT:
+  - modName: Number of Projectiles
     modValue: 1
+  - modName: Angle Range
+    modValue: 20
+  - modName: Speed Delay Range
+    modValue: 0.5
+  - modName: Fire Delay Range
+    modValue: 0.5
