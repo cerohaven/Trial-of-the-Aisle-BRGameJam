@@ -10,32 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
-  m_Name: Projectile Pattern
+  m_Name: Pattern_Spiral
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 2
+  _patternNumberToUse: 1
   _projectilePatterns:
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 4
+      modValue: 40
     - modName: Spread Angle
-      modValue: 50
+      modValue: 20
+    - modName: Spread Speed Increase
+      modValue: 0
     - modName: Delay Between Projectiles
-      modValue: 0.1
-  - thisPatternType: 1
-    thisPatternTypeModifiers:
-    - modName: Number of Projectiles
-      modValue: 3
-    - modName: Spread Angle
-      modValue: 5
-    - modName: Delay Between Projectiles
-      modValue: 0.1
-  _foldouts: 0101
+      modValue: 0.08
+    - modName: Mirror
+      modValue: 0
+    - modName: Shift
+      modValue: 0
+    - modName: Center Remove Number
+      modValue: 0
+  _foldouts: 01
   _baseFoldout: 1
-  _removeSpecificPattern: 2
+  _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
-    modValue: 0
+    modValue: 270
   - modName: Speed
     modValue: 6
   - modName: Extra Angle
@@ -50,7 +50,15 @@ MonoBehaviour:
     modValue: 1
   - modName: Spread Angle
     modValue: 1
+  - modName: Spread Speed Increase
+    modValue: 0
   - modName: Delay Between Projectiles
+    modValue: 0
+  - modName: Mirror
+    modValue: 0
+  - modName: Shift
+    modValue: 0
+  - modName: Center Remove Number
     modValue: 0
   randomizeAnglePAT:
   - modName: Angle Randomize Range
@@ -65,7 +73,7 @@ MonoBehaviour:
     modValue: 1
   - modName: Angle Range
     modValue: 20
-  - modName: Speed Delay Range
+  - modName: Speed Range
     modValue: 0.5
   - modName: Fire Delay Range
     modValue: 0.5
