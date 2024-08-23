@@ -5,24 +5,23 @@ using UnityEngine.InputSystem;
 
 public class ProjectileSpawner : MonoBehaviour
 {
-    [SerializeField] private SO_ProjectilePattern projPattern;
+    [SerializeField] private SO_ProjectilePattern[] projPattern;
     [SerializeField] private GameObject projectileGO;
     [SerializeField] private Transform playerTransform;
 
-    void Update()
+
+    public void SpawnProjectiles()
     {
-        if(Input.GetMouseButtonDown(0))
+        for (int i = 0; i < projPattern.Length; i++)
         {
-            List<PatternTypeMod[]> projs = projPattern.GetProjectilePatterns();
+            List<PatternTypeMod[]> projs = projPattern[i].GetProjectilePatterns();
 
             foreach (PatternTypeMod[] mod in projs)
             {
-                
 
-                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue,  mod));
+                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod));
 
             }
-
         }
     }
 

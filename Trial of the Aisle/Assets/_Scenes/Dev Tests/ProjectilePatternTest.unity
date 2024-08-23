@@ -304,7 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9fe7c435c2da243bd7ab3da6bd366d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projPattern: {fileID: 11400000, guid: ad3b0c8a8866a864b81354b939406ea4, type: 2}
+  projPattern:
+  - {fileID: 11400000, guid: fcf794fdb37937943b6d6c07a374cfa5, type: 2}
   projectileGO: {fileID: 281693923351715198, guid: eb3891855dd496746bcb641d8632de06, type: 3}
   playerTransform: {fileID: 1652318903}
 --- !u!1 &1652318902
