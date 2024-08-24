@@ -27,6 +27,8 @@ public class MinionThrow : MonoBehaviour
     [Header("Projectile Jam")]
     [SerializeField] private GameObject jamSpilledGO;
     [SerializeField] private float spawnJamTrailRate;
+    [SerializeField] private GameObject dangerLineRednererGO;
+
 
     [Space]
     [Header("Minion Time Alive")]
@@ -39,6 +41,7 @@ public class MinionThrow : MonoBehaviour
     private Vector2 midpoint;
     private Vector2 dirToPlayer;
     private GameObject boss;
+    private LineRenderer lr;
 
     private float distanceFromMidPoint;
     private float angle = 0;
@@ -104,6 +107,10 @@ public class MinionThrow : MonoBehaviour
         dirToPlayer = playerPos - bossPos;
         dirToPlayer.Normalize();
         rb.velocity = dirToPlayer * speed;
+        GameObject go = Instantiate(dangerLineRednererGO, transform.position, Quaternion.identity);
+        lr = go.GetComponent<LineRenderer>();
+        lr.SetPosition(0, transform.position);
+        lr.SetPosition(1, playerPos);
     }
 
     

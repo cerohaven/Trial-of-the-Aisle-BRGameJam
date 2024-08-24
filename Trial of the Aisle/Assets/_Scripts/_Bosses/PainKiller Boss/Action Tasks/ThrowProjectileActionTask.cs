@@ -7,8 +7,8 @@ using UnityEngine.Rendering;
 namespace NodeCanvas.Tasks.Actions{
 
 	public class ThrowProjectileActionTask : ActionTask{
-
-		private Blackboard agentBlackboard;
+        public bool shouldSetDrag = true;
+        private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
 
         private EntityHealth _entityHealth;
@@ -55,7 +55,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectileSpawner.ProjPattern.Clear();
             projectileSpawner.ProjPattern.Add(HelperFunctions.GetProjectilePatternAtPhase(bossProfile, currentPhase));
             
-            projectileSpawner.SpawnProjectiles(false, true);
+            projectileSpawner.SpawnProjectiles(false, shouldSetDrag);
 
         }
 

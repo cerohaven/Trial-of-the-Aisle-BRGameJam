@@ -10,7 +10,7 @@ public class RotateObject : MonoBehaviour
 
     private void Start()
     {
-        Invoke("DestroyObj", 10);
+        Invoke(nameof(DestroyObj), 10);
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class RotateObject : MonoBehaviour
 
     private void DestroyObj()
     {
+
         Destroy(gameObject);
     }
 }

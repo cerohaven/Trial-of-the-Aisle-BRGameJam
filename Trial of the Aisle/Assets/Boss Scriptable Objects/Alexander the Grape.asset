@@ -45,7 +45,7 @@ MonoBehaviour:
     percentChanceToUse: 0.688
     attackCondition: {fileID: 0}
   - attackName: Jammed
-    percentChanceToUse: 0.466
+    percentChanceToUse: 0.266
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 41850a9738d2748489b2b395c644537c, type: 2}

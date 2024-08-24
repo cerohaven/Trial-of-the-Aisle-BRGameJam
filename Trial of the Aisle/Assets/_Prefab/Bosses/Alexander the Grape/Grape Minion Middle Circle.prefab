@@ -197,6 +197,7 @@ MonoBehaviour:
   speed: 21.2
   jamSpilledGO: {fileID: 7592180743780908918, guid: 8022f6f0e4a20d14396b70cb5d3a8798, type: 3}
   spawnJamTrailRate: 0.1
+  dangerLineRednererGO: {fileID: 8534829039739265807, guid: 3ad55e520ff8f5046ac00b5edcdce101, type: 3}
   maxTimeAlive: 3
   timeReductionPerWallHit: 0.3
 --- !u!95 &1156795220913216275

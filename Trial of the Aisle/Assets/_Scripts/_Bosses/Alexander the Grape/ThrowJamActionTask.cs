@@ -6,7 +6,7 @@ namespace NodeCanvas.Tasks.Actions
 {
 
     public class ThrowJamActionTask : ActionTask{
-
+        
         public SO_ProjectilePattern[] jammedProjectilePatternStack;
         private ProjectileSpawner_Boss _projectileSpawner;
         private Blackboard agentBlackboard;

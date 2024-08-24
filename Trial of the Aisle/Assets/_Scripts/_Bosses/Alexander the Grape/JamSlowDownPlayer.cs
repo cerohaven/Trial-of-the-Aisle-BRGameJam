@@ -22,7 +22,7 @@ public class JamSlowDownPlayer : MonoBehaviour
         Invoke("Disappear", disappearTime);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (!startToDisappear) return;
