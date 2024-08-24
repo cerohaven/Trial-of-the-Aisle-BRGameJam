@@ -943,7 +943,7 @@ Transform:
   m_GameObject: {fileID: 208987097}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15883,7 +15883,7 @@ Transform:
   m_GameObject: {fileID: 1363473311}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16017,7 +16017,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.543749
+  orthographic size: 20.54375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -45999,6 +45999,7 @@ GameObject:
   - component: {fileID: 9083388960159939504}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939505}
   m_Layer: 0
   m_Name: Alexander the Grape Boss
   m_TagString: Boss
@@ -46261,6 +46262,19 @@ MonoBehaviour:
   _hurtFlickerAfterDamage: 1
   _amountOfHurtFlickers: 7
   _hurtDelayBetweenFlickers: 0.1
+--- !u!114 &9083388960159939505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ad19b1e4dce554bb4f9996243019b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projPattern: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

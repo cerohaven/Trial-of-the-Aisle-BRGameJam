@@ -17,7 +17,7 @@ MonoBehaviour:
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
-      modValue: 7.26
+      modValue: 7.15
   _foldouts: 01
   _baseFoldout: 1
   _removeSpecificPattern: 1
@@ -25,10 +25,12 @@ MonoBehaviour:
   - modName: Angle
     modValue: -99
   - modName: Speed
-    modValue: 6
+    modValue: 7
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -33,6 +34,7 @@ public class SO_ProjectilePattern : ScriptableObject
     /// 3. In the Editor script in the "UpdateModifierInfo",  add a new case for the new modifer
     /// 4. In the "GetProjectilePatterns" method apply the actual logic for what the modifer does to the previous bullets.
     /// </summary>
+    /// 
 
 
     [SerializeField]

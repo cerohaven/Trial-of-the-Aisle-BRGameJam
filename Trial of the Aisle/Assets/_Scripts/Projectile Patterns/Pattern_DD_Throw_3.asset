@@ -14,23 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _patternNumberToUse: 1
   _projectilePatterns:
-  - thisPatternType: 3
+  - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
       modValue: 5
-    - modName: Fire Delay
-      modValue: 0.07
+    - modName: Spread Angle
+      modValue: 0
+    - modName: Spread Speed Increase
+      modValue: 1
+    - modName: Delay Between Projectiles
+      modValue: 0
+    - modName: Mirror
+      modValue: 0
+    - modName: Shift
+      modValue: 0
+    - modName: Center Remove Number
+      modValue: 0
   _foldouts: 01
   _baseFoldout: 1
   _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
-    modValue: 270
+    modValue: -99
   - modName: Speed
-    modValue: 8
+    modValue: 9
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

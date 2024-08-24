@@ -27,7 +27,7 @@ MonoBehaviour:
   - modName: Delay
     modValue: 0
   - modName: Spawn Offset
-    modValue: 0
+    modValue: 22.62
   somePAT:
   - modName: Percent Chance
     modValue: 1

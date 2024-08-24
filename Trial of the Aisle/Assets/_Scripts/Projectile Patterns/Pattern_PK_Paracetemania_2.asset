@@ -17,7 +17,7 @@ MonoBehaviour:
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 40
+      modValue: 50
     - modName: Spread Angle
       modValue: 30
     - modName: Spread Speed Increase
@@ -30,21 +30,19 @@ MonoBehaviour:
       modValue: 0
     - modName: Center Remove Number
       modValue: 0
-  - thisPatternType: 2
-    thisPatternTypeModifiers:
-    - modName: Angle Randomize Range
-      modValue: 5
-  _foldouts: 0101
+  _foldouts: 01
   _baseFoldout: 1
   _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
     modValue: 270
   - modName: Speed
-    modValue: 6
+    modValue: 9
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

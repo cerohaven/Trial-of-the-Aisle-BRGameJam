@@ -32,7 +32,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected Color nullOutlineColour;
    
 
-    /// </summary>
     protected Rigidbody2D rb;
 
     // -- PROJECTILE VARIABLES -- //
@@ -45,6 +44,8 @@ public class Projectile : MonoBehaviour
 
     private bool shouldReturn;
 
+    private bool shouldDestroyOnWall;
+
     protected Transform targetThrown; //Get the Thrown target. If it was thrown by the player
                                       //it shouldn't have any effect if it accidentally hits the player.
 
@@ -53,7 +54,8 @@ public class Projectile : MonoBehaviour
     //Properties
     public Transform TargetThrown { get => targetThrown; set => targetThrown = value; }
     public WhoThrew WhoThrew { get => whoThrew; set => whoThrew = value; }
-  
+    public bool ShouldDestroyOnWall { get => shouldDestroyOnWall; set => shouldDestroyOnWall = value; }
+
     public virtual void InitializeProjectile(Vector2 _direction, float _speed, Transform _targetThrown, WhoThrew _whoThrew)
     {
         travelDir = _direction;
@@ -319,7 +321,7 @@ public class Projectile : MonoBehaviour
                 InstantiateHitParticles();
                 rb.velocity = Vector2.zero;
 
-                if (whoThrew == WhoThrew.Player)
+                if (whoThrew == WhoThrew.Player || shouldDestroyOnWall)
                 {
                     DestroyGameObject();
                     return;

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_PK_Paracetemania_3
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 3
+  _patternNumberToUse: 2
   _projectilePatterns:
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
       modValue: 40
     - modName: Spread Angle
-      modValue: 30
+      modValue: 20
     - modName: Spread Speed Increase
       modValue: 0
     - modName: Delay Between Projectiles
@@ -35,7 +35,7 @@ MonoBehaviour:
     - modName: Number of Projectiles
       modValue: 2
     - modName: Spread Angle
-      modValue: 180
+      modValue: 185
     - modName: Spread Speed Increase
       modValue: 0
     - modName: Delay Between Projectiles
@@ -46,21 +46,19 @@ MonoBehaviour:
       modValue: 0
     - modName: Center Remove Number
       modValue: 0
-  - thisPatternType: 2
-    thisPatternTypeModifiers:
-    - modName: Angle Randomize Range
-      modValue: 5.01
-  _foldouts: 010101
+  _foldouts: 0101
   _baseFoldout: 1
-  _removeSpecificPattern: 1
+  _removeSpecificPattern: 2
   basePAT:
   - modName: Angle
     modValue: 270
   - modName: Speed
-    modValue: 6
+    modValue: 9
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

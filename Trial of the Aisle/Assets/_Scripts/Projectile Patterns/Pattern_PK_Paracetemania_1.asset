@@ -37,10 +37,12 @@ MonoBehaviour:
   - modName: Angle
     modValue: 270
   - modName: Speed
-    modValue: 6
+    modValue: 8
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

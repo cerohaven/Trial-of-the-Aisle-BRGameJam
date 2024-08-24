@@ -27,7 +27,7 @@ MonoBehaviour:
   - modName: Angle
     modValue: -99
   - modName: Speed
-    modValue: 6
+    modValue: 7
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
