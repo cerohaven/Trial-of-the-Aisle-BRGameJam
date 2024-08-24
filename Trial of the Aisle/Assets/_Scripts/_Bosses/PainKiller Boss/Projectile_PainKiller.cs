@@ -22,10 +22,9 @@ public class Projectile_PainKiller : Projectile
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
     {
         base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
-
-
-
     }
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -39,32 +38,20 @@ public class Projectile_PainKiller : Projectile
 
   
 
+
     protected override void Update()
     {
         base.Update();
-
-        if(isThrownInWave)
-            PillInWave();
 
         //Keep increasing velocity towards the boss only if its being sucked in and
         //the pill isn't from the player
         if (isBeingSuckedIn && whoThrew != WhoThrew.Player && targetThrown != null)
         {
-
             base.InitializeProjectile(travelDir, travelSpeed, targetThrown, WhoThrew.Boss);
             interactableProjectile.SetInteractable(false);
         }
     }
 
-    private void PillInWave()
-    {
-
-        //Rotate around the boss' position
-        rb.velocity += (Vector2)transform.right * turnIntensity * Time.deltaTime;
-        transform.up = rb.velocity;
-
-
-    }
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
@@ -73,36 +60,29 @@ public class Projectile_PainKiller : Projectile
 
         base.OnCollisionEnter2D (collision);
 
-        if(whoThrew == WhoThrew.Boss )
-        {
-            if(collision.gameObject.CompareTag("Boss"))
-            {
-                //if the pills are being sucked in and they collide with the boss, destroy them
-                Destroy(gameObject);
-            }
-
-            if (collision.gameObject.CompareTag("Walls") && (isThrownInWave || isBeingSuckedIn))
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if(isBeingSuckedIn && collision.gameObject.CompareTag("Boss"))
+        {
+            DestroyGameObject();
+
+            InstantiateHitParticles();
+        }
+        if (collision.gameObject.CompareTag("Walls") && (isThrownInWave || isBeingSuckedIn))
+        {
+            DestroyGameObject();
+
+            InstantiateHitParticles();
+        }
+
+
         base.OnTriggerEnter2D(collision);
 
-        if(collision.gameObject.CompareTag("Player"))
-        {
+        
 
-            //GameManager.Instance.EventSender.changePlayerHealthEvent.Invoke(damageDealt, HealthType.Damage);
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            Destroy(this.gameObject);
-        }
     }
 }

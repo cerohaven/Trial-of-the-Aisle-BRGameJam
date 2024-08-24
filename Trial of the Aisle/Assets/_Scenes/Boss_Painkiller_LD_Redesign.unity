@@ -98413,7 +98413,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 668, y: 264}
+    _translation: {x: 393, y: 197}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -98530,7 +98530,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 419615033827918397, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1073411208923585916, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Name
@@ -98649,6 +98649,7 @@ GameObject:
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
   - component: {fileID: 9083388960159939504}
+  - component: {fileID: 9083388960159939508}
   m_Layer: 0
   m_Name: Painkiller Boss
   m_TagString: Boss
@@ -98853,7 +98854,7 @@ PrefabInstance:
       objectReference: {fileID: 1095431429}
     - target: {fileID: 5103628786028555843, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
       propertyPath: _showHealthGraphic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5103628786028555843, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
       propertyPath: _invincibleAfterDamage
@@ -99074,6 +99075,19 @@ MonoBehaviour:
   _hurtFlickerAfterDamage: 1
   _amountOfHurtFlickers: 8
   _hurtDelayBetweenFlickers: 0.1
+--- !u!114 &9083388960159939508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ad19b1e4dce554bb4f9996243019b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projPattern: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
