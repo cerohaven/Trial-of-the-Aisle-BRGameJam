@@ -10,19 +10,24 @@ public class ProjectileSpawner : MonoBehaviour
     [SerializeField] private Transform playerTransform;
 
 
-    public void SpawnProjectiles()
+    private void Update()
     {
-        for (int i = 0; i < projPattern.Length; i++)
+        if (Input.GetMouseButtonDown(0))
         {
-            List<PatternTypeMod[]> projs = projPattern[i].GetProjectilePatterns();
-
-            foreach (PatternTypeMod[] mod in projs)
+            for (int i = 0; i < projPattern.Length; i++)
             {
+                List<PatternTypeMod[]> projs = projPattern[i].GetProjectilePatterns();
 
-                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod));
+                foreach (PatternTypeMod[] mod in projs)
+                {
 
+                    StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod));
+
+                }
             }
+
         }
+       
     }
 
     private IEnumerator SpawnBulletCoroutine(float delayTime,  PatternTypeMod[] mod)

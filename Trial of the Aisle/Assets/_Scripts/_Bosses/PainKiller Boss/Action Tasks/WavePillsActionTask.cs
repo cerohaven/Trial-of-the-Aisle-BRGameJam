@@ -151,12 +151,8 @@ namespace NodeCanvas.Tasks.Actions{
             //Set Position
             pill.transform.position = agent.transform.position;
 
-
-            projectilePill.IgnoreBossCollision(true, bossCollider);
             projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
             
-            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(true, 0));
-            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(false, 0.2f));
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity

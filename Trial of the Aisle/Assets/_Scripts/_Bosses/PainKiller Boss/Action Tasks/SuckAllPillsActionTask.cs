@@ -40,7 +40,6 @@ namespace NodeCanvas.Tasks.Actions{
 				if (pillProjectiles[i].WhoThrew == WhoThrew.Player) continue;
 
 				pillProjectiles[i].IsBeingSuckedIn = true;
-                pillProjectiles[i].IgnoreBossCollision(false, bossCollider);
                 Vector2 direction = agent.transform.position - pillProjectiles[i].transform.position;
                 direction.Normalize();
                 float speed = Random.Range(minPillSpeed,maxPillSpeed);

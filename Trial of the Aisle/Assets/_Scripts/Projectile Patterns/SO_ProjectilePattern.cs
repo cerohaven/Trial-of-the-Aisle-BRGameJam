@@ -41,7 +41,8 @@ public class SO_ProjectilePattern : ScriptableObject
         new PatternTypeMod("Angle", 0),                     //0
         new PatternTypeMod("Speed", 1),                     //1
         new PatternTypeMod("Extra Angle", 0),               //2
-        new PatternTypeMod("Delay", 0)                      //3
+        new PatternTypeMod("Delay", 0),                     //3
+        new PatternTypeMod("Spawn Offset", 0)               //4
     };
 
     [SerializeField]

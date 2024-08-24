@@ -16,15 +16,17 @@ MonoBehaviour:
   _projectilePatterns: []
   _foldouts: 
   _baseFoldout: 1
-  _removeSpecificPattern: 3
+  _removeSpecificPattern: 0
   basePAT:
   - modName: Angle
     modValue: -99
   - modName: Speed
-    modValue: 6
+    modValue: 8
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_PK_Throw_3
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 2
+  _patternNumberToUse: 1
   _projectilePatterns:
   - thisPatternType: 1
     thisPatternTypeModifiers:
@@ -45,6 +45,8 @@ MonoBehaviour:
   - modName: Extra Angle
     modValue: 0
   - modName: Delay
+    modValue: 0
+  - modName: Spawn Offset
     modValue: 0
   somePAT:
   - modName: Percent Chance
