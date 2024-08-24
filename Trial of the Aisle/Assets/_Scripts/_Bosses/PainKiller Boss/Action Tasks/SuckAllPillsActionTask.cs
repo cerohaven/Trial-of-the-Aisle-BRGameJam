@@ -1,3 +1,4 @@
+using Cinemachine;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using System.Collections;
@@ -13,9 +14,10 @@ namespace NodeCanvas.Tasks.Actions{
 		public float minPillSpeed;
 
 		private Projectile_PainKiller[] pillProjectiles;
+        private CinemachineTargetGroup targetGroup;
 
-		
-		private FMOD.Studio.EventInstance ParacetamaniaInhaleInstance;
+
+        private FMOD.Studio.EventInstance ParacetamaniaInhaleInstance;
 
         
         protected override string OnInit(){
@@ -25,6 +27,11 @@ namespace NodeCanvas.Tasks.Actions{
 
 		
 		protected override void OnExecute(){
+
+            //Zoom out the camera
+            targetGroup = GameObject.FindObjectOfType<CinemachineTargetGroup>();
+            targetGroup.m_Targets[1].radius = 13;
+            
             pillProjectiles = GameObject.FindObjectsOfType<Projectile_PainKiller>();
 			blackboard.SetVariableValue("groundedPills", pillProjectiles.Length-5);
            
@@ -41,9 +48,25 @@ namespace NodeCanvas.Tasks.Actions{
 
                 ParacetamaniaInhaleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale");
                 ParacetamaniaInhaleInstance.start();
+
             }
+
+            
+            
         }
 
+        protected override void OnStop()
+        {
+            base.OnStop();
+            targetGroup.m_Targets[1].radius = 7;
+            Debug.Log("Stopped Method");
+        }
 
-	}
+        protected override void OnPause()
+        {
+            base.OnPause();
+            targetGroup.m_Targets[1].radius = 7;
+            Debug.Log("Pasued Method");
+        }
+    }
 }

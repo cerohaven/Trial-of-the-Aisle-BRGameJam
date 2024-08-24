@@ -17,17 +17,17 @@ MonoBehaviour:
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
-      modValue: 30
+      modValue: 7.15
   - thisPatternType: 4
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 5
+      modValue: 3
     - modName: Angle Range
-      modValue: 10
+      modValue: 20
     - modName: Speed Range
       modValue: 0.5
     - modName: Fire Delay Range
-      modValue: 0.1
+      modValue: 0.2
   _foldouts: 0101
   _baseFoldout: 1
   _removeSpecificPattern: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   - modName: Angle
     modValue: -99
   - modName: Speed
-    modValue: 11
+    modValue: 7
   - modName: Extra Angle
     modValue: 0
   - modName: Delay

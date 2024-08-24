@@ -8,7 +8,6 @@ public class Projectile_Cheese : Projectile
 
     //For one of the boss' attacks that suck all the pills back up.
     private bool isThrownInWave = false;
-    private float turnIntensity = 0; //For turning during the wave attack
 
     //This changes the behaviour of the pill based on the boss' attacks
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
@@ -37,12 +36,6 @@ public class Projectile_Cheese : Projectile
 
     }
 
-
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);
-       
-    }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

@@ -11,6 +11,9 @@ public class MinionThrow : MonoBehaviour
 
     //Variables
     [SerializeField] private float speed;
+    [SerializeField] private GameObject jamSpilledGO;
+    [SerializeField] private float spawnJamTrailRate;
+
     private Vector2 bossPos;
     private Vector2 playerPos;
     private Vector2 midpoint;
@@ -32,6 +35,8 @@ public class MinionThrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();   
     }
+
+
     private void Start()
     {
         midpoint = Vector2.Lerp(playerPos, bossPos, 0.5f);
@@ -40,9 +45,14 @@ public class MinionThrow : MonoBehaviour
         angle = Mathf.Atan2(midpoint .y - bossPos.y, midpoint.x - bossPos.x);
         angle += 180;
         startAngle = angle;
+
+        InvokeRepeating(nameof(SpawnJamSpilled), spawnJamTrailRate, spawnJamTrailRate);
+
     }
 
-    // Update is called once per frame
+
+
+    
     void Update()
     {
         //dir = (playerPos - (Vector2)transform.position).normalized;
@@ -54,6 +64,11 @@ public class MinionThrow : MonoBehaviour
         angle += speed * Time.deltaTime / distanceFromMidPoint;
 
         rb.MoveRotation(rb.rotation + angle * speed * Time.deltaTime);
+    }
+
+    private void SpawnJamSpilled()
+    {
+        Instantiate(jamSpilledGO, transform.position, new Quaternion(0, 0, 0, 0));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -91,6 +106,8 @@ public class MinionThrow : MonoBehaviour
         }
     }
 
+
+
     private void Testing()
     {
         if (gameObject == null) return;
@@ -102,8 +119,11 @@ public class MinionThrow : MonoBehaviour
        
     }
 
+
+
     private void DestroyMinion()
     {
+        CancelInvoke(nameof(SpawnJamSpilled));
         Destroy(gameObject);
     }
 

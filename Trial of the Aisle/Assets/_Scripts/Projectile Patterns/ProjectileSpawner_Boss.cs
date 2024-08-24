@@ -16,7 +16,7 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         playerTransform = GameManager.Instance.PlayerTransform;
     }
 
-    public void SpawnProjectiles(bool shouldDestroyOnWallCollision = false)
+    public void SpawnProjectiles(bool shouldDestroyOnWallCollision = false, bool applyDrag = false)
     {
         for (int i = 0; i < projPattern.Count; i++)
         {
@@ -25,13 +25,15 @@ public class ProjectileSpawner_Boss : MonoBehaviour
             foreach (PatternTypeMod[] mod in projs)
             {
 
-                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision));
+                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision, applyDrag));
 
             }
         }
     }
 
-    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall)
+
+
+    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall, bool drag)
     {
         yield return new WaitForSeconds(delayTime);
 
@@ -45,12 +47,21 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         Projectile projectile = go.GetComponent<Projectile>();
         projectile.InitializeProjectile(direction, mod[1].modValue, transform, WhoThrew.Boss);
 
+
         if(destroyOnWall)
         {
             projectile.ShouldDestroyOnWall = true;
         }
+
+        if(drag == true)
+        {
+            StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2));
+        }
+
         yield break;
     }
+
+
 
     private Vector2 GetDirectionFromAngle(float angle, float extraAngle)
     {
