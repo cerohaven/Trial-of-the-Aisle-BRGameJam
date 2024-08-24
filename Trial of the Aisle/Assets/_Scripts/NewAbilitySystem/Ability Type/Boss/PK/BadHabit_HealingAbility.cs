@@ -4,16 +4,19 @@ using System.Collections;
 [CreateAssetMenu(fileName = "HealingAbility", menuName = "Abilities/Support/Healing Ability")]
 public class HealingAbility : Ability
 {
-    public ChangeHealth changeHealthAmount; // The enum value specifying the amount of health to adjust
     public GameObject healingEffectPrefab; // The prefab containing the healing particle effect
+    private EntityHealth entityHealth;
 
     public override void Activate(GameObject owner)
     {
-        // Use the AdjustHealth SO to invoke the health adjustment event
-        GameManager.Instance.EventSender.ChangePlayerHealthEventSend(changeHealthAmount, HealthType.Healing);
-
         // Find the player object by tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        // Get Player health
+        entityHealth = player.GetComponent<EntityHealth>();
+
+        // Heal the player
+        entityHealth.HealUnit(ChangeHealth.Medium_Health);
 
         // Apply the heal effect shader to the player
         if (player != null)
@@ -42,30 +45,36 @@ public class HealingAbility : Ability
 
             // Get references to the particle systems
             ParticleSystem[] particleSystems = effectInstance.GetComponentsInChildren<ParticleSystem>();
-            ParticleSystem suckingEffect = particleSystems[0];
-            ParticleSystem burstEffect = particleSystems[1];
+            ParticleSystem suckingEffect = particleSystems.Length > 0 ? particleSystems[0] : null;
+            ParticleSystem burstEffect = particleSystems.Length > 1 ? particleSystems[1] : null;
 
-            // Start the sucking effect
-            suckingEffect.Play();
-
-            // Start a coroutine to trigger the burst effect after the sucking effect duration
-            MonoBehaviour coroutineRunner = owner.GetComponent<MonoBehaviour>();
-            if (coroutineRunner == null)
+            // Start the sucking effect if it exists
+            if (suckingEffect != null)
             {
-                coroutineRunner = owner.AddComponent<CoroutineRunner>();
-            }
-            coroutineRunner.StartCoroutine(TriggerBurst(suckingEffect, burstEffect, suckingEffect.main.duration));
+                suckingEffect.Play();
 
-            // Destroy the effect after its duration (assuming burst duration is 3 seconds)
-            Destroy(effectInstance, suckingEffect.main.duration + 2f);
+                // Start a coroutine to trigger the burst effect after the sucking effect duration if burst effect exists
+                if (burstEffect != null)
+                {
+                    MonoBehaviour coroutineRunner = owner.GetComponent<MonoBehaviour>();
+                    if (coroutineRunner == null)
+                    {
+                        coroutineRunner = owner.AddComponent<CoroutineRunner>();
+                    }
+                    coroutineRunner.StartCoroutine(TriggerBurst(suckingEffect, burstEffect, suckingEffect.main.duration));
+                }
+
+                // Destroy the effect after its duration (assuming burst duration is 2 seconds)
+                Destroy(effectInstance, suckingEffect.main.duration + 2f);
+            }
         }
     }
 
     private IEnumerator TriggerBurst(ParticleSystem suckingEffect, ParticleSystem burstEffect, float delay)
     {
         yield return new WaitForSeconds(delay);
-        suckingEffect.Stop();
-        burstEffect.Play();
+        if (suckingEffect != null) suckingEffect.Stop();
+        if (burstEffect != null) burstEffect.Play();
     }
 
     // Helper MonoBehaviour class to run coroutines

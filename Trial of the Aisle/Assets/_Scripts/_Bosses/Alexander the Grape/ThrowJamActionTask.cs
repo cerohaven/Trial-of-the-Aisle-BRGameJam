@@ -15,6 +15,7 @@ namespace NodeCanvas.Tasks.Actions
         private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
         private GameObject projectileToSpawn;
+        private Collider2D bossCollider;
 
         private Transform playerTransform;
         private float pillSpeed;
@@ -37,7 +38,7 @@ namespace NodeCanvas.Tasks.Actions
             agentBlackboard = agent.GetComponent<Blackboard>();
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             projectileToSpawn = agentBlackboard.GetVariableValue<GameObject>("jamProjectile");
-
+            bossCollider = bossCollider = agent.GetComponent<Collider2D>();
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
             
 
@@ -93,10 +94,10 @@ namespace NodeCanvas.Tasks.Actions
         {
             jam.transform.position = agent.transform.position + (dir * 3.5f);
             projectileJam.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
-            projectileJam.IgnoreBossCollision(true);
+            projectileJam.IgnoreBossCollision(true, bossCollider);
 
-            projectileJam.IgnoreProjectiles(true, 0);
-            projectileJam.EnableDrag(0, 2);
+            StartCoroutine(projectileJam.IgnoreProjectilesCoroutine(true, 0));
+            StartCoroutine(projectileJam.EnableDragCoroutine(0, 2));
 
         }
 

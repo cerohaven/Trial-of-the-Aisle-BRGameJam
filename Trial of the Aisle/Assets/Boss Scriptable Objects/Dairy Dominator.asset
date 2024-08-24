@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dairy Dominator
   m_EditorClassIdentifier: 
   b_Name: Dairy Dominator
-  b_MaxHealth: 120
+  b_MaxHealth: 20
   b_BossProfilePicture: {fileID: 1744736489, guid: 2175fdbea82e9c84987b7a9e8d4d4d70, type: 3}
   b_BossProfileTexture: {fileID: 0}
   b_BossColourPalette:
@@ -46,6 +46,7 @@ MonoBehaviour:
     throwSpeed: 13.7
     attackDelay: 0.7
     phaseEvent: {fileID: 0}
+  b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:
   - attackName: Moo-n Beam
     percentChanceToUse: 0.634

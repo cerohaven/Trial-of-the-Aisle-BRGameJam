@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     {
         // Initialize the Animator component from the "StateDrivenCamera"
         InitializeAnimator();
+        GameManager.Instance.EventSender.switchCameraStateEvent.AddListener(SwitchState);
     }
 
     private void InitializeAnimator()

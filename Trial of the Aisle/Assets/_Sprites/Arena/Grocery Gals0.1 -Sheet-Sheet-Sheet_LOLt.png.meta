@@ -1,0 +1,3581 @@
+fileFormatVersion: 2
+guid: f3f38bc610805444b824fe6b5e23e27d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 188
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62f2080b760a30a41838efcd1c0b56c7
+      internalID: -2087411547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 188
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7b943c829882641bfd5f9b88e83741
+      internalID: -4736338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 188
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8046f6a1b22fc9a43b14c0d6295adb31
+      internalID: 1302673366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 172
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68aba7ebbc9c7874cbe7dcfc24a6cead
+      internalID: 1005384859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 172
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1653cc2ac4c49bf469af4b212ec056e5
+      internalID: -311364323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_5
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 172
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c1fbcedc869634aa396a1ea6592ba2
+      internalID: -1505274845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 015d88f22c4e18541a141689783fc648
+      internalID: 905070280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f8c495350a423d45ab591846d6dcbbb
+      internalID: -1605198057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762bea51305cc4f49be71df1149536b6
+      internalID: -1268658516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_9
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829c909e3a806bb46820b9812a83cbe8
+      internalID: 1936126135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558b000c110b18c499668e1d9e40b3a3
+      internalID: -1145441044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_11
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 156
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0542e85aa38b14d47868ae1a7b915a25
+      internalID: -886121642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b125d384284f195458c0591cc6d5446d
+      internalID: 1344218080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_13
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bfbdc7c28aebe4894a1701d15af04c
+      internalID: 248001121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0fa6a1b458548e48884a7c356658fc2
+      internalID: 952807483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c81aa6c893361fb43b0f5403dbfad029
+      internalID: -1890564073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047eacf6a96424c4f9d0500863f998f0
+      internalID: -2060424545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c285b4699e3935459d2868b39ac4776
+      internalID: -1490775975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd0c4e4945549b4191d25be615e8269
+      internalID: -1692533089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_19
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac1f1f918c1a60843ab6837bb091dfe2
+      internalID: -92962138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_20
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afdde95cfd7a213409c814dc23ea6532
+      internalID: 1740574583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_21
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 140
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4327612815e0b6e4d9b24244be8e6fef
+      internalID: -429653097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396cf93f06a3aa94582bc8850e0c06e2
+      internalID: 1425136694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_23
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75e38cae50b1cc4bb30b6d5154c7ebe
+      internalID: -645581007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_24
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651a18329c465c341961cb198862d6b8
+      internalID: 1305723130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_25
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462c446727f66ac4fbc6f184243e85bb
+      internalID: -335138913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_26
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da32867e99b81f8499bd927ab10ecb72
+      internalID: 956504814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_27
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c16b353e27b2aba4caa52ae7b1aafc52
+      internalID: 1134510393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_28
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa88d1665b7c9e84aa25e6009469a73a
+      internalID: -1119969619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_29
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab606cf7a7eb473438cfdcb5c21f8b60
+      internalID: -1705657021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_30
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6915ff32f04158c4b996c91254112bcd
+      internalID: 922493387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_31
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 124
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7863920ac7c407498f1f4154e1447aa
+      internalID: -110872452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e221087dc0e04344a024fd2c7a2ea69
+      internalID: 1162077000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_33
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8628e5a7f111beb4b9c89d7279ae22cb
+      internalID: -1918932185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_34
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953999a0bc58f0f4bba0d822b58b9427
+      internalID: -811771214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_35
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bb15fa02e1f772409d79aa559649d23
+      internalID: 616895213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_36
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296d0aa49eb4c0c4aa82d3753a7238b2
+      internalID: -227441910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_37
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae944d8918f55084ea0a76dce64f949c
+      internalID: 758747387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_38
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc3fb83c642e8849ae2c5383f663841
+      internalID: -1626604632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_39
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aaa04b46737b2f448e8b5283cb5df12
+      internalID: -1075093220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_40
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fca3b80d0537cd4e90244fd87e3fb6c
+      internalID: 1722404838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_41
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f49f5de4a7b1fc49a4262245606bee5
+      internalID: 1369384346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_42
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7b6f6bcbdf9e14283093912ea2ed5b
+      internalID: 1539051312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_43
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41aa1115c972acf45abaaade6d646123
+      internalID: -566431697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_44
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f5a364f38b7684d9b0735eb9f2ccd8
+      internalID: 279516407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_45
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf3ddb17e40d8848bbeb186ecc5a04f
+      internalID: 324218524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_46
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79379f48f5ba1d246a94660fe4c25c18
+      internalID: 812039700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_47
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 108
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fead5973cbf879c4994807522dcbd1d1
+      internalID: -3708464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_48
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8e458c50169fc4e9e7755dcb3f0658
+      internalID: -1343318655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_49
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e29f34b185ee3e488948c58c2d54880
+      internalID: -981063608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_50
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e651fa5115211cc47a9b09b16c3b3a33
+      internalID: -1553416502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_51
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b66ac0b34c69ca40a019db8da570135
+      internalID: -1982027185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_52
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc67c9605295a704eb62c100fad2ff15
+      internalID: -180591101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_53
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28198724c3bd5bb499232c48fe5b3887
+      internalID: -2120813852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_54
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542609329a4b4894a8a189663e19cd09
+      internalID: 1136399353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_55
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d8b38b9bc6cc554486a8968a283385f
+      internalID: 1496080605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_56
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972ab245c2263f342b8dbb8edf3d0478
+      internalID: -1480491930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_57
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7d550566af597408e8d984fe4d6ba2
+      internalID: -586244369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_58
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4c03ea0ca73554eb95392f74bfcfac
+      internalID: -729082551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_59
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd1294c3a43427439ef41914efd53a8
+      internalID: 1131104939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_60
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a1f135fed42ac4897cfb253d707140
+      internalID: -40802484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_61
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee47100ac550434ba402cfd7be22162
+      internalID: 481838709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_62
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0233d60ba9153e448dabf435b784ac1
+      internalID: -137329688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_63
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b00c429deb2e9449bf053a16b685e8
+      internalID: 1373191842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_64
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 92
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c2e3b1fae2b854bb77b94240b744b9
+      internalID: 161580359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac48f8b14e6923d47885e921fce818d5
+      internalID: 1479126938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_66
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5743c4a3d4687f04191984e414130b18
+      internalID: 1216254264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_67
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09288736778b4ac4da6b74d757e44c8d
+      internalID: 562868395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_68
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d68d229d1537d34298bb2a1e4166181
+      internalID: 194921663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_69
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5b9aba070ef2c44a62dc5912828053
+      internalID: -1404683120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_70
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b333ae78bd1d1544fb745cd91bdd8daf
+      internalID: -891560994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_71
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8037391b4af0b414d9cce7c9417d79a9
+      internalID: -1929979815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_72
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55226734f9a9572438e98298625027b4
+      internalID: -1155056809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_73
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d45d1878b9b04d449180753b0624a7a
+      internalID: -543106829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_74
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d418a4ce6e1b7284496aad310f240fcf
+      internalID: 224611355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_75
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0d54953e8f16049b74e488980972ed
+      internalID: -1040527367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_76
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10c64b39a3fddf4d84788b36883ce6e
+      internalID: -248062836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_77
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e14a46bd94361d34e98f4491ce5732d4
+      internalID: -1032149867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_78
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b472144a17bd42546a03a1bf3fea2556
+      internalID: 805553267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_79
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4332de235c614d84bb9b257c19281ab8
+      internalID: 2095783759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_80
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7212b0201db3e4d48a5d0fdf0b4a7d54
+      internalID: -1098250446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_81
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee45afa7f2e57414f9bee37dd820712a
+      internalID: -860177089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_82
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8869439552a8d24f898ebe0719da762
+      internalID: -753982717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_83
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4fbc0a0402ed046b5ae726e77ae3be
+      internalID: -1441031249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_84
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857d9234a61fe2a40a77e23896f3f482
+      internalID: -1779633237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_85
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f8ec50bd852884c85ab31d1344e103
+      internalID: -1531457244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_86
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ebb9af9c46e5c42a4e43eb274365a0
+      internalID: 1370570204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_87
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b53cd5a9e34e145b72e1a97044fbcd
+      internalID: 2098261948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_88
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d8adfebaa1a1ff4aa98443fc94bf1df
+      internalID: -596816834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_89
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2215417b21daea0479affe5d4530e0e7
+      internalID: -447164089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_90
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26f61534eef38e41a9cb71015346b8d
+      internalID: -1449535362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_91
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 472c87845fafbe74d99bb6c2169e8e05
+      internalID: -1985643359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_92
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285a5abd2948f244b9222cba5f1ed514
+      internalID: 1997166882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_93
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438ed2b890906204fb93c707a2b82a84
+      internalID: -716372396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_94
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d803ee8a9fcee47a9c897a40189040
+      internalID: 797047987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_95
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63dbe078cfebe954886185632d3917f3
+      internalID: 560726136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_96
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6220ba8ec2c52094dba081d933cc3cc0
+      internalID: 1012230536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_97
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3338b93aab2755548b0de6f7b9deee26
+      internalID: -2104874970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_98
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d815ffceb26e9e84dae674320bcb2ae4
+      internalID: 1516159483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_99
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3e3a2e05b5c774fa649060abcc82f5
+      internalID: 1684525564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_100
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a6e810c33453d46a37b44d454dd0ad
+      internalID: -1435452259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_101
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 60
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d172478bd4616b45a9efeff511a6e61
+      internalID: -177770641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_102
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f0e7ae89a08f3241bc17de11424008e
+      internalID: -1181922040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_103
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16bee89387550394e8afab8f315ac83f
+      internalID: -1268590848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_104
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a78af997e6848e4d81edee122143425
+      internalID: 719500101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_105
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48f30d28883fee4bad26f7988f9f57f
+      internalID: 518975750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_106
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4026b4e0aea72f64b8244ba1043059ae
+      internalID: 199452329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_107
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb97fe90ae21cc4fa6a28b4d61d4473
+      internalID: 1949638694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_108
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654c0c474ab48f742ba4ef2bb6ff0bba
+      internalID: -485235605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_109
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eebdf33f371a53e49bcfca379cf37f51
+      internalID: 1687452145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_110
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e283d8b5ffcb41e42a42dd57bee5ebbb
+      internalID: -400019936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_111
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f0b84ea96fb1d4097508bcc56e3708
+      internalID: 934149511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_112
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 432bb6989cd1bf34f95afaf5814719d7
+      internalID: -398646906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_113
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43892410bcb3b6540bc4edd57fd81a1c
+      internalID: -129160448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_114
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b985b3e60d5f148bf7eb0a356e942e
+      internalID: -773003552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_115
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcbdf1434688904409bf11211bb5b873
+      internalID: 982709534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_116
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb2361858d79c142b3de516a5993694
+      internalID: 998741994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_117
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45362be88f5fc3d49a90cc4cdbf46f97
+      internalID: 1875749084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_118
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01177d0f2622ef540afc82c902c621f6
+      internalID: 420248450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_119
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd0adecf89de9240b68321af9483b4d
+      internalID: 747399681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_120
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 44
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943a91dfa5a29fa4184676ff07c0f796
+      internalID: -348436150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_121
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a431a08013b7d4d83a4af7c00319b9
+      internalID: 625928287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_122
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5d756656689ae747ad487fdc9083e91
+      internalID: -1798662969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_123
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4759b2d8680d94db329aafb7a5cbb1
+      internalID: -705246945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_124
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4052cd8d2d955748b82e0a8db0f0fd7
+      internalID: 1673902204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_125
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebbc02a45a01d8478a73599dabc572b
+      internalID: 967734856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_126
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd338a6e8595054698a032836f55683
+      internalID: 1671581639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_127
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf2793003dae834d9b40cd4b845211a
+      internalID: 278635482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_128
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea18a2c2aa615f342a190f3dfd373498
+      internalID: 1985423817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_129
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 390563716aa52064fb3ddfea2ad1e157
+      internalID: -709747688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_130
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 594a903076723da4693e4d596a07f3ef
+      internalID: 1539153646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_131
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7393e298f7671dd44af7b3be2acf35b1
+      internalID: 1931004834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_132
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5c071b80f9f7c41b529ef0ce88cfb0
+      internalID: 1949266709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_133
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa1209574b724046aa9dee391161461
+      internalID: 2036102601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_134
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9222559e2c1d01648abe82990ec9cd39
+      internalID: 453284871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_135
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752334b421e5f9a428283fea1cd2349e
+      internalID: -1637574342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_136
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6312684809b2f6246a3ec6eba9308d52
+      internalID: 1902610090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_137
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48bb6702eb3ebc04ea0d36fabc53d775
+      internalID: 416803575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_138
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ebf6b9700146d74990c8f6b4dd05ed4
+      internalID: -412967055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_139
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 28
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe693eb4dfaafcb4097cd1e3e8f5f2b8
+      internalID: -789764400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95313dd5f941182428167de5f32bc079
+      internalID: 246788143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_141
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb982bb1a6444e24598ae8d6e090011a
+      internalID: 400151390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_142
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f676db12687514f953c83cecec55a1
+      internalID: -1490594830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_143
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0c5084efcf56f4f8519532bda8906f
+      internalID: 537729701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_144
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd83c2b3278044a499a66c62f9915655
+      internalID: -1605741876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_145
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af233bd7e2222b45a008116c63017d6
+      internalID: 1898190039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_146
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1342e7c890135a48953f1d615e5c013
+      internalID: -1114917770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_147
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed14b0e601ebfa140952b2b23671dc11
+      internalID: 1930205973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_148
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd8846d0e4d74614eb29bf8a48cc7eaf
+      internalID: 771270384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_149
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b96f5d69b03e84f872adf923114046
+      internalID: 2025882675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_150
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94b125e0c9f55f4e87259b811832cb1
+      internalID: 1594750747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_151
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4b6539dd883cc42b8546f5ca018568
+      internalID: -1732947889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_152
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8264fb9e12f7b8446943766480e754fb
+      internalID: -1803485009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_153
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e728c51d133204db096341a1946c59
+      internalID: 439996209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_154
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73990bcc2deea9947be84174e0dbecc1
+      internalID: 167606084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_155
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d05d71b81f5a9d4591c83292b447b42
+      internalID: 915806957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_156
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 12
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbfcb63239f796145bec3b76f5e06856
+      internalID: -193834860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_0: -2087411547
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_1: -4736338
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_10: -1145441044
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_100: -1435452259
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_101: -177770641
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_102: -1181922040
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_103: -1268590848
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_104: 719500101
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_105: 518975750
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_106: 199452329
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_107: 1949638694
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_108: -485235605
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_109: 1687452145
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_11: -886121642
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_110: -400019936
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_111: 934149511
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_112: -398646906
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_113: -129160448
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_114: -773003552
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_115: 982709534
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_116: 998741994
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_117: 1875749084
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_118: 420248450
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_119: 747399681
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_12: 1344218080
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_120: -348436150
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_121: 625928287
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_122: -1798662969
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_123: -705246945
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_124: 1673902204
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_125: 967734856
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_126: 1671581639
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_127: 278635482
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_128: 1985423817
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_129: -709747688
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_13: 248001121
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_130: 1539153646
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_131: 1931004834
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_132: 1949266709
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_133: 2036102601
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_134: 453284871
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_135: -1637574342
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_136: 1902610090
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_137: 416803575
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_138: -412967055
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_139: -789764400
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_14: 952807483
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_140: 246788143
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_141: 400151390
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_142: -1490594830
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_143: 537729701
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_144: -1605741876
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_145: 1898190039
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_146: -1114917770
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_147: 1930205973
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_148: 771270384
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_149: 2025882675
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_15: -1890564073
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_150: 1594750747
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_151: -1732947889
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_152: -1803485009
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_153: 439996209
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_154: 167606084
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_155: 915806957
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_156: -193834860
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_16: -2060424545
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_17: -1490775975
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_18: -1692533089
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_19: -92962138
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_2: 1302673366
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_20: 1740574583
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_21: -429653097
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_22: 1425136694
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_23: -645581007
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_24: 1305723130
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_25: -335138913
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_26: 956504814
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_27: 1134510393
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_28: -1119969619
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_29: -1705657021
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_3: 1005384859
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_30: 922493387
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_31: -110872452
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_32: 1162077000
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_33: -1918932185
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_34: -811771214
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_35: 616895213
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_36: -227441910
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_37: 758747387
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_38: -1626604632
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_39: -1075093220
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_4: -311364323
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_40: 1722404838
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_41: 1369384346
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_42: 1539051312
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_43: -566431697
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_44: 279516407
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_45: 324218524
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_46: 812039700
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_47: -3708464
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_48: -1343318655
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_49: -981063608
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_5: -1505274845
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_50: -1553416502
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_51: -1982027185
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_52: -180591101
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_53: -2120813852
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_54: 1136399353
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_55: 1496080605
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_56: -1480491930
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_57: -586244369
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_58: -729082551
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_59: 1131104939
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_6: 905070280
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_60: -40802484
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_61: 481838709
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_62: -137329688
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_63: 1373191842
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_64: 161580359
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_65: 1479126938
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_66: 1216254264
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_67: 562868395
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_68: 194921663
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_69: -1404683120
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_7: -1605198057
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_70: -891560994
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_71: -1929979815
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_72: -1155056809
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_73: -543106829
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_74: 224611355
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_75: -1040527367
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_76: -248062836
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_77: -1032149867
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_78: 805553267
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_79: 2095783759
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_8: -1268658516
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_80: -1098250446
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_81: -860177089
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_82: -753982717
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_83: -1441031249
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_84: -1779633237
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_85: -1531457244
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_86: 1370570204
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_87: 2098261948
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_88: -596816834
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_89: -447164089
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_9: 1936126135
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_90: -1449535362
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_91: -1985643359
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_92: 1997166882
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_93: -716372396
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_94: 797047987
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_95: 560726136
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_96: 1012230536
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_97: -2104874970
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_98: 1516159483
+      Grocery Gals0.1 -Sheet-Sheet-Sheet_LOLt_99: 1684525564
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

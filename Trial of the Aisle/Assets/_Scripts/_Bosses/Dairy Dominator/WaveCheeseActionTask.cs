@@ -24,6 +24,7 @@ namespace NodeCanvas.Tasks.Actions{
         private GameObject cheeseGO;
         public GameObject centerGO;
         private GameObject center;
+        private EntityHealth _entityHealth;
 
         private IEnumerator waveCoroutine;
 
@@ -31,7 +32,7 @@ namespace NodeCanvas.Tasks.Actions{
         {
         
             agentBlackboard = agent.GetComponent<Blackboard>();
-
+            _entityHealth = agent.GetComponent<EntityHealth>();
             cheeseGO = agentBlackboard.GetVariableValue<GameObject>("waveProjectile");
 
 
@@ -44,7 +45,7 @@ namespace NodeCanvas.Tasks.Actions{
         protected override void OnExecute()
         {
 
-            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            int currentPhase = _entityHealth.CurrentPhase;
 
             //Set the boss' velocity to none so they don't continue moving
             agent.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

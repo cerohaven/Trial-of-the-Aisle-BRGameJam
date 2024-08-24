@@ -4,8 +4,8 @@ using UnityEngine;
 using NodeCanvas.Framework;
 public class Projectile_Jam : Projectile
 {
-
     private FMOD.Studio.EventInstance JammedInstance;
+    private EntityHealth entityHealth;
 
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
@@ -19,7 +19,6 @@ public class Projectile_Jam : Projectile
             JammedInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/B_Jammed");
             JammedInstance.start();
 
-            bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
         }
 
     }
@@ -50,12 +49,13 @@ public class Projectile_Jam : Projectile
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.gameEnded) return;
+        if (GameManager.Instance.GameEnded) return;
 
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            if(entityHealth == null) entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+            entityHealth.DamageEntity(ChangeHealth.Small_Health);
 
         }
 

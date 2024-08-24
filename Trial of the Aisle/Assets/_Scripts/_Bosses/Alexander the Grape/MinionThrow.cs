@@ -24,6 +24,7 @@ public class MinionThrow : MonoBehaviour
     public Vector2 BossPos { get => bossPos; set => bossPos = value; }
     public Vector2 PlayerPos { get => playerPos; set => playerPos = value; }
     public GameObject Boss { get => boss; set => boss = value; }
+    private EntityHealth entityHealth;
 
     private FMOD.Studio.EventInstance GrapeHitInstance;
 
@@ -60,7 +61,8 @@ public class MinionThrow : MonoBehaviour
         //Collide with player
         if(collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+            entityHealth.DamageEntity(ChangeHealth.Medium_Health);
             CinemachineShake.Instance.ShakeCamera();
         }
 
@@ -79,7 +81,10 @@ public class MinionThrow : MonoBehaviour
         {
             Projectile proj = collision.gameObject.GetComponent<Projectile>();
             if (proj.WhoThrew != WhoThrew.Player) return;
-            GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage, Vector2.up);
+
+            entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+            entityHealth.DamageEntity(ChangeHealth.Medium_Health);
+
             CinemachineShake.Instance.ShakeCamera();
             Destroy(gameObject);
 

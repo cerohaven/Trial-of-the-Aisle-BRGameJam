@@ -18,12 +18,6 @@ public class Projectile_Cheese : Projectile
     {
         base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
 
-        //Set the blackboard of the boss only if the boss is the one that threw the pill, else if overwrites the 
-        //bossBlackboard variable to null which isn't what we want
-        if (_whoThrew == WhoThrew.Boss)
-        {
-            bossBlackboard = _target.gameObject.GetComponent<Blackboard>();
-        }
 
     }
     protected override void Awake()
@@ -46,58 +40,18 @@ public class Projectile_Cheese : Projectile
 
     protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.gameEnded) return;
-
-        if (whoThrew == WhoThrew.Player)
-        {
-            if (collision.gameObject.CompareTag("Boss"))
-            {
-                GameManager.Instance.EventSender.ChangeBossHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage, transform.up);
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-            //On Collision with the player, deal damage
-            if (!collision.gameObject.CompareTag("Player"))
-            {
-
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-        }
-        else if (whoThrew == WhoThrew.Boss)
-        {
-            //On Collision with the player, deal damage
-            if (collision.gameObject.CompareTag("Player"))
-            {
-
-                GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Large_Health, HealthType.Damage);
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-            if (!collision.gameObject.CompareTag("Boss"))
-            {
-                Instantiate(hitParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-
-        }
-
-
-
-
-
+        base.OnCollisionEnter2D(collision);
+       
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+
         //On Collision with the player, deal damage
-        if (collision.gameObject.CompareTag("Player"))
+        if (entityHealth != null && collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Medium_Health, HealthType.Damage);
+            entityHealth.DamageEntity(damageDealt);
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

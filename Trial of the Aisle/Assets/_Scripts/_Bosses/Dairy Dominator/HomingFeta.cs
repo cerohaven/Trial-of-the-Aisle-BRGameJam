@@ -10,6 +10,7 @@ public class HomingFeta : MonoBehaviour
     [SerializeField] private float ForwardSpeed = 1;
     [SerializeField] float RotateSpeedInDeg = 45;
 
+    private EntityHealth entityHealth;
     private Transform playerTransform;
 
 
@@ -54,13 +55,14 @@ public class HomingFeta : MonoBehaviour
     protected  void OnCollisionEnter2D(Collision2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.gameEnded) return;
+        if (GameManager.Instance.GameEnded) return;
 
         //On Collision with the player, deal damage UNLESS it can be picked up 
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.EventSender.ChangePlayerHealthEventSend(ChangeHealth.Small_Health, HealthType.Damage);
+            if (entityHealth == null) entityHealth = collision.gameObject.GetComponent<EntityHealth>();
 
+            entityHealth.DamageEntity(ChangeHealth.Small_Health); //THIS IS A HARDCODED VALUE TEE HEE
             DestroyObj(collision);
         }
 

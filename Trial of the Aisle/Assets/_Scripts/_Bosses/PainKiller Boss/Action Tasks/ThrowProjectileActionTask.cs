@@ -15,7 +15,8 @@ namespace NodeCanvas.Tasks.Actions{
 
 		private Transform playerTransform;
 		private float pillSpeed;
-
+        private EntityHealth _entityHealth;
+        private Collider2D bossCollider;
 
 		private IEnumerator endActionRoutine;
 
@@ -30,9 +31,9 @@ namespace NodeCanvas.Tasks.Actions{
 			//Getting blackboar Variables
             agentBlackboard = agent.GetComponent<Blackboard>();
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
-     
+            bossCollider = agent.GetComponent<Collider2D>();
             playerTransform = agentBlackboard.GetVariableValue<Transform>("playerTransform");
-
+            _entityHealth = agent.GetComponent<EntityHealth>();
 
 
             return null;
@@ -44,7 +45,7 @@ namespace NodeCanvas.Tasks.Actions{
 		protected override void OnExecute(){
 
             //Get the pill speed and time between attacks based on the current phase we're in
-            int currentPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            int currentPhase = _entityHealth.CurrentPhase;
             
             pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, currentPhase);
             endActionRoutine = EndActionTask(HelperFunctions.TimeBetweenAttacksAtPhase(bossProfile, currentPhase));
@@ -84,11 +85,11 @@ namespace NodeCanvas.Tasks.Actions{
             
             spawnedProjectile.transform.position = agent.transform.position + (dir * 3.5f);
             projectile.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
-            projectile.IgnoreBossCollision(true);
+            projectile.IgnoreBossCollision(true, bossCollider);
 
-            projectile.IgnoreProjectiles(true, 0);
-            projectile.IgnoreProjectiles(false, 0.2f);
-            projectile.EnableDrag(0, 2);
+            StartCoroutine(projectile.IgnoreProjectilesCoroutine(true, 0));
+            StartCoroutine(projectile.IgnoreProjectilesCoroutine(false, 0.2f));
+            StartCoroutine(projectile.EnableDragCoroutine(0, 2));
 
         }
 

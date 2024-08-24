@@ -21,9 +21,10 @@ namespace NodeCanvas.Tasks.Actions{
 
         private Blackboard agentBlackboard;
         private SO_BossProfile bossProfile;
+        private Collider2D bossCollider;
 
         private GameObject pillToSpawn;
-
+        private EntityHealth _entityHealth;
         
         
 		private float[] angles1 = new float[8];
@@ -50,19 +51,38 @@ namespace NodeCanvas.Tasks.Actions{
             angles2[7] = 337.5f;
 
             agentBlackboard = agent.GetComponent<Blackboard>();
-
+            _entityHealth = agent.GetComponent<EntityHealth>();
             bossProfile = agentBlackboard.GetVariableValue<SO_BossProfile>("bossProfile");
             bossMaxHealth = bossProfile.B_MaxHealth;
-
+            bossCollider = agent.GetComponent<Collider2D>();
             pillAngles = angles1;
+            StopSuckingPills();
+
             return null;
 		}
+
+        private void StopSuckingPills()
+        {
+            Projectile_PainKiller[] pillProjectiles = GameObject.FindObjectsOfType<Projectile_PainKiller>();
+           
+            for (int i = 0; i < pillProjectiles.Length; i++)
+            {
+                if (pillProjectiles[i].WhoThrew != WhoThrew.Boss) continue;
+                if (pillProjectiles[i].IsBeingSuckedIn == false) continue;
+
+                pillProjectiles[i].IsBeingSuckedIn = false;
+
+                StartCoroutine(pillProjectiles[i].EnableDragCoroutine(0, 0, 5));
+
+
+            }
+        }
 
 		//This is called once each time the task is enabled.
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute(){
-            bossPhase = agentBlackboard.GetVariableValue<int>("bossPhase");
+            bossPhase = _entityHealth.CurrentPhase;
             pillSpeed = HelperFunctions.ProjectileSpeedAtPhase(bossProfile, bossPhase);
             
 
@@ -132,11 +152,11 @@ namespace NodeCanvas.Tasks.Actions{
             pill.transform.position = agent.transform.position;
 
 
-
+            projectilePill.IgnoreBossCollision(true, bossCollider);
             projectilePill.InitializeProjectile(dir, pillSpeed/3, agent.transform, WhoThrew.Boss);
-            projectilePill.IgnoreBossCollision(true);
-            projectilePill.IgnoreProjectiles(true, 0);
-            projectilePill.IgnoreProjectiles(false, 0.2f);
+            
+            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(true, 0));
+            StartCoroutine(projectilePill.IgnoreProjectilesCoroutine(false, 0.2f));
             projectilePill.IsThrownInWave = true;
 
             //Calculate turn intensity

@@ -1,15 +1,13 @@
 using FMODUnity;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
     //Scriptable Objects
     private SO_EventSender _eventSender;
+    private SO_HealthAdjustments _healthAdjustments;
 
     //Async Loaded objects
     private PauseGameMenu pauseMenu;
@@ -22,17 +20,15 @@ public class GameManager : Singleton<GameManager>
     //Game State
     private bool canPause = false;
     private bool canMove = true;
-    public static bool isGamePaused;
+    private bool isGamePaused = false;
+    private bool gameEnded = false;
+    private bool bossIsDefeated = false;
 
-    FMOD.Studio.EventInstance SFX_BossDeath;
-    FMOD.Studio.EventInstance Boss_BGM_Postbattle; 
-    FMOD.Studio.EventInstance SFX_BossScream;
-
-
-    //Boss Defeated Variables
-    public static bool gameEnded = false;
-    public static bool bossIsDefeated = false;
-
+    public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
+    //Holds the Boss Profile of this scene
+    [SerializeField] private SO_BossProfile bossProfile;
+    [SerializeField] private Transform _bossTransform;
+    
     //Keeps a list of all the active UI on screen, so if we click ESC it gets rid of the most recent UI
     //If the List is >0, then simply close the UI and remove it from the List
     //If the List is 0, then Pause
@@ -51,6 +47,12 @@ public class GameManager : Singleton<GameManager>
     public bool CanPause { get => canPause; set => canPause = value; }
     public bool CanMove { get => canMove; set => canMove = value; }
     public PlayerInputHandler PlayerInputHandler { get => playerInputHandler;}
+    public bool GameEnded { get => gameEnded; set => gameEnded = value; }
+    public bool BossIsDefeated { get => bossIsDefeated; set => bossIsDefeated = value; }
+    public bool IsGamePaused { get => isGamePaused; set => isGamePaused = value; }
+    public SO_BossProfile BossProfile { get => bossProfile; set => bossProfile = value; }
+    public SO_HealthAdjustments HealthAdjustments { get => _healthAdjustments;}
+    public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
 
     private void Awake()
     {
@@ -81,28 +83,42 @@ public class GameManager : Singleton<GameManager>
         };
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");
+        _healthAdjustments = Resources.Load<SO_HealthAdjustments>("Health Adjustments");
+
+
         //Calls when a player presses the pause button
         _eventSender.pauseGameEvent.AddListener(PauseTheGame);
 
         //Calls whenever a player presses the resume button
         _eventSender.resumeGameEvent.AddListener(ResumeTheGame);
 
-        //When the boss is defeated
-        _eventSender.bossIsDefeatedEvent.AddListener(IsDefeated);
     }
 
 
+    
 
     private void Start()
     {
         gameEnded = false;
-        //find the playerInputHandler in the game.
-        //May need to move inside function if errors when someone unpluggs controller
 
         Boss_BGM_Postbattle = RuntimeManager.CreateInstance("event:/Music/BGM/PostBattle");
-        SFX_BossDeath = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/Boss_Death");
-        SFX_BossScream = RuntimeManager.CreateInstance("event:/SFX/Bosses/General/BossScream");
+
+
     }
+
+    #region Public Methods
+    public void FreezePlayerMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnFreezePlayerMovement()
+    {
+        canMove = true;
+    }
+
+    #endregion
+
 
     //Scene Transitions
     #region IEnumerator for Exit Scene Transition
@@ -130,15 +146,8 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-    #region Player Input Controls
 
-
-
-
-    #endregion
-
-
-
+    #region Pause Game Methods
     private void PauseTheGame()
     {
         //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
@@ -150,16 +159,17 @@ public class GameManager : Singleton<GameManager>
         {
             Pause();
         }
-
-
     }
 
     private void DestroyUIElement()
     {
+        //if the game is ended and they destroy a UI element, that means it is the Post Battle Canvas UI and we can load the next level
         if (gameEnded)
         {
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            //if the game is ended and they destroy a UI element, that means it is the Ability Selection UI and we can load the next level
+
+            transitionType = TransitionType.BossBattle;
+            
             LoadNextScene();
         }
 
@@ -201,24 +211,6 @@ public class GameManager : Singleton<GameManager>
 
         Time.timeScale = 1;
     }
+    #endregion
 
-    private void IsDefeated()
-    {
-        //Once we defeat the boss, we will do some stuff
-
-
-        //AudioManager.instance.Play("ui_bossDefeated");
-        SFX_BossDeath.start();
-
-        bossIsDefeated = true;
-
-        //Flicker Screen
-        _eventSender.FlickerScreenSend();
-
-        SFX_BossScream.start();
-        Boss_BGM_Postbattle.start();
-        //AudioManager.instance.Play("boss_scream");
-
-        //the star and defeat animation is spawned in a class on the boss called 'BossCheckDefeat'
-    }
 }

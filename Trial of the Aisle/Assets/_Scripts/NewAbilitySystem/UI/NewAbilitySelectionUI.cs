@@ -22,8 +22,12 @@ public class NewAbilitySelectionUI : MonoBehaviour
     {
         GameManager.Instance.UiInstances.Add(gameObject);
     }
+    private void Start()
+    {
+        ShowAbilities(GameManager.Instance.BossProfile.Ability1, GameManager.Instance.BossProfile.Ability2, GameManager.Instance.BossProfile.PostBattleCanvasUI);
+    }
 
-    public void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
+    private void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
     {
         abilityOne = _abilityOne;
         abilityTwo = _abilityTwo;

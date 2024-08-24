@@ -10,7 +10,7 @@ using UnityEngine.Events;
 /// </summary>
 /// 
 
-[CreateAssetMenu(fileName = "Event Sender", menuName = "Event Sender")]
+[CreateAssetMenu(fileName = "Event Sender", menuName = "Scriptable Objects/Event Sender")]
 public class SO_EventSender : ScriptableObject
 {
     #region Boss Defeated Events
@@ -35,55 +35,16 @@ public class SO_EventSender : ScriptableObject
     }
 
 
-    //Goes to the boss in this level (Whichever will recieve the event in this scene)
+    //Goes to the Camera to switch to post battle cam
     [System.NonSerialized]
-    public UnityEvent bossDefeatAnimationEvent = new UnityEvent();
+    public UnityEvent switchCameraStateEvent = new UnityEvent();
 
-    public void BossDefeatedAnimationSend()
+    public void SwitchCameraStateEventSend()
     {
-        bossDefeatAnimationEvent.Invoke();
+        switchCameraStateEvent.Invoke();
     }
 
     #endregion
-
-
-
-
-    #region Adjust Health Events
-
-    [System.NonSerialized]
-    public PlayerHealthChanged OnPlayerHealthChanged = new PlayerHealthChanged();
-
-    public void AdjustPlayerHealth(float amount)
-    {
-        OnPlayerHealthChanged.Invoke(amount);
-    }
-
-
-    [System.NonSerialized]
-    public ChangeBossHealth changeBossHealthEvent = new ChangeBossHealth();
-
-    [System.NonSerialized]
-    public UnityEvent updateBossSpriteEventSend = new UnityEvent();
-    public void ChangeBossHealthEventSend(ChangeHealth changeHealth, HealthType healthType, Vector2 projectileUpDir)
-    {
-        changeBossHealthEvent.Invoke(changeHealth, healthType, projectileUpDir);
-        updateBossSpriteEventSend.Invoke();
-    }
-
-
-    [System.NonSerialized]
-    public ChangePlayerHealth changePlayerHealthEvent = new ChangePlayerHealth();
-
-    public void ChangePlayerHealthEventSend(ChangeHealth changeHealth, HealthType healthType)
-    {
-        changePlayerHealthEvent.Invoke(changeHealth, healthType);
-    }
-
-    #endregion
-
-
-
 
     #region Interactable Object Events
 
@@ -123,8 +84,6 @@ public class SO_EventSender : ScriptableObject
     }
 
     #endregion
-
-
 
 
     #region Pause Menu Events
@@ -167,8 +126,6 @@ public class SO_EventSender : ScriptableObject
 }
 
 
-public class ChangeBossHealth : UnityEvent<ChangeHealth, HealthType, Vector2> { }
-public class ChangePlayerHealth : UnityEvent<ChangeHealth, HealthType> { }
 public class PlayerHealthChanged : UnityEvent<float> { }
 
 public class LaunchProjectileButtonEvent : UnityEvent<GameObject> { }
