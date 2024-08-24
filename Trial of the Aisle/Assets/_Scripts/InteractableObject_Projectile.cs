@@ -40,11 +40,6 @@ public class InteractableObject_Projectile : InteractableObject
         playerCarry.IsCarryingObject = false;
         playerCarry.SetActiveAimArrows(false);
 
-        //Now I need to re-enable collision with the boss layer
-        projectile.IgnoreBossCollision(false, bossCollider);
-
-        StartCoroutine(projectile.IgnoreProjectilesCoroutine(false, 0));
-
 
         RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");
         //AudioManager.instance.Play("p_throw");
