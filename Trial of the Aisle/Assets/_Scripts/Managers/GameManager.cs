@@ -25,11 +25,9 @@ public class GameManager : Singleton<GameManager>
     private bool bossIsDefeated = false;
 
     public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
-
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
     [SerializeField] private Transform _bossTransform;
-    [SerializeField] private Transform _playerTransform;
     
     //Keeps a list of all the active UI on screen, so if we click ESC it gets rid of the most recent UI
     //If the List is >0, then simply close the UI and remove it from the List
@@ -55,7 +53,6 @@ public class GameManager : Singleton<GameManager>
     public SO_BossProfile BossProfile { get => bossProfile; set => bossProfile = value; }
     public SO_HealthAdjustments HealthAdjustments { get => _healthAdjustments;}
     public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
-    public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
 
     private void Awake()
     {

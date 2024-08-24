@@ -25,7 +25,6 @@ MonoBehaviour:
   - projectilePrefab: {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
     percentChanceToUse: 0.509
   b_BaseProjectileThrowSpeed: 13.2
-  b_BaseProjectileThrowPattern: {fileID: 11400000, guid: fcf794fdb37937943b6d6c07a374cfa5, type: 2}
   b_BaseTimeBetweenProjectileAttacks: 1.058
   b_BaseMoveSpeed: 10
   b_BossPhases:
@@ -33,13 +32,11 @@ MonoBehaviour:
     healthPercent: 62.1
     throwSpeed: 15.7
     attackDelay: 0.98
-    projectilePattern: {fileID: 11400000, guid: 093bca68b94f92944bb97d9d3e2b906b, type: 2}
     phaseEvent: {fileID: 0}
   - phaseName: Phase 2
     healthPercent: 25.8
     throwSpeed: 13.9
     attackDelay: 1.18
-    projectilePattern: {fileID: 11400000, guid: a0a9ebbc722440f47abb1eefd0a89d4e, type: 2}
     phaseEvent: {fileID: 11400000, guid: b345de18fe7946d46807f29e29611e59, type: 2}
   b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:

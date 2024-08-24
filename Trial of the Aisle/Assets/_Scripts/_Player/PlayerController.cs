@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         ghostTrail = GetComponent<PlayerGhostTrail>();
 
         gameManager = GameManager.Instance;
-        gameManager.PlayerTransform = transform;
+
         gameManager.EventSender.dodgeEvent.AddListener(OnDodge);
     }
 
