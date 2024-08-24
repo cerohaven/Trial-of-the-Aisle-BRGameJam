@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7277585090656312356}
   - component: {fileID: 5384088040792660071}
   m_Layer: 10
-  m_Name: Jam Attack
+  m_Name: Jam Attack_Hot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 541d677bf796064489eea54ef4d3b351, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8679245, g: 0.46262014, b: 0.46262014, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,13 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21af22c99a320144089bdd979111f1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   damageDealt: 0
-  hitParticles: {fileID: 7592180743780908918, guid: 8022f6f0e4a20d14396b70cb5d3a8798, type: 3}
+  hitParticles: {fileID: 7592180743780908918, guid: 04a9af97c1060f043b18f256d25ccb00, type: 3}
   outlineRenderer: {fileID: 8010513933539290518}
   bossOutlineColour: {r: 0, g: 0, b: 0, a: 0}
   playerOutlineColour: {r: 0, g: 0, b: 0, a: 0}
-  neutralOutlineColour: {r: 0, g: 0, b: 0, a: 0}
+  nullOutlineColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &7640145551835873807
 Rigidbody2D:
   serializedVersion: 4
@@ -182,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c7e07359b8b78459748991bc32b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
   interactPromptPanel: {fileID: 0}
   interactButtonSprite: {fileID: 0}
@@ -412,7 +410,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.43226117, g: 0.048104316, b: 0.4433962, a: 1}
+      maxColor: {r: 0.6981132, g: 0.24697402, b: 0.3316009, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6384,8 +6382,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.27450982, g: 0.003921569, b: 0.28235295, a: 1}
-        key1: {r: 0.63911337, g: 0.21026166, b: 0.7075472, a: 0}
+        key0: {r: 0.5764706, g: 0.10196076, b: 0.30024174, a: 1}
+        key1: {r: 0.7058824, g: 0.21176468, b: 0.30547577, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

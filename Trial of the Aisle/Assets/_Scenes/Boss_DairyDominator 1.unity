@@ -7185,7 +7185,7 @@ Transform:
   m_GameObject: {fileID: 816308862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7319,7 +7319,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.543749
+  orthographic size: 20.54375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -45528,7 +45528,7 @@ Transform:
   m_GameObject: {fileID: 2061118893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -45964,7 +45964,7 @@ MonoBehaviour:
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+  - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -46008,7 +46008,7 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+    - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4

@@ -73,7 +73,7 @@ public class Projectile_Jam : Projectile
 
         }
 
-        BreakJam();
+       
 
     }
 }

@@ -52,7 +52,7 @@ public class HomingFeta : MonoBehaviour
 
     }
 
-    protected  void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
         if (GameManager.Instance.GameEnded) return;
@@ -66,16 +66,18 @@ public class HomingFeta : MonoBehaviour
             DestroyObj(collision);
         }
 
-        if(!collision.gameObject.CompareTag("Boss") && !collision.gameObject.CompareTag("Feta"))
+        if(collision.gameObject.CompareTag("Pill") || collision.gameObject.CompareTag("Walls"))
         {
+            Projectile proj = collision.gameObject.GetComponent<Projectile>();
+            if (proj != null && proj.WhoThrew != WhoThrew.Player) return;
             DestroyObj(collision);
         }
     }
 
-    private void DestroyObj(Collision2D collision)
+    private void DestroyObj(Collider2D collision)
     {
-        GameObject go = Instantiate(hitParticles, transform.position, Quaternion.identity);
-        go.transform.up = collision.contacts[0].point;
+        //GameObject go = Instantiate(hitParticles, transform.position, Quaternion.identity);
+        //go.transform.up = collision.contacts[0].point;
         Destroy(gameObject);
     }
 
