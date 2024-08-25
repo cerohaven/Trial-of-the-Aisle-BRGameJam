@@ -69,6 +69,14 @@ public class FMODMusicManager : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "DDArenaEntered");
 
         }
+
+
+        if (sceneName == "MainMenu")
+        {
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "MainMenuEntered");
+
+        }
     }
 
     // Update is called once per frame
