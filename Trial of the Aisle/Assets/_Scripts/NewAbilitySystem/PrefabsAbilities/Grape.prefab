@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -720184114, guid: 5dd7a005a6557aa47858eddb81981ebb, type: 3}
+  m_Sprite: {fileID: -1793541191, guid: 3edb9c8fd44845a44a729e0f9730944e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788fca7a6732cfc4887062fb39b24516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
+  attackDistance: 12
   changeHealthAmount: 0
-  adjustHealthSO: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
 --- !u!58 &1935484245068230383
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ Animator:
   m_GameObject: {fileID: 5005698199594441834}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1fc907c28543f874b86f3939d6a553c8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 76bcc5eebe44cb94e862fb053d03278e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -16,10 +16,26 @@ public class JammedAbility : Ability
         mouseWorldPosition.z = owner.transform.position.z;
         Vector2 direction = (mouseWorldPosition - owner.transform.position).normalized;
 
+        // Debug: Log direction and force
+        Debug.Log("Direction: " + direction);
+        Debug.Log("Force: " + (direction * jamThrowForce));
+
         // Apply force to the jam to throw it in the direction
         Rigidbody2D rb = jam.GetComponent<Rigidbody2D>();
-        rb.AddForce(direction * jamThrowForce, ForceMode2D.Impulse);
+        if (rb != null)
+        {
+            rb.AddForce(direction * jamThrowForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            Debug.LogError("Rigidbody2D component is missing from jamPrefab");
+        }
 
-        //add the logic for the jam to slow down the boss when it comes in contact (Unimplemented)
+        // Initialize the JamBehavior component
+        JamBehaviour jamBehavior = jam.GetComponent<JamBehaviour>();
+        if (jamBehavior != null)
+        {
+            jamBehavior.Initialize(3); // Set the max number of bounces
+        }
     }
 }
