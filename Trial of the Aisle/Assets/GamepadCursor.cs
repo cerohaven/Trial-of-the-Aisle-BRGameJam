@@ -143,6 +143,7 @@ public class GamepadCursor : MonoBehaviour
             EnableCursor(false);
             CurrentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
             previousControlScheme = mouseScheme;
+            GameManager.Instance.ControlScheme = ControlScheme.Mouse;
         }
         else if (playerInput.currentControlScheme == gamepadScheme && previousControlScheme != gamepadScheme)
         {
@@ -150,6 +151,12 @@ public class GamepadCursor : MonoBehaviour
             InputState.Change(virtualMouse.position, CurrentMouse.position.ReadValue());
             AnchorCursor(CurrentMouse.position.ReadValue());
             previousControlScheme = gamepadScheme;
+            GameManager.Instance.ControlScheme = ControlScheme.Gamepad;
+        }
+        else
+        {
+            GameManager.Instance.ControlScheme = ControlScheme.None;
+            Debug.LogWarning("Current Control Scheme returned None");
         }
     }
 

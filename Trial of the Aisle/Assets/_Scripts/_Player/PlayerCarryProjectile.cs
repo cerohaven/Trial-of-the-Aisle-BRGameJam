@@ -18,7 +18,6 @@ public class PlayerCarryProjectile : MonoBehaviour
     private Transform _thisTransform;
     private Transform _playerTransform;
 
-    private Vector2 startGamepadCarryPos;
     private InputAction rightStick;
     private Vector2 prevDir = Vector2.up;
 
@@ -51,11 +50,9 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         
 
-        if (GameManager.Instance.PlayerInputHandler.PlayerInput.currentControlScheme == "Gamepad")
+        if (GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
         {
-            Vector2 mousePosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
-            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            startGamepadCarryPos = mouseWorldPosition;
+           
             rightStick = GameManager.Instance.PlayerInputHandler.PlayerInput.actions["Look"];
 
             GameManager.Instance.GamepadCursor.EnableCursor(false);
@@ -73,7 +70,7 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         Vector2 dir = new Vector2(0,0);
 
-        if (GameManager.Instance.PlayerInputHandler.PlayerInput.currentControlScheme == "Gamepad")
+        if (GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
         {
             //Move this gameObject around the player
             
@@ -90,12 +87,17 @@ public class PlayerCarryProjectile : MonoBehaviour
         }
         else
         {
+            //MOUSE 
             // Calculate direction towards the mouse cursor
             Vector3 mousePosition = Mouse.current.position.ReadValue();
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-            //Move this gameObject around the player
             dir = mouseWorldPosition - _playerTransform.position;
+
+
+            //GAMEPAD
+            Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+            Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+            dir = gamepadWorldPosition - _playerTransform.position;
         }
         
         

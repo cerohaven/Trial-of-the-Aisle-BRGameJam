@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum ControlScheme
+{
+    Mouse,
+    Gamepad,
+    None
+}
+
 public class GameManager : Singleton<GameManager>
 {
+
     //Scriptable Objects
     private SO_EventSender _eventSender;
     private SO_HealthAdjustments _healthAdjustments;
@@ -17,6 +25,7 @@ public class GameManager : Singleton<GameManager>
     private RectTransform virtualCursorCanvas;
 
     [SerializeField] private TransitionType transitionType;
+    [SerializeField] private ControlScheme controlScheme;
 
     private PlayerInputHandler playerInputHandler;
 
@@ -62,6 +71,7 @@ public class GameManager : Singleton<GameManager>
     public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
     public GamepadCursor GamepadCursor { get => gamepadCursor; set => gamepadCursor = value; }
+    public ControlScheme ControlScheme { get => controlScheme; set => controlScheme = value; }
 
     private void Awake()
     {
