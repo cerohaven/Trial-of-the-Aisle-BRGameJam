@@ -13,6 +13,9 @@ public class GameManager : Singleton<GameManager>
     private PauseGameMenu pauseMenu;
     private GameObject pauseMenuPrefab;
     private SceneTransitionController sceneTransitionController;
+    private GamepadCursor gamepadCursor;
+    private RectTransform virtualCursorCanvas;
+
     [SerializeField] private TransitionType transitionType;
 
     private PlayerInputHandler playerInputHandler;
@@ -56,6 +59,7 @@ public class GameManager : Singleton<GameManager>
     public SO_HealthAdjustments HealthAdjustments { get => _healthAdjustments;}
     public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
+    public GamepadCursor GamepadCursor { get => gamepadCursor; set => gamepadCursor = value; }
 
     private void Awake()
     {
@@ -81,8 +85,15 @@ public class GameManager : Singleton<GameManager>
         };
         playerInputAsync.completed += (AsyncOperation a) =>
         {
+            
             playerInputHandler = FindObjectOfType<PlayerInputHandler>();
+            gamepadCursor = FindObjectOfType<GamepadCursor>();
+            virtualCursorCanvas = gamepadCursor.CanvasRectTransform;
+            gamepadCursor.GamepadPlayerInput = playerInputHandler.PlayerInput;
+
             DontDestroyOnLoad(playerInputHandler.gameObject);
+            DontDestroyOnLoad(gamepadCursor.gameObject);
+            DontDestroyOnLoad(virtualCursorCanvas);
         };
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");

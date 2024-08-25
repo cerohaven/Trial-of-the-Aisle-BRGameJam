@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class JamBehaviour : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class JamBehaviour : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
@@ -30,12 +31,20 @@ public class JamBehaviour : MonoBehaviour
         }
 
         // Handle wall bouncing
-        if (collision.collider.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Walls"))
         {
-            // Calculate bounce direction
-            Vector2 normal = collision.contacts[0].normal;
-            Vector2 reflection = Vector2.Reflect(rb.velocity, normal);
-            rb.velocity = reflection.normalized * rb.velocity.magnitude; // Maintain current speed
+            LayerMask mask = LayerMask.GetMask("Wall");
+            RaycastHit2D raycastHitUp = Physics2D.Linecast(transform.position, (Vector2)transform.position + Vector2.up * Mathf.Sign(rb.velocity.y), mask);
+            RaycastHit2D raycastHitRight = Physics2D.Linecast(transform.position, (Vector2)transform.position + Vector2.right * Mathf.Sign(rb.velocity.x), mask);
+
+            if (raycastHitUp)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y);
+            }
+            if (raycastHitRight)
+            {
+                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+            }
 
             currentBounces++;
             if (currentBounces >= maxBounces)

@@ -18,13 +18,11 @@ public class PauseGameMenu : MonoBehaviour
     //components
     [SerializeField] private Button resumeButton;
 
-
-    private void Start()
+    private void OnEnable()
     {
-        Debug.Log(GameManager.Instance.PlayerInputHandler);
-        if (GameManager.Instance.PlayerInputHandler.GetCurrentControlScheme() == "Controller")
-            resumeButton.Select();
+        GameManager.Instance.GamepadCursor.EnableCursor(true);
     }
+  
 
     public void ConnectControllersToPauseMenu(PlayerInput player)
     {

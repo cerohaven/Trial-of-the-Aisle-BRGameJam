@@ -6,7 +6,8 @@ public class MainMenuController : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.CanPause = false;
-        
+        GameManager.Instance.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
+        Debug.Log(GameManager.Instance.PlayerInputHandler.PlayerInput.currentActionMap);
     }
 
 

@@ -18,6 +18,10 @@ public class PlayerCarryProjectile : MonoBehaviour
     private Transform _thisTransform;
     private Transform _playerTransform;
 
+    private Vector2 startGamepadCarryPos;
+    private InputAction rightStick;
+    private Vector2 prevDir = Vector2.up;
+
     //Properties
     public bool IsCarryingObject { get => _isCarryingObject; set => _isCarryingObject = value; }
     public GameObject CarryObject { get => _carryObject;}
@@ -27,7 +31,7 @@ public class PlayerCarryProjectile : MonoBehaviour
     {
         _thisTransform = transform;
         _playerTransform = transform.parent;
-
+        
         _playerAimArrowGO.SetActive(false);
     }
 
@@ -45,6 +49,18 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         SetActiveAimArrows(true);
 
+        
+
+        if (GameManager.Instance.PlayerInputHandler.PlayerInput.currentControlScheme == "Gamepad")
+        {
+            Vector2 mousePosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            startGamepadCarryPos = mouseWorldPosition;
+            rightStick = GameManager.Instance.PlayerInputHandler.PlayerInput.actions["Look"];
+
+            GameManager.Instance.GamepadCursor.EnableCursor(false);
+        }
+            
     }
 
     void Update()
@@ -53,13 +69,37 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         if (_isCarryingObject == false) return;
 
+        if (GameManager.Instance.PlayerInputHandler == null) return;
 
-        // Calculate direction towards the mouse cursor
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector2 dir = new Vector2(0,0);
+
+        if (GameManager.Instance.PlayerInputHandler.PlayerInput.currentControlScheme == "Gamepad")
+        {
+            //Move this gameObject around the player
+            
+            dir = rightStick.ReadValue<Vector2>();
+            
+            if(dir == Vector2.zero)
+            {
+                dir = prevDir;
+            }
+            else
+            {
+                prevDir = dir;
+            }
+        }
+        else
+        {
+            // Calculate direction towards the mouse cursor
+            Vector3 mousePosition = Mouse.current.position.ReadValue();
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+            //Move this gameObject around the player
+            dir = mouseWorldPosition - _playerTransform.position;
+        }
         
-        //Move this gameObject around the player
-        Vector2 dir = mouseWorldPosition - _playerTransform.position;
+        
+        
 
         dir.Normalize();
         _thisTransform.position = (Vector2)_playerTransform.position + dir * 2;

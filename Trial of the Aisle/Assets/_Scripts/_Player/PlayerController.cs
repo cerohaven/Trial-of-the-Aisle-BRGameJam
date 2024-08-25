@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
         regularMoveSpeed = moveSpeed;
         regularDodgeSpeed = dodgeSpeed;
+
+        gameManager.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
     }
 
 

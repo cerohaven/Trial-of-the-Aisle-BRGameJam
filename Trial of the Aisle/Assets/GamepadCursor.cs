@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 
-public class VirtualMouseUserInput : MonoBehaviour
+public class GamepadCursor : MonoBehaviour
 {
-    [SerializeField]
+    
     private PlayerInput playerInput;
     [SerializeField]
     private RectTransform cursorTransform;
@@ -25,7 +25,7 @@ public class VirtualMouseUserInput : MonoBehaviour
     [SerializeField]
     private float ypadding = 35f;
 
-    private string previousControlScheme = "";
+    [SerializeField] private string previousControlScheme = "";
     private const string gamepadScheme = "Gamepad";
     private const string mouseScheme = "Keyboard&Mouse";
 
@@ -33,7 +33,21 @@ public class VirtualMouseUserInput : MonoBehaviour
     private bool previousMouseState;
     private Mouse virtualMouse;
 
+    public RectTransform CanvasRectTransform { get => canvasRectTransform; }
+    public PlayerInput GamepadPlayerInput { get => playerInput; set => playerInput = value; }
+    public Mouse VirtualMouse { get => virtualMouse; }
+
     private void OnEnable()
+    {
+        if(playerInput == null)
+        {
+            Invoke(nameof(Initializing), 0.1f);
+            return;
+        }
+       
+    }
+
+    private void Initializing()
     {
         mainCamera = Camera.main;
         CurrentMouse = Mouse.current;
@@ -70,18 +84,14 @@ public class VirtualMouseUserInput : MonoBehaviour
 
         InputSystem.onAfterUpdate += UpdateMotion;
 
-        playerInput.onControlsChanged += OnControlsChanged;
         Debug.Log("ControlsChanged event attached.");
     }
-
-
 
 
     private void OnDisable()
     {
         if (virtualMouse != null && virtualMouse.added) InputSystem.RemoveDevice(virtualMouse);
         InputSystem.onAfterUpdate -= UpdateMotion;
-        playerInput.onControlsChanged -= OnControlsChanged;
     }
 
     private void UpdateMotion()
@@ -124,18 +134,20 @@ public class VirtualMouseUserInput : MonoBehaviour
         cursorTransform.anchoredPosition = anchoredPosition;
     }
 
-    private void OnControlsChanged(PlayerInput input)
+    public void OnControlsChanged(PlayerInput input)
     {
+        if (playerInput == null) return;
+
         if (playerInput.currentControlScheme == mouseScheme && previousControlScheme != mouseScheme)
         {
-            cursorTransform.gameObject.SetActive(false);
+            EnableCursor(false);
             Cursor.visible = true;
             CurrentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
             previousControlScheme = mouseScheme;
         }
         else if (playerInput.currentControlScheme == gamepadScheme && previousControlScheme != gamepadScheme)
         {
-            cursorTransform.gameObject.SetActive(true);
+            EnableCursor(true);
             Cursor.visible = false;
             InputState.Change(virtualMouse.position, CurrentMouse.position.ReadValue());
             AnchorCursor(CurrentMouse.position.ReadValue());
@@ -143,11 +155,16 @@ public class VirtualMouseUserInput : MonoBehaviour
         }
     }
 
-    //potential solution to on controls changed not being called
-    private void Update() {
-        if (previousControlScheme != playerInput.currentControlScheme) {
-            OnControlsChanged(playerInput);
-        }
-        previousControlScheme = playerInput.currentControlScheme;
+    public void EnableCursor(bool enable)
+    {
+        cursorTransform.gameObject.SetActive(enable);
     }
+    //potential solution to on controls changed not being called
+    //private void Update() {
+    //    if (playerInput == null) return;
+    //    if (previousControlScheme != playerInput.currentControlScheme) {
+    //        OnControlsChanged(playerInput);
+    //    }
+    //    previousControlScheme = playerInput.currentControlScheme;
+    //}
 }
