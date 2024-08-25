@@ -181,6 +181,8 @@ public class GameManager : Singleton<GameManager>
     }
     private void Pause()
     {
+        Debug.Log("Clicked Pause");
+        if (bossIsDefeated) return;
 
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
 
@@ -197,20 +199,16 @@ public class GameManager : Singleton<GameManager>
         pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInputHandler.PlayerInput);
 
         Time.timeScale = 0;
-
-        uiInstances.Add(pauseMenuPrefab);
     }
     private void ResumeTheGame()
     {
+        Debug.Log("Clicked Unause");
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
         isGamePaused = false;
 
-        uiInstances.Remove(pauseMenuPrefab);
-
-
         if(pauseMenu != null)
-            Destroy(pauseMenu);
+            pauseMenuPrefab.SetActive(false);
 
         Time.timeScale = 1;
     }

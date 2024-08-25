@@ -195,7 +195,19 @@ MonoBehaviour:
     m_ActionId: 813f4d8a-b717-4bd8-a9b0-0de568e0502f
     m_ActionName: Player/Dodge[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1568610791}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 880e8069-4165-40d0-b0fa-cd7aea8f2fee
     m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
@@ -211,7 +223,19 @@ MonoBehaviour:
     m_ActionId: 26511e9d-009e-4acb-96ab-645cef20679f
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1568610791}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnUnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 62cfb7cb-4f4d-4262-8b51-444df788654f
     m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:

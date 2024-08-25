@@ -131,6 +131,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1538033062357061266, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538033062357061266, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538033062357061266, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538033062357061266, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6185407957575491016, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -214,6 +230,22 @@ PrefabInstance:
     - target: {fileID: 6185407957575491023, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
       propertyPath: m_Name
       value: PauseCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185407958229354059, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185407958229354059, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185407958229354059, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185407958229354059, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2778538144713983648, guid: 7a935662067a0c8418e47affce1e2e34, type: 3}

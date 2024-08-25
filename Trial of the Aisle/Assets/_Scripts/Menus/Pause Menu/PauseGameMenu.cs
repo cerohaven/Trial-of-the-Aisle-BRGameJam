@@ -35,13 +35,7 @@ public class PauseGameMenu : MonoBehaviour
 
     public void ResumeGameButton()
     {
-        //AudioManager.instance.Play("ClickButton");
-
-        //Send event to the game manager to resume the game
         GameManager.Instance.EventSender.ResumeGameEventSend();
-
-        //remove this pause menu
-        Destroy(transform.root.gameObject);
 
     }
 
@@ -51,7 +45,6 @@ public class PauseGameMenu : MonoBehaviour
     {
         GameManager.Instance.TransitionType = TransitionType.MainMenu;
         GameManager.Instance.LoadSpecificSceneStringPaused("MainMenu");
-
     }
 
     public void PauseMenu_QuitGame()

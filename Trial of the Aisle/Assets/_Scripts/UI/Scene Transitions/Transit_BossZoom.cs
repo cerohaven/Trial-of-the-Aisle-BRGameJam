@@ -56,6 +56,10 @@ public class Transit_BossZoom : MonoBehaviour, ISceneTransition
     private void OnEnable()
     {
         controller = GameManager.Instance.SceneTransitionController;
+        if(controller.GetSceneName().Equals("MainMenu"))
+        {
+            ResetBossTransition();
+        }
     }
     private void Update()
     {
@@ -119,6 +123,13 @@ public class Transit_BossZoom : MonoBehaviour, ISceneTransition
             default:
                 return painKillerTransitionProperties;
         }
+    }
+
+    public void ResetBossTransition()
+    {
+        image.materialForRendering.SetTexture(_maskTextureID, painKillerTransitionProperties._maskTexture2D);
+        image.materialForRendering.SetColor(_backgroundColourID, painKillerTransitionProperties._backgroundColour);
+        image.materialForRendering.SetColor(_itemsColourID, painKillerTransitionProperties._itemsColour);
     }
 
 }
