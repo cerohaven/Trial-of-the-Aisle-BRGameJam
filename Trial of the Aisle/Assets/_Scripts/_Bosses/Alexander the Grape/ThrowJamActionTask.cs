@@ -94,9 +94,8 @@ namespace NodeCanvas.Tasks.Actions
         {
             jam.transform.position = agent.transform.position + (dir * 3.5f);
             projectileJam.InitializeProjectile(dir, pillSpeed, agent.transform, WhoThrew.Boss);
-            projectileJam.IgnoreBossCollision(true, bossCollider);
 
-            StartCoroutine(projectileJam.IgnoreProjectilesCoroutine(true, 0));
+
             StartCoroutine(projectileJam.EnableDragCoroutine(0, 2));
 
         }

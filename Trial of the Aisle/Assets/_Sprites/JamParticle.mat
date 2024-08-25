@@ -57,10 +57,13 @@ Material:
     - _EnableExternalAlpha: 0
     - _Frequency: 3
     - _Speed: 2.53
-    - _Step: 0.561
+    - _Step: 0.507
+    - _Thickness: 0.15
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.41176474, g: 0.10980393, b: 0.41176474, a: 1}
+    - _OutlineColor: {r: 1, g: 0.5330188, b: 0.9505548, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1465922477058026407

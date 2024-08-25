@@ -56,6 +56,12 @@ public class HelperFunctions : MonoBehaviour
 
     public static GameObject RNGProjectile(SO_BossProfile bossProfile)
     {
+        //If there's only 1 projectile in the list we don't need to do all this extra math, just return the 1 projectile
+        if(bossProfile.B_BossThrowProjectiles.Length == 1)
+        {
+            return bossProfile.B_BossThrowProjectiles[0].projectilePrefab;
+        }
+
         float sumOfProbabilities = 0;
         float prevProbs = 0;
 
@@ -116,6 +122,18 @@ public class HelperFunctions : MonoBehaviour
 
     }
 
+    public static SO_ProjectilePattern GetProjectilePatternAtPhase(SO_BossProfile bossProfile, int bossPhase)
+    {
+        if (bossPhase == 0)
+        {
+            return bossProfile.B_BaseProjectileThrowPattern;
+        }
+
+       
+         return bossProfile.B_BossPhases[bossPhase - 1].projectilePattern;
+
+    }
+
     public static float TimeBetweenAttacksAtPhase(SO_BossProfile bossProfile, int bossPhase)
     {
         if (bossPhase == 0)
@@ -131,4 +149,6 @@ public class HelperFunctions : MonoBehaviour
            
         }
     }
+
+
 }

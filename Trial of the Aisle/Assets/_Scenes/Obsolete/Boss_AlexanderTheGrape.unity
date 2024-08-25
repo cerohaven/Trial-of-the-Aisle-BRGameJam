@@ -1772,8 +1772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e39acd98c8dfaf48912413fe27f979e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 28123160}
-  BBCam: 1
 --- !u!4 &554831815
 Transform:
   m_ObjectHideFlags: 0
