@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30f14adf03967744a368e153a46081e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   hitParticles: {fileID: 1615069853370902859, guid: 012eaa353cdc8e7489dfc5aeb47485c1, type: 3}
   ForwardSpeed: 7.51
   RotateSpeedInDeg: 87.7
@@ -338,7 +337,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.06290293, y: 0.3381052}
@@ -351,12 +350,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7948592246271270762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c7e07359b8b78459748991bc32b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
   interactPromptPanel: {fileID: 0}
   interactButtonSprite: {fileID: 0}

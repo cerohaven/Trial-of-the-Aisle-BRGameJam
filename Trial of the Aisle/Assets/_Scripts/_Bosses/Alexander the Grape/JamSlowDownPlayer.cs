@@ -5,10 +5,12 @@ using UnityEngine;
 public class JamSlowDownPlayer : MonoBehaviour
 {
     [SerializeField] private float disappearTime = 15f;
+    [SerializeField] private bool isHot = false;
 
     private bool startToDisappear = false;
     private SpriteRenderer sr;
     private float fade;
+    private EntityHealth playerHealth;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class JamSlowDownPlayer : MonoBehaviour
         Invoke("Disappear", disappearTime);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (!startToDisappear) return;
@@ -43,8 +45,20 @@ public class JamSlowDownPlayer : MonoBehaviour
             
             PlayerController pc = collision.GetComponent<PlayerController>();
             pc.MoveSpeed /= 2;
-            pc.DodgeSpeed /= 5;
+            pc.DodgeSpeed /= 3;
+
+            if(isHot)
+            {
+                if (playerHealth == null) playerHealth = collision.gameObject.GetComponent<EntityHealth>();
+                InvokeRepeating(nameof(DamagePlayer), 0, 0.5f);
+            }
+            
         }
+    }
+
+    private void DamagePlayer()
+    {
+        playerHealth.DamageEntity(ChangeHealth.Small_Health);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -52,8 +66,13 @@ public class JamSlowDownPlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerController pc = collision.GetComponent<PlayerController>();
-            pc.MoveSpeed *= 2;
-            pc.DodgeSpeed *= 5;
+            pc.MoveSpeed = pc.RegularMoveSpeed;
+            pc.DodgeSpeed = pc.RegularDodgeSpeed;
+
+            if (isHot)
+            {
+                CancelInvoke(nameof(DamagePlayer));
+            }
         }
     }
     private void Disappear()

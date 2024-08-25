@@ -97629,7 +97629,7 @@ Transform:
   m_GameObject: {fileID: 1792044602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3408155, y: -0.3778019, z: -14.3303795}
+  m_LocalPosition: {x: 4.3408155, y: -0.3778, z: -14.3303795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97731,7 +97731,7 @@ Transform:
   m_GameObject: {fileID: 1798283557}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3408155, y: -0.3778019, z: -14.3303795}
+  m_LocalPosition: {x: 4.3408155, y: -0.3778, z: -14.3303795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -98392,7 +98392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-142.97,"y":-137.1473},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"}]},"_position":{"x":119.03,"y":142.8527},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_name":"Throw
+    UI","_position":{"x":-142.97,"y":-137.1473},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"},{"phaseProjectileThrowCount":[{"minProjs":10,"maxProjs":13},{"minProjs":8,"maxProjs":11},{"minProjs":7,"maxProjs":9}],"$type":"NodeCanvas.Tasks.Actions.SetMinMaxProjectilePerPhaseActionTask"}]},"_position":{"x":119.03,"y":142.8527},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_name":"Throw
     Pills at Player State","_position":{"x":873.0,"y":203.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_nestedFSM":{"_value":2},"_name":"Paracetamania
     State","_position":{"x":588.0,"y":388.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[]},"_position":{"x":423.9866,"y":466.9786},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Set
     Idle Animation","_position":{"x":265.9412,"y":551.7054},"$type":"NodeCanvas.StateMachines.ActionState","$id":"5"},{"_nestedFSM":{"_value":3},"_name":"Bad
@@ -98400,8 +98400,8 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Paracetamania"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"pillsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Bad
     Habit"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"6"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":2.0,"maxWaitTime":3.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"4"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":2.0,"maxWaitTime":3.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"5"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"6"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{"randomProjectiles":{"_name":"randomProjectiles","_id":"8753aa1c-d846-4468-87b2-33269e524d43","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":15,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":10,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjectiles":{"_value":13,"_name":"maxProjectiles","_id":"79b53ed1-c31d-49a4-928e-f6bfa5c9c12a","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"minProjectiles":{"_value":7,"_name":"minProjectiles","_id":"1faebd5d-67bd-4269-ae79-f224b631bb60","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"myInteger":{"_name":"myInteger","_id":"c55158ef-7bde-439d-8020-b2baf4765fb4","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}}'
   _boundGraphObjectReferences:
@@ -98413,7 +98413,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 393, y: 197}
+    _translation: {x: 222, y: 197}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0

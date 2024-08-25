@@ -6,7 +6,9 @@ public class MainMenuController : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.CanPause = false;
+        
     }
+
 
     // Function to be called when the "Start" button is pressed
     public void StartGame()

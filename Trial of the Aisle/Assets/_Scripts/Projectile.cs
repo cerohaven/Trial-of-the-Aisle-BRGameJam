@@ -172,80 +172,14 @@ public class Projectile : MonoBehaviour
 
 
 
-
-
-
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected void OnDisable()
     {
-        ////We don't want projectiles on the ground to spawn hit particles if the player or boss bumps into them
-        //if(whoThrew != WhoThrew.Null)
-        //{
-        //    InstantiateHitParticles();
-        //}
-        
-
-        //EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
-
-        ////If we hit an entity with Health
-        //if (entityHealth != null)
-        //{
-        //    bool hitBoss = collision.gameObject.CompareTag("Boss") && whoThrew == WhoThrew.Player;
-        //    bool hitPlayer = collision.gameObject.CompareTag("Player") && whoThrew == WhoThrew.Boss;
-        //    bool hitRandomEntity = whoThrew != WhoThrew.Null && ! !hitBoss && !hitPlayer;
-
-        //    if (hitBoss)
-        //    {
-        //        //send to reduce scale of boss bar
-        //        entityHealth.DamageEntity(damageDealt);
-        //        CinemachineShake.Instance.ShakeCamera();
-        //        DestroyGameObject();
-        //        return;
-        //    }
-        //    else if(hitPlayer)
-        //    {
-        //        entityHealth.DamageEntity(damageDealt);
-        //        DestroyGameObject();
-        //        return;
-        //    }
-        //    else if(hitRandomEntity)
-        //    {
-        //        entityHealth.DamageEntity(damageDealt);
-        //        DestroyGameObject();
-        //        return;
-        //    }
-        //}
-        //else
-        //{
-        //    bool hitWall = collision.gameObject.CompareTag("Walls");
-        //    bool hitOtherProjectile = collision.gameObject.CompareTag("Pill") && collision.gameObject.GetComponent<Projectile>().whoThrew != whoThrew;
-        //    bool hitFeta = collision.gameObject.CompareTag("Feta");
-
-        //    if (hitWall)
-        //    {
-        //        rb.velocity = Vector2.zero;
-
-        //        if (whoThrew == WhoThrew.Player)
-        //        {
-        //            DestroyGameObject();
-        //            return;
-        //        }
-
-        //    }
-        //    else if ( hitOtherProjectile || hitFeta)
-        //    {
-        //        DestroyGameObject();
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(collision.gameObject.name);
-        //    }
-
-        //}
-        
-
+        shouldReturn = true;
+        StopCoroutine(nameof(EnableDragCoroutine));
     }
 
+
+    
     protected void InstantiateHitParticles()
     {
         Instantiate(hitParticles, transform.position, Quaternion.identity);
@@ -259,22 +193,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        //bool hitWall = collision.gameObject.CompareTag("Walls");
-        //if (hitWall)
-        //{
-        //    rb.velocity = Vector2.zero;
-
-        //    if (whoThrew == WhoThrew.Player)
-        //    {
-        //        Destroy(gameObject);
-
-        //    }
-
-        //}
+       
 
         EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
-        //Debug.Log(collision.gameObject.name + " " + entityHealth);
-
+       
         //If we hit an entity with Health
         if (entityHealth != null)
         {

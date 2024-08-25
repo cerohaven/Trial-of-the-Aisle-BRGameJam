@@ -46,23 +46,6 @@ public class Projectile_Jam : Projectile
     }
 
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        if (GameManager.Instance.GameEnded) return;
-
-        //On Collision with the player, deal damage UNLESS it can be picked up 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if(entityHealth == null) entityHealth = collision.gameObject.GetComponent<EntityHealth>();
-            entityHealth.DamageEntity(ChangeHealth.Small_Health);
-
-        }
-
-        BreakJam();
-
-    }
-
     private void BreakJam()
     {
         Instantiate(hitParticles, transform.position, Quaternion.identity);
@@ -78,5 +61,19 @@ public class Projectile_Jam : Projectile
             BreakJam();
 
         }
+
+        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
+        if (GameManager.Instance.GameEnded) return;
+
+        //On Collision with the player, deal damage UNLESS it can be picked up 
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (entityHealth == null) entityHealth = collision.gameObject.GetComponent<EntityHealth>();
+            entityHealth.DamageEntity(ChangeHealth.Small_Health);
+
+        }
+
+       
+
     }
 }

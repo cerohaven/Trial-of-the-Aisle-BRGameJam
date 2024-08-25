@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static System.TimeZoneInfo;
 
 public enum TransitionType
 {
@@ -67,6 +66,8 @@ public class SceneTransitionController : MonoBehaviour
         if(scene.name.Equals("MainMenu"))
         {
             GameManager.Instance.TransitionType = TransitionType.MainMenu;
+            GameManager.Instance.EventSender.ResumeGameEventSend();
+
         }
         //Lerp Colours
         PlayEnterSceneAnimation();
@@ -233,6 +234,10 @@ public class SceneTransitionController : MonoBehaviour
 
     }
 
+    public string GetSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
 
     // Method to get the transition we're going to play
     public TransitionType GetTransition()

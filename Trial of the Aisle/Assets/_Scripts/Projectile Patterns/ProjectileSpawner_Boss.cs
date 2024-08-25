@@ -16,7 +16,7 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         playerTransform = GameManager.Instance.PlayerTransform;
     }
 
-    public void SpawnProjectiles(bool shouldDestroyOnWallCollision = false)
+    public void SpawnProjectiles(bool shouldDestroyOnWallCollision = false, bool applyDrag = false, GameObject spawnSpecificGO = null)
     {
         for (int i = 0; i < projPattern.Count; i++)
         {
@@ -24,14 +24,23 @@ public class ProjectileSpawner_Boss : MonoBehaviour
 
             foreach (PatternTypeMod[] mod in projs)
             {
-
-                StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision));
+                if(spawnSpecificGO == null)
+                {
+                    StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision, applyDrag));
+                }
+                else
+                {
+                    StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision, applyDrag, spawnSpecificGO));
+                }
+               
 
             }
         }
     }
 
-    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall)
+
+
+    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall, bool drag)
     {
         yield return new WaitForSeconds(delayTime);
 
@@ -45,10 +54,45 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         Projectile projectile = go.GetComponent<Projectile>();
         projectile.InitializeProjectile(direction, mod[1].modValue, transform, WhoThrew.Boss);
 
+
         if(destroyOnWall)
         {
             projectile.ShouldDestroyOnWall = true;
         }
+
+        if(drag == true)
+        {
+            StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2));
+        }
+
+        yield break;
+    }
+
+    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall, bool drag, GameObject prefabToSpawn)
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        Vector2 direction = GetDirectionFromAngle(mod[0].modValue, mod[2].modValue);
+
+        GameObject go = Instantiate(prefabToSpawn,  
+                                    (Vector2)transform.position + direction * mod[4].modValue,        //Position of boss + an offset distance away from the boss
+                                    Quaternion.identity);
+
+        //Initializing the values
+        Projectile projectile = go.GetComponent<Projectile>();
+        projectile.InitializeProjectile(direction, mod[1].modValue, transform, WhoThrew.Boss);
+
+
+        if (destroyOnWall)
+        {
+            projectile.ShouldDestroyOnWall = true;
+        }
+
+        if (drag == true)
+        {
+            StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2));
+        }
+
         yield break;
     }
 

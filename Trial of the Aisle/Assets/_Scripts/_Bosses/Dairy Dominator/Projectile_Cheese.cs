@@ -1,59 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using NodeCanvas.Framework;
-public class Projectile_Cheese : Projectile
+
+public class Projectile_Cheese : MonoBehaviour
 {
-    //Components
+    [SerializeField] private ChangeHealth damageDealt;
+    [SerializeField] private GameObject particleHitEffect;
+    [SerializeField] private GameObject cheeseArtGO;
+    [SerializeField] private GameObject warningCircleGO;
+    private Collider2D col;
+    private bool startToDisappear = false;
+    private SpriteRenderer sr;
+    private float fade;
 
-    //For one of the boss' attacks that suck all the pills back up.
-    private bool isThrownInWave = false;
-    private float turnIntensity = 0; //For turning during the wave attack
-
-    //This changes the behaviour of the pill based on the boss' attacks
-    public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
-
-    //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
-    public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
+    private void Awake()
     {
-        base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
-
-
+        col = GetComponent<Collider2D>();
+        sr = cheeseArtGO.GetComponent<SpriteRenderer>();
+        col.enabled = false;
     }
-    protected override void Awake()
+    private void Start()
     {
-        base.Awake();
-    }
-
-    protected override void Start()
-    {
-        base.Start();
+        
+        cheeseArtGO.SetActive(false);
+        warningCircleGO.SetActive(true);
+        Invoke(nameof(ShowCheese), 0.7f);
     }
 
-
-
-    protected override void Update()
+    private void ShowCheese()
     {
-
+        col.enabled = true;
+        cheeseArtGO.SetActive(true);
+        warningCircleGO.SetActive(false);
     }
 
-
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        base.OnCollisionEnter2D(collision);
-       
+        void Update()
+        {
+            if (!startToDisappear) return;
+            fade -= Time.deltaTime;
+
+            float a = fade;
+
+            sr.color = new Color(1, 1, 1, a);
+
+            if (a <= 0.05f)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+    public void StartToDisappear()
+    {
+        startToDisappear = true;
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         EntityHealth entityHealth = collision.gameObject.GetComponent<EntityHealth>();
 
-        //On Collision with the player, deal damage
-        if (entityHealth != null && collision.gameObject.CompareTag("Player"))
+
+        if (collision.gameObject.CompareTag("Player")) 
         {
+            CancelInvoke(nameof(ShowCheese));
             entityHealth.DamageEntity(damageDealt);
-            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            
+            InstantiateHitParticles();
             Destroy(gameObject);
+            return;
         }
+           
+    }
+    protected void InstantiateHitParticles()
+    {
+        Instantiate(particleHitEffect, transform.position, Quaternion.identity);
     }
 }
