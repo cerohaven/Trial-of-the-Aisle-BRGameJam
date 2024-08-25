@@ -20,6 +20,7 @@ public class PauseGameMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        if (GameManager.Instance.GamepadCursor == null) return;
         GameManager.Instance.GamepadCursor.EnableCursor(true);
     }
   
