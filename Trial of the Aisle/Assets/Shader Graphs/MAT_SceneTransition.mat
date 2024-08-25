@@ -89,7 +89,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _addOutline: 1
-    - _circleSize: 6.7952585
+    - _circleSize: 6.9999714
     - _outlineSize: 0
     - _rotation: 167.35
     - _rotationSpeed: 52.2
