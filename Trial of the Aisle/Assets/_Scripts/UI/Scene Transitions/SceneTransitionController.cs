@@ -66,7 +66,7 @@ public class SceneTransitionController : MonoBehaviour
         if(scene.name.Equals("MainMenu"))
         {
             GameManager.Instance.TransitionType = TransitionType.MainMenu;
-            GameManager.Instance.EventSender.ResumeGameEventSend();
+            GameManager.Instance.GeneralResumeLogic();
 
         }
         //Lerp Colours

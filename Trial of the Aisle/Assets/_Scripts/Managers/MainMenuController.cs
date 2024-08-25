@@ -1,10 +1,11 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    [SerializeField] private InputSystemUIInputModule inputModule;
+
     private void Awake()
     {
         GameManager.Instance.CanPause = false;
@@ -14,8 +15,7 @@ public class MainMenuController : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
-        GameManager.Instance.PlayerInputHandler.PlayerInput.uiInputModule = inputModule;
-        Debug.Log(GameManager.Instance.PlayerInputHandler.PlayerInput.currentActionMap);
+ 
     }
 
     // Function to be called when the "Start" button is pressed

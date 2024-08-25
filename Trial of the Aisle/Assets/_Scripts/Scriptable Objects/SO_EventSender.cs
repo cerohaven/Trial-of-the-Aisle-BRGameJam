@@ -91,13 +91,11 @@ public class SO_EventSender : ScriptableObject
     //Pause Game Event
     [System.NonSerialized]
     public UnityEvent pauseGameEvent = new UnityEvent();
-    FMOD.Studio.EventInstance SFX_PauseEvent;
-    FMOD.Studio.EventInstance SFX_UnPauseEvent;
+   
 
     public void PauseGameEventSend()
     {
-        SFX_PauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Pause");
-        SFX_PauseEvent.start();
+
         pauseGameEvent.Invoke();
     }
 
@@ -107,8 +105,7 @@ public class SO_EventSender : ScriptableObject
 
     public void ResumeGameEventSend()
     {
-        SFX_UnPauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Unpause");
-        SFX_UnPauseEvent.start();
+        
         resumeGameEvent.Invoke();
     }
 

@@ -72,13 +72,21 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (!GameManager.Instance.CanMove) return;
 
-        GameManager.Instance.EventSender.PauseGameEventSend();
+        if (context.performed)
+        {
+            GameManager.Instance.EventSender.PauseGameEventSend();
+        }
+        
 
     }
 
     public void OnUnPause(InputAction.CallbackContext context)
     {
-        GameManager.Instance.EventSender.ResumeGameEventSend();
+        Debug.Log(playerInput.currentActionMap);
+        if (context.performed)
+        {
+            GameManager.Instance.EventSender.ResumeGameEventSend();
+        }
     }
 
 

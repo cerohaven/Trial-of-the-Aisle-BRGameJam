@@ -28,6 +28,8 @@ public class GameManager : Singleton<GameManager>
     private bool bossIsDefeated = false;
 
     public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
+    FMOD.Studio.EventInstance SFX_PauseEvent;
+    FMOD.Studio.EventInstance SFX_UnPauseEvent;
 
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
@@ -193,7 +195,12 @@ public class GameManager : Singleton<GameManager>
     private void Pause()
     {
         Debug.Log("Clicked Pause");
+        if (sceneTransitionController.GetSceneName().Equals("MainMenu")) return;
+           
         if (bossIsDefeated) return;
+
+        SFX_PauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Pause");
+        SFX_PauseEvent.start();
 
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
 
@@ -213,12 +220,21 @@ public class GameManager : Singleton<GameManager>
     }
     private void ResumeTheGame()
     {
-        Debug.Log("Clicked Unause");
+        Debug.Log("Clicked UnPause");
+        if (sceneTransitionController.GetSceneName().Equals("MainMenu")) return;
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
+        GeneralResumeLogic();
+
+        SFX_UnPauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Unpause");
+        SFX_UnPauseEvent.start();
+
+    }
+    public void GeneralResumeLogic()
+    {
         isGamePaused = false;
 
-        if(pauseMenu != null)
+        if (pauseMenu != null)
             pauseMenuPrefab.SetActive(false);
 
         Time.timeScale = 1;
