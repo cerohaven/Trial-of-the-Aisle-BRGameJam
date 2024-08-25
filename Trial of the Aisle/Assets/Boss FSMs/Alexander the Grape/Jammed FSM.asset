@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
   m_Name: Jammed FSM
   m_EditorClassIdentifier: 
-  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"animState":1,"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Wait","_position":{"x":512.0,"y":316.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"projectileSpeedAtHealthIncrements":[15.0,15.0,15.0,15.0],"timeBetweenAttacksPerIncrement":[1.0,1.0,1.0,1.0],"$type":"NodeCanvas.Tasks.Actions.ThrowJamActionTask"}]},"_name":"Throw
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"animState":3,"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Wait","_position":{"x":509.0,"y":313.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"projectileSpeedAtHealthIncrements":[15.0,15.0,15.0,15.0],"timeBetweenAttacksPerIncrement":[1.0,1.0,1.0,1.0],"$type":"NodeCanvas.Tasks.Actions.ThrowJamActionTask"}]},"_name":"Throw
     Jam Projectile","_position":{"x":829.0,"y":427.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_condition":{"minWaitTime":0.8,"maxWaitTime":0.8,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences: []
   _graphSource:
