@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638590941660005292
+  lastModified: 638602263626400510
   FileSizes:
   - Name: Desktop
-    Value: 7645600
+    Value: 9295584
   Exists: 1
 --- !u!114 &-8503919629135829351
 MonoBehaviour:
@@ -89,10 +89,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638590941659644943
+  lastModified: 638602263625931096
   FileSizes:
   - Name: Desktop
-    Value: 3688
+    Value: 3490
   Exists: 1
 --- !u!114 &-7940870413810752853
 MonoBehaviour:
@@ -231,33 +231,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
---- !u!114 &-5220779787298245687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiance/Fan Noise
-  m_EditorClassIdentifier: 
-  Path: event:/Ambiance/Fan Noise
-  Guid:
-    Data1: 1689544114
-    Data2: 1094805483
-    Data3: -1762815574
-    Data4: 1137002845
-  Banks:
-  - {fileID: 2774115274637721913}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 40242
 --- !u!114 &-4787776911383654218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,10 +246,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638590941659644943
+  lastModified: 638602263625921101
   FileSizes:
   - Name: Desktop
-    Value: 1304
+    Value: 1322
   Exists: 1
 --- !u!114 &-4622713418254457392
 MonoBehaviour:
@@ -293,10 +266,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/General_Effects.bank
   Name: General_Effects
   StudioPath: bank:/General_Effects
-  lastModified: 638590941659634933
+  lastModified: 638602263113070011
   FileSizes:
   - Name: Desktop
-    Value: 325408
+    Value: 324928
   Exists: 1
 --- !u!114 &-4612213798154764490
 MonoBehaviour:
@@ -313,38 +286,11 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Dialogue.bank
   Name: Dialogue
   StudioPath: bank:/Dialogue
-  lastModified: 638590941659614914
+  lastModified: 638602263111512623
   FileSizes:
   - Name: Desktop
     Value: 99008
   Exists: 1
---- !u!114 &-3827037576262396107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiance/Rolling Carts
-  m_EditorClassIdentifier: 
-  Path: event:/Ambiance/Rolling Carts
-  Guid:
-    Data1: -1452671726
-    Data2: 1198870581
-    Data3: -796594000
-    Data4: 979686879
-  Banks:
-  - {fileID: 2774115274637721913}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 9744
 --- !u!114 &-3618881363390527175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,33 +565,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 195
---- !u!114 &-615194718020574478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiance/Shopping Noise
-  m_EditorClassIdentifier: 
-  Path: event:/Ambiance/Shopping Noise
-  Guid:
-    Data1: -2027458989
-    Data2: 1091653525
-    Data3: 634268597
-    Data4: -1858462836
-  Banks:
-  - {fileID: 2774115274637721913}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 10000
 --- !u!114 &-431556214422931823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,8 +580,8 @@ MonoBehaviour:
   Name: SceneTransition
   StudioPath: parameter:/SceneTransition
   Min: 0
-  Max: 3
-  Default: 0
+  Max: 4
+  Default: 4
   ID:
     data1: 1224603509
     data2: 1191149138
@@ -673,6 +592,7 @@ MonoBehaviour:
   - ATGArenaEntered
   - DDArenaEntered
   - PostBattleEntered
+  - MainMenuEntered
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -697,15 +617,11 @@ MonoBehaviour:
   - {fileID: 7919083427025165606}
   - {fileID: 486479999479391077}
   EditorEvents:
-  - {fileID: -3827037576262396107}
-  - {fileID: -615194718020574478}
-  - {fileID: -5220779787298245687}
   - {fileID: 8728278850234832302}
   - {fileID: -1769353802287979184}
   - {fileID: 657775109849243671}
   - {fileID: 8469087974837205349}
   - {fileID: 6725954434060490764}
-  - {fileID: 8921775523254850826}
   - {fileID: -627284383443074159}
   - {fileID: 2867576457652010561}
   - {fileID: -3186321728445324717}
@@ -755,7 +671,7 @@ MonoBehaviour:
   - {fileID: -4787776911383654218}
   StringsBanks:
   - {fileID: -8126305461504484988}
-  cacheTime: 638590941660065344
+  cacheTime: 638602263626400510
   cacheVersion: 131617
 --- !u!114 &486479999479391077
 MonoBehaviour:
@@ -772,7 +688,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/UI.bank
   Name: UI
   StudioPath: bank:/UI
-  lastModified: 638590941660065344
+  lastModified: 638602263189760180
   FileSizes:
   - Name: Desktop
     Value: 141856
@@ -1037,7 +953,7 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Player.bank
   Name: Player
   StudioPath: bank:/Player
-  lastModified: 638580735545275251
+  lastModified: 638602263154877230
   FileSizes:
   - Name: Desktop
     Value: 35168
@@ -1057,10 +973,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/Ambiance.bank
   Name: Ambiance
   StudioPath: bank:/Ambiance
-  lastModified: 638504232924401603
+  lastModified: 638602263424070657
   FileSizes:
   - Name: Desktop
-    Value: 1648832
+    Value: 494
   Exists: 1
 --- !u!114 &2867576457652010561
 MonoBehaviour:
@@ -1201,7 +1117,7 @@ MonoBehaviour:
   - {fileID: 5747771714947280010}
   MinDistance: 1
   MaxDistance: 20
-  Length: 460180
+  Length: 514311
 --- !u!114 &5190842753626972920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,8 +1214,8 @@ MonoBehaviour:
   Name: SceneTransition
   StudioPath: 
   Min: 0
-  Max: 3
-  Default: 0
+  Max: 4
+  Default: 4
   ID:
     data1: 1224603509
     data2: 1191149138
@@ -1310,6 +1226,7 @@ MonoBehaviour:
   - ATGArenaEntered
   - DDArenaEntered
   - PostBattleEntered
+  - MainMenuEntered
   Exists: 1
 --- !u!114 &6186833889677197361
 MonoBehaviour:
@@ -1572,10 +1489,10 @@ MonoBehaviour:
   Path: TrialOfTheAisle-fmod/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638590941660055336
+  lastModified: 638602263188202319
   FileSizes:
   - Name: Desktop
-    Value: 713344
+    Value: 712832
   Exists: 1
 --- !u!114 &7920290611296325765
 MonoBehaviour:
@@ -1678,34 +1595,6 @@ MonoBehaviour:
     Data3: 1488351924
     Data4: -1043204481
   Banks:
-  - {fileID: 7919083427025165606}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &8921775523254850826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Bosses/Boss_PK/B_PK_Walk
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Bosses/Boss_PK/B_PK_Walk
-  Guid:
-    Data1: -1175153881
-    Data2: 1186500851
-    Data3: 1425504691
-    Data4: -1605853746
-  Banks:
-  - {fileID: -4622713418254457392}
   - {fileID: 7919083427025165606}
   IsStream: 0
   Is3D: 0

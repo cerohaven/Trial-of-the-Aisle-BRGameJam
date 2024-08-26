@@ -45,7 +45,6 @@ public class FMODMusicManager : MonoBehaviour
 
         if (sceneName == "Boss_Painkiller_LD_Redesign")
         {
-            Debug.Log("aaaa");
             //  PKMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/PK_Arena");
             PKIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/PK_Intro");
 
@@ -58,7 +57,7 @@ public class FMODMusicManager : MonoBehaviour
 
         }
 
-        if(sceneName == "Boss_DairyDominator 1")
+        if(sceneName == "Boss_DairyDominator_LD_Redesign")
         {
             //  DDMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/DD_Arena");
             DDIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/DD_Intro");
@@ -67,6 +66,13 @@ public class FMODMusicManager : MonoBehaviour
             DDIntroInstance.start();
 
             FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "DDArenaEntered");
+
+        }
+
+        if (sceneName == "MainMenu")
+        {
+
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "MainMenuEntered");
 
         }
     }
