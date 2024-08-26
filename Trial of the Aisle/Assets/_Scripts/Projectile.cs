@@ -187,6 +187,7 @@ public class Projectile : MonoBehaviour
     protected void DestroyGameObject()
     {
         shouldReturn = true;
+        GameManager.Instance.CurrentProjectilesInScene--;
         StopCoroutine(nameof(EnableDragCoroutine));
         Destroy(gameObject);
     }

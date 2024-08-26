@@ -29,6 +29,10 @@ public class GameManager : Singleton<GameManager>
 
     private PlayerInputHandler playerInputHandler;
 
+
+    [SerializeField] private int currentProjectilesInScene = 0;
+
+
     //Game State
     private bool canPause = false;
     private bool canMove = true;
@@ -72,6 +76,7 @@ public class GameManager : Singleton<GameManager>
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
     public GamepadCursor GamepadCursor { get => gamepadCursor; set => gamepadCursor = value; }
     public ControlScheme ControlScheme { get => controlScheme; set => controlScheme = value; }
+    public int CurrentProjectilesInScene { get => currentProjectilesInScene; set => currentProjectilesInScene = value; }
 
     private void Awake()
     {

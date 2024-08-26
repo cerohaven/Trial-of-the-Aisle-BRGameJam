@@ -197,8 +197,7 @@ MonoBehaviour:
   speed: 21.2
   jamSpilledGO: {fileID: 7592180743780908918, guid: 8022f6f0e4a20d14396b70cb5d3a8798, type: 3}
   spawnJamTrailRate: 0.1
-  maxTimeAlive: 3
-  timeReductionPerWallHit: 0.3
+  maxBounces: 3
 --- !u!95 &1156795220913216275
 Animator:
   serializedVersion: 5

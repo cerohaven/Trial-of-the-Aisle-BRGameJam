@@ -40,7 +40,7 @@ public class Projectile_Jam : Projectile
     private void BreakJam()
     {
         Instantiate(hitParticles, transform.position, Quaternion.identity);
-
+        GameManager.Instance.CurrentProjectilesInScene--;
         Destroy(gameObject);
     }
 

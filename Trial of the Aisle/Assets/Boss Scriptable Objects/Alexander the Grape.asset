@@ -42,10 +42,10 @@ MonoBehaviour:
   b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:
   - attackName: Fruits of Fury
-    percentChanceToUse: 0
+    percentChanceToUse: 0.738
     attackCondition: {fileID: 0}
   - attackName: Jammed
-    percentChanceToUse: 1
+    percentChanceToUse: 0.417
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 41850a9738d2748489b2b395c644537c, type: 2}

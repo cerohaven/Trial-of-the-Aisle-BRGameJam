@@ -32,6 +32,11 @@ public class PlayerCarryProjectile : MonoBehaviour
         _playerTransform = transform.parent;
         
         _playerAimArrowGO.SetActive(false);
+       
+    }
+    private void Start()
+    {
+        rightStick = GameManager.Instance.PlayerInputHandler.PlayerInput.actions["Look"];
     }
 
     public void InitializeObject(GameObject _carryObj)
@@ -52,9 +57,7 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         if (GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
         {
-           
-            rightStick = GameManager.Instance.PlayerInputHandler.PlayerInput.actions["Look"];
-
+ 
             GameManager.Instance.GamepadCursor.EnableCursor(false);
         }
             

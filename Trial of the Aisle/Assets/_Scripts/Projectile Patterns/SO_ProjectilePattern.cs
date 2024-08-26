@@ -175,7 +175,7 @@ public class SO_ProjectilePattern : ScriptableObject
 
                         if (mirror || shift)
                         {
-                            tempProjectileList.RemoveAt(i);
+                            tempProjectileList.RemoveAt(j);
                         }
 
                     }

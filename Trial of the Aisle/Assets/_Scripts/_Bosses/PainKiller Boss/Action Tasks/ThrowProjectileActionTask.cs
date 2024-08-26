@@ -54,7 +54,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectileSpawner.ProjPattern.Clear();
             projectileSpawner.ProjPattern.Add(HelperFunctions.GetProjectilePatternAtPhase(bossProfile, currentPhase));
             
-            projectileSpawner.SpawnProjectiles(false, shouldSetDrag);
+            projectileSpawner.SpawnProjectiles();
 
 
         }

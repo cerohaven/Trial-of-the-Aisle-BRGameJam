@@ -30,6 +30,7 @@ public class InitializeBoss : MonoBehaviour
         GameManager.Instance.BossProfile = _bossProfile;
         GameManager.Instance.BossTransform = transform;
         GameManager.Instance.BossIsDefeated = false;
+        GameManager.Instance.CurrentProjectilesInScene = 0;
         _entityHealth = GetComponent<EntityHealth>();
 
         _agentBlackboard = GetComponent<Blackboard>();

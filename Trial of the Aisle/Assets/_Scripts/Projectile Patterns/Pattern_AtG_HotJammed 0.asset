@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
-  m_Name: Pattern_AtG_HotJammed
+  m_Name: Pattern_AtG_HotJammed 0
   m_EditorClassIdentifier: 
   _patternNumberToUse: 3
   _projectilePatterns:

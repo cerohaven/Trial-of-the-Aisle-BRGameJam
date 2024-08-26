@@ -16,7 +16,7 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         playerTransform = GameManager.Instance.PlayerTransform;
     }
 
-    public void SpawnProjectiles(bool shouldDestroyOnWallCollision = false, bool applyDrag = false, GameObject spawnSpecificGO = null)
+    public void SpawnProjectiles(bool inWave = false, bool shouldApplyDrag = false, GameObject spawnSpecificGO = null)
     {
         for (int i = 0; i < projPattern.Count; i++)
         {
@@ -26,21 +26,22 @@ public class ProjectileSpawner_Boss : MonoBehaviour
             {
                 if(spawnSpecificGO == null)
                 {
-                    StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision, applyDrag));
+                    StartCoroutine(SpawnBulletCoroutine(inWave, shouldApplyDrag, mod[3].modValue, mod));
                 }
                 else
                 {
-                    StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod, shouldDestroyOnWallCollision, applyDrag, spawnSpecificGO));
+                    StartCoroutine(SpawnBulletCoroutine(inWave, shouldApplyDrag, mod[3].modValue, mod, spawnSpecificGO));
                 }
-               
 
+                GameManager.Instance.CurrentProjectilesInScene++;
             }
+            
         }
     }
 
 
 
-    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall, bool drag)
+    private IEnumerator SpawnBulletCoroutine(bool inWave, bool shouldApplyDrag, float delayTime, PatternTypeMod[] mod)
     {
         yield return new WaitForSeconds(delayTime);
 
@@ -54,21 +55,15 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         Projectile projectile = go.GetComponent<Projectile>();
         projectile.InitializeProjectile(direction, mod[1].modValue, transform, WhoThrew.Boss);
 
-
-        if(destroyOnWall)
-        {
-            projectile.ShouldDestroyOnWall = true;
-        }
-
-        if(drag == true)
-        {
-            StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2));
-        }
+        BulletConditions(projectile, inWave, shouldApplyDrag);
 
         yield break;
     }
 
-    private IEnumerator SpawnBulletCoroutine(float delayTime, PatternTypeMod[] mod, bool destroyOnWall, bool drag, GameObject prefabToSpawn)
+ 
+
+
+    private IEnumerator SpawnBulletCoroutine(bool inWave, bool shouldApplyDrag, float delayTime, PatternTypeMod[] mod, GameObject prefabToSpawn)
     {
         yield return new WaitForSeconds(delayTime);
 
@@ -82,19 +77,38 @@ public class ProjectileSpawner_Boss : MonoBehaviour
         Projectile projectile = go.GetComponent<Projectile>();
         projectile.InitializeProjectile(direction, mod[1].modValue, transform, WhoThrew.Boss);
 
-
-        if (destroyOnWall)
-        {
-            projectile.ShouldDestroyOnWall = true;
-        }
-
-        if (drag == true)
-        {
-            StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2));
-        }
+        BulletConditions(projectile, inWave, shouldApplyDrag);
 
         yield break;
     }
+
+
+
+    private void BulletConditions(Projectile projectile, bool inWave, bool shouldApplyDrag)
+    {
+        bool destroyOnWall = GameManager.Instance.CurrentProjectilesInScene > 10 ? true : false;
+
+        if(destroyOnWall || inWave)
+        {
+            DestroyOnWall(projectile);
+        }
+        if((!destroyOnWall && !inWave) || shouldApplyDrag)
+        {
+            SetDrag(projectile);
+        }
+     
+        
+    }
+    private void DestroyOnWall(Projectile projectile)
+    {
+        projectile.ShouldDestroyOnWall = true;
+    }
+
+    private void SetDrag(Projectile projectile)
+    {
+        StartCoroutine(projectile.EnableDragCoroutine(0.5f, 2.5f));
+    }
+
 
     private Vector2 GetDirectionFromAngle(float angle, float extraAngle)
     {

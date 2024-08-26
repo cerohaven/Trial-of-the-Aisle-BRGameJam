@@ -31,9 +31,8 @@ public class MinionThrow : MonoBehaviour
 
     [Space]
     [Header("Minion Time Alive")]
-    [SerializeField] private float maxTimeAlive;
-    [SerializeField] private float timeReductionPerWallHit;
-    private float currentTimeAlive;
+    [SerializeField] private int maxBounces;
+    private int currentBounces = 0;
 
     private Vector2 bossPos;
     private Vector2 playerPos;
@@ -61,7 +60,7 @@ public class MinionThrow : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         SetRandomThrowType();
-        currentTimeAlive = maxTimeAlive;
+        currentBounces = 0;
     }
 
     private void SetRandomThrowType()
@@ -141,18 +140,15 @@ public class MinionThrow : MonoBehaviour
         if (raycastHitUp)
         {
              rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y);
-            currentTimeAlive -= timeReductionPerWallHit;
+            currentBounces++;
         }
         if (raycastHitRight)
         {
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
-            currentTimeAlive -= timeReductionPerWallHit;
+            currentBounces++;
         }
 
-        //Time Reduction
-        currentTimeAlive -= Time.deltaTime;
-
-        if(currentTimeAlive <= 0)
+        if(currentBounces > maxBounces)
         {
             rb.drag = 4f;
             CancelInvoke(nameof(SpawnJamSpilled));
