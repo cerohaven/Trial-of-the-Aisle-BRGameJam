@@ -66,6 +66,11 @@ public class SceneTransitionController : MonoBehaviour
         if(scene.name.Equals("MainMenu"))
         {
             GameManager.Instance.TransitionType = TransitionType.MainMenu;
+
+            AbilityManager am = GameObject.FindObjectOfType<AbilityManager>();
+            if (am != null) Destroy(am.gameObject);
+
+            GameManager.Instance.IsInMainMenu = true;
             GameManager.Instance.GeneralResumeLogic();
 
         }
@@ -131,7 +136,15 @@ public class SceneTransitionController : MonoBehaviour
 
         Scene currentScene = SceneManager.GetActiveScene();
         int nextScene = currentScene.buildIndex + 1;
-        SceneManager.LoadScene(nextScene);
+        if (currentScene.name.Equals("End Screen"))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene(nextScene);
+        }
+        
 
     }
 

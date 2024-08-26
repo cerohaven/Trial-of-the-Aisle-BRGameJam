@@ -27,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private TransitionType transitionType;
     [SerializeField] private ControlScheme controlScheme;
 
+
     private PlayerInputHandler playerInputHandler;
 
 
@@ -34,6 +35,7 @@ public class GameManager : Singleton<GameManager>
 
 
     //Game State
+    private bool isInMainMenu = true;
     private bool canPause = false;
     private bool canMove = true;
     private bool isGamePaused = false;
@@ -77,6 +79,7 @@ public class GameManager : Singleton<GameManager>
     public GamepadCursor GamepadCursor { get => gamepadCursor; set => gamepadCursor = value; }
     public ControlScheme ControlScheme { get => controlScheme; set => controlScheme = value; }
     public int CurrentProjectilesInScene { get => currentProjectilesInScene; set => currentProjectilesInScene = value; }
+    public bool IsInMainMenu { get => isInMainMenu; set => isInMainMenu = value; }
 
     private void Awake()
     {
@@ -181,8 +184,12 @@ public class GameManager : Singleton<GameManager>
     #region Pause Game Methods
     private void PauseTheGame()
     {
+        if(isInMainMenu)
+        {
+            return;
+        }
         //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
-        if(uiInstances.Count >0)
+        if(bossIsDefeated)
         {
             DestroyUIElement();
         }
@@ -204,8 +211,6 @@ public class GameManager : Singleton<GameManager>
             LoadNextScene();
         }
 
-        uiInstances[uiInstances.Count - 1].SetActive(false);
-        uiInstances.RemoveAt(uiInstances.Count - 1);
     }
     private void Pause()
     {

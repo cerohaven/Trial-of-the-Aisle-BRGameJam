@@ -17,7 +17,7 @@ MonoBehaviour:
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
-      modValue: 360
+      modValue: 0
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles

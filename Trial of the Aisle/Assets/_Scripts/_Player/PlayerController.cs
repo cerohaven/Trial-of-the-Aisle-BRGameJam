@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
         gameManager = GameManager.Instance;
         gameManager.PlayerTransform = transform;
+        gameManager.IsInMainMenu = false;
         gameManager.EventSender.dodgeEvent.AddListener(OnDodge);
 
         regularMoveSpeed = moveSpeed;
