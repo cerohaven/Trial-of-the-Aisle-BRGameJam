@@ -5,11 +5,13 @@ using UnityEngine;
 public class RotateObject : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 40;
+    private Animator animator;
 
     public float RotateSpeed { get => rotateSpeed; set => rotateSpeed = value; }
 
     private void Start()
     {
+        animator = transform.parent.GetComponentInChildren<Animator>();
         Invoke("DestroyObj", 10);
     }
 
@@ -21,6 +23,10 @@ public class RotateObject : MonoBehaviour
 
     private void DestroyObj()
     {
+        animator.SetInteger("animState", 7);
+        //Start
         Destroy(gameObject);
     }
+
+
 }
