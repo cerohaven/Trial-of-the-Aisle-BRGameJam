@@ -19,5 +19,5 @@ MonoBehaviour:
   ID: 2
   grapeMinionPrefab: {fileID: 5005698199594441834, guid: 3958826e6a3cf5640b1299f5fa3de5b1, type: 3}
   minionCount: 5
-  spawnRadius: 15
+  spawnRadius: 10
   minDistanceFromWalls: 1

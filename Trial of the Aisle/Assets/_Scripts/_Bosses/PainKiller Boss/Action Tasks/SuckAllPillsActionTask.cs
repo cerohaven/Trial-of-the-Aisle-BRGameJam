@@ -28,6 +28,7 @@ namespace NodeCanvas.Tasks.Actions{
 		
 		protected override void OnExecute(){
 
+            ParacetamaniaInhaleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale");
             //Zoom out the camera
             targetGroup = GameObject.FindObjectOfType<CinemachineTargetGroup>();
             targetGroup.m_Targets[1].radius = 13;
@@ -45,8 +46,6 @@ namespace NodeCanvas.Tasks.Actions{
                 float speed = Random.Range(minPillSpeed,maxPillSpeed);
 				
                 pillProjectiles[i].InitializeProjectile(direction, speed, agent.transform, WhoThrew.Boss);
-
-                ParacetamaniaInhaleInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_PK/B_Parasitomania_Inhale");
                 ParacetamaniaInhaleInstance.start();
 
             }

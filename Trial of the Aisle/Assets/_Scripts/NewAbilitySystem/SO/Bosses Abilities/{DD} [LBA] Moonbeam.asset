@@ -16,11 +16,11 @@ MonoBehaviour:
   abilityDescription: "This spray of milk does a small amount of damage, but covers
     a wide-ranged area that's sure to hit your target. \r\n"
   abilityIcon: {fileID: 2030291337, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
-  cooldownTime: 3
+  cooldownTime: 10
   ID: 5
   moonbeamPrefab: {fileID: 1572699439113838549, guid: 0a24b7ca53f13ac48b202dc7c32f4273, type: 3}
   abilityDuration: 6
   splashDuration: 1
-  damageInterval: 0.5
+  damageInterval: 0.75
   effectRange: 0.25
   beamOffset: 0.5

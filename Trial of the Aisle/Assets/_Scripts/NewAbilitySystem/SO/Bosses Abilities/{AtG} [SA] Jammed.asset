@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: '{AtG} [SA] Jammed'
   m_EditorClassIdentifier: 
   abilityName: Jammed
-  abilityDescription: 
+  abilityDescription: Throw a massive glob of Jam that's sure to slow any enemy in
+    it's tracks!
   abilityIcon: {fileID: -128405432, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
-  cooldownTime: 4
+  cooldownTime: 8
   ID: 3
   jamPrefab: {fileID: 2321126302647116474, guid: 91a3253d22682064a834634ac57b213d, type: 3}
   jamThrowForce: 20
