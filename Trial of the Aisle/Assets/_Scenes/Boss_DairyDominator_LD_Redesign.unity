@@ -9427,7 +9427,7 @@ Transform:
   m_GameObject: {fileID: 816308862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9561,7 +9561,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.54375
+  orthographic size: 20.543749
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -24601,7 +24601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419615033827918397, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1073411208923585916, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Name
@@ -24731,7 +24731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5699407356119264946, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1254
+      value: 1519.001
       objectReference: {fileID: 0}
     - target: {fileID: 8157052451593350348, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Sprite
@@ -24756,7 +24756,7 @@ PrefabInstance:
     - target: {fileID: 9160668414260728587, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1811211442, guid: fc96dfb06ad13514889adf59108ed288, type: 3}
+      objectReference: {fileID: -1881219930, guid: 06d89d0e47b7db64da8a3d6ce1089174, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93488,7 +93488,7 @@ Transform:
   m_GameObject: {fileID: 2061118893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -96601,7 +96601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
   _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_name":"HUD
-    UI","_position":{"x":-90.0,"y":-200.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"}]},"_position":{"x":219.0,"y":45.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_position":{"x":885.0,"y":176.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_nestedFSM":{"_value":2},"_position":{"x":706.9989,"y":330.0027},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Idle
+    UI","_position":{"x":-90.0,"y":-200.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_RandomizeNumberOfProjectiles"},{"$type":"NodeCanvas.Tasks.Actions.SetRandomAttackActionTask"}]},"_position":{"x":219.0,"y":45.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedFSM":{"_value":1},"_position":{"x":885.0,"y":176.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"2"},{"_nestedFSM":{"_value":2},"_position":{"x":650.9989,"y":330.0027},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"3"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Idle
     State","_position":{"x":489.0,"y":544.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"4"},{"_nestedFSM":{"_value":3},"_position":{"x":1139.0,"y":657.0},"$type":"NodeCanvas.StateMachines.NestedFSMState","$id":"5"}],"connections":[{"_condition":{"valueA":{"_name":"canStartBossFight","_targetVariableID":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},{"valueA":{"_name":"randomAttack","_targetVariableID":"0b06f209-7424-4be9-b232-2bd8388c4653"},"valueB":{"_value":"Moo-n
     Beam"},"$type":"NodeCanvas.Tasks.Conditions.CheckString"}],"$type":"NodeCanvas.Framework.ConditionList"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"conditions":[{"valueA":{"_name":"objectsThrown","_targetVariableID":"788dc214-8ac7-4d02-8393-dd9fdc522f5b"},"valueB":{"_name":"randomProjectiles","_targetVariableID":"8753aa1c-d846-4468-87b2-33269e524d43"},"$type":"NodeCanvas.Tasks.Conditions.CheckVariable`1[[System.Int32,
@@ -96619,7 +96619,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: -40, y: -85}
+    _translation: {x: -7, y: -19}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -96776,7 +96776,7 @@ MonoBehaviour:
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - {fileID: 4329201300660113927, guid: 1bd2a20abc293d84ca11e2422c7aafef, type: 3}
+  - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -96820,7 +96820,7 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 4329201300660113927, guid: 1bd2a20abc293d84ca11e2422c7aafef, type: 3}
+    - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4

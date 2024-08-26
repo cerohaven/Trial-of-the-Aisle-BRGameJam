@@ -78,7 +78,6 @@ namespace NodeCanvas.Tasks.Actions{
                 yield return new WaitForSeconds(timeBetweenWaves);
             }
 
-            center.transform.parent = null;
             EndAction(true);
         }
       

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jammed FSM
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"animState":3,"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_name":"Wait","_position":{"x":509.0,"y":313.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"jammedProjectilePatternStack":[1,2],"$type":"NodeCanvas.Tasks.Actions.ThrowJamActionTask"}]},"_name":"Throw
-    Jam Projectile","_position":{"x":829.0,"y":427.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_condition":{"minWaitTime":0.8,"maxWaitTime":0.8,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+    Jam Projectile","_position":{"x":829.0,"y":427.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_position":{"x":1047.034,"y":543.0175},"$type":"NodeCanvas.StateMachines.ActionState","$id":"2"},{"_actionList":{"executionMode":1,"actions":[{"$type":"NodeCanvas.Tasks.Actions.Boss_SetAnim_ActionTask"}]},"_position":{"x":1278.041,"y":689.0223},"$type":"NodeCanvas.StateMachines.ActionState","$id":"3"}],"connections":[{"_condition":{"minWaitTime":0.8,"maxWaitTime":0.8,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"2"},"$type":"NodeCanvas.StateMachines.FSMConnection"},{"_condition":{"minWaitTime":1.0,"maxWaitTime":1.0,"$type":"NodeCanvas.Tasks.Conditions.TimeElapsedConditionTask"},"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 11400000, guid: c2b7732d000b6854dbc6bd85833a3fe1, type: 2}
@@ -22,6 +22,6 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: -120, y: -24}
+    _translation: {x: 66, y: 34}
     _zoomFactor: 0.9999677
   _haltSerialization: 0

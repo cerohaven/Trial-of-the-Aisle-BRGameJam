@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/_Scenes/Boss_AlexanderTheGrape 1.unity
     guid: 42244ac86a257bf42a3ac4e518c8b3ef
   - enabled: 1
-    path: Assets/_Scenes/Boss_DairyDominator 1.unity
+    path: Assets/_Scenes/Obsolete/Boss_DairyDominator 1.unity
     guid: 57b32af106bec8a45bc855e562f31b43
   - enabled: 1
     path: Assets/_Scenes/End Screen.unity
