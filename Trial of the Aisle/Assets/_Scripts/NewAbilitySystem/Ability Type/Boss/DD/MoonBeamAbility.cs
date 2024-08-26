@@ -83,17 +83,15 @@ public class RaycastAbility : Ability
                 dir = cursorWorldPosition - owner.transform.position;
             }
 
-            // Calculate the direction from the owner to the target position
-            Vector3 direction = (dir - (Vector2)owner.transform.position).normalized;
-
             dir.Normalize();
+
             // Perform a raycast to detect walls
             RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, dir, Vector3.Distance(owner.transform.position, cursorWorldPosition), wallLayerMask);
 
             Vector3 endPosition = cursorWorldPosition;
 
             // Debug the raycast direction
-            Debug.DrawRay(owner.transform.position, direction * Vector3.Distance(owner.transform.position, dir), Color.red);
+            Debug.DrawRay(owner.transform.position, dir * Vector3.Distance(owner.transform.position, dir), Color.red);
 
             if (hit.collider != null)
             {

@@ -16,16 +16,15 @@ public class JammedAbility : Ability
 
         if (controlScheme == ControlScheme.Gamepad)
         {
-            Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
-            Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
-            dir = gamepadWorldPosition - owner.transform.position;
+            Vector2 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+            Vector2 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+            dir = gamepadWorldPosition - (Vector2)owner.transform.position;
         }
         else
         {
             // Default to mouse position if the control scheme is not Gamepad
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = owner.transform.position.z;
-            dir = mouseWorldPosition - owner.transform.position;
+            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dir = mouseWorldPosition - (Vector2)owner.transform.position;
         }
 
         dir.Normalize();

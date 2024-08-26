@@ -21,10 +21,10 @@ public class Bullet : MonoBehaviour
             CinemachineShake.Instance.ShakeCamera();
         }
 
-        if (collision.gameObject.CompareTag("Pill"))
-        {
-            Destroy(gameObject);
-        }
+        //if (collision.gameObject.CompareTag("Pill"))
+        //{
+        //    Destroy(gameObject);
+        //}
 
         GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(effect, 1.5f);

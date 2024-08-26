@@ -21,7 +21,6 @@ namespace NodeCanvas.Tasks.Actions{
         private ProjectileSpawner_Boss projectileSpawner;
 
 
-        
         protected override string OnInit(){
 
 			//Getting blackboar Variables
@@ -56,6 +55,7 @@ namespace NodeCanvas.Tasks.Actions{
             projectileSpawner.ProjPattern.Add(HelperFunctions.GetProjectilePatternAtPhase(bossProfile, currentPhase));
             
             projectileSpawner.SpawnProjectiles(false, shouldSetDrag);
+
 
         }
 

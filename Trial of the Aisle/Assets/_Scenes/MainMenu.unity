@@ -15574,6 +15574,7 @@ MonoBehaviour:
   - {fileID: 5168655109913123210, guid: 9ffb3c4f77a7d164f88aa7af45d6969f, type: 3}
   - {fileID: 1911804651579714944, guid: 6c19abcc2237681419d7ac0236dd08f3, type: 3}
   - {fileID: 4264877250795093865, guid: 6673de5f6f34c954cac8c3ee1b31d4f1, type: 3}
+  - {fileID: 4264877250795093865, guid: f4641c06fe24931439d001fb6cd68d18, type: 3}
 --- !u!1 &580276540
 GameObject:
   m_ObjectHideFlags: 0
@@ -16463,7 +16464,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -360, y: 205}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 40, y: 50.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185094392
 MonoBehaviour:
@@ -16612,6 +16613,51 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &1428098951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428098953}
+  - component: {fileID: 1428098952}
+  m_Layer: 0
+  m_Name: FMOD Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1428098952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428098951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9244cf8f254ee894998b4569c694027d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicManager: {fileID: 1428098951}
+--- !u!4 &1428098953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428098951}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06506762, y: 5.592535, z: -2.8853498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1444005753
 GameObject:
   m_ObjectHideFlags: 0
@@ -19811,3 +19857,4 @@ SceneRoots:
   - {fileID: 1790430279}
   - {fileID: 210193364}
   - {fileID: 768790784}
+  - {fileID: 1428098953}

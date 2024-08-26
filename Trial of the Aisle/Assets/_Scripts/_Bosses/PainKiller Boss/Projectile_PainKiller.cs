@@ -53,7 +53,16 @@ public class Projectile_PainKiller : Projectile
 
         base.InitializeProjectile(suckDir, suckSpeed, suckTarget, WhoThrew.Boss);
     }
-  
+
+
+    public void StopSuckingPill()
+    {
+        isBeingSuckedIn = false;
+
+        StartCoroutine(EnableDragCoroutine(0, 0, 5));
+
+        whoThrew = WhoThrew.Boss;
+    }
 
 
     protected override void OnTriggerEnter2D(Collider2D collision)

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disappearTime: 7
-  isHot: 0
+  isHot: 1
 --- !u!95 &6036405558696504831
 Animator:
   serializedVersion: 5

@@ -40,9 +40,7 @@ namespace NodeCanvas.Tasks.Actions{
                 if (pillProjectiles[i].WhoThrew != WhoThrew.Boss) continue;
                 if (pillProjectiles[i].IsBeingSuckedIn == false) continue;
 
-                pillProjectiles[i].IsBeingSuckedIn = false;
-
-                StartCoroutine(pillProjectiles[i].EnableDragCoroutine(0, 0, 5));
+                pillProjectiles[i].StopSuckingPill();
 
 
             }

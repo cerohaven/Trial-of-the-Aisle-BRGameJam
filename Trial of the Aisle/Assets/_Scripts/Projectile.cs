@@ -235,7 +235,6 @@ public class Projectile : MonoBehaviour
         {
             Projectile otherProjectile = collision.gameObject.GetComponent<Projectile>();
             bool hitWall = collision.gameObject.CompareTag("Walls");
-            bool hitOtherProjectile = collision.gameObject.CompareTag("Pill") && otherProjectile.whoThrew != whoThrew;
             bool hitFeta = collision.gameObject.CompareTag("Feta");
 
             if (hitWall)
@@ -251,7 +250,7 @@ public class Projectile : MonoBehaviour
 
 
             }
-            else if ((hitOtherProjectile || hitFeta))
+            else if (hitFeta)
             {
                 DestroyGameObject();
                 InstantiateHitParticles();

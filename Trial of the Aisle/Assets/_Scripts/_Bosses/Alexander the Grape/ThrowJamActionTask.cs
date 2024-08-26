@@ -12,6 +12,7 @@ namespace NodeCanvas.Tasks.Actions
         private Blackboard agentBlackboard;
         private GameObject projectileToSpawn;
 
+        private FMOD.Studio.EventInstance JammedInstance;
         protected override string OnInit()
         {
             _projectileSpawner = agent.GetComponent<ProjectileSpawner_Boss>();
@@ -30,7 +31,10 @@ namespace NodeCanvas.Tasks.Actions
             {
                 _projectileSpawner.ProjPattern.Add(jammedProjectilePatternStack[i]);
             }
-            
+
+
+            JammedInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_AtG/B_Jammed");
+            JammedInstance.start();
 
             _projectileSpawner.SpawnProjectiles(true, true, projectileToSpawn);
             EndAction();

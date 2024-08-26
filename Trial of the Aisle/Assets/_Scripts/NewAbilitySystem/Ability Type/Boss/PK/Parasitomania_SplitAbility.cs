@@ -14,30 +14,27 @@ public class SpreadShotAbility : Ability
         // Get the current control scheme
         ControlScheme controlScheme = GameManager.Instance.ControlScheme;
 
-        Vector3 dir;
+        Vector2 dir;
 
         if (controlScheme == ControlScheme.Gamepad)
         {
-            Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
-            Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
-            dir = gamepadWorldPosition - owner.transform.position;
+            Vector2 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+            Vector2 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+            dir = gamepadWorldPosition - (Vector2)owner.transform.position;
         }
         else
         {
             // Default to mouse position if the control scheme is not Gamepad
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = owner.transform.position.z;
-            dir = mouseWorldPosition - owner.transform.position;
+            Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dir = mouseWorldPosition - (Vector2)owner.transform.position;
         }
 
-        dir.Normalize();
-        dir.z = owner.transform.position.z; // Aligns z-axis with the owner
-        Vector2 direction = (dir - owner.transform.position).normalized; // Direction towards the target position
+        dir.Normalize();; // Direction towards the target position
 
         // Instantiate projectiles with specified spread
-        InstantiateProjectile(owner.transform.position, direction, 0); // Center projectile
-        InstantiateProjectile(owner.transform.position, direction, -spreadAngle); // Left projectile
-        InstantiateProjectile(owner.transform.position, direction, spreadAngle); // Right projectile
+        InstantiateProjectile(owner.transform.position, dir, 0); // Center projectile
+        InstantiateProjectile(owner.transform.position, dir, -spreadAngle); // Left projectile
+        InstantiateProjectile(owner.transform.position, dir, spreadAngle); // Right projectile
     }
 
     private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset)
