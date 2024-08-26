@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +34,8 @@ public class SceneTransitionController : MonoBehaviour
     [SerializeField] private List<TransitionTypesData> arrTransitionTypes; // Array to store Animation Game Objects
     [SerializeField] private AnimationClip animationClipToPlay;
 
+    [SerializeField] private bool canTransition = true;
+
     private GameObject prevGO; // the previous game Object animation
     private int transitionTypeEnumLength = 0;
 
@@ -63,6 +66,7 @@ public class SceneTransitionController : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        canTransition = true;
         if(scene.name.Equals("MainMenu"))
         {
             GameManager.Instance.TransitionType = TransitionType.MainMenu;
@@ -129,12 +133,14 @@ public class SceneTransitionController : MonoBehaviour
     #region Transition Animation
     public IEnumerator WaitForAnimationAndLoadNextScene()
     {
-
+        if (canTransition == false) yield break;
+        canTransition = false;
         PlayExitSceneAnimation();
 
         yield return new WaitForSeconds(animationClipToPlay.averageDuration);
 
         Scene currentScene = SceneManager.GetActiveScene();
+        
         int nextScene = currentScene.buildIndex + 1;
         if (currentScene.name.Equals("End Screen"))
         {
@@ -144,8 +150,6 @@ public class SceneTransitionController : MonoBehaviour
         {
             SceneManager.LoadScene(nextScene);
         }
-        
-
     }
 
     public IEnumerator WaitForAnimationAndLoadSpecificScene(string sceneName)

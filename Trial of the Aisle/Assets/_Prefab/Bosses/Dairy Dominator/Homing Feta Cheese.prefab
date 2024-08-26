@@ -278,8 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitParticles: {fileID: 1615069853370902859, guid: 012eaa353cdc8e7489dfc5aeb47485c1, type: 3}
-  ForwardSpeed: 7.51
-  RotateSpeedInDeg: 87.7
+  ForwardSpeed: 12.44
+  RotateSpeedInDeg: 91.6
 --- !u!50 &2927830633146294626
 Rigidbody2D:
   serializedVersion: 4

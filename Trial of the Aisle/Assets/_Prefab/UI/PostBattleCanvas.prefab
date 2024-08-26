@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 2466867264656441011}
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 8984107643677477012}
   abilityIndex: 1
   ability: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
   filled: 0
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 2466867264656441011}
-  canvasGroup: {fileID: 0}
+  canvasGroup: {fileID: 6349895734792378262}
   abilityIndex: 2
   ability: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
   filled: 0

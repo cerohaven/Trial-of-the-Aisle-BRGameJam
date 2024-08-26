@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class DragDrop : MonoBehaviour,  IBeginDragHandler, IEndDragHandler, IPointerDownHandler
+public class DragDrop : MonoBehaviour,  IPointerDownHandler
 {
     [SerializeField]
     private Canvas canvas;
@@ -39,29 +39,34 @@ public class DragDrop : MonoBehaviour,  IBeginDragHandler, IEndDragHandler, IPoi
     {
         if (!filled)
         {
+            pressed = !pressed;
+            //Debug.Log(pressed);
             if(pressed == true)
             {
-                canvasGroup.blocksRaycasts = false;
+                GameManager.Instance.CurrentDragDrop = this.gameObject;
+                GameManager.Instance.dragging = true;
+                //canvasGroup.blocksRaycasts = false;
+                Debug.Log("PRESSED");
             }
-            else{
-                canvasGroup.blocksRaycasts = true;
+            else {
+                //GameManager.Instance.CurrentDragDrop = null;
+                GameManager.Instance.dragging = false;
+                //canvasGroup.blocksRaycasts = true;
+                Debug.Log("LET GO");
             }
-            pressed = !pressed;
-            GameManager.Instance.CurrentDragDrop = this;
-            
             LeanTween.scale(this.gameObject, transform.localScale * 0.8f, 0.5f).setEasePunch();
         }
     }
 
 
-    public void OnBeginDrag(PointerEventData data) 
-    { 
-        if (!filled)
-        {
-            canvasGroup.blocksRaycasts = false;
-            GameManager.Instance.dragging = true;
-        }
-    }
+    // public void OnBeginDrag(PointerEventData data) 
+    // { 
+    //     if (!filled)
+    //     {
+    //         canvasGroup.blocksRaycasts = false;
+    //         GameManager.Instance.dragging = true;
+    //     }
+    // }
     private void Update()
     {
         if(pressed)
@@ -90,8 +95,6 @@ public class DragDrop : MonoBehaviour,  IBeginDragHandler, IEndDragHandler, IPoi
             {
                 position.y = canvas.GetComponent<RectTransform>().rect.height / 2 - padding;
             }
-
-
             transform.position = canvas.transform.TransformPoint(position);
         }
     }
@@ -128,11 +131,12 @@ public class DragDrop : MonoBehaviour,  IBeginDragHandler, IEndDragHandler, IPoi
     //     }
     // }
 
-    public void OnEndDrag(PointerEventData data) 
-    {
-        canvasGroup.blocksRaycasts = true;
-        GameManager.Instance.dragging = false;
-    }
+    // public void OnEndDrag(PointerEventData data) 
+    // {
+    //     canvasGroup.blocksRaycasts = true;
+    //     GameManager.Instance.dragging = false;
+    //     pressed = false;
+    // }
 
 
 }

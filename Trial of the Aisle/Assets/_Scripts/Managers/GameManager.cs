@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
     private GamepadCursor gamepadCursor;
     private RectTransform virtualCursorCanvas;
 
-    private DragDrop currentDragDrop;
+    private GameObject currentDragDrop;
 
     [SerializeField] private TransitionType transitionType;
     [SerializeField] private ControlScheme controlScheme;
@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     private List<GameObject> uiInstances = new List<GameObject>();
 
 
-    public bool dragging;
+    public bool dragging, dropped;
 
     //Properties
     public List<GameObject> UiInstances { get => uiInstances; set => uiInstances = value; }
@@ -83,7 +83,10 @@ public class GameManager : Singleton<GameManager>
     public int CurrentProjectilesInScene { get => currentProjectilesInScene; set => currentProjectilesInScene = value; }
     public bool IsInMainMenu { get => isInMainMenu; set => isInMainMenu = value; }
 
-    public DragDrop CurrentDragDrop { get => currentDragDrop; set => currentDragDrop = value; }
+    public GameObject CurrentDragDrop { get => currentDragDrop; set => currentDragDrop = value; }
+
+
+    
     private void Awake()
     {
         DontDestroyOnLoad(this);
