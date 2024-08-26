@@ -27,7 +27,7 @@ MonoBehaviour:
     - modName: Mirror
       modValue: 0
     - modName: Shift
-      modValue: 0
+      modValue: 1
     - modName: Center Remove Number
       modValue: 0
   _foldouts: 01

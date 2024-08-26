@@ -9549,7 +9549,7 @@ Transform:
   m_GameObject: {fileID: 816308862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9683,7 +9683,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.543749
+  orthographic size: 20.54375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -18420,7 +18420,6 @@ MonoBehaviour:
   - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
   - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
   - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25518,7 +25517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5699407356119264946, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1254
+      value: 1505
       objectReference: {fileID: 0}
     - target: {fileID: 8157052451593350348, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Sprite
@@ -25543,7 +25542,7 @@ PrefabInstance:
     - target: {fileID: 9160668414260728587, guid: 288ee4c53c5ab45428a40de25c002e67, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1811211442, guid: fc96dfb06ad13514889adf59108ed288, type: 3}
+      objectReference: {fileID: -1881219930, guid: 06d89d0e47b7db64da8a3d6ce1089174, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93446,7 +93445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5756813233600205571, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.51
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 5756813233600205571, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -93949,7 +93948,7 @@ Transform:
   m_GameObject: {fileID: 2061118893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -97116,6 +97115,7 @@ GameObject:
   - component: {fileID: 7073513567513950841}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939507}
   m_Layer: 0
   m_Name: Dairy Dominator Boss
   m_TagString: Boss
@@ -97237,7 +97237,7 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"canStartBossFight":{"_name":"canStartBossFight","_id":"2c5c4eb3-a472-431c-a5ef-e699cb20d5eb","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"fetaCheese":{"_value":6,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waveProjectile":{"_value":7,"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waveProjectile":{"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
   _objectReferences:
   - {fileID: 0}
@@ -97247,7 +97247,6 @@ MonoBehaviour:
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -97287,11 +97286,9 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - _json: '{"_value":1,"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+  - _json: '{"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
-    _references:
-    - {fileID: 0}
-    - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+    _references: []
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4
@@ -97365,6 +97362,19 @@ MonoBehaviour:
   _hurtFlickerAfterDamage: 1
   _amountOfHurtFlickers: 8
   _hurtDelayBetweenFlickers: 0.1
+--- !u!114 &9083388960159939507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ad19b1e4dce554bb4f9996243019b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projPattern: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
