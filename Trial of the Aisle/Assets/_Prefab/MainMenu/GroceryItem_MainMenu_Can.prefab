@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: b65d572a30cc5af4a9a6c5944b13fbde, type: 3}
+  m_Sprite: {fileID: 1358604343, guid: b2ad9c194aa57fd40b31f68a88b61a12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grocerySprites:
-  - {fileID: 21300000, guid: b65d572a30cc5af4a9a6c5944b13fbde, type: 3}
+  - {fileID: 1358604343, guid: b2ad9c194aa57fd40b31f68a88b61a12, type: 3}
+  - {fileID: -1951117417, guid: b2ad9c194aa57fd40b31f68a88b61a12, type: 3}
 --- !u!50 &3727241599305532074
 Rigidbody2D:
   serializedVersion: 4
@@ -160,6 +161,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.067798615, y: -0.43808365}
-  m_Size: {x: 1.1362643, y: 1.8761673}
+  m_Offset: {x: 0.05521387, y: -0.3594286}
+  m_Size: {x: 0.90973794, y: 1.3161428}
   m_Direction: 0
