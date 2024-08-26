@@ -57,7 +57,11 @@
 			<destination>{a231397a-29e4-4933-b4e4-f84d49c5d5da}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{b9bcfb49-94fe-4ea5-9c82-bad0dee62fdb}" />
+	<object class="EventAutomatableProperties" id="{b9bcfb49-94fe-4ea5-9c82-bad0dee62fdb}">
+		<property name="maxVoices">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{3338ebf0-c980-4204-ba02-373b5d1229e8}" />
 	<object class="Timeline" id="{3b7bfcef-5be3-477b-959b-4b9dc591ad34}">
 		<relationship name="modules">
@@ -66,7 +70,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{50af491d-21a1-45a9-9182-b2dd68ad9fb4}">
 		<property name="volume">
-			<value>3</value>
+			<value>-3.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{27886b1c-cefe-44fe-9aba-093e5146e807}</destination>
@@ -121,7 +125,7 @@
 			<value>-17</value>
 		</property>
 		<property name="highGain">
-			<value>7</value>
+			<value>8</value>
 		</property>
 		<property name="lowCrossover">
 			<value>900</value>

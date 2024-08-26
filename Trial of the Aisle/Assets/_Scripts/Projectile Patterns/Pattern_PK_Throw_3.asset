@@ -17,13 +17,13 @@ MonoBehaviour:
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 7
+      modValue: 14
     - modName: Spread Angle
       modValue: 50
     - modName: Spread Speed Increase
-      modValue: 0
+      modValue: 0.75
     - modName: Delay Between Projectiles
-      modValue: 0
+      modValue: 0.1
     - modName: Mirror
       modValue: 0
     - modName: Shift

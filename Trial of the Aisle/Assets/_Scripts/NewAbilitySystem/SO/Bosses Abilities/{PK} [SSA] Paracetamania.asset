@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: '{PK} [SSA] Paracetamania'
   m_EditorClassIdentifier: 
   abilityName: 'Paracetamania '
-  abilityDescription: 'Gain a pack of 5 pills to pull from and shoot rapid-fire at
+  abilityDescription: 'Gain a pack of 3 pills to pull from and shoot rapid-fire at
     your enemy.
 
 '
   abilityIcon: {fileID: -1736676581, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
-  cooldownTime: 5
-  ID: 4
+  cooldownTime: 6
+  ID: 7
   projectilePrefab: {fileID: 1572699439113838549, guid: 99ba82eaa1bfa344c9c1578af98e8acc, type: 3}
   projectileSpeed: 15
   spreadAngle: 20
