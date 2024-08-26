@@ -42,10 +42,10 @@ MonoBehaviour:
   b_BossDeathEvent: {fileID: 11400000, guid: dd320c3fcdb60d94ea46de717b29a0aa, type: 2}
   b_BossAttacks:
   - attackName: Moo-n Beam
-    percentChanceToUse: 1
+    percentChanceToUse: 0
     attackCondition: {fileID: 0}
   - attackName: Feta Frenzy
-    percentChanceToUse: 0
+    percentChanceToUse: 1
     attackCondition: {fileID: 0}
   b_maxAttackRepeatTimes: 2
   ability1: {fileID: 11400000, guid: 0e0ac6e4446e48f40ade2df1ade2961d, type: 2}
