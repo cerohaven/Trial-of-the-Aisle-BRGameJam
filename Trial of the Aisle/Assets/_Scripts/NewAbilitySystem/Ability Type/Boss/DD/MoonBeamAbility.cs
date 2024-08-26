@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 
 [CreateAssetMenu(fileName = "RaycastAbility", menuName = "Abilities/General/Raycast Ability")]
@@ -62,18 +63,37 @@ public class RaycastAbility : Ability
 
         while (Time.time < endTime)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0; // Ensure it's in the 2D plane
+            // Get the current control scheme
+            ControlScheme controlScheme = GameManager.Instance.ControlScheme;
 
-            // Calculate the direction from the owner to the mouse position
-            Vector3 direction = (mousePosition - owner.transform.position).normalized;
+            Vector2 dir;
+            Vector3 cursorWorldPosition;
 
+            if (controlScheme == ControlScheme.Gamepad)
+            {
+                Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+                cursorWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+                dir = cursorWorldPosition - owner.transform.position;
+            }
+            else
+            {
+                // Default to mouse position if the control scheme is not Gamepad
+                cursorWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                cursorWorldPosition.z = owner.transform.position.z;
+                dir = cursorWorldPosition - owner.transform.position;
+            }
+
+            // Calculate the direction from the owner to the target position
+            Vector3 direction = (dir - (Vector2)owner.transform.position).normalized;
+
+            dir.Normalize();
             // Perform a raycast to detect walls
-            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, direction, Vector3.Distance(owner.transform.position, mousePosition), wallLayerMask);
-            Vector3 endPosition = mousePosition;
+            RaycastHit2D hit = Physics2D.Raycast(owner.transform.position, dir, Vector3.Distance(owner.transform.position, cursorWorldPosition), wallLayerMask);
+
+            Vector3 endPosition = cursorWorldPosition;
 
             // Debug the raycast direction
-            Debug.DrawRay(owner.transform.position, direction * Vector3.Distance(owner.transform.position, mousePosition), Color.red);
+            Debug.DrawRay(owner.transform.position, direction * Vector3.Distance(owner.transform.position, dir), Color.red);
 
             if (hit.collider != null)
             {
@@ -89,9 +109,11 @@ public class RaycastAbility : Ability
                 Debug.Log("Raycast did not hit any walls.");
             }
 
-            // Update LineRenderer positions to start at the owner's position and end at the hit point or mouse position
+            
+
+            // Update LineRenderer positions to start at the owner's position and end at the hit point or target position
             lineRenderer.SetPosition(0, owner.transform.position); // Start at the player's position
-            lineRenderer.SetPosition(1, endPosition); // End at the hit point or mouse position
+            lineRenderer.SetPosition(1, endPosition); // End at the hit point or target position
 
             // Move the impact collider to follow the end position
             impactColliderInstance.transform.position = endPosition;

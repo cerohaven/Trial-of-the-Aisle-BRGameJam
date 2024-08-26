@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem; // Add this for the new Input System
 
 [CreateAssetMenu(fileName = "GattlingGunAbility", menuName = "Abilities/DD/Feta Frenzy")]
 public class FetaFrenzy : Ability
@@ -8,9 +9,12 @@ public class FetaFrenzy : Ability
     public float throwInterval = 0.2f; // Interval between throws
     public int numberOfCheeses = 5; // Total number of cheeses to throw
     public float cheeseSpeed = 5f; // Speed of the cheese projectiles
+    ControlScheme controlScheme;
 
     public override void Activate(GameObject owner)
     {
+        // Get the current control scheme
+        controlScheme = GameManager.Instance.ControlScheme;
         owner.GetComponent<MonoBehaviour>().StartCoroutine(ThrowCheeseSequence(owner));
     }
 
@@ -18,24 +22,40 @@ public class FetaFrenzy : Ability
     {
         for (int i = 0; i < numberOfCheeses; i++)
         {
-            // Convert the mouse position from screen coordinates to world coordinates
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            // Ensure the z-coordinate is the same as the owner's to keep the cheese in the correct plane
-            mouseWorldPosition.z = owner.transform.position.z;
+            Vector2 dir;
+            Quaternion rotation;
+            
+            if (controlScheme == ControlScheme.Gamepad)
+            {
+                // Gamepad control
+                Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+                Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+                dir = gamepadWorldPosition - owner.transform.position;
 
-            // Calculate the direction from the owner to the mouse position
-            Vector3 throwDirection = (mouseWorldPosition - owner.transform.position).normalized;
+                dir = (gamepadWorldPosition - owner.transform.position).normalized;
 
-            // Calculate the rotation based on the throw direction, adding 180 degrees to correct orientation
-            float angle = Mathf.Atan2(throwDirection.y, throwDirection.x) * Mathf.Rad2Deg + 180f;
-            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust to match direction
+            }
+            else
+            {
+                // Default to mouse position if the control scheme is not Gamepad
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mouseWorldPosition.z = owner.transform.position.z;
+                dir = mouseWorldPosition - owner.transform.position;
+
+                dir = (mouseWorldPosition - owner.transform.position).normalized;
+
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90)); // Adjust to match direction
+            }
 
             // Instantiate the cheese prefab with the calculated rotation
             GameObject cheese = Instantiate(cheesePrefab, owner.transform.position, rotation);
             Rigidbody2D rb = cheese.GetComponent<Rigidbody2D>();
 
             // Set the cheese's velocity to make it move in the calculated direction
-            rb.velocity = throwDirection * cheeseSpeed;
+            rb.velocity = dir * cheeseSpeed;
 
             // Wait for the specified throw interval before instantiating the next cheese projectile
             yield return new WaitForSeconds(throwInterval);

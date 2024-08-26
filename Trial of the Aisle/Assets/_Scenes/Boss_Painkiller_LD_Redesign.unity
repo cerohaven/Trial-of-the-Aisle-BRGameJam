@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 060000000700000005000000
+  equippedAbilityIDs: 0000000001000000ffffffff
   abilitySlotsUIReference:
   - {fileID: 0}
   - {fileID: 0}

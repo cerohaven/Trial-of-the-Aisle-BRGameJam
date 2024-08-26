@@ -1,27 +1,46 @@
 using UnityEngine;
+using UnityEngine.InputSystem; // Import the new Input System namespace
 
-[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/General/Spread Shot")] // Enables creating instances in the Unity Editor.
+[CreateAssetMenu(fileName = "SpreadShotAbility", menuName = "Abilities/General/Spread Shot")]
 public class SpreadShotAbility : Ability
 {
-    public GameObject projectilePrefab; // Prefab for projectiles to shoot.
-    public float projectileSpeed; // Speed of the projectiles.
-    public float spreadAngle = 15f; // Angle between each projectile.
+    public GameObject projectilePrefab;
+    public float projectileSpeed;
+    public float spreadAngle = 15f;
 
-    public override void Activate(GameObject owner) // Implements ability activation.
+    public override void Activate(GameObject owner)
     {
-        Debug.Log(owner);
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Convert mouse position to world coordinates.
-        mousePosition.z = owner.transform.position.z; // Aligns z-axis with the owner.
 
-        Vector2 direction = (mousePosition - owner.transform.position).normalized; // Direction towards the mouse position.
+        // Get the current control scheme
+        ControlScheme controlScheme = GameManager.Instance.ControlScheme;
 
-        // Instantiate projectiles with specified spread.
-        InstantiateProjectile(owner.transform.position, direction, 0); // Center projectile.
-        InstantiateProjectile(owner.transform.position, direction, -spreadAngle); // Left projectile.
-        InstantiateProjectile(owner.transform.position, direction, spreadAngle); // Right projectile.
+        Vector3 dir;
+
+        if (controlScheme == ControlScheme.Gamepad)
+        {
+            Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
+            Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
+            dir = gamepadWorldPosition - owner.transform.position;
+        }
+        else
+        {
+            // Default to mouse position if the control scheme is not Gamepad
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPosition.z = owner.transform.position.z;
+            dir = mouseWorldPosition - owner.transform.position;
+        }
+
+        dir.Normalize();
+        dir.z = owner.transform.position.z; // Aligns z-axis with the owner
+        Vector2 direction = (dir - owner.transform.position).normalized; // Direction towards the target position
+
+        // Instantiate projectiles with specified spread
+        InstantiateProjectile(owner.transform.position, direction, 0); // Center projectile
+        InstantiateProjectile(owner.transform.position, direction, -spreadAngle); // Left projectile
+        InstantiateProjectile(owner.transform.position, direction, spreadAngle); // Right projectile
     }
 
-    private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset) // Instantiate a projectile with an angle offset.
+    private void InstantiateProjectile(Vector3 position, Vector2 direction, float angleOffset)
     {
         // Calculate the rotation with the angle offset
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + angleOffset;
