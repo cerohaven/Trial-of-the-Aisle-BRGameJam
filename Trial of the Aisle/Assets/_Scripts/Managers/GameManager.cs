@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum ControlScheme
+{
+    Mouse,
+    Gamepad,
+    None
+}
+
 public class GameManager : Singleton<GameManager>
 {
+
     //Scriptable Objects
     private SO_EventSender _eventSender;
     private SO_HealthAdjustments _healthAdjustments;
@@ -13,7 +21,11 @@ public class GameManager : Singleton<GameManager>
     private PauseGameMenu pauseMenu;
     private GameObject pauseMenuPrefab;
     private SceneTransitionController sceneTransitionController;
+    private GamepadCursor gamepadCursor;
+    private RectTransform virtualCursorCanvas;
+
     [SerializeField] private TransitionType transitionType;
+    [SerializeField] private ControlScheme controlScheme;
 
     private PlayerInputHandler playerInputHandler;
 
@@ -25,6 +37,8 @@ public class GameManager : Singleton<GameManager>
     private bool bossIsDefeated = false;
 
     public FMOD.Studio.EventInstance Boss_BGM_Postbattle;
+    FMOD.Studio.EventInstance SFX_PauseEvent;
+    FMOD.Studio.EventInstance SFX_UnPauseEvent;
 
     //Holds the Boss Profile of this scene
     [SerializeField] private SO_BossProfile bossProfile;
@@ -56,6 +70,8 @@ public class GameManager : Singleton<GameManager>
     public SO_HealthAdjustments HealthAdjustments { get => _healthAdjustments;}
     public Transform BossTransform { get => _bossTransform; set => _bossTransform = value; }
     public Transform PlayerTransform { get => _playerTransform; set => _playerTransform = value; }
+    public GamepadCursor GamepadCursor { get => gamepadCursor; set => gamepadCursor = value; }
+    public ControlScheme ControlScheme { get => controlScheme; set => controlScheme = value; }
 
     private void Awake()
     {
@@ -81,8 +97,15 @@ public class GameManager : Singleton<GameManager>
         };
         playerInputAsync.completed += (AsyncOperation a) =>
         {
+            
             playerInputHandler = FindObjectOfType<PlayerInputHandler>();
+            gamepadCursor = FindObjectOfType<GamepadCursor>();
+            virtualCursorCanvas = gamepadCursor.CanvasRectTransform;
+            gamepadCursor.GamepadPlayerInput = playerInputHandler.PlayerInput;
+
             DontDestroyOnLoad(playerInputHandler.gameObject);
+            DontDestroyOnLoad(gamepadCursor.gameObject);
+            DontDestroyOnLoad(virtualCursorCanvas);
         };
 
         _eventSender = Resources.Load<SO_EventSender>("Event Sender");
@@ -181,6 +204,13 @@ public class GameManager : Singleton<GameManager>
     }
     private void Pause()
     {
+        Debug.Log("Clicked Pause");
+        if (sceneTransitionController.GetSceneName().Equals("MainMenu")) return;
+           
+        if (bossIsDefeated) return;
+
+        SFX_PauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Pause");
+        SFX_PauseEvent.start();
 
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
 
@@ -197,20 +227,25 @@ public class GameManager : Singleton<GameManager>
         pauseMenu.GetComponent<PauseGameMenu>().ConnectControllersToPauseMenu(playerInputHandler.PlayerInput);
 
         Time.timeScale = 0;
-
-        uiInstances.Add(pauseMenuPrefab);
     }
     private void ResumeTheGame()
     {
+        Debug.Log("Clicked UnPause");
+        if (sceneTransitionController.GetSceneName().Equals("MainMenu")) return;
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
+        GeneralResumeLogic();
+
+        SFX_UnPauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Unpause");
+        SFX_UnPauseEvent.start();
+
+    }
+    public void GeneralResumeLogic()
+    {
         isGamePaused = false;
 
-        uiInstances.Remove(pauseMenuPrefab);
-
-
-        if(pauseMenu != null)
-            Destroy(pauseMenu);
+        if (pauseMenu != null)
+            pauseMenuPrefab.SetActive(false);
 
         Time.timeScale = 1;
     }

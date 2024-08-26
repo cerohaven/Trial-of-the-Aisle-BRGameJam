@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_DD_Throw_1
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 1
+  _patternNumberToUse: 0
   _projectilePatterns:
   - thisPatternType: 3
     thisPatternTypeModifiers:
@@ -27,7 +27,7 @@ MonoBehaviour:
   - modName: Angle
     modValue: -99
   - modName: Speed
-    modValue: 7
+    modValue: 25
   - modName: Extra Angle
     modValue: 0
   - modName: Delay

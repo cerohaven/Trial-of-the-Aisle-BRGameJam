@@ -30,8 +30,7 @@ public class PlayerInputHandler : MonoBehaviour
         // Initialize input actions from the asset
         moveInput = actionAsset.FindAction("Move");
         dodgeInput = actionAsset.FindAction("Dodge");
-        unPauseInput = actionAsset.FindAction("UnPause");
-        pauseInput = actionAsset.FindAction("Pause");
+       
 
         interactInput = actionAsset.FindAction("Interact");
     }
@@ -40,26 +39,22 @@ public class PlayerInputHandler : MonoBehaviour
     {
         moveInput.Enable();
         dodgeInput.Enable();
-        pauseInput.Enable();
-        unPauseInput.Enable();
+        
         interactInput.Enable();
 
         dodgeInput.started += OnDodge;
-        pauseInput.performed += OnPause;
-        unPauseInput.performed += OnUnPause;
+      
     }
 
     private void OnDisable()
     {
         moveInput.Disable();
         dodgeInput.Disable();
-        pauseInput.Disable();
-        unPauseInput.Disable();
+      
         interactInput.Disable();
 
         dodgeInput.started -= OnDodge;
-        pauseInput.performed -= OnPause;
-        unPauseInput.performed -= OnUnPause;
+      
     }
 
     public Vector2 ReadMovementValue()
@@ -73,20 +68,25 @@ public class PlayerInputHandler : MonoBehaviour
         GameManager.Instance.EventSender.DodgeEventSender();
     }
 
-    private void OnPause(InputAction.CallbackContext context)
+    public void OnPause(InputAction.CallbackContext context)
     {
         if (!GameManager.Instance.CanMove) return;
 
-        GameManager.Instance.EventSender.PauseGameEventSend();
+        if (context.performed)
+        {
+            GameManager.Instance.EventSender.PauseGameEventSend();
+        }
+        
 
     }
 
-    private void OnUnPause(InputAction.CallbackContext context)
+    public void OnUnPause(InputAction.CallbackContext context)
     {
-
-        if (playerInput.currentActionMap.name != "UI") return;
-
-        GameManager.Instance.EventSender.ResumeGameEventSend();
+        Debug.Log(playerInput.currentActionMap);
+        if (context.performed)
+        {
+            GameManager.Instance.EventSender.ResumeGameEventSend();
+        }
     }
 
 

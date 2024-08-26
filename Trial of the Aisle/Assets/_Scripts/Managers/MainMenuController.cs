@@ -1,11 +1,21 @@
 
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+
     private void Awake()
     {
         GameManager.Instance.CanPause = false;
+        
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
+ 
     }
 
     // Function to be called when the "Start" button is pressed

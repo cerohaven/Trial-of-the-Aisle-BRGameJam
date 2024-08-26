@@ -18,4 +18,4 @@ MonoBehaviour:
   cooldownTime: 4
   ID: 3
   jamPrefab: {fileID: 2321126302647116474, guid: 91a3253d22682064a834634ac57b213d, type: 3}
-  jamThrowForce: 10
+  jamThrowForce: 20

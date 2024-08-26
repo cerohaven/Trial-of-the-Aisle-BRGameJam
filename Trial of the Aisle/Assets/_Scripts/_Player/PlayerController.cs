@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMoveDirection = Vector2.right;
     private bool isDodging = false;
     private float lastDodgeTime = -5f;
-    
 
+    private float regularMoveSpeed;
+    private float regularDodgeSpeed;
     //For some reason, when the player presses ESC to pause it also unpauses for the first time only, so this int will make sure to only
     //unpause when we have at least pasued once.
     private int pauseCount = 0;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
     //properties
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float DodgeSpeed { get => dodgeSpeed; set => dodgeSpeed = value; }
+    public float RegularMoveSpeed { get => regularMoveSpeed; }
+    public float RegularDodgeSpeed { get => regularDodgeSpeed; }
 
     private void Awake()
     {
@@ -56,6 +59,11 @@ public class PlayerController : MonoBehaviour
         gameManager = GameManager.Instance;
         gameManager.PlayerTransform = transform;
         gameManager.EventSender.dodgeEvent.AddListener(OnDodge);
+
+        regularMoveSpeed = moveSpeed;
+        regularDodgeSpeed = dodgeSpeed;
+
+        gameManager.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
     }
 
 

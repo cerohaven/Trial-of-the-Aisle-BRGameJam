@@ -45807,7 +45807,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: 361, y: 352}
+    _translation: {x: 205, y: 260}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -45964,7 +45964,7 @@ MonoBehaviour:
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+  - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -46008,7 +46008,7 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+    - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4

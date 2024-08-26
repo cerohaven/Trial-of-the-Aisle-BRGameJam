@@ -29,7 +29,7 @@ public class InitializeBoss : MonoBehaviour
     {
         GameManager.Instance.BossProfile = _bossProfile;
         GameManager.Instance.BossTransform = transform;
-
+        GameManager.Instance.BossIsDefeated = false;
         _entityHealth = GetComponent<EntityHealth>();
 
         _agentBlackboard = GetComponent<Blackboard>();
@@ -41,6 +41,7 @@ public class InitializeBoss : MonoBehaviour
         SetBossVariableValues();
 
         BeginIntroAnimation();
+
     }
 
 

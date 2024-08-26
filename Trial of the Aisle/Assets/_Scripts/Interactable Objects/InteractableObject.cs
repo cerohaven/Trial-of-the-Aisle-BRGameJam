@@ -116,8 +116,7 @@ public abstract class InteractableObject : MonoBehaviour
         interactPromptPanel.SetActive(true);
 
         //Tween animation
-        interactPromptPanel.transform.localScale = Vector3.zero;
-        LeanTween.scale(interactPromptPanel, Vector3.one, tweenTime);
+        interactPromptPanel.transform.localScale = Vector3.one;
     }
 
     #endregion

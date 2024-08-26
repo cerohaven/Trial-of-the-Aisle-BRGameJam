@@ -55,7 +55,7 @@ public class InteractableObject_Projectile : InteractableObject
 
         //if the player is currently carrying a projectile, then don't pick this one up
         if (playerCarry.IsCarryingObject) return;
-
+        if (projectile.WhoThrew == WhoThrew.Boss) return;
         playerCarry.InitializeObject(gameObject);
         projectile.WhoThrew = WhoThrew.Player;
         isInteractable = false;

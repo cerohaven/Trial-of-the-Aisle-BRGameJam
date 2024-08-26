@@ -305,7 +305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projPattern:
-  - {fileID: 11400000, guid: b7abc17caa318d14cbce59364978ec2d, type: 2}
+  - {fileID: 11400000, guid: c2b7732d000b6854dbc6bd85833a3fe1, type: 2}
+  - {fileID: 11400000, guid: 867553b657be41d46bece4669c0e6314, type: 2}
   projectileGO: {fileID: 281693923351715198, guid: eb3891855dd496746bcb641d8632de06, type: 3}
   playerTransform: {fileID: 1652318903}
 --- !u!1 &1652318902

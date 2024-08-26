@@ -262,6 +262,7 @@ public class SO_ProjectilePattern : ScriptableObject
         bp[1].modValue = speed;
         bp[2].modValue = extraAngle;
         bp[3].modValue = shootDelay;
+        bp[4].modValue = basePAT[4].modValue;
         return bp;
     }
 

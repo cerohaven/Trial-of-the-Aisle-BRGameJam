@@ -1,5 +1,6 @@
 
 using NodeCanvas.Framework;
+using System.Collections;
 using UnityEngine;
 
 
@@ -10,57 +11,49 @@ public class Projectile_PainKiller : Projectile
     //For one of the boss' attacks that suck all the pills back up.
     private bool isBeingSuckedIn = false;
     private bool isThrownInWave = false;
-    private float turnIntensity = 0; //For turning during the wave attack
 
+    private Vector2 suckDir;
+    private float suckSpeed;
+    private Transform suckTarget;
 
     //This changes the behaviour of the pill based on the boss' attacks
     public bool IsBeingSuckedIn { get => isBeingSuckedIn; set => isBeingSuckedIn = value; }
     public bool IsThrownInWave { get => isThrownInWave; set => isThrownInWave = value; }
-    public float TurnIntensity { get => turnIntensity; set => turnIntensity = value; }
 
     //Sets the speed and direction of the pill as well as gets the blackboard of the pill boss
     public override void InitializeProjectile(Vector2 _dir, float _speed, Transform _target, WhoThrew _whoThrew)
     {
-        base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
-    }
-
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-
-    }
-
-  
-
-
-    protected override void Update()
-    {
-        base.Update();
-
-        //Keep increasing velocity towards the boss only if its being sucked in and
-        //the pill isn't from the player
-        if (isBeingSuckedIn && whoThrew != WhoThrew.Player && targetThrown != null)
+        if (isBeingSuckedIn)
         {
-            base.InitializeProjectile(travelDir, travelSpeed, targetThrown, WhoThrew.Boss);
+            suckDir = _dir;
+            suckSpeed = _speed;
+            suckTarget = _target;
+
+            RemoveDrag();
             interactableProjectile.SetInteractable(false);
+            ShakeProjectile();
+            return;
         }
+
+        base.InitializeProjectile(_dir, _speed, _target, _whoThrew);
+
+        
     }
 
-
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private void ShakeProjectile()
     {
-        //If the boss is defeated at the end, then make sure we don't run code or else nullreference!
-        //if (GameManager.gameEnded) return;
-
-        base.OnCollisionEnter2D (collision);
+        EnableTrigger(true);
+        
+        LeanTween.rotateZ(gameObject, transform.rotation.z + 0.01f, 0.1f).setLoopPingPong(Random.Range(3,10)).
+            setOnComplete(MoveObject);
 
     }
+    private void MoveObject()
+    {
+
+        base.InitializeProjectile(suckDir, suckSpeed, suckTarget, WhoThrew.Boss);
+    }
+  
 
 
     protected override void OnTriggerEnter2D(Collider2D collision)
