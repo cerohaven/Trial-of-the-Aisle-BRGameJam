@@ -141,6 +141,7 @@ public class GamepadCursor : MonoBehaviour
         if (playerInput.currentControlScheme == mouseScheme && previousControlScheme != mouseScheme)
         {
             EnableCursor(false);
+            Cursor.visible = true;
             CurrentMouse.WarpCursorPosition(virtualMouse.position.ReadValue());
             previousControlScheme = mouseScheme;
             GameManager.Instance.ControlScheme = ControlScheme.Mouse;
@@ -148,6 +149,7 @@ public class GamepadCursor : MonoBehaviour
         else if (playerInput.currentControlScheme == gamepadScheme && previousControlScheme != gamepadScheme)
         {
             EnableCursor(true);
+            Cursor.visible = false;
             InputState.Change(virtualMouse.position, CurrentMouse.position.ReadValue());
             AnchorCursor(CurrentMouse.position.ReadValue());
             previousControlScheme = gamepadScheme;
@@ -163,7 +165,7 @@ public class GamepadCursor : MonoBehaviour
     public void EnableCursor(bool enable)
     {
         cursorTransform.gameObject.SetActive(enable);
-        Cursor.visible = !enable;
+        
 
     }
     //potential solution to on controls changed not being called

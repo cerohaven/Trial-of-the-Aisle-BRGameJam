@@ -83,7 +83,7 @@ public class Projectile : MonoBehaviour
         interactableProjectile = GetComponent<InteractableObject_Projectile>();
         projectileCollider = GetComponent<Collider2D>();
         RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");
-
+        
     }
 
     

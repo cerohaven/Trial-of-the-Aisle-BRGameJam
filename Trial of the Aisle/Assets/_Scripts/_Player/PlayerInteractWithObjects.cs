@@ -36,6 +36,10 @@ public class PlayerInteractWithObjects : MonoBehaviour
             {
                 //Throw the object instead
                 GameManager.Instance.EventSender.LaunchProjectileButtonEventSend(gameObject);
+                if(GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
+                {
+                    GameManager.Instance.GamepadCursor.EnableCursor(true);
+                }    
             }
             else
             {

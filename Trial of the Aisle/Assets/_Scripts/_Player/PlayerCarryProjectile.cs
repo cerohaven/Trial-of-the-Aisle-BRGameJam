@@ -93,11 +93,6 @@ public class PlayerCarryProjectile : MonoBehaviour
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             dir = mouseWorldPosition - _playerTransform.position;
 
-
-            //GAMEPAD
-            Vector3 gamepadPosition = GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue();
-            Vector3 gamepadWorldPosition = Camera.main.ScreenToWorldPoint(gamepadPosition);
-            dir = gamepadWorldPosition - _playerTransform.position;
         }
         
         
