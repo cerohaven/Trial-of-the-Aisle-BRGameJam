@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem.Users;
 public class PlayerCarryProjectile : MonoBehaviour
 {
     [SerializeField] private GameObject _playerAimArrowGO;
@@ -21,17 +21,18 @@ public class PlayerCarryProjectile : MonoBehaviour
     private InputAction rightStick;
     private Vector2 prevDir = Vector2.up;
 
+    private Vector2 tempBossDir;
+
     //Properties
     public bool IsCarryingObject { get => _isCarryingObject; set => _isCarryingObject = value; }
     public GameObject CarryObject { get => _carryObject;}
 
-
+    public Vector2 TempBossDir { get => tempBossDir;}
     private void Awake()
     {
         _thisTransform = transform;
         _playerTransform = transform.parent;
         
-        _playerAimArrowGO.SetActive(false);
        
     }
     private void Start()
@@ -65,6 +66,27 @@ public class PlayerCarryProjectile : MonoBehaviour
 
     void Update()
     {
+        Vector2 alwaysDir = Vector2.zero;
+
+        if( rightStick.ReadValue<Vector2>() != Vector2.zero)
+        {
+            alwaysDir= rightStick.ReadValue<Vector2>();
+            alwaysDir.Normalize();
+            prevDir = alwaysDir;
+        }
+
+        alwaysDir= rightStick.ReadValue<Vector2>();
+        alwaysDir.Normalize();
+
+        if(alwaysDir == Vector2.zero)
+        {
+            alwaysDir = prevDir;
+        }
+        
+
+        _playerAimArrowGO.transform.position = (Vector2)_playerTransform.position + alwaysDir * _aimArrowDistanceFromPlayer;
+        _playerAimArrowGO.transform.up = alwaysDir;
+
         if (_carryObject == null) return;
 
         if (_isCarryingObject == false) return;
@@ -72,21 +94,12 @@ public class PlayerCarryProjectile : MonoBehaviour
         if (GameManager.Instance.PlayerInputHandler == null) return;
 
         Vector2 dir = new Vector2(0,0);
+        Vector2 bossDir = GameManager.Instance.BossTransform.position - _playerTransform.position;
 
+        
         if (GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
         {
-            //Move this gameObject around the player
-            
-            dir = rightStick.ReadValue<Vector2>();
-            
-            if(dir == Vector2.zero)
-            {
-                dir = prevDir;
-            }
-            else
-            {
-                prevDir = dir;
-            }
+            dir = alwaysDir;
         }
         else
         {
@@ -98,10 +111,30 @@ public class PlayerCarryProjectile : MonoBehaviour
 
         }
         
-        
-        
+        float bossAngle = Vector2.Angle(bossDir,dir);
+        Debug.Log(bossAngle);
 
+        if(bossAngle < 20)
+        {
+            bossDir.Normalize();
+            //snap to boss' transform
+            //GameManager.Instance.GamepadCursor.CursorMouse.WarpCursorPosition(GameManager.Instance.BossTransform.position);
+            //InputState.Change(GameManager.Instance.GamepadCursor.VirtualMouse.position, GameManager.Instance.BossTransform.position);
+             //Update the GameObject's position to this position if the player is carrying the object
+             Debug.Log("AAAA");
+            tempBossDir = bossDir;
+
+        }
+        else
+        {
+            tempBossDir = dir;
+        }
+      
+            
         dir.Normalize();
+        
+       
+
         _thisTransform.position = (Vector2)_playerTransform.position + dir * 2;
 
         //Update the GameObject's position to this position if the player is carrying the object
@@ -109,8 +142,6 @@ public class PlayerCarryProjectile : MonoBehaviour
         _carryObjectTransform.up = dir;
 
 
-        _playerAimArrowGO.transform.position = (Vector2)_playerTransform.position + dir * _aimArrowDistanceFromPlayer;
-        _playerAimArrowGO.transform.up = dir;
     }
 
 

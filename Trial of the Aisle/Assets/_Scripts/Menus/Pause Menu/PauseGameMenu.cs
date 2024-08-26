@@ -35,7 +35,10 @@ public class PauseGameMenu : MonoBehaviour
     public void ResumeGameButton()
     {
         GameManager.Instance.EventSender.ResumeGameEventSend();
-
+        if(GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
+        {
+            GameManager.Instance.GamepadCursor.EnableCursor(false);
+        }    
     }
 
     

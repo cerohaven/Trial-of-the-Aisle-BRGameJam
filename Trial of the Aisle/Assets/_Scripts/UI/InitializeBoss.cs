@@ -32,6 +32,7 @@ public class InitializeBoss : MonoBehaviour
         GameManager.Instance.BossIsDefeated = false;
         GameManager.Instance.GameEnded = false;
         GameManager.Instance.CurrentProjectilesInScene = 0;
+        
         _entityHealth = GetComponent<EntityHealth>();
 
         _agentBlackboard = GetComponent<Blackboard>();
@@ -41,7 +42,7 @@ public class InitializeBoss : MonoBehaviour
     private void Start()
     {
         SetBossVariableValues();
-
+        GameManager.Instance.GamepadCursor.EnableCursor(false);
         BeginIntroAnimation();
 
     }

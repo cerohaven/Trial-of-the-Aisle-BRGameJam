@@ -35,11 +35,8 @@ public class PlayerInteractWithObjects : MonoBehaviour
             if(carryProjectile.IsCarryingObject)
             {
                 //Throw the object instead
-                GameManager.Instance.EventSender.LaunchProjectileButtonEventSend(gameObject);
-                if(GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
-                {
-                    GameManager.Instance.GamepadCursor.EnableCursor(true);
-                }    
+                GameManager.Instance.EventSender.LaunchProjectileButtonEventSend(gameObject, carryProjectile.TempBossDir);
+              
             }
             else
             {

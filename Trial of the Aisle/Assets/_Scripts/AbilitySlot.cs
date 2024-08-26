@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
-public class AbilitySlot : MonoBehaviour, IDropHandler
+public class AbilitySlot : MonoBehaviour, IPointerEnterHandler
 {
 
    
@@ -21,17 +21,18 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
 
     private NewAbilitySelectionUI newAbilitySelectionUI;
     
-    public void OnDrop(PointerEventData data)
-    {
-        
-       if (data.pointerDrag != null && storedAbility == null)
+     public void OnPointerEnter(PointerEventData data)
+     {
+        Debug.Log("Waaaah");
+        if (storedAbility == null)
         {
+            Debug.Log("AAAA");
             //set ability icon's position to the ability slot's position
             data.pointerDrag.transform.position = transform.position;
             storedAbility = data.pointerDrag.gameObject;
             Debug.Log(PlayerAbilities.Instance);
             //swap ability methods (called from other classes)
-            PlayerAbilities.Instance.SwapAbility(slotIndex, data.pointerDrag.GetComponent<DragDrop>().ability);
+            PlayerAbilities.Instance.SwapAbility(slotIndex, GameManager.Instance.CurrentDragDrop.ability);
 
             //Get component when the Post Battle Canvas Spawns in
             if(newAbilitySelectionUI == null) newAbilitySelectionUI = FindObjectOfType<NewAbilitySelectionUI>();
@@ -43,6 +44,12 @@ public class AbilitySlot : MonoBehaviour, IDropHandler
             //scale the ability icon down and destroy it
             LeanTween.scale(storedAbility, data.pointerDrag.transform.localScale * 0.57f, 0.6f).setEaseInOutQuad().setDestroyOnComplete(true);
         }
+    }
+
+    public void OnDrop(PointerEventData data)
+    {
+        
+       
     }
 
 }

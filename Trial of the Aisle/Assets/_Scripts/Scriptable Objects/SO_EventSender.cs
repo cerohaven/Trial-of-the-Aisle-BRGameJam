@@ -62,9 +62,9 @@ public class SO_EventSender : ScriptableObject
     [System.NonSerialized]
     public LaunchProjectileButtonEvent launchProjectileButtonEvent = new LaunchProjectileButtonEvent();
 
-    public void LaunchProjectileButtonEventSend(GameObject _interactedActor)
+    public void LaunchProjectileButtonEventSend(GameObject _interactedActor, Vector2 upDIr)
     {
-        launchProjectileButtonEvent.Invoke(_interactedActor);
+        launchProjectileButtonEvent.Invoke(_interactedActor, upDIr);
     }
 
     //Is called from the "PlayerInputHandler.cs" class
@@ -125,6 +125,6 @@ public class SO_EventSender : ScriptableObject
 
 public class PlayerHealthChanged : UnityEvent<float> { }
 
-public class LaunchProjectileButtonEvent : UnityEvent<GameObject> { }
+public class LaunchProjectileButtonEvent : UnityEvent<GameObject, Vector2> { }
 public class ClickedInteractionButtonEvent : UnityEvent<GameObject> { }
 public class ChangedControlSchemeEvent : UnityEvent<string> { }

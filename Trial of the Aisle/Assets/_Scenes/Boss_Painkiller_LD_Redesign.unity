@@ -99109,66 +99109,10 @@ PrefabInstance:
       propertyPath: _healthBar
       value: 
       objectReference: {fileID: 1095431429}
-    - target: {fileID: 5103628786028555843, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: _showHealthGraphic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103628786028555843, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: _invincibleAfterDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103628786028555843, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: _hurtFlickerAfterDamage
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6135522730568273430, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1798283562}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1798283562}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_UIInputModule
-      value: 
-      objectReference: {fileID: 1231111792}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_DefaultActionMap
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_DefaultControlScheme
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_NotificationBehavior
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_NeverAutoSwitchControlSchemes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7487558339200106564, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
-      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7725955836672512806, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.02

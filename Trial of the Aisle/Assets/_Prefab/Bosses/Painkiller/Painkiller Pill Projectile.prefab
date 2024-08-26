@@ -471,13 +471,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd92195e88db2c44e825d78c10b6fb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   damageDealt: 2
   hitParticles: {fileID: 8786347373218214469, guid: 69bf11f3d6e1a7842ad701ecae6cc867, type: 3}
   outlineRenderer: {fileID: 8155592452420953379}
   bossOutlineColour: {r: 0.8207547, g: 0.2206746, b: 0.24781217, a: 1}
   playerOutlineColour: {r: 0.044655856, g: 0.64705884, b: 0, a: 1}
-  neutralOutlineColour: {r: 1, g: 1, b: 1, a: 0}
+  nullOutlineColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5171542217400924174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c7e07359b8b78459748991bc32b354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SO_interactableObject: {fileID: 11400000, guid: 240158fe63e954d4987742c9255c4afb, type: 2}
   SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
   interactPromptPanel: {fileID: 3292399771248036794}
   interactButtonSprite: {fileID: 0}
@@ -529,8 +527,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008462857, y: -0.011668772}
-  m_Size: {x: 0.8815337, y: 2.5313902}
+  m_Offset: {x: 0.008462856, y: 0.012133106}
+  m_Size: {x: 0.88152647, y: 2.0620968}
   m_Direction: 0
 --- !u!50 &2915472806624365913
 Rigidbody2D:

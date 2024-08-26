@@ -35,7 +35,9 @@ public class GamepadCursor : MonoBehaviour
 
     public RectTransform CanvasRectTransform { get => canvasRectTransform; }
     public PlayerInput GamepadPlayerInput { get => playerInput; set => playerInput = value; }
-    public Mouse VirtualMouse { get => virtualMouse; }
+    public Mouse VirtualMouse { get => virtualMouse; set => virtualMouse = value; }
+
+    public Mouse CursorMouse { get => CurrentMouse; set => CurrentMouse = value; }
 
     private void OnEnable()
     {

@@ -26,19 +26,18 @@ public class InteractableObject_Projectile : InteractableObject
         GameManager.Instance.EventSender.launchProjectileButtonEvent.AddListener(LaunchProjectile);
     }
 
-    private void LaunchProjectile(GameObject player)
+    private void LaunchProjectile(GameObject player, Vector2 upDir)
     {
         //Check to make sure that it's THIS pill that recieves the event since this event goes to all projectiles
         if (playerCarry == null) return;
         if (playerCarry.CarryObject != gameObject) return;
 
         //Now we launch the projectile in the direction the player is facing
-
+        transform.up = upDir;
         projectile.InitializeProjectile(transform.up, throwSpeed, playerCarry.transform.parent, WhoThrew.Player);
         projectile.EnableCollider(true);
         projectile.RemoveDrag();
         playerCarry.IsCarryingObject = false;
-        playerCarry.SetActiveAimArrows(false);
 
 
         RuntimeManager.PlayOneShot("event:/SFX/Bosses/General/ThrowProjectile");

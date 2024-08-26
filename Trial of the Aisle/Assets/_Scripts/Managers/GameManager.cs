@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     private GamepadCursor gamepadCursor;
     private RectTransform virtualCursorCanvas;
 
+    private DragDrop currentDragDrop;
+
     [SerializeField] private TransitionType transitionType;
     [SerializeField] private ControlScheme controlScheme;
 
@@ -81,6 +83,7 @@ public class GameManager : Singleton<GameManager>
     public int CurrentProjectilesInScene { get => currentProjectilesInScene; set => currentProjectilesInScene = value; }
     public bool IsInMainMenu { get => isInMainMenu; set => isInMainMenu = value; }
 
+    public DragDrop CurrentDragDrop { get => currentDragDrop; set => currentDragDrop = value; }
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -245,7 +248,11 @@ public class GameManager : Singleton<GameManager>
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 
         GeneralResumeLogic();
-
+        if(controlScheme == ControlScheme.Gamepad)
+        {
+            gamepadCursor.EnableCursor(false);
+        }   
+  
         SFX_UnPauseEvent = RuntimeManager.CreateInstance("event:/UI/Buttons/Unpause");
         SFX_UnPauseEvent.start();
 
