@@ -54,7 +54,7 @@ public class FMODMusicManager : MonoBehaviour
             FMODUnity.RuntimeManager.StudioSystem.setParameterByNameWithLabel("SceneTransition", "PKArenaEntered");
 
         }
-        else if(sceneName == "Boss_DairyDominator 1")
+        else if(sceneName == "Boss_DairyDominator_LD_Redesign")
         {
             //  DDMusicInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/BGM/DD_Arena");
             DDIntroInstance = FMODUnity.RuntimeManager.CreateInstance("event:/Dialogue/Introductions/DD_Intro");

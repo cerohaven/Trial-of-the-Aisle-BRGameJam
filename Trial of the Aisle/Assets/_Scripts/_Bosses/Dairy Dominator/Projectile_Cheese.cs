@@ -11,6 +11,7 @@ public class Projectile_Cheese : MonoBehaviour
     private SpriteRenderer sr;
     private float fade;
 
+    private FMOD.Studio.EventInstance FetaFrenzyThrowInstance;
     private void Awake()
     {
         col = GetComponent<Collider2D>();
@@ -30,6 +31,9 @@ public class Projectile_Cheese : MonoBehaviour
         col.enabled = true;
         cheeseArtGO.SetActive(true);
         warningCircleGO.SetActive(false);
+
+        FetaFrenzyThrowInstance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Bosses/Boss_DD/B_Feta_Frenzy");
+        FetaFrenzyThrowInstance.start();
     }
 
     private void Update()

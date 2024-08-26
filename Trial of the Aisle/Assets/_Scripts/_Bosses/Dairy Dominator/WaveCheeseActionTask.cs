@@ -13,10 +13,6 @@ namespace NodeCanvas.Tasks.Actions{
         public float moonRadius;
 
         public float timeBetweenWaves;
-        public float cheeseSpeed;
-
-        public int waveAmount = 7;
-
         public float turnIntensityMultiplier = 4;
 
         private Blackboard agentBlackboard;
@@ -53,7 +49,7 @@ namespace NodeCanvas.Tasks.Actions{
 
             //Change speed of center rotating
          
-            center.GetComponent<RotateObject>().RotateSpeed = currentPhase * turnIntensityMultiplier;
+            center.GetComponent<RotateObject>().RotateSpeed = (currentPhase + 1) * turnIntensityMultiplier;
 
 
             waveCoroutine = Wave();
@@ -74,8 +70,10 @@ namespace NodeCanvas.Tasks.Actions{
                 Vector2 randomPointInCircle = (Vector2)agent.transform.position + Random.insideUnitCircle * moonRadius;
 
                 GameObject.Instantiate(cheeseGO, randomPointInCircle, Quaternion.identity, center.transform);
+             
 
                 yield return new WaitForSeconds(timeBetweenWaves);
+
             }
 
             EndAction(true);

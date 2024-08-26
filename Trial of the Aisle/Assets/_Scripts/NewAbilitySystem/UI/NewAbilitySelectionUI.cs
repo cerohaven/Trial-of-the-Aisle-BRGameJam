@@ -25,6 +25,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
     private void Start()
     {
         ShowAbilities(GameManager.Instance.BossProfile.Ability1, GameManager.Instance.BossProfile.Ability2, GameManager.Instance.BossProfile.PostBattleCanvasUI);
+        GameManager.Instance.PlayerInputHandler.PlayerInput.SwitchCurrentActionMap("UI");
     }
 
     private void ShowAbilities(Ability _abilityOne, Ability _abilityTwo, Sprite bossCard)
