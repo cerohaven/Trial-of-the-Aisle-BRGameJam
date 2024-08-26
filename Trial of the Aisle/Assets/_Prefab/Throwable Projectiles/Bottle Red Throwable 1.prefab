@@ -10,7 +10,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_Name
-      value: Pain Pill Throwable
+      value: Bottle Red Throwable 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112062029216856773, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1313334416, guid: b2ad9c194aa57fd40b31f68a88b61a12, type: 3}
+    - target: {fileID: 5171542217400924174, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398693478205335610, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5044181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398693478205335610, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2266971
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398693478205335610, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2035345
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398693478205335610, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398693478205335610, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 6016490026426919602, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +80,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.015
       objectReference: {fileID: 0}
+    - target: {fileID: 8155592452420953379, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2145482085, guid: b2ad9c194aa57fd40b31f68a88b61a12, type: 3}
+    - target: {fileID: 8155592452420953379, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a6bbf5423768fc44381affcc0639f268, type: 2}
     m_RemovedComponents:
     - {fileID: 6203200740068505994, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
     m_RemovedGameObjects: []
@@ -78,13 +114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e399baa2fdf10de4085afb6d7b1ecdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   damageDealt: 2
   hitParticles: {fileID: 8786347373218214469, guid: 69bf11f3d6e1a7842ad701ecae6cc867, type: 3}
   outlineRenderer: {fileID: 8092935772416288215}
   bossOutlineColour: {r: 0.8196079, g: 0.21960786, b: 0.24705884, a: 1}
   playerOutlineColour: {r: 0.043137256, g: 0.64705884, b: 0, a: 1}
-  neutralOutlineColour: {r: 1, g: 1, b: 1, a: 0}
+  nullOutlineColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &8092935772416288215 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8155592452420953379, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}

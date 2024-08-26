@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5756813233600205572}
   - component: {fileID: 5756813233600205573}
   - component: {fileID: 5756813233600205570}
+  - component: {fileID: 5068709682802457279}
   m_Layer: 8
   m_Name: Interaction Point
   m_TagString: Untagged
@@ -102,6 +103,35 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5068709682802457279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756813233600205568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df364027e7730f46b4ccc3b2db24cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
+  interactPromptPanel: {fileID: 5756813233648597151}
+  interactButtonSprite: {fileID: 5756813235071446258}
+  isInteractPointVisible: 1
+  isInteractable: 1
+  amountOfItemsOnShelf: 1
+  shelfItem:
+  - {fileID: 4228387539939942953, guid: ce777829e1149684f9dc49246bd3660d, type: 3}
+  - {fileID: 4228387539939942953, guid: 870fd257f642a1f47a09a6575d04a205, type: 3}
+  - {fileID: 4228387539939942953, guid: 1ed760e3593f8284a8175e3f718863a3, type: 3}
+  - {fileID: 6303198654708935638, guid: a62b03c02ea33084087f92cf25ed00ef, type: 3}
+  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
+  - {fileID: 4228387539939942953, guid: aa7e7d912151ce846ac7652123ef1d62, type: 3}
+  - {fileID: 4674802171444888195, guid: 43d5518b1b207264a9111b4f7c85e146, type: 3}
+  - {fileID: 3688523007419446008, guid: 03831982c997cb846aff74c45da4e47c, type: 3}
+  - {fileID: 4228387539939942953, guid: 880e03ea77d599046b118e95bd8ba4b0, type: 3}
+  - {fileID: 4228387539939942953, guid: 0402f664bc5f1484f8861ce0da4f1b5d, type: 3}
 --- !u!1 &5756813233648597151
 GameObject:
   m_ObjectHideFlags: 0

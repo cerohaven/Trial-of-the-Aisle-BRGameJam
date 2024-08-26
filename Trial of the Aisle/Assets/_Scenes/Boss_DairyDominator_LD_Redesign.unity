@@ -485,11 +485,6 @@ Transform:
   - {fileID: 1001504086}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &190675044 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5756813233648597151, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
-  m_PrefabInstance: {fileID: 1828783442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &291057489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
@@ -17671,29 +17666,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5756813233600205571, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
   m_PrefabInstance: {fileID: 1828783442}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1141521593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670497510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df364027e7730f46b4ccc3b2db24cdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SO_controlSchemeHUD: {fileID: 11400000, guid: c96593ae77af13148925d72ab4bf9b19, type: 2}
-  interactPromptPanel: {fileID: 190675044}
-  interactButtonSprite: {fileID: 1846791011}
-  isInteractPointVisible: 1
-  isInteractable: 1
-  amountOfItemsOnShelf: 1
-  shelfItem:
-  - {fileID: 4309907478944555741, guid: 2b979f45a2a3db14f8562583c1b04855, type: 3}
-  - {fileID: 6303198654708935638, guid: 51e89ef45eb38f94eab3befeb3908d73, type: 3}
-  - {fileID: 6184676142544884977, guid: 95910cdc14b756340849d9fa45d5a5cb, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
 --- !u!61 &1141521594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -92629,9 +92601,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1141521593}
-    - targetCorrespondingSourceObject: {fileID: 5756813233600205568, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1141521594}
   m_SourcePrefab: {fileID: 100100000, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
 --- !u!1 &1840980701
@@ -92733,17 +92702,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1846791011 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5756813235071446258, guid: b10b55b7ab927774fa80119f35f32cfb, type: 3}
-  m_PrefabInstance: {fileID: 1828783442}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1851884480
 GameObject:
   m_ObjectHideFlags: 0
@@ -96661,7 +96619,7 @@ MonoBehaviour:
     _version: 3.25
     _category: 
     _comments: 
-    _translation: {x: -133, y: -225}
+    _translation: {x: -40, y: -85}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -96686,6 +96644,7 @@ GameObject:
   - component: {fileID: 7073513567513950841}
   - component: {fileID: 1437349971463361686}
   - component: {fileID: 8191795493843573124}
+  - component: {fileID: 9083388960159939507}
   m_Layer: 0
   m_Name: Dairy Dominator Boss
   m_TagString: Boss
@@ -96817,7 +96776,7 @@ MonoBehaviour:
   - {fileID: 1361602676}
   - {fileID: 1001504086}
   - {fileID: 7948592246271270762, guid: b705279069bbe2245a9970185d767ad7, type: 3}
-  - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+  - {fileID: 4329201300660113927, guid: 1bd2a20abc293d84ca11e2422c7aafef, type: 3}
   _serializedVariables:
   - _json: '{"_value":1,"_name":"bossProfile","_id":"fd4d9ac8-2719-43b4-a1c1-b0a03cadc9bd","$type":"NodeCanvas.Framework.Variable`1[[SO_BossProfile,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
@@ -96861,7 +96820,7 @@ MonoBehaviour:
       UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
     _references:
     - {fileID: 0}
-    - {fileID: 2620593474991591994, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+    - {fileID: 4329201300660113927, guid: 1bd2a20abc293d84ca11e2422c7aafef, type: 3}
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4
@@ -96935,6 +96894,19 @@ MonoBehaviour:
   _hurtFlickerAfterDamage: 1
   _amountOfHurtFlickers: 8
   _hurtDelayBetweenFlickers: 0.1
+--- !u!114 &9083388960159939507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488963747673041817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ad19b1e4dce554bb4f9996243019b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projPattern: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

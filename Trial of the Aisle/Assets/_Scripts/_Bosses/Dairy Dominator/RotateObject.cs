@@ -23,8 +23,9 @@ public class RotateObject : MonoBehaviour
 
     private void DestroyObj()
     {
-        animator.SetInteger("animState", 7);
-        //Start
+        if (animator != null)
+            animator.SetInteger("animState", 7);
+     
         Destroy(gameObject);
     }
 
