@@ -105,6 +105,7 @@ public class NewAbilitySelectionUI : MonoBehaviour
         {
             unlockPanel.SetActive(false);
             GameManager.Instance.TransitionType = TransitionType.BossBattle;
+            GameManager.Instance.Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             GameManager.Instance.LoadNextScene();
         }
     }

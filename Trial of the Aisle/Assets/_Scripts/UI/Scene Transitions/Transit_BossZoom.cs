@@ -117,7 +117,7 @@ public class Transit_BossZoom : MonoBehaviour, ISceneTransition
             case "Boss_AlexanderTheGrape 1":
                 return alexanderTransitionProperties;
 
-            case "Boss_DairyDominator 1":
+            case "Boss_DairyDominator_LD_Redesign":
                 return dairyTransitionProperties;
 
             default:

@@ -9427,7 +9427,7 @@ Transform:
   m_GameObject: {fileID: 816308862}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9561,7 +9561,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 20.54375
+  orthographic size: 20.543749
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -93488,7 +93488,7 @@ Transform:
   m_GameObject: {fileID: 2061118893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.195816, y: -1.7047129, z: -14.687819}
+  m_LocalPosition: {x: 4.195816, y: -1.7047148, z: -14.687819}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -96767,7 +96767,9 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"objectsThrown":{"_name":"objectsThrown","_id":"788dc214-8ac7-4d02-8393-dd9fdc522f5b","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"fetaCheese":{"_value":6,"_name":"fetaCheese","_id":"7b26444d-d94c-472d-b7f2-26f68459f645","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"waveProjectile":{"_value":7,"_name":"waveProjectile","_id":"2148b1a4-9bc5-4efb-8099-6a58da6d954d","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
-    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"projThrown":{"_name":"projThrown","_id":"bd2679e5-6e4e-4a46-874d-905eb5f77db4","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"maxProjThrown":{"_value":3,"_name":"maxProjThrown","_id":"e359c793-ce7d-466f-9532-af07d1777229","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences:
   - {fileID: 0}
   - {fileID: 11400000, guid: 1b41e1fd1bb8b3e4e8ea9e5f472d7579, type: 2}
@@ -96821,6 +96823,12 @@ MonoBehaviour:
     _references:
     - {fileID: 0}
     - {fileID: 6199721768734339179, guid: cc520ca8c1bd3264fb49622a3871aa19, type: 3}
+  - _json: '{"_name":"projThrown","_id":"bd2679e5-6e4e-4a46-874d-905eb5f77db4","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_value":3,"_name":"maxProjThrown","_id":"e359c793-ce7d-466f-9532-af07d1777229","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
 --- !u!50 &8191795493843573124
 Rigidbody2D:
   serializedVersion: 4

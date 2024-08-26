@@ -54,14 +54,18 @@ public class Projectile_PainKiller : Projectile
         base.InitializeProjectile(suckDir, suckSpeed, suckTarget, WhoThrew.Boss);
     }
 
-
+    protected override void Update()
+    {
+        base.Update();
+    }
     public void StopSuckingPill()
     {
+        Debug.Log("Stopped");
+        SetProjectileNull();
         isBeingSuckedIn = false;
 
         StartCoroutine(EnableDragCoroutine(0, 0, 5));
 
-        whoThrew = WhoThrew.Boss;
     }
 
 
