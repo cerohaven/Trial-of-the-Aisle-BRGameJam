@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.EventSystems;
 
 public class NewAbilitySelectionUI : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class NewAbilitySelectionUI : MonoBehaviour
     [SerializeField] private Image abilityOneImage, abilityTwoImage;
     [SerializeField] private Image bossCardImage;
     [SerializeField] private GameObject abilityOneTextPanel, abilityTwoTextPanel; // Panels containing header and description texts
+
+    [SerializeField] private Button abilityButton;
     private GameObject textPanelGO;
 
     public Ability abilityOne;
@@ -20,7 +23,9 @@ public class NewAbilitySelectionUI : MonoBehaviour
 
     private void Awake()
     {
+
         GameManager.Instance.UiInstances.Add(gameObject);
+        abilityButton.Select();
     }
     private void Start()
     {

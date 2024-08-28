@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeHealthAmount: 4
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   hitEffect: {fileID: 5723036506351610081, guid: 777a085a1e0fee347b17940318723f88, type: 3}
+  entityHealth: {fileID: 0}
 --- !u!1 &2211259699961417270
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,7 +5326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8825752082788351652}
   - component: {fileID: 7746524495715705510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: can
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5458,7 +5458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8565551927714192988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PS Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}

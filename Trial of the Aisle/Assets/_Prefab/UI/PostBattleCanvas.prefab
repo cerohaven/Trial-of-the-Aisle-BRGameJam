@@ -121,6 +121,7 @@ MonoBehaviour:
   bossCardImage: {fileID: 2420994663199609490}
   abilityOneTextPanel: {fileID: 3472198125153351896}
   abilityTwoTextPanel: {fileID: 9091370661372683675}
+  abilityButton: {fileID: 561706723412362155}
   abilityOne: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
   abilityTwo: {fileID: 11400000, guid: c7a32029695b81648be98833fd80a20f, type: 2}
 --- !u!1 &670139629596734718
@@ -492,8 +493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 22.799995, y: 3}
-  m_SizeDelta: {x: -301.40002, y: 76.2618}
+  m_AnchoredPosition: {x: 21.405006, y: -11}
+  m_SizeDelta: {x: -304.19, y: 146.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8105472106061381958
 CanvasRenderer:
@@ -629,7 +630,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.0000038146973}
+  m_AnchoredPosition: {x: -936, y: -163}
   m_SizeDelta: {x: 809.2, y: 389.9}
   m_Pivot: {x: 0, y: 0.000000007450581}
 --- !u!222 &3300483770465504729
@@ -684,7 +685,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityRectTransform: {fileID: 3388985027569703334}
   rectTransform: {fileID: 1519839243774564489}
-  offset: {x: 10, y: -10}
 --- !u!1 &4137525734117343080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -11, y: 54}
+  m_AnchoredPosition: {x: -16, y: 68}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5563790816759941418
@@ -1248,7 +1248,7 @@ RectTransform:
   m_GameObject: {fileID: 7656076090005496563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.009468, y: 3.5734, z: 1.7867}
+  m_LocalScale: {x: 5.3190403, y: 3.162852, z: 1.581426}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6701928873686738045}
@@ -1258,7 +1258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -356, y: 113}
+  m_AnchoredPosition: {x: 515, y: 59}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2849236354586746726
@@ -1470,7 +1470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -768, y: -163.00002}
   m_SizeDelta: {x: 809.2, y: 389.9}
   m_Pivot: {x: 0, y: 0.000000007450581}
 --- !u!222 &7486249255006444370
@@ -1525,4 +1525,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityRectTransform: {fileID: 6876144909001239220}
   rectTransform: {fileID: 8533476290217538007}
-  offset: {x: 10, y: -10}

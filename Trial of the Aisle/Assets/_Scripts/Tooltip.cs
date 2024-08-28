@@ -6,8 +6,6 @@ public class Tooltip : MonoBehaviour
 {
     [SerializeField] private RectTransform abilityRectTransform;
     public RectTransform rectTransform;
-    public Vector2 offset = new Vector2(10f, -10f); // Adjust the offset to be top-right
-
     private readonly float blackBorderWidth = 150;
 
     private void Awake()
@@ -29,21 +27,21 @@ public class Tooltip : MonoBehaviour
 
         if (abilityRectTransform.position.x > max)
         {
-            rectTransform.position = new Vector3(max,rectTransform.position.y, rectTransform.position.z);
+            //rectTransform.position = new Vector3(max,rectTransform.position.y, rectTransform.position.z);
         }
         else
         {
-            rectTransform.localPosition = new Vector3(0, rectTransform.localPosition.y, rectTransform.localPosition.z);
+            //rectTransform.localPosition = new Vector3(0, rectTransform.localPosition.y, rectTransform.localPosition.z);
         }
 
         float maxY = Screen.height / 1.8f;
         if(abilityRectTransform.position.y > maxY)
         {
-            rectTransform.position = new Vector3(rectTransform.position.x, maxY, rectTransform.position.z);
+            //rectTransform.position = new Vector3(rectTransform.position.x, maxY, rectTransform.position.z);
         }
         else
         {
-            rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, 0, rectTransform.localPosition.z);
+            //rectTransform.localPosition = new Vector3(rectTransform.localPosition.x, 0, rectTransform.localPosition.z);
         }
         //Get the current position - the max position to be the new local offset
 

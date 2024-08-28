@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public enum TransitionType
 {
     Default,
@@ -70,6 +71,7 @@ public class SceneTransitionController : MonoBehaviour
         if(scene.name.Equals("MainMenu"))
         {
             GameManager.Instance.TransitionType = TransitionType.MainMenu;
+            
 
             AbilityManager am = GameObject.FindObjectOfType<AbilityManager>();
             if (am != null) Destroy(am.gameObject);

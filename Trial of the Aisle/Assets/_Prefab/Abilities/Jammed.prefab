@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4779830059192819066}
   - component: {fileID: 8505386155759054262}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8010513933539290518}
   - component: {fileID: 7640145551835873807}
   - component: {fileID: 7277585090656312356}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Jammed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1743016713, guid: e387537f69580824bbb2eba35cb4e199, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_Size: {x: 4, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &7640145551835873807
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5749867714999465931}
   - component: {fileID: 7583988048579188603}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: Jam Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

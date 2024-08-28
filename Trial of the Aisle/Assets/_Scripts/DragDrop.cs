@@ -12,7 +12,9 @@ public class DragDrop : MonoBehaviour,  IPointerDownHandler
     public Ability ability;
     private NewAbilitySelectionUI abilitySelectionUI;
     private bool pressed;
+    private bool isScaling;
     public bool filled;
+    private Vector3 originalScale;
     private void Awake()
     {
         canvasGroup = GetComponent<UnityEngine.CanvasGroup>();
@@ -33,30 +35,34 @@ public class DragDrop : MonoBehaviour,  IPointerDownHandler
                 break;
         }
         filled = false;
+        originalScale = transform.localScale;
+        isScaling = false;
     }
 
-    public void OnPointerDown(PointerEventData data)
+  public void OnPointerDown(PointerEventData data)
     {
         if (!filled)
         {
             pressed = !pressed;
-            //Debug.Log(pressed);
-            if(pressed == true)
+
+            if (pressed && !isScaling)
             {
+                isScaling = true;
                 GameManager.Instance.CurrentDragDrop = this.gameObject;
                 GameManager.Instance.dragging = true;
-                //canvasGroup.blocksRaycasts = false;
+                LeanTween.scale(this.gameObject, originalScale * 0.8f, 0.5f).setEasePunch().setOnComplete(() => isScaling = false);
                 Debug.Log("PRESSED");
             }
-            else {
-                //GameManager.Instance.CurrentDragDrop = null;
+            else if (!pressed && !isScaling)
+            {
+                isScaling = true;
                 GameManager.Instance.dragging = false;
-                //canvasGroup.blocksRaycasts = true;
+                LeanTween.scale(this.gameObject, originalScale, 0.5f).setEasePunch().setOnComplete(() => isScaling = false);
                 Debug.Log("LET GO");
             }
-            LeanTween.scale(this.gameObject, transform.localScale * 0.8f, 0.5f).setEasePunch();
         }
     }
+    
 
 
     // public void OnBeginDrag(PointerEventData data) 
@@ -138,5 +144,6 @@ public class DragDrop : MonoBehaviour,  IPointerDownHandler
     //     pressed = false;
     // }
 
+    
 
 }

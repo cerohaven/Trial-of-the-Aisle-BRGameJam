@@ -4992,8 +4992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeHealthAmount: 2
-  adjustHealth: {fileID: 11400000, guid: 5899be7a850ec2345a07acbce31579a4, type: 2}
   hitEffect: {fileID: 5723036506351610081, guid: 777a085a1e0fee347b17940318723f88, type: 3}
+  entityHealth: {fileID: 0}
 --- !u!114 &8337301536259511076
 MonoBehaviour:
   m_ObjectHideFlags: 0
