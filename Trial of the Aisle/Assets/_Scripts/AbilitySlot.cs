@@ -57,15 +57,22 @@ public class AbilitySlot : MonoBehaviour, IPointerEnterHandler
     {
         if(!GameManager.Instance.CurrentDragDrop)
         {
-            print("CurrentDragDrop is null");
+            //print("CurrentDragDrop is null");
             return;
         }
 
         Vector3 dragDropWorldPos = Camera.main.ScreenToWorldPoint(GameManager.Instance.CurrentDragDrop.transform.position);
         Vector3 transformPos = Camera.main.ScreenToWorldPoint(transform.position);
+
+
         float distanceToDragged = (dragDropWorldPos - transformPos).magnitude;
-        print(distanceToDragged);
-        print(GameManager.Instance.dragging);
+
+
+        //print(distanceToDragged);
+        //print(GameManager.Instance.dragging);
+
+
+
         if (storedAbility == null && !GameManager.Instance.dragging && distanceToDragged < 1f)
         {
             Debug.Log("AAAA");

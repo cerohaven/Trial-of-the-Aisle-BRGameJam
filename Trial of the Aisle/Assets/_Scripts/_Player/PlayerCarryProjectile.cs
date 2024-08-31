@@ -10,6 +10,10 @@ public class PlayerCarryProjectile : MonoBehaviour
     [Range(3,5)]
     [SerializeField] private float _aimArrowDistanceFromPlayer = 4;
 
+    [Range(0,90)]
+    [SerializeField] private float aimAssist = 20;
+
+
     private bool _isCarryingObject = false;
     private GameObject _carryObject;
     private Projectile _objProjectile;
@@ -66,81 +70,84 @@ public class PlayerCarryProjectile : MonoBehaviour
 
     void Update()
     {
-        Vector2 alwaysDir = Vector2.zero;
+        if (GameManager.Instance.PlayerInputHandler == null) return;
 
-        if( rightStick.ReadValue<Vector2>() != Vector2.zero)
+
+        Vector2 aimingDirection = Vector2.zero;
+
+        #region Aiming Direction
+
+        if(GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
         {
-            alwaysDir= rightStick.ReadValue<Vector2>();
-            alwaysDir.Normalize();
-            prevDir = alwaysDir;
+            //Reading the Value for the Right Stick Direction
+            Vector2 rightStickValue = rightStick.ReadValue<Vector2>();
+
+            aimingDirection = rightStickValue;
+
+            //Now for a backup, we check to see if the player is moving the stick or not. If so, we can set the previous dir,
+            //but if they are not moving the right stick, set it to the previous direction
+            bool isMovingRightStick = rightStickValue != Vector2.zero;
+            if (isMovingRightStick)
+            {
+                prevDir = aimingDirection;
+            }
+            else
+            {
+                aimingDirection = prevDir;
+            }
+        }
+        else
+        {
+            Vector3 mousePosition = Mouse.current.position.ReadValue();
+            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            aimingDirection = mouseWorldPosition - _playerTransform.position;
+            
         }
 
-        alwaysDir= rightStick.ReadValue<Vector2>();
-        alwaysDir.Normalize();
+        aimingDirection.Normalize();
 
-        if(alwaysDir == Vector2.zero)
-        {
-            alwaysDir = prevDir;
-        }
-        
 
-        _playerAimArrowGO.transform.position = (Vector2)_playerTransform.position + alwaysDir * _aimArrowDistanceFromPlayer;
-        _playerAimArrowGO.transform.up = alwaysDir;
+
+        #endregion
+
+        #region Moving Aiming Arrows Based on Direction
+        _playerAimArrowGO.transform.position = (Vector2)_playerTransform.position + aimingDirection * _aimArrowDistanceFromPlayer;
+        _playerAimArrowGO.transform.up = aimingDirection;
+        #endregion
 
         if (_carryObject == null) return;
 
         if (_isCarryingObject == false) return;
 
-        if (GameManager.Instance.PlayerInputHandler == null) return;
 
-        Vector2 dir = new Vector2(0,0);
+        #region Aim Assist
+
         Vector2 bossDir = GameManager.Instance.BossTransform.position - _playerTransform.position;
 
-        
-        if (GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
-        {
-            dir = alwaysDir;
-        }
-        else
-        {
-            //MOUSE 
-            // Calculate direction towards the mouse cursor
-            Vector3 mousePosition = Mouse.current.position.ReadValue();
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            dir = mouseWorldPosition - _playerTransform.position;
-
-        }
-        
-        float bossAngle = Vector2.Angle(bossDir,dir);
-        Debug.Log(bossAngle);
-
-        if(bossAngle < 20)
+        float bossAngle = Vector2.Angle(bossDir, aimingDirection);
+        bool shouldAimAssist = bossAngle < aimAssist;
+        if(shouldAimAssist)
         {
             bossDir.Normalize();
-            //snap to boss' transform
-            //GameManager.Instance.GamepadCursor.CursorMouse.WarpCursorPosition(GameManager.Instance.BossTransform.position);
-            //InputState.Change(GameManager.Instance.GamepadCursor.VirtualMouse.position, GameManager.Instance.BossTransform.position);
-             //Update the GameObject's position to this position if the player is carrying the object
-             Debug.Log("AAAA");
             tempBossDir = bossDir;
-
         }
         else
         {
-            tempBossDir = dir;
+            tempBossDir = aimingDirection;
         }
-      
-            
-        dir.Normalize();
-        
-       
+        #endregion
 
-        _thisTransform.position = (Vector2)_playerTransform.position + dir * 2;
+        #region Move Carry Projectile
+
+        //Moving the Rotation and position of the Carry Projectile
+
+        _thisTransform.position = (Vector2)_playerTransform.position + aimingDirection * 2;
 
         //Update the GameObject's position to this position if the player is carrying the object
         _carryObjectTransform.position = _thisTransform.position;
-        _carryObjectTransform.up = dir;
+        _carryObjectTransform.up = aimingDirection;
 
+        #endregion
 
     }
 

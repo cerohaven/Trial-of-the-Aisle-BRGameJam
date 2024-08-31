@@ -3,6 +3,7 @@ using FMODUnity;
 using NodeCanvas.Framework;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InitializeBoss : MonoBehaviour
 {
@@ -118,6 +119,16 @@ public class InitializeBoss : MonoBehaviour
 
     private void Update()
     {
+        if(Gamepad.current != null)
+        {
+            bool selectButton = Gamepad.current.selectButton.ReadValue() > 0;
+
+            if (selectButton)
+            {
+                GetComponent<EntityHealth>().DestroyEntity();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             GetComponent<EntityHealth>().DestroyEntity();

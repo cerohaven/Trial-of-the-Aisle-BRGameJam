@@ -64,25 +64,27 @@ public class DragDrop : MonoBehaviour,  IPointerDownHandler
     }
     
 
-
-    // public void OnBeginDrag(PointerEventData data) 
-    // { 
-    //     if (!filled)
-    //     {
-    //         canvasGroup.blocksRaycasts = false;
-    //         GameManager.Instance.dragging = true;
-    //     }
-    // }
     private void Update()
     {
         if(pressed)
         {
-            GameManager.Instance.GamepadCursor.CursorMouse.WarpCursorPosition( GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue());
+
+            //GameManager.Instance.GamepadCursor.CursorMouse.WarpCursorPosition( GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue());
+
              float padding = transform.GetComponent<RectTransform>().rect.width / 2;
 
             Vector2 position;
             //converts Mouse Screen Position to Local Rect Position to make it fit in the canvas. 
-            RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, GameManager.Instance.GamepadCursor.CursorMouse.position.ReadValue(), canvas.worldCamera, out position);
+            if(GameManager.Instance.ControlScheme == ControlScheme.Gamepad)
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, GameManager.Instance.GamepadCursor.VirtualMouse.position.ReadValue(), canvas.worldCamera, out position);
+
+            }
+            else
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)canvas.transform, GameManager.Instance.GamepadCursor.CursorMouse.position.ReadValue(), canvas.worldCamera, out position);
+            }
+
 
             //constrain the icon within the border of the screen
             if (Input.mousePosition.x < 15)
@@ -103,6 +105,7 @@ public class DragDrop : MonoBehaviour,  IPointerDownHandler
             }
             transform.position = canvas.transform.TransformPoint(position);
         }
+        
     }
     // public void OnDrag(PointerEventData data)
     // {

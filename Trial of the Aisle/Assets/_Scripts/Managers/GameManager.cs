@@ -194,22 +194,20 @@ public class GameManager : Singleton<GameManager>
         {
             return;
         }
-        //checks to see if we should pause the game, or remove any active UI elements. Only pause if there are no active UI elements.
-        if(bossIsDefeated)
-        {
-            DestroyUIElement();
-        }
-        else
-        {
+
+        if(!bossIsDefeated)
             Pause();
-        }
+
     }
 
-    private void DestroyUIElement()
+    private void GoToNextBossScene()
     {
         //if the game is ended and they destroy a UI element, that means it is the Post Battle Canvas UI and we can load the next level
         if (gameEnded)
         {
+            if (gamepadCursor != null) gamepadCursor.EnableCursor(false); 
+           
+
             Boss_BGM_Postbattle.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
             transitionType = TransitionType.BossBattle;
@@ -247,6 +245,12 @@ public class GameManager : Singleton<GameManager>
     private void ResumeTheGame()
     {
         Debug.Log("Clicked UnPause");
+        if (bossIsDefeated)
+        {
+            GoToNextBossScene();
+            return;
+        }
+
         if (sceneTransitionController.GetSceneName().Equals("MainMenu")) return;
         playerInputHandler.PlayerInput.SwitchCurrentActionMap("Player");
 

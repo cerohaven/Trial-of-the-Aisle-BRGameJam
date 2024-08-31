@@ -82,7 +82,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnUnPause(InputAction.CallbackContext context)
     {
-        Debug.Log(playerInput.currentActionMap);
+        
         if (context.performed)
         {
             GameManager.Instance.EventSender.ResumeGameEventSend();
