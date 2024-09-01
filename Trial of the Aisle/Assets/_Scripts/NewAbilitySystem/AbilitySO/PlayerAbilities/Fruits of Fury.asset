@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80a9306f18302b74a87384ac4fd5f0e4, type: 3}
-  m_Name: '{AtG} [AGA] Fruits of Fury'
+  m_Name: Fruits of Fury
   m_EditorClassIdentifier: 
   abilityName: 'Fruits of Fury '
   abilityDescription: "Spawn 5 minions to target your adversary and help you fight.\r"
   abilityIcon: {fileID: -236900693, guid: 9262cdb38db73d4479bda3c8d4cb898d, type: 3}
   cooldownTime: 15
-  ID: 2
+  ID: 3
+  abilityType: 5
+  bossPrefix: 2
   grapeMinionPrefab: {fileID: 5005698199594441834, guid: 3958826e6a3cf5640b1299f5fa3de5b1, type: 3}
   minionCount: 5
   spawnRadius: 10

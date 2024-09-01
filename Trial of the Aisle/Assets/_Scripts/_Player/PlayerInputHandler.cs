@@ -17,8 +17,6 @@ public class PlayerInputHandler : MonoBehaviour
     private InputAction interactInput;
 
 
-    private bool dodgePressed = false;
-
     //properties
     public PlayerInput PlayerInput { get => playerInput; }
 

@@ -17,7 +17,7 @@ public class AbilityDatabase : ScriptableObject
         {
             if (abilities[i] != null)
             {
-                abilities[i].ID = i; // Update the ID to match the index
+                abilities[i].UpdateID(i); // Update the ID using the method in Ability class
             }
         }
     }

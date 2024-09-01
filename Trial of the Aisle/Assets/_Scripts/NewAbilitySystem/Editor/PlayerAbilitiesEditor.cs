@@ -9,6 +9,12 @@ public class PlayerAbilitiesEditor : Editor
     private string searchQuery = string.Empty;
     private List<Ability> filteredAbilities = new List<Ability>();
     private int selectedSlot = 0; // Default to slot 0
+    private AbilityType? filterAbilityType = null; // Nullable enum for ability type filter
+    private BossPrefix? filterBossPrefix = null; // Nullable enum for boss prefix filter
+
+    private bool showSearch = true;
+    //private bool showAbilityTypeFilter = true;
+    //private bool showBossPrefixFilter = true;
 
     public override void OnInspectorGUI()
     {
@@ -23,16 +29,51 @@ public class PlayerAbilitiesEditor : Editor
             return;
         }
 
-        GUILayout.Space(10);
-        EditorGUILayout.LabelField("Ability Search", EditorStyles.boldLabel);
-
-        // Start checking for changes
-        EditorGUI.BeginChangeCheck();
-        searchQuery = EditorGUILayout.TextField("Search Abilities", searchQuery);
-        // If the search query changed, update the filtered abilities list
-        if (EditorGUI.EndChangeCheck())
+        // Collapsible Filters Group
+        showSearch = EditorGUILayout.Foldout(showSearch, "Search and Filters", true);
+        if (showSearch)
         {
-            filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase, searchQuery);
+            GUILayout.BeginVertical("box");
+            EditorGUI.indentLevel++;
+
+            // Search Field
+            EditorGUI.BeginChangeCheck();
+            searchQuery = EditorGUILayout.TextField("Search Abilities", searchQuery);
+            if (EditorGUI.EndChangeCheck())
+            {
+                filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase);
+            }
+
+            // Ability Type Filter
+            EditorGUI.BeginChangeCheck();
+            filterAbilityType = (AbilityType?)EditorGUILayout.EnumPopup("Ability Type", filterAbilityType.HasValue ? filterAbilityType.Value : (AbilityType)(-1));
+            if (EditorGUI.EndChangeCheck())
+            {
+                filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase);
+            }
+            if (filterAbilityType == (AbilityType)(-1)) filterAbilityType = null;
+
+            // Boss Prefix Filter
+            EditorGUI.BeginChangeCheck();
+            filterBossPrefix = (BossPrefix?)EditorGUILayout.EnumPopup("Boss Prefix", filterBossPrefix.HasValue ? filterBossPrefix.Value : (BossPrefix)(-1));
+            if (EditorGUI.EndChangeCheck())
+            {
+                filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase);
+            }
+            if (filterBossPrefix == (BossPrefix)(-1)) filterBossPrefix = null;
+
+            // Clear Search and Filters Button
+            GUILayout.Space(10);
+            if (GUILayout.Button("Clear Search and Filters"))
+            {
+                searchQuery = string.Empty;
+                filterAbilityType = null;
+                filterBossPrefix = null;
+                filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase);
+            }
+
+            EditorGUI.indentLevel--;
+            GUILayout.EndVertical();
         }
 
         // Slot Selection
@@ -40,49 +81,118 @@ public class PlayerAbilitiesEditor : Editor
         EditorGUILayout.LabelField("Select Slot", EditorStyles.boldLabel);
         selectedSlot = GUILayout.SelectionGrid(selectedSlot, new string[] { "Slot 0", "Slot 1", "Slot 2" }, 3);
 
-        DisplayAbilities(playerAbilities, filteredAbilities);
-    }
-
-    private List<Ability> FilterAbilities(AbilityDatabase abilityDatabase, string query)
-    {
-        if (string.IsNullOrWhiteSpace(query))
-        {
-            return abilityDatabase.abilities;
-        }
-
-        // Check if the query is numeric and could be an index
-        if (int.TryParse(query, out int index))
-        {
-            // If the query is a valid index, return a list with the ability at that index (if it exists)
-            if (index >= 0 && index < abilityDatabase.abilities.Count)
-            {
-                return new List<Ability> { abilityDatabase.abilities[index] };
-            }
-            // If the index is out of range, return an empty list to indicate no match
-            return new List<Ability>();
-        }
-        else
-        {
-            // If the query is not numeric, search by name
-            return abilityDatabase.abilities.Where(ability => ability.name.ToLower().Contains(query.ToLower())).ToList();
-        }
-    }
-
-
-    private void DisplayAbilities(PlayerAbilities playerAbilities, List<Ability> abilities)
-    {
-        // "None" button to deselect any ability for the selected slot
-        if (GUILayout.Button("None"))
+        // "Clear Slot" button
+        GUILayout.Space(15);
+        if (GUILayout.Button("Clear Slot", GUILayout.Height(30), GUILayout.ExpandWidth(true)))
         {
             AssignNone(playerAbilities, selectedSlot);
         }
 
-        foreach (Ability ability in abilities)
+        // Line buffer below "Clear Slot"
+        GUILayout.Space(10);
+        GUILayout.Box(GUIContent.none, GUILayout.ExpandWidth(true), GUILayout.Height(1));
+
+        // Display filtered abilities
+        GUILayout.Space(10);
+        DisplayAbilities(playerAbilities, filteredAbilities);
+    }
+
+    private List<Ability> FilterAbilities(AbilityDatabase abilityDatabase)
+    {
+        var abilities = abilityDatabase.abilities;
+
+        if (!string.IsNullOrWhiteSpace(searchQuery))
         {
-            if (GUILayout.Button(ability.name))
+            if (int.TryParse(searchQuery, out int index) && index >= 0 && index < abilities.Count)
             {
-                AssignAbility(playerAbilities, ability, selectedSlot);
+                abilities = new List<Ability> { abilities[index] };
             }
+            else
+            {
+                abilities = abilities.Where(ability => ability.name.ToLower().Contains(searchQuery.ToLower())).ToList();
+            }
+        }
+
+        if (filterAbilityType.HasValue)
+        {
+            abilities = abilities.Where(ability => ability.abilityType == filterAbilityType.Value).ToList();
+        }
+
+        if (filterBossPrefix.HasValue)
+        {
+            abilities = abilities.Where(ability => ability.bossPrefix == filterBossPrefix.Value).ToList();
+        }
+
+        return abilities;
+    }
+
+    private void DisplayAbilities(PlayerAbilities playerAbilities, List<Ability> abilities)
+    {
+        float windowWidth = EditorGUIUtility.currentViewWidth - 40; // Adjust for padding
+        float baseIconSize = 80; // Base size for a standard width
+        float baseButtonHeight = 35;
+        float baseButtonWidth = 100;
+        float scale = windowWidth / (4 * baseButtonWidth); // Adjust the scale based on window width
+        scale = Mathf.Clamp(scale, 0.5f, 1.0f); // Limit scaling to between 50% and 100%
+
+        float iconSize = baseIconSize * scale;
+        float buttonHeight = baseButtonHeight * scale;
+        float buttonWidth = baseButtonWidth * scale;
+        int abilitiesPerRow = Mathf.FloorToInt(windowWidth / buttonWidth);
+
+        if (abilitiesPerRow <= 0) abilitiesPerRow = 1; // Ensure at least one ability is displayed per row
+
+        for (int i = 0; i < abilities.Count; i += abilitiesPerRow)
+        {
+            GUILayout.BeginHorizontal("box");
+
+            for (int j = 0; j < abilitiesPerRow && i + j < abilities.Count; j++)
+            {
+                Ability ability = abilities[i + j];
+
+                GUILayout.BeginVertical(GUILayout.Width(buttonWidth));
+                GUILayout.Space(5);
+
+                // Center the icon and text within the button
+                if (GUILayout.Button("", GUILayout.Width(buttonWidth), GUILayout.Height(iconSize + buttonHeight)))
+                {
+                    AssignAbility(playerAbilities, ability, selectedSlot);
+                }
+
+                Rect lastRect = GUILayoutUtility.GetLastRect();
+
+                // Draw the ability icon centered within the button
+                if (ability.abilityIcon != null)
+                {
+                    Rect iconRect = new Rect(
+                        lastRect.x + (lastRect.width - iconSize) / 2,
+                        lastRect.y + (lastRect.height - iconSize - buttonHeight) / 2,
+                        iconSize,
+                        iconSize
+                    );
+
+                    Rect spriteRect = new Rect(
+                        ability.abilityIcon.textureRect.x / ability.abilityIcon.texture.width,
+                        ability.abilityIcon.textureRect.y / ability.abilityIcon.texture.height,
+                        ability.abilityIcon.textureRect.width / ability.abilityIcon.texture.width,
+                        ability.abilityIcon.textureRect.height / ability.abilityIcon.texture.height
+                    );
+
+                    GUI.DrawTextureWithTexCoords(iconRect, ability.abilityIcon.texture, spriteRect);
+                }
+
+                // Draw the ability name centered below the icon
+                GUIStyle centeredTextStyle = new GUIStyle(GUI.skin.label)
+                {
+                    alignment = TextAnchor.MiddleCenter,
+                    fontSize = Mathf.FloorToInt(12 * scale) // Scale text size
+                };
+                GUI.Label(new Rect(lastRect.x, lastRect.y + iconSize, lastRect.width, buttonHeight), ability.name, centeredTextStyle);
+
+                GUILayout.EndVertical();
+            }
+
+            GUILayout.EndHorizontal();
         }
     }
 
@@ -112,7 +222,7 @@ public class PlayerAbilitiesEditor : Editor
         PlayerAbilities playerAbilities = (PlayerAbilities)target;
         if (playerAbilities.abilityDatabase != null)
         {
-            filteredAbilities = new List<Ability>(playerAbilities.abilityDatabase.abilities);
+            filteredAbilities = FilterAbilities(playerAbilities.abilityDatabase);
         }
     }
 }

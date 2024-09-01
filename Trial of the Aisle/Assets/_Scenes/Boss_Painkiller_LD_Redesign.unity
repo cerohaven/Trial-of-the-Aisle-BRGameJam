@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: f6d0bc8f34f40544fa9c317f498fa9b0, type: 3}
   abilityDatabase: {fileID: 11400000, guid: 0bf9edb7142c0dd4eadd0ee628fadfbd, type: 2}
-  equippedAbilityIDs: 0000000001000000ffffffff
+  equippedAbilityIDs: 070000000800000001000000
   abilitySlotsUIReference:
   - {fileID: 0}
   - {fileID: 0}
@@ -99117,6 +99117,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 781777563626314817, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4360681752282143972, guid: 97dcfee7688a96e45bacb71526fd65f2, type: 3}
       propertyPath: m_Name
       value: 'Player '

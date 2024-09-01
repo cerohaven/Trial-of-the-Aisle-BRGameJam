@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 873863dd63a58c34d86e4a1d0b90713e, type: 3}
-  m_Name: '[FPA] Cash Out'
+  m_Name: Cash Out
   m_EditorClassIdentifier: 
   abilityName: 'Cash Out '
   abilityDescription: "Throw your cash register at your enemies for an intense hit
@@ -18,5 +18,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 1863191801, guid: 306f1e0dcd7792445a0e0f224f00f452, type: 3}
   cooldownTime: 6
   ID: 0
+  abilityType: 0
+  bossPrefix: 0
   projectilePrefab: {fileID: 1572699439113838549, guid: df683362c2809b64984a14ed70475394, type: 3}
   projectileSpeed: 15

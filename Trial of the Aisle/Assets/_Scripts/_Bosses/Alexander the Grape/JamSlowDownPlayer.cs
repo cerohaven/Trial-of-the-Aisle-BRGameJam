@@ -45,7 +45,7 @@ public class JamSlowDownPlayer : MonoBehaviour
             
             PlayerController pc = collision.GetComponent<PlayerController>();
             pc.MoveSpeed /= 2;
-            pc.DodgeSpeed /= 3;
+            //pc.DodgeSpeed /= 3;
 
             if(isHot)
             {
@@ -67,7 +67,7 @@ public class JamSlowDownPlayer : MonoBehaviour
         {
             PlayerController pc = collision.GetComponent<PlayerController>();
             pc.MoveSpeed = pc.RegularMoveSpeed;
-            pc.DodgeSpeed = pc.RegularDodgeSpeed;
+            //pc.DodgeSpeed = pc.RegularDodgeSpeed;
 
             if (isHot)
             {

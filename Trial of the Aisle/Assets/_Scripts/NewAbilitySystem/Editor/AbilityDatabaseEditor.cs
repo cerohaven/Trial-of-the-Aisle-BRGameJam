@@ -1,13 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>
-/// THIS MUST BE IN AN EDITOR FOLDER TO WORK
-/// </summary>
 [CustomEditor(typeof(AbilityDatabase))]
 public class AbilityDatabaseEditor : Editor
 {
     private string searchFilter = "";
+    private AbilityType? filterAbilityType = null; // Nullable enum for ability type filter
+    private BossPrefix? filterBossPrefix = null; // Nullable enum for boss prefix filter
     private Vector2 scrollPosition;
 
     public override void OnInspectorGUI()
@@ -28,9 +27,21 @@ public class AbilityDatabaseEditor : Editor
         searchFilter = EditorGUILayout.TextField("Search by Name", searchFilter);
 
         GUILayout.Space(10);
-        if (GUILayout.Button("Clear Search"))
+        EditorGUILayout.LabelField("Filter by Ability Type", EditorStyles.boldLabel);
+        filterAbilityType = (AbilityType?)EditorGUILayout.EnumPopup("Ability Type", filterAbilityType.HasValue ? filterAbilityType.Value : (AbilityType)(-1));
+        if (filterAbilityType == (AbilityType)(-1)) filterAbilityType = null; // Clear filter if "None" selected
+
+        GUILayout.Space(10);
+        EditorGUILayout.LabelField("Filter by Boss Prefix", EditorStyles.boldLabel);
+        filterBossPrefix = (BossPrefix?)EditorGUILayout.EnumPopup("Boss Prefix", filterBossPrefix.HasValue ? filterBossPrefix.Value : (BossPrefix)(-1));
+        if (filterBossPrefix == (BossPrefix)(-1)) filterBossPrefix = null; // Clear filter if "None" selected
+
+        GUILayout.Space(10);
+        if (GUILayout.Button("Clear Filters"))
         {
-            searchFilter = ""; // Clear the search filter
+            searchFilter = "";
+            filterAbilityType = null;
+            filterBossPrefix = null;
         }
 
         GUILayout.Space(10);
@@ -43,11 +54,37 @@ public class AbilityDatabaseEditor : Editor
         {
             if (ability == null) continue; // Skip null entries
 
-            if (string.IsNullOrEmpty(searchFilter) || ability.abilityName.ToLower().Contains(searchFilter.ToLower()))
+            bool matchesSearch = string.IsNullOrEmpty(searchFilter) || ability.abilityName.ToLower().Contains(searchFilter.ToLower());
+            bool matchesType = !filterAbilityType.HasValue || ability.abilityType == filterAbilityType.Value;
+            bool matchesPrefix = !filterBossPrefix.HasValue || ability.bossPrefix == filterBossPrefix.Value;
+
+            if (matchesSearch && matchesType && matchesPrefix)
             {
                 GUILayout.BeginHorizontal("box");
+
+                // Draw the ability icon using the specific sprite portion from the sprite sheet
+                if (ability.abilityIcon != null)
+                {
+                    Rect spriteRect = new Rect(
+                        ability.abilityIcon.textureRect.x / ability.abilityIcon.texture.width,
+                        ability.abilityIcon.textureRect.y / ability.abilityIcon.texture.height,
+                        ability.abilityIcon.textureRect.width / ability.abilityIcon.texture.width,
+                        ability.abilityIcon.textureRect.height / ability.abilityIcon.texture.height
+                    );
+
+                    GUILayout.Box("", GUILayout.Width(50), GUILayout.Height(50)); // Reserve space for the sprite
+                    Rect lastRect = GUILayoutUtility.GetLastRect();
+                    GUI.DrawTextureWithTexCoords(lastRect, ability.abilityIcon.texture, spriteRect);
+                }
+                else
+                {
+                    GUILayout.Label("No Icon", GUILayout.Width(50), GUILayout.Height(50)); // Placeholder if no icon
+                }
+
                 EditorGUILayout.LabelField($"ID: {ability.ID}", GUILayout.Width(50));
                 EditorGUILayout.LabelField($"Name: {ability.abilityName}");
+                EditorGUILayout.LabelField($"Type: {ability.abilityType}", GUILayout.Width(100));
+                EditorGUILayout.LabelField($"Boss Prefix: {ability.bossPrefix}", GUILayout.Width(100));
                 GUILayout.EndHorizontal();
             }
         }
