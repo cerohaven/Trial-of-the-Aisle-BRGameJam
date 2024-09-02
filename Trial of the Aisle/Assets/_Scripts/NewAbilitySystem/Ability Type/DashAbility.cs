@@ -4,47 +4,66 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DashAbility", menuName = "Abilities/General/Dash")]
 public class DashAbility : Ability
 {
-    [SerializeField] private GameObject player; // Serialized reference to the player GameObject
-    public float dashForce = 30f;
-    public float dodgeCooldown = 1.5f;
-    public float dodgeTime = 0.3f;
+    public float dashForce = 200f;
+    public float dodgeCooldown = 2f;
+    public float dodgeTime = 0.75f;
     public float shakeDuration = 0.3f;
     public float shakeStrength = 0.5f;
-    public int ghostNumber = 8;
+    public int ghostNumber = 3;
     public AnimationCurve accelerationCurve;
+    public float ghostInterval = 0.05f; // Time interval between ghost instances
 
-    private float lastDodgeTime = -5f;
+    private float lastDodgeTime;
+
     private bool isDodging = false;
+
+    private void OnEnable()
+    {
+        // Initialize lastDodgeTime so that the cooldown can start correctly from the beginning
+        lastDodgeTime = Time.time - dodgeCooldown;
+    }
 
     public override void Activate(GameObject owner)
     {
         Debug.Log("Dash ability activated");
 
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
-            Debug.LogError("DashAbility: Player GameObject reference is not assigned.");
+            Debug.LogError("DashAbility: Player GameObject not found in the scene with tag 'Player'.");
             return;
         }
 
         PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController == null)
         {
-            Debug.LogError("DashAbility: PlayerController component is missing on the assigned player GameObject.");
+            Debug.LogError("DashAbility: PlayerController component is missing on the player GameObject.");
             return;
         }
 
-        if (isDodging || Time.time - lastDodgeTime < dodgeCooldown)
+        if (isDodging)
         {
-            Debug.LogWarning("DashAbility: Cooldown not complete or already dashing.");
+            Debug.LogWarning("DashAbility: Already dashing.");
             return;
         }
 
-        lastDodgeTime = Time.time; // Start cooldown after this point
-        playerController.StartCoroutine(DodgeRoutine(playerController));
+        float timeSinceLastDodge = Time.time - lastDodgeTime;
+        if (timeSinceLastDodge < dodgeCooldown)
+        {
+            float cooldownRemaining = dodgeCooldown - timeSinceLastDodge;
+            Debug.LogWarning($"DashAbility: Cooldown not complete. Time remaining: {cooldownRemaining:F2} seconds");
+            return;
+        }
+
+        lastDodgeTime = Time.time;  // Set last dodge time here
+        Debug.Log($"Dash started at time: {lastDodgeTime}. Cooldown will end at: {lastDodgeTime + dodgeCooldown}");
+
+        playerController.StartCoroutine(DodgeRoutine(playerController, player));
     }
 
-    private IEnumerator DodgeRoutine(PlayerController playerController)
+    private IEnumerator DodgeRoutine(PlayerController playerController, GameObject player)
     {
+        Debug.Log("DodgeRoutine started");
         isDodging = true;
 
         Rigidbody2D rb = playerController.GetComponent<Rigidbody2D>();
@@ -67,6 +86,7 @@ public class DashAbility : Ability
         if (cameraShake != null)
         {
             cameraShake.Shake(shakeDuration, shakeStrength);
+            Debug.Log("Screen shake triggered");
         }
         else
         {
@@ -77,6 +97,13 @@ public class DashAbility : Ability
         Vector2 dodgeDirection = GameManager.Instance.PlayerInputHandler.ReadMovementValue().normalized;
         Debug.Log("Dodge Direction: " + dodgeDirection);
 
+        if (dodgeDirection == Vector2.zero)
+        {
+            Debug.LogWarning("DashAbility: Dodge direction is zero, no force will be applied.");
+            isDodging = false;
+            yield break;
+        }
+
         if (accelerationCurve == null)
         {
             Debug.LogError("DashAbility: AccelerationCurve is not assigned.");
@@ -84,20 +111,28 @@ public class DashAbility : Ability
             yield break;
         }
 
-        // Dash and create ghost trail simultaneously
+        // Apply a single force impulse in the dodge direction
+        float initialForce = dashForce * accelerationCurve.Evaluate(0f);
+        rb.AddForce(dodgeDirection * initialForce, ForceMode2D.Impulse);
+        Debug.Log("Applied force: " + dodgeDirection * initialForce);
+
+        // Create ghost trail with a reduced frequency
         float elapsedTime = 0f;
+        float ghostTimer = 0f;
+
         while (elapsedTime < dodgeTime)
         {
-            float currentForce = dashForce * accelerationCurve.Evaluate(elapsedTime / dodgeTime);
-            rb.velocity = dodgeDirection * currentForce;
+            elapsedTime += Time.deltaTime;
+            ghostTimer += Time.deltaTime;
 
-            // Create ghost effect during dash
-            if (ghostTrail != null && elapsedTime < dodgeTime)
+            // Create ghost effect at intervals
+            if (ghostTrail != null && ghostTimer >= ghostInterval)
             {
                 ghostTrail.CreateGhost();
+                ghostTimer = 0f;
+                Debug.Log("Ghost trail created");
             }
 
-            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
@@ -107,6 +142,7 @@ public class DashAbility : Ability
         PlayDashAnimation(dashAnimationTransform);
 
         isDodging = false; // Reset dashing state only after everything completes
+        Debug.Log("DodgeRoutine completed, isDodging reset to false");
     }
 
     private void PlayDashAnimation(Transform dashAnimationTransform)
