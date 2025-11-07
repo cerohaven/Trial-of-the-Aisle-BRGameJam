@@ -93,3 +93,6 @@ MonoBehaviour:
     modValue: 0.5
   - modName: Fire Delay Range
     modValue: 0.5
+  randomizeSpawnOffsetPAT:
+  - modName: Spawn Offset Range Range
+    modValue: 1

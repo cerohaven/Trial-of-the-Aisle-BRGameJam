@@ -12,23 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_AtG_Throw_1
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 2
+  _patternNumberToUse: 1
   _projectilePatterns:
-  - thisPatternType: 2
+  - thisPatternType: 5
     thisPatternTypeModifiers:
-    - modName: Angle Randomize Range
-      modValue: 7.15
-  - thisPatternType: 4
-    thisPatternTypeModifiers:
-    - modName: Number of Projectiles
-      modValue: 3
-    - modName: Angle Range
-      modValue: 5
-    - modName: Speed Range
-      modValue: 0.2
-    - modName: Fire Delay Range
-      modValue: 0.2
-  _foldouts: 0101
+    - modName: Spawn Offset Range Range
+      modValue: 1.04
+  _foldouts: 01
   _baseFoldout: 1
   _removeSpecificPattern: 1
   basePAT:
@@ -41,7 +31,7 @@ MonoBehaviour:
   - modName: Delay
     modValue: 0
   - modName: Spawn Offset
-    modValue: 0
+    modValue: 5.16
   somePAT:
   - modName: Percent Chance
     modValue: 1
@@ -77,3 +67,6 @@ MonoBehaviour:
     modValue: 0.5
   - modName: Fire Delay Range
     modValue: 0.5
+  randomizeSpawnOffsetPAT:
+  - modName: Spawn Offset Range Range
+    modValue: 1

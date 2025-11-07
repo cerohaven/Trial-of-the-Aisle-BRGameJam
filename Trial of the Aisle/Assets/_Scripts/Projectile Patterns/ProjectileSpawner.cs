@@ -36,7 +36,8 @@ public class ProjectileSpawner : MonoBehaviour
         Vector3 mousePosition = Mouse.current.position.ReadValue();
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        GameObject go = Instantiate(projectileGO, mouseWorldPosition, Quaternion.identity);
+        Vector2 directionPlusSpawnOffset = (GetDirectionFromAngle(mod[0].modValue, mod[2].modValue) *mod[4].modValue);
+        GameObject go = Instantiate(projectileGO, mouseWorldPosition + directionPlusSpawnOffset, Quaternion.identity);
 
         go.GetComponent<TestProjectile>().Initialize(GetDirectionFromAngle(mod[0].modValue, mod[2].modValue), mod[1].modValue);
 
@@ -58,7 +59,7 @@ public class ProjectileSpawner : MonoBehaviour
             dir.Normalize();
 
             float a = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Debug.Log(extraAngle);
+            
             dir = new Vector2(Mathf.Cos((a + extraAngle) * Mathf.Deg2Rad),
                               Mathf.Sin((a + extraAngle) * Mathf.Deg2Rad));
             

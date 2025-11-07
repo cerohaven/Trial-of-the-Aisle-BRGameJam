@@ -28,7 +28,7 @@ public class SO_ProjectilePattern_Editor : Editor
     SerializedProperty randomizeAnglePAT;
     SerializedProperty rapidPAT;
     SerializedProperty burstPAT;
-    //SerializedProperty rapidPAT;
+    SerializedProperty randomizeSpawnOffsetPAT;
     //SerializedProperty rapidPAT;
 
     bool addNewArray;
@@ -54,7 +54,7 @@ public class SO_ProjectilePattern_Editor : Editor
         randomizeAnglePAT = serializedObject.FindProperty("randomizeAnglePAT");
         rapidPAT = serializedObject.FindProperty("rapidPAT");
         burstPAT = serializedObject.FindProperty("burstPAT");
-        //rapidPAT = serializedObject.FindProperty("rapidPAT");
+        randomizeSpawnOffsetPAT = serializedObject.FindProperty("randomizeSpawnOffsetPAT");
         //randomizeAnglePAT = serializedObject.FindProperty("randomizeAnglePAT");
         
 
@@ -302,6 +302,14 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                }
+                break;
+            case ProjectilePatterns.Randomize_Spawn_Offset:
+                property.arraySize = randomizeSpawnOffsetPAT.arraySize;
+                for (int j = 0; j < property.arraySize; j++)
+                {
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = randomizeSpawnOffsetPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = randomizeSpawnOffsetPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
                 }
                 break;
         }

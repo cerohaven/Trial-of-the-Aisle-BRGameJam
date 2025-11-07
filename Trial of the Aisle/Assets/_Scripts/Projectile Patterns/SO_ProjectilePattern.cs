@@ -87,6 +87,12 @@ public class SO_ProjectilePattern : ScriptableObject
         new PatternTypeMod("Fire Delay Range", 0.5f),       //3
     };
 
+    [SerializeField]
+    public PatternTypeMod[] randomizeSpawnOffsetPAT =
+    {
+        new PatternTypeMod("Spawn Offset Range Range", 1),     //0
+    };
+
 
     //Properties
     public List<ProjectilePattern> ProjectilePatternList { get => _projectilePatterns; set => _projectilePatterns = value; }
@@ -99,7 +105,7 @@ public class SO_ProjectilePattern : ScriptableObject
         //Create a temporary list of Base Pattern structs and add a baseProjectile Already
         List<PatternTypeMod[]> tempProjectileList = new List<PatternTypeMod[]>
         {
-            CreateNewProjectile(basePAT[0].modValue, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue)
+            CreateNewProjectile(basePAT[0].modValue, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue, basePAT[4].modValue)
         };
 
         List<PatternTypeMod[]> temptempProjectileList = new List<PatternTypeMod[]>();
@@ -158,9 +164,10 @@ public class SO_ProjectilePattern : ScriptableObject
                             }
 
                             temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue, //Angle
-                                                                           tempProjectileList[j][1].modValue + speed * k,                   //Speed
+                                                                           tempProjectileList[j][1].modValue + speed * k,                    //Speed
                                                                            tempProjectileList[j][2].modValue + extraAngle * k - shiftAmount, //Extra Angle
-                                                                           tempProjectileList[j][3].modValue + delay * k));                 //Delay
+                                                                           tempProjectileList[j][3].modValue + delay * k,                    //Delay
+                                                                           tempProjectileList[j][4].modValue));                              //Spawn Offset
                             
                             //If we're mirroring, we create a new bullet on the other side
                             if(mirror)
@@ -168,7 +175,8 @@ public class SO_ProjectilePattern : ScriptableObject
                                 temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue, //Angle
                                                                            tempProjectileList[j][1].modValue + speed * k,           //Speed
                                                                            tempProjectileList[j][2].modValue - extraAngle * k,      //Extra Angle
-                                                                           tempProjectileList[j][3].modValue + delay * k));         //Delay
+                                                                           tempProjectileList[j][3].modValue + delay * k,           //Delay
+                                                                           tempProjectileList[j][4].modValue));                     //Spawn Offset
                             }
 
                         }
@@ -207,8 +215,9 @@ public class SO_ProjectilePattern : ScriptableObject
                                                                            tempProjectileList[j][1].modValue,
                                                                            tempProjectileList[j][2].modValue,
                                                                            tempProjectileList[j][3].modValue +
-                                                                           _projectilePatterns[i].thisPatternTypeModifiers[1].modValue * k));
-                           
+                                                                           _projectilePatterns[i].thisPatternTypeModifiers[1].modValue * k,
+                                                                           tempProjectileList[j][4].modValue)); //spawnOffset
+
                         }
                     }
                     break;
@@ -232,11 +241,28 @@ public class SO_ProjectilePattern : ScriptableObject
                             temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue,
                                                                            tempProjectileList[j][1].modValue + randomSpeedRange, //speed
                                                                            tempProjectileList[j][2].modValue + randomAngleRange, //extra angle
-                                                                           tempProjectileList[j][3].modValue + randomDelayRange)); //delay
-                        }
+                                                                           tempProjectileList[j][3].modValue + randomDelayRange, //delay
+                                                                           tempProjectileList[j][4].modValue)); //spawnOffset
+    }
                     }
 
                     break;
+
+                case ProjectilePatterns.Randomize_Spawn_Offset:
+
+                    //Loop through all the projectiles before it and get their spawn offset and add/remove a range
+                    for (int j = 0; j < tempProjectileList.Count; j++)
+                    {
+                        //Get Random Range
+                        float range = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue;
+                        float randomAngle = Random.Range(tempProjectileList[j][4].modValue, range);
+
+                        tempProjectileList[j][4].modValue = randomAngle;
+
+                    }
+
+                    break;
+
                 default:
                     Debug.LogWarning("MODIFER NOT IMPLEMENTED");
                     break;
@@ -255,14 +281,14 @@ public class SO_ProjectilePattern : ScriptableObject
 
 
 
-    private PatternTypeMod[] CreateNewProjectile(float angle, float speed, float extraAngle, float shootDelay)
+    private PatternTypeMod[] CreateNewProjectile(float angle, float speed, float extraAngle, float shootDelay, float spawnOffset)
     {
         PatternTypeMod[] bp = new PatternTypeMod[basePAT.Length];
         bp[0].modValue = angle;
         bp[1].modValue = speed;
         bp[2].modValue = extraAngle;
         bp[3].modValue = shootDelay;
-        bp[4].modValue = basePAT[4].modValue;
+        bp[4].modValue = spawnOffset;
         return bp;
     }
 

@@ -5,7 +5,8 @@ public enum ProjectilePatterns
     Spread,
     Randomize_Angle,
     Rapid,
-    Burst
+    Burst,
+    Randomize_Spawn_Offset
 }
 
 
