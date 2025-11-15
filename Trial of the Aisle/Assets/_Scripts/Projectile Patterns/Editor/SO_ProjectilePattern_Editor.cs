@@ -1,6 +1,6 @@
-using System;
 using UnityEditor;
 using UnityEditor.Rendering;
+using UnityEditorInternal;
 using UnityEngine;
 
 
@@ -8,14 +8,14 @@ using UnityEngine;
 public class SO_ProjectilePattern_Editor : Editor
 {
     private readonly int sizeOfField = 20;
+    private readonly float trashCanScaleOfBox = 0.6f; //0 - 1. 0 is 0 scale, 1 is the scale of the box;
 
     SerializedProperty _projectilePatterns;
-    SerializedProperty _patternNumberToUse;
     SerializedProperty _patternType;
     SerializedProperty _patternModStruct;
-    SerializedProperty _foldouts;
+    SerializedProperty _patternFoldout;
+    SerializedProperty _patternIsActive;
     SerializedProperty _baseFoldout;
-    SerializedProperty _removeSpecificPattern;
 
     SO_ProjectilePattern projectilePatternWAH;
 
@@ -31,22 +31,20 @@ public class SO_ProjectilePattern_Editor : Editor
     SerializedProperty randomizeSpawnOffsetPAT;
     //SerializedProperty rapidPAT;
 
-    bool addNewArray;
-    bool removeArray;
-    bool clearArray;
+    private int selectedElement;
+    private bool triggerRemoveFromList;
 
-    float maxLabelWidth = 150;
-    float defaultWidth;
-    readonly Color selectedPatternColour = new Color(0.1f, 0.45f, 0.45f);
-    readonly Color regularPatternColour = new Color(0.19f, 0.19f, 0.19f);
+    private readonly Color activeColour = new Color(0.1f, 0.35f, 0.55f, 0.5f); //blue
+    private readonly Color regularPatternColour = new Color(0.19f, 0.19f, 0.19f); //darker
+    private readonly Color regularPatternColour2 = new Color(0.25f, 0.25f, 0.25f); //lighter
+    Color defaultGUIContentColour;
+    Color defaultGUIBackgroundColour;
+    private ReorderableList projPatternModList;
 
     private void OnEnable()
     {
         _projectilePatterns = serializedObject.FindProperty("_projectilePatterns");
-        _patternNumberToUse = serializedObject.FindProperty("_patternNumberToUse");
-        _foldouts = serializedObject.FindProperty("_foldouts");
         _baseFoldout = serializedObject.FindProperty("_baseFoldout");
-        _removeSpecificPattern = serializedObject.FindProperty("_removeSpecificPattern");
 
         basePAT = serializedObject.FindProperty("basePAT");
         somePAT = serializedObject.FindProperty("somePAT");
@@ -56,32 +54,180 @@ public class SO_ProjectilePattern_Editor : Editor
         burstPAT = serializedObject.FindProperty("burstPAT");
         randomizeSpawnOffsetPAT = serializedObject.FindProperty("randomizeSpawnOffsetPAT");
         //randomizeAnglePAT = serializedObject.FindProperty("randomizeAnglePAT");
-        
 
         projectilePatternWAH = (SO_ProjectilePattern)target;
+
+        defaultGUIContentColour = GUI.contentColor;
+        defaultGUIBackgroundColour = GUI.backgroundColor;
+
+        //Reorderable List Callbacks
+        #region Creating the Reorderable List and the Callbacks for it
+        
+        projPatternModList = new ReorderableList(serializedObject, _projectilePatterns, true, true, true, true);
+
+        selectedElement = -1;
+        
+        projPatternModList.drawElementCallback =
+            (Rect rect, int i, bool isActive, bool isFocused) =>
+            {
+                //Set the selected foldout
+                if (projPatternModList.IsSelected(i))
+                {
+                    selectedElement = i;
+                }
+
+               
+                //Setting the name of the foldout group
+                _patternType = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType");
+                _patternModStruct = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers");
+                _patternIsActive = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternIsActive");
+                _patternFoldout = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternIsFoldout");
+
+                Rect foldoutRect = new Rect(rect.x + 30, rect.y + 2, rect.width - 60, rect.height);
+                Rect foldoutSelectionRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight);
+                Rect isActiveRect = new Rect(rect.x , rect.y, rect.width, EditorGUIUtility.singleLineHeight + 1);
+                Rect fullListRect = new Rect(rect.x - 20, rect.y, rect.width + 25, rect.height);
+                Rect removeElementRect = _patternFoldout.boolValue ? new Rect(rect.x + rect.width - 20, rect.y + rect.height/2, 20, 20) : //true
+                                                                     new Rect(rect.x + rect.width - 20, rect.y, 20, 20); //false
+               
+                float trashCanWidthHeight = removeElementRect.width * trashCanScaleOfBox;
+                Rect trashCanRect = new Rect(removeElementRect.x + ((removeElementRect.width - trashCanWidthHeight) / 2), 
+                                             removeElementRect.y + ((removeElementRect.height - trashCanWidthHeight) / 2),
+                                             trashCanWidthHeight,
+                                             trashCanWidthHeight);
+                
+                //Change the colour of the rect based on if the boolean is active or not
+                if (_patternIsActive.boolValue == false)
+                {
+                    EditorGUI.DrawRect(fullListRect, regularPatternColour);
+                }
+                if(selectedElement == i)
+                {
+                    EditorGUI.DrawRect(fullListRect, activeColour);
+                }
+
+                //Display IsActive boolean
+                EditorGUI.PropertyField(isActiveRect, _patternIsActive, new GUIContent(""));
+
+                //Display the Remove Icon beside each element
+                bool cancelRestOfDraw = false;
+                if(GUI.Button(removeElementRect, ""))
+                {
+                    projPatternModList.onRemoveCallback.Invoke(projPatternModList);
+                    cancelRestOfDraw = true;
+                }
+                if (cancelRestOfDraw) return;
+                
+                GUI.DrawTexture(trashCanRect, Resources.Load("TrashIcon") as Texture2D, ScaleMode.ScaleAndCrop);
+                
+
+                //Creating the Foldout Header Group
+                bool val = _patternFoldout.boolValue;
+                _patternFoldout.boolValue = EditorGUI.BeginFoldoutHeaderGroup(foldoutSelectionRect, val, $"Pattern {i + 1}:  {_patternType.GetEnumName<ProjectilePatterns>()}");
+
+                //If the user has expanded this foldout, display the PatternModifier with a horizontal layoutgroup - string and then value
+                if (val)
+                {
+                    foldoutRect.y += EditorGUIUtility.singleLineHeight + 3;
+                    Rect patternTypeRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight);
+                    ProjectilePatterns myEnum = (ProjectilePatterns)EditorGUI.EnumPopup(patternTypeRect, new GUIContent("Pattern Type "), projectilePatternWAH.ProjectilePatternList[i].thisPatternType);
+
+
+                    #region Changing Struct Info When Enum Changes
+                    if (projectilePatternWAH.ProjectilePatternList[i].thisPatternType != myEnum)
+                    {
+                        _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType").enumValueIndex = (int)myEnum;
+
+                        UpdateModifierInfo(myEnum, _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers"));
+
+                    }
+                    #endregion
+
+                    #region Pattern Struct
+                    for (int j = 0; j < _patternModStruct.arraySize; j++)
+                    {
+                        foldoutRect.y += EditorGUIUtility.singleLineHeight + 3;
+
+                        Rect propertyRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight + 1);
+
+                        _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue =
+                            EditorGUI.FloatField(propertyRect, _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
+                                                        _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue);
+
+                    }
+                    #endregion
+
+                    foldoutRect.y += EditorGUIUtility.singleLineHeight;
+
+                    
+                }
+
+
+                EditorGUI.EndFoldoutHeaderGroup();
+
+                GUI.contentColor = defaultGUIContentColour;
+                GUI.backgroundColor = defaultGUIBackgroundColour;
+
+            };
+
+        
+        projPatternModList.drawElementBackgroundCallback = (Rect rect, int i, bool isActive, bool isFocused) =>
+        {
+            if (_projectilePatterns.GetArrayElementAtIndex(i) == null) return;
+
+            _patternIsActive = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternIsActive");
+
+            if (_patternIsActive.boolValue == false)
+            {
+                GUI.contentColor = new Color(0.7f, 0.7f, 0.7f, 0.5f);
+                GUI.backgroundColor = new Color(0.7f, 0.7f, 0.7f, 0.5f);
+            }
+            
+        };
+        projPatternModList.elementHeightCallback = (i) =>
+        {
+            //Check if the contents are folded or not for the sizes of the list elements
+            int elementSizeBgCalculation = 0;
+            _patternFoldout = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternIsFoldout");
+            if (_patternFoldout.boolValue == true)
+            {
+                _patternModStruct = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers");
+                elementSizeBgCalculation = 10 + (_patternModStruct.arraySize * 20) + 40;
+            }
+            else
+            {
+                elementSizeBgCalculation = (int)EditorGUIUtility.singleLineHeight+2;
+            }
+            
+
+            return elementSizeBgCalculation;
+        };
+
+        projPatternModList.drawHeaderCallback = (Rect rect) =>
+        {
+            EditorGUI.LabelField(rect, "Projectile Pattern Modifiers Stack");
+        };
+
+        projPatternModList.onAddCallback = (projPatternModList) =>
+        {
+            AddToList();
+        };
+
+        projPatternModList.onRemoveCallback = (projPatternModList) =>
+        {
+            TriggerRemoveFromList();
+        };
+
+
+        #endregion
     }
 
     public override void OnInspectorGUI()
     {
 
-
         serializedObject.Update();
 
-        if (addNewArray)
-        {
-            AddToList();
-        }
-        else if (removeArray)
-        {
-            RemoveFromList();
-        }
-        else if (clearArray)
-        {
-            ClearAll();
-        }
-        addNewArray = false;
-        removeArray = false;
-        clearArray = false;
+        triggerRemoveFromList = false;
 
 
         #region GUI Styles
@@ -98,11 +244,6 @@ public class SO_ProjectilePattern_Editor : Editor
         #endregion
 
 
-        EditorGUILayout.PropertyField(_patternNumberToUse);
-
-
-
-
         #region Projectile Pattern Modifiers Title and Line
         GUILayout.Space(10);
         GUILayout.Label("Projectile Pattern Modifiers", titleStyle);
@@ -115,8 +256,6 @@ public class SO_ProjectilePattern_Editor : Editor
 
         
 
-
-
         #region Base Pattern Struct
         bool baseVal = _baseFoldout.boolValue;
         
@@ -125,12 +264,10 @@ public class SO_ProjectilePattern_Editor : Editor
         Rect lastRect = new Rect();
         lastRect = GUILayoutUtility.GetLastRect();
 
-        Color bgColourToUse = _patternNumberToUse.intValue == 0 ? selectedPatternColour : regularPatternColour;
-
         if (baseVal)
         {
             GUILayout.Space(5);
-            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + (basePAT.arraySize * sizeOfField) + 10), bgColourToUse);
+            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + (basePAT.arraySize * sizeOfField) + 10), regularPatternColour2);
 
             for (int j = 0; j < basePAT.arraySize; j++)
             {
@@ -149,104 +286,36 @@ public class SO_ProjectilePattern_Editor : Editor
 
 
 
-        GUILayout.Space(10);
-        for (int i = 0; i < _projectilePatterns.arraySize; i++)
-        {
+        GUILayout.Space(30);
 
 
-            //Setting the name of the foldout group
-            _patternType = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType");
-            _patternModStruct = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers");
+        selectedElement = -1;
+        projPatternModList.DoLayoutList();
 
-            bool val = _foldouts.GetArrayElementAtIndex(i).boolValue;
-            _foldouts.GetArrayElementAtIndex(i).boolValue = EditorGUILayout.BeginFoldoutHeaderGroup(val, $"Pattern {i+1}:  {_patternType.GetEnumName<ProjectilePatterns>()}");
-            
-
-            lastRect = GUILayoutUtility.GetLastRect();
-
-            //If the user has expanded this foldout, display the PatternModifier with a horizontal layoutgroup - string and then value
-            if (val)
-            {
-                GUILayout.Space(10);
-
-                bgColourToUse = _patternNumberToUse.intValue == i+1 ? selectedPatternColour : regularPatternColour;
-
-                //Draw the background based on how many elements we have in the list
-                EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + ( _patternModStruct.arraySize * sizeOfField) + sizeOfField + 10), bgColourToUse);
-
-                #region Pattern Type Field
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Space(20);
-                GUILayout.Label("Pattern Type", GUILayout.Width(150));
-                ProjectilePatterns myEnum = (ProjectilePatterns)EditorGUILayout.EnumPopup(projectilePatternWAH.ProjectilePatternList[i].thisPatternType,  GUILayout.Width(100));
-                EditorGUILayout.EndHorizontal();
-                #endregion
-
-                #region Changing Struct Info When Enum Changes
-                if (projectilePatternWAH.ProjectilePatternList[i].thisPatternType != myEnum) 
-                {
-                    _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType").enumValueIndex = (int)myEnum;
-   
-                    UpdateModifierInfo(myEnum, _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers"));
-
-                }
-                #endregion
-
-                #region Pattern Struct
-                for (int j = 0; j < _patternModStruct.arraySize; j++)
-                {
-                    EditorGUILayout.BeginHorizontal();
-                    GUILayout.Space(20);
-                    //GUILayout.Label(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue, GUILayout.Width(150));
-                    //EditorGUILayout.PropertyField(_patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue"), GUIContent.none, GUILayout.Width(100));
-
-                    defaultWidth = EditorGUIUtility.labelWidth;
-                    EditorGUIUtility.labelWidth = maxLabelWidth;
-
-                    _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = 
-                        EditorGUILayout.FloatField( _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
-                                                    _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue,
-                                                    GUILayout.MaxWidth(250));
-                    EditorGUILayout.EndHorizontal();
-
-                    EditorGUIUtility.labelWidth = defaultWidth;
-                }
-                #endregion
-            }
-
-            EditorGUILayout.EndFoldoutHeaderGroup();
-
-            GUILayout.Space(10);
-        }
-
+        GUI.contentColor = defaultGUIContentColour;
+        GUI.backgroundColor = defaultGUIBackgroundColour;
         GUILayout.Space(20);
 
-
-        _patternNumberToUse.intValue = Mathf.Clamp(_patternNumberToUse.intValue, 0, _projectilePatterns.arraySize);
-
-        if(_projectilePatterns.arraySize != 0) _removeSpecificPattern.intValue = Mathf.Clamp(_removeSpecificPattern.intValue, 1, _projectilePatterns.arraySize);
-
+        Event currentEvent = Event.current;
+        if (currentEvent.type == EventType.MouseDown && currentEvent.button == 0) // Left mouse button
+        {
+            DeselectElement();
+            currentEvent.Use();
+        }
 
         #region Buttons
-        EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.PropertyField(_removeSpecificPattern);
-        if (GUILayout.Button($"Remove Modifier {_removeSpecificPattern.intValue}"))
-        {
-            removeArray = true;
-        }
-        EditorGUILayout.EndHorizontal();
-
-        if (GUILayout.Button("Add new Modifier"))
-        {
-            addNewArray = true;
-        }
         if (GUILayout.Button("Clear All"))
         {
-            clearArray = true;
-            
+            ClearAll();
         }
+
         #endregion
 
+
+        if(triggerRemoveFromList)
+        {
+            RemoveFromList();
+        }
         EditorUtility.SetDirty(projectilePatternWAH);
         serializedObject.ApplyModifiedProperties();
 
@@ -321,9 +390,11 @@ public class SO_ProjectilePattern_Editor : Editor
 
     private void AddToList()
     {
+        
         _projectilePatterns.arraySize++;
-        _foldouts.arraySize++;
-        _foldouts.GetArrayElementAtIndex(_foldouts.arraySize-1).boolValue = true;
+        int newIndex = _projectilePatterns.arraySize - 1;
+        _projectilePatterns.GetArrayElementAtIndex(newIndex).FindPropertyRelative("thisPatternIsActive").boolValue = true;
+        _projectilePatterns.GetArrayElementAtIndex(newIndex).FindPropertyRelative("thisPatternIsFoldout").boolValue = true;
         serializedObject.ApplyModifiedProperties();
 
         //Get the current information for the modifer we're using (SOME)
@@ -332,23 +403,38 @@ public class SO_ProjectilePattern_Editor : Editor
        
     }
 
+    //I need to remove from list this way because it was giving me an error before removing with the trash can icons
+    //essentially when we press the icon it would perform RemoveFromList() but then it's still in the process of going through each element and so
+    //get errors of the index being out of reach.
+    //This way removes errors because we do everything we need to do with the List, THEN we remove it and update the serializedObject
+    private void TriggerRemoveFromList()
+    {
+        triggerRemoveFromList = true;
+    }
     private void RemoveFromList()
     {
-        
         if (_projectilePatterns.arraySize <= 0) return;
+      
+        if (selectedElement < 0) return;
+
+        
+        _projectilePatterns.DeleteArrayElementAtIndex(selectedElement);
 
 
-        _projectilePatterns.DeleteArrayElementAtIndex(_removeSpecificPattern.intValue-1);
-        _foldouts.DeleteArrayElementAtIndex(_removeSpecificPattern.intValue-1);
+        EditorUtility.SetDirty(projectilePatternWAH);
+        serializedObject.ApplyModifiedProperties();
 
+    }
 
+    private void DeselectElement()
+    {
+        projPatternModList.Deselect(selectedElement);
+        selectedElement = -1;
     }
 
     private void ClearAll()
     {
         _projectilePatterns.ClearArray();
-        _foldouts.ClearArray();
-
 
     }
 }

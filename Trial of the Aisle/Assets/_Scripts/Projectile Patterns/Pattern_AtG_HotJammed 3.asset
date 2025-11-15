@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_AtG_HotJammed 3
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 3
   _projectilePatterns:
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
       modValue: 0
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
@@ -34,13 +35,15 @@ MonoBehaviour:
       modValue: 0
     - modName: Center Remove Number
       modValue: 0
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
       modValue: 50
-  _foldouts: 010101
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   _baseFoldout: 1
-  _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
     modValue: -99
@@ -87,3 +90,6 @@ MonoBehaviour:
     modValue: 0.5
   - modName: Fire Delay Range
     modValue: 0.5
+  randomizeSpawnOffsetPAT:
+  - modName: Spawn Offset Range Range
+    modValue: 1

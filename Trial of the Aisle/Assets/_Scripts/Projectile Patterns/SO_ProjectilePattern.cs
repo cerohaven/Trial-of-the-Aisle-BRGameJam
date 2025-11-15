@@ -8,6 +8,8 @@ public class ProjectilePattern
 {
     [SerializeField] public ProjectilePatterns thisPatternType;
     [SerializeField] public PatternTypeMod[] thisPatternTypeModifiers;
+    [SerializeField] public bool thisPatternIsFoldout = true;
+    [SerializeField] public bool thisPatternIsActive = true;
 }
 
 
@@ -17,14 +19,10 @@ public class SO_ProjectilePattern : ScriptableObject
 {
 
     [Space]
-    [SerializeField] private int _patternNumberToUse;
-
-    [Space]
     [SerializeField] private List<ProjectilePattern> _projectilePatterns = new List<ProjectilePattern>();
 
-    [SerializeField] private List<bool> _foldouts = new List<bool>();
     [SerializeField] private bool _baseFoldout = true;
-    [SerializeField] private int _removeSpecificPattern;
+
     //These Structs contain all the logic we need to store for each parameter/modifier in each pattern type.
 
     /// <summary>
@@ -96,9 +94,6 @@ public class SO_ProjectilePattern : ScriptableObject
 
     //Properties
     public List<ProjectilePattern> ProjectilePatternList { get => _projectilePatterns; set => _projectilePatterns = value; }
-    public List<bool> Foldouts { get => _foldouts; set => _foldouts = value; }
-
-
 
     public List<PatternTypeMod[]> GetProjectilePatterns()
     {
@@ -110,8 +105,11 @@ public class SO_ProjectilePattern : ScriptableObject
 
         List<PatternTypeMod[]> temptempProjectileList = new List<PatternTypeMod[]>();
 
-        for (int i = 0; i < _patternNumberToUse; i++)
+        for (int i = 0; i < _projectilePatterns.Count; i++) 
         {
+            //here we would check if the pattern is active or not and continue accordingly
+            if (!_projectilePatterns[i].thisPatternIsActive) continue;
+
             temptempProjectileList.Clear();
 
             ProjectilePatterns currentPattern = _projectilePatterns[i].thisPatternType;

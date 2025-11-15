@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_DD_Throw_2
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 2
   _projectilePatterns:
   - thisPatternType: 3
     thisPatternTypeModifiers:
@@ -20,13 +19,15 @@ MonoBehaviour:
       modValue: 4
     - modName: Fire Delay
       modValue: 0.1
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   - thisPatternType: 2
     thisPatternTypeModifiers:
     - modName: Angle Randomize Range
       modValue: 5
-  _foldouts: 0101
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   _baseFoldout: 1
-  _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
     modValue: -99
@@ -73,3 +74,6 @@ MonoBehaviour:
     modValue: 0.5
   - modName: Fire Delay Range
     modValue: 0.5
+  randomizeSpawnOffsetPAT:
+  - modName: Spawn Offset Range Range
+    modValue: 1

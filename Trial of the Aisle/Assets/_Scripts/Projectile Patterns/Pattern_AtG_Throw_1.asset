@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
   m_Name: Pattern_AtG_Throw_1
   m_EditorClassIdentifier: 
-  _patternNumberToUse: 1
   _projectilePatterns:
-  - thisPatternType: 5
-    thisPatternTypeModifiers:
-    - modName: Spawn Offset Range Range
-      modValue: 1.04
-  _foldouts: 01
+  - thisPatternType: 0
+    thisPatternTypeModifiers: []
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
+  - thisPatternType: 0
+    thisPatternTypeModifiers: []
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
+  - thisPatternType: 0
+    thisPatternTypeModifiers: []
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
+  - thisPatternType: 0
+    thisPatternTypeModifiers: []
+    thisPatternIsFoldout: 0
+    thisPatternIsActive: 0
   _baseFoldout: 1
-  _removeSpecificPattern: 1
   basePAT:
   - modName: Angle
     modValue: -99
