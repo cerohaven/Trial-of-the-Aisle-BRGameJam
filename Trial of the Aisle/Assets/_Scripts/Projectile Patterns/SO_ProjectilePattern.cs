@@ -23,6 +23,7 @@ public class SO_ProjectilePattern : ScriptableObject
 
     [SerializeField] private bool _baseFoldout = true;
 
+
     //These Structs contain all the logic we need to store for each parameter/modifier in each pattern type.
 
     /// <summary>
@@ -31,6 +32,12 @@ public class SO_ProjectilePattern : ScriptableObject
     /// 2. Add a new Struct below on the data values that this modifier needs.
     /// 3. In the Editor script in the "UpdateModifierInfo",  add a new case for the new modifer
     /// 4. In the "GetProjectilePatterns" method apply the actual logic for what the modifer does to the previous bullets.
+    /// 
+    /// IF YOU WANT TO CREATE A NEW PROJECTILE MODIFIER VARIABLE TYPE: (ie. int, float, bln)
+    /// 1. Navigate to the "ProjectilePatternEnum.cs" and look at the "ModVariableType" enum.
+    /// 2. If the variable type you want isn't there, add it to the list. Give it a name that reflects what it'll be for organization.
+    /// 3. Go to the "SO_ProjectilePattern_Editor.cs" and navigate to the "DrawModifier()" method, add a new case for that enum type.
+    /// 4. You can now customize the Property to look however you want it by utilizing EditorGUI.<insertPropertyFieldOfYourChoice>
     /// </summary>
     /// 
 
@@ -38,57 +45,58 @@ public class SO_ProjectilePattern : ScriptableObject
     [SerializeField]
     public PatternTypeMod[] basePAT =
     {
-        new PatternTypeMod("Angle", 0),                     //0
-        new PatternTypeMod("Speed", 1),                     //1
-        new PatternTypeMod("Extra Angle", 0),               //2
-        new PatternTypeMod("Delay", 0),                     //3
-        new PatternTypeMod("Spawn Offset", 0)               //4
+        new PatternTypeMod("Angle", 0, ModVariableType.Float_Slider_0_360),        //0
+        new PatternTypeMod("Speed", 1, ModVariableType.Float),                     //1
+        new PatternTypeMod("Extra Angle", 0, ModVariableType.Float),               //2
+        new PatternTypeMod("Delay", 0, ModVariableType.Float),                     //3
+        new PatternTypeMod("Spawn Offset", 0, ModVariableType.Float),              //4
+        new PatternTypeMod("Target Player", 1, ModVariableType.Bool)               //5
     };
 
     [SerializeField]
     public PatternTypeMod[] somePAT = 
     { 
-        new PatternTypeMod("Percent Chance", 1)             //0
+        new PatternTypeMod("Percent Chance", 1, ModVariableType.Float_Slider_0_1)  //0
     };
 
     [SerializeField]
     public PatternTypeMod[] spreadPAT =
     {
-        new PatternTypeMod("Number of Projectiles", 1),     //0
-        new PatternTypeMod("Spread Angle", 1),              //1
-        new PatternTypeMod("Spread Speed Increase", 0f),    //2
-        new PatternTypeMod("Delay Between Projectiles", 0), //3
-        new PatternTypeMod("Mirror", 0),                    //4
-        new PatternTypeMod("Shift", 0),                     //5
-        new PatternTypeMod("Center Remove Number", 0)       //6
+        new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
+        new PatternTypeMod("Spread Angle", 1, ModVariableType.Float),                //1
+        new PatternTypeMod("Spread Speed Increase", 0f, ModVariableType.Float),      //2
+        new PatternTypeMod("Delay Between Projectiles", 0, ModVariableType.Float),   //3
+        new PatternTypeMod("Mirror", 0, ModVariableType.Bool),                       //4
+        new PatternTypeMod("Shift", 0, ModVariableType.Bool),                        //5
+        new PatternTypeMod("Center Remove Number", 0, ModVariableType.Int)           //6
     };
 
     [SerializeField]
     public PatternTypeMod[] randomizeAnglePAT =
     {
-        new PatternTypeMod("Angle Randomize Range", 1),     //0
+        new PatternTypeMod("Angle Randomize Range", 1, ModVariableType.Float_Slider_0_360),   //0
     };
 
     [SerializeField]
     public PatternTypeMod[] rapidPAT =
     {
-        new PatternTypeMod("Number of Projectiles", 1),     //0
-        new PatternTypeMod("Fire Delay", 0.2f),             //1
+        new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
+        new PatternTypeMod("Fire Delay", 0.2f, ModVariableType.Float),               //1
     };
 
     [SerializeField]
     public PatternTypeMod[] burstPAT =
     {
-        new PatternTypeMod("Number of Projectiles", 1),     //0
-        new PatternTypeMod("Angle Range", 20f),             //1
-        new PatternTypeMod("Speed Range", 0.5f),            //2
-        new PatternTypeMod("Fire Delay Range", 0.5f),       //3
+        new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
+        new PatternTypeMod("Angle Range", 20f, ModVariableType.Float_Slider_0_360),  //1
+        new PatternTypeMod("Speed Range", 0.5f, ModVariableType.Float),              //2
+        new PatternTypeMod("Fire Delay Range", 0.5f, ModVariableType.Float),         //3
     };
 
     [SerializeField]
     public PatternTypeMod[] randomizeSpawnOffsetPAT =
     {
-        new PatternTypeMod("Spawn Offset Range Range", 1),     //0
+        new PatternTypeMod("Spawn Offset Range Range", 1, ModVariableType.Float),     //0
     };
 
 
@@ -97,10 +105,13 @@ public class SO_ProjectilePattern : ScriptableObject
 
     public List<PatternTypeMod[]> GetProjectilePatterns()
     {
+        bool targetPlayer = basePAT[5].modValue == 1 ? true : false;
+        float calculateBaseAngle = targetPlayer == true ? -99 : basePAT[0].modValue;
         //Create a temporary list of Base Pattern structs and add a baseProjectile Already
         List<PatternTypeMod[]> tempProjectileList = new List<PatternTypeMod[]>
         {
-            CreateNewProjectile(basePAT[0].modValue, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue, basePAT[4].modValue)
+            
+            CreateNewProjectile(calculateBaseAngle, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue, basePAT[4].modValue)
         };
 
         List<PatternTypeMod[]> temptempProjectileList = new List<PatternTypeMod[]>();
@@ -138,9 +149,13 @@ public class SO_ProjectilePattern : ScriptableObject
                     int spreadRemoveNumber = (int)_projectilePatterns[i].thisPatternTypeModifiers[6].modValue;
                     bool isEven = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue % 2 == 0;
                     float sum = extraAngle * (amountOfProjectiles-1);
+
+                    
+
                     //Loop through all the previous projectiles
                     for (int j = 0; j < tempProjectileList.Count; j++)
                     {
+                        
                         //Loop the amount of projectiles we want to spawn for the spread
                         for (int k = 0 + spreadRemoveNumber; k < amountOfProjectiles; k++)
                         {
@@ -179,7 +194,7 @@ public class SO_ProjectilePattern : ScriptableObject
 
                         }
 
-                        if (mirror || shift)
+                        if (mirror || shift || j == 0)
                         {
                             tempProjectileList.RemoveAt(j);
                         }
@@ -241,7 +256,7 @@ public class SO_ProjectilePattern : ScriptableObject
                                                                            tempProjectileList[j][2].modValue + randomAngleRange, //extra angle
                                                                            tempProjectileList[j][3].modValue + randomDelayRange, //delay
                                                                            tempProjectileList[j][4].modValue)); //spawnOffset
-    }
+                        }
                     }
 
                     break;

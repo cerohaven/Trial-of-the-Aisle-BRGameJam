@@ -17,67 +17,95 @@ MonoBehaviour:
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
       modValue: 60
+      modVariableType: 0
     - modName: Spread Angle
       modValue: 25
+      modVariableType: 0
     - modName: Spread Speed Increase
       modValue: 0.07
+      modVariableType: 0
     - modName: Delay Between Projectiles
       modValue: 0.06
+      modVariableType: 0
     - modName: Mirror
       modValue: 0
+      modVariableType: 0
     - modName: Shift
       modValue: 0
+      modVariableType: 0
     - modName: Center Remove Number
       modValue: 0
+      modVariableType: 0
     thisPatternIsFoldout: 0
     thisPatternIsActive: 0
   _baseFoldout: 1
   basePAT:
   - modName: Angle
     modValue: 270
+    modVariableType: 0
   - modName: Speed
     modValue: 10
+    modVariableType: 0
   - modName: Extra Angle
     modValue: 0
+    modVariableType: 0
   - modName: Delay
     modValue: 0
+    modVariableType: 0
   - modName: Spawn Offset
     modValue: 0
+    modVariableType: 0
   somePAT:
   - modName: Percent Chance
     modValue: 1
+    modVariableType: 3
   spreadPAT:
   - modName: Number of Projectiles
     modValue: 1
+    modVariableType: 1
   - modName: Spread Angle
     modValue: 1
+    modVariableType: 0
   - modName: Spread Speed Increase
     modValue: 0
+    modVariableType: 0
   - modName: Delay Between Projectiles
     modValue: 0
+    modVariableType: 0
   - modName: Mirror
     modValue: 0
+    modVariableType: 2
   - modName: Shift
     modValue: 0
+    modVariableType: 2
   - modName: Center Remove Number
     modValue: 0
+    modVariableType: 1
   randomizeAnglePAT:
   - modName: Angle Randomize Range
     modValue: 1
+    modVariableType: 0
   rapidPAT:
   - modName: Number of Projectiles
     modValue: 1
+    modVariableType: 0
   - modName: Fire Delay
     modValue: 0.2
+    modVariableType: 0
   burstPAT:
   - modName: Number of Projectiles
     modValue: 1
+    modVariableType: 0
   - modName: Angle Range
     modValue: 20
+    modVariableType: 0
   - modName: Speed Range
     modValue: 0.5
+    modVariableType: 0
   - modName: Fire Delay Range
     modValue: 0.5
+    modVariableType: 0
   randomizeSpawnOffsetPAT:
   - modName: Spawn Offset Range Range
     modValue: 1
+    modVariableType: 0

@@ -19,8 +19,6 @@ public class SO_ProjectilePattern_Editor : Editor
 
     SO_ProjectilePattern projectilePatternWAH;
 
-
-
     //Pattern Modifers
     SerializedProperty basePAT;
     SerializedProperty somePAT;
@@ -33,13 +31,20 @@ public class SO_ProjectilePattern_Editor : Editor
 
     private int selectedElement;
     private bool triggerRemoveFromList;
-
+    private float dragStartX; //for int fields
+    private float dragStartValue; //the initial value when we start dragging the mouse for int fields
+    Event evnt;
     private readonly Color activeColour = new Color(0.1f, 0.35f, 0.55f, 0.5f); //blue
     private readonly Color regularPatternColour = new Color(0.19f, 0.19f, 0.19f); //darker
     private readonly Color regularPatternColour2 = new Color(0.25f, 0.25f, 0.25f); //lighter
     Color defaultGUIContentColour;
     Color defaultGUIBackgroundColour;
+    GUIStyle foldoutTitle = new GUIStyle();
+
+
     private ReorderableList projPatternModList;
+
+
 
     private void OnEnable()
     {
@@ -150,9 +155,7 @@ public class SO_ProjectilePattern_Editor : Editor
 
                         Rect propertyRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight + 1);
 
-                        _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue =
-                            EditorGUI.FloatField(propertyRect, _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
-                                                        _patternModStruct.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue);
+                        DrawModifier(j, propertyRect);
 
                     }
                     #endregion
@@ -173,6 +176,7 @@ public class SO_ProjectilePattern_Editor : Editor
         
         projPatternModList.drawElementBackgroundCallback = (Rect rect, int i, bool isActive, bool isFocused) =>
         {
+            if (_projectilePatterns.arraySize == 0) return;
             if (_projectilePatterns.GetArrayElementAtIndex(i) == null) return;
 
             _patternIsActive = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternIsActive");
@@ -228,8 +232,9 @@ public class SO_ProjectilePattern_Editor : Editor
         serializedObject.Update();
 
         triggerRemoveFromList = false;
+        evnt = Event.current;
 
-
+        // ----- GUI STYLES ----- //
         #region GUI Styles
         GUIStyle titleStyle = new GUIStyle();
         titleStyle.normal.textColor = Color.white;
@@ -237,13 +242,12 @@ public class SO_ProjectilePattern_Editor : Editor
         titleStyle.fontStyle = FontStyle.Bold;
         titleStyle.alignment = TextAnchor.MiddleLeft;
 
-        GUIStyle foldoutTitle = new GUIStyle();
         foldoutTitle.normal.textColor = Color.white;
         foldoutTitle.fontSize = 12;
         foldoutTitle.fontStyle = FontStyle.Bold;
         #endregion
 
-
+        // ----- TITLE AND LINE ELEMENTS ----- //
         #region Projectile Pattern Modifiers Title and Line
         GUILayout.Space(10);
         GUILayout.Label("Projectile Pattern Modifiers", titleStyle);
@@ -255,7 +259,7 @@ public class SO_ProjectilePattern_Editor : Editor
         #endregion
 
         
-
+        // ----- BASE PATTERN STRUCT ----- //
         #region Base Pattern Struct
         bool baseVal = _baseFoldout.boolValue;
         
@@ -264,19 +268,42 @@ public class SO_ProjectilePattern_Editor : Editor
         Rect lastRect = new Rect();
         lastRect = GUILayoutUtility.GetLastRect();
 
+       
         if (baseVal)
         {
-            GUILayout.Space(5);
-            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + (basePAT.arraySize * sizeOfField) + 10), regularPatternColour2);
+            bool targetPlayerVal = basePAT.GetArrayElementAtIndex(5).FindPropertyRelative("modValue").floatValue == 1 ? true : false;
+            
 
+            int backgroundRectSizeDecrease = targetPlayerVal == true ? 2 : 1;
+
+            GUILayout.Space(5);
+            EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + ((basePAT.arraySize- backgroundRectSizeDecrease) * sizeOfField) + 10), regularPatternColour2);
+
+            //Adding a "targetPlayer" toggle before the BasePat modifiers are displayed
+            EditorGUILayout.BeginHorizontal();
+
+            GUILayout.Space(20);
+            bool isToggled = EditorGUILayout.Toggle("Target Player", targetPlayerVal, GUILayout.MaxWidth(250));
+            basePAT.GetArrayElementAtIndex(5).FindPropertyRelative("modValue").floatValue = isToggled == true ? 1 : 0;
+            EditorGUILayout.EndHorizontal();
+
+           
+            //The Rest of the Modifiers in the Base Pattern
             for (int j = 0; j < basePAT.arraySize; j++)
             {
+                if (j == 2 || j == 5) continue; //We don't want to display extra angle to designers, that's only really needed for code
+                if (targetPlayerVal == true && j == 0) continue; //if we are targetting the player and this iteration is on the "Angle", continue so we don't display the Angle
+
                 EditorGUILayout.BeginHorizontal();
+
                 GUILayout.Space(20);
+                if (j == 0) GUILayout.Space(20); //Add an indent to the angle to it's under the target player bln
+                
                 basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue =
                        EditorGUILayout.FloatField(basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
                                                    basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue,
                                                    GUILayout.MaxWidth(250));
+
                 EditorGUILayout.EndHorizontal();
             }
         }
@@ -288,7 +315,7 @@ public class SO_ProjectilePattern_Editor : Editor
 
         GUILayout.Space(30);
 
-
+        // ----- LIST ----- //
         selectedElement = -1;
         projPatternModList.DoLayoutList();
 
@@ -303,6 +330,7 @@ public class SO_ProjectilePattern_Editor : Editor
             currentEvent.Use();
         }
 
+        // ----- BUTTONS ----- //
         #region Buttons
         if (GUILayout.Button("Clear All"))
         {
@@ -316,6 +344,7 @@ public class SO_ProjectilePattern_Editor : Editor
         {
             RemoveFromList();
         }
+
         EditorUtility.SetDirty(projectilePatternWAH);
         serializedObject.ApplyModifiedProperties();
 
@@ -337,6 +366,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = somePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = somePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = somePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
 
@@ -346,6 +376,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = spreadPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = spreadPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = spreadPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
 
@@ -355,6 +386,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = randomizeAnglePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = randomizeAnglePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = randomizeAnglePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
             case ProjectilePatterns.Rapid:
@@ -363,6 +395,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = rapidPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = rapidPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = rapidPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
             case ProjectilePatterns.Burst:
@@ -371,6 +404,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = burstPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
             case ProjectilePatterns.Randomize_Spawn_Offset:
@@ -379,6 +413,7 @@ public class SO_ProjectilePattern_Editor : Editor
                 {
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue = randomizeSpawnOffsetPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue;
                     property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = randomizeSpawnOffsetPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue;
+                    property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = randomizeSpawnOffsetPAT.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex;
                 }
                 break;
         }
@@ -386,7 +421,122 @@ public class SO_ProjectilePattern_Editor : Editor
         
     }
 
+    private void DrawModifier(int modIndex, Rect rect)
+    {
+        //Creates a visual field in the inspector based on the mod variable type it's set to.
+        //Changing the Field Type will help designers more intuitively interact with the UI and offer constraints on what values are available
 
+        float valueOfModifier = 0f;
+        string modName = _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modName").stringValue;
+        float modValue = _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue;
+        ModVariableType modType = (ModVariableType)_patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modVariableType").enumValueIndex;
+        
+        switch (modType)
+        {
+            case ModVariableType.Float:
+                valueOfModifier = EditorGUI.FloatField(rect, modName, modValue);
+                break;
+
+            case ModVariableType.Float_Slider_0_1:
+                valueOfModifier = EditorGUI.Slider(rect, modName, modValue, 0f, 1f);
+                break;
+
+            case ModVariableType.Float_Slider_0_360:
+                valueOfModifier = EditorGUI.Slider(rect, modName, modValue, 0f, 360f);
+                break;
+
+            case ModVariableType.Int:
+                
+                valueOfModifier = EditorGUI.IntField(rect, modName, (int)modValue);
+                valueOfModifier = Mathf.Max(valueOfModifier, 0f); //clamp to not go below 0
+                break;
+
+            case ModVariableType.Int_Buttons:
+                GUIStyle style = new GUIStyle(GUI.skin.textField);
+                style.alignment = TextAnchor.MiddleCenter;  
+
+                Rect labelRect = new Rect(rect.x, rect.y, EditorGUIUtility.labelWidth, rect.height);
+                Rect minusButtonRect = new Rect(rect.x + EditorGUIUtility.labelWidth, rect.y, 20, 20);
+                Rect intFieldRect = new Rect(rect.x + labelRect.width + minusButtonRect.width, rect.y, 100, rect.height);
+                Rect plusButtonRect = new Rect(intFieldRect.x + intFieldRect.width, rect.y, 20, 20);
+
+                EditorGUI.LabelField(rect, modName);
+
+                valueOfModifier = EditorGUI.IntField(intFieldRect, (int)modValue, style);
+
+                #region Drag Contents
+                
+
+                //Gets the action we're doing with out mouse on this element
+                int dragControlID = GUIUtility.GetControlID(FocusType.Passive, labelRect);
+                
+               
+
+                //Have events for the mouse to check if the user is dragging over the Label and to affect the int value
+                switch (evnt.GetTypeForControl(dragControlID))
+                {
+                    case EventType.MouseDown:
+                        if (labelRect.Contains(evnt.mousePosition)) //if we clicked anywhere in the bounds of our label
+                        {
+                            GUIUtility.hotControl = dragControlID;
+                            dragStartX = evnt.mousePosition.x;
+                            dragStartValue = (int)modValue;
+                            evnt.Use();
+                        }
+                        break;
+
+                    case EventType.MouseDrag:
+                        if (GUIUtility.hotControl == dragControlID)
+                        {
+                            float delta = evnt.mousePosition.x - dragStartX; //get diff between start of drag and current
+                            int dragAmountSensitivity = (int)dragStartValue + Mathf.RoundToInt(delta * 0.2f);
+                            valueOfModifier = dragAmountSensitivity;
+                            evnt.Use();
+                        }
+                        break;
+
+                    case EventType.MouseUp:
+                        if (GUIUtility.hotControl == dragControlID)
+                        {
+                            GUIUtility.hotControl = 0;
+                            evnt.Use();
+                        }
+                        break;
+                }
+                //Change the mouse cursor if it's over the Label Rect
+                if (labelRect.Contains(evnt.mousePosition))
+                {
+                    EditorGUIUtility.AddCursorRect(new Rect(0, 0, 500, 500), MouseCursor.SlideArrow);
+                }
+                #endregion
+
+                if (GUI.Button(minusButtonRect, "-"))
+                {
+                    valueOfModifier--;
+                    Event.current.Use();
+                }
+                if(GUI.Button(plusButtonRect, "+"))
+                {
+                    valueOfModifier++;
+                    Event.current.Use();
+                }
+
+                valueOfModifier = Mathf.Max(valueOfModifier, 0f); //clamp to not go below 0
+                break;
+
+            case ModVariableType.Bool:
+                bool visualValue = modValue == 1 ? true : false;
+                bool blnValue = EditorGUI.Toggle(rect, modName, visualValue);
+                valueOfModifier = blnValue == true ? 1f : 0f;
+                break;
+
+
+        }
+
+        _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue = valueOfModifier;
+
+
+    }
 
     private void AddToList()
     {
