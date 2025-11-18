@@ -65,7 +65,7 @@ public class SO_ProjectilePattern : ScriptableObject
         new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
         new PatternTypeMod("Spread Angle", 1, ModVariableType.Float),                //1
         new PatternTypeMod("Spread Speed Increase", 0f, ModVariableType.Float),      //2
-        new PatternTypeMod("Delay Between Projectiles", 0, ModVariableType.Float),   //3
+        new PatternTypeMod("Delay Between Projectiles", 0, ModVariableType.Float_Slider_0_1),   //3
         new PatternTypeMod("Mirror", 0, ModVariableType.Bool),                       //4
         new PatternTypeMod("Shift", 0, ModVariableType.Bool),                        //5
         new PatternTypeMod("Center Remove Number", 0, ModVariableType.Int)           //6
@@ -88,7 +88,7 @@ public class SO_ProjectilePattern : ScriptableObject
     public PatternTypeMod[] burstPAT =
     {
         new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
-        new PatternTypeMod("Angle Range", 20f, ModVariableType.Float_Slider_0_360),  //1
+        new PatternTypeMod("Angle Range", 20f, ModVariableType.Float),               //1
         new PatternTypeMod("Speed Range", 0.5f, ModVariableType.Float),              //2
         new PatternTypeMod("Fire Delay Range", 0.5f, ModVariableType.Float),         //3
     };
@@ -176,7 +176,7 @@ public class SO_ProjectilePattern : ScriptableObject
                                 }
                             }
 
-                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue, //Angle
+                            temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle, //Angle
                                                                            tempProjectileList[j][1].modValue + speed * k,                    //Speed
                                                                            tempProjectileList[j][2].modValue + extraAngle * k - shiftAmount, //Extra Angle
                                                                            tempProjectileList[j][3].modValue + delay * k,                    //Delay
@@ -185,7 +185,7 @@ public class SO_ProjectilePattern : ScriptableObject
                             //If we're mirroring, we create a new bullet on the other side
                             if(mirror)
                             {
-                                temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue, //Angle
+                                temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle, //Angle
                                                                            tempProjectileList[j][1].modValue + speed * k,           //Speed
                                                                            tempProjectileList[j][2].modValue - extraAngle * k,      //Extra Angle
                                                                            tempProjectileList[j][3].modValue + delay * k,           //Delay
@@ -223,8 +223,7 @@ public class SO_ProjectilePattern : ScriptableObject
                     {
                         for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
                         {
-                            Debug.Log(k);
-                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue,
+                            temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle,
                                                                            tempProjectileList[j][1].modValue,
                                                                            tempProjectileList[j][2].modValue,
                                                                            tempProjectileList[j][3].modValue +
@@ -240,6 +239,7 @@ public class SO_ProjectilePattern : ScriptableObject
                     //Loop through all the projectiles before it and get their angle and add/remove a range
                     for (int j = 0; j < tempProjectileList.Count; j++)
                     {
+                        //Loop through the number of projectiles in the Burst PAT
                         for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
                         {
                             //Get Random Range
@@ -251,7 +251,7 @@ public class SO_ProjectilePattern : ScriptableObject
                             float randomDelayRange = Random.Range(0, delayRange);
                             float randomSpeedRange = Random.Range(0, speedRange);
 
-                            temptempProjectileList.Add(CreateNewProjectile(basePAT[0].modValue,
+                            temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle,
                                                                            tempProjectileList[j][1].modValue + randomSpeedRange, //speed
                                                                            tempProjectileList[j][2].modValue + randomAngleRange, //extra angle
                                                                            tempProjectileList[j][3].modValue + randomDelayRange, //delay

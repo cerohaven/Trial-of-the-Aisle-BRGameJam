@@ -16,39 +16,32 @@ MonoBehaviour:
   - thisPatternType: 4
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 2
+      modValue: 5
       modVariableType: 4
     - modName: Angle Range
-      modValue: 20
-      modVariableType: 2
+      modValue: 5
+      modVariableType: 0
     - modName: Speed Range
       modValue: 0.5
       modVariableType: 0
     - modName: Fire Delay Range
-      modValue: 0.5
+      modValue: 0.1
       modVariableType: 0
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
-  - thisPatternType: 0
-    thisPatternTypeModifiers:
-    - modName: Percent Chance
-      modValue: 1
-      modVariableType: 1
-    thisPatternIsFoldout: 1
-    thisPatternIsActive: 0
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 7
+      modValue: 22
       modVariableType: 4
     - modName: Spread Angle
-      modValue: 1
+      modValue: 27.32
       modVariableType: 0
     - modName: Spread Speed Increase
       modValue: 0
       modVariableType: 0
     - modName: Delay Between Projectiles
-      modValue: 0
+      modValue: 0.05
       modVariableType: 0
     - modName: Mirror
       modValue: 0
@@ -60,30 +53,49 @@ MonoBehaviour:
       modValue: 0
       modVariableType: 3
     thisPatternIsFoldout: 1
-    thisPatternIsActive: 0
-  - thisPatternType: 4
+    thisPatternIsActive: 1
+  - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 1
+      modValue: 8
       modVariableType: 4
-    - modName: Angle Range
-      modValue: 20
-      modVariableType: 2
-    - modName: Speed Range
-      modValue: 0.5
+    - modName: Spread Angle
+      modValue: 60
       modVariableType: 0
-    - modName: Fire Delay Range
-      modValue: 0.5
+    - modName: Spread Speed Increase
+      modValue: 0
       modVariableType: 0
+    - modName: Delay Between Projectiles
+      modValue: 0
+      modVariableType: 0
+    - modName: Mirror
+      modValue: 0
+      modVariableType: 5
+    - modName: Shift
+      modValue: 1
+      modVariableType: 5
+    - modName: Center Remove Number
+      modValue: 0
+      modVariableType: 3
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
+  - thisPatternType: 3
+    thisPatternTypeModifiers:
+    - modName: Number of Projectiles
+      modValue: 6
+      modVariableType: 4
+    - modName: Fire Delay
+      modValue: 0.4
+      modVariableType: 0
+    thisPatternIsFoldout: 1
+    thisPatternIsActive: 0
   _baseFoldout: 1
   basePAT:
   - modName: Angle
-    modValue: 0
+    modValue: 42.9
     modVariableType: 2
   - modName: Speed
-    modValue: 1
+    modValue: 8.4
     modVariableType: 0
   - modName: Extra Angle
     modValue: 0
@@ -140,7 +152,7 @@ MonoBehaviour:
     modVariableType: 4
   - modName: Angle Range
     modValue: 20
-    modVariableType: 2
+    modVariableType: 0
   - modName: Speed Range
     modValue: 0.5
     modVariableType: 0

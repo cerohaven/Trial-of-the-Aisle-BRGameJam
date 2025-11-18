@@ -33,7 +33,7 @@ public class SO_ProjectilePattern_Editor : Editor
     private bool triggerRemoveFromList;
     private float dragStartX; //for int fields
     private float dragStartValue; //the initial value when we start dragging the mouse for int fields
-    Event evnt;
+    
     private readonly Color activeColour = new Color(0.1f, 0.35f, 0.55f, 0.5f); //blue
     private readonly Color regularPatternColour = new Color(0.19f, 0.19f, 0.19f); //darker
     private readonly Color regularPatternColour2 = new Color(0.25f, 0.25f, 0.25f); //lighter
@@ -232,7 +232,7 @@ public class SO_ProjectilePattern_Editor : Editor
         serializedObject.Update();
 
         triggerRemoveFromList = false;
-        evnt = Event.current;
+        
 
         // ----- GUI STYLES ----- //
         #region GUI Styles
@@ -323,11 +323,11 @@ public class SO_ProjectilePattern_Editor : Editor
         GUI.backgroundColor = defaultGUIBackgroundColour;
         GUILayout.Space(20);
 
+
         Event currentEvent = Event.current;
         if (currentEvent.type == EventType.MouseDown && currentEvent.button == 0) // Left mouse button
         {
             DeselectElement();
-            currentEvent.Use();
         }
 
         // ----- BUTTONS ----- //
@@ -340,7 +340,9 @@ public class SO_ProjectilePattern_Editor : Editor
         #endregion
 
 
-        if(triggerRemoveFromList)
+       
+
+        if (triggerRemoveFromList)
         {
             RemoveFromList();
         }
@@ -453,8 +455,8 @@ public class SO_ProjectilePattern_Editor : Editor
 
             case ModVariableType.Int_Buttons:
                 GUIStyle style = new GUIStyle(GUI.skin.textField);
-                style.alignment = TextAnchor.MiddleCenter;  
-
+                style.alignment = TextAnchor.MiddleCenter;
+                Event evnt = Event.current;
                 Rect labelRect = new Rect(rect.x, rect.y, EditorGUIUtility.labelWidth, rect.height);
                 Rect minusButtonRect = new Rect(rect.x + EditorGUIUtility.labelWidth, rect.y, 20, 20);
                 Rect intFieldRect = new Rect(rect.x + labelRect.width + minusButtonRect.width, rect.y, 100, rect.height);
@@ -585,6 +587,7 @@ public class SO_ProjectilePattern_Editor : Editor
     private void ClearAll()
     {
         _projectilePatterns.ClearArray();
-
+        EditorUtility.SetDirty(projectilePatternWAH);
+        serializedObject.ApplyModifiedProperties();
     }
 }

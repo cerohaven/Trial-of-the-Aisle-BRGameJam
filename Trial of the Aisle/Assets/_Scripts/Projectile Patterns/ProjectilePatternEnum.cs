@@ -32,10 +32,8 @@ public struct PatternTypeMod
 
     public PatternTypeMod(string name, float val, ModVariableType type) 
     {
-       
         modName = name; 
         modValue = val;
         modVariableType = type;
-
     }
 }
