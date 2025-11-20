@@ -10,49 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 596055ad1c9c620419d5716e5bd28f2a, type: 3}
-  m_Name: Projectile Pattern 1
+  m_Name: Projectile Pattern 2
   m_EditorClassIdentifier: 
   _projectilePatterns:
-  - thisPatternType: 4
+  - thisPatternType: 0
     thisPatternTypeModifiers:
-    - modName: Number of Projectiles
-      modValue: 5
-      modVariableType: 4
-      modTooltip: 
-    - modName: Angle Range
-      modValue: 5
-      modVariableType: 0
-      modTooltip: The random distance from -value to +value the projectiles can be
-        from the initial angle in the clump
-    - modName: Speed Range
-      modValue: 0.5
-      modVariableType: 0
-      modTooltip: The random speed from -value to +value each projectile in the clump
-        can have
-    - modName: Fire Delay Range
-      modValue: 0.1
-      modVariableType: 0
-      modTooltip: 'The random delay from -value to +value to spawn each projectile
-        in the clump '
+    - modName: Percent Chance
+      modValue: 0.374
+      modVariableType: 1
+      modTooltip: "The percent chance of each individual projectile from spawning
+        in. \n1 = All previous projectiles spawn in, \n0 = No previous projectiles
+        spawn inAAAAAA"
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 22
+      modValue: 12
       modVariableType: 4
       modTooltip: 
     - modName: Spread Angle
-      modValue: 27.32
+      modValue: 5.5
       modVariableType: 0
       modTooltip: The distance each projectile should be from one another
     - modName: Spread Speed Increase
-      modValue: 0
+      modValue: 18.41
       modVariableType: 0
       modTooltip: The initial speed of each sequential projectile will increase by
         this amount
     - modName: Delay Between Projectiles
-      modValue: 0.05
+      modValue: 0.408
       modVariableType: 1
       modTooltip: How many seconds to wait before spawning the next sequential projectile
     - modName: Mirror
@@ -65,89 +52,68 @@ MonoBehaviour:
       modTooltip: If we should shift the spread projectiles so the middle projectile
         will be where the inital angle is
     - modName: Center Remove Number
-      modValue: 0
+      modValue: 3
       modVariableType: 4
       modTooltip: The spread projectiles to remove starting at the centre of the
         spread. Can be used if you want to create a gap/opening in the middle
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
-  - thisPatternType: 1
+  - thisPatternType: 5
     thisPatternTypeModifiers:
-    - modName: Number of Projectiles
-      modValue: 8
-      modVariableType: 4
-      modTooltip: 
-    - modName: Spread Angle
-      modValue: 60
+    - modName: Spawn Offset Range Range
+      modValue: 8.5
       modVariableType: 0
-      modTooltip: The distance each projectile should be from one another
-    - modName: Spread Speed Increase
-      modValue: 0
-      modVariableType: 0
-      modTooltip: The initial speed of each sequential projectile will increase by
-        this amount
-    - modName: Delay Between Projectiles
-      modValue: 0
-      modVariableType: 1
-      modTooltip: How many seconds to wait before spawning the next sequential projectile
-    - modName: Mirror
-      modValue: 0
-      modVariableType: 5
-      modTooltip: Mirrors the Spread projectiles based on the initial angle
-    - modName: Shift
-      modValue: 1
-      modVariableType: 5
-      modTooltip: If we should shift the spread projectiles so the middle projectile
-        will be where the inital angle is
-    - modName: Center Remove Number
-      modValue: 0
-      modVariableType: 4
-      modTooltip: The spread projectiles to remove starting at the centre of the
-        spread. Can be used if you want to create a gap/opening in the middle
+      modTooltip: The distance from the source Transform to spawn the projectile
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
-  - thisPatternType: 3
+  - thisPatternType: 5
     thisPatternTypeModifiers:
-    - modName: Number of Projectiles
-      modValue: 6
-      modVariableType: 4
-      modTooltip: The amount of times should we loop the previous patterns
-    - modName: Fire Delay
-      modValue: 0.4
+    - modName: Spawn Offset Range Range
+      modValue: 4.58
       modVariableType: 0
-      modTooltip: How many seconds to wait before spawning the next sequential projectile
+      modTooltip: The distance from the source Transform to spawn the projectile
     thisPatternIsFoldout: 1
-    thisPatternIsActive: 0
+    thisPatternIsActive: 1
   _baseFoldout: 1
   basePAT:
-  - modName: Angle
-    modValue: 42.9
+  - modName: Initial Angle
+    modValue: 0
     modVariableType: 2
     modTooltip: 
-  - modName: Speed
-    modValue: 8.4
+  - modName: Initial Speed
+    modValue: 1
     modVariableType: 0
     modTooltip: 
   - modName: Extra Angle
     modValue: 0
     modVariableType: 0
     modTooltip: 
-  - modName: Delay
+  - modName: Spawn Delay
     modValue: 0
     modVariableType: 0
     modTooltip: 
   - modName: Spawn Offset
     modValue: 0
     modVariableType: 0
-    modTooltip: 
+    modTooltip: How far away from the source should this projectile spawn
   - modName: Target Player
     modValue: 1
     modVariableType: 5
-    modTooltip: 
+    modTooltip: Should this projectile's initial angle target the player?
+  - modName: Lifetime Duration
+    modValue: 0
+    modVariableType: 0
+    modTooltip: How many seconds before this projectile should be destroyed
   somePAT:
   - modName: Percent Chance
     modValue: 1
     modVariableType: 1
+    modTooltip: "The percent chance of each individual projectile from spawning in.
+      \n1 = All previous projectiles spawn in, \n0 = No previous projectiles spawn
+      inAAAAAA"
+  - modName: Percent Chances
+    modValue: 1
+    modVariableType: 4
     modTooltip: 
   spreadPAT:
   - modName: Number of Projectiles
@@ -157,14 +123,14 @@ MonoBehaviour:
   - modName: Spread Angle
     modValue: 1
     modVariableType: 0
-    modTooltip: 
+    modTooltip: The distance each projectile should be from one another
   - modName: Spread Speed Increase
     modValue: 0
     modVariableType: 0
     modTooltip: 
   - modName: Delay Between Projectiles
     modValue: 0
-    modVariableType: 0
+    modVariableType: 1
     modTooltip: 
   - modName: Mirror
     modValue: 0
@@ -213,4 +179,8 @@ MonoBehaviour:
   - modName: Spawn Offset Range Range
     modValue: 1
     modVariableType: 0
+    modTooltip: 
+  - modName: Spawn Range
+    modValue: 1
+    modVariableType: 3
     modTooltip: 

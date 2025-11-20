@@ -1,7 +1,7 @@
 using NodeCanvas.Framework;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ProjectilePatterns;
 namespace NodeCanvas.Tasks.Actions
 {
 

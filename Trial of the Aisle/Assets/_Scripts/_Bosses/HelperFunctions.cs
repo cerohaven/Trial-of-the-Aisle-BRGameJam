@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using ProjectilePatterns;
 public class HelperFunctions : MonoBehaviour
 {
     //Returns the attack to be used based on the percentage chance of getting it

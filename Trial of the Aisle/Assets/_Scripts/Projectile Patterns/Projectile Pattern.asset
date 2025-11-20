@@ -18,24 +18,31 @@ MonoBehaviour:
     - modName: Number of Projectiles
       modValue: 1
       modVariableType: 1
+      modTooltip: 
     - modName: Spread Angle
       modValue: 1
       modVariableType: 0
+      modTooltip: 
     - modName: Spread Speed Increase
       modValue: 0
       modVariableType: 0
+      modTooltip: 
     - modName: Delay Between Projectiles
       modValue: 0
       modVariableType: 0
+      modTooltip: 
     - modName: Mirror
       modValue: 0
       modVariableType: 2
+      modTooltip: 
     - modName: Shift
       modValue: 0
       modVariableType: 2
+      modTooltip: 
     - modName: Center Remove Number
       modValue: 0
       modVariableType: 1
+      modTooltip: 
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
   _baseFoldout: 1
@@ -43,72 +50,94 @@ MonoBehaviour:
   - modName: Angle
     modValue: 0
     modVariableType: 4
+    modTooltip: 
   - modName: Speed
     modValue: 1
     modVariableType: 0
+    modTooltip: 
   - modName: Extra Angle
     modValue: 0
     modVariableType: 0
+    modTooltip: 
   - modName: Delay
     modValue: 0
     modVariableType: 0
+    modTooltip: 
   - modName: Spawn Offset
     modValue: 0
     modVariableType: 0
+    modTooltip: 
   - modName: Target Player
     modValue: 1
     modVariableType: 2
+    modTooltip: 
   somePAT:
   - modName: Percent Chance
     modValue: 1
     modVariableType: 3
+    modTooltip: 
   spreadPAT:
   - modName: Number of Projectiles
     modValue: 1
     modVariableType: 1
+    modTooltip: 
   - modName: Spread Angle
     modValue: 1
     modVariableType: 0
+    modTooltip: 
   - modName: Spread Speed Increase
     modValue: 0
     modVariableType: 0
+    modTooltip: 
   - modName: Delay Between Projectiles
     modValue: 0
     modVariableType: 0
+    modTooltip: 
   - modName: Mirror
     modValue: 0
     modVariableType: 2
+    modTooltip: 
   - modName: Shift
     modValue: 0
     modVariableType: 2
+    modTooltip: 
   - modName: Center Remove Number
     modValue: 0
     modVariableType: 1
+    modTooltip: 
   randomizeAnglePAT:
   - modName: Angle Randomize Range
     modValue: 1
     modVariableType: 4
+    modTooltip: 
   rapidPAT:
   - modName: Number of Projectiles
     modValue: 1
     modVariableType: 1
+    modTooltip: 
   - modName: Fire Delay
     modValue: 0.2
     modVariableType: 0
+    modTooltip: 
   burstPAT:
   - modName: Number of Projectiles
     modValue: 1
     modVariableType: 1
+    modTooltip: 
   - modName: Angle Range
     modValue: 20
     modVariableType: 4
+    modTooltip: 
   - modName: Speed Range
     modValue: 0.5
     modVariableType: 0
+    modTooltip: 
   - modName: Fire Delay Range
     modValue: 0.5
     modVariableType: 0
+    modTooltip: 
   randomizeSpawnOffsetPAT:
   - modName: Spawn Offset Range Range
     modValue: 1
     modVariableType: 0
+    modTooltip: 

@@ -3,6 +3,7 @@ using ParadoxNotion.Design;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using ProjectilePatterns;
 
 namespace NodeCanvas.Tasks.Actions{
 

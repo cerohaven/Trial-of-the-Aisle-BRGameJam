@@ -7,7 +7,7 @@ using UnityEditor;
 #endif
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
-
+using ProjectilePatterns;
 /// <summary>
 /// I'm creating a tool to easily add more bosses into our game! This will contain all the universal data that
 /// every boss shares, like names, attacks used, projectiles thrown, health, and more!

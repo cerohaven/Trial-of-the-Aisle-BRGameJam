@@ -1,7 +1,7 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
-
+using ProjectilePatterns;
 namespace NodeCanvas.Tasks.Actions{
 
 	public class WavePillsActionTask : ActionTask{
