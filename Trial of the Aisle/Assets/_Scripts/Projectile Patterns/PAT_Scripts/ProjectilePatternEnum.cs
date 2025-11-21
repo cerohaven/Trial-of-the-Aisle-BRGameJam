@@ -18,10 +18,12 @@ namespace ProjectilePatterns
     public enum ModVariableType
     {
         Float,
-        Float_Slider_0_1,  // creates a float slider from ranges 0-1
-        Float_Slider_0_360,// creates a float slider from ranges 0-360
+        Float_Abs,          //Only positive float values
+        Float_Slider_0_1,   // creates a float slider from ranges 0-1
+        Float_Slider_0_360, // creates a float slider from ranges 0-360
         Int,
-        Int_Buttons, //Plus and Minus buttons surround the input field
+        Int_Abs,            //Only positive int values
+        Int_Buttons,        //Plus and Minus buttons surround the input field. [-] int field [+]
         Bool
     }
 
@@ -33,13 +35,14 @@ namespace ProjectilePatterns
         [SerializeField] public float modValue; //the current value of the modifier
         [SerializeField] public ModVariableType modVariableType; //how this modifier should be represented visually in the inspector
         [SerializeField] public string modTooltip; //the helper text that appears when the user hovers over this element
-
-        public PatternTypeMod(string name, float val, ModVariableType type, string tooltip = "")
+        [SerializeField] public bool modVisibleInInspector; //tells if this mod should be kept hidden or be visible to the user
+        public PatternTypeMod(string name, float val, ModVariableType type, string tooltip = "", bool visibleInInspector = true)
         {
             modName = name;
             modValue = val;
             modVariableType = type;
             modTooltip = tooltip;
+            modVisibleInInspector = visibleInInspector;
         }
     }
 

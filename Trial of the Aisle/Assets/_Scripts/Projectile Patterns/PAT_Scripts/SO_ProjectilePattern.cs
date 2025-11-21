@@ -48,7 +48,7 @@ namespace ProjectilePatterns
         /// modName, modValue, modVariableType, modTooltip
         /// 1. Like the other variables in the struct, make a new [SerializeField] public [variableType] [modName]
         /// 2. Add it in the constructor of that struct (like the others)
-        /// 3. Now you can go in the Initialize_PAT functions and go to each pattern modifier and add it there!
+        /// 3. Now you can go in the Initialize_PAT functions (below) and go to each pattern modifier and add it there!
         /// </summary>
         /// 
 
@@ -59,16 +59,18 @@ namespace ProjectilePatterns
         public static PatternTypeMod[] Initialize_BasePAT()
         {
             return new PatternTypeMod[] {
-                new PatternTypeMod("Initial Angle", 0, ModVariableType.Float),              //0
-                new PatternTypeMod("Initial Speed", 1, ModVariableType.Float),              //1
-                new PatternTypeMod("Extra Angle", 0, ModVariableType.Float),                //2
-                new PatternTypeMod("Spawn Delay", 0, ModVariableType.Float),                //3
-                new PatternTypeMod("Spawn Offset", 0, ModVariableType.Float,                //4
-                                   "How far away from the source should this projectile spawn"),
-                new PatternTypeMod("Target Player", 1, ModVariableType.Bool,                //5
+                new PatternTypeMod("Target Player", 1, ModVariableType.Bool,                //0
                                    "Should this projectile's initial angle target the player?"),
-                new PatternTypeMod("Lifetime Duration", 0, ModVariableType.Float,           //6
-                                   "How many seconds before this projectile should be destroyed"),
+                new PatternTypeMod("Initial Angle", 0, ModVariableType.Float),              //1
+                new PatternTypeMod("Initial Speed", 5, ModVariableType.Float),              //2
+                new PatternTypeMod("Extra Angle", 0, ModVariableType.Float, "", false),     //3
+                new PatternTypeMod("Spawn Delay", 0, ModVariableType.Float_Abs),            //4
+                new PatternTypeMod("Spawn Offset", 0, ModVariableType.Float,                //5
+                                   "How far away from the source should this projectile spawn"),
+                
+                new PatternTypeMod("Lifetime Duration", 3, ModVariableType.Float_Abs,       //6
+                                   "How many seconds before this projectile should be destroyed. \n" +
+                                   "0 = infinity"),
             };
 
         }
@@ -92,8 +94,8 @@ namespace ProjectilePatterns
         public static PatternTypeMod[] Initialize_SpreadPAT()
         {
             return new PatternTypeMod[] {
-                new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons),            //0
-                new PatternTypeMod("Spread Angle", 1, ModVariableType.Float,                            //1
+                new PatternTypeMod("Number of Projectiles", 5, ModVariableType.Int_Buttons),            //0
+                new PatternTypeMod("Spread Angle", 20, ModVariableType.Float,                           //1
                                    "The distance each projectile should be from one another"),
                 new PatternTypeMod("Spread Speed Increase", 0f, ModVariableType.Float,                  //2
                                    "The initial speed of each sequential projectile will increase by this amount"),     
@@ -127,7 +129,7 @@ namespace ProjectilePatterns
         public static PatternTypeMod[] Initialize_RapidPAT()
         {
             return new PatternTypeMod[] {
-                new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons,  //0
+                new PatternTypeMod("Number of Projectiles", 2, ModVariableType.Int_Buttons,  //0
                                    "The amount of times should we loop the previous patterns"),
                 new PatternTypeMod("Fire Delay", 0.2f, ModVariableType.Float,                //1
                                    "How many seconds to wait before spawning the next sequential projectile"),
@@ -141,12 +143,12 @@ namespace ProjectilePatterns
         public static PatternTypeMod[] Initialize_BurstPAT()
         {
             return new PatternTypeMod[] {
-                new PatternTypeMod("Number of Projectiles", 1, ModVariableType.Int_Buttons), //0
+                new PatternTypeMod("Number of Projectiles", 3, ModVariableType.Int_Buttons), //0
                 new PatternTypeMod("Angle Range", 20f, ModVariableType.Float,                //1
                                    "The random distance from -value to +value the projectiles can be from the initial angle in the clump"),
-                new PatternTypeMod("Speed Range", 0.5f, ModVariableType.Float,               //2
+                new PatternTypeMod("Speed Range", 0.2f, ModVariableType.Float,               //2
                                    "The random speed from -value to +value each projectile in the clump can have"),
-                new PatternTypeMod("Fire Delay Range", 0.5f, ModVariableType.Float,          //3
+                new PatternTypeMod("Fire Delay Range", 0.1f, ModVariableType.Float,          //3
                                    "The random delay from -value to +value to spawn each projectile in the clump "),
             };
 
@@ -158,7 +160,7 @@ namespace ProjectilePatterns
         public static PatternTypeMod[] Initialize_RandomizeSpawnOffsetPAT()
         {
             return new PatternTypeMod[] {
-                new PatternTypeMod("Spawn Offset Range Range", 1, ModVariableType.Float,    //0
+                new PatternTypeMod("Spawn Offset Range Range", 0, ModVariableType.Float,    //0
                 "The distance from the source Transform to spawn the projectile"),
             };
 
@@ -171,13 +173,12 @@ namespace ProjectilePatterns
 
         public List<PatternTypeMod[]> GetProjectilePatterns()
         {
-            bool targetPlayer = basePAT[5].modValue == 1 ? true : false;
-            float calculateBaseAngle = targetPlayer == true ? -99 : basePAT[0].modValue;
+            bool targetPlayer = basePAT[0].modValue == 1 ? true : false;
+            float calculateBaseAngle = targetPlayer == true ? -99 : basePAT[1].modValue;
             //Create a temporary list of Base Pattern structs and add a baseProjectile Already
             List<PatternTypeMod[]> tempProjectileList = new List<PatternTypeMod[]>
             {
-
-                CreateNewProjectile(calculateBaseAngle, basePAT[1].modValue, basePAT[2].modValue, basePAT[3].modValue, basePAT[4].modValue)
+                CreateNewProjectile(calculateBaseAngle, basePAT[2].modValue, basePAT[3].modValue, basePAT[4].modValue, basePAT[5].modValue)
             };
 
             List<PatternTypeMod[]> temptempProjectileList = new List<PatternTypeMod[]>();
@@ -212,60 +213,75 @@ namespace ProjectilePatterns
                         float delay = _projectilePatterns[i].thisPatternTypeModifiers[3].modValue;
                         bool mirror = _projectilePatterns[i].thisPatternTypeModifiers[4].modValue > 0;
                         bool shift = _projectilePatterns[i].thisPatternTypeModifiers[5].modValue > 0;
-                        int spreadRemoveNumber = (int)_projectilePatterns[i].thisPatternTypeModifiers[6].modValue;
+                        int centerRemoveNumber = (int)_projectilePatterns[i].thisPatternTypeModifiers[6].modValue;
                         bool isEven = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue % 2 == 0;
                         float sum = extraAngle * (amountOfProjectiles - 1);
 
-
-
+                        
                         //Loop through all the previous projectiles
                         for (int j = 0; j < tempProjectileList.Count; j++)
-                        {
-
-                            //Loop the amount of projectiles we want to spawn for the spread
-                            for (int k = 0 + spreadRemoveNumber; k < amountOfProjectiles; k++)
                             {
 
-                                float shiftAmount = 0;
-
-
-                                if (shift)
+                                //Loop the amount of projectiles we want to spawn for the spread
+                                for (int k = 0; k < amountOfProjectiles; k++)
                                 {
-                                    if (!isEven)
+                                    if (centerRemoveNumber > 0)
                                     {
-                                        shiftAmount = extraAngle * Mathf.Floor(amountOfProjectiles / 2);
+                                        if (shift)
+                                        {
+                                            int middleNum = amountOfProjectiles / 2;
+                                            int max = middleNum + centerRemoveNumber;
+                                            int min = middleNum - centerRemoveNumber;
+
+                                            if (isEven) min--;
+
+                                            if (k > min && k < max) continue;
+                                        }
+                                        else
+                                        {
+                                            if (k < centerRemoveNumber) continue;
+                                        }
                                     }
-                                    else
+                                    float shiftAmount = 0;
+
+
+                                    if (shift)
                                     {
+                                        if (!isEven)
+                                        {
+                                            shiftAmount = extraAngle * Mathf.Floor(amountOfProjectiles / 2);
+                                        }
+                                        else
+                                        {
 
-                                        shiftAmount = (sum / amountOfProjectiles) * (amountOfProjectiles / 2.00f);
+                                            shiftAmount = (sum / amountOfProjectiles) * (amountOfProjectiles / 2.00f);
+                                        }
                                     }
-                                }
 
-                                temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle, //Angle
-                                                                               tempProjectileList[j][1].modValue + speed * k,                    //Speed
-                                                                               tempProjectileList[j][2].modValue + extraAngle * k - shiftAmount, //Extra Angle
-                                                                               tempProjectileList[j][3].modValue + delay * k,                    //Delay
-                                                                               tempProjectileList[j][4].modValue));                              //Spawn Offset
-
-                                //If we're mirroring, we create a new bullet on the other side
-                                if (mirror)
-                                {
                                     temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle, //Angle
-                                                                               tempProjectileList[j][1].modValue + speed * k,           //Speed
-                                                                               tempProjectileList[j][2].modValue - extraAngle * k,      //Extra Angle
-                                                                               tempProjectileList[j][3].modValue + delay * k,           //Delay
-                                                                               tempProjectileList[j][4].modValue));                     //Spawn Offset
+                                                                                   tempProjectileList[j][2].modValue + speed * k,                    //Speed
+                                                                                   tempProjectileList[j][3].modValue + extraAngle * k - shiftAmount, //Extra Angle
+                                                                                   tempProjectileList[j][4].modValue + delay * k,                    //Delay
+                                                                                   tempProjectileList[j][5].modValue));                              //Spawn Offset
+
+                                    //If we're mirroring, we create a new bullet on the other side
+                                    if (mirror)
+                                    {
+                                        temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle, //Angle
+                                                                                   tempProjectileList[j][2].modValue + speed * k,           //Speed
+                                                                                   tempProjectileList[j][3].modValue - extraAngle * k,      //Extra Angle
+                                                                                   tempProjectileList[j][4].modValue + delay * k,           //Delay
+                                                                                   tempProjectileList[j][5].modValue));                     //Spawn Offset
+                                    }
+
+                                }
+
+                                if (mirror || shift || j == 0)
+                                {
+                                    tempProjectileList.RemoveAt(j);
                                 }
 
                             }
-
-                            if (mirror || shift || j == 0)
-                            {
-                                tempProjectileList.RemoveAt(j);
-                            }
-
-                        }
                         break;
 
                     case ProjectilePatterns.Randomize_Angle:
@@ -277,7 +293,7 @@ namespace ProjectilePatterns
                             float range = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue;
                             float randomAngle = Random.Range(-range, range);
 
-                            tempProjectileList[j][2].modValue += randomAngle;
+                            tempProjectileList[j][3].modValue += randomAngle;
 
                         }
 
@@ -290,11 +306,11 @@ namespace ProjectilePatterns
                             for (int k = 1; k < (int)_projectilePatterns[i].thisPatternTypeModifiers[0].modValue; k++)
                             {
                                 temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle,
-                                                                               tempProjectileList[j][1].modValue,
                                                                                tempProjectileList[j][2].modValue,
-                                                                               tempProjectileList[j][3].modValue +
+                                                                               tempProjectileList[j][3].modValue,
+                                                                               tempProjectileList[j][4].modValue +
                                                                                _projectilePatterns[i].thisPatternTypeModifiers[1].modValue * k,
-                                                                               tempProjectileList[j][4].modValue)); //spawnOffset
+                                                                               tempProjectileList[j][5].modValue)); //Spawn Offset
 
                             }
                         }
@@ -318,10 +334,10 @@ namespace ProjectilePatterns
                                 float randomSpeedRange = Random.Range(0, speedRange);
 
                                 temptempProjectileList.Add(CreateNewProjectile(calculateBaseAngle,
-                                                                               tempProjectileList[j][1].modValue + randomSpeedRange, //speed
-                                                                               tempProjectileList[j][2].modValue + randomAngleRange, //extra angle
-                                                                               tempProjectileList[j][3].modValue + randomDelayRange, //delay
-                                                                               tempProjectileList[j][4].modValue)); //spawnOffset
+                                                                               tempProjectileList[j][2].modValue + randomSpeedRange, //speed
+                                                                               tempProjectileList[j][3].modValue + randomAngleRange, //extra angle
+                                                                               tempProjectileList[j][4].modValue + randomDelayRange, //delay
+                                                                               tempProjectileList[j][5].modValue));                  //Spawn Offset
                             }
                         }
 
@@ -334,9 +350,9 @@ namespace ProjectilePatterns
                         {
                             //Get Random Range
                             float range = _projectilePatterns[i].thisPatternTypeModifiers[0].modValue;
-                            float randomAngle = Random.Range(tempProjectileList[j][4].modValue, range);
+                            float randomAngle = Random.Range(tempProjectileList[j][5].modValue, range);
 
-                            tempProjectileList[j][4].modValue = randomAngle;
+                            tempProjectileList[j][5].modValue = randomAngle;
 
                         }
 
@@ -363,11 +379,12 @@ namespace ProjectilePatterns
         private PatternTypeMod[] CreateNewProjectile(float angle, float speed, float extraAngle, float shootDelay, float spawnOffset)
         {
             PatternTypeMod[] bp = new PatternTypeMod[basePAT.Length];
-            bp[0].modValue = angle;
-            bp[1].modValue = speed;
-            bp[2].modValue = extraAngle;
-            bp[3].modValue = shootDelay;
-            bp[4].modValue = spawnOffset;
+            bp[1].modValue = angle;
+            bp[2].modValue = speed;
+            bp[3].modValue = extraAngle;
+            bp[4].modValue = shootDelay;
+            bp[5].modValue = spawnOffset;
+            bp[6].modValue = basePAT[6].modValue;
             return bp;
         }
 
@@ -408,10 +425,42 @@ namespace ProjectilePatterns
                 //the third one will now go to the 2 index and now share it's modValue.
                 for(int j = 0; j < _projectilePatterns[i].thisPatternTypeModifiers.Length; j++)
                 {
-                    if (tempMod.Length <= j) continue;
-                    _projectilePatterns[i].thisPatternTypeModifiers[j].modValue = tempMod[j].modValue;
+                    //Check if tempMod contains the name of this index. If so, then it's a match! Set the mod value
+                    for (int k = 0; k < tempMod.Length; k++)
+                    {
+                        //success!
+                        if(_projectilePatterns[i].thisPatternTypeModifiers[j].modName.Equals(tempMod[k].modName))
+                            _projectilePatterns[i].thisPatternTypeModifiers[j].modValue = tempMod[k].modValue;
+                    }
+
                 }
             }
+
+            //Now do the same for the Base PAT
+            //Store the current pattern in temporary array
+            PatternTypeMod[] tempBaseMod = basePAT;
+
+            //Set the base pattern to the new one
+            PatternTypeMod[] newBaseMod = Initialize_BasePAT();
+            if (newBaseMod == null) return;
+
+            basePAT = newBaseMod;
+
+            //Now get the newly created pattern and add back in our content by the index
+            //NOTE: This might mix up values since it's only by index. If we have 3 modifiers and delete the second one,
+            //the third one will now go to the 2 index and now share it's modValue.
+            for (int j = 0; j < basePAT.Length; j++)
+            {
+                //Check if tempMod contains the name of this index. If so, then it's a match! Set the mod value
+                for (int k = 0; k < tempBaseMod.Length; k++)
+                {
+                    //success!
+                    if (basePAT[j].modName.Equals(tempBaseMod[k].modName))
+                        basePAT[j].modValue = tempBaseMod[k].modValue;
+                }
+
+            }
+
         }
 
         public bool IsPatternStructsUpdated()
@@ -426,6 +475,10 @@ namespace ProjectilePatterns
                     return false;
                 }
             }
+
+            //now check if the basePAT is up to date or not
+            if (basePAT != Initialize_BasePAT()) return false;
+
             return true;
         }
 

@@ -1,3 +1,5 @@
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEditorInternal;
@@ -41,7 +43,6 @@ namespace ProjectilePatterns
         private readonly Color regularPatternColour2 = new Color(0.25f, 0.25f, 0.25f); //lighter
         Color defaultGUIContentColour;
         Color defaultGUIBackgroundColour;
-        GUIStyle foldoutTitle = new GUIStyle();
 
 
         private ReorderableList projPatternModList;
@@ -138,7 +139,9 @@ namespace ProjectilePatterns
                         foldoutRect.y += EditorGUIUtility.singleLineHeight + 3;
                         Rect patternTypeRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight);
                         ProjectilePatterns myEnum = (ProjectilePatterns)EditorGUI.EnumPopup(patternTypeRect, new GUIContent("Pattern Type "), projectilePatternWAH.ProjectilePatternList[i].thisPatternType);
-
+                        
+                        //If we have any logic to change if modifiers are visible in the inspector, change it with this function
+                        UpdateIsVisibleInInspectorLogic(_patternModStruct, (ProjectilePatterns)_patternType.enumValueIndex);
 
                         #region Changing Struct Info When Enum Changes
                         if (projectilePatternWAH.ProjectilePatternList[i].thisPatternType != myEnum)
@@ -153,11 +156,13 @@ namespace ProjectilePatterns
                         #region Pattern Struct
                         for (int j = 0; j < _patternModStruct.arraySize; j++)
                         {
+                            if (IsModVisibleInspector(j, _patternModStruct) == false) continue; //if this modifier is not visible we shouldn't draw it
+
                             foldoutRect.y += EditorGUIUtility.singleLineHeight + 3;
 
                             Rect propertyRect = new Rect(foldoutRect.x, foldoutRect.y, foldoutRect.width, EditorGUIUtility.singleLineHeight + 1);
 
-                            DrawModifier(j, propertyRect);
+                            DrawModifier(j, propertyRect, _patternModStruct);
 
                         }
                         #endregion
@@ -198,7 +203,8 @@ namespace ProjectilePatterns
                 if (_patternFoldout.boolValue == true)
                 {
                     _patternModStruct = _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers");
-                    elementSizeBgCalculation = 10 + (_patternModStruct.arraySize * 20) + 40;
+                    //Loop through all variables to check if they are visible in inspector and get that number
+                    elementSizeBgCalculation = 10 + (NumberOfModifiersInPatternThatAreVisibleInInspector(_patternModStruct) * 20) + 50;
                 }
                 else
                 {
@@ -246,9 +252,6 @@ namespace ProjectilePatterns
             titleStyle.fontStyle = FontStyle.Bold;
             titleStyle.alignment = TextAnchor.MiddleLeft;
 
-            foldoutTitle.normal.textColor = Color.white;
-            foldoutTitle.fontSize = 12;
-            foldoutTitle.fontStyle = FontStyle.Bold;
             #endregion
 
             // ----- TITLE AND LINE ELEMENTS ----- //
@@ -275,49 +278,37 @@ namespace ProjectilePatterns
 
             if (baseVal)
             {
-                bool targetPlayerVal = basePAT.GetArrayElementAtIndex(5).FindPropertyRelative("modValue").floatValue == 1 ? true : false;
+                GUILayout.Space(5);
 
-
+                bool targetPlayerVal = basePAT.GetArrayElementAtIndex(0).FindPropertyRelative("modValue").floatValue == 1 ? true : false;
                 int backgroundRectSizeDecrease = targetPlayerVal == true ? 2 : 1;
 
-                GUILayout.Space(5);
-                EditorGUI.DrawRect(new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + ((basePAT.arraySize - backgroundRectSizeDecrease) * sizeOfField) + 10), regularPatternColour2);
+                //hide/show initial angle depending on if the target player bool is true
+                basePAT.GetArrayElementAtIndex(1).FindPropertyRelative("modVisibleInInspector").boolValue = !targetPlayerVal;
 
-                //Adding a "targetPlayer" toggle before the BasePat modifiers are displayed
-                EditorGUILayout.BeginHorizontal();
-
-                GUILayout.Space(20);
-                bool isToggled = EditorGUILayout.Toggle("Target Player", targetPlayerVal, GUILayout.MaxWidth(250));
-                basePAT.GetArrayElementAtIndex(5).FindPropertyRelative("modValue").floatValue = isToggled == true ? 1 : 0;
-                EditorGUILayout.EndHorizontal();
-
-
+                Rect basePATBackgroundRect = new Rect(lastRect.x, lastRect.y + 20, lastRect.width, 10 + ((basePAT.arraySize - backgroundRectSizeDecrease) * sizeOfField) + 10);
+                Rect basePATModsRect = new Rect(basePATBackgroundRect.x + 20, basePATBackgroundRect.y + 6, basePATBackgroundRect.width - 60, EditorGUIUtility.singleLineHeight);
+                
+                EditorGUI.DrawRect(basePATBackgroundRect, regularPatternColour2);
+                
                 //The Rest of the Modifiers in the Base Pattern
                 for (int j = 0; j < basePAT.arraySize; j++)
                 {
-                    if (j == 2 || j == 5) continue; //We don't want to display extra angle to designers, that's only really needed for code
-                    if (targetPlayerVal == true && j == 0) continue; //if we are targetting the player and this iteration is on the "Angle", continue so we don't display the Angle
+                    if (IsModVisibleInspector(j, basePAT) == false) continue; //if this modifier is not visible we shouldn't draw it
+                    int indent = j == 1 ? 20 : 0;
+                    DrawModifier(j, basePATModsRect, basePAT, indent);
 
-                    EditorGUILayout.BeginHorizontal();
+                    basePATModsRect.y += EditorGUIUtility.singleLineHeight + 3;
 
-                    GUILayout.Space(20);
-                    if (j == 0) GUILayout.Space(20); //Add an indent to the angle to it's under the target player bln
-
-                    basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue =
-                           EditorGUILayout.FloatField(basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modName").stringValue,
-                                                       basePAT.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue,
-                                                       GUILayout.MaxWidth(250));
-
-                    EditorGUILayout.EndHorizontal();
                 }
+
+                GUILayout.Space(basePATBackgroundRect.height);
             }
 
             EditorGUILayout.EndFoldoutHeaderGroup();
             #endregion
 
-
-
-            GUILayout.Space(30);
+            GUILayout.Space(20);
 
             // ----- LIST ----- //
             selectedElement = -1;
@@ -407,47 +398,91 @@ namespace ProjectilePatterns
                 property.GetArrayElementAtIndex(j).FindPropertyRelative("modValue").floatValue = patToUse[j].modValue;
                 property.GetArrayElementAtIndex(j).FindPropertyRelative("modVariableType").enumValueIndex = (int)patToUse[j].modVariableType;
                 property.GetArrayElementAtIndex(j).FindPropertyRelative("modTooltip").stringValue = patToUse[j].modTooltip;
+                property.GetArrayElementAtIndex(j).FindPropertyRelative("modVisibleInInspector").boolValue = patToUse[j].modVisibleInInspector;
             }
         }
         
-        //public void RefreshContents()
-        //{
-        //    for (int i = 0; i < _projectilePatterns.arraySize; i++)
-        //    {
-        //        UpdateModifierInfo((ProjectilePatterns)_projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternType").enumValueIndex,
-        //            _projectilePatterns.GetArrayElementAtIndex(i).FindPropertyRelative("thisPatternTypeModifiers"));
-        //        Debug.Log("Refreshing");
-        //    }
+        //This function is called before drawing the fields. Place all code that tells if values should be hidden or not here.
+        //property is the whole pattern, not just the mod since we might want to grab reference to previous mods in this pattern
+        private void UpdateIsVisibleInInspectorLogic(SerializedProperty property, ProjectilePatterns patternType)
+        {
+            switch (patternType)
+            {
+                case ProjectilePatterns.Some:
+                    break;
+                case ProjectilePatterns.Spread:
+                    //If the user selects Mirror, Shift should be hidden.
+                    //If the user selects Shift, Mirror should be hidden. 
+                    //Both can't be enabled at the same time or else weirdness ensues.
+                    bool shift = property.GetArrayElementAtIndex(5).FindPropertyRelative("modValue").floatValue == 1 ? true : false;
+                    bool mirror = property.GetArrayElementAtIndex(4).FindPropertyRelative("modValue").floatValue == 1 ? true : false;
 
-        //}
-        private void DrawModifier(int modIndex, Rect rect)
+                    //if Shift is true, mirror should be hidden and vice versa
+                    if (shift) property.GetArrayElementAtIndex(4).FindPropertyRelative("modVisibleInInspector").boolValue = false;
+                    else property.GetArrayElementAtIndex(4).FindPropertyRelative("modVisibleInInspector").boolValue = true;
+
+                    if (mirror) property.GetArrayElementAtIndex(5).FindPropertyRelative("modVisibleInInspector").boolValue = false;
+                    else property.GetArrayElementAtIndex(5).FindPropertyRelative("modVisibleInInspector").boolValue = true;
+
+                    break;
+                case ProjectilePatterns.Randomize_Angle:
+                    break;
+                case ProjectilePatterns.Rapid:
+                    break;
+                case ProjectilePatterns.Burst:
+                    break;
+                case ProjectilePatterns.Randomize_Spawn_Offset:
+                    break;
+            }
+            
+        }
+
+        //For the patternProperty, pass in the Pattern array we'd like to sample.
+        private float DrawModifier(int modIndex, Rect rect, SerializedProperty patternProperty, int indentX = 0)
         {
             //Creates a visual field in the inspector based on the mod variable type it's set to.
             //Changing the Field Type will help designers more intuitively interact with the UI and offer constraints on what values are available
+            Rect newRect = rect;
+            newRect.x += indentX;
+            newRect.width -= indentX;
 
             float valueOfModifier = 0f;
-            string modName = _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modName").stringValue;
-            float modValue = _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue;
-            string modTooltip = _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modTooltip").stringValue;
-            ModVariableType modType = (ModVariableType)_patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modVariableType").enumValueIndex;
-            
+
+
+            string modName = patternProperty.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modName").stringValue;
+            float modValue = patternProperty.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue;
+            string modTooltip = patternProperty.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modTooltip").stringValue;
+            ModVariableType modType = (ModVariableType)patternProperty.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modVariableType").enumValueIndex;
+
+            if (IsModVisibleInspector(modIndex, patternProperty) == false) return modValue;
+
             switch (modType)
             {
                 case ModVariableType.Float:
-                    valueOfModifier = EditorGUI.FloatField(rect, new GUIContent(modName, modTooltip), modValue);
+                    valueOfModifier = EditorGUI.FloatField(newRect, new GUIContent(modName, modTooltip), modValue);
+                    break;
+
+                case ModVariableType.Float_Abs:
+                    valueOfModifier = EditorGUI.FloatField(newRect, new GUIContent(modName, modTooltip), modValue);
+                    valueOfModifier = Mathf.Max(valueOfModifier, 0f); //clamp to not go below 0
                     break;
 
                 case ModVariableType.Float_Slider_0_1:
-                    valueOfModifier = EditorGUI.Slider(rect, new GUIContent(modName, modTooltip), modValue, 0f, 1f);
+                    valueOfModifier = EditorGUI.Slider(newRect, new GUIContent(modName, modTooltip), modValue, 0f, 1f);
                     break;
 
                 case ModVariableType.Float_Slider_0_360:
-                    valueOfModifier = EditorGUI.Slider(rect, new GUIContent(modName, modTooltip), modValue, 0f, 360f);
+                    valueOfModifier = EditorGUI.Slider(newRect, new GUIContent(modName, modTooltip), modValue, 0f, 360f);
                     break;
 
                 case ModVariableType.Int:
 
-                    valueOfModifier = EditorGUI.IntField(rect, new GUIContent(modName, modTooltip), (int)modValue);
+                    valueOfModifier = EditorGUI.IntField(newRect, new GUIContent(modName, modTooltip), (int)modValue);
+                    break;
+
+                case ModVariableType.Int_Abs:
+
+                    valueOfModifier = EditorGUI.IntField(newRect, new GUIContent(modName, modTooltip), (int)modValue);
                     valueOfModifier = Mathf.Max(valueOfModifier, 0f); //clamp to not go below 0
                     break;
 
@@ -455,22 +490,25 @@ namespace ProjectilePatterns
                     GUIStyle style = new GUIStyle(GUI.skin.textField);
                     style.alignment = TextAnchor.MiddleCenter;
                     Event evnt = Event.current;
-                    Rect labelRect = new Rect(rect.x, rect.y, EditorGUIUtility.labelWidth, rect.height);
-                    Rect minusButtonRect = new Rect(rect.x + EditorGUIUtility.labelWidth, rect.y, 20, 20);
-                    Rect intFieldRect = new Rect(rect.x + labelRect.width + minusButtonRect.width, rect.y, 100, rect.height);
-                    Rect plusButtonRect = new Rect(intFieldRect.x + intFieldRect.width, rect.y, 20, 20);
+                    float endOfScreenX = rect.width;
+                    
+                    Rect labelRect = new Rect(newRect.x, newRect.y, EditorGUIUtility.labelWidth, newRect.height);
+                    Rect minusButtonRect = new Rect(newRect.x + EditorGUIUtility.labelWidth, newRect.y, 20, 20);
 
-                    EditorGUI.LabelField(rect, new GUIContent(modName, modTooltip));
+                    //to keep the int field from extending if the inspector window is too narrow
+                    float endOfScreenDifference =  (newRect.x + labelRect.width + minusButtonRect.width) - endOfScreenX;
+                    float subtractEndOfScreenX = newRect.x + labelRect.width + minusButtonRect.width > endOfScreenX ? endOfScreenDifference : 0; 
+                    Rect intFieldRect = new Rect(newRect.x + labelRect.width + minusButtonRect.width, rect.y, EditorGUIUtility.fieldWidth - subtractEndOfScreenX, newRect.height);
+                    Rect plusButtonRect = new Rect(intFieldRect.x + intFieldRect.width, newRect.y, 20, 20);
+
+                    EditorGUI.LabelField(newRect, new GUIContent(modName, modTooltip));
 
                     valueOfModifier = EditorGUI.IntField(intFieldRect, (int)modValue, style);
 
                     #region Drag Contents
 
-
                     //Gets the action we're doing with out mouse on this element
                     int dragControlID = GUIUtility.GetControlID(FocusType.Passive, labelRect);
-
-
 
                     //Have events for the mouse to check if the user is dragging over the Label and to affect the int value
                     switch (evnt.GetTypeForControl(dragControlID))
@@ -526,16 +564,22 @@ namespace ProjectilePatterns
 
                 case ModVariableType.Bool:
                     bool visualValue = modValue == 1 ? true : false;
-                    bool blnValue = EditorGUI.Toggle(rect, new GUIContent(modName, modTooltip), visualValue);
+                    bool blnValue = EditorGUI.Toggle(newRect, new GUIContent(modName, modTooltip), visualValue);
                     valueOfModifier = blnValue == true ? 1f : 0f;
                     break;
 
 
             }
 
-            _patternModStruct.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue = valueOfModifier;
+            patternProperty.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modValue").floatValue = valueOfModifier;
 
+            return valueOfModifier;
 
+        }
+
+        private bool IsModVisibleInspector(int modIndex, SerializedProperty property)
+        {
+            return property.GetArrayElementAtIndex(modIndex).FindPropertyRelative("modVisibleInInspector").boolValue;
         }
 
         private void AddToList()
@@ -597,6 +641,17 @@ namespace ProjectilePatterns
             if (isUpToDate) return;
 
             projectilePatternWAH.RefreshContents();
+        }
+
+        private int NumberOfModifiersInPatternThatAreVisibleInInspector(SerializedProperty pattern)
+        {
+            int count = 0;
+            for (int i = 0; i < pattern.arraySize; i++)
+            {
+                if (pattern.GetArrayElementAtIndex(i).FindPropertyRelative("modVisibleInInspector").boolValue == true) count++;
+            }
+
+            return count;
         }
     }
 }

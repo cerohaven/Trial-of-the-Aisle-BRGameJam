@@ -13,174 +13,205 @@ MonoBehaviour:
   m_Name: Projectile Pattern 2
   m_EditorClassIdentifier: 
   _projectilePatterns:
-  - thisPatternType: 0
-    thisPatternTypeModifiers:
-    - modName: Percent Chance
-      modValue: 0.374
-      modVariableType: 1
-      modTooltip: "The percent chance of each individual projectile from spawning
-        in. \n1 = All previous projectiles spawn in, \n0 = No previous projectiles
-        spawn inAAAAAA"
-    thisPatternIsFoldout: 1
-    thisPatternIsActive: 1
   - thisPatternType: 1
     thisPatternTypeModifiers:
     - modName: Number of Projectiles
-      modValue: 12
-      modVariableType: 4
+      modValue: 6
+      modVariableType: 6
       modTooltip: 
+      modVisibleInInspector: 1
     - modName: Spread Angle
-      modValue: 5.5
+      modValue: 41.36
       modVariableType: 0
       modTooltip: The distance each projectile should be from one another
+      modVisibleInInspector: 1
     - modName: Spread Speed Increase
-      modValue: 18.41
+      modValue: 0
       modVariableType: 0
       modTooltip: The initial speed of each sequential projectile will increase by
         this amount
+      modVisibleInInspector: 1
     - modName: Delay Between Projectiles
-      modValue: 0.408
-      modVariableType: 1
-      modTooltip: How many seconds to wait before spawning the next sequential projectile
-    - modName: Mirror
       modValue: 0
-      modVariableType: 5
+      modVariableType: 2
+      modTooltip: How many seconds to wait before spawning the next sequential projectile
+      modVisibleInInspector: 1
+    - modName: Mirror
+      modValue: 1
+      modVariableType: 7
       modTooltip: Mirrors the Spread projectiles based on the initial angle
+      modVisibleInInspector: 1
     - modName: Shift
       modValue: 0
-      modVariableType: 5
+      modVariableType: 7
       modTooltip: If we should shift the spread projectiles so the middle projectile
         will be where the inital angle is
+      modVisibleInInspector: 0
     - modName: Center Remove Number
-      modValue: 3
-      modVariableType: 4
+      modValue: 0
+      modVariableType: 6
       modTooltip: The spread projectiles to remove starting at the centre of the
         spread. Can be used if you want to create a gap/opening in the middle
+      modVisibleInInspector: 1
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
-  - thisPatternType: 5
+  - thisPatternType: 4
     thisPatternTypeModifiers:
-    - modName: Spawn Offset Range Range
-      modValue: 8.5
+    - modName: Number of Projectiles
+      modValue: 4
+      modVariableType: 6
+      modTooltip: 
+      modVisibleInInspector: 1
+    - modName: Angle Range
+      modValue: 5
       modVariableType: 0
-      modTooltip: The distance from the source Transform to spawn the projectile
-    thisPatternIsFoldout: 1
-    thisPatternIsActive: 1
-  - thisPatternType: 5
-    thisPatternTypeModifiers:
-    - modName: Spawn Offset Range Range
-      modValue: 4.58
+      modTooltip: The random distance from -value to +value the projectiles can be
+        from the initial angle in the clump
+      modVisibleInInspector: 1
+    - modName: Speed Range
+      modValue: 0.5
       modVariableType: 0
-      modTooltip: The distance from the source Transform to spawn the projectile
+      modTooltip: The random speed from -value to +value each projectile in the clump
+        can have
+      modVisibleInInspector: 1
+    - modName: Fire Delay Range
+      modValue: 0.1
+      modVariableType: 0
+      modTooltip: 'The random delay from -value to +value to spawn each projectile
+        in the clump '
+      modVisibleInInspector: 1
     thisPatternIsFoldout: 1
     thisPatternIsActive: 1
   _baseFoldout: 1
   basePAT:
+  - modName: Target Player
+    modValue: 1
+    modVariableType: 7
+    modTooltip: Should this projectile's initial angle target the player?
+    modVisibleInInspector: 1
   - modName: Initial Angle
     modValue: 0
-    modVariableType: 2
-    modTooltip: 
-  - modName: Initial Speed
-    modValue: 1
     modVariableType: 0
     modTooltip: 
+    modVisibleInInspector: 0
+  - modName: Initial Speed
+    modValue: 5
+    modVariableType: 0
+    modTooltip: 
+    modVisibleInInspector: 1
   - modName: Extra Angle
     modValue: 0
     modVariableType: 0
     modTooltip: 
+    modVisibleInInspector: 0
   - modName: Spawn Delay
     modValue: 0
-    modVariableType: 0
+    modVariableType: 1
     modTooltip: 
+    modVisibleInInspector: 1
   - modName: Spawn Offset
     modValue: 0
     modVariableType: 0
     modTooltip: How far away from the source should this projectile spawn
-  - modName: Target Player
-    modValue: 1
-    modVariableType: 5
-    modTooltip: Should this projectile's initial angle target the player?
+    modVisibleInInspector: 1
   - modName: Lifetime Duration
-    modValue: 0
-    modVariableType: 0
-    modTooltip: How many seconds before this projectile should be destroyed
+    modValue: 3
+    modVariableType: 1
+    modTooltip: "How many seconds before this projectile should be destroyed. \n0
+      = infinity"
+    modVisibleInInspector: 1
   somePAT:
   - modName: Percent Chance
     modValue: 1
-    modVariableType: 1
+    modVariableType: 2
     modTooltip: "The percent chance of each individual projectile from spawning in.
       \n1 = All previous projectiles spawn in, \n0 = No previous projectiles spawn
       inAAAAAA"
-  - modName: Percent Chances
-    modValue: 1
-    modVariableType: 4
-    modTooltip: 
+    modVisibleInInspector: 1
   spreadPAT:
   - modName: Number of Projectiles
     modValue: 1
-    modVariableType: 4
+    modVariableType: 6
     modTooltip: 
+    modVisibleInInspector: 1
   - modName: Spread Angle
     modValue: 1
     modVariableType: 0
     modTooltip: The distance each projectile should be from one another
+    modVisibleInInspector: 1
   - modName: Spread Speed Increase
     modValue: 0
     modVariableType: 0
-    modTooltip: 
+    modTooltip: The initial speed of each sequential projectile will increase by
+      this amount
+    modVisibleInInspector: 1
   - modName: Delay Between Projectiles
     modValue: 0
-    modVariableType: 1
-    modTooltip: 
+    modVariableType: 2
+    modTooltip: How many seconds to wait before spawning the next sequential projectile
+    modVisibleInInspector: 1
   - modName: Mirror
     modValue: 0
-    modVariableType: 5
-    modTooltip: 
+    modVariableType: 7
+    modTooltip: Mirrors the Spread projectiles based on the initial angle
+    modVisibleInInspector: 1
   - modName: Shift
     modValue: 0
-    modVariableType: 5
-    modTooltip: 
+    modVariableType: 7
+    modTooltip: If we should shift the spread projectiles so the middle projectile
+      will be where the inital angle is
+    modVisibleInInspector: 1
   - modName: Center Remove Number
     modValue: 0
-    modVariableType: 3
-    modTooltip: 
+    modVariableType: 6
+    modTooltip: The spread projectiles to remove starting at the centre of the spread.
+      Can be used if you want to create a gap/opening in the middle
+    modVisibleInInspector: 1
   randomizeAnglePAT:
   - modName: Angle Randomize Range
     modValue: 1
-    modVariableType: 2
-    modTooltip: 
+    modVariableType: 0
+    modTooltip: Randomize the angle of every individual projectile before this pattern
+      by a range from -value to value.
+    modVisibleInInspector: 1
   rapidPAT:
   - modName: Number of Projectiles
     modValue: 1
-    modVariableType: 4
-    modTooltip: 
+    modVariableType: 6
+    modTooltip: The amount of times should we loop the previous patterns
+    modVisibleInInspector: 1
   - modName: Fire Delay
     modValue: 0.2
     modVariableType: 0
-    modTooltip: 
+    modTooltip: How many seconds to wait before spawning the next sequential projectile
+    modVisibleInInspector: 1
   burstPAT:
   - modName: Number of Projectiles
     modValue: 1
-    modVariableType: 4
+    modVariableType: 6
     modTooltip: 
+    modVisibleInInspector: 1
   - modName: Angle Range
     modValue: 20
     modVariableType: 0
-    modTooltip: 
+    modTooltip: The random distance from -value to +value the projectiles can be
+      from the initial angle in the clump
+    modVisibleInInspector: 1
   - modName: Speed Range
     modValue: 0.5
     modVariableType: 0
-    modTooltip: 
+    modTooltip: The random speed from -value to +value each projectile in the clump
+      can have
+    modVisibleInInspector: 1
   - modName: Fire Delay Range
     modValue: 0.5
     modVariableType: 0
-    modTooltip: 
+    modTooltip: 'The random delay from -value to +value to spawn each projectile
+      in the clump '
+    modVisibleInInspector: 1
   randomizeSpawnOffsetPAT:
   - modName: Spawn Offset Range Range
     modValue: 1
     modVariableType: 0
-    modTooltip: 
-  - modName: Spawn Range
-    modValue: 1
-    modVariableType: 3
-    modTooltip: 
+    modTooltip: The distance from the source Transform to spawn the projectile
+    modVisibleInInspector: 1

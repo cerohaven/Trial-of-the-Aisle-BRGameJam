@@ -23,7 +23,7 @@ namespace ProjectilePatterns
                     foreach (PatternTypeMod[] mod in projs)
                     {
 
-                        StartCoroutine(SpawnBulletCoroutine(mod[3].modValue, mod));
+                        StartCoroutine(SpawnBulletCoroutine(mod[4].modValue, mod));
 
                     }
                 }
@@ -38,12 +38,15 @@ namespace ProjectilePatterns
             Vector3 mousePosition = Mouse.current.position.ReadValue();
             Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            Vector2 direction = PAT_HelperFunctions.GetDirectionFromAngle(mod[0].modValue, mod[2].modValue, playerTransform);
-            Vector2 directionPlusSpawnOffset = direction * mod[4].modValue;
+            bool isTargettingPlayer = PAT_HelperFunctions.IsTargettingPlayer(mod[0]);
+            float angle = isTargettingPlayer ? -99 : mod[1].modValue;
+
+            Vector2 direction = PAT_HelperFunctions.GetDirectionFromAngle(angle, mod[3].modValue, playerTransform);
+            Vector2 directionPlusSpawnOffset = direction * mod[5].modValue;
 
             GameObject go = Instantiate(projectileGO, mouseWorldPosition + directionPlusSpawnOffset, Quaternion.identity);
-
-            go.GetComponent<TestProjectile>().Initialize(direction, mod[1].modValue);
+            
+            go.GetComponent<TestProjectile>().Initialize(direction, mod[2].modValue, mod[6].modValue);
 
             yield break;
         }

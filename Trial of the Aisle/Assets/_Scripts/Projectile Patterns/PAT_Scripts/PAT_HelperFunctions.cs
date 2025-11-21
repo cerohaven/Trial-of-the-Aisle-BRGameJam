@@ -85,6 +85,13 @@ namespace ProjectilePatterns
             return patTypeMod;
         }
 
+        public static bool IsTargettingPlayer(PatternTypeMod mod)
+        {
+            bool val = false;
+            val = mod.modValue == 1 ? true : false;
+
+            return val;
+        }
 
     }
 
